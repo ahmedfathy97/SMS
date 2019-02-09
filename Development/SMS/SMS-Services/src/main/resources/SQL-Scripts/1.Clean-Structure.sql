@@ -1,6 +1,6 @@
 
 CREATE SCHEMA sms;
-use sms;
+USE sms;
 
 CREATE TABLE auth_user (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -9,6 +9,7 @@ CREATE TABLE auth_user (
   first_name varchar(15) NOT NULL,
   last_name varchar(15) NOT NULL
 );
+
 CREATE TABLE cor_category (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   label_en VARCHAR(45) NOT NULL
@@ -30,8 +31,8 @@ CREATE TABLE course (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   cor_name VARCHAR(20) NOT NULL,
   duration INT NOT NULL,
-  start_date INT NOT NULL,
-  end_date INT,
+  start_date DATE NOT NULL,
+  end_date DATE,
   instructor_id INT NOT NULL,
   category_id INT NOT NULL,
   type_id INT NOT NULL,
