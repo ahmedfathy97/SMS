@@ -1,21 +1,19 @@
 package com.sms.controller;
 
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/security")
 public class SecurityRes {
 
 
-    @Path("/login")
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public void login() throws Exception {
+    @Path("/test")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response testService() throws Exception {
+        return Response.ok().entity("Spring Application is working fine").build();
 
     }
 }
