@@ -10,6 +10,7 @@ import { SmsFooterComponent } from './layout/components/full-layout/components/s
 import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './modules/security/components/login/login.component';
+import { CreateGradeComponent } from './modules/course/components/create-grade/create-grade.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './modules/security/components/login/login.compon
     SmsFooterComponent,
     HomeComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    CreateGradeComponent
   ],
   imports: [
     BrowserModule,
