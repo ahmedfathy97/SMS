@@ -11,6 +11,10 @@ import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './modules/security/components/login/login.component';
 import { CreateGradeComponent } from './modules/course/components/create-grade/create-grade.component';
+import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,11 +26,12 @@ import { CreateGradeComponent } from './modules/course/components/create-grade/c
     HomeComponent,
     LayoutComponent,
     LoginComponent,
-    CreateGradeComponent
+    CreateGradeComponent,
+    CreateAttendanceComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule,HttpClientModule ,
+    AppRoutingModule,FormsModule,ReactiveFormsModule,CommonModule
   ],
   providers: [],
   bootstrap: [LayoutComponent]
