@@ -11,9 +11,11 @@ import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './modules/security/components/login/login.component';
 import { CreateGradeComponent } from './modules/course/components/create-grade/create-grade.component';
-import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
+
+
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
@@ -30,8 +32,10 @@ import {HttpClientModule} from "@angular/common/http";
     CreateAttendanceComponent
   ],
   imports: [
+    BrowserModule,
+    AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,
     BrowserModule,HttpClientModule ,
-    AppRoutingModule,FormsModule,ReactiveFormsModule,CommonModule
+
   ],
   providers: [],
   bootstrap: [LayoutComponent]
