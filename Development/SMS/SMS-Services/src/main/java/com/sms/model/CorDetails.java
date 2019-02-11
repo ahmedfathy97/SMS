@@ -1,8 +1,9 @@
 package com.sms.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CorDetails {
+public class CorDetails implements Serializable {
     String  courseName ;
     int  duration ;
     Date startDate ;

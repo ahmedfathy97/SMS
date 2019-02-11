@@ -1,6 +1,9 @@
 package com.sms.controller;
 
 import com.sms.model.CourseType;
+import com.sms.model.lookUp.corCategory;
+import com.sms.model.lookUp.corLevel;
+import com.sms.model.lookUp.corType;
 import com.sms.repository.LookupRep;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,6 +29,27 @@ public class LookupRes {
     @Path("/CourseType")
     public List<CourseType> findData() {
         List<CourseType> list =this.repositry.findCourseByInstID(2);
+        return list;
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/CorCategory")
+    public List<corCategory> findCorCategory() {
+        List<corCategory> list =this.repositry.findCorCategory();
+        return list;
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/CorType")
+    public List<corType> findCorType() {
+        List<corType> list =this.repositry.findCorType();
+        return list;
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/CorLevel")
+    public List<corLevel> findCorLevel() {
+        List<corLevel> list =this.repositry.findCorLevel();
         return list;
     }
 

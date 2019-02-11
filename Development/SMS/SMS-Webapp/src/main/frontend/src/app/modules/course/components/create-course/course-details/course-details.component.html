@@ -30,26 +30,21 @@
                 <div class="form-group">
                   <label class="col-form-label">Category</label>
                   <select class="form-control" formControlName="categoryID">
-                    <option>Design</option>
-                    <option>Development</option>
-                    <option>Programing</option>
+                    <option *ngFor="let category of corCategory" [ngValue]="category.id">{{category.labelEN}}</option>
                   </select>
                 </div>
 
                 <div class="form-group" >
                   <label class="col-form-label">Type</label>
                   <select class="form-control"formControlName="typeID" >
-                    <option>Academic</option>
-                    <option>Practical</option>
+                    <option *ngFor="let type of corType" [ngValue]="type.id">{{type.labelEN}}</option>
                   </select>
                 </div>
 
                 <div class="form-group" >
                   <label class="col-form-label">Level</label>
                   <select class="form-control" formControlName="levelID">
-                    <option>Entry</option>
-                    <option>Beginner</option>
-                    <option>Advance</option>
+                    <option *ngFor="let level of corLevel" [ngValue]="level.id">{{level.labelEN}}</option>
                   </select>
                 </div>
 

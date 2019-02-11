@@ -2,19 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CourseDetailsData} from "../../../shared/data/course/course-details.data";
 import {CourseService} from "../../../shared/course.service";
+import {LookupService} from "../../../../../layout/shared/service/lookup.service";
+import {CorDetailsCategoryData} from "../../../shared/data/lookup/course/cor-details-category.data";
+import {CorDetailsLevelData} from "../../../shared/data/lookup/course/cor-details-level.data";
+import {CorDetailsTypeData} from "../../../shared/data/lookup/course/cor-details-type.data";
 
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.css'],
-  providers:  [CourseService]
+  providers:  [CourseService ,LookupService]
 })
 export class CourseDetailsComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder,
-              private service : CourseService) { }
-
+              private service : CourseService,
+              private lookUp : LookupService) { }
+  corCategory:CorDetailsCategoryData[]=[];
+  corType:CorDetailsTypeData[]=[];
+  corLevel :CorDetailsLevelData[]=[];
   ngOnInit() {
+    this.lookUp.findCorCategory().subscribe(res=>{this.corCategory});
+    this.lookUp.findCorType().subscribe(res=>{this.corType});
+    this.lookUp.findCorLevel().subscribe(res=>{this.corLevel});
+
   }
 formData : FormGroup = this.formBuilder.group({
       courseName : [null, [Validators.required, Validators.maxLength(25)]],
@@ -39,7 +50,6 @@ addCourseData(){
   details.description = this.formData.get('description').value;
 
   this.service.addCourseData(details).subscribe( res => {console.log("Success");}, err => {console.log(err);});
-
-              }
+  }
 
 }
