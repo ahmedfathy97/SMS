@@ -17,6 +17,7 @@ import { CreateAttendanceComponent } from './modules/course/components/create-at
 
 
 import {HttpClientModule} from "@angular/common/http";
+import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     LayoutComponent,
     LoginComponent,
     CreateGradeComponent,
-    CreateAttendanceComponent
+    CreateAttendanceComponent,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,

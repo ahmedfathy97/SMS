@@ -6,12 +6,15 @@ import {SimpleLayoutComponent} from "./layout/components/simple-layout/simple-la
 import {LoginComponent} from "./modules/security/components/login/login.component";
 import {CreateGradeComponent} from "./modules/course/components/create-grade/create-grade.component";
 import {CreateAttendanceComponent} from "./modules/course/components/create-attendance/create-attendance.component";
+import {CourseDetailsComponent} from "./modules/course/components/create-course/course-details/course-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '', component: FullLayoutComponent, children:[
       {path: 'home', component: HomeComponent},
-      {path: 'create-grade', component: CreateGradeComponent}
+      {path: 'create-grade', component: CreateGradeComponent},
+      {path: 'home', component: HomeComponent},
+      {path:'course/new', component: CourseDetailsComponent}
     ]},
   {path: '', component: SimpleLayoutComponent, children:[
       {path: 'login', component: LoginComponent},
