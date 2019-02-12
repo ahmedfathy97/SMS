@@ -7,6 +7,7 @@ import java.util.List;
 public class StdDto  implements Serializable {
     private  int id;
     private String fullName;
+    private boolean isAttend ;
     private  int midTermOne;
     private  int semiFinal;
     private  int midTermTwo;
@@ -33,6 +34,14 @@ public class StdDto  implements Serializable {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public boolean getIsAttend() {
+        return isAttend;
+    }
+
+    public void setIsAttend(boolean isAttend) {
+        isAttend = isAttend;
     }
 
     public int getMidTermOne() {
@@ -72,6 +81,7 @@ public class StdDto  implements Serializable {
         return "StdDto{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", isAttend=" + isAttend +
                 ", midTermOne=" + midTermOne +
                 ", semiFinal=" + semiFinal +
                 ", midTermTwo=" + midTermTwo +

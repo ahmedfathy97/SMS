@@ -19,6 +19,9 @@ public class LookupRep {
     public LookupRep(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
+    public List<CourseType> findCourseByInstID ( int instrID){
+        String sql="SELECT id,cor_name FROM course where instructor_id =? ";
+        List<CourseType> list = this.jdbc.query(sql,new CourseTypeRM(), instrID);
 
     public List<CourseType> findCourseByInstID ( int instr_id){
         String sql="SELECT id,cor_name FROM course where instructor_id ="+instr_id+";";

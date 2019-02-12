@@ -60,7 +60,11 @@ CREATE TABLE attendance (
 CREATE TABLE cor_std_att (
   id     INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   cor_id INT NOT NULL,
+  std_id INT NOT NULL,
   att_id INT NOT NULL,
+  attend INT NOT NULL,
   CONSTRAINT fk_cor_std_att_course FOREIGN KEY (cor_id) REFERENCES course (id),
-  CONSTRAINT fk_cor_std_att_attendance FOREIGN KEY (att_id) REFERENCES course (id)
+  CONSTRAINT fk_cor_std_att_attendance FOREIGN KEY (att_id) REFERENCES course (id),
+  CONSTRAINT fk_cor_std_auth_user FOREIGN KEY (std_id) REFERENCES course (id),
+
 );
