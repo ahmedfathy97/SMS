@@ -1,5 +1,5 @@
 export class CorDetailsLevelData {
   id : number ;
-  labelEN : String ;
+  labelEn : String ;
 
 }

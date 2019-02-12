@@ -33,21 +33,21 @@ public class LookupRes {
     }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/CorCategory")
+    @Path("/corCategory")
     public List<corCategory> findCorCategory() {
         List<corCategory> list =this.repositry.findCorCategory();
         return list;
     }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/CorType")
+    @Path("/corType")
     public List<corType> findCorType() {
         List<corType> list =this.repositry.findCorType();
         return list;
     }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/CorLevel")
+    @Path("/corLevel")
     public List<corLevel> findCorLevel() {
         List<corLevel> list =this.repositry.findCorLevel();
         return list;
