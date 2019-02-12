@@ -7,21 +7,17 @@ import java.util.List;
 public class StdDto  implements Serializable {
     private  int id;
     private String fullName;
+    private  int midTermOne;
+    private  int semiFinal;
+    private  int midTermTwo;
+    private  int Final;
+//    private boolean isAttend;
 
-//    List<StdDto> list=new ArrayList<>();
-//    list.add(id);
-//    list.add(fullName);
+
 
     public StdDto() {
     }
 
-//    public List<StdDto> getList() {
-//        return list;
-//    }
-//
-//    public void setList(List<StdDto> list) {
-//        this.list = list;
-//    }
 
     public int getId() {
         return id;
@@ -39,11 +35,47 @@ public class StdDto  implements Serializable {
         this.fullName = fullName;
     }
 
+    public int getMidTermOne() {
+        return midTermOne;
+    }
+
+    public void setMidTermOne(int midTermOne) {
+        this.midTermOne = midTermOne;
+    }
+
+    public int getSemiFinal() {
+        return semiFinal;
+    }
+
+    public void setSemiFinal(int semiFinal) {
+        this.semiFinal = semiFinal;
+    }
+
+    public int getMidTermTwo() {
+        return midTermTwo;
+    }
+
+    public void setMidTermTwo(int midTermTwo) {
+        this.midTermTwo = midTermTwo;
+    }
+
+    public int getFinal() {
+        return Final;
+    }
+
+    public void setFinal(int aFinal) {
+        Final = aFinal;
+    }
+
     @Override
     public String toString() {
         return "StdDto{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", midTermOne=" + midTermOne +
+                ", semiFinal=" + semiFinal +
+                ", midTermTwo=" + midTermTwo +
+                ", Final=" + Final +
                 '}';
     }
 }

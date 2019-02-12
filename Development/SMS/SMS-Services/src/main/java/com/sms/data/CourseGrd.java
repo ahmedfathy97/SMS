@@ -5,21 +5,13 @@ import java.util.List;
 
 public class CourseGrd {
     private  int corId;
-    private String stdName;
-    private  int midTermOne;
-    private  int semiFinal;
-    private  int midTermTwo;
-    private  int Final;
-//    List<StdDto> data;
-//
-//    public List<StdDto> getData() {
-//        return data;
-//    }
-//
-//    public void setData(List<StdDto> data) {
-//        this.data = data;
-//        data.add(midTermOne);
-//    }
+    private List<StdDto> students;
+//    private String stdName;
+//    private  int midTermOne;
+//    private  int semiFinal;
+//    private  int midTermTwo;
+//    private  int Final;
+
 
     public CourseGrd() {
     }
@@ -33,43 +25,19 @@ public class CourseGrd {
         this.corId = corId;
     }
 
-    public String getStdName() {
-        return stdName;
+    public List<StdDto> getStudents() {
+        return students;
     }
 
-    public void setStdName(String stdName) {
-        this.stdName = stdName;
+    public void setStudents(List<StdDto> students) {
+        this.students = students;
     }
 
-    public int getMidTermOne() {
-        return midTermOne;
-    }
-
-    public void setMidTermOne(int midTermOne) {
-        this.midTermOne = midTermOne;
-    }
-
-    public int getSemiFinal() {
-        return semiFinal;
-    }
-
-    public void setSemiFinal(int semiFinal) {
-        this.semiFinal = semiFinal;
-    }
-
-    public int getMidTermTwo() {
-        return midTermTwo;
-    }
-
-    public void setMidTermTwo(int midTermTwo) {
-        this.midTermTwo = midTermTwo;
-    }
-
-    public int getFinal() {
-        return Final;
-    }
-
-    public void setFinal(int aFinal) {
-        Final = aFinal;
+    @Override
+    public String toString() {
+        return "CourseGrd{" +
+                "corId=" + corId +
+                ", students=" + students +
+                '}';
     }
 }

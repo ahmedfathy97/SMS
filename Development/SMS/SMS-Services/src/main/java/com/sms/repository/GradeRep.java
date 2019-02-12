@@ -30,4 +30,17 @@ public class GradeRep {
         return  list;
 
     }
+
+
+    public void insertStudentGrd( int cor_id, StdDto data) {
+        String sql = "update course_std "+
+       " SET  mid_1_grd=?, "+
+               "   semi_final_grd=?, "+
+                "  mid_2_grd=?, "+
+                "  final_grd=? "+
+        "WHERE   cor_id=? AND  std_id = ? ";
+        this.jdbc.update(sql,data.getMidTermOne(), data.getSemiFinal(),data.getMidTermTwo(),data.getFinal(),cor_id,
+                data.getId());
+
+    }
 }
