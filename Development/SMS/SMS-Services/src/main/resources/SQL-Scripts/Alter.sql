@@ -25,3 +25,11 @@ INSERT INTO `sms`.`auth_user` (`user_name`, `user_pass`, `first_name`, `last_nam
 INSERT INTO `sms`.`auth_user` (`user_name`, `user_pass`, `first_name`, `last_name`) VALUES ('Yousef', '10', 'yousef', 'Reda');
 #endauth_user
 #end hala
+
+-- Youssef Start --
+
+ALTER TABLE `sms`.`course`
+CHANGE COLUMN `start_date` `start_date` DATE NOT NULL ,
+CHANGE COLUMN `end_date` `end_date` DATE NULL DEFAULT NULL ;
+
+--Youssef end --

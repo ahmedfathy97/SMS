@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CorDetails implements Serializable {
-    String  courseName ;
-    int  duration ;
-    Date startDate ;
-    Date endDate ;
-    int categoryID ;
-    int typeID ;
-    int levelID;
-    String description ;
+    private String  courseName ;
+    private int  duration ;
+    private Date startDate ;
+    private Date endDate ;
+    private int categoryID ;
+    private int typeID ;
+    private int levelID;
+    private String description ;
 
     public CorDetails() {
     }

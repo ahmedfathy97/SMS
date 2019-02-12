@@ -18,20 +18,12 @@ export class CourseDetailsComponent implements OnInit {
   corCategory: CorDetailsCategoryData[] = [];
   corType: CorDetailsTypeData[] = [];
   corLevel: CorDetailsLevelData[] = [];
-  formData: FormGroup = this.formBuilder.group({
-    courseName: [null, [Validators.required, Validators.maxLength(25)]],
-    duration: [null, [Validators.required, Validators.min(1)]],
-    startDate: [null, [Validators.required]],
-    endDate: [null, [Validators.required]],
-    categoryID: [null, Validators.required],
-    typeID: [null, Validators.required],
-    levelID: [null, Validators.required],
-    description: [null, [Validators.maxLength(200)]],
-  })
+
 
   constructor(private formBuilder: FormBuilder,
               private service: CourseService,
               private lookUp: LookupService) {
+
   }
 
   ngOnInit() {
@@ -46,6 +38,19 @@ export class CourseDetailsComponent implements OnInit {
     });
 
   }
+
+
+
+  formData: FormGroup = this.formBuilder.group({
+    courseName: [null, [Validators.required, Validators.maxLength(25)]],
+    duration: [null, [Validators.required, Validators.min(1)]],
+    startDate: [null, [Validators.required]],
+    endDate: [null, [Validators.required]],
+    categoryID: [null, Validators.required],
+    typeID: [null, Validators.required],
+    levelID: [null, Validators.required],
+    description: [null, [Validators.maxLength(200)]],
+  });
 
   addCourseData() {
     let details: CourseDetailsData = new CourseDetailsData();
