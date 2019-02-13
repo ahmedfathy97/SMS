@@ -12,6 +12,8 @@ public class CourseRep {
     public CourseRep(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
+
+    //TODO: Youssef - rename to insertNewCourse
     public void addCourseData(CorDetails details){
         String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +
                 " category_id ,type_id , level_id , description ,instructor_id) Values (?,?,?,?,?,?,?,?,1) ";

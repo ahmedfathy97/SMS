@@ -3,7 +3,10 @@ package com.sms.model;
 import java.io.Serializable;
 import java.util.Date;
 
+//TODO: Youssef - rename Class to CourseDTO - remember to change model in Angular too
+//TODO: Youssef - move Class to /model/course/
 public class CorDetails implements Serializable {
+    //TODO: Youssef - rename Class to name - remember to change model in Angular too
     private String  courseName ;
     private int  duration ;
     private Date startDate ;

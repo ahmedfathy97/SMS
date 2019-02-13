@@ -18,6 +18,7 @@ import java.util.List;
 @Path("/lookup")
 public class LookupRes {
 
+    //TODO - Youssef - rename variable to repository
     private LookupRep repositry;
 
     @Autowired
@@ -27,11 +28,16 @@ public class LookupRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    //TODO - Yara - Path should be /instructor/{instructorID}
     @Path("/CourseType/{CourseID}")
+    //TODO - Yara - should move the function to CourseRes
+    //TODO - Yara - rename function to findInstructorCourses
+    //TODO - Yara - rename parameter to instructorID
     public List<CourseType> findData(@PathParam("CourseID") int CourseID) {
         List<CourseType> list =this.repositry.findCourseByInstID(CourseID);
         return list;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/corCategory")
@@ -39,6 +45,7 @@ public class LookupRes {
         List<corCategory> list =this.repositry.findCorCategory();
         return list;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/corType")
@@ -46,6 +53,7 @@ public class LookupRes {
         List<corType> list =this.repositry.findCorType();
         return list;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/corLevel")

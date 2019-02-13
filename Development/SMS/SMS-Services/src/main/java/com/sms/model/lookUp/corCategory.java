@@ -2,8 +2,11 @@ package com.sms.model.lookUp;
 
 import java.io.Serializable;
 
+//TODO: Youssef - rename Class to CorCategory - remember to change model in Angular too
 public class corCategory implements Serializable {
+    //TODO: Youssef - rename Variable to id
     private int ID ;
+    //TODO: Youssef - rename Variable to labelEN
     private String labelEn ;
 
     public corCategory() {

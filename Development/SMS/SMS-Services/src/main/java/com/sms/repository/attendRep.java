@@ -16,9 +16,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
+//TODO: Yara - Rename to AttendanceRep
 public class attendRep {
 
     private JdbcTemplate jdbc ;
+    //TODO: Yara - should be private and rename to attendanceSJI
     SimpleJdbcInsert simpleJdbcInsert;
     @Autowired
     public attendRep(JdbcTemplate jdbc, DataSource dataSource) {
@@ -27,30 +29,18 @@ public class attendRep {
         this.jdbc = jdbc;
     }
 
-
-
+    //TODO: Yara - Rename to insertNewSheet
     public int insertSheetDetails (int courseID , Date sheetDate){
         Map<String, Object> parameters = new HashMap<>(2);
         parameters.put("cor_id", courseID);
         parameters.put("attendance_date", "2018-05-12");
         Number newId = simpleJdbcInsert.executeAndReturnKey(parameters);
         return newId.intValue();
-//        KeyHolder keyHolder = new GeneratedKeyHolder();
-//        String sql = "INSERT INTO attendance ( cor_id , attendance_date ) " +
-//                "value (?,?)";
-//        jdbc.update(connection -> {
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//            ps.setInt(1, courseID);
-//            ps.setString(2, "2018-05-12");
-//            return ps;
-//        }, keyHolder);
-//
-//        return (int) keyHolder.getKey();
     }
 
-    public void insertAttendStd (int attendenceSheetID, int courseID , StdDto data){
-        String sql = "INSERT INTO cor_std_att ( att_id , cor_id , std_id , attend ) " +
-                "value (?,?,?,?)";
-        this.jdbc.update(sql , attendenceSheetID, courseID , data.getId() ,data.getIsAttend() ? "1" : "0"); }
+    //TODO: Yara - Rename to insertStudentAttendance
+    public void insertAttendStd (int attendanceSheetID, int courseID , StdDto data){
+        String sql = "INSERT INTO cor_std_att ( att_id , cor_id , std_id , attend ) value (?,?,?,?)";
+        this.jdbc.update(sql , attendanceSheetID, courseID , data.getId() ,data.getIsAttend() ? "1" : "0"); }
 
 }

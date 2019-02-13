@@ -1,16 +1,11 @@
 package com.sms.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
+//TODO: Hala - no need for this Class Remove it - remember to change model in Angular too
 public class CourseGrd {
     private  int corId;
     private List<StdDto> students;
-//    private String stdName;
-//    private  int midTermOne;
-//    private  int semiFinal;
-//    private  int midTermTwo;
-//    private  int Final;
 
 
     public CourseGrd() {

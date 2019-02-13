@@ -4,16 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StdDto  implements Serializable {
-    private  int id;
+//TODO: Hala - rename CLass to StdDTO - remember to change model in Angular too
+//TODO: Hala - move to model/course/
+public class StdDto implements Serializable {
+    private int id;
     private String fullName;
-    private boolean isAttend ;
-    private  int midTermOne;
-    private  int semiFinal;
-    private  int midTermTwo;
-    private  int Final;
-//    private boolean isAttend;
-
+    private boolean isAttend;
+    private int midTermOne;
+    private int semiFinal;
+    private int midTermTwo;
+    private int Final;
 
 
     public StdDto() {
@@ -23,7 +23,6 @@ public class StdDto  implements Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -31,7 +30,6 @@ public class StdDto  implements Serializable {
     public String getFullName() {
         return fullName;
     }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -39,15 +37,13 @@ public class StdDto  implements Serializable {
     public boolean getIsAttend() {
         return isAttend;
     }
-
     public void setIsAttend(boolean isAttend) {
-        isAttend = isAttend;
+        this.isAttend = isAttend;
     }
 
     public int getMidTermOne() {
         return midTermOne;
     }
-
     public void setMidTermOne(int midTermOne) {
         this.midTermOne = midTermOne;
     }
@@ -55,7 +51,6 @@ public class StdDto  implements Serializable {
     public int getSemiFinal() {
         return semiFinal;
     }
-
     public void setSemiFinal(int semiFinal) {
         this.semiFinal = semiFinal;
     }
@@ -63,7 +58,6 @@ public class StdDto  implements Serializable {
     public int getMidTermTwo() {
         return midTermTwo;
     }
-
     public void setMidTermTwo(int midTermTwo) {
         this.midTermTwo = midTermTwo;
     }
@@ -71,7 +65,6 @@ public class StdDto  implements Serializable {
     public int getFinal() {
         return Final;
     }
-
     public void setFinal(int aFinal) {
         Final = aFinal;
     }

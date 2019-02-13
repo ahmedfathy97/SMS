@@ -13,9 +13,12 @@ import javax.ws.rs.core.MediaType;
 public class CourseRes {
     @Autowired
     private CourseRep repository;
+
     @POST
+    //TODO: Youssef - rename Path to / only
     @Path("/mainDetails")
     @Consumes(MediaType.APPLICATION_JSON)
+    //TODO: Youssef - rename function to createNewCourse
     public void addCourseData(CorDetails details){
         repository.addCourseData(details);
     }

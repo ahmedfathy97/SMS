@@ -8,21 +8,25 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/attendance")
+//TODO: Yara - Class should be AttendanceRes
 public class AttendRes {
-    private AttendSer attend ;
+    //TODO: Yara - should be attendanceService
+    private AttendSer attend;
 
     @Autowired
     public AttendRes(AttendSer attend) {
         this.attend = attend;
     }
 
-        @POST
-        @Consumes(MediaType.APPLICATION_JSON)
-        @Path("/student/{courseID}")
-        public void insertAttendanceDetails (@PathParam("courseID") int courseID ,AttendData data) {
-            System.out.print("Data Recieved Sucessfully");
-            System.out.print(data.toString());
-            this.attend.insertSheetDetails(courseID,data);
-        }
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    //TODO: Yara - path should be /{courseID}
+    @Path("/student/{courseID}")
+    //TODO: Yara - function should be createAttendanceSheet
+    public void insertAttendanceDetails(@PathParam("courseID") int courseID, AttendData data) {
+        System.out.print("Data Recieved Sucessfully");
+        System.out.print(data.toString());
+        this.attend.insertSheetDetails(courseID, data);
     }
+}
 

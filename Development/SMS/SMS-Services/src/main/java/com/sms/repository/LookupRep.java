@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public class LookupRep {
     private JdbcTemplate jdbc;
@@ -19,25 +20,28 @@ public class LookupRep {
     public LookupRep(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
+
+    //TODO: Yara - move to CourseRep Class
+    //TODO: Yara - rename to findAllInstructorCourses
     public List<CourseType> findCourseByInstID ( int instrID) {
         String sql = "SELECT id,cor_name FROM course where instructor_id =? ";
-        List<CourseType> list = this.jdbc.query(sql, new CourseTypeRM(), instrID);
-        return list;
+        return this.jdbc.query(sql, new CourseTypeRM(), instrID);
     }
-    public List<corCategory>findCorCategory (){
+
+    public List<corCategory> findCorCategory (){
         String sql ="SELECT id,label_en FROM cor_category ";
-        List<corCategory> list = this.jdbc.query(sql ,new corCategoeryVtoRM());
-        return  list ;
+        return this.jdbc.query(sql ,new corCategoeryVtoRM());
     }
-    public List<corType>findCorType (){
+
+    public List<corType> findCorType (){
         String sql ="SELECT id,label_en FROM cor_type ";
-        List<corType> list = this.jdbc.query(sql , new corCategoeryVtoRM());
-        return  list;
+        //TODO: Youssef - should use CorTypeVTORM
+        return this.jdbc.query(sql , new corCategoeryVtoRM());
     }
-    public List<corLevel>findCorLevel (){
+
+    public List<corLevel> findCorLevel (){
         String sql ="SELECT id,label_en FROM cor_level ";
-        List<corLevel> list = this.jdbc.query(sql , new corLevelVtoRM());
-       return list;
+        return this.jdbc.query(sql , new corLevelVtoRM());
     }
 }
 

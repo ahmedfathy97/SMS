@@ -2,9 +2,12 @@ package com.sms.model;
 
 import java.io.Serializable;
 
+//TODO: Yara - rename Class to CourseVTO - remember to change model in Angular too
+//TODO: Yara - move Class to /model/course/
 public class CourseType implements Serializable {
 
     private  int id;
+    //TODO: Yara - rename Variable to name - remember to change model in Angular too
     private String labelEN;
 
     public CourseType() {

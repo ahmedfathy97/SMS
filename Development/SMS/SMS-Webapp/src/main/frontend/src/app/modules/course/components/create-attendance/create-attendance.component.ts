@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {CourseType} from "../../shared/data/course-type-dto.data";
 import {CourseService} from "../../shared/course.service";
@@ -8,23 +8,28 @@ import {AttendData} from "../../shared/data/attend-dto.data";
 @Component({
   selector: 'app-create-attendance',
   templateUrl: './create-attendance.component.html',
-  styleUrls: ['./create-attendance.component.scss'],
-  providers : [FormBuilder , CourseService],
+  providers: [FormBuilder, CourseService],
 })
 export class CreateAttendanceComponent implements OnInit {
 
-  dataList : StdDto []=[] ;
+  //TODO: Yara - no need for this remove it
+  dataList: StdDto [] = [];
 
-  formData= this.formBuilder.group({
-
+  formData = this.formBuilder.group({
+    //TODO: Yara - rename formControlName to courseID remember change in HTML
     course: ['', Validators.required],
-    date : ['', Validators.required]
+    //TODO: Yara - rename formControlName to attendanceDate remember change in HTML
+    date: ['', Validators.required]
   });
-
-  constructor(private formBuilder : FormBuilder ,private  courseService: CourseService) { }
+  //TODO: Yara - rename to courses remember change in HTML
   corTypes: CourseType [] = [];
-  // std: StdDto ;
-attendence: AttendData = new AttendData();
+
+  //TODO: Yara - rename to attendance remember change in HTML
+  attendence: AttendData = new AttendData();
+
+  constructor(private formBuilder: FormBuilder, private  courseService: CourseService) {
+  }
+
   ngOnInit() {
 
     this.courseService.findCourseType().subscribe(
@@ -34,40 +39,42 @@ attendence: AttendData = new AttendData();
       }
     );
   }
-  onChangeCourse(courseID){
+
+  onChangeCourse(courseID) {
     console.log(courseID);
     this.courseService.findStdName(courseID).subscribe(
-      res=>{
-        this.attendence.stdList=res;
+      res => {
+        this.attendence.stdList = res;
         console.log(this.attendence.stdList);
 
       }
-    );}
-  saveAttend(){
+    );
+  }
 
-      let data: AttendData = new AttendData();
-      data.course_id = this.formData.get('course').value;
-      data.date = this.formData.get('date').value;
-      data.stdList = this.attendence.stdList;
+  //TODO: Youssef - rename to onSubmitNewAttendance
+  saveAttend() {
+
+    let data: AttendData = new AttendData();
+    data.course_id = this.formData.get('course').value;
+    data.date = this.formData.get('date').value;
+    data.stdList = this.attendence.stdList;
 
 
     console.log(data);
-      this.courseService.saveAttendData(data).subscribe(
-        res => {
-          console.log('request succed')
-        },
-        error1 => {
-          console.log(error1)
-        }
-      );
+    this.courseService.saveAttendData(data).subscribe(
+      res => {
+        console.log('request succed')
+      },
+      error1 => {
+        console.log(error1)
+      }
+    );
 
-    };
+  };
 
-
+  //TODO: Yara - rename to toggleStdAttendance
   toggleEditable(index) {
-    // if ( event.target.checked ) {
-      this.attendence.stdList[index].isAttend = !this.attendence.stdList[index].isAttend;
-    // }
+    this.attendence.stdList[index].isAttend = !this.attendence.stdList[index].isAttend;
     console.log(this.attendence.stdList);
   }
 }

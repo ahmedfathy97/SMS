@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//TODO: Youssef - rename CLass to CorCategoryVTORM
 public class corCategoeryVtoRM implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowIndex) throws SQLException {

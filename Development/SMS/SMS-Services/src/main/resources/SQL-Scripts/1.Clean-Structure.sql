@@ -52,6 +52,7 @@ CREATE TABLE course_std (
 CREATE TABLE attendance (
   id              INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
   cor_id          INT  NOT NULL,
+  -- TODO: Yara - should be created_on
   attendance_date DATE NOT NULL,
   CONSTRAINT fk_attendance_course FOREIGN KEY (cor_id) REFERENCES course (id)
 );
@@ -62,9 +63,11 @@ CREATE TABLE cor_std_att (
   cor_id INT NOT NULL,
   std_id INT NOT NULL,
   att_id INT NOT NULL,
+  -- TODO: Yara - should be is_attended
   attend INT NOT NULL,
   CONSTRAINT fk_cor_std_att_course FOREIGN KEY (cor_id) REFERENCES course (id),
   CONSTRAINT fk_cor_std_att_attendance FOREIGN KEY (att_id) REFERENCES course (id),
+  -- TODO: Yara - There is comma on the list line here
   CONSTRAINT fk_cor_std_auth_user FOREIGN KEY (std_id) REFERENCES course (id),
 
 );

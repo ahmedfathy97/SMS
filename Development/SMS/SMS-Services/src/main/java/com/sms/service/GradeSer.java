@@ -8,16 +8,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class GradeSer {
     private GradeRep repository;
+
     @Autowired
     public GradeSer(GradeRep repository) {
-        this.repository=repository;
+        this.repository = repository;
 
     }
-    public void insertStudentGrds(int courseID, List<StdDto> students){
-        for(StdDto std: students)
+
+    //TODO: Hala - rename function to createSheet
+    public void insertStudentGrds(int courseID, List<StdDto> students) {
+        for (StdDto std : students)
             this.repository.insertStudentGrd(courseID, std);
         System.out.print("Data is inserted Sucessfully");
     }
