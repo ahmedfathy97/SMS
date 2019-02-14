@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FullLayoutComponent } from './layout/components/full-layout/full-layout.component';
 import { SimpleLayoutComponent } from './layout/components/simple-layout/simple-layout.component';
@@ -14,8 +13,6 @@ import { CreateGradeComponent } from './modules/course/components/create-grade/c
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
-
-
 import {HttpClientModule} from "@angular/common/http";
 import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
 
@@ -31,7 +28,7 @@ import { CourseDetailsComponent } from './modules/course/components/create-cours
     LoginComponent,
     CreateGradeComponent,
     CreateAttendanceComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
   ],
   imports: [
     BrowserModule,
