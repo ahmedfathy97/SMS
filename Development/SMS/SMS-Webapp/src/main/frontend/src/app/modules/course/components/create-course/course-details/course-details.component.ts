@@ -32,15 +32,16 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lookUp.findCorCategory().subscribe(res => {
-      this.corCategory = res;
-    });
-    this.lookUp.findCorType().subscribe(res => {
-      this.corType = res;
-    });
-    this.lookUp.findCorLevel().subscribe(res => {
-      this.corLevel = res;
-    });
+    //TODO: YOussef - Check these lines again
+    // this.lookUp.findCorCategory().subscribe(res => {
+    //   this.corCategory = res;
+    // });
+    // this.lookUp.findCorType().subscribe(res => {
+    //   this.corType = res;
+    // });
+    // this.lookUp.findCorLevel().subscribe(res => {
+    //   this.corLevel = res;
+    // });
 
   }
 
