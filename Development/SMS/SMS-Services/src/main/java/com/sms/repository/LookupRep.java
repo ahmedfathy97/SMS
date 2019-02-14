@@ -1,7 +1,5 @@
 package com.sms.repository;
 
-import com.sms.model.CourseType;
-import com.sms.model.CourseTypeRM;
 import com.sms.model.lookUp.corCategory;
 import com.sms.model.lookUp.corLevel;
 import com.sms.model.lookUp.corType;
@@ -23,10 +21,7 @@ public class LookupRep {
 
     //TODO: Yara - move to CourseRep Class
     //TODO: Yara - rename to findAllInstructorCourses
-    public List<CourseType> findCourseByInstID ( int instrID) {
-        String sql = "SELECT id,cor_name FROM course where instructor_id =? ";
-        return this.jdbc.query(sql, new CourseTypeRM(), instrID);
-    }
+
 
     public List<corCategory> findCorCategory (){
         String sql ="SELECT id,label_en FROM cor_category ";

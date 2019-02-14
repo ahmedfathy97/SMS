@@ -1,6 +1,5 @@
 package com.sms.controller;
 
-import com.sms.model.CourseType;
 import com.sms.model.lookUp.corCategory;
 import com.sms.model.lookUp.corLevel;
 import com.sms.model.lookUp.corType;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -26,17 +24,12 @@ public class LookupRes {
         this.repositry = repositry;
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
+
     //TODO - Yara - Path should be /instructor/{instructorID}
-    @Path("/CourseType/{CourseID}")
     //TODO - Yara - should move the function to CourseRes
     //TODO - Yara - rename function to findInstructorCourses
     //TODO - Yara - rename parameter to instructorID
-    public List<CourseType> findData(@PathParam("CourseID") int CourseID) {
-        List<CourseType> list =this.repositry.findCourseByInstID(CourseID);
-        return list;
-    }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

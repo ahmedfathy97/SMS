@@ -1,39 +1,91 @@
 
 <!--TODO: Yara - Don't Use Cards check the home.component.html and make use of it-->
-<div class="mt-4 row">
-  <div class="offset-3 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Attendance</div>
+<!--<div class="mt-4 row">-->
+  <!--<div class="offset-3 col-md-6">-->
+    <!--<div class="card">-->
+      <!--<div class="card-header">-->
+        <!--<div class="card-title">Attendance</div>-->
+      <!--</div>-->
+      <!--<div class="card-body">-->
+        <!--<form [formGroup]="formData">-->
+
+          <!--<div class="row">-->
+            <!--<div class="form-group col-md-6">-->
+              <!--<label class="col-form-label" for="course">Course</label>-->
+              <!--<select (change)="onChangeCourse($event.target.value)" class="form-control" id="course" formControlName="course">-->
+                <!--<option *ngFor="let cor of corTypes" value="{{cor.id}}">{{cor.labelEN}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+            <!--<div class="form-group col-md-6">-->
+              <!--&lt;!&ndash;TODO: Yara - Label here should be Attendance Date&ndash;&gt;-->
+              <!--<label for="example-date-input" class="col-form-label">Date</label>-->
+              <!--<input class="form-control" type="date" id="example-date-input" formControlName="date">-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</form>-->
+
+        <!--<div class="form-check " *ngFor="let item of attendence.students; index as i">-->
+          <!--<input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="toggleEditable(i)" >-->
+          <!--<label class="form-check-label" for="exampleCheck1">{{item.fullName}}</label>-->
+        <!--</div>-->
+
+        <!--<button type="submit" class="btn btn-lg btn-success mr-1 btn-sm pull-right mg-l-15" (click)="saveAttend()">Submit</button>-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!-- page title area start -->
+<div class="page-title-area">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Attendance</h4>
       </div>
-      <div class="card-body">
-        <form [formGroup]="formData">
-
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label class="col-form-label" for="course">Course</label>
-              <select (change)="onChangeCourse($event.target.value)" class="form-control" id="course" formControlName="course">
-                <option *ngFor="let cor of corTypes" value="{{cor.id}}">{{cor.labelEN}}</option>
-
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <!--TODO: Yara - Label here should be Attendance Date-->
-              <label for="example-date-input" class="col-form-label">Date</label>
-              <input class="form-control" type="date" id="example-date-input" formControlName="date">
-            </div>
-          </div>
-
-        </form>
-
-        <div class="form-check " *ngFor="let item of attendence.stdList; index as i">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="toggleEditable(i)" >
-          <label class="form-check-label" for="exampleCheck1">{{item.fullName}}</label>
-        </div>
-
-        <button type="submit" class="btn btn-lg btn-success mr-1 btn-sm pull-right mg-l-15" (click)="saveAttend()">Submit</button>
-
     </div>
   </div>
 </div>
+
+
+<div class="main-content-inner">
+
+  <!-- market value area start -->
+  <div class="row mt-5 mb-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="formData">
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="col-form-label" for="courseID">Course</label>
+                <select (change)="onChangeCourse($event.target.value)" class="form-control" id="courseID" formControlName="courseID">
+                  <option *ngFor="let cor of courses" value="{{cor.id}}">{{cor.name}}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <!--TODO: Yara - Label here should be Attendance Date-->
+                <label for="example-date-input" class="col-form-label">Attendance Date</label>
+                <input class="form-control" type="date" id="example-date-input" formControlName="attendanceDate">
+              </div>
+            </div>
+
+          </form>
+
+          <div class="form-check " *ngFor="let item of attendance.students; index as i">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="toggleStdAttendance(i)" >
+            <label class="form-check-label" for="exampleCheck1">{{item.fullName}}</label>
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-success mr-1 btn-sm pull-right mg-l-15" (click)="onSubmitNewAttendance()">Submit</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- market value area end -->
+
 </div>

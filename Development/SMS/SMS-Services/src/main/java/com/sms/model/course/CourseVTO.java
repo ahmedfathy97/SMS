@@ -1,16 +1,16 @@
-package com.sms.model;
+package com.sms.model.course;
 
 import java.io.Serializable;
 
 //TODO: Yara - rename Class to CourseVTO - remember to change model in Angular too
 //TODO: Yara - move Class to /model/course/
-public class CourseType implements Serializable {
+public class CourseVTO implements Serializable {
 
     private  int id;
     //TODO: Yara - rename Variable to name - remember to change model in Angular too
-    private String labelEN;
+    private String name;
 
-    public CourseType() {
+    public CourseVTO() {
     }
 
     public int getId() {
@@ -21,19 +21,19 @@ public class CourseType implements Serializable {
         this.id = id;
     }
 
-    public String getLabelEN() {
-        return labelEN;
+    public String getName() {
+        return name;
     }
 
-    public void setLabelEN(String labelEN) {
-        this.labelEN = labelEN;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "CourseType{" +
+        return "CourseVTO{" +
                 "id=" + id +
-                ", labelEN='" + labelEN + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

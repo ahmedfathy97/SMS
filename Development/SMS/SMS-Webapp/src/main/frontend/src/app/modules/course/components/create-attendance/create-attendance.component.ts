@@ -1,41 +1,42 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CourseType} from "../../shared/data/course-type-dto.data";
-import {CourseService} from "../../shared/course.service";
+import {CourseVto} from "../../shared/data/course-vto.data";
+import {CourseService} from "../../shared/services/course.service";
 import {StdDto} from "../../shared/data/std-dto.data";
-import {AttendData} from "../../shared/data/attend-dto.data";
+import {AttendanceDTO} from "../../shared/data/attendance-dto.data";
+import {AttendanceService} from "../../shared/services/attendance.service";
 
 @Component({
   selector: 'app-create-attendance',
   templateUrl: './create-attendance.component.html',
-  providers: [FormBuilder, CourseService],
+  providers: [FormBuilder, CourseService ,AttendanceService],
 })
 export class CreateAttendanceComponent implements OnInit {
 
   //TODO: Yara - no need for this remove it
-  dataList: StdDto [] = [];
+
 
   formData = this.formBuilder.group({
     //TODO: Yara - rename formControlName to courseID remember change in HTML
-    course: ['', Validators.required],
+    courseID: ['', Validators.required],
     //TODO: Yara - rename formControlName to attendanceDate remember change in HTML
-    date: ['', Validators.required]
+    attendanceDate: ['', Validators.required]
   });
   //TODO: Yara - rename to courses remember change in HTML
-  corTypes: CourseType [] = [];
+  courses: CourseVto [] = [];
 
   //TODO: Yara - rename to attendance remember change in HTML
-  attendence: AttendData = new AttendData();
+  attendance: AttendanceDTO = new AttendanceDTO();
 
-  constructor(private formBuilder: FormBuilder, private  courseService: CourseService) {
+  constructor(private formBuilder: FormBuilder, private  courseService: CourseService , private  attendanceService: AttendanceService) {
   }
 
   ngOnInit() {
 
-    this.courseService.findCourseType().subscribe(
+    this.courseService.getAllInstructorCourses().subscribe(
       res => {
-        this.corTypes = res;
-        console.log(this.corTypes);
+        this.courses = res;
+        console.log(this.courses);
       }
     );
   }
@@ -44,24 +45,24 @@ export class CreateAttendanceComponent implements OnInit {
     console.log(courseID);
     this.courseService.findStdName(courseID).subscribe(
       res => {
-        this.attendence.stdList = res;
-        console.log(this.attendence.stdList);
+        this.attendance.students = res;
+        console.log(this.attendance.students);
 
       }
     );
   }
 
-  //TODO: Youssef - rename to onSubmitNewAttendance
-  saveAttend() {
+  //TODO: Yara - rename to onSubmitNewAttendance
+  onSubmitNewAttendance() {
 
-    let data: AttendData = new AttendData();
-    data.course_id = this.formData.get('course').value;
-    data.date = this.formData.get('date').value;
-    data.stdList = this.attendence.stdList;
+    let data: AttendanceDTO = new AttendanceDTO();
+    data.course_id = this.formData.get('courseID').value;
+    data.attendanceData = this.formData.get('attendanceDate').value;
+    data.students = this.attendance.students;
 
 
     console.log(data);
-    this.courseService.saveAttendData(data).subscribe(
+    this.attendanceService.createNewAttendanceSheet(2 ,data).subscribe(
       res => {
         console.log('request succed')
       },
@@ -73,8 +74,8 @@ export class CreateAttendanceComponent implements OnInit {
   };
 
   //TODO: Yara - rename to toggleStdAttendance
-  toggleEditable(index) {
-    this.attendence.stdList[index].isAttend = !this.attendence.stdList[index].isAttend;
-    console.log(this.attendence.stdList);
+  toggleStdAttendance(index) {
+    this.attendance.students[index].isAttend = !this.attendance.students[index].isAttend;
+    console.log(this.attendance.students);
   }
 }

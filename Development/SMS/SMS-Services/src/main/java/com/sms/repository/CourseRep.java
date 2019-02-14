@@ -1,9 +1,13 @@
 package com.sms.repository;
 
 import com.sms.model.CorDetails;
+import com.sms.model.course.CourseVTO;
+import com.sms.model.course.rm.CourseVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class CourseRep {
@@ -11,6 +15,11 @@ public class CourseRep {
     @Autowired
     public CourseRep(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
+    }
+
+    public List<CourseVTO> findAllInstructorCourses (int instrID) {
+        String sql = "SELECT id,cor_name FROM course where instructor_id =? ";
+        return this.jdbc.query(sql, new CourseVTORM(), instrID);
     }
 
     //TODO: Youssef - rename to insertNewCourse

@@ -13,12 +13,12 @@ const routes: Routes = [
   {path: '', component: FullLayoutComponent, children:[
       {path: 'home', component: HomeComponent},
       {path: 'create-grade', component: CreateGradeComponent},
-      {path:'course/new', component: CourseDetailsComponent}
+      {path:'course/new', component: CourseDetailsComponent},
+      {path: 'attend', component: CreateAttendanceComponent}
     ]},
   {path: '', component: SimpleLayoutComponent, children:[
       {path: 'login', component: LoginComponent},
       //TODO: Yara - should be in Full Layout
-      {path: 'attend', component: CreateAttendanceComponent}
     ]}
 ];
 
