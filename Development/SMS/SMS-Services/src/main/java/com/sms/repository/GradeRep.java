@@ -32,11 +32,13 @@ public class GradeRep {
 
     }
     public List<StdDTO> findCourseGrades(int cor_id){
-        String sql="SELECT std.first_name,std.last_name,std.id" +
-                "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd" +
-                "FROM course_std cor  LEFT JOIN auth_user std" +
-                "ON std.id = cor.std_id" +
-                "WHERE cor_id = ? ";
+        String sql ="SELECT std.first_name,std.last_name,std.id,\n" +
+                "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
+                "from auth_user std" +
+                " left join course_std cor\n" +
+                "on std.id=cor.std_id\n" +
+                "where cor_id=?";
+
         return this.jdbc.query(sql, new CourseGradesRM(), cor_id);
 
 

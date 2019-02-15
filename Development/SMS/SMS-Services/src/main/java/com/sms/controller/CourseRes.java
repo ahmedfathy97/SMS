@@ -44,7 +44,8 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade")
     public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID){
-        return this.gradeRepository.findCourseGrades(courseID);
+           List<StdDTO> list =this.gradeRepository.findCourseGrades(courseID);
+        return list;
     }
 
     @GET
