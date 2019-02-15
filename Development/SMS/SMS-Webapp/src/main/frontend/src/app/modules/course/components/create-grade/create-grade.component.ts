@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
-import {StdDTO} from "../../shared/data/std-DTO.data";
+import {StdDTO} from "../../shared/data/std-dto.data";
 
 
 import {GradeService} from "../../shared/services/grade.service";
@@ -17,7 +17,7 @@ import {CourseVto} from "../../shared/data/course-vto.data";
 export class CreateGradeComponent implements OnInit {
   formData: FormGroup = this.formBuilder.group({
     //TODO: Hala - remove this as there is no need for it
-    stdName: ['', [Validators.required, Validators.maxLength(15)]],
+
     course: [null, [Validators.required]],
     items: new FormArray([])
   });

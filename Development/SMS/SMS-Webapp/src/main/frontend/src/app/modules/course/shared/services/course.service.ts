@@ -4,7 +4,7 @@ import {CourseVto} from "../data/course-vto.data";
 import {AttendanceDTO} from "../data/attendance-dto.data";
 import {CourseGrd} from "../data/course-grd-dto.data";
 import {CourseDetailsData} from "../data/course/course-details.data";
-import {StdDTO} from "../data/std-DTO.data";
+import {StdDTO} from "../data/std-dto.data";
 
 
 @Injectable()
@@ -23,10 +23,10 @@ export class CourseService {
 
   //TODO: Hala - rename to getAllCourseStudents
   getAllCourseStudents( courseID:number) {
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/{courseID}/students"+courseID)
+    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students")
   }
   getCourseGrades(courseID:number){
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/{courseID}/grade"+courseID)
+    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade")
 
   }
 

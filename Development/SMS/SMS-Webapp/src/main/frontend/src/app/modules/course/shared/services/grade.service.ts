@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {CourseGrd} from "../data/course-grd-dto.data";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
-import {StdDTO} from "../data/std-DTO.data";
+import {StdDTO} from "../data/std-dto.data";
 //TODO: Hala - this function will take courseID & students as Parameters
 //TODO: Hala - rename to createNewGradeSheet
 //TODO: Hala - Create new Service modules/course/shared/services/grade.service.ts

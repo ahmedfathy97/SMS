@@ -1,4 +1,4 @@
-import {StdDTO} from "./std-DTO.data";
+import {StdDTO} from "./std-dto.data";
 
 export class CourseGrd {
   corId:number;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../../shared/services/course.service";
-import {StdDTO} from "../../../shared/data/std-DTO.data";
+import {StdDTO} from "../../../shared/data/std-dto.data";
 
 @Component({
   selector: 'app-view-grade',
