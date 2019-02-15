@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CourseService} from "../../shared/course.service";
-import {StdDto} from "../../shared/data/std-dto.data";
-import {CourseType} from "../../shared/data/course-type-dto.data";
-import {CourseGrd} from "../../shared/data/course-grd-dto.data";
+
+import {StdDTO} from "../../shared/data/std-DTO.data";
+
+
+import {GradeService} from "../../shared/services/grade.service";
+import {CourseService} from "../../shared/services/course.service";
+import {CourseVto} from "../../shared/data/course-vto.data";
 
 @Component({
   selector: 'app-create-grade',
   templateUrl: './create-grade.component.html',
   styleUrls: ['./create-grade.component.scss'],
-  providers: [FormBuilder,CourseService ]
+  providers: [FormBuilder,CourseService ,GradeService]
 })
 export class CreateGradeComponent implements OnInit {
   formData: FormGroup = this.formBuilder.group({
@@ -20,21 +23,22 @@ export class CreateGradeComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder,
-              private courseService: CourseService) {
+              private courseService: CourseService,
+              private gradeService:GradeService ) {
 
   }
 
   //TODO: Hala - rename to courses remember change in HTML
-  corTypes: CourseType [] = [];
+  courses: CourseVto [] = [];
 
   //TODO: Hala - rename to students remember change in HTML
-  stdDto: StdDto[] = [];
+  students: StdDTO[] = [];
 
   ngOnInit() {
-    this.courseService.findCourseType().subscribe(
+    this.courseService.getAllInstructorCourses().subscribe(
       res => {
-        this.corTypes = res;
-        console.log(this.corTypes);
+        this.courses = res;
+        console.log(this.courses);
       }
     );
 
@@ -43,10 +47,10 @@ export class CreateGradeComponent implements OnInit {
 
   onChangeCourse(courseID) {
     console.log(courseID);
-    this.courseService.findStdName(courseID).subscribe(
+    this.courseService.getAllCourseStudents(courseID).subscribe(
       res => {
-        this.stdDto = res;
-        for(let i=0; i<this.stdDto.length; i++)
+        this.students = res;
+        for(let i=0; i<this.students.length; i++)
           this.addItem();
 
       }
@@ -54,16 +58,13 @@ export class CreateGradeComponent implements OnInit {
   }
 
   //TODO: Hala - rename to onSubmitGradeSheet remember change in HTML
-  saveStdGrades() {
-    let data: CourseGrd = new CourseGrd();
-    data.corId = this.formData.get('course').value;
-    data.students = this.stdDto;
+  onSubmitGradeSheet() {
 
-    for(let i=0; i<data.students.length; i++)
-      data.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
+    for(let i=0; i<this.students.length; i++)
+      this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
 
-    console.log(data);
-    this.courseService.saveStdGrades(data).subscribe(
+    console.log(this.students);
+    this.gradeService.createNewGradeSheet(2,this.students).subscribe(
       res=> {
         console.log('request succed')
       },
@@ -86,7 +87,7 @@ export class CreateGradeComponent implements OnInit {
       midTermOne: null,
       semiFinal: null,
       midTermTwo: null,
-      Final: null
+      final: null
     });
   }
 }

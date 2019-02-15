@@ -1,4 +1,4 @@
-export class StdDto {
+export class StdDTO {
   id :number;
   fullName:string;
   isAttend : boolean = false ;
@@ -6,5 +6,5 @@ export class StdDto {
   midTermOne:number;
   semiFinal:number;
   midTermTwo:number;
-  Final:number;
+  finalGrd:number;
 }

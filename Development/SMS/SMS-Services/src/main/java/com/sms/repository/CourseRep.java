@@ -1,6 +1,8 @@
 package com.sms.repository;
 
 import com.sms.model.CorDetails;
+import com.sms.model.course.StdDTO;
+import com.sms.model.course.rm.StdDTORM;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.rm.CourseVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,16 @@ public class CourseRep {
                 details.getTypeID(),
                 details.getLevelID(),
                 details.getDescription());
+    }
+    //TODO: Hala - rename function to findAllCourseStudents
+    //TODO: Hala - move function to CourseRep
+    public List<StdDTO> findAllCourseStudents(int corID){
+        String sql=
+                "SELECT first_name, last_name, std.id " +
+                        "FROM course_std " +
+                        "LEFT JOIN auth_user std on std.id = course_std.std_id " +
+                        "WHERE cor_id = ? ";
+        return this.jdbc.query(sql, new StdDTORM(), corID);
     }
 
 }

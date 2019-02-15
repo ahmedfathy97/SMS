@@ -15,6 +15,7 @@ import {CommonModule} from "@angular/common";
 import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
+import { ViewGradeComponent } from './modules/course/components/view-cor-grade/view-grade/view-grade.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { CourseDetailsComponent } from './modules/course/components/create-cours
     CreateGradeComponent,
     CreateAttendanceComponent,
     CourseDetailsComponent,
+    CourseDetailsComponent,
+    ViewGradeComponent
   ],
   imports: [
     BrowserModule,

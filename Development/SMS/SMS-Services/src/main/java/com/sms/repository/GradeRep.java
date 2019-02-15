@@ -1,7 +1,8 @@
 package com.sms.repository;
 
-import com.sms.data.StdDto;
-import com.sms.data.StdDtoRM;
+import com.sms.model.course.StdDTO;
+import com.sms.model.course.rm.CourseGradesRM;
+import com.sms.model.course.rm.StdDTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,24 +20,25 @@ public class GradeRep {
     }
 
 
-    //TODO: Hala - rename function to findAllCourseStudents
-    //TODO: Hala - move function to CourseRes
-    public List<StdDto> findStdByCorID(int corID){
-        String sql=
-            "SELECT first_name, last_name, std.id " +
-            "FROM course_std " +
-                "LEFT JOIN auth_user std on std.id = course_std.std_id " +
-            "WHERE cor_id = ? ";
-        return this.jdbc.query(sql, new StdDtoRM(), corID);
-    }
 
 
-    public void insertStudentGrd( int cor_id, StdDto data) {
+
+    public void insertStudentGrd( int cor_id, StdDTO data) {
         String sql = "update course_std "+
        " SET  mid_1_grd=?, semi_final_grd=?, mid_2_grd=?, final_grd=? "+
         "WHERE   cor_id=? AND  std_id = ? ";
         this.jdbc.update(sql,data.getMidTermOne(), data.getSemiFinal(),data.getMidTermTwo(),
-                data.getFinal(),cor_id, data.getId());
+                data.getFinalGrd(),cor_id, data.getId());
+
+    }
+    public List<StdDTO> findCourseGrades(int cor_id){
+        String sql="SELECT std.first_name,std.last_name,std.id" +
+                "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd" +
+                "FROM course_std cor  LEFT JOIN auth_user std" +
+                "ON std.id = cor.std_id" +
+                "WHERE cor_id = ? ";
+        return this.jdbc.query(sql, new CourseGradesRM(), cor_id);
+
 
     }
 }

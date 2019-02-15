@@ -1,6 +1,6 @@
 package com.sms.model;
 
-import com.sms.data.StdDto;
+import com.sms.model.course.StdDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +12,7 @@ public class AttendanceDTO {
     //TODO: Yara - should be attendanceDate - remember to change model in Angular too
     private Date attendanceData;
     //TODO: Yara - should be students - remember to change model in Angular too
-    private List<StdDto> students;
+    private List<StdDTO> students;
 
     public AttendanceDTO() {
     }
@@ -26,19 +26,19 @@ public class AttendanceDTO {
 //        this.course = course;
 //    }
 
-    public Date getDate() {
+    public Date getAttendanceData() {
         return attendanceData;
     }
 
-    public void setDate(Date attendanceData) {
+    public void setAttendanceData(Date attendanceData) {
         this.attendanceData = attendanceData;
     }
 
-    public List<StdDto> getStudents() {
+    public List<StdDTO> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StdDto> students) {
+    public void setStudents(List<StdDTO> students) {
         this.students = students;
     }
 

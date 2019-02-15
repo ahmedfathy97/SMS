@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CourseDetailsData} from "../../../shared/data/course/course-details.data";
-import {CourseService} from "../../../shared/course.service";
 import {LookupService} from "../../../../../layout/shared/service/lookup.service";
 import {CorDetailsCategoryData} from "../../../shared/data/lookup/course/cor-details-category.data";
 import {CorDetailsLevelData} from "../../../shared/data/lookup/course/cor-details-level.data";
 import {CorDetailsTypeData} from "../../../shared/data/lookup/course/cor-details-type.data";
+import {CourseService} from "../../../shared/services/course.service";
 
 @Component({
   selector: 'app-course-details',

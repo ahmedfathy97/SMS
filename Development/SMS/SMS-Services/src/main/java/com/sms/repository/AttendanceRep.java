@@ -1,6 +1,7 @@
 package com.sms.repository;
 
-import com.sms.data.StdDto;
+
+import com.sms.model.course.StdDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -35,7 +36,7 @@ public class AttendanceRep {
     }
 
     //TODO: Yara - Rename to insertStudentAttendance
-    public void insertStudentAttendance(int attendanceSheetID, int courseID , StdDto data){
+    public void insertStudentAttendance(int attendanceSheetID, int courseID , StdDTO data){
         String sql = "INSERT INTO cor_std_att ( att_id , cor_id , std_id , is_attended ) value (?,?,?,?)";
         this.jdbc.update(sql , attendanceSheetID, courseID , data.getId() ,data.getIsAttend() ? "1" : "0"); }
 

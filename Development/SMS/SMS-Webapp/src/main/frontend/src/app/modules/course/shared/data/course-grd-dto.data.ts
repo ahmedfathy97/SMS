@@ -1,8 +1,8 @@
-import {StdDto} from "./std-dto.data";
+import {StdDTO} from "./std-DTO.data";
 
 export class CourseGrd {
   corId:number;
-  students:StdDto[];
+  students:StdDTO[];
 
 
 }

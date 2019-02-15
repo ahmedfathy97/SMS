@@ -1,6 +1,5 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 import {AuthPages} from "./data/auth-page.data";
-import {LocalStorageService} from "../../../layout/shared/services/local-storage.service";
 
 @Directive({
   selector: '[authorizePage]'
@@ -9,8 +8,7 @@ export class AuthorizePageDirective implements OnInit {
   authPages: string [];
 
   constructor(private templateRef: TemplateRef<any>,
-              private viewContainerRef: ViewContainerRef,
-              private localStorageService: LocalStorageService) {
+              private viewContainerRef: ViewContainerRef) {
   }
 
   ngOnInit(): void {

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {CourseVto} from "../../shared/data/course-vto.data";
 import {CourseService} from "../../shared/services/course.service";
-import {StdDto} from "../../shared/data/std-dto.data";
 import {AttendanceDTO} from "../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../shared/services/attendance.service";
 
@@ -43,7 +42,7 @@ export class CreateAttendanceComponent implements OnInit {
 
   onChangeCourse(courseID) {
     console.log(courseID);
-    this.courseService.findStdName(courseID).subscribe(
+    this.courseService.getAllCourseStudents(courseID).subscribe(
       res => {
         this.attendance.students = res;
         console.log(this.attendance.students);

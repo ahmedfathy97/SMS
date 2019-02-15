@@ -1,6 +1,5 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from "@angular/core";
 import {AuthActions} from "./data/auth-action.data";
-import {LocalStorageService} from "../../../layout/shared/services/local-storage.service";
 
 @Directive({
   selector: '[authorizeAction]'
@@ -10,8 +9,7 @@ export class AuthorizeActionDirective implements OnInit {
 
   constructor(
     private templateRef: TemplateRef<any>,
-    private viewContainerRef: ViewContainerRef,
-    private localStorageService: LocalStorageService) {
+    private viewContainerRef: ViewContainerRef) {
   }
 
   ngOnInit(): void {

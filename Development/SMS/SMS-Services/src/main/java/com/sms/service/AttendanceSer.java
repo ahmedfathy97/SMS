@@ -1,7 +1,8 @@
 package com.sms.service;
 
-import com.sms.data.StdDto;
+
 import com.sms.model.AttendanceDTO;
+import com.sms.model.course.StdDTO;
 import com.sms.repository.AttendanceRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ public class AttendanceSer {
     //TODO: Yara - rename course_id to courseID
     public void createSheet(int courseID , AttendanceDTO data) {
 
-        int sheetID = this.repository.insertNewSheet(courseID, data.getDate());
-        for(StdDto student: data.getStudents())
+        int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
+        for(StdDTO student: data.getStudents())
             this.repository.insertStudentAttendance(sheetID, courseID, student);
 
     }
