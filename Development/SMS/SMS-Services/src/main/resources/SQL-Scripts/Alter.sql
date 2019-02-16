@@ -30,3 +30,55 @@ CHANGE COLUMN start_date start_date DATE NOT NULL ,
 CHANGE COLUMN end_date end_date DATE NULL DEFAULT NULL ;
 
 -- Youssef
+
+--fathy satrt
+CREATE TABLE quiz (
+  id INT NOT NULL AUTO_INCREMENT,
+  quiz_name VARCHAR(45) NOT NULL,
+  grade INT NOT NULL,
+  date DATE NOT NULL,
+  course_id INT NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_quiz_course
+    FOREIGN KEY (id)
+    REFERENCES course (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+    CREATE TABLE question (
+  id INT NOT NULL AUTO_INCREMENT,
+  question_content VARCHAR(500) NOT NULL,
+  question_answer VARCHAR(500) NOT NULL,
+  answer1 VARCHAR(500) NULL,
+  answer2 VARCHAR(500) NULL,
+  answer3 VARCHAR(500) NULL,
+  answer4 VARCHAR(500) NULL,
+  quiz_id INT NOT NULL,
+  quiz_question_type_id INT NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_question_quiz
+    FOREIGN KEY (id)
+    REFERENCES quiz (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+    CREATE TABLE question_type (
+  id INT NOT NULL AUTO_INCREMENT,
+  label_en VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+  ALTER TABLE question
+ADD CONSTRAINT fk_question_quiz_question_type
+  FOREIGN KEY (id)
+  REFERENCES question_type (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  ALTER TABLE `sms`.`quiz`
+CHANGE COLUMN `date` `due_date` DATE NOT NULL ;
+
+
+--fathy End
