@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
 import {HttpClient} from "@angular/common/http";
-import {QuizDto} from "../data/quiz-dto";
+import {QuizDto} from "../data/quiz/quiz-dto";
 
 
 @Injectable()

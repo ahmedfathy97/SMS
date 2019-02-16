@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {QuizDto} from "../../../shared/data/quiz-dto";
+import {QuizDto} from "../../../shared/data/quiz/quiz-dto";
 import {QuizService} from "../../../shared/services/quiz.service";
 
 @Component({
