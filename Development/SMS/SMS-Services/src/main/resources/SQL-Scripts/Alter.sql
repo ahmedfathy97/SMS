@@ -40,7 +40,7 @@ CREATE TABLE quiz (
   course_id INT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_quiz_course
-    FOREIGN KEY (id)
+    FOREIGN KEY (course_id)
     REFERENCES course (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -59,7 +59,7 @@ CREATE TABLE quiz (
   quiz_question_type_id INT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_question_quiz
-    FOREIGN KEY (id)
+    FOREIGN KEY (quiz_id)
     REFERENCES quiz (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -67,12 +67,12 @@ CREATE TABLE quiz (
     CREATE TABLE question_type (
   id INT NOT NULL AUTO_INCREMENT,
   label_en VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (id));
 
 
   ALTER TABLE question
 ADD CONSTRAINT fk_question_quiz_question_type
-  FOREIGN KEY (id)
+  FOREIGN KEY (quiz_question_type_id)
   REFERENCES question_type (id)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
