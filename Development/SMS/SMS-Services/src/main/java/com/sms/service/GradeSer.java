@@ -18,7 +18,6 @@ public class GradeSer {
 
     }
 
-    //TODO: Hala - rename function to createSheet
     public void createSheet(int courseID, List<StdDTO> students) {
         for (StdDTO std : students)
             this.repository.insertStudentGrd(courseID, std);

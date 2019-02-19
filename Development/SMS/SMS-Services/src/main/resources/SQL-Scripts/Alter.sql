@@ -31,7 +31,7 @@ CHANGE COLUMN end_date end_date DATE NULL DEFAULT NULL ;
 
 -- Youssef
 
---fathy satrt
+-- fathy satrt
 CREATE TABLE quiz (
   id INT NOT NULL AUTO_INCREMENT,
   quiz_name VARCHAR(45) NOT NULL,
@@ -77,8 +77,8 @@ ADD CONSTRAINT fk_question_quiz_question_type
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
-  ALTER TABLE `sms`.`quiz`
-CHANGE COLUMN `date` `due_date` DATE NOT NULL ;
+  ALTER TABLE quiz
+CHANGE COLUMN date due_date DATE NOT NULL ;
 
 
---fathy End
+-- fathy End

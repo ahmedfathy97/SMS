@@ -16,8 +16,6 @@ import {CourseVto} from "../../shared/data/course-vto.data";
 })
 export class CreateGradeComponent implements OnInit {
   formData: FormGroup = this.formBuilder.group({
-    //TODO: Hala - remove this as there is no need for it
-
     course: [null, [Validators.required]],
     items: new FormArray([])
   });
@@ -28,10 +26,8 @@ export class CreateGradeComponent implements OnInit {
 
   }
 
-  //TODO: Hala - rename to courses remember change in HTML
   courses: CourseVto [] = [];
 
-  //TODO: Hala - rename to students remember change in HTML
   students: StdDTO[] = [];
 
   ngOnInit() {
@@ -57,7 +53,6 @@ export class CreateGradeComponent implements OnInit {
     );
   }
 
-  //TODO: Hala - rename to onSubmitGradeSheet remember change in HTML
   onSubmitGradeSheet() {
 
     for(let i=0; i<this.students.length; i++)

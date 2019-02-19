@@ -15,8 +15,6 @@ import java.util.List;
 
 @Path("/lookup")
 public class LookupRes {
-
-    //TODO - Youssef - rename variable to repository
     private LookupRep repositry;
 
     @Autowired
@@ -24,11 +22,6 @@ public class LookupRes {
         this.repositry = repositry;
     }
 
-
-    //TODO - Yara - Path should be /instructor/{instructorID}
-    //TODO - Yara - should move the function to CourseRes
-    //TODO - Yara - rename function to findInstructorCourses
-    //TODO - Yara - rename parameter to instructorID
 
 
     @GET

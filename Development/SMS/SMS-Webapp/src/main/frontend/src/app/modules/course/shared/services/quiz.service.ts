@@ -6,15 +6,12 @@ import {QuizDto} from "../data/quiz/quiz-dto";
 
 @Injectable()
 export class QuizService {
-  BASE_URL: string = ConfigParam.APP_BASE_URL +"/quiz" ;
+  BASE_URL: string = ConfigParam.APP_BASE_URL + "/quiz";
 
-  constructor(private httpClient:HttpClient){
+  constructor(private httpClient: HttpClient) {
   }
 
-   createNewQuiz(quizData:QuizDto)
-   {
-     return this.httpClient.post(this.BASE_URL+"/new" ,quizData) ;
-   }
-
-
+  createNewQuiz(quizData: QuizDto) {
+    return this.httpClient.post(this.BASE_URL + "/new", quizData);
+  }
 }

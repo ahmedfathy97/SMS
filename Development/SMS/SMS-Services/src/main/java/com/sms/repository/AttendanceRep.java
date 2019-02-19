@@ -13,20 +13,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-//TODO: Yara - Rename to AttendanceRep
 public class AttendanceRep {
 
     private JdbcTemplate jdbc ;
-    //TODO: Yara - should be private and rename to attendanceSJI
     private SimpleJdbcInsert attendanceSJI;
+
     @Autowired
     public AttendanceRep(JdbcTemplate jdbc, DataSource dataSource) {
-        attendanceSJI = new SimpleJdbcInsert(dataSource)
-                .withTableName("attendance").usingGeneratedKeyColumns("id");
+        attendanceSJI = new SimpleJdbcInsert(dataSource).withTableName("attendance").usingGeneratedKeyColumns("id");
         this.jdbc = jdbc;
     }
 
-    //TODO: Yara - Rename to insertNewSheet
     public int insertNewSheet(int courseID , Date sheetDate){
         Map<String, Object> parameters = new HashMap<>(2);
         parameters.put("cor_id", courseID);
@@ -35,7 +32,6 @@ public class AttendanceRep {
         return newId.intValue();
     }
 
-    //TODO: Yara - Rename to insertStudentAttendance
     public void insertStudentAttendance(int attendanceSheetID, int courseID , StdDTO data){
         String sql = "INSERT INTO cor_std_att ( att_id , cor_id , std_id , is_attended ) value (?,?,?,?)";
         this.jdbc.update(sql , attendanceSheetID, courseID , data.getId() ,data.getIsAttend() ? "1" : "0"); }

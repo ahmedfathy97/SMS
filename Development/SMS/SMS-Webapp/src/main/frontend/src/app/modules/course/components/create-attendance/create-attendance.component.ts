@@ -12,19 +12,12 @@ import {AttendanceService} from "../../shared/services/attendance.service";
 })
 export class CreateAttendanceComponent implements OnInit {
 
-  //TODO: Yara - no need for this remove it
-
-
   formData = this.formBuilder.group({
-    //TODO: Yara - rename formControlName to courseID remember change in HTML
     courseID: ['', Validators.required],
-    //TODO: Yara - rename formControlName to attendanceDate remember change in HTML
     attendanceDate: ['', Validators.required]
   });
-  //TODO: Yara - rename to courses remember change in HTML
   courses: CourseVto [] = [];
 
-  //TODO: Yara - rename to attendance remember change in HTML
   attendance: AttendanceDTO = new AttendanceDTO();
 
   constructor(private formBuilder: FormBuilder, private  courseService: CourseService , private  attendanceService: AttendanceService) {
@@ -51,7 +44,6 @@ export class CreateAttendanceComponent implements OnInit {
     );
   }
 
-  //TODO: Yara - rename to onSubmitNewAttendance
   onSubmitNewAttendance() {
 
     let data: AttendanceDTO = new AttendanceDTO();
@@ -72,7 +64,6 @@ export class CreateAttendanceComponent implements OnInit {
 
   };
 
-  //TODO: Yara - rename to toggleStdAttendance
   toggleStdAttendance(index) {
     this.attendance.students[index].isAttend = !this.attendance.students[index].isAttend;
     console.log(this.attendance.students);

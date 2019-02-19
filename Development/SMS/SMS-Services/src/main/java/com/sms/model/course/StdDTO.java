@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: Hala - rename CLass to StdDTO - remember to change model in Angular too
-//TODO: Hala - move to model/course/
 public class StdDTO implements Serializable {
     private int id;
     private String fullName;

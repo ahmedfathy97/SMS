@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//TODO: Yara - rename Class to CourseVTORM
-//TODO: Yara - move Class to /model/course/rm
 public class CourseVTORM implements RowMapper<CourseVTO> {
 
     @Override

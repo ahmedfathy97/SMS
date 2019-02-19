@@ -19,9 +19,6 @@ public class LookupRep {
         this.jdbc = jdbc;
     }
 
-    //TODO: Yara - move to CourseRep Class
-    //TODO: Yara - rename to findAllInstructorCourses
-
 
     public List<corCategory> findCorCategory (){
         String sql ="SELECT id,label_en FROM cor_category ";

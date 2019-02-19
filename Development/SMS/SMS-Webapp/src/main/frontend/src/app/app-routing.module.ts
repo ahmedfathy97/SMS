@@ -24,7 +24,6 @@ const routes: Routes = [
     ]},
   {path: '', component: SimpleLayoutComponent, children:[
       {path: 'login', component: LoginComponent}
-      //TODO: Yara - should be in Full Layout
     ]}
 ];
 

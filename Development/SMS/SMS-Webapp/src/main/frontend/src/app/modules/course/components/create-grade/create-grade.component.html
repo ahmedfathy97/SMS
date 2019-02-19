@@ -1,100 +1,80 @@
 <!--TODO: Hala - Don't Use Cards check the home.component.html and make use of it-->
 
 <div class="page-title-area">
-<div class="row align-items-center">
-  <div class="col-sm-6">
-    <div class="breadcrumbs-area clearfix">
-      <h4 class="page-title pull-left">Student Grades</h4>
-      <div class="main-content-inner">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Student Grades</h4>
+        <div class="main-content-inner">
 
-        <!-- market value area start -->
-        <div class="row mt-5 mb-5">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <form [formGroup]="formData">
+          <!-- market value area start -->
+          <div class="row mt-5 mb-5">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <form [formGroup]="formData">
+                    <div class="form-group">
+                      <label class="col-form-label">Courses</label>
+                      <select (change)="onChangeCourse($event.target.value)" class="form-control" id="course"
+                              formControlName="course">
+                        <option *ngFor="let cor of courses" value="{{cor.id}}">{{cor.name}}</option>
+                      </select>
+                    </div>
 
+                    <h4 class="header-title">Student Grades</h4>
+                    <div class="data-tables datatable-primary">
+                      <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <table id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed"
+                                   role="grid"
+                                   aria-describedby="dataTable2_info" style="width: 1230px;">
+                              <thead class="text-capitalize">
+                              <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                                    style="width: 84px;" aria-sort="ascending">Name
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                                    style="width: 84px;">Mid-1-Grd
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                                    style="width: 84px;">Semi-Final-Grd
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                                    style="width: 84px;">Mid-2-Grd
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                                    style="width: 84px;">Final-Grd
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody formArrayName="items">
+                              <tr role="row" class="odd"
+                                  *ngFor="let item of items.controls; index as i" [formGroupName]="i">
+                                <td>{{students[i].fullName}}</td>
 
-
-
-
-                      <div class="form-group">
-                        <label class="col-form-label">Courses</label>
-                        <select (change)="onChangeCourse($event.target.value)" class="form-control" id="course"
-                                formControlName="course">
-                          <option *ngFor="let cor of courses" value="{{cor.id}}">{{cor.name}}</option>
-
-
-                        </select>
-                      </div>
-
-
-
-
-                  <!--TODO: Hala - Rename this Header to be meaningful-->
-
-                  <h4 class="header-title">Student Grades</h4>
-                  <div class="data-tables datatable-primary">
-                    <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <table id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed" role="grid"
-                                 aria-describedby="dataTable2_info" style="width: 1230px;">
-                            <thead class="text-capitalize">
-                            <tr role="row">
-                              <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                                  style="width: 84px;" aria-sort="ascending">Name
-                              </th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                                  style="width: 84px;">Mid-1-Grd
-                              </th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                                  style="width: 84px;">Semi-Final-Grd
-                              </th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                                  style="width: 84px;">Mid-2-Grd
-                              </th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                                  style="width: 84px;">Final-Grd
-                              </th>
-                            </tr>
-                            </thead>
-                            <tbody formArrayName="items">
-                            <tr role="row" class="odd"
-                                *ngFor="let item of items.controls; index as i" [formGroupName]="i">
-                              <!--<div >-->
-                              <td>{{students[i].fullName}}</td>
-
-                              <td><input type="text" class="form-control" formControlName="midTermOne"/></td>
-                              <td><input type="text" class="form-control" formControlName="semiFinal"/></td>
-                              <td><input type="text" class="form-control" formControlName="midTermTwo"/></td>
-                              <td><input type="text" class="form-control" formControlName="final"/></td>
-                              <!--</div>-->
-                            </tr>
-                            <!--<td>{{std.id}}</td>-->
-                            </tbody>
-                          </table>
-                          <div class="card-action">
-                            <button type="button" class="btn btn-primary mb-3" (click)="onSubmitGradeSheet()">Submit</button>
+                                <td><input type="text" class="form-control" formControlName="midTermOne"/></td>
+                                <td><input type="text" class="form-control" formControlName="semiFinal"/></td>
+                                <td><input type="text" class="form-control" formControlName="midTermTwo"/></td>
+                                <td><input type="text" class="form-control" formControlName="final"/></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <div class="card-action">
+                              <button type="button" class="btn btn-primary mb-3" (click)="onSubmitGradeSheet()">Submit
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-
                     </div>
-                  </div>
-
-                </form>
-
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- market value area end -->
-
       </div>
-
     </div>
   </div>
-</div>
 </div>

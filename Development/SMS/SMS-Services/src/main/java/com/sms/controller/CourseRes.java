@@ -32,10 +32,7 @@ public class CourseRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    //TODO: Hala - Path should be /{courseID}/students
-    //TODO: Hala - Service should be moved to CourseRes
     @Path("/{courseID}/students")
-    //TODO: Hala - function should be findCourseStudents
     public List<StdDTO> findCourseStudents(@PathParam("courseID") int courseID) {
         return this.repository.findAllCourseStudents(courseID);
     }
@@ -47,6 +44,7 @@ public class CourseRes {
            List<StdDTO> list =this.gradeRepository.findCourseGrades(courseID);
         return list;
     }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

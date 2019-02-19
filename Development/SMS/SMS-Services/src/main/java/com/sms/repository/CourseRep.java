@@ -39,8 +39,7 @@ public class CourseRep {
                 details.getLevelID(),
                 details.getDescription());
     }
-    //TODO: Hala - rename function to findAllCourseStudents
-    //TODO: Hala - move function to CourseRep
+
     public List<StdDTO> findAllCourseStudents(int corID){
         String sql=
                 "SELECT first_name, last_name, std.id " +

@@ -7,7 +7,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/attendance")
-//TODO: Yara - Class should be AttendanceRes
 public class AttendanceRes {
     //TODO: Yara - should be AttendanceService
     private AttendanceSer attend;
@@ -19,9 +18,7 @@ public class AttendanceRes {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    //TODO: Yara - path should be /{courseID}
     @Path("/{courseID}")
-    //TODO: Yara - function should be createAttendanceSheet
     public void createAttendanceSheet(@PathParam("courseID") int courseID, AttendanceDTO attendanceDate) {
         System.out.print("Data Recieved Sucessfully");
         System.out.print(attendanceDate.toString());
