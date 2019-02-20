@@ -81,4 +81,10 @@ ADD CONSTRAINT fk_question_quiz_question_type
 CHANGE COLUMN date due_date DATE NOT NULL ;
 
 
+INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('1', 'mcq');
+INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('2', 'truefalse');
+INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('3', 'written');
+
+
+
 -- fathy End

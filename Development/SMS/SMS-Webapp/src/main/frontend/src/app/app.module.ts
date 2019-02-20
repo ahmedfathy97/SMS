@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
 import { ViewGradeComponent } from './modules/course/components/view-cor-grade/view-grade/view-grade.component';
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
+import { AddQuizQuiestionsComponent } from './modules/course/components/quiz/add-quiz-quiestions/add-quiz-quiestions.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateQuizComponent } from './modules/course/components/quiz/create-qui
     CourseDetailsComponent,
 
     CreateQuizComponent,
-    ViewGradeComponent
+    ViewGradeComponent,
+    AddQuizQuiestionsComponent
 
   ],
   imports: [

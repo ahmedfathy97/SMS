@@ -9,7 +9,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
-@Path("/quiz")
 public class QuizRes {
     private QuizSer quizSer ;
     @Autowired
@@ -17,11 +16,5 @@ public class QuizRes {
         this.quizSer=quizSer ;
     }
 
-    @POST
-    @Path("/new")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void createQuiz(QuizDTO quizData )
-    {
-       quizSer.createQuiz(quizData);
-    }
+
 }

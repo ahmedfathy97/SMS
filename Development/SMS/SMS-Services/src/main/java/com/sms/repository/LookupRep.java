@@ -1,8 +1,10 @@
 package com.sms.repository;
 
+import com.sms.model.lookUp.QuestionType;
 import com.sms.model.lookUp.corCategory;
 import com.sms.model.lookUp.corLevel;
 import com.sms.model.lookUp.corType;
+import com.sms.model.lookUp.rm.QuestionTypeRM;
 import com.sms.model.lookUp.rm.corCategoeryVtoRM;
 import com.sms.model.lookUp.rm.corLevelVtoRM;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +15,33 @@ import java.util.List;
 
 @Repository
 public class LookupRep {
-    private JdbcTemplate jdbc;
+    private JdbcTemplate jdbcTemplate;
     @Autowired
     public LookupRep(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
+        this.jdbcTemplate = jdbc;
     }
 
 
     public List<corCategory> findCorCategory (){
         String sql ="SELECT id,label_en FROM cor_category ";
-        return this.jdbc.query(sql ,new corCategoeryVtoRM());
+        return this.jdbcTemplate.query(sql ,new corCategoeryVtoRM());
     }
 
     public List<corType> findCorType (){
         String sql ="SELECT id,label_en FROM cor_type ";
         //TODO: Youssef - should use CorTypeVTORM
-        return this.jdbc.query(sql , new corCategoeryVtoRM());
+        return this.jdbcTemplate.query(sql , new corCategoeryVtoRM());
     }
 
     public List<corLevel> findCorLevel (){
         String sql ="SELECT id,label_en FROM cor_level ";
-        return this.jdbc.query(sql , new corLevelVtoRM());
+        return this.jdbcTemplate.query(sql , new corLevelVtoRM());
+    }
+
+    public List<QuestionType> getAllQuestionType()
+    {
+        String sql ="SELECT * FROM question_type;" ;
+        return this.jdbcTemplate.query(sql,new QuestionTypeRM()) ;
     }
 }
 

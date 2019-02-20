@@ -1,10 +1,12 @@
 package com.sms.controller;
 
 import com.sms.model.course.CourseVTO;
+import com.sms.model.course.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.model.CorDetails;
 import com.sms.repository.CourseRep;
 import com.sms.repository.GradeRep;
+import com.sms.service.CourseSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -13,11 +15,17 @@ import java.util.List;
 
 @Path("/course")
 public class CourseRes {
-    @Autowired
     private CourseRep repository;
-    @Autowired
+    private CourseSer courseSer ;
     private GradeRep gradeRepository;
-//    public CourseRes(GradeRep gradeRepository) {
+    @Autowired
+    public CourseRes(CourseRep repository ,CourseSer courseSer, GradeRep gradeRepository) {
+        this.courseSer = courseSer;
+        this.gradeRepository = gradeRepository;
+        this.repository =repository ;
+    }
+
+    //    public CourseRes(GradeRep gradeRepository) {
 //        this.gradeRepository = gradeRepository;
 //    }
 
@@ -52,5 +60,14 @@ public class CourseRes {
     public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
         List<CourseVTO> list =this.repository.findAllInstructorCourses(instructorID);
         return list;
+    }
+
+
+    @POST
+    @Path("{courseID}/quiz")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData )
+    {
+        courseSer.createQuiz(courseID,quizData);
     }
 }

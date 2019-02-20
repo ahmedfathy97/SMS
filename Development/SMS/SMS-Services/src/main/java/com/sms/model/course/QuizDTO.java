@@ -3,21 +3,12 @@ package com.sms.model.course;
 import java.util.Date;
 
 public class QuizDTO {
-    int id ;
+
     String quizName ;
     int grade ;
     Date dueDate ;
-    int  courseID ;
 
     public QuizDTO() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getQuizName() {
@@ -44,11 +35,5 @@ public class QuizDTO {
         this.dueDate = dueDate;
     }
 
-    public int getCourseID() {
-        return courseID;
-    }
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
-    }
 }

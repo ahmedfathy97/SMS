@@ -11,7 +11,5 @@ export class QuizService {
   constructor(private httpClient: HttpClient) {
   }
 
-  createNewQuiz(quizData: QuizDto) {
-    return this.httpClient.post(this.BASE_URL + "/new", quizData);
-  }
+
 }

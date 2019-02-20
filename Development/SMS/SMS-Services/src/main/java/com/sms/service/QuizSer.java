@@ -12,9 +12,5 @@ public class QuizSer {
         this.quizRep =quizRep ;
     }
 
-      public void createQuiz(QuizDTO quizData )
-     {
 
-         quizRep.insertNewQuiz(quizData);
-     }
 }

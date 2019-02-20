@@ -1,10 +1,10 @@
 package com.sms.model.lookUp;
 
-public class QueestionType {
+public class QuestionType {
     int id ;
     String labelEN ;
 
-    public QueestionType() {
+    public QuestionType() {
     }
 
     public int getId() {

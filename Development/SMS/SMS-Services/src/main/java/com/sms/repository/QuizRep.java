@@ -15,9 +15,9 @@ public class QuizRep {
 
 
 
-    public void insertNewQuiz( QuizDTO quizData)
-    {
-          String sql ="INSERT INTO quiz ( quiz_name, grade, due_date, course_id) VALUES (? ,? ,?,?);\n" ;
-          this.jdbcTemplate.update(sql,quizData.getQuizName() ,quizData.getGrade() ,quizData.getDueDate() ,quizData.getCourseID());
-    }
+
+
+
+
+
 }
