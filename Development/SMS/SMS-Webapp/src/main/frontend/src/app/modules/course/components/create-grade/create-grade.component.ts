@@ -59,7 +59,7 @@ export class CreateGradeComponent implements OnInit {
       this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
 
     console.log(this.students);
-    this.gradeService.createNewGradeSheet(2,this.students).subscribe(
+    this.gradeService.createNewGradeSheet(4,this.students).subscribe(
       res=> {
         console.log('request succed')
       },

@@ -6,7 +6,6 @@ import {CourseService} from "../../shared/services/course.service";
 @Component({
   selector: 'app-view-student-attendance',
   templateUrl: './view-student-attendance.component.html',
-  styleUrls: ['./view-student-attendance.component.scss'],
   providers:[CourseService]
 })
 export class ViewStudentAttendanceComponent implements OnInit {

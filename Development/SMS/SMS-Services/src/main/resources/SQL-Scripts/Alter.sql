@@ -19,7 +19,7 @@ INSERT INTO course_std (cor_id, std_id) VALUES (4, 1);
 INSERT INTO course_std (cor_id, std_id) VALUES (4, 2);
 INSERT INTO course_std (cor_id, std_id) VALUES (4, 3);
 INSERT INTO course_std (cor_id, std_id) VALUES (4, 4);
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 4);
+
 
 -- end hala
 
@@ -88,3 +88,6 @@ INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('3', 'written');
 
 
 -- fathy End
+--hala start
+INSERT INTO course_std (cor_id, std_id) VALUES (4, 6);
+-- hala End

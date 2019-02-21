@@ -20,19 +20,19 @@ import java.util.List;
 public class CourseRes {
     private AttendanceSer attendance ;
 
-    @Autowired
     private CourseRep repository;
-    @Autowired
-    public CourseRes(AttendanceSer attendance) {
-        this.attendance = attendance;
-    }
     private CourseSer courseSer ;
     private GradeRep gradeRepository;
     @Autowired
-    public CourseRes(CourseRep repository ,CourseSer courseSer, GradeRep gradeRepository) {
+    public CourseRes(
+            CourseRep repository,
+            CourseSer courseSer,
+            GradeRep gradeRepository,
+            AttendanceSer attendance) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
         this.repository =repository ;
+        this.attendance = attendance;
     }
 
     //    public CourseRes(GradeRep gradeRepository) {
@@ -98,4 +98,14 @@ public class CourseRes {
         List<AttendanceDTO> list =this.attendance.getStudentAttendance(courseID , stdID);
         return list ;
     }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/grade/student/{studentID}")
+
+    public StdDTO getStudentGrades (@PathParam("courseID") int courseID,@PathParam("studentID")int studentID){
+        StdDTO list =this.gradeRepository.findStudentGrades(courseID,studentID);
+        return list;
+
+    }
+
 }

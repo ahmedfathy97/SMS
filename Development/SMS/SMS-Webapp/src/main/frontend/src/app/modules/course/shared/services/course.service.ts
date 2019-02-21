@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {CourseVto} from "../data/course-vto.data";
 import {CourseDetailsData} from "../data/course/course-details.data";
-import {StdAttendanceDto} from "../data/std-attendance-dto.data";
+
 import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
@@ -32,7 +32,10 @@ export class CourseService {
     return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade")
 
   }
+  getStudentGrades(courseID:number,studentID:number){
+    return this.httpClient.get<StdDTO>("http://localhost:8080/api/course/"+ courseID+"/grade/student/"+studentID);
 
+  }
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
     return this.httpClient.post(this.BASE_URL + "/course/"+ courseID +"/quiz",quizData);
@@ -47,10 +50,10 @@ export class CourseService {
   //TODO: Yara - Use APP_BASE_URL &  BASE_URL
 
   getCourseAttendance (courseID :number){
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
   }
 
   getStudentAttendance (courseID :number , stdID : number){
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
   }
 }
