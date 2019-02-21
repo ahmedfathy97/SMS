@@ -91,3 +91,24 @@ INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('3', 'written');
 --hala start
 INSERT INTO course_std (cor_id, std_id) VALUES (4, 6);
 -- hala End
+
+-- Abanoub Start --
+CREATE TABLE attachment (
+  file_id            INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  file_name     VARCHAR(50)  NOT NULL,
+  content_type  VARCHAR(10)  NOT NULL,
+  file_size	INT	    Not NULL,
+  extension     VARCHAR(6)   NOT NULL,
+  file_path     VARCHAR(100) NOT NULL,
+  upload_date   DATE         NOT NULL,
+  source_id     INT          NOT NULL,
+  file_src_id   INT          NOT NULL,
+  CONSTRAINT FOREIGN KEY (file_src_id) REFERENCES file_source (id)
+);
+
+CREATE TABLE file_source (
+  id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  lable_en   INT NOT NULL
+);
+
+-- Abanoub End --
