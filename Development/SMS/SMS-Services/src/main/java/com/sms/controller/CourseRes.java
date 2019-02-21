@@ -1,10 +1,13 @@
 package com.sms.controller;
 
+import com.sms.model.AttendanceDTO;
+import com.sms.model.CorDetails;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.model.CorDetails;
 import com.sms.repository.CourseRep;
+import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
 import com.sms.service.CourseSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,14 @@ import java.util.List;
 
 @Path("/course")
 public class CourseRes {
+    private AttendanceSer attendance ;
+
+    @Autowired
     private CourseRep repository;
+    @Autowired
+    public CourseRes(AttendanceSer attendance) {
+        this.attendance = attendance;
+    }
     private CourseSer courseSer ;
     private GradeRep gradeRepository;
     @Autowired
@@ -69,5 +79,23 @@ public class CourseRes {
     public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData )
     {
         courseSer.createQuiz(courseID,quizData);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/attend")
+    public List<AttendanceDTO> getCourseAttendance (@PathParam("courseID") int courseID) {
+        System.out.print("Sucessfully");
+        List<AttendanceDTO> list =this.attendance.getCourseAttendance(courseID);
+        return list ;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/student/{stdID}")
+    public List<AttendanceDTO> getStudentAttendance (@PathParam("courseID") int courseID ,@PathParam("stdID") int stdID) {
+        System.out.print("Sucessfully");
+        List<AttendanceDTO> list =this.attendance.getStudentAttendance(courseID , stdID);
+        return list ;
     }
 }

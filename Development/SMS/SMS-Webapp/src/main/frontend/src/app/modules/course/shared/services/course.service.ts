@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {CourseVto} from "../data/course-vto.data";
 import {CourseDetailsData} from "../data/course/course-details.data";
+import {StdAttendanceDto} from "../data/std-attendance-dto.data";
 import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
@@ -39,5 +40,17 @@ export class CourseService {
 
 
 
+  //TODO: Yara - this function will take courseID & attendanceData as Parameters
+  //TODO: Yara - Create new Service modules/course/shared/services/attendance.service.ts
+  //TODO: Yara - move this function to AttendanceService
+  //TODO: Yara - rename to createNewAttendanceSheet
+  //TODO: Yara - Use APP_BASE_URL &  BASE_URL
 
+  getCourseAttendance (courseID :number){
+    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+  }
+
+  getStudentAttendance (courseID :number , stdID : number){
+    return this.http.get<StdDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
+  }
 }

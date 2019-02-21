@@ -2,6 +2,7 @@ package com.sms.model;
 
 import com.sms.model.course.StdDTO;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -34,9 +35,8 @@ public class AttendanceDTO {
     @Override
     public String toString() {
         return "AttendanceDTO{" +
-
-                ", date=" + attendanceData +
-//                ", stdlist=" + Arrays.toString(stdlist) +
+                "attendanceData=" + attendanceData +
+                ", students=" + students +
                 '}';
     }
 }

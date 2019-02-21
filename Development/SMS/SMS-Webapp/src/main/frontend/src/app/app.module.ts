@@ -15,9 +15,11 @@ import {CommonModule} from "@angular/common";
 import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
+import { ViewAttendanceComponent } from './modules/course/components/view-attendance/view-attendance.component';
 import { ViewGradeComponent } from './modules/course/components/view-cor-grade/view-grade/view-grade.component';
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
-import { AddQuizQuestionsComponent } from './modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component';
+import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
+//import { AddQuizQuestionsComponent } from './modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,13 @@ import { AddQuizQuestionsComponent } from './modules/course/components/quiz/add-
     CreateGradeComponent,
     CreateAttendanceComponent,
     CourseDetailsComponent,
+    ViewAttendanceComponent,
 
     CreateQuizComponent,
     ViewGradeComponent,
-    AddQuizQuestionsComponent
+    //AddQuizQuestionsComponent
+    ViewGradeComponent,
+    ViewStudentAttendanceComponent
 
   ],
   imports: [

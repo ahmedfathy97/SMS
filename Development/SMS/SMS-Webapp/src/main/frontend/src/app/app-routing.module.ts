@@ -7,9 +7,11 @@ import {LoginComponent} from "./modules/security/components/login/login.componen
 import {CreateGradeComponent} from "./modules/course/components/create-grade/create-grade.component";
 import {CreateAttendanceComponent} from "./modules/course/components/create-attendance/create-attendance.component";
 import {CourseDetailsComponent} from "./modules/course/components/create-course/course-details/course-details.component";
+import {ViewAttendanceComponent} from "./modules/course/components/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/create-quiz.component";
 import {ViewGradeComponent} from "./modules/course/components/view-cor-grade/view-grade/view-grade.component";
-import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
+//import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -17,15 +19,21 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'create-grade', component: CreateGradeComponent},
       {path:'course/new', component: CourseDetailsComponent},
+
       {path: 'attend', component: CreateAttendanceComponent} ,
       {path:'course/quiz/new',component:CreateQuizComponent} ,
-      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+     // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path: 'attend', component: CreateAttendanceComponent},
       {path:'course/new', component: CourseDetailsComponent},
       {path:'view-grade', component: ViewGradeComponent},
+      {path: 'view-attend', component: ViewAttendanceComponent},
+      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+
     ]},
   {path: '', component: SimpleLayoutComponent, children:[
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+
+      //TODO: Yara - should be in Full Layout
     ]}
 ];
 

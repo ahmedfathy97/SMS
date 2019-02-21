@@ -2,6 +2,7 @@ package com.sms.model.course;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StdDTO implements Serializable {
@@ -12,6 +13,7 @@ public class StdDTO implements Serializable {
     private int semiFinal;
     private int midTermTwo;
     private int finalGrd;
+    private Date attendanceDate ;
 
 
     public StdDTO() {
@@ -73,6 +75,14 @@ public class StdDTO implements Serializable {
         this.finalGrd = finalGrd;
     }
 
+    public Date getAttendanceDate() {
+        return attendanceDate;
+    }
+
+    public void setAttendanceDate(Date attendanceDate) {
+        this.attendanceDate = attendanceDate;
+    }
+
     @Override
     public String toString() {
         return "StdDTO{" +
@@ -83,6 +93,7 @@ public class StdDTO implements Serializable {
                 ", semiFinal=" + semiFinal +
                 ", midTermTwo=" + midTermTwo +
                 ", finalGrd=" + finalGrd +
+                ", attendanceDate=" + attendanceDate +
                 '}';
     }
 }
