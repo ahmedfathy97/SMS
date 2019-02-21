@@ -1,6 +1,4 @@
 export class QuestionDto {
-  id	: number ;
-  quizID :number ;
   questionTypeID :number ;
   question	: string ;
   modelAnswer:string ;
