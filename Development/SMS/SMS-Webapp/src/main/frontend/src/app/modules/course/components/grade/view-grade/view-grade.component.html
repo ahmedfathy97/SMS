@@ -1,0 +1,61 @@
+
+
+
+
+<div class="page-title-area">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Student Grades</h4>
+        <div class="main-content-inner">
+
+
+
+          <div class="row mt-5 mb-5">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+
+          <table id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed" role="grid"
+                 aria-describedby="dataTable2_info" style="width: 1230px;">
+            <thead class="text-capitalize">
+            <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                  style="width: 84px;" aria-sort="ascending">Student Name
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                  style="width: 84px;">Mid-1-Grd
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                  style="width: 84px;">Semi-Final-Grd
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                  style="width: 84px;">Mid-2-Grd
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
+                  style="width: 84px;">Final-Grd
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of studentList">
+              <td> {{student.fullName}}</td>
+              <td>{{student.midTermOne}}</td>
+              <td>{{student.semiFinal}}</td>
+              <td>{{student.midTermTwo}}</td>
+              <td>{{student.finalGrd}}</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
