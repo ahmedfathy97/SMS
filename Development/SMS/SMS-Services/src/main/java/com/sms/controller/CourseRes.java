@@ -20,6 +20,7 @@ import java.util.List;
 public class CourseRes {
     private AttendanceSer attendance ;
 
+
     private CourseRep repository;
     private CourseSer courseSer ;
     private GradeRep gradeRepository;
@@ -31,10 +32,9 @@ public class CourseRes {
             AttendanceSer attendance) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
-        this.repository =repository ;
+        this.repository = repository;
         this.attendance = attendance;
     }
-
     //    public CourseRes(GradeRep gradeRepository) {
 //        this.gradeRepository = gradeRepository;
 //    }
