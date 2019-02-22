@@ -39,8 +39,11 @@ public class AttendanceSer {
             if(attendanceDTOList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
+                List<StdDTO> newStdList = new ArrayList<>();
+                for (StdDTO std : stdList )
+                    newStdList.add(std.clone());
                 item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(stdList);
+                item.setStudents(newStdList);
                 attendanceDTOList.add(item);
             }
 
@@ -65,15 +68,19 @@ public class AttendanceSer {
         for(AttendanceDTO sheet:attendanceDTOList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
-                            std.getFullName().equals(stdDto.getFullName()))
+                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+                            std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
+                        break;
+                    }
             }
         }
 
 
        return attendanceDTOList ;
     }
+
+
 
     public List<AttendanceDTO> getStudentAttendance(int courseID , int stdID) {
 

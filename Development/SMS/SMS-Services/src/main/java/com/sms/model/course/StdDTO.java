@@ -84,6 +84,16 @@ public class StdDTO implements Serializable {
     }
 
     @Override
+    public StdDTO clone()  {
+        StdDTO data = new StdDTO();
+        data.id = this.id;
+        data.fullName = this.fullName;
+        data.isAttend = this.isAttend;
+        data.attendanceDate = this.attendanceDate;
+        return data ;
+    }
+
+    @Override
     public String toString() {
         return "StdDTO{" +
                 "id=" + id +

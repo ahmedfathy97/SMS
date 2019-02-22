@@ -6,6 +6,7 @@ import {CourseDetailsData} from "../data/course/course-details.data";
 import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
+import {AttendanceDTO} from "../data/attendance-dto.data";
 
 
 @Injectable()
@@ -50,7 +51,8 @@ export class CourseService {
   //TODO: Yara - Use APP_BASE_URL &  BASE_URL
 
   getCourseAttendance (courseID :number){
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+    // return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
   }
 
   getStudentAttendance (courseID :number , stdID : number){
