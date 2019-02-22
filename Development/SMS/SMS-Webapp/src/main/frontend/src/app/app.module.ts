@@ -21,7 +21,6 @@ import { ViewAttendanceComponent } from './modules/course/components/view-attend
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
 import { ViewStudentGradeComponent } from './modules/course/components/grade/view-student-grade/view-student-grade.component';
 
-import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
 //import { AddQuizQuestionsComponent } from './modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component';
 
 @NgModule({
@@ -42,8 +41,7 @@ import { ViewStudentAttendanceComponent } from './modules/course/components/view
     CreateQuizComponent,
     ViewGradeComponent,
     //AddQuizQuestionsComponent
-    ViewStudentAttendanceComponent,
-    ViewStudentGradeComponent
+    ViewStudentGradeComponent,
 
 
   ],

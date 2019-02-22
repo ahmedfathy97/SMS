@@ -51,11 +51,10 @@ export class CourseService {
   //TODO: Yara - Use APP_BASE_URL &  BASE_URL
 
   getCourseAttendance (courseID :number){
-    // return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
     return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
   }
 
   getStudentAttendance (courseID :number , stdID : number){
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
+    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
   }
 }

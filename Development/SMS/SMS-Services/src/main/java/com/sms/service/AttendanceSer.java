@@ -91,19 +91,24 @@ public class AttendanceSer {
             if(attendanceList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
+                List<StdDTO> newStdList = new ArrayList<>();
+                for (StdDTO student : stdList )
+                    newStdList.add(student.clone());
                 item.setAttendanceData(std.getAttendanceDate());
+                item.setStudents(newStdList);
+
                 item.setStudents(stdList);
                 attendanceList.add(item);
             }
 
-            boolean isFound = false ;
+            boolean isExist = false ;
             for (AttendanceDTO sheet : attendanceList) {
                 if (std.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
-                    isFound = true ;
+                    isExist = true ;
                     break;
                 }
             }
-            if (!isFound)
+            if (!isExist)
             {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(std.getAttendanceDate());
@@ -117,7 +122,7 @@ public class AttendanceSer {
         for(AttendanceDTO sheet:attendanceList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
+                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
                             std.getFullName().equals(stdDto.getFullName()))
                         std.setIsAttend(stdDto.getIsAttend());
             }
