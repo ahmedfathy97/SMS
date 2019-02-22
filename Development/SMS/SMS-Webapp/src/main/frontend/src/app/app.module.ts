@@ -13,22 +13,15 @@ import { CreateGradeComponent } from './modules/course/components/create-grade/c
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import { CreateAttendanceComponent } from './modules/course/components/create-attendance/create-attendance.component';
-
-import { QuillModule } from 'ngx-quill'
 import {HttpClientModule} from "@angular/common/http";
 import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
-import { CreateTutorialComponent } from './modules/tutorial/components/create-tutorial/create-tutorial.component';
 import { ViewGradeComponent } from './modules/course/components/grade/view-grade/view-grade.component';
 import { ViewAttendanceComponent } from './modules/course/components/view-attendance/view-attendance.component';
 
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
-import { UploadComponent } from './infrastructure/components/manage-attachment/components/upload/upload.component';
-import { DownloadComponent } from './infrastructure/components/manage-attachment/components/download/download.component';
-import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
-
 import { ViewStudentGradeComponent } from './modules/course/components/grade/view-student-grade/view-student-grade.component';
 
-
+import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
 //import { AddQuizQuestionsComponent } from './modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component';
 
 @NgModule({
@@ -44,14 +37,10 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
     CreateGradeComponent,
     CreateAttendanceComponent,
     CourseDetailsComponent,
-    CreateTutorialComponent,
-    CourseDetailsComponent,
     ViewAttendanceComponent,
 
     CreateQuizComponent,
     ViewGradeComponent,
-    UploadComponent,
-    DownloadComponent,
     //AddQuizQuestionsComponent
     ViewStudentAttendanceComponent,
     ViewStudentGradeComponent
@@ -61,7 +50,7 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,
-    BrowserModule,HttpClientModule ,QuillModule
+    BrowserModule,HttpClientModule ,
 
   ],
   providers: [],
