@@ -93,6 +93,12 @@ INSERT INTO course_std (cor_id, std_id) VALUES (4, 6);
 -- hala End
 
 -- Abanoub Start --
+
+CREATE TABLE file_source (
+  id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  lable_en   INT NOT NULL
+);
+
 CREATE TABLE attachment (
   file_id            INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
   file_name     VARCHAR(50)  NOT NULL,
@@ -106,16 +112,11 @@ CREATE TABLE attachment (
   CONSTRAINT FOREIGN KEY (file_src_id) REFERENCES file_source (id)
 );
 
-CREATE TABLE file_source (
-  id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  lable_en   INT NOT NULL
-);
-
 -- Abanoub End --
 
 -- fathy start--
-ALTER TABLE `sms`.`question`
-CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ,
-CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
+ALTER TABLE question
+CHANGE COLUMN question_content  question VARCHAR(500) NOT NULL ,
+CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 -- fathy end --
 
