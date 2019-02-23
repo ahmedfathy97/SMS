@@ -6,23 +6,24 @@
         <h4 class="header-title">Add questions</h4>
         <hr>
 
+        <form [formGroup]="formData">
+
         <div class="form-group">
           <label for="quesiontype">Select  quesion type</label>
-          <select  class="form-control" id="quesiontype">
+          <select  class="form-control" id="quesiontype" formControlName="questiontype">
             <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
           </select>
           <br>
         </div>
 
-        <!--<form [formGroup]="formData">-->
 
         <div class="form-group">
           <label for="question">question:</label>
-          <textarea class="form-control" rows="5" id="question"></textarea>
+          <textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>
         </div>
         <div class="form-group" >
           <label for="text_answer">model answer:</label>
-          <textarea class="form-control" rows="5" id="text_answer" ></textarea>
+          <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
         </div>
 
           <div class="form-group">
@@ -45,7 +46,7 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer1">
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox">
@@ -56,7 +57,7 @@
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer2">
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox">
@@ -65,7 +66,7 @@
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer3">
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox">
@@ -74,7 +75,7 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer4">
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox">
@@ -85,7 +86,7 @@
             <button  class="btn btn-primary" >Add question</button>
           </div>
         </div>
-          <!--</form>-->
+          </form>
     </div>
   </div>
 </div>
