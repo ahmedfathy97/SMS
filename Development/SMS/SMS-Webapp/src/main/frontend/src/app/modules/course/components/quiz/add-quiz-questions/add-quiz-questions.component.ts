@@ -17,12 +17,12 @@ export class AddQuizQuestionsComponent implements OnInit {
 
   questionTypeList :QuestionType [] ;
   questionData :  QuestionDto ;
-  questionsList:QuestionDto[] ;
+  questionsList: QuestionDto[] =[];
   textualIsSelected:boolean =false ;
   mcqIsSelected:boolean =false ;
   trueFalseIsSelsected:boolean=false ;
 
-  quizid =1;
+  quizid: number =1;
 
   getALLquestionsTypes()
   {
@@ -45,16 +45,17 @@ export class AddQuizQuestionsComponent implements OnInit {
   }) ;
 
 
- onclickAddQuestion(question:QuestionDto) {
+ onclickAddQuestion() {
    let questionData :QuestionDto =new QuestionDto()
-   questionData.questionTypeID=this.formData.get('questiontype')
+   questionData.questionTypeID=this.formData.get('questiontype').value ;
    questionData.question =this.formData.get('question').value;
    questionData.modelAnswer =this.formData.get('modelAnswer').value;
    questionData.answer1 =this.formData.get('answer1').value ;
    questionData.answer2 =this.formData.get('answer2').value ;
    questionData.answer3 =this.formData.get('answer3').value ;
    questionData.answer4 =this.formData.get('answer3').value ;
-   this.questionData=questionData;
+   this.questionsList.push(questionData) ;
+   this.formData.reset();
  }
 
   onSubmitQuestionsTable()

@@ -8,9 +8,9 @@
 
         <form [formGroup]="formData">
 
-        <div class="form-group">
+        <div class="form-group" >
           <label for="quesiontype">Select  quesion type</label>
-          <select  class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
+          <select   class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
             <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
           </select>
           <br>
@@ -80,12 +80,13 @@
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">
           </div>
           </div>
+        </form>
         <div class="row">
           <div class="card-action ">
-            <button  class="btn btn-primary" >Add question</button>
+            <button  class="btn btn-primary" (click)="onclickAddQuestion()" >Add question</button>
           </div>
         </div>
-          </form>
+
     </div>
   </div>
 </div>
@@ -105,9 +106,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>mark</td>
+                <tr *ngFor="let item of questionsList; index as i">
+                  <td>{{i+1}}</td>
+                  <td>{{item.question}}</td>
                   <td>
                     <ul class="d-flex justify-content-center">
                       <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
