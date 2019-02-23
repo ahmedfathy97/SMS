@@ -29,15 +29,16 @@
           <div class="form-group">
             <label class="mt-2">model answer:</label>
             <div class="custom-control custom-radio">
-            <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input">
+            <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input" formControlName="modelAnswer">
             <label class="custom-control-label" >true</label>
-          </div>
+            </div>
             <br>
-            <div class="custom-control custom-radio">
-              <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input">
-              <label class="custom-control-label"  >false</label>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio"  class="custom-control-input" formControlName="modelAnswer">
+              <label class="custom-control-label">false</label>
             </div>
           </div>
+
 
           <div class="form-group">
           <label class="mt-2">model answer:</label>
@@ -46,10 +47,10 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer1">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
+            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer1">
           </div>
 
 
@@ -57,28 +58,28 @@
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer2">
+                <input type="checkbox" aria-label="Checkbox for following text input"  formControlName="modelAnswer">
               </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
+            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer2">
           </div>
           <label class="custom-control-label">choise3</label>
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer3">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
+            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer3">
           </div>
           <label class="custom-control-label">choise4</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="answer4">
+                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
+            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">
           </div>
           </div>
         <div class="row">

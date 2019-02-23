@@ -3,6 +3,7 @@ import {ConfigParam} from "../../../../infrastructure/common/config-param";
 import {HttpClient} from "@angular/common/http";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {QuestionType} from "../data/quiz/question-type";
+import {QuestionDto} from "../data/quiz/question-dto";
 
 
 @Injectable()
@@ -13,6 +14,10 @@ export class QuizService {
   }
 
 
+  createQuizQuestions(quizId: number ,questionsList:QuestionDto[])
+  {
+    return this.httpClient.post(this.BASE_URL+"/quiz"+quizId+"/questions",questionsList) ;
+  }
 
 
   getAllQuestionsTypes()

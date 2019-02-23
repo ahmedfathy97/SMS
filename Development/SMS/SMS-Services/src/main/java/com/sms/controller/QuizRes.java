@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-@Path("quiz")
+@Path("/quiz")
 public class QuizRes {
     private QuizSer quizSer ;
     @Autowired
@@ -20,7 +20,7 @@ public class QuizRes {
     }
 
     @POST
-    @Path("{quizID}/questions")
+    @Path("/{quizID}/questions")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createQuizQuestions(@PathParam("quizID") int quizID , List<QuestionDTO> questionList)
     {

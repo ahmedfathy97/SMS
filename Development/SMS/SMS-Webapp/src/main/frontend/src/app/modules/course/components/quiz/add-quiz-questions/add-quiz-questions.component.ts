@@ -16,6 +16,9 @@ export class AddQuizQuestionsComponent implements OnInit {
               private quizService :QuizService) { }
 
   questionTypeList :QuestionType [] ;
+  questionData :  QuestionDto ;
+  questionsList:QuestionDto[] ;
+  quizid:number =1;
 
   getALLquestionsTypes()
   {
@@ -27,21 +30,39 @@ export class AddQuizQuestionsComponent implements OnInit {
     });
   }
 
- //  formData: FormGroup = this.formBuilder.group({
- //    question:null ,
- //    modelAnswer:null ,
- //    questionTypeID:null
- //  }) ;
- //
- // onclickAddQuestion(question:QuestionDto)
- // {
- //   let questionData :QuestionDto =new QuestionDto() ;
- //   questionData.question =this.formData.get('question').value;
- //   questionData.modelAnswer =this.formData.get('modelAnswer').value;
- // }
- //
- //
- //
+  formData: FormGroup = this.formBuilder.group({
+    questiontype:null ,
+    question:null ,
+    modelAnswer:null ,
+    answer1:null ,
+    answer2:null ,
+    answer3:null ,
+    answer4:null
+  }) ;
+
+
+ onclickAddQuestion(question:QuestionDto)
+ {
+   let questionData :QuestionDto =new QuestionDto()
+   questionData.questionTypeID=this.formData.get('questiontype')
+   questionData.question =this.formData.get('question').value;
+   questionData.modelAnswer =this.formData.get('modelAnswer').value;
+   questionData.answer1 =this.formData.get('answer1').value ;
+   questionData.answer2 =this.formData.get('answer2').value ;
+   questionData.answer3 =this.formData.get('answer3').value ;
+   questionData.answer4 =this.formData.get('answer3').value ;
+   this.questionData=questionData;
+ }
+
+  onSubmitQuestionTable()
+  {
+
+    this.quizService.createQuizQuestions(this.quizid ,this.questionsList).subscribe(res => {
+      console.log("Success");
+    }, err => {
+      console.log(err);
+    });
+  }
  //  // onclickoption(event:any)
  //  // {
  //  //   this.isSelected =true ;
