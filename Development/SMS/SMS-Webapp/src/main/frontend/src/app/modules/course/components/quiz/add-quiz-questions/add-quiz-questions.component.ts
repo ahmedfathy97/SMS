@@ -27,30 +27,29 @@ export class AddQuizQuestionsComponent implements OnInit {
     });
   }
 
-  formData: FormGroup = this.formBuilder.group({
-    question:null ,
-    modelAnswer:null ,
-    questionTypeID:null
-  }) ;
+ //  formData: FormGroup = this.formBuilder.group({
+ //    question:null ,
+ //    modelAnswer:null ,
+ //    questionTypeID:null
+ //  }) ;
+ //
+ // onclickAddQuestion(question:QuestionDto)
+ // {
+ //   let questionData :QuestionDto =new QuestionDto() ;
+ //   questionData.question =this.formData.get('question').value;
+ //   questionData.modelAnswer =this.formData.get('modelAnswer').value;
+ // }
+ //
+ //
+ //
+ //  // onclickoption(event:any)
+ //  // {
+ //  //   this.isSelected =true ;
+ //  // }
 
- onclickAddQuestion(question:QuestionDto)
- {
-   let questionData :QuestionDto =new QuestionDto() ;
-   questionData.question =this.formData.get('question').value;
-   questionData.modelAnswer =this.formData.get('modelAnswer').value;
- }
-
-
-
-  // onclickoption(event:any)
-  // {
-  //   this.isSelected =true ;
-  // }
 
   ngOnInit() {
     this.getALLquestionsTypes() ;
   }
-
-
 
 }
