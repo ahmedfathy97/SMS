@@ -18,7 +18,11 @@ export class AddQuizQuestionsComponent implements OnInit {
   questionTypeList :QuestionType [] ;
   questionData :  QuestionDto ;
   questionsList:QuestionDto[] ;
-  quizid:number =1;
+  textualIsSelected:boolean =false ;
+  mcqIsSelected:boolean =false ;
+  trueFalseIsSelsected:boolean=false ;
+
+  quizid =1;
 
   getALLquestionsTypes()
   {
@@ -41,8 +45,7 @@ export class AddQuizQuestionsComponent implements OnInit {
   }) ;
 
 
- onclickAddQuestion(question:QuestionDto)
- {
+ onclickAddQuestion(question:QuestionDto) {
    let questionData :QuestionDto =new QuestionDto()
    questionData.questionTypeID=this.formData.get('questiontype')
    questionData.question =this.formData.get('question').value;
@@ -54,19 +57,44 @@ export class AddQuizQuestionsComponent implements OnInit {
    this.questionData=questionData;
  }
 
-  onSubmitQuestionTable()
+  onSubmitQuestionsTable()
   {
 
     this.quizService.createQuizQuestions(this.quizid ,this.questionsList).subscribe(res => {
       console.log("Success");
     }, err => {
-      console.log(err);
+      console.log(err)
     });
   }
- //  // onclickoption(event:any)
- //  // {
- //  //   this.isSelected =true ;
- //  // }
+
+  onclickoption(event:any)
+  {
+    debugger ;
+    console.log(event) ;
+    if (event==1)
+    {
+      this.mcqIsSelected =true ;
+      this.trueFalseIsSelsected =false ;
+      this.textualIsSelected =false ;
+
+    }else if( event ==2)
+    {
+      this.trueFalseIsSelsected =true ;
+      this.mcqIsSelected =false ;
+      this.textualIsSelected =false ;
+
+
+    }else if(event ==3)
+    {
+      this.textualIsSelected =true ;
+      this.trueFalseIsSelsected =false  ;
+      this.mcqIsSelected =false ;
+
+    }else {
+
+    }
+
+  }
 
 
   ngOnInit() {

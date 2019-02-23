@@ -10,23 +10,21 @@
 
         <div class="form-group">
           <label for="quesiontype">Select  quesion type</label>
-          <select  class="form-control" id="quesiontype" formControlName="questiontype">
+          <select  class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
             <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
           </select>
           <br>
         </div>
-
-
         <div class="form-group">
           <label for="question">question:</label>
           <textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>
         </div>
-        <div class="form-group" >
+        <div class="form-group" *ngIf="textualIsSelected" >
           <label for="text_answer">model answer:</label>
           <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
         </div>
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="trueFalseIsSelsected">
             <label class="mt-2">model answer:</label>
             <div class="custom-control custom-radio">
             <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input" formControlName="modelAnswer">
@@ -40,7 +38,7 @@
           </div>
 
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
           <br>
           <label class="custom-control-label">choise1</label>
