@@ -112,3 +112,10 @@ CREATE TABLE file_source (
 );
 
 -- Abanoub End --
+
+-- fathy start--
+ALTER TABLE `sms`.`question`
+CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ,
+CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
+-- fathy end --
+

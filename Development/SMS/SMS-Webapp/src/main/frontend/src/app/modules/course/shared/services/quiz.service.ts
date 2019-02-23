@@ -13,6 +13,8 @@ export class QuizService {
   }
 
 
+
+
   getAllQuestionsTypes()
   {
     return this.httpClient.get<QuestionType[]>(this.BASE_URL+"/lookup/questionType") ;

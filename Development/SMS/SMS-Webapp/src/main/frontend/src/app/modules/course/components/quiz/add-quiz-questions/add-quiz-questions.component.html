@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-6 mt-2">
+    <div class="card" class="mr-2">
+
+      <div class="card-body">
+        <h4 class="header-title">Add questions</h4>
+        <hr>
+
+        <div class="form-group">
+          <label for="quesiontype">Select  quesion type</label>
+          <select  class="form-control" id="quesiontype">
+            <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
+          </select>
+          <br>
+        </div>
+
+        <form [formGroup]="formData">
+
+        <div class="form-group">
+          <label for="question">question:</label>
+          <textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>
+        </div>
+        <div class="form-group" >
+          <label for="text_answer">model answer:</label>
+          <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer"></textarea>
+        </div>
+
+          <div class="form-group">
+            <label class="mt-2">model answer:</label>
+            <div class="custom-control custom-radio">
+            <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" formControlName="trueAnswer">true</label>
+          </div>
+            <br>
+            <div class="custom-control custom-radio">
+              <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" formControlName="falseAnswer" >false</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <label class="mt-2">model answer:</label>
+          <br>
+          <label class="custom-control-label">choise1</label>
+          <div class="input-group mb-3" formControlName="choise1">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox">
+          </div>
+
+
+          <label class="custom-control-label">choise2</label>
+          <div class="input-group mb-3" formControlName="choise2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox">
+          </div>
+          <label class="custom-control-label">choise3</label>
+          <div class="input-group mb-3" formControlName="choise3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox">
+          </div>
+          <label class="custom-control-label">choise4</label>
+          <div class="input-group mb-3" formControlName="choise4">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox">
+          </div>
+          </div>
+        <div class="row">
+          <div class="card-action ">
+            <button  class="btn btn-primary" >Add question</button>
+          </div>
+        </div>
+          </form>
+    </div>
+  </div>
+</div>
+
+  <div class="col-6 mt-5">
+      <div class="card ml-3">
+        <div class="card-body">
+          <h4 class="header-title">Questions Table</h4>
+          <div class="single-table">
+            <div class="table-responsive">
+              <table class="table table-hover progress-table text-center">
+                <thead class="text-uppercase">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">question</th>
+                  <th scope="col">action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td scope="row">1</td>
+                  <td>mark</td>
+                  <td>
+                    <ul class="d-flex justify-content-center">
+                      <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                      <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
