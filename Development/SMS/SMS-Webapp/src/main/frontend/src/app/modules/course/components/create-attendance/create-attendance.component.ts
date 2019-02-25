@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CourseVto} from "../../shared/data/course-vto.data";
+import {CourseVto} from "../../shared/data/course-vto";
 import {CourseService} from "../../shared/services/course.service";
 import {AttendanceDTO} from "../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../shared/services/attendance.service";

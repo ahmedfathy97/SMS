@@ -1,18 +1,18 @@
 package com.sms.model.lookUp.rm;
 
-import com.sms.model.lookUp.corCategory;
+import com.sms.model.lookUp.CorCategory;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //TODO: Youssef - rename CLass to CorCategoryVTORM
-public class corCategoeryVtoRM implements RowMapper {
+public class CorCategoryVTORM implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowIndex) throws SQLException {
-        corCategory category = new corCategory();
-        category.setID(rs.getInt("id"));
-        category.setLabelEn(rs.getString("label_en"));
+        CorCategory category = new CorCategory();
+        category.setId(rs.getInt("id"));
+        category.setLabelEN(rs.getString("label_en"));
         return category;
     }
 }

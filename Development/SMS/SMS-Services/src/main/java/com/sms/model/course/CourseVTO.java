@@ -1,13 +1,35 @@
 package com.sms.model.course;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class CourseVTO implements Serializable {
 
     private  int id;
     private String name;
+    private  String courseName;
+    private int  duration ;
+    private Date startDate ;
+    private Date endDate ;
+    private String corCategory ;
+    private String corType ;
+    private String corLevel;
+    private String instructorName;
+    private int    studentNum;
+    private String description ;
+
+
+
 
     public CourseVTO() {
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getId() {
@@ -26,11 +48,93 @@ public class CourseVTO implements Serializable {
         this.name = name;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getCorCategory() {
+        return corCategory;
+    }
+
+    public void setCorCategory(String corCategory) {
+        this.corCategory = corCategory;
+    }
+
+    public String getCorType() {
+        return corType;
+    }
+
+    public void setCorType(String corType) {
+        this.corType = corType;
+    }
+
+    public String getCorLevel() {
+        return corLevel;
+    }
+
+    public void setCorLevel(String corLevel) {
+        this.corLevel = corLevel;
+    }
+
+    public String getInstructorName() {
+        return instructorName;
+    }
+
+    public void setInstructorName(String instructorName) {
+        this.instructorName = instructorName;
+    }
+
+    public int getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(int studentNum) {
+        this.studentNum = studentNum;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "CourseVTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", duration=" + duration +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", corCategory='" + corCategory + '\'' +
+                ", corType='" + corType + '\'' +
+                ", corLevel='" + corLevel + '\'' +
+                ", instructorName='" + instructorName + '\'' +
+                ", studentNum=" + studentNum +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

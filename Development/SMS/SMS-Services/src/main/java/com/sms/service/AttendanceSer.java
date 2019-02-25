@@ -39,11 +39,8 @@ public class AttendanceSer {
             if(attendanceDTOList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
-                List<StdDTO> newStdList = new ArrayList<>();
-                for (StdDTO std : stdList )
-                    newStdList.add(std.clone());
                 item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(newStdList);
+                item.setStudents(stdList);
                 attendanceDTOList.add(item);
             }
 
@@ -68,19 +65,15 @@ public class AttendanceSer {
         for(AttendanceDTO sheet:attendanceDTOList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
-                            std.getFullName().equals(stdDto.getFullName())) {
+                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
+                            std.getFullName().equals(stdDto.getFullName()))
                         std.setIsAttend(stdDto.getIsAttend());
-                        break;
-                    }
             }
         }
 
 
        return attendanceDTOList ;
     }
-
-
 
     public List<AttendanceDTO> getStudentAttendance(int courseID , int stdID) {
 
@@ -91,24 +84,19 @@ public class AttendanceSer {
             if(attendanceList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
-                List<StdDTO> newStdList = new ArrayList<>();
-                for (StdDTO student : stdList )
-                    newStdList.add(student.clone());
                 item.setAttendanceData(std.getAttendanceDate());
-                item.setStudents(newStdList);
-
                 item.setStudents(stdList);
                 attendanceList.add(item);
             }
 
-            boolean isExist = false ;
+            boolean isFound = false ;
             for (AttendanceDTO sheet : attendanceList) {
                 if (std.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
-                    isExist = true ;
+                    isFound = true ;
                     break;
                 }
             }
-            if (!isExist)
+            if (!isFound)
             {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(std.getAttendanceDate());
@@ -122,7 +110,7 @@ public class AttendanceSer {
         for(AttendanceDTO sheet:attendanceList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
                             std.getFullName().equals(stdDto.getFullName()))
                         std.setIsAttend(stdDto.getIsAttend());
             }

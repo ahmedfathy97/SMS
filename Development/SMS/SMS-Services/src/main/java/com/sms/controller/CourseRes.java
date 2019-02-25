@@ -1,11 +1,10 @@
 package com.sms.controller;
 
 import com.sms.model.AttendanceDTO;
-import com.sms.model.CorDetails;
+import com.sms.model.course.CourseDTO;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.QuizDTO;
 import com.sms.model.course.StdDTO;
-import com.sms.model.CorDetails;
 import com.sms.repository.CourseRep;
 import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
@@ -35,17 +34,18 @@ public class CourseRes {
         this.repository = repository;
         this.attendance = attendance;
     }
+
     //    public CourseRes(GradeRep gradeRepository) {
 //        this.gradeRepository = gradeRepository;
 //    }
 
     @POST
     //TODO: Youssef - rename Path to / only
-    @Path("/mainDetails")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     //TODO: Youssef - rename function to createNewCourse
-    public void addCourseData(CorDetails details){
-        repository.addCourseData(details);
+    public void createNewCourse(CourseDTO details){
+        repository.insertNewCourse(details);
     }
 
     @GET
@@ -70,6 +70,13 @@ public class CourseRes {
     public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
         List<CourseVTO> list =this.repository.findAllInstructorCourses(instructorID);
         return list;
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{corID}")
+    public CourseVTO viewCourse(@PathParam("corID") int corID) {
+        CourseVTO viewData =this.repository.findByID(corID);
+        return viewData;
     }
 
 

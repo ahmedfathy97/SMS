@@ -1,25 +1,24 @@
 import {HttpClient} from "@angular/common/http";
-import {CorDetailsCategoryData} from "../../modules/course/shared/data/lookup/course/cor-details-category.data";
-import {CorDetailsTypeData} from "../../modules/course/shared/data/lookup/course/cor-details-type.data";
-import {CorDetailsLevelData} from "../../modules/course/shared/data/lookup/course/cor-details-level.data";
 import {Injectable} from "@angular/core";
+import {CorCategory} from "../../modules/course/shared/data/lookup/course/cor-category.data";
+import {CorType} from "../../modules/course/shared/data/lookup/course/cor-type.data";
+import {CorLevel} from "../../modules/course/shared/data/lookup/course/cor-level.data";
 
 
 @Injectable()
 export class LookupService {
-
 
   BASE_URL : string =  "http://localhost:8080/api/lookup";
 
   constructor(private http: HttpClient) {
   }
   findCorCategory(){
-    return this.http.get<CorDetailsCategoryData>(this.BASE_URL+"/corCategory");
+    return this.http.get<CorCategory[]>(this.BASE_URL+"/corCategoryList");
   }
   findCorType(){
-    return this.http.get<CorDetailsTypeData>(this.BASE_URL+"/corType");
+    return this.http.get<CorType[]>(this.BASE_URL+"/corTypeList");
   }
   findCorLevel(){
-    return this.http.get<CorDetailsLevelData>(this.BASE_URL+"/corLevel");
+    return this.http.get<CorLevel[]>(this.BASE_URL+"/corLevelList");
   }
 }

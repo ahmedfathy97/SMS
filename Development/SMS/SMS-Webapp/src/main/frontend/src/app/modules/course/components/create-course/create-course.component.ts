@@ -1,47 +1,47 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CourseDetailsData} from "../../../shared/data/course/course-details.data";
-import {LookupService} from "../../../../../infrastructure/services/lookup.service";
-import {CorDetailsCategoryData} from "../../../shared/data/lookup/course/cor-details-category.data";
-import {CorDetailsLevelData} from "../../../shared/data/lookup/course/cor-details-level.data";
-import {CorDetailsTypeData} from "../../../shared/data/lookup/course/cor-details-type.data";
-import {CourseService} from "../../../shared/services/course.service";
+import {CourseDTO} from "../../shared/data/course/course-dto.data";
+import {CorCategory} from "../../shared/data/lookup/course/cor-category.data";
+import {CorLevel} from "../../shared/data/lookup/course/cor-level.data";
+import {CorType} from "../../shared/data/lookup/course/cor-type.data";
+import {CourseService} from "../../shared/services/course.service";
+import {LookupService} from "../../../../infrastructure/services/lookup.service";
 
 @Component({
   selector: 'app-course-details',
-  templateUrl: './course-details.component.html',
+  templateUrl: './create-course.component.html',
   providers: [CourseService, LookupService]
 })
 // TODO: Youssef - rename to CreateCourse
 // TODO: Youssef - move component to /modules/course/components/create-course
-export class CourseDetailsComponent implements OnInit {
+export class CreateCourse implements OnInit {
   // TODO: Youssef - rename to corCategoryList remember changes in html
-  corCategory: CorDetailsCategoryData[] = [];
+  corCategoryList: CorCategory[] = [];
   // TODO: Youssef - rename to corTypeList remember changes in html
-  corType: CorDetailsTypeData[] = [];
+  corTypeList: CorType[] = [];
   // TODO: Youssef - rename to corLevelList remember changes in html
-  corLevel: CorDetailsLevelData[] = [];
+  corLevelList: CorLevel[] = [];
 
 
   constructor(private formBuilder: FormBuilder,
               // TODO: Youssef - rename to corService
-              private service: CourseService,
+              private corService: CourseService,
               // TODO: Youssef - rename to lookupService
-              private lookUp: LookupService) {
+              private lookupService: LookupService) {
 
   }
 
   ngOnInit() {
     //TODO: YOussef - Check these lines again
-    // this.lookUp.findCorCategory().subscribe(res => {
-    //   this.corCategory = res;
-    // });
-    // this.lookUp.findCorType().subscribe(res => {
-    //   this.corType = res;
-    // });
-    // this.lookUp.findCorLevel().subscribe(res => {
-    //   this.corLevel = res;
-    // });
+    this.lookupService.findCorCategory().subscribe(res => {
+      this.corCategoryList = res;
+    });
+    this.lookupService.findCorType().subscribe(res => {
+      this.corTypeList = res;
+    });
+    this.lookupService.findCorLevel().subscribe(res => {
+      this.corLevelList = res;
+    });
 
   }
 
@@ -59,8 +59,8 @@ export class CourseDetailsComponent implements OnInit {
   });
 
   // TODO: Youssef - onSubmitNewCourse
-  addCourseData() {
-    let details: CourseDetailsData = new CourseDetailsData();
+  onSubmitNewCourse() {
+    let details: CourseDTO = new CourseDTO();
 
     details.courseName = this.formData.get('courseName').value;
     details.duration = this.formData.get('duration').value;
@@ -71,7 +71,7 @@ export class CourseDetailsComponent implements OnInit {
     details.levelID = this.formData.get('levelID').value;
     details.description = this.formData.get('description').value;
 
-    this.service.addCourseData(details).subscribe(res => {
+    this.corService.createNewCourse(details).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err);

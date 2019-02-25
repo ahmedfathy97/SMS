@@ -6,7 +6,7 @@ import {StdDTO} from "../../shared/data/std-dto.data";
 
 import {GradeService} from "../../shared/services/grade.service";
 import {CourseService} from "../../shared/services/course.service";
-import {CourseVto} from "../../shared/data/course-vto.data";
+import {CourseVto} from "../../shared/data/course-vto";
 
 @Component({
   selector: 'app-create-grade',
@@ -59,7 +59,7 @@ export class CreateGradeComponent implements OnInit {
       this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
 
     console.log(this.students);
-    this.gradeService.createNewGradeSheet(4,this.students).subscribe(
+    this.gradeService.createNewGradeSheet(2,this.students).subscribe(
       res=> {
         console.log('request succed')
       },

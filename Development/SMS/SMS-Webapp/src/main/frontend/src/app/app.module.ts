@@ -16,7 +16,7 @@ import { CreateAttendanceComponent } from './modules/course/components/create-at
 
 //import { QuillModule } from 'ngx-quill'
 import {HttpClientModule} from "@angular/common/http";
-import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
+// import { CourseDetailsComponent } from './modules/course/components/create-course/course-details/course-details.component';
 //import { CreateTutorialComponent } from './modules/tutorial/components/create-tutorial/create-tutorial.component';
 import { ViewGradeComponent } from './modules/course/components/grade/view-grade/view-grade.component';
 import { ViewAttendanceComponent } from './modules/course/components/view-attendance/view-attendance.component';
@@ -24,9 +24,10 @@ import { CreateQuizComponent } from './modules/course/components/quiz/create-qui
 //import { UploadComponent } from './infrastructure/components/manage-attachment/components/upload/upload.component';
 //import { DownloadComponent } from './infrastructure/components/manage-attachment/components/download/download.component';
 //import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
-import { ViewStudentGradeComponent } from './modules/course/components/grade/view-student-grade/view-student-grade.component';
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 import { ViewStudentGradeComponent } from './modules/course/components/grade/view-student-grade/view-student-grade.component';
+import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
+import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 
 
 @NgModule({
@@ -41,9 +42,8 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
     LoginComponent,
     CreateGradeComponent,
     CreateAttendanceComponent,
-    CourseDetailsComponent,
-   // CreateTutorialComponent,
-    CourseDetailsComponent,
+    CreateCourse,
+    ViewCourseComponent,
     ViewAttendanceComponent,
 
     CreateQuizComponent,
@@ -51,7 +51,6 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
     //UploadComponent,
   //  DownloadComponent,
     AddQuizQuestionsComponent ,
-    ViewStudentAttendanceComponent,
     ViewStudentGradeComponent ,
     AddQuizQuestionsComponent ,
     ViewStudentGradeComponent,

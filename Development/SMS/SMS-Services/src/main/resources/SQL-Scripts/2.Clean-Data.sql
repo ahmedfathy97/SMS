@@ -8,17 +8,14 @@ INSERT INTO cor_category (id, label_en) VALUES (2, 'Programming');
 INSERT INTO cor_category (id, label_en) VALUES (3, 'IT');
 INSERT INTO cor_category (id, label_en) VALUES (4, 'Web Development');
 
--- TODO: Youssef there is Typo here
-INSERT INTO cor_type (id, label_en) VALUES (1, 'Acadmic');
+
+INSERT INTO cor_type (id, label_en) VALUES (1, 'Academic');
 INSERT INTO cor_type (id, label_en) VALUES (2, 'Practical');
 
--- TODO: Youssef there is Typo here
-INSERT INTO cor_level (id, label_en) VALUES (1, 'Under Grduated');
-INSERT INTO cor_level (id, label_en) VALUES (2, 'Graduated');
-INSERT INTO cor_level (id, label_en) VALUES (3, 'Beginner');
-INSERT INTO cor_level (id, label_en) VALUES (4, 'Advanced');
--- TODO: Youssef there is Typo here
-INSERT INTO cor_level (id, label_en) VALUES (5, 'Entery');
+
+INSERT INTO cor_level (id, label_en) VALUES (1, 'Beginner');
+INSERT INTO cor_level (id, label_en) VALUES (2, 'Advanced');
+INSERT INTO cor_level (id, label_en) VALUES (3, 'Intermediate');
 
 INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
  VALUES (1, 'Java', 3, '2018-5-12', '2018-8-12', 1, 1, 1, 1, 'Programming Language');

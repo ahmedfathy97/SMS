@@ -1,0 +1,99 @@
+<!--TODO: Youssef - Don't Use Cards check the home.component.html and make use of it-->
+<!-- page create course area start -->
+<div class="page-title-area">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Dashboard</h4>
+        <ul class="breadcrumbs pull-left">
+          <li><a href="index.html">creat Course</a></li>
+          <li><span>Dashboard</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-6 clearfix">
+      <div class="user-profile pull-right">
+        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+        <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> User Name <i class="fa fa-angle-down"></i></h4>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Message</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- create course area start -->
+<div class="row mt-5 mb-5">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-sm-flex justify-content-between align-items-center">
+          <h4 class="header-title mb-0">Course Main Details</h4>
+        </div>
+        <form [formGroup]="formData">
+          <div class="form-group d-inline-block col-6">
+            <label for="example-text-input" class="col-form-label">Name</label>
+            <input class="form-control" formControlName="courseName" type="text"
+                   value="Enter Course Name - less than 25 char" id="example-text-input">
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="example-number-input" class="col-form-label">Duration</label>
+            <input class="form-control" formControlName="duration" type="number" value="Duration with Hours"
+                   id="example-number-input">
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="example-date-input" class="col-form-label">Start Date</label>
+            <input class="form-control" formControlName="startDate" type="date" id="example-date-input">
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="example-date-input" class="col-form-label">End Date</label>
+            <input class="form-control" formControlName="endDate" type="date" id="example-date">
+          </div>
+
+
+          <div class="form-group d-inline-block col-4">
+            <label class="col-form-label">Category</label>
+            <select class="form-control" formControlName="categoryID">
+              <option *ngFor="let category of corCategoryList" [ngValue]="category.id">{{category.labelEN}}</option>
+            </select>
+          </div>
+
+          <div class="form-group d-inline-block col-4">
+            <label class="col-form-label">Type</label>
+            <select class="form-control" formControlName="typeID">
+              <option *ngFor="let type of corTypeList" [ngValue]="type.id">{{type.labelEN}}</option>
+            </select>
+          </div>
+
+          <div class="form-group d-inline-block col-4">
+            <label class="col-form-label">Level</label>
+            <select class="form-control" formControlName="levelID">
+              <option *ngFor="let level of corLevelList" [ngValue]="level.id">{{level.labelEN}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="example-text-input" class="col-form-label">Description</label>
+            <textarea class="form-control" formControlName="description" type="text"
+                      value="Enter Description - less than 200 char"></textarea>
+          </div>
+
+
+          <div class="row pull-right">
+            <div class="card-action">
+              <button class="btn btn-success" (click)="onSubmitNewCourse()">Next</button>
+              <button class="ml-2 btn btn-danger">Back</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+

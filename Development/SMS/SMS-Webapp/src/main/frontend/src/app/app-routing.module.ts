@@ -6,12 +6,14 @@ import {SimpleLayoutComponent} from "./layout/components/simple-layout/simple-la
 import {LoginComponent} from "./modules/security/components/login/login.component";
 import {CreateGradeComponent} from "./modules/course/components/create-grade/create-grade.component";
 import {CreateAttendanceComponent} from "./modules/course/components/create-attendance/create-attendance.component";
-import {CourseDetailsComponent} from "./modules/course/components/create-course/course-details/course-details.component";
+import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
+import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 import {ViewAttendanceComponent} from "./modules/course/components/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/create-quiz.component";
 import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/view-grade.component";
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
-import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+
+// import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
 //import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 
 const routes: Routes = [
@@ -19,17 +21,18 @@ const routes: Routes = [
   {path: '', component: FullLayoutComponent, children:[
       {path: 'home', component: HomeComponent},
       {path: 'create-grade', component: CreateGradeComponent},
-      {path:'course/new', component: CourseDetailsComponent},
+      {path:'course/new', component: CreateCourse},
+      {path:'course/view', component: ViewCourseComponent},
 
       {path: 'attend', component: CreateAttendanceComponent} ,
       {path:'course/quiz/new',component:CreateQuizComponent} ,
-      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+     // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path: 'attend', component: CreateAttendanceComponent},
-      {path:'course/new', component: CourseDetailsComponent},
+      {path:'course/new', component: CreateCourse},
       {path:'view-grade', component: ViewGradeComponent},
       {path:'std-grade',component:ViewStudentGradeComponent},
       {path: 'view-attend', component: ViewAttendanceComponent},
-      {path: 'view-student-attend', component: ViewAttendanceComponent},
+      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
 
     ]},
   {path: '', component: SimpleLayoutComponent, children:[

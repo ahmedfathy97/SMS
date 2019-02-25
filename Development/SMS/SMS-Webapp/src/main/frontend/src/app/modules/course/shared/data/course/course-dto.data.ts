@@ -1,4 +1,4 @@
-export class CourseDetailsData {
+export class CourseDTO {
 courseName : string;
 duration : number;
 startDate : Date;
