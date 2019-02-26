@@ -21,7 +21,7 @@ export class AddQuizQuestionsComponent implements OnInit {
   textualIsSelected:boolean =false ;
   mcqIsSelected:boolean =false ;
   trueFalseIsSelsected:boolean=false ;
-
+  table:boolean =false ;
   quizid: number =1;
 
   getALLquestionsTypes()
@@ -55,17 +55,18 @@ export class AddQuizQuestionsComponent implements OnInit {
    questionData.answer3 =this.formData.get('answer3').value ;
    questionData.answer4 =this.formData.get('answer3').value ;
    this.questionsList.push(questionData) ;
+   this.table =true ;
    this.formData.reset();
  }
 
   onSubmitQuestionsTable()
   {
-
     this.quizService.createQuizQuestions(this.quizid ,this.questionsList).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err)
     });
+
   }
 
   onclickoption(event:any)

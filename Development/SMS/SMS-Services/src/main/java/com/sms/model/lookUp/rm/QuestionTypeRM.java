@@ -15,5 +15,4 @@ public class QuestionTypeRM implements org.springframework.jdbc.core.RowMapper {
         return questionType ;
     }
 
-
 }

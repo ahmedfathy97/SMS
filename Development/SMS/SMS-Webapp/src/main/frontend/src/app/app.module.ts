@@ -51,10 +51,9 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
     //UploadComponent,
   //  DownloadComponent,
     AddQuizQuestionsComponent ,
+   //ViewStudentAttendanceComponent,
     ViewStudentGradeComponent ,
-    AddQuizQuestionsComponent ,
-    ViewStudentGradeComponent,
-
+    AddQuizQuestionsComponent
 
   ],
   imports: [

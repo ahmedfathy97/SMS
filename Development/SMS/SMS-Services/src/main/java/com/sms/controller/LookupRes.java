@@ -21,14 +21,11 @@ public class LookupRes {
     private LookUpSer lookUpSer;
 
     @Autowired
-    public LookupRes(LookupRep repository) {
+    public LookupRes(LookupRep repository ,LookUpSer lookUpSer) {
         this.repository = repository;
-    }
-    public LookupRes(LookupRep repository, LookUpSer lookUpSer) {
-            this.repository = repository;
-            this.lookUpSer = lookUpSer;
-        }
+        this.lookUpSer = lookUpSer;
 
+    }
 
         @GET
         @Produces(MediaType.APPLICATION_JSON)
@@ -58,9 +55,9 @@ public class LookupRes {
         @GET
         @Produces(MediaType.APPLICATION_JSON)
         @Path("/questionType")
-        public List<QuestionType> getallquestionsType () {
+        public List<QuestionType> getAllQuestionType() {
             List<QuestionType> questionTypeList = this.lookUpSer.getAllQuestionsTypes();
-            return questionTypeList;
+            return questionTypeList ;
         }
 
     }

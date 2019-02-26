@@ -10,13 +10,14 @@ import {QuestionDto} from "../data/quiz/question-dto";
 export class QuizService {
   BASE_URL: string = ConfigParam.APP_BASE_URL ;
 
+
   constructor(private httpClient: HttpClient) {
   }
 
 
   createQuizQuestions(quizId: number ,questionsList:QuestionDto[])
   {
-    return this.httpClient.post(this.BASE_URL+"/quiz"+quizId+"/questions",questionsList) ;
+    return this.httpClient.post(this.BASE_URL+"/quiz/"+ quizId + "/questions",questionsList) ;
   }
 
 

@@ -59,6 +59,7 @@ export class CourseService {
   getStudentAttendance (courseID :number , stdID : number){
     return this.http.get<AttendanceDTO[]>("http://localhost:8080/api/course"+courseID+"/student"+stdID)
   }
+
   getCourseByID(corID: number){
     return this.http.get<CourseVto>(this.APP_BASE_URL+this.BASE_URL+corID);
   }
