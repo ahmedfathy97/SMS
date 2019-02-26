@@ -1,16 +1,15 @@
 <div class="row">
   <!-- Textual inputs start -->
-  <div class="col-12 mt-5">
+  <div class="col-6 mt-5 mb-5 " style="margin: auto">
     <div class="card">
       <div class="card-body">
         <h4 class="header-title">Create New Quiz</h4>
         <form [formGroup]="formData">
         <div class="form-group">
           <label for="quiz_name" class="col-form-label">Quiz Name</label>
-          <input class="form-control" formControlName="quizName"type="text" id="quiz_name">
+          <input class="form-control" formControlName="quizName" type="text" id="quiz_name">
           <small *ngIf="formData.get('quizName').hasError('required')">quiz name is required</small>
           <small *ngIf="formData.get('quizName').hasError('maxlength')">quiz has max length 25 character</small>
-
         </div>
         <div class="form-group">
           <label for="quiz_grade" class="col-form-label">Grade</label>
@@ -20,16 +19,11 @@
           <label for="quiz_date" class="col-form-label">Due Date</label>
           <input class="form-control" formControlName="dueDate"type="date" id="quiz_date">
         </div>
-
-        <div class="row">
-          <div class="card-action">
-            <button  class="btn btn-dark pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button>
-            <button class="btn btn-danger pull-right">Cancel</button>
-          </div>
-        </div>
         </form>
+        <button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button>
+        <button class="btn btn-dark pull-right">Cancel</button>
       </div>
-
     </div>
+
   </div>
 </div>

@@ -1,15 +1,13 @@
 <div class="row">
-  <div class="col-6 mt-2">
-    <div class="card" class="mr-2">
-
+  <div class="col-6 mt-2"  >
+    <div class="card" class="mr-2" >
       <div class="card-body">
         <h4 class="header-title">Add questions</h4>
         <hr>
 
         <form [formGroup]="formData">
-
         <div class="form-group" >
-          <label for="quesiontype">Select  quesion type</label>
+          <label for="quesiontype">Select question type</label>
           <select   class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
             <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
           </select>
@@ -24,19 +22,18 @@
           <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
         </div>
 
-          <div class="form-group" *ngIf="trueFalseIsSelsected">
+          <div  *ngIf="trueFalseIsSelsected">
             <label class="mt-2">model answer:</label>
             <div class="custom-control custom-radio">
-            <input class="mt-2" type="radio"  name="customRadio" class="custom-control-input" formControlName="modelAnswer">
-            <label class="custom-control-label" >true</label>
+              <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="trueAnswer">True</label>
             </div>
             <br>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio"  class="custom-control-input" formControlName="modelAnswer">
-              <label class="custom-control-label">false</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="falseAnswer"  name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="falseAnswer">False</label>
             </div>
           </div>
-
 
           <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
@@ -81,18 +78,13 @@
           </div>
           </div>
         </form>
-        <div class="row">
-          <div class="card-action ">
-            <button  class="btn btn-primary" (click)="onclickAddQuestion()" >Add question</button>
-          </div>
-        </div>
+        <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()"> Add question </button>
 
-    </div>
+      </div>
   </div>
 </div>
-
-  <div class="col-6 mt-5">
-      <div class="card ml-3">
+  <div class="col-6 mt-5" style="margin: auto">
+      <div class="card ml-3 mr-5" *ngIf="table">
         <div class="card-body">
           <h4 class="header-title">Questions Table</h4>
           <div class="single-table">
@@ -120,10 +112,11 @@
               </table>
             </div>
           </div>
-        </div>
+          </div>
       </div>
-    </div>
+    <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button>
   </div>
+
 
 
 
