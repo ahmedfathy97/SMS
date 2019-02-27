@@ -1,0 +1,91 @@
+
+
+	Project:
+	---------
+		1. Course (Creation - Instructor View - Student View - Normal User View)
+		2. Attendance (Creation - Instructor View - Student View)
+		3. Grade (Creation - Instructor View - Student View)
+		4. Quiz (Creation - Instructor View - Student View)
+		5. Lecture (Creation - Instructor View - Student View)
+		6. 
+	
+	Release 1.0   Expected: 28 Feb 
+	============
+		Tasks Done:
+		===========
+			1. Login 
+			2. Authentication & Authorization
+			3. Create New Course
+			4, View Course Detail
+			5. Create Course Attendance Sheet
+			6. View Course Attendance Sheet
+			7. View Student Attendance
+			8. Create Course Grade Sheet
+			9. View Course Grade Sheet
+			10. View Student Grade
+			11. Create new Quiz 
+			12. Create new Question
+		
+		Tasks Open:
+		===========
+			1. User Profile
+			2. User List
+			3. Upload & Download Attachment
+			4. Routing
+			
+	Release 2.0  (1 March - 23 March) (23 Day)
+	============
+		// Ahmed Fathy
+		1. Answer Quiz (for Student)
+		2. View Quiz Answers (for Student)
+		3. Quiz Correction for Open Question (For Instructor)
+		4. Quiz Sheet Degree of All Students (For Instructor)
+		
+		// Abanoub 
+		6. Attaching Files in Lecture (as Assingment)
+		7. Attaching Files in Lecture (as Material)
+		
+		// Hala 
+		8. Adding Video to Lecture (Video Frame Component)
+		10. Submit Lecture 
+		
+		// Yara 
+		9. Writing Text into Lecture (Rich Text Component)
+		5. Quiz Closure (Manual or Automatic)
+		
+		// Youssef
+		10. Create Course Lectures
+		11. View Course Lecture	
+		
+		// Ahmed & Hala & Yara
+		12. Handling the Old Relations with the new Design
+		
+	Release 3.0  (6 April - 27 April) (21 Day)
+	============
+	
+	Release 4.0  (28 April - 11 May) (13 Day)
+	============
+	
+	Release 5.0  (28 April - 11 May) (12 Day)
+	============
+		
+
+		
+	Comments:
+	=========
+		1. no UI Development (HTML & CSS & Bootstrap)
+		2. Concentrate in Design Document
+		3. Update & Commit 
+		4. Keep Learning
+	
+	Points to be considered:
+	--------------------------
+		1. Creator & Date of any item
+		2. Add more Validations
+		
+		
+	
+	
+	
+	
+	
