@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {AttendanceService} from "../../shared/services/attendance.service";
 import {CourseService} from "../../shared/services/course.service";
-import {StdDTO} from "../../shared/data/std-dto.data";
 import {AttendanceDTO} from "../../shared/data/attendance-dto.data";
 
 @Component({
-  selector: 'app-view-attendance',
-  templateUrl: './view-attendance.component.html',
+  selector: 'app-view-student-attendance',
+  templateUrl: './view-student-attendance.component.html',
+  styleUrls: ['./view-student-attendance.component.scss'],
   providers : [CourseService]
+
 })
-export class ViewAttendanceComponent implements OnInit {
+export class ViewStudentAttendanceComponent implements OnInit {
 
   attendanceList :AttendanceDTO [] = [];
   tableView : any [][] ;
   constructor( private attendanceService : CourseService ) { }
 
   ngOnInit() {
-    this.attendanceService.getCourseAttendance(2).subscribe(
-    res => {
-      this.attendanceList = res;
-    console.log(this.attendanceList);
-    this.transformTable();
-    }
+
+
+    this.attendanceService.getStudentAttendance(2 , 1).subscribe(
+      res => {
+        this.attendanceList = res;
+        console.log(this.attendanceList);
+        this.transformTable();
+      }
     )
 
   }
@@ -68,5 +70,6 @@ export class ViewAttendanceComponent implements OnInit {
 
     return false ;
   }
+
 
 }

@@ -6,6 +6,7 @@ import com.sms.model.AttendanceDTO;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.rm.AttendanceDTORM;
 import com.sms.model.course.rm.CourseVTORM;
+import com.sms.model.course.rm.StdDTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -50,6 +51,16 @@ public class AttendanceRep {
         " and u_std.id = c_att.std_id"+
         " where c_std.cor_id = ?" ;
         return this.jdbc.query(sql, new AttendanceDTORM(), corID);
+    }
+
+    public List<StdDTO> findCourseStudent (int corID , int stdID){
+        String sql=
+                "SELECT first_name, last_name, std.id " +
+                        "FROM course_std " +
+                        "LEFT JOIN auth_user std on std.id = course_std.std_id " +
+                        "WHERE cor_id = ?" +
+                        " and std.id = ? ";
+        return this.jdbc.query(sql, new StdDTORM(), corID , stdID);
     }
 
     public List<StdDTO> viewAttendSheetStudent (int corID , int stdID) {

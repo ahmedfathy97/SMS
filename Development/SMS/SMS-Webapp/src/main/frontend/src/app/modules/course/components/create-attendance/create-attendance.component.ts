@@ -44,24 +44,22 @@ export class CreateAttendanceComponent implements OnInit {
     );
   }
 
+  exist : boolean = false ;
   onSubmitNewAttendance() {
-
     let data: AttendanceDTO = new AttendanceDTO();
     data.course_id = this.formData.get('courseID').value;
     data.attendanceData = this.formData.get('attendanceDate').value;
     data.students = this.attendance.students;
-
-
     console.log(data);
-    this.attendanceService.createNewAttendanceSheet(2 ,data).subscribe(
-      res => {
-        console.log('request succed')
-      },
-      error1 => {
-        console.log(error1)
-      }
-    );
-
+      this.attendanceService.createNewAttendanceSheet(2, data).subscribe(
+        res => {
+          console.log('request succed')
+        },
+        error1 => {
+          console.log(error1)
+        }
+      );
+      this.exist = true ;
   };
 
   toggleStdAttendance(index) {

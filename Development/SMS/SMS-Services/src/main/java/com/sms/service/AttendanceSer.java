@@ -39,8 +39,11 @@ public class AttendanceSer {
             if(attendanceDTOList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
+                List<StdDTO> newStdList = new ArrayList<>();
+                for (StdDTO std : stdList )
+                    newStdList.add(std.clone());
                 item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(stdList);
+                item.setStudents(newStdList);
                 attendanceDTOList.add(item);
             }
 
@@ -65,9 +68,11 @@ public class AttendanceSer {
         for(AttendanceDTO sheet:attendanceDTOList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
-                            std.getFullName().equals(stdDto.getFullName()))
+                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+                            std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
+                        break;
+                    }
             }
         }
 
@@ -75,23 +80,28 @@ public class AttendanceSer {
        return attendanceDTOList ;
     }
 
+
+
     public List<AttendanceDTO> getStudentAttendance(int courseID , int stdID) {
 
-        List<StdDTO> stdList = this.rep.findAllCourseStudents(2);
-        List<StdDTO> stdAttendance = this.repository.viewAttendSheetStudent(courseID ,stdID);
-        List<AttendanceDTO> attendanceList = new ArrayList<>();
-        for (StdDTO std : stdAttendance) {
-            if(attendanceList.size() == 0)
+        List<StdDTO> stdList = this.repository.findCourseStudent(2,1);
+        List<StdDTO> stdAttendance = this.repository.viewAttendSheetStudent(courseID , stdID);
+        List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
+        for (StdDTO i : stdAttendance) {
+            if(attendanceDTOList.size() == 0)
             {
                 AttendanceDTO item = new AttendanceDTO();
-                item.setAttendanceData(std.getAttendanceDate());
-                item.setStudents(stdList);
-                attendanceList.add(item);
+                List<StdDTO> newStdList = new ArrayList<>();
+                for (StdDTO std : stdList )
+                    newStdList.add(std.clone());
+                item.setAttendanceData(i.getAttendanceDate());
+                item.setStudents(newStdList);
+                attendanceDTOList.add(item);
             }
 
             boolean isFound = false ;
-            for (AttendanceDTO sheet : attendanceList) {
-                if (std.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
+            for (AttendanceDTO sheet : attendanceDTOList) {
+                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
                     isFound = true ;
                     break;
                 }
@@ -99,25 +109,27 @@ public class AttendanceSer {
             if (!isFound)
             {
                 AttendanceDTO item = new AttendanceDTO();
-                item.setAttendanceData(std.getAttendanceDate());
+                item.setAttendanceData(i.getAttendanceDate());
                 item.setStudents(stdList);
-                attendanceList.add(item);
+                attendanceDTOList.add(item);
             }
 
 
         }
 
-        for(AttendanceDTO sheet:attendanceList){
+        for(AttendanceDTO sheet:attendanceDTOList){
             for(StdDTO std: sheet.getStudents()){
                 for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate() == sheet.getAttendanceData() &&
-                            std.getFullName().equals(stdDto.getFullName()))
+                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+                            std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
+                        break;
+                    }
             }
         }
 
 
-        return attendanceList ;
+        return attendanceDTOList ;
     }
 
 

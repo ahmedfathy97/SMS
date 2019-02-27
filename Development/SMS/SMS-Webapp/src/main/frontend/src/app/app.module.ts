@@ -26,6 +26,7 @@ import { CreateQuizComponent } from './modules/course/components/quiz/create-qui
 //import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 import { ViewStudentGradeComponent } from './modules/course/components/grade/view-student-grade/view-student-grade.component';
+import { ViewStudentAttendanceComponent } from './modules/course/components/view-student-attendance/view-student-attendance.component';
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 
@@ -54,6 +55,7 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
    //ViewStudentAttendanceComponent,
     ViewStudentGradeComponent ,
     AddQuizQuestionsComponent
+    ViewStudentAttendanceComponent,
 
   ],
   imports: [
