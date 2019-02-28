@@ -5,14 +5,14 @@ import {HomeComponent} from "./modules/home/home.component";
 import {SimpleLayoutComponent} from "./layout/components/simple-layout/simple-layout.component";
 import {LoginComponent} from "./modules/security/components/login/login.component";
 import {CreateGradeComponent} from "./modules/course/components/create-grade/create-grade.component";
-import {CreateAttendanceComponent} from "./modules/course/components/create-attendance/create-attendance.component";
+import {CreateAttendanceComponent} from "./modules/course/components/attendance/create-attendance/create-attendance.component";
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
-import {ViewAttendanceComponent} from "./modules/course/components/view-attendance/view-attendance.component";
+import {ViewAttendanceComponent} from "./modules/course/components/attendance/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/create-quiz.component";
 import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/view-grade.component";
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
-import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
+import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 
 const routes: Routes = [
