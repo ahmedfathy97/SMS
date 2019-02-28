@@ -3,6 +3,7 @@ package com.sms.model.user;
 import java.io.Serializable;
 
 public class UserVTO implements Serializable {
+    int id;
     String fullName;
     int age;
     String gender;
@@ -11,6 +12,14 @@ public class UserVTO implements Serializable {
     String college;
 
     public UserVTO() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -64,7 +73,8 @@ public class UserVTO implements Serializable {
     @Override
     public String toString() {
         return "UserVTO{" +
-                "fullName='" + fullName + '\'' +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", e_mail='" + e_mail + '\'' +
