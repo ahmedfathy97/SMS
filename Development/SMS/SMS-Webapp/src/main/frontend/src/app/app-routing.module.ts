@@ -13,9 +13,7 @@ import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/
 import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/view-grade.component";
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
-
-// import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
-//import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -27,7 +25,7 @@ const routes: Routes = [
 
       {path: 'attend', component: CreateAttendanceComponent} ,
       {path:'course/quiz/new',component:CreateQuizComponent} ,
-     // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path: 'attend', component: CreateAttendanceComponent},
       {path:'course/new', component: CreateCourse},
       {path:'view-grade', component: ViewGradeComponent},

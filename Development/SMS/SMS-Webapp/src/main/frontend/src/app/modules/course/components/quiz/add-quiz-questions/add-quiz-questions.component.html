@@ -4,7 +4,6 @@
       <div class="card-body">
         <h4 class="header-title">Add questions</h4>
         <hr>
-
         <form [formGroup]="formData">
         <div class="form-group" >
           <label for="quesiontype">Select question type</label>
@@ -20,29 +19,33 @@
         <div class="form-group" *ngIf="textualIsSelected" >
           <label for="text_answer">model answer:</label>
           <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
+          <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
         </div>
-
           <div  *ngIf="trueFalseIsSelsected">
             <label class="mt-2">model answer:</label>
+            <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
             <div class="custom-control custom-radio">
               <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
               <label class="custom-control-label" for="trueAnswer">True</label>
+
             </div>
             <br>
             <div class="custom-control custom-radio">
               <input type="radio" id="falseAnswer"  name="customRadio" class="custom-control-input">
               <label class="custom-control-label" for="falseAnswer">False</label>
             </div>
+
           </div>
 
           <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
-          <br>
+            <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
+            <br>
           <label class="custom-control-label">choise1</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
+                 <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer1">
@@ -103,8 +106,8 @@
                   <td>{{item.question}}</td>
                   <td>
                     <ul class="d-flex justify-content-center">
-                      <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
-                      <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
+                      <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit" (click)="editQuestion(i)" [hidden]="editMode"></i></a></li>
+                      <li><a href="#" class="text-danger"><i class="ti-trash" (click)="deleteQuestion(i)"></i></a></li>
                     </ul>
                   </td>
                 </tr>
@@ -116,8 +119,7 @@
       </div>
     <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button>
   </div>
-
-
+</div>
 
 
 
