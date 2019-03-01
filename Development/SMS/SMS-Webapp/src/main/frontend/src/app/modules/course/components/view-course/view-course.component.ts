@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../shared/services/course.service";
 import {CourseVto} from "../../shared/data/course-vto";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-view-course',
@@ -10,14 +11,19 @@ import {CourseVto} from "../../shared/data/course-vto";
 })
 export class ViewCourseComponent implements OnInit {
 
-
+  corID : string ;
   private viewData: CourseVto = new CourseVto();
 
 
-  constructor(private corService: CourseService) { }
+  constructor(private corService: CourseService,
+              private route : ActivatedRoute) {
+    this.route.paramMap.subscribe(params =>{
+      this.corID = params.get("corID");
+
+    })
+  }
 
   ngOnInit() {
-
     this.corService.getCourseByID(1).subscribe(res => {  this.viewData = res ;});
   }
 

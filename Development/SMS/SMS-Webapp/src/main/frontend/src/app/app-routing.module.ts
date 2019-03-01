@@ -19,19 +19,42 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '', component: FullLayoutComponent, children:[
       {path: 'home', component: HomeComponent},
-      {path: 'create-grade', component: CreateGradeComponent},
-      {path:'course/new', component: CreateCourse},
-      {path:'course/view', component: ViewCourseComponent},
+      {path: 'course',/* component which view all courses*/ children:[
+          {path: 'new', component: CreateCourse},
+          {path: ':corID', component: ViewCourseComponent , children:[
+              {path: 'attendance', component: ViewAttendanceComponent , children:[
+                  {path: 'new', component: CreateAttendanceComponent},
+                  {path: ':stdID', component: ViewStudentAttendanceComponent},
+                ]},
+              {path: 'grade', component: ViewGradeComponent , children:[
+                  {path: 'new', component: CreateGradeComponent},
+                  {path: ':stdID', component: ViewStudentGradeComponent},
+                ]},
+              {path: 'quiz', /* component which view course's quiz*/ children:[
+                  {path: 'new', component: CreateQuizComponent},
+                  {path: ':quizID',/* component which view course's quiz with quizID*/ children:[
+                      {path: 'questions', component: AddQuizQuestionsComponent},
 
-      {path: 'attend', component: CreateAttendanceComponent} ,
-      {path:'course/quiz/new',component:CreateQuizComponent} ,
-      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
-      {path: 'attend', component: CreateAttendanceComponent},
-      {path:'course/new', component: CreateCourse},
-      {path:'view-grade', component: ViewGradeComponent},
-      {path:'std-grade',component:ViewStudentGradeComponent},
-      {path: 'view-attend', component: ViewAttendanceComponent},
-      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+                    ]},
+                ]},
+
+            ]},
+
+        ]},
+      //
+      // {path: 'create-grade', component: CreateGradeComponent},
+      // {path:'course/new', component: CreateCourse},
+      // {path:'course/view', component: ViewCourseComponent},
+      //
+      // {path: 'attend', component: CreateAttendanceComponent} ,
+      // {path:'course/quiz/new',component:CreateQuizComponent} ,
+      // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+      // {path: 'attend', component: CreateAttendanceComponent},
+      // {path:'course/new', component: CreateCourse},
+      // {path:'view-grade', component: ViewGradeComponent},
+      // {path:'std-grade',component:ViewStudentGradeComponent},
+      // {path: 'view-attend', component: ViewAttendanceComponent},
+      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
       // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
 
     ]},
