@@ -4,7 +4,6 @@ import {CourseDTO} from "../data/course/course-dto.data";
 import {CourseVto} from "../data/course-vto";
 import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
-import {ConfigParam} from "../../../../infrastructure/common/config-param";
 import {AttendanceDTO} from "../data/attendance-dto.data";
 
 

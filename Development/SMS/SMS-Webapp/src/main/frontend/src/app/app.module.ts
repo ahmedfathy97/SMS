@@ -29,6 +29,7 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
 import { ViewStudentAttendanceComponent } from './modules/course/components/attendance/view-student-attendance/view-student-attendance.component';
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
+import { CourseLectureComponent } from './modules/course/components/create-lecture/course-lecture.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
     ViewStudentGradeComponent ,
     AddQuizQuestionsComponent,
     ViewStudentAttendanceComponent,
+    CourseLectureComponent,
 
   ],
   imports: [

@@ -69,3 +69,12 @@ CREATE TABLE cor_std_att (
   CONSTRAINT fk_cor_std_auth_user FOREIGN KEY (std_id) REFERENCES course (id),
 
 );
+
+--- yousef ----
+CREATE TABLE lecture (
+  id            INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title      VARCHAR(25),
+  date   DATE   NOT NULL,
+  video_url  VARCHAR ,
+  description   VARCHAR(200)
+);

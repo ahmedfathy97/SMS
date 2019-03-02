@@ -14,10 +14,13 @@ import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/v
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+import {CourseLectureComponent} from "./modules/course/components/create-lecture/course-lecture.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '', component: FullLayoutComponent, children:[
+      {path: 'lecture', component: CourseLectureComponent},
+
       {path: 'home', component: HomeComponent},
       {path: 'course',/* component which view all courses*/ children:[
           {path: 'new', component: CreateCourse},

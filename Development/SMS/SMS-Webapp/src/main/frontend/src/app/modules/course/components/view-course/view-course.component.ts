@@ -24,7 +24,7 @@ export class ViewCourseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.corService.getCourseByID(1).subscribe(res => {  this.viewData = res ;});
+    this.corService.getCourseByID(2).subscribe(res => {  this.viewData = res ;});
   }
 
 }
