@@ -16,6 +16,12 @@ import {ViewStudentAttendanceComponent} from "./modules/course/components/attend
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 import {CourseLectureComponent} from "./modules/course/components/create-lecture/course-lecture.component";
 
+// import {ViewStudentAttendanceComponent} from "./modules/course/components/view-student-attendance/view-student-attendance.component";
+//import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
+import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
+// import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '', component: FullLayoutComponent, children:[
@@ -59,6 +65,8 @@ const routes: Routes = [
       // {path: 'view-attend', component: ViewAttendanceComponent},
       // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
       // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      {path:'attachment/file/upload', component: UploadComponent},
+      {path:'attachment/file/download', component: DownloadComponent}
 
     ]},
   {path: '', component: SimpleLayoutComponent, children:[
