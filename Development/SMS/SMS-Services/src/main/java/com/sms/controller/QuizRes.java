@@ -1,14 +1,11 @@
 package com.sms.controller;
 
 import com.sms.model.course.QuestionDTO;
+import com.sms.model.course.QuestionVTO;
 import com.sms.model.course.QuizDTO;
 import com.sms.service.QuizSer;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -27,5 +24,17 @@ public class QuizRes {
     public void createQuizQuestions(@PathParam("quizID") int quizID , List<QuestionDTO> questionList)
     {
        quizSer.createQuizQuestions(quizID ,questionList);
+    }
+
+
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{quizID}/questionsView")
+    public List<QuestionVTO> getQuizQuestions(@PathParam("quizID") int quizID)
+    {
+        List<QuestionVTO> questionsList =quizSer.getQuizQuestions(quizID) ;
+        return  questionsList ;
     }
 }

@@ -20,6 +20,7 @@ import {CourseLectureComponent} from "./modules/course/components/create-lecture
 //import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
+import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-questions/answer-questions.component";
 // import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
 
 const routes: Routes = [
@@ -57,7 +58,9 @@ const routes: Routes = [
       //
       // {path: 'attend', component: CreateAttendanceComponent} ,
       // {path:'course/quiz/new',component:CreateQuizComponent} ,
-      // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+     // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+      {path:'course/quiz/answer_questions',component:AnswerQuestionsComponent} ,
+
       // {path: 'attend', component: CreateAttendanceComponent},
       // {path:'course/new', component: CreateCourse},
       // {path:'view-grade', component: ViewGradeComponent},

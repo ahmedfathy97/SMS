@@ -1,7 +1,9 @@
 package com.sms.repository;
 
 import com.sms.model.course.QuestionDTO;
+import com.sms.model.course.QuestionVTO;
 import com.sms.model.course.QuizDTO;
+import com.sms.model.course.rm.QuestionVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,6 +26,17 @@ public class QuizRep {
                 "VALUES (?,?,?,?,?,?,?,?);\n" ;
         this.jdbcTemplate.update(sql,questionData.getQuestion() ,questionData.getModelAnswer(),
                 questionData.getAnswer1(),questionData.getAnswer2(),questionData.getAnswer3(),questionData.getAnswer4(),quizID ,questionData.getQuestionTypeID()) ;
+
+    }
+
+
+    public List<QuestionVTO> getQuizQuestions(int quizID)
+    {
+       String sql ="SELECT id ,question ,quiz_question_type_id," +
+               " answer1 ,answer2 ,answer3 ,answer4 FROM question" +
+               " where quiz_id = ? ;" ;
+
+       return this.jdbcTemplate.query(sql ,new QuestionVTORM() ,quizID) ;
 
     }
 

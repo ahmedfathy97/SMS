@@ -28,6 +28,7 @@ import { ViewStudentAttendanceComponent } from './modules/course/components/atte
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 import { CourseLectureComponent } from './modules/course/components/create-lecture/course-lecture.component';
+import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { CourseLectureComponent } from './modules/course/components/create-lectu
     AddQuizQuestionsComponent,
     ViewStudentAttendanceComponent,
     CourseLectureComponent,
+    AnswerQuestionsComponent,
 
   ],
   imports: [
