@@ -20,8 +20,8 @@ public class UserRep {
         this.jdbc=jdbc;
     }
     public UserVTO findByID( int userID){
-            String sql= "SELECT full_name,age,gender,e_mail,phone,college  FROM user_info u WHERE " +
-                    "u.id=?";
+            String sql= "SELECT id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,e_mail,phone,college  FROM auth_user u \n" +
+                    "WHERE  u.id= ? ;" ;
         List<UserVTO> user =this.jdbc.query(sql,new UserVTORM(),userID);
        return user.get(0);
 

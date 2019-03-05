@@ -11,10 +11,8 @@ public class UserVTORM implements RowMapper<UserVTO> {
     public UserVTO mapRow(ResultSet rs, int rowIndex) throws SQLException {
 
         UserVTO data=new UserVTO();
-        String firstName=rs.getString("first_name");
-        String lastName=rs.getString("last_name");
         data.setId(rs.getInt("id"));
-        data.setFullName(firstName + " " +lastName);
+        data.setFullName(rs.getString("full_name"));
         data.setAge(rs.getInt("age"));
         data.setGender(rs.getString("gender"));
         data.setE_mail(rs.getString("e_mail"));
