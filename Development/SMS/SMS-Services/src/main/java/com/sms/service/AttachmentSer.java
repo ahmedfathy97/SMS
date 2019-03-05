@@ -1,6 +1,6 @@
 package com.sms.service;
 
-import com.sms.controller.AttachmentRes;
+//import com.sms.controller.AttachmentRes;
 import com.sms.model.attachment.File;
 import com.sms.repository.AttachmentRep;
 import org.springframework.beans.factory.annotation.Autowired;
