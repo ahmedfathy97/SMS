@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserSer {
     private UserRep userRep;
-
     @Autowired
     public UserSer(UserRep userRep){
         this.userRep=userRep;
@@ -13,7 +12,7 @@ public class UserSer {
 
     public  UserVTO findByID( int userID) {
 
-        return userRep.findByID(userID);
+        return this.userRep.findByID(userID);
     }
 
 
