@@ -19,11 +19,11 @@ public class UserRep {
       public UserRep(JdbcTemplate jdbc){
         this.jdbc=jdbc;
     }
-    public List<UserVTO> findByID( int userID){
-            String sql= "SELECT full_name,age,gender,e_mail,phone,college  FROM user_info u WHERE" +
+    public UserVTO findByID( int userID){
+            String sql= "SELECT full_name,age,gender,e_mail,phone,college  FROM user_info u WHERE " +
                     "u.id=?";
-    List<UserVTO> user =this.jdbc.query(sql,new UserVTORM(),userID);
-       return user;
+        List<UserVTO> user =this.jdbc.query(sql,new UserVTORM(),userID);
+       return user.get(0);
 
 
     }

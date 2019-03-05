@@ -18,8 +18,8 @@ public class UserRes {
     @GET
     @Path("/{userID}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UserVTO> userData(@PathParam("userID") int userID) {
-       List<UserVTO> data = this.repository.findByID(userID);
+    public UserVTO userData(@PathParam("userID") int userID) {
+       UserVTO data = this.repository.findByID(userID);
       return data;
 
     }

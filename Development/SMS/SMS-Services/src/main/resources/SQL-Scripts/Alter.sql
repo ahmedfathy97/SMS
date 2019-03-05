@@ -113,10 +113,31 @@ CREATE TABLE attachment (
 );
 
 -- Abanoub End --
+--start Manar
 
 -- fathy start--
 ALTER TABLE question
 CHANGE COLUMN question_content  question VARCHAR(500) NOT NULL ,
 CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 -- fathy end --
+
+
+CREATE TABLE user_info (
+  id         INT(11)     NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ first_name  varchar(45) NOT NULL,
+ last_name  varchar(45) NOT NULL,
+  age  int(15) NOT NULL,
+  gender varchar(15) NOT NULL,
+  e_mail  varchar(15) NOT NULL,
+   phone  int(15) NOT NULL,
+  college varchar(15) NOT NULL
+);
+--end Manar
+--start manar
+INSERT INTO `sms`.`user_info` (`id`, `first_name`, `last_name`, `age`, `gender`, `e_mail`, `phone`, `college`) VALUES ('1', 'manar', 'ahmed', '12', 'female', 'manar.com', '1236', 'low');
+INSERT INTO `sms`.`user_info` (`id`, `first_name`, `last_name`, `age`, `gender`, `e_mail`, `phone`, `college`) VALUES ('2', 'yara', 'ahmed', '15', 'female', 'yra.com', '7856', 'low');
+--end manar
+-- manar
+ALTER TABLE `sms`.`user_info`
+RENAME TO  `sms`.`user` ;
 

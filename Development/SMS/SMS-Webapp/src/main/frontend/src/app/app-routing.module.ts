@@ -10,6 +10,9 @@ import {CreateCourse} from "./modules/course/components/create-course/create-cou
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 import {ViewAttendanceComponent} from "./modules/course/components/attendance/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/create-quiz.component";
+//import {ViewGradeComponent} from "./modules/course/components/view-cor-grade/view-grade/view-grade.component";
+import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
+//import {AddQuizQuiestionsComponent} from "./modules/course/components/quiz/add-quiz-quiestions/add-quiz-quiestions.component";
 import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/view-grade.component";
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
@@ -29,6 +32,22 @@ const routes: Routes = [
       {path: 'lecture', component: CourseLectureComponent},
 
       {path: 'home', component: HomeComponent},
+      {path: 'create-grade', component: CreateGradeComponent},
+    //  {path:'course/new', component: CourseDetailsComponent},
+      {path: 'attend', component: CreateAttendanceComponent} ,
+      {path:'course/quiz/new',component:CreateQuizComponent} ,
+      //{path:'course/quiz/add_questions',component:AddQuizQuiestionsComponent} ,
+      {path: 'attend', component: CreateAttendanceComponent},
+    //  {path:'course/new', component: CourseDetailsComponent},
+      {path:'view-grade', component: ViewGradeComponent},
+
+      {path:'profile',children:[
+          {path:':userID',component:UserProfileComponent}
+        ]},
+
+
+
+
       {path: 'course',/* component which view all courses*/ children:[
           {path: 'new', component: CreateCourse},
           {path: ':corID', component: ViewCourseComponent , children:[
@@ -36,10 +55,14 @@ const routes: Routes = [
                   {path: 'new', component: CreateAttendanceComponent},
                   {path: ':stdID', component: ViewStudentAttendanceComponent},
                 ]},
+
+
+
               {path: 'grade', component: ViewGradeComponent , children:[
                   {path: 'new', component: CreateGradeComponent},
                   {path: ':stdID', component: ViewStudentGradeComponent},
                 ]},
+
               {path: 'quiz', /* component which view course's quiz*/ children:[
                   {path: 'new', component: CreateQuizComponent},
                   {path: ':quizID',/* component which view course's quiz with quizID*/ children:[

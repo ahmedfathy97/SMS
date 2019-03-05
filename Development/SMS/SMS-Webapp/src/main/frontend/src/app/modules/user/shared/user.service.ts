@@ -4,13 +4,13 @@ import {UserVto} from "./data/user-vto";
 
 @Injectable()
 export class UserService {
-  APP_BASE_URL : string ="http://localhost:8080/api";
-  BASE_URL : string ="/user/";
+  // APP_BASE_URL : string ="http://localhost:8080/api";
+  // BASE_URL : string ="/user/";
   constructor( private http:HttpClient){}
 
   findByID(userID:number){
- return this.http.get<UserVto>(this.APP_BASE_URL+this.BASE_URL+userID);
-
+ //return this.http.get<UserVto>(this.APP_BASE_URL+this.BASE_URL+userID);
+    return this.http.get<UserVto>("http://localhost:8080/api/user/"+userID);
   }
 
 }
