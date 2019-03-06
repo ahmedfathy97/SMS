@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'lecture', component: CourseLectureComponent},
       {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
 
-      //   {path: 'home', component: HomeComponent},
+        {path: 'home', component: HomeComponent},
     //   {path: 'create-grade', component: CreateGradeComponent},
     // //  {path:'course/new', component: CourseDetailsComponent},
     //   {path: 'attend', component: CreateAttendanceComponent} ,
