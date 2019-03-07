@@ -152,3 +152,8 @@ add check(length(phone)>=8);
 
 --end manar
 
+-- fathy start --
+ALTER TABLE `sms`.`quiz`
+CHANGE COLUMN `due_date` `start_date` DATE NOT NULL ,
+ADD COLUMN `close_date` DATE NOT NULL AFTER `course_id`;
+-- fathy end --

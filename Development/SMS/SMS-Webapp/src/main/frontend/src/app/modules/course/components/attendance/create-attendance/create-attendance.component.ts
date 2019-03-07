@@ -45,6 +45,7 @@ export class CreateAttendanceComponent implements OnInit {
   }
 
   exist : boolean = false ;
+
   onSubmitNewAttendance() {
     let data: AttendanceDTO = new AttendanceDTO();
     data.course_id = this.formData.get('courseID').value;
@@ -61,6 +62,7 @@ export class CreateAttendanceComponent implements OnInit {
       );
       this.exist = true ;
   };
+
 
   toggleStdAttendance(index) {
     this.attendance.students[index].isAttend = !this.attendance.students[index].isAttend;

@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {QuestionType} from "../data/quiz/question-type";
 import {QuestionDto} from "../data/quiz/question-dto";
+import {QuestionVto} from "../data/quiz/question-vto";
 
 
 @Injectable()
@@ -24,6 +25,11 @@ export class QuizService {
   getAllQuestionsTypes()
   {
     return this.httpClient.get<QuestionType[]>(this.BASE_URL+"/lookup/questionType") ;
+  }
+
+  getQuizQuestions(quizID : number)
+  {
+     return this.httpClient.get<QuestionVto[]>(this.BASE_URL+"/quiz/" + quizID +"/questionsView") ;
   }
 
 

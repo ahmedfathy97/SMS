@@ -35,6 +35,7 @@ export class AddQuizQuestionsComponent implements OnInit {
     });
   }
 
+
   onclickoption(event:any)
   {
     debugger ;
@@ -50,8 +51,6 @@ export class AddQuizQuestionsComponent implements OnInit {
       this.trueFalseIsSelsected =true ;
       this.mcqIsSelected =false ;
       this.textualIsSelected =false ;
-
-
     }else if(event ==3)
     {
       this.textualIsSelected =true ;
@@ -63,6 +62,7 @@ export class AddQuizQuestionsComponent implements OnInit {
     }
 
   }
+
 
 
   formData: FormGroup = this.formBuilder.group({
@@ -83,7 +83,7 @@ export class AddQuizQuestionsComponent implements OnInit {
    questionData.answer1 =this.formData.get('answer1').value ;
    questionData.answer2 =this.formData.get('answer2').value ;
    questionData.answer3 =this.formData.get('answer3').value ;
-   questionData.answer4 =this.formData.get('answer3').value ;
+   questionData.answer4 =this.formData.get('answer4').value ;
    this.questionsList.push(questionData) ;
    this.table =true ;
    this.formData.reset();
@@ -98,6 +98,7 @@ export class AddQuizQuestionsComponent implements OnInit {
       console.log(err)
     });
   }
+
 
   editQuestion(index)
   {

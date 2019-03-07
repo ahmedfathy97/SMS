@@ -52,10 +52,11 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql, new StdDTORM(), corID);
     }
 
+
     public void insertNewQuiz(int courseID,QuizDTO quizData)
     {
-        String sql ="INSERT INTO quiz ( quiz_name, grade, due_date, course_id) VALUES (? ,? ,?,?);\n" ;
-        this.jdbcTemplate.update(sql,quizData.getQuizName() ,quizData.getGrade() ,quizData.getDueDate() ,courseID);
+        String sql ="INSERT INTO quiz ( quiz_name, grade, start_date, close_date , course_id) VALUES (? ,? ,?,? ,?);\n" ;
+        this.jdbcTemplate.update(sql,quizData.getQuizName() ,quizData.getGrade() ,quizData.getStartDate() ,quizData.getFinishDate() ,courseID);
     }
 
     public CourseVTO findByID(int corID) {

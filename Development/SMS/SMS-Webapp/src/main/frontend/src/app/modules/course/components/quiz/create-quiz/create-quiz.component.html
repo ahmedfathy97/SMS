@@ -15,10 +15,15 @@
           <label for="quiz_grade" class="col-form-label">Grade</label>
           <input class="form-control" formControlName="quizGrade" type="number" id="quiz_grade">
         </div>
+
         <div class="form-group">
-          <label for="quiz_date" class="col-form-label">Due Date</label>
-          <input class="form-control" formControlName="dueDate"type="date" id="quiz_date">
+          <label for="start_date" class="col-form-label">Start Date</label>
+          <input class="form-control" formControlName="startDate" type="date" id="start_date">
         </div>
+          <div class="form-group">
+            <label for="finish_date" class="col-form-label">close Date</label>
+            <input class="form-control" formControlName="finishDate" type="date" id="finish_date">
+          </div>
         </form>
         <button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button>
         <button class="btn btn-dark pull-right">Cancel</button>

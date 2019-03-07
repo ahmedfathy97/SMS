@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'lecture', component: CourseLectureComponent},
       {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
 
-        {path: 'home', component: HomeComponent},
+      //   {path: 'home', component: HomeComponent},
     //   {path: 'create-grade', component: CreateGradeComponent},
     // //  {path:'course/new', component: CourseDetailsComponent},
     //   {path: 'attend', component: CreateAttendanceComponent} ,
@@ -69,8 +69,8 @@ const routes: Routes = [
       // {path:'course/view', component: ViewCourseComponent},
       //
       // {path: 'attend', component: CreateAttendanceComponent} ,
-      // {path:'course/quiz/new',component:CreateQuizComponent} ,
-     // {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+      {path:'course/quiz/new',component:CreateQuizComponent} ,
+      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path:'course/quiz/answer_questions',component:AnswerQuestionsComponent} ,
 
       // {path: 'attend', component: CreateAttendanceComponent},

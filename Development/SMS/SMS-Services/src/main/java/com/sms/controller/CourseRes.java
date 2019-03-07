@@ -71,6 +71,8 @@ public class CourseRes {
         List<CourseVTO> list =this.repository.findAllInstructorCourses(instructorID);
         return list;
     }
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{corID}")
@@ -81,7 +83,7 @@ public class CourseRes {
 
 
     @POST
-    @Path("{courseID}/quiz")
+    @Path("/{courseID}/quiz")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData )
     {

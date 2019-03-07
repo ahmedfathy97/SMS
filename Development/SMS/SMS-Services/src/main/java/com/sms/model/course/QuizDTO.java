@@ -6,7 +6,9 @@ public class QuizDTO {
 
     String quizName ;
     int grade ;
-    Date dueDate ;
+    Date startDate;
+    Date finishDate ;
+
 
     public QuizDTO() {
     }
@@ -27,13 +29,19 @@ public class QuizDTO {
         this.grade = grade;
     }
 
-    public Date getDueDate() {
-        return dueDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
+    public Date getFinishDate() {
+        return finishDate;
+    }
 
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
+    }
 }

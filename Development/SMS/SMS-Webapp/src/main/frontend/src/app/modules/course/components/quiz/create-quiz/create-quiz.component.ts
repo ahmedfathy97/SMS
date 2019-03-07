@@ -21,7 +21,8 @@ export class CreateQuizComponent implements OnInit {
   formData: FormGroup = this.formBuilder.group({
     quizName :[null, [Validators.required, Validators.maxLength(25)]],
     quizGrade:[null,[Validators.required] ],
-    dueDate:[null ,[Validators.required] ]
+    startDate:[null ,[Validators.required] ] ,
+    finishDate:[null ,[Validators.required]]
   }) ;
 
   onSubmitNewQuiz()
@@ -30,7 +31,8 @@ export class CreateQuizComponent implements OnInit {
     quizData.quizName =this.formData.get('quizName').value;
     quizData.grade =this.formData.get('quizGrade').value;
     //quizData.courseID = 1;
-    quizData.dueDate =this.formData.get('dueDate').value ;
+    quizData.startDate =this.formData.get('startDate').value ;
+    quizData.finishDate =this.formData.get('finishDate').value ;
 
     this.courseService.createNewQuiz(this.courseID, quizData).subscribe(res => {
       console.log("Success");

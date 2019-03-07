@@ -40,7 +40,7 @@ export class CourseService {
   }
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
-    return this.http.post(this.BASE_URL + "/course/"+ courseID +"/quiz",quizData);
+    return this.http.post(this.APP_BASE_URL+ "/course/"+ courseID +"/quiz",quizData);
   }
 
 

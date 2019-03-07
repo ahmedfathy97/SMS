@@ -3,15 +3,13 @@
     <div class="card-body">
       <h4 class="header-title">quiz Number</h4>
       <hr>
-      <div class="form-group" >
-        <label>question</label>
+      <div class="form-group" *ngFor="let item of quizQuestions" >
+        <label>{{item.question}}</label>
         <textarea class="form-control" rows="5" id="text_answer"></textarea>
         <br>
       </div>
-
       <div>
         <label class="mt-2">question:</label>
-
         <div class="custom-control custom-radio">
           <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
           <label class="custom-control-label" for="trueAnswer">True</label>
@@ -28,7 +26,7 @@
         <br>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="choise1">
-          <label class="custom-control-label" for="choise1">choise1 </label>
+          <label class="custom-control-label" for="choise1">choise1</label>
         </div>
         <br>
         <div class="custom-control custom-checkbox">
@@ -46,16 +44,8 @@
           <label class="custom-control-label" for="choise4">choise4</label>
         </div>
         <br>
-        <br>
       </div>
-
-
-
-
     </div>
-
-
-
   </div>
 
 
