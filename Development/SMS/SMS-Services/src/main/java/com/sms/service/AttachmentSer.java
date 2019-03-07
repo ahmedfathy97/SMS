@@ -23,7 +23,7 @@ public class AttachmentSer {
     public void saveFile(InputStream file, String name, File attachment) {
         // Store on disk
         try {
-            java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" + name);
+            java.nio.file.Path path = FileSystems.getDefault().getPath("E://" + name);
             Files.copy(file, path);
         } catch (FileAlreadyExistsException e) {
             System.out.println("File already exists with the same name: " + name);
