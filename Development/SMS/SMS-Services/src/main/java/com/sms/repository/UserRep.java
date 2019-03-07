@@ -21,7 +21,8 @@ public class UserRep {
     }
     public UserVTO findByID( int userID){
             String sql= "SELECT id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,e_mail,phone,college  FROM auth_user u \n" +
-                    "WHERE  u.id= ? ;" ;
+                    "WHERE  u.id= ? " +
+                    "CHECK  (age >=17 and e_mail like '%@%' and length (phone)>=8)";
         List<UserVTO> user =this.jdbc.query(sql,new UserVTORM(),userID);
        return user.get(0);
 
