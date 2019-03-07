@@ -16,7 +16,7 @@ import { CreateAttendanceComponent } from './modules/course/components/attendanc
 
 // import { QuillModule } from 'ngx-quill'
 import {HttpClientModule} from "@angular/common/http";
- // import { CreateTutorialComponent } from './modules/tutorial/components/create-tutorial/create-tutorial.component';
+//import { CreateTutorialComponent } from './modules/components/tutorialcreate-tutorial/create-tutorial.component';
 import { ViewGradeComponent } from './modules/course/components/grade/view-grade/view-grade.component';
 import { ViewAttendanceComponent } from './modules/course/components/attendance/view-attendance/view-attendance.component';
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
@@ -30,6 +30,7 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
 import { CourseLectureComponent } from './modules/course/components/create-lecture/course-lecture.component';
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
+import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 
 
 @NgModule({
@@ -44,27 +45,21 @@ import { AnswerQuestionsComponent } from './modules/course/components/quiz/answe
     LoginComponent,
     CreateGradeComponent,
     CreateAttendanceComponent,
-    // CreateTutorialComponent,
     CreateCourse,
     ViewCourseComponent,
     ViewAttendanceComponent,
-
     CreateQuizComponent,
     ViewGradeComponent,
     UserProfileComponent,
     ViewGradeComponent,
     UploadComponent,
     DownloadComponent,
-    AddQuizQuestionsComponent ,
-    AddQuizQuestionsComponent ,
-    ViewStudentGradeComponent,
-
     ViewStudentGradeComponent ,
     AddQuizQuestionsComponent,
     ViewStudentAttendanceComponent,
     CourseLectureComponent,
     AnswerQuestionsComponent,
-
+    TutorialsComponent
   ],
   imports: [
     BrowserModule,

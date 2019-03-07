@@ -10,6 +10,7 @@ import {CourseVto} from "../../shared/data/course-vto";
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, TableService , FormBuilder, CourseService ]
 
 })
+
 export class TutorialsComponent implements OnInit {
   public tools: object = {
     items: [
