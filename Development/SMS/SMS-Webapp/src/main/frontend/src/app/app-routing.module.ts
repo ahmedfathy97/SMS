@@ -4,7 +4,7 @@ import {FullLayoutComponent} from "./layout/components/full-layout/full-layout.c
 import {HomeComponent} from "./modules/home/home.component";
 import {SimpleLayoutComponent} from "./layout/components/simple-layout/simple-layout.component";
 import {LoginComponent} from "./modules/security/components/login/login.component";
-import {CreateGradeComponent} from "./modules/course/components/create-grade/create-grade.component";
+import {CreateGradeComponent} from "./modules/course/components/grade/create-grade/create-grade.component";
 import {CreateAttendanceComponent} from "./modules/course/components/attendance/create-attendance/create-attendance.component";
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
