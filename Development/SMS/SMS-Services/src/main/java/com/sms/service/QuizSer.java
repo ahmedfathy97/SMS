@@ -1,5 +1,6 @@
 package com.sms.service;
 import com.sms.model.course.QuestionDTO;
+import com.sms.model.course.QuizDTO;
 import com.sms.model.course.QuestionVTO;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,6 @@ public class QuizSer {
         List<QuestionVTO> questionList = quizRep.getQuizQuestions(quizID) ;
         return questionList ;
     }
-}
+    }
+
+

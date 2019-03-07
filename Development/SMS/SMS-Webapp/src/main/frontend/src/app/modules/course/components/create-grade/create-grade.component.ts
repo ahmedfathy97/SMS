@@ -46,15 +46,15 @@ export class CreateGradeComponent implements OnInit {
     this.courseService.getAllCourseStudents(courseID).subscribe(
       res => {
         this.students = res;
-        for(let i=0; i<this.students.length; i++)
+        for(let i=0; i<this.students.length; i++){
           this.addItem();
 
+        }
       }
     );
   }
 
   onSubmitGradeSheet() {
-
     for(let i=0; i<this.students.length; i++)
       this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
 

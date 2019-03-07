@@ -1,12 +1,15 @@
 package com.sms.repository;
 
 
+import com.sms.model.course.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.rm.AttendanceDTORM;
 import com.sms.model.course.rm.CourseVTORM;
+import com.sms.model.course.rm.QuizDTORM;
 import com.sms.model.course.rm.StdDTORM;
+import com.sms.model.lookUp.rm.QuestionTypeRM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;

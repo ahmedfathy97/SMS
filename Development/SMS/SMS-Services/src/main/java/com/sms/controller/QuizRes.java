@@ -3,8 +3,11 @@ package com.sms.controller;
 import com.sms.model.course.QuestionDTO;
 import com.sms.model.course.QuestionVTO;
 import com.sms.model.course.QuizDTO;
+import com.sms.repository.QuizRep;
 import com.sms.service.QuizSer;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.ws.rs.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -12,10 +15,15 @@ import java.util.List;
 @Path("/quiz")
 public class QuizRes {
     private QuizSer quizSer ;
+    private QuizRep repository ;
+
     @Autowired
-    public QuizRes(QuizSer quizSer) {
-        this.quizSer=quizSer ;
+    public QuizRes(QuizSer quizSer, QuizRep repository) {
+        this.quizSer = quizSer;
+        this.repository = repository;
     }
+
+
 
 
     @POST
@@ -37,4 +45,11 @@ public class QuizRes {
         List<QuestionVTO> questionsList =quizSer.getQuizQuestions(quizID) ;
         return  questionsList ;
     }
+
+
+
+
+
+
+
 }

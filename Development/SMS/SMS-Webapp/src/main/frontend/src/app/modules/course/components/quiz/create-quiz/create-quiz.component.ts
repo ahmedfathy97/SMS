@@ -39,6 +39,20 @@ export class CreateQuizComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+
+    this.courseService.getCloseDate(this.courseID ,1 ).subscribe(res => {
+      console.log("Success1");
+    }, err => {
+      console.log(err);
+    });
+
+    this.courseService.createQuizClosure(this.courseID,1, quizData).subscribe(res => {
+      console.log("Success2");
+    }, err => {
+      console.log(err);
+    });
+
+
   }
 
 }

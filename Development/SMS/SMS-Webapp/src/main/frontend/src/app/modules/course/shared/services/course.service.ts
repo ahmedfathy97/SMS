@@ -39,17 +39,23 @@ export class CourseService {
 
   }
 
+
+
   createNewQuiz(courseID:number,quizData: QuizDto) {
-    return this.http.post(this.APP_BASE_URL+ "/course/"+ courseID +"/quiz",quizData);
+    return this.http.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
+  }
+  getCloseDate(courseID : number ,quizID : number )
+  {
+    return this.http.get<QuizDto>(this.APP_BASE_URL +this.BASE_URL + courseID + "/quiz/"+ quizID + "/close");
+
   }
 
+  createQuizClosure(courseID : number ,quizID : number , data : QuizDto){
 
+    return this.http.post(this.APP_BASE_URL +this.BASE_URL + courseID +"/quiz/"+ quizID , data);
 
-  //TODO: Yara - this function will take courseID & attendanceData as Parameters
-  //TODO: Yara - Create new Service modules/course/shared/services/attendance.service.ts
-  //TODO: Yara - move this function to AttendanceService
-  //TODO: Yara - rename to createNewAttendanceSheet
-  //TODO: Yara - Use APP_BASE_URL &  BASE_URL
+  }
+
 
   getCourseAttendance (courseID :number){
     return this.http.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")

@@ -51,6 +51,7 @@ export class ViewAttendanceComponent implements OnInit {
       }
 
     }
+    console.log(this.tableView);
   }
   mapStdAttend(stdName , sheetDate){
     for (let sheet of this.attendanceList){

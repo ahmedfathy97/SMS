@@ -6,6 +6,7 @@ import com.sms.model.course.CourseVTO;
 import com.sms.model.course.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.repository.CourseRep;
+import com.sms.repository.QuizRep;
 import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
 import com.sms.service.CourseSer;
@@ -23,16 +24,19 @@ public class CourseRes {
     private CourseRep repository;
     private CourseSer courseSer ;
     private GradeRep gradeRepository;
+    private QuizRep rep ;
     @Autowired
     public CourseRes(
             CourseRep repository,
             CourseSer courseSer,
             GradeRep gradeRepository,
-            AttendanceSer attendance) {
+            AttendanceSer attendance
+            ,QuizRep rep ) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
         this.repository = repository;
         this.attendance = attendance;
+        this.rep = rep;
     }
 
     //    public CourseRes(GradeRep gradeRepository) {
@@ -82,13 +86,32 @@ public class CourseRes {
     }
 
 
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/quiz/{quizID}/close")
+    public List<QuizDTO> getCloseDate(@PathParam("courseID") int courseID , @PathParam("quizID") int quizID) {
+        List<QuizDTO> list =this.rep.getCloseDate(courseID, quizID);
+        return list;
+    }
+
     @POST
     @Path("/{courseID}/quiz")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData )
-    {
-        courseSer.createQuiz(courseID,quizData);
+    public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData ) {
+        courseSer.createQuiz(courseID, quizData);
     }
+
+    @POST
+    @Path("/{courseID}/quiz/{quizID}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createQuizClosure(@PathParam("quizID") int quizID ,@PathParam("courseID") int courseID,  QuizDTO data)
+    {
+        courseSer.createQuizClosure(courseID,quizID, data);
+    }
+
+
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

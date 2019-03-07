@@ -15,6 +15,7 @@ import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/v
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
+import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 import {CourseLectureComponent} from "./modules/course/components/create-lecture/course-lecture.component";
 
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
@@ -62,6 +63,16 @@ const routes: Routes = [
 
             ]},
 
+      {path: 'attend', component: CreateAttendanceComponent} ,
+      {path:'course/quiz/new',component:CreateQuizComponent} ,
+      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
+      {path: 'attend', component: CreateAttendanceComponent},
+      {path:'course/new', component: CreateCourse},
+      {path:'view-grade', component: ViewGradeComponent},
+      {path:'std-grade',component:ViewStudentGradeComponent},
+      {path: 'view-attend', component: ViewAttendanceComponent},
+      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      {path: 'tutorials', component: TutorialsComponent},
         ]},
       //
       // {path: 'create-grade', component: CreateGradeComponent},
@@ -73,13 +84,13 @@ const routes: Routes = [
       {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path:'course/quiz/answer_questions',component:AnswerQuestionsComponent} ,
 
-      // {path: 'attend', component: CreateAttendanceComponent},
-      // {path:'course/new', component: CreateCourse},
-      // {path:'view-grade', component: ViewGradeComponent},
-      // {path:'std-grade',component:ViewStudentGradeComponent},
-      // {path: 'view-attend', component: ViewAttendanceComponent},
-      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
-      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      {path: 'attend', component: CreateAttendanceComponent},
+      {path:'course/new', component: CreateCourse},
+      {path:'view-grade', component: ViewGradeComponent},
+      {path:'std-grade',component:ViewStudentGradeComponent},
+      {path: 'view-attend', component: ViewAttendanceComponent},
+      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
       {path:'attachment/file/upload', component: UploadComponent},
       {path:'attachment/file/download', component: DownloadComponent}
 

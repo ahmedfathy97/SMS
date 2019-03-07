@@ -7,20 +7,21 @@
           <table class="table text-center">
             <thead class="text-uppercase bg-info">
             <tr class="text-white">
+              <th>#</th>
               <th >Name</th>
-              <th *ngFor="let sheet of tableView[0] ; index as i ; ">
-                <ng-template [ngIf]="i!=0">{{sheet}}</ng-template>
-
+              <th *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">
+                <!--<ng-template [ngIf]="i!=0"></ng-template>-->
+                {{sheet}}
               </th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let row of tableView;index as i;">
-              <td *ngIf="i!=0">{{row[0]}}</td>
-              <td *ngFor="let isAttend  of tableView[i] ; index as j;">
-                <span class="badge badge-primary" *ngIf="i!=0 && j!=0 && isAttend">attend</span>
-                <span class="badge badge-danger" *ngIf="i!=0 && j!=0 && !isAttend">absent</span>
-
+            <tr *ngFor="let row of tableView | slice:1:tableView.length;index as i;">
+              <td >{{i}}</td>
+              <td >{{row[0]}}</td>
+              <td *ngFor="let isAttend  of tableView[i] | slice:1:tableView[i].length ; index as j;">
+                <span class="badge badge-primary" *ngIf=" isAttend">attend</span>
+                <span class="badge badge-danger" *ngIf=" !isAttend">absent</span>
               </td>
             </tr>
             </tbody>

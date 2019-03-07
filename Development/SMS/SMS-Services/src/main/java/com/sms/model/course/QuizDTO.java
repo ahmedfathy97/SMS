@@ -9,6 +9,16 @@ public class QuizDTO {
     Date startDate;
     Date finishDate ;
 
+    boolean closeAuto  ;
+
+    public boolean iscloseAuto() {
+        return closeAuto;
+    }
+
+    public void setcloseAuto(boolean closeAuto) {
+        this.closeAuto = closeAuto;
+    }
+
 
     public QuizDTO() {
     }
@@ -44,4 +54,13 @@ public class QuizDTO {
     public void setFinishDate(Date finishDate) {
         this.finishDate = finishDate;
     }
+    @Override
+    public String toString() {
+        return "QuizDTO{" +
+                "quizName='" + quizName + '\'' +
+                ", grade=" + grade +
+                ", autoClose=" + closeAuto +
+                '}';
+    }
+
 }

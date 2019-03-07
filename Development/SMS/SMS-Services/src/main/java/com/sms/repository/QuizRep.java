@@ -3,6 +3,7 @@ package com.sms.repository;
 import com.sms.model.course.QuestionDTO;
 import com.sms.model.course.QuestionVTO;
 import com.sms.model.course.QuizDTO;
+import com.sms.model.course.rm.QuizDTORM;
 import com.sms.model.course.rm.QuestionVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,8 +42,24 @@ public class QuizRep {
     }
 
 
+    public List<QuizDTO> getCloseDate (int courseID ,int quizID) {
 
+        String sql = " select due_date from quiz where sysdate() > due_date " +
+                " and id = ? " +
+                " and course_id = ?";
 
+        return this.jdbcTemplate.query(sql, new QuizDTORM(), quizID , courseID);
 
+    }
+
+    public void createQuizClosure (int courseID , int quizID , QuizDTO data){
+
+        String sql = " update quiz set close_date = due_date , close_auto = true " +
+        " where id = ? " +
+        " and course_id = ?";
+
+        this.jdbcTemplate.update(sql,courseID ,quizID ) ;
+
+    }
 
 }
