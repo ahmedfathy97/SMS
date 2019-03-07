@@ -27,11 +27,6 @@ public class CourseSer {
         courseRep.insertNewQuiz(courseID,quizData);
     }
 
-    public void createQuizClosure (int courseID,int quizID , QuizDTO data)
-    {
-            quizRep.getCloseDate(courseID,quizID);
-            quizRep.createQuizClosure(courseID,quizID ,data);
 
-    }
 
 }

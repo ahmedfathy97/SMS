@@ -44,17 +44,14 @@ export class CourseService {
   createNewQuiz(courseID:number,quizData: QuizDto) {
     return this.http.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
   }
-  getCloseDate(courseID : number ,quizID : number )
-  {
-    return this.http.get<QuizDto>(this.APP_BASE_URL +this.BASE_URL + courseID + "/quiz/"+ quizID + "/close");
 
-  }
+  // getCloseDate(courseID : number ,quizID : number )
+  // {
+  //   return this.http.get<QuizDto>(this.APP_BASE_URL +this.BASE_URL + courseID + "/quiz/"+ quizID + "/close");
+  //
+  // }
 
-  createQuizClosure(courseID : number ,quizID : number , data : QuizDto){
 
-    return this.http.post(this.APP_BASE_URL +this.BASE_URL + courseID +"/quiz/"+ quizID , data);
-
-  }
 
 
   getCourseAttendance (courseID :number){

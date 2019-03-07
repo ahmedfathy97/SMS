@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -42,23 +43,20 @@ public class QuizRep {
     }
 
 
-    public List<QuizDTO> getCloseDate (int courseID ,int quizID) {
+    public Date getCloseDate (int quizID) {
 
-        String sql = " select due_date from quiz where sysdate() > due_date " +
-                " and id = ? " +
-                " and course_id = ?";
-
-        return this.jdbcTemplate.query(sql, new QuizDTORM(), quizID , courseID);
+        String sql = "select close_date from quiz where  id = ? ; " ;
+        QuizDTO quizData = this.jdbcTemplate.queryForObject(sql ,new QuizDTORM(), quizID);
+        return quizData.getFinishDate() ;
 
     }
 
-    public void createQuizClosure (int courseID , int quizID , QuizDTO data){
+    public void createQuizClosure (int quizID){
 
-        String sql = " update quiz set close_date = due_date , close_auto = true " +
-        " where id = ? " +
-        " and course_id = ?";
+        String sql = "update quiz set close_auto = true \n" +
+                "where id = ? ;" ;
 
-        this.jdbcTemplate.update(sql,courseID ,quizID ) ;
+        this.jdbcTemplate.update(sql, quizID ) ;
 
     }
 

@@ -86,30 +86,12 @@ public class CourseRes {
     }
 
 
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/quiz/{quizID}/close")
-    public List<QuizDTO> getCloseDate(@PathParam("courseID") int courseID , @PathParam("quizID") int quizID) {
-        List<QuizDTO> list =this.rep.getCloseDate(courseID, quizID);
-        return list;
-    }
-
     @POST
     @Path("/{courseID}/quiz")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData ) {
         courseSer.createQuiz(courseID, quizData);
     }
-
-    @POST
-    @Path("/{courseID}/quiz/{quizID}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void createQuizClosure(@PathParam("quizID") int quizID ,@PathParam("courseID") int courseID,  QuizDTO data)
-    {
-        courseSer.createQuizClosure(courseID,quizID, data);
-    }
-
 
 
 

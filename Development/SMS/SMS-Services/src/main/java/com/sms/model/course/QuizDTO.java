@@ -8,19 +8,17 @@ public class QuizDTO {
     int grade ;
     Date startDate;
     Date finishDate ;
-
-    boolean closeAuto  ;
-
-    public boolean iscloseAuto() {
-        return closeAuto;
-    }
-
-    public void setcloseAuto(boolean closeAuto) {
-        this.closeAuto = closeAuto;
-    }
-
+    boolean isClosed;
 
     public QuizDTO() {
+    }
+
+    public boolean isClosed() {
+        return isClosed;
+    }
+
+    public void setClosed(boolean closed) {
+        isClosed = closed;
     }
 
     public String getQuizName() {
@@ -59,7 +57,7 @@ public class QuizDTO {
         return "QuizDTO{" +
                 "quizName='" + quizName + '\'' +
                 ", grade=" + grade +
-                ", autoClose=" + closeAuto +
+                ", autoClose=" + isClosed +
                 '}';
     }
 

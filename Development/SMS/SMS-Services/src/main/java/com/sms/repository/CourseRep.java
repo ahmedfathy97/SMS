@@ -55,8 +55,8 @@ public class CourseRep {
 
     public void insertNewQuiz(int courseID,QuizDTO quizData)
     {
-        String sql ="INSERT INTO quiz ( quiz_name, grade, start_date, close_date , course_id) VALUES (? ,? ,?,? ,?);\n" ;
-        this.jdbcTemplate.update(sql,quizData.getQuizName() ,quizData.getGrade() ,quizData.getStartDate() ,quizData.getFinishDate() ,courseID);
+        String sql ="INSERT INTO quiz ( quiz_name, grade, start_date, close_date , course_id , auto_close ) VALUES (? ,? ,?,? ,? ,?);\n" ;
+        this.jdbcTemplate.update(sql,quizData.getQuizName() ,quizData.getGrade() ,quizData.getStartDate() ,quizData.getFinishDate() ,courseID , quizData.isClosed());
     }
 
     public CourseVTO findByID(int corID) {

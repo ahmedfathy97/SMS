@@ -33,25 +33,20 @@ export class CreateQuizComponent implements OnInit {
     //quizData.courseID = 1;
     quizData.startDate =this.formData.get('startDate').value ;
     quizData.finishDate =this.formData.get('finishDate').value ;
-
+    quizData.isClosed = false ;
     this.courseService.createNewQuiz(this.courseID, quizData).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err);
     });
 
-    this.courseService.getCloseDate(this.courseID ,1 ).subscribe(res => {
-      console.log("Success1");
-    }, err => {
-      console.log(err);
-    });
 
-    this.courseService.createQuizClosure(this.courseID,1, quizData).subscribe(res => {
-      console.log("Success2");
-    }, err => {
-      console.log(err);
-    });
-
+    // this.courseService.createQuizClosure(this.courseID,1, quizData).subscribe(res => {
+    //   console.log("Success2");
+    // }, err => {
+    //   console.log(err);
+    // });
+    //
 
   }
 

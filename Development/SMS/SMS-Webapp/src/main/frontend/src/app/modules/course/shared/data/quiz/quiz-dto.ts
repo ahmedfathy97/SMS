@@ -5,5 +5,5 @@ export class QuizDto {
   grade	:number ;
   startDate: Date ;
   finishDate :Date ;
-  isClosed : boolean =false ;
+  isClosed :boolean ;
 }

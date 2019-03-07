@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.PathParam;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,6 +36,28 @@ public class QuizSer {
     {
         List<QuestionVTO> questionList = quizRep.getQuizQuestions(quizID) ;
         return questionList ;
+    }
+
+
+    public Date getCloseDate( int quizID) {
+        Date closeDate =this.quizRep.getCloseDate(quizID);
+        return closeDate;
+    }
+
+
+    public void createQuizClosure (int quizID)
+    {
+        Date finishDate =  this.getCloseDate(quizID);
+
+        Instant closeDate = finishDate.toInstant();
+        Instant currentDate = ZonedDateTime.now().toInstant();
+
+        if(currentDate.isAfter(closeDate))
+        {
+            quizRep.createQuizClosure(quizID);
+        }
+
+
     }
     }
 

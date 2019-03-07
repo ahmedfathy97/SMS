@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.ws.rs.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 @Path("/quiz")
@@ -44,6 +45,21 @@ public class QuizRes {
     {
         List<QuestionVTO> questionsList =quizSer.getQuizQuestions(quizID) ;
         return  questionsList ;
+    }
+
+
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/{quizID}/close")
+
+
+
+    @POST
+    @Path("/{quizID}/closeQuiz")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createQuizClosure(@PathParam("quizID") int quizID)
+    {
+        quizSer.createQuizClosure(quizID);
     }
 
 

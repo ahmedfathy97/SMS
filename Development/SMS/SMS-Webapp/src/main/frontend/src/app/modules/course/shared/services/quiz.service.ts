@@ -32,5 +32,10 @@ export class QuizService {
      return this.httpClient.get<QuestionVto[]>(this.BASE_URL+"/quiz/" + quizID +"/questionsView") ;
   }
 
+  createQuizClosure(courseID : number ,quizID : number , data : QuizDto){
+
+    return this.httpClient.post(this.BASE_URL + "/quiz/" + courseID + quizID , data);
+
+  }
 
 }

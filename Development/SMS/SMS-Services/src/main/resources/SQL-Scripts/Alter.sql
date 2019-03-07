@@ -156,4 +156,8 @@ add check(length(phone)>=8);
 ALTER TABLE `sms`.`quiz`
 CHANGE COLUMN `due_date` `start_date` DATE NOT NULL ,
 ADD COLUMN `close_date` DATE NOT NULL AFTER `course_id`;
+
+ALTER TABLE `sms`.`quiz`
+ADD COLUMN `auto_close` TINYINT NULL AFTER `close_date`;
+
 -- fathy end --
