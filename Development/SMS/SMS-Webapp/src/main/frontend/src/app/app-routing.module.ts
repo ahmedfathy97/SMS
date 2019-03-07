@@ -15,7 +15,7 @@ import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/v
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
-import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
+//import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 import {CourseLectureComponent} from "./modules/course/components/create-lecture/course-lecture.component";
 
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
@@ -28,7 +28,7 @@ const routes: Routes = [
       {path: 'lecture', component: CourseLectureComponent},
       {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
 
-      //   {path: 'home', component: HomeComponent},
+        {path: 'home', component: HomeComponent},
     //   {path: 'create-grade', component: CreateGradeComponent},
     // //  {path:'course/new', component: CourseDetailsComponent},
     //   {path: 'attend', component: CreateAttendanceComponent} ,
@@ -72,7 +72,7 @@ const routes: Routes = [
       {path:'std-grade',component:ViewStudentGradeComponent},
       {path: 'view-attend', component: ViewAttendanceComponent},
       {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
-      {path: 'tutorials', component: TutorialsComponent},
+      //{path: 'tutorials', component: TutorialsComponent},
         ]},
       //
       // {path: 'create-grade', component: CreateGradeComponent},

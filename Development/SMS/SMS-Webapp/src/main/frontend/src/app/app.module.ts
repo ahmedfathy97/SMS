@@ -30,7 +30,7 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
 import { CourseLectureComponent } from './modules/course/components/create-lecture/course-lecture.component';
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
-import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
+//import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import {TutorialsComponent} from "./modules/course/components/tutorials/tutorial
     ViewStudentAttendanceComponent,
     CourseLectureComponent,
     AnswerQuestionsComponent,
-    TutorialsComponent
+  //  TutorialsComponent
   ],
   imports: [
     BrowserModule,
