@@ -141,15 +141,6 @@ UPDATE `sms`.`auth_user` SET `gender`='male', `e_mail`='gfgffg', `phone`='965' W
 
 INSERT INTO `sms`.`auth_user` (`id`, `user_name`, `user_pass`, `first_name`, `last_name`, `age`, `gender`, `e_mail`, `phone`) VALUES ('7', 'manar', '1569', 'manar', 'el sayed', '20', 'female', 'kjuytr@huyt.com', '15897');
 
- ALTER TABLE auth_user
-add check(age>=1);
-
-ALTER TABLE auth_user
-add check(e_mail like '%@%');
-
-ALTER TABLE auth_user
-add check(length(phone)>=8);
-
 --end manar
 
 -- fathy start --
