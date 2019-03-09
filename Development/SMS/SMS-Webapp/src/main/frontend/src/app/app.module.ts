@@ -27,7 +27,7 @@ import { ViewStudentGradeComponent } from './modules/course/components/grade/vie
 import { ViewStudentAttendanceComponent } from './modules/course/components/attendance/view-student-attendance/view-student-attendance.component';
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
-import { CourseLectureComponent } from './modules/course/components/create-lecture/course-lecture.component';
+import { CreateLecture } from './modules/course/components/create-lecture/create-lecture.component';
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
 //import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
@@ -57,7 +57,7 @@ import { AnswerQuestionsComponent } from './modules/course/components/quiz/answe
     ViewStudentGradeComponent ,
     AddQuizQuestionsComponent,
     ViewStudentAttendanceComponent,
-    CourseLectureComponent,
+    CreateLecture,
     AnswerQuestionsComponent,
   //  TutorialsComponent
   ],

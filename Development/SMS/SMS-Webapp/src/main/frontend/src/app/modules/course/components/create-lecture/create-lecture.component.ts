@@ -5,11 +5,11 @@ import {LectureService} from "../../shared/services/lecture.service";
 
 @Component({
   selector: 'app-course-lecture',
-  templateUrl: './course-lecture.component.html',
-  styleUrls: ['./course-lecture.component.css'],
+  templateUrl: './create-lecture.component.html',
+  styleUrls: ['./create-lecture.component.css'],
   providers: [LectureService]
 })
-export class CourseLectureComponent implements OnInit {
+export class CreateLecture implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private lecService: LectureService,) { }

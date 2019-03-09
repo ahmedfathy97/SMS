@@ -19,12 +19,13 @@ export class ViewCourseComponent implements OnInit {
               private route : ActivatedRoute) {
     this.route.paramMap.subscribe(params =>{
       this.corID = params.get("corID");
-
     })
   }
 
+
   ngOnInit() {
-    this.corService.getCourseByID(2).subscribe(res => {  this.viewData = res ;});
+    var courseID = +this.corID;
+    this.corService.getCourseByID(courseID).subscribe(res => {  this.viewData = res ;});
   }
 
 }
