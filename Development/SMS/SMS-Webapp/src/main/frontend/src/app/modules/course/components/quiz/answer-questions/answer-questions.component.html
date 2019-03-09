@@ -3,14 +3,14 @@
     <div class="card-body">
       <h4 class="header-title">quiz Number</h4>
       <hr>
-      <div class="form-group" *ngFor="let item of quizQuestions" >
+      <div class="form-group" *ngFor="let item of quizQuestions">
         <label>{{item.question}}</label>
-        <textarea class="form-control" rows="5" id="text_answer"></textarea>
-        <br>
-      </div>
-      <div>
-        <label class="mt-2">question:</label>
-        <div class="custom-control custom-radio">
+
+        <textarea *ngIf="item.questionTypeID ==3 " class="form-control" rows="5" id="text_answer"></textarea>
+
+
+        <div *ngIf="item.questionTypeID ==2">
+        <div class="custom-control custom-radio" >
           <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
           <label class="custom-control-label" for="trueAnswer">True</label>
         </div>
@@ -19,29 +19,29 @@
           <input type="radio" id="falseAnswer"  name="customRadio" class="custom-control-input">
           <label class="custom-control-label" for="falseAnswer">False</label>
         </div>
-      </div>
-      <br>
-      <div class="form-group">
-        <label>question:</label>
-        <br>
-        <div class="custom-control custom-checkbox">
+        </div>
+
+        <div *ngIf="item.questionTypeID ==1">
+
+        <div class="custom-control custom-checkbox"  >
           <input type="checkbox" class="custom-control-input" id="choise1">
-          <label class="custom-control-label" for="choise1">choise1</label>
+          <label class="custom-control-label" for="choise1">{{item.answer1}}</label>
         </div>
         <br>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="choise2">
-          <label class="custom-control-label" for="choise2">choise2 </label>
+          <label class="custom-control-label" for="choise2">{{item.answer2}} </label>
         </div>
         <br>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="choise3">
-          <label class="custom-control-label" for="choise3">choise3</label>
+          <label class="custom-control-label" for="choise3">{{item.answer3}}</label>
         </div>
         <br>
-        <div class="custom-control custom-checkbox">
+        <div class="custom-control custom-checkbox" >
           <input type="checkbox" class="custom-control-input" id="choise4">
-          <label class="custom-control-label" for="choise4">choise4</label>
+          <label class="custom-control-label" for="choise4">{{item.answer4}}</label>
+        </div>
         </div>
         <br>
       </div>

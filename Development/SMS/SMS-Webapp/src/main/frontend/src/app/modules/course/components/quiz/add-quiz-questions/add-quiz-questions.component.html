@@ -21,30 +21,37 @@
           <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
           <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
         </div>
-          <div  *ngIf="trueFalseIsSelsected">
-            <label class="mt-2">model answer:</label>
-            <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="trueAnswer">True</label>
-            </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="falseAnswer"  name="customRadio" class="custom-control-input" >
-              <label class="custom-control-label" for="falseAnswer">False</label>
-            </div>
 
-          </div>
+          <!--<div  *ngIf="trueFalseIsSelsected">-->
+            <!--<label class="mt-2">model answer:</label>-->
+            <!--<small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>-->
+            <!--<div class="custom-control custom-radio">-->
+              <!--<input type="radio" id="trueAnswer"  class="custom-control-input" formControlName="modelAnswer">-->
+              <!--<label class="custom-control-label" for="trueAnswer">True</label>-->
+            <!--</div>-->
+            <!--<br>-->
+            <!--<div class="custom-control custom-radio">-->
+              <!--<input type="radio" id="falseAnswer"   class="custom-control-input" formControlName="modelAnswer" >-->
+              <!--<label class="custom-control-label" for="falseAnswer">False</label>-->
+            <!--</div>-->
+
+          <!--</div>-->
+
+          <p *ngIf="trueFalseIsSelsected" >
+            <input type="radio" value="True" formControlName="modelAnswer"> True
+            <input type="radio" value="False" formControlName="modelAnswer"> False
+          </p>
 
           <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
             <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
             <br>
+
           <label class="custom-control-label">choise1</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                 <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
+                 <input type="checkbox" value="1" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer1">
@@ -54,7 +61,7 @@
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input"  formControlName="modelAnswer">
+                <input type="checkbox" value="2" aria-label="Checkbox for following text input"  formControlName="modelAnswer">
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer2">
@@ -63,7 +70,7 @@
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
+                <input type="checkbox" value="3" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer3">
@@ -72,7 +79,7 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input" formControlName="modelAnswer" >
+                <input type="checkbox" value="4" aria-label="Checkbox for following text input" formControlName="modelAnswer"   >
               </div>
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">

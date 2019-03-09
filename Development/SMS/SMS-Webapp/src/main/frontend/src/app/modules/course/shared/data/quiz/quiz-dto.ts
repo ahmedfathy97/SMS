@@ -6,4 +6,6 @@ export class QuizDto {
   startDate: Date ;
   finishDate :Date ;
   isClosed :boolean ;
+
+
 }

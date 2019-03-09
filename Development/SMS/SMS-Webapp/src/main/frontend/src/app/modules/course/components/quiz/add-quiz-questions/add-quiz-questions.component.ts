@@ -23,6 +23,9 @@ export class AddQuizQuestionsComponent implements OnInit {
   table:boolean =false ;
   quizid: number =1;
   editMode:boolean =false ;
+  msqAnswer :any[] ;
+  //questionData :QuestionDto ;
+
 
 
   getALLquestionsTypes()
@@ -38,7 +41,6 @@ export class AddQuizQuestionsComponent implements OnInit {
 
   onclickoption(event:any)
   {
-    debugger ;
     console.log(event) ;
     if (event==1)
     {
@@ -75,8 +77,10 @@ export class AddQuizQuestionsComponent implements OnInit {
     answer4:null
   }) ;
 
+
  onclickAddQuestion() {
    let questionData :QuestionDto =new QuestionDto()
+   debugger ;
    questionData.questionTypeID=this.formData.get('questiontype').value ;
    questionData.question =this.formData.get('question').value;
    questionData.modelAnswer =this.formData.get('modelAnswer').value;
@@ -89,6 +93,15 @@ export class AddQuizQuestionsComponent implements OnInit {
    this.formData.reset();
  }
 
+
+ // test(event)
+ // {
+ //   debugger ;
+ //   if(event.target.checked)
+ //   {
+ //     console.log(event.target.) ;
+ //   }
+ // }
 
   onSubmitQuestionsTable()
   {
@@ -119,6 +132,18 @@ export class AddQuizQuestionsComponent implements OnInit {
     this.questionsList.splice(index ,1);
   }
 
+
+  // onselectTrueFalseAnswer(questionData:QuestionDto)
+  // {
+  //   questionData.modelAnswer =
+  // }
+
+  // onSelectChoise(event:any)
+  // {
+  //
+  //     this.questionData.modelAnswer = event.target.checked ;
+  //
+  // }
 
   ngOnInit() {
     this.getALLquestionsTypes() ;
