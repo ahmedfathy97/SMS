@@ -14,7 +14,7 @@ public class lectureRep {
     }
 
     public void insertNewLecture(LectureDTO data){
-        String sql = "INSERT INTO lecture(title , date , video_url , description)Values(?,?,?,?)";
+        String sql =" INSERT INTO lecture(title , lecture_date , video_url , description)Values(?,?,?,?)";
 
         this.jdbcTemplate.update(sql, data.getTitle(), data.getDate(), data.getVideoUrl(), data.getDescription());
 

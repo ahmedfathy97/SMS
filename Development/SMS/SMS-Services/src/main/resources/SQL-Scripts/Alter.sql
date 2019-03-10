@@ -152,3 +152,14 @@ ALTER TABLE `sms`.`quiz`
 ADD COLUMN `auto_close` TINYINT NULL AFTER `close_date`;
 
 -- fathy end --
+
+-- yousef start
+CREATE TABLE lecture (
+  id            INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title      VARCHAR(25),
+  lecture_date   DATE   NOT NULL,
+  video_url  VARCHAR(1000) ,
+  description   VARCHAR(200)
+);
+
+-- yousef end

@@ -71,10 +71,4 @@ CREATE TABLE cor_std_att (
 );
 
 --- yousef ----
-CREATE TABLE lecture (
-  id            INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title      VARCHAR(25),
-  date   DATE   NOT NULL,
-  video_url  VARCHAR ,
-  description   VARCHAR(200)
-);
+
