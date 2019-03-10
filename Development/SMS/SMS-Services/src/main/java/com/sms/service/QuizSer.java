@@ -1,16 +1,13 @@
 package com.sms.service;
-import com.sms.model.course.QuestionDTO;
-import com.sms.model.course.QuizDTO;
-import com.sms.model.course.QuestionVTO;
+import com.sms.model.course.quiz.ModelAnswerVTO;
+import com.sms.model.course.quiz.QuestionDTO;
+import com.sms.model.course.quiz.QuestionVTO;
+import com.sms.model.course.quiz.StudentAnswerDTO;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.PathParam;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +35,7 @@ public class QuizSer {
         return questionList ;
     }
 
-
+    //yara start
     public Date getCloseDate( int quizID) {
         Date closeDate =this.quizRep.getCloseDate(quizID);
         return closeDate;
@@ -59,6 +56,33 @@ public class QuizSer {
 
 
     }
+    //yara end
+
+
+    public void submitQuizAnswers(int quizID ,List<StudentAnswerDTO> studentAnswerDTOList)
+    {
+
+    }
+    public double gradQuizForStudent( int quizID , List<StudentAnswerDTO> studentAnswerDTOList )
+    {
+        double studentGrade =0  ;
+        List<ModelAnswerVTO> modelAnswerVTOList =quizRep.getQuestionsModelAnswer(quizID) ;
+       for(StudentAnswerDTO studentAnswer : studentAnswerDTOList)
+       {
+           for (ModelAnswerVTO modelAnswer : modelAnswerVTOList)
+           {
+               if (studentAnswer.getQuestionID()==modelAnswer.getQuestionID())
+               {
+                   if(studentAnswer.getStudentAnswer().equals(modelAnswer.getModelAnswer()))
+                   {
+                       studentGrade++ ;
+                   }
+               }
+           }
+       }
+       return studentGrade ;
+    }
+
     }
 
 

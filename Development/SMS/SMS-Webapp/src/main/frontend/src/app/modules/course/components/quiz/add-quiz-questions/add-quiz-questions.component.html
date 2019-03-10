@@ -16,32 +16,13 @@
           <label for="question">question:</label>
           <textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>
         </div>
-        <div class="form-group" *ngIf="textualIsSelected" >
-          <label for="text_answer">model answer:</label>
-          <textarea class="form-control" rows="5" id="text_answer" formControlName="modelAnswer" ></textarea>
-          <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
-        </div>
 
-          <!--<div  *ngIf="trueFalseIsSelsected">-->
-            <!--<label class="mt-2">model answer:</label>-->
-            <!--<small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>-->
-            <!--<div class="custom-control custom-radio">-->
-              <!--<input type="radio" id="trueAnswer"  class="custom-control-input" formControlName="modelAnswer">-->
-              <!--<label class="custom-control-label" for="trueAnswer">True</label>-->
-            <!--</div>-->
-            <!--<br>-->
-            <!--<div class="custom-control custom-radio">-->
-              <!--<input type="radio" id="falseAnswer"   class="custom-control-input" formControlName="modelAnswer" >-->
-              <!--<label class="custom-control-label" for="falseAnswer">False</label>-->
-            <!--</div>-->
 
-          <!--</div>-->
-
-          <p *ngIf="trueFalseIsSelsected" >
-            <input type="radio" value="True" formControlName="modelAnswer"> True
-            <input type="radio" value="False" formControlName="modelAnswer"> False
+          <p *ngIf="trueFalseIsSelsected" > Model Answer : <br> <br>
+            <input type="radio" value="1" formControlName="modelAnswer" class="ml-5" >True
+            <input type="radio" value="0" formControlName="modelAnswer" class="ml-5" > False
           </p>
-
+          <br><br>
           <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
             <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>

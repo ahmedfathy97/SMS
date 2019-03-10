@@ -3,7 +3,7 @@ package com.sms.controller;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.CourseDTO;
 import com.sms.model.course.CourseVTO;
-import com.sms.model.course.QuizDTO;
+import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;

@@ -1,6 +1,6 @@
-package com.sms.model.course.rm;
+package com.sms.model.course.quiz.rm;
 
-import com.sms.model.course.QuestionVTO;
+import com.sms.model.course.quiz.QuestionVTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

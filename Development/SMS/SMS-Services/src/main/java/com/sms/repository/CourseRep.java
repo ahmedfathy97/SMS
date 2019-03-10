@@ -1,7 +1,7 @@
 package com.sms.repository;
 
 import com.sms.model.course.CourseDTO;
-import com.sms.model.course.QuizDTO;
+import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.model.course.rm.CourseViewVTORM;
 import com.sms.model.course.rm.StdDTORM;

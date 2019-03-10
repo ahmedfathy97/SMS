@@ -5,6 +5,7 @@ import {QuizDto} from "../data/quiz/quiz-dto";
 import {QuestionType} from "../data/quiz/question-type";
 import {QuestionDto} from "../data/quiz/question-dto";
 import {QuestionVto} from "../data/quiz/question-vto";
+import {StudentAnswerDto} from "../data/quiz/student-answer-dto";
 
 
 @Injectable()
@@ -27,6 +28,10 @@ export class QuizService {
     return this.httpClient.get<QuestionType[]>(this.BASE_URL+"/lookup/questionType") ;
   }
 
+  submitQuizAnswersForStudent(quizID :number , studentAnswerDTOList : StudentAnswerDto[]  )
+  {
+    return this.httpClient.post(this.BASE_URL + "/quiz/" +quizID +"/studentanswers/" ,studentAnswerDTOList) ;
+  }
   getQuizQuestions(quizID : number)
   {
      return this.httpClient.get<QuestionVto[]>(this.BASE_URL+"/quiz/" + quizID +"/questionsView") ;
@@ -37,5 +42,7 @@ export class QuizService {
     return this.httpClient.post(this.BASE_URL + "/quiz/" + courseID + quizID , data);
 
   }
+
+
 
 }

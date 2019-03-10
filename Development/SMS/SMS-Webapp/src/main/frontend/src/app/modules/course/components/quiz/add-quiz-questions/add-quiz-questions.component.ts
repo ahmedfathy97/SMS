@@ -17,13 +17,12 @@ export class AddQuizQuestionsComponent implements OnInit {
 
   questionTypeList :QuestionType [] ;
   questionsList: QuestionDto[] =[];
-  textualIsSelected:boolean =false ;
   mcqIsSelected:boolean =false ;
   trueFalseIsSelsected:boolean=false ;
   table:boolean =false ;
   quizid: number =1;
   editMode:boolean =false ;
-  msqAnswer :any[] ;
+  //msqAnswer :any[] ;
   //questionData :QuestionDto ;
 
 
@@ -46,20 +45,13 @@ export class AddQuizQuestionsComponent implements OnInit {
     {
       this.mcqIsSelected =true ;
       this.trueFalseIsSelsected =false ;
-      this.textualIsSelected =false ;
 
     }else if( event ==2)
     {
       this.trueFalseIsSelsected =true ;
       this.mcqIsSelected =false ;
-      this.textualIsSelected =false ;
-    }else if(event ==3)
-    {
-      this.textualIsSelected =true ;
-      this.trueFalseIsSelsected =false  ;
-      this.mcqIsSelected =false ;
-
-    }else {
+    }
+     else {
 
     }
 

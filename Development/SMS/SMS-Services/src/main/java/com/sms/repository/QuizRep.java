@@ -1,10 +1,12 @@
 package com.sms.repository;
 
-import com.sms.model.course.QuestionDTO;
-import com.sms.model.course.QuestionVTO;
-import com.sms.model.course.QuizDTO;
-import com.sms.model.course.rm.QuizDTORM;
-import com.sms.model.course.rm.QuestionVTORM;
+import com.sms.model.course.quiz.ModelAnswerVTO;
+import com.sms.model.course.quiz.QuestionDTO;
+import com.sms.model.course.quiz.QuestionVTO;
+import com.sms.model.course.quiz.QuizDTO;
+import com.sms.model.course.quiz.rm.ModelAnswerVTORM;
+import com.sms.model.course.quiz.rm.QuizCloseDateRM;
+import com.sms.model.course.quiz.rm.QuestionVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,7 +36,7 @@ public class QuizRep {
 
     public List<QuestionVTO> getQuizQuestions(int quizID)
     {
-       String sql ="SELECT id ,question ,quiz_question_type_id," +
+       String sql ="SELECT  id ,question ,quiz_question_type_id," +
                " answer1 ,answer2 ,answer3 ,answer4 FROM question" +
                " where quiz_id = ? ;" ;
 
@@ -46,7 +48,7 @@ public class QuizRep {
     public Date getCloseDate (int quizID) {
 
         String sql = "select close_date from quiz where  id = ? ; " ;
-        QuizDTO quizData = this.jdbcTemplate.queryForObject(sql ,new QuizDTORM(), quizID);
+        QuizDTO quizData = this.jdbcTemplate.queryForObject(sql ,new QuizCloseDateRM(), quizID);
         return quizData.getFinishDate() ;
 
     }
@@ -59,5 +61,14 @@ public class QuizRep {
         this.jdbcTemplate.update(sql, quizID ) ;
 
     }
+
+
+    public List<ModelAnswerVTO> getQuestionsModelAnswer(int quizID)
+    {
+      String sql= "SELECT id ,model_answer FROM question where quiz_id =? ;" ;
+      return this.jdbcTemplate.query( sql ,new ModelAnswerVTORM() ,quizID) ;
+    }
+
+
 
 }
