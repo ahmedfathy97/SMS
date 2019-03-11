@@ -7,7 +7,7 @@ import java.util.Date;
 public class LectureDTO implements Serializable {
     private String  title ;
     private Date date ;
-    private URL videoUrl;
+    private String videoUrl;
     private String description ;
 
     public LectureDTO() {
@@ -29,11 +29,11 @@ public class LectureDTO implements Serializable {
         this.date = date;
     }
 
-    public URL getVideoUrl() {
+    public String getVideoUrl() {
         return videoUrl;
     }
 
-    public void setVideoUrl(URL videoUrl) {
+    public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
     }
 
