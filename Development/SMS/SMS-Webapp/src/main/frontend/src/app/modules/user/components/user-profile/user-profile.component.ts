@@ -33,26 +33,26 @@ export class UserProfileComponent implements OnInit {
       res=> { this.userData=res ;});
   }
 
-  selectedFile: ImageSnippet;
-  processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-
-
-      this.userService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-
-        },
-        (err) => {
-
-        })
-
-    });
-    reader.readAsDataURL(file);
-
-  }
+  // selectedFile: ImageSnippet;
+  // processFile(imageInput: any) {
+  //   const file: File = imageInput.files[0];
+  //   const reader = new FileReader();
+  //   reader.addEventListener('load', (event: any) => {
+  //     this.selectedFile = new ImageSnippet(event.target.result, file);
+  //
+  //
+  //     this.userService.uploadImage(this.selectedFile.file).subscribe(
+  //       (res) => {
+  //
+  //       },
+  //       (err) => {
+  //
+  //       })
+  //
+  //   });
+  //   reader.readAsDataURL(file);
+  //
+  // }
 
 
 
