@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../shared/user.service";
 import {UserVto} from "../../shared/data/user-vto";
 import {ActivatedRoute} from "@angular/router";
+
+
+class ImageSnippet {
+
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -26,13 +33,25 @@ export class UserProfileComponent implements OnInit {
       res=> { this.userData=res ;});
   }
 
+  selectedFile: ImageSnippet;
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
 
 
+      this.userService.uploadImage(this.selectedFile.file).subscribe(
+        (res) => {
 
-selectedImage=null;
+        },
+        (err) => {
 
-  onImageSelected(imageInput){
-    this.selectedImage=imageInput.target.files[0];
+        })
+
+    });
+    reader.readAsDataURL(file);
+
   }
 
 
