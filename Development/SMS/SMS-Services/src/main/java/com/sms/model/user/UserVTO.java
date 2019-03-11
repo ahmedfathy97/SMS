@@ -10,6 +10,7 @@ public class UserVTO implements Serializable {
     String e_mail;
     int phone;
     String college;
+    String userName;
 
     public UserVTO() {
     }
@@ -70,6 +71,14 @@ public class UserVTO implements Serializable {
         this.college = college;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
         return "UserVTO{" +
@@ -80,6 +89,7 @@ public class UserVTO implements Serializable {
                 ", e_mail='" + e_mail + '\'' +
                 ", phone=" + phone +
                 ", college='" + college + '\'' +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 }

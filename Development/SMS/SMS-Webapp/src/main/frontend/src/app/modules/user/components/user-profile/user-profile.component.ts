@@ -26,4 +26,15 @@ export class UserProfileComponent implements OnInit {
       res=> { this.userData=res ;});
   }
 
+
+
+
+selectedImage=null;
+
+  onImageSelected(imageInput){
+    this.selectedImage=imageInput.target.files[0];
+  }
+
+
+
 }

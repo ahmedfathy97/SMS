@@ -5,5 +5,6 @@
   e_mail:string;
   phone:number;
   college:string;
+  userName:string;
 
  }
