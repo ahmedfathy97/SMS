@@ -72,7 +72,6 @@ export class AddQuizQuestionsComponent implements OnInit {
 
  onclickAddQuestion() {
    let questionData :QuestionDto =new QuestionDto()
-   debugger ;
    questionData.questionTypeID=this.formData.get('questiontype').value ;
    questionData.question =this.formData.get('question').value;
    questionData.modelAnswer =this.formData.get('modelAnswer').value;

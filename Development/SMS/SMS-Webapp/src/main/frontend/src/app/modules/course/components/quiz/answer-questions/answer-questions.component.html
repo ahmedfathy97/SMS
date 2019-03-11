@@ -3,52 +3,55 @@
     <div class="card-body " style="background-color: white" >
       <h4 class="header-title">Questions</h4>
       <hr>
-      <div  *ngFor="let item of quizQuestions">
-       <label>{{item.id}} .</label>
+      <form [formGroup]="formData">
+      <div  *ngFor="let item of quizQuestions; index as i">
+       <label>{{item.id}} . </label>
         <label>{{item.question}}</label>
         <br><br>
 
 
 
         <div *ngIf="item.questionTypeID ==1">
-          <div class="custom-control custom-checkbox custom-control-inline "  >
-            <input type="checkbox" class="custom-control-input" id="choise1">
-            <label class="custom-control-label" for="choise1">{{item.answer1}}</label>
+          <div class="custom-control custom-radio custom-control-inline "  >
+            <input type="radio" value="1" class="custom-control-input" id="{{'choise1_'+i}}" formControlName="studentAnswer">
+            <label class="custom-control-label" for="{{'choise1_'+i}}">{{item.answer1}}</label>
           </div>
 
 
-          <div class="custom-control custom-checkbox custom-control-inline ml-3">
-            <input type="checkbox" class="custom-control-input" id="choise2">
-            <label class="custom-control-label" for="choise2">{{item.answer2}} </label>
+          <div class="custom-control custom-radio custom-control-inline ml-3">
+            <input type="radio" value="2" class="custom-control-input" id="{{'choise2_'+i}}" formControlName="studentAnswer">
+            <label class="custom-control-label" for="{{'choise2_'+i}}">{{item.answer2}} </label>
           </div>
 
-          <div class="custom-control custom-checkbox custom-control-inline ml-3">
-            <input type="checkbox" class="custom-control-input" id="choise3">
-            <label class="custom-control-label" for="choise3">{{item.answer3}}</label>
+          <div class="custom-control custom-radio custom-control-inline ml-3">
+            <input type="radio" value="3" class="custom-control-input" id="{{'choise3_'+i}}"  formControlName="studentAnswer">
+            <label class="custom-control-label" for="{{'choise3_'+i}}">{{item.answer3}}</label>
           </div>
 
-          <div class="custom-control custom-checkbox custom-control-inline ml-3" >
-            <input type="checkbox" class="custom-control-input" id="choise4">
-            <label class="custom-control-label" for="choise4">{{item.answer4}}</label>
+          <div class="custom-control custom-radio custom-control-inline ml-3" >
+            <input type="radio" value="4" class="custom-control-input" id="{{'choise4_'+i}}" formControlName="studentAnswer">
+            <label class="custom-control-label" for="{{'choise4_'+i}}">{{item.answer4}}</label>
           </div>
         </div>
+
 
 
         <div *ngIf="item.questionTypeID ==2">
         <div class="custom-control custom-radio custom-control-inline " >
-          <input type="radio" id="trueAnswer" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="trueAnswer">True</label>
+          <input type="radio" id="{{'trueAnswer_'+i}}" name="studentAnswer" class="custom-control-input"  formControlName="studentAnswer">
+          <label class="custom-control-label" for="{{'trueAnswer_'+i}}">True</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline ml-5">
-          <input type="radio" id="falseAnswer"  name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="falseAnswer">False</label>
+          <input type="radio" id="{{'falseAnswer_'+i}}"  name="studentAnswer" class="custom-control-input" formControlName="studentAnswer">
+          <label class="custom-control-label" for="{{'falseAnswer_'+i}}">False</label>
         </div>
         </div>
         <hr>
       </div>
+      </form>
     </div>
     <br>
-    <button class="btn btn-primary " style="margin-left: 40%; margin-bottom: 2%"> Submit </button>
+    <button class="btn btn-primary " style="margin-left: 40%; margin-bottom: 2%" (click)="onSubmitAnswers()"> Submit </button>
     <br>
   </div>
 </div>

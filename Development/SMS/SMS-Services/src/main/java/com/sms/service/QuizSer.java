@@ -59,28 +59,39 @@ public class QuizSer {
     //yara end
 
 
-    public void submitQuizAnswers(int quizID ,List<StudentAnswerDTO> studentAnswerDTOList)
+    public void submitQuizAnswers( int studentID ,int quizID ,List<StudentAnswerDTO> studentAnswerDTOList)
     {
+        boolean isCorrect ;
+        List<ModelAnswerVTO> modelAnswerVTOList =quizRep.getQuestionsModelAnswer(quizID) ;
+        for(StudentAnswerDTO studentAnswer :studentAnswerDTOList)
+        {
+            isCorrect =this.gradQuestionForStudent( studentAnswer ,modelAnswerVTOList) ;
+            quizRep.submitQuestionAnswer(studentID ,quizID ,isCorrect,studentAnswer);
+        }
 
     }
-    public double gradQuizForStudent( int quizID , List<StudentAnswerDTO> studentAnswerDTOList )
+
+
+//    public boolean gradQuestionForStudent(StudentAnswerDTO studentAnswerDTO)
+//    {
+//
+//    }
+//
+    public boolean gradQuestionForStudent( StudentAnswerDTO studentAnswer ,List<ModelAnswerVTO> modelAnswerVTOList )
     {
-        double studentGrade =0  ;
-        List<ModelAnswerVTO> modelAnswerVTOList =quizRep.getQuestionsModelAnswer(quizID) ;
-       for(StudentAnswerDTO studentAnswer : studentAnswerDTOList)
-       {
+        boolean isCorrect =false  ;
            for (ModelAnswerVTO modelAnswer : modelAnswerVTOList)
            {
                if (studentAnswer.getQuestionID()==modelAnswer.getQuestionID())
                {
                    if(studentAnswer.getStudentAnswer().equals(modelAnswer.getModelAnswer()))
                    {
-                       studentGrade++ ;
+                       isCorrect =true ;
                    }
                }
            }
-       }
-       return studentGrade ;
+
+       return isCorrect ;
     }
 
     }

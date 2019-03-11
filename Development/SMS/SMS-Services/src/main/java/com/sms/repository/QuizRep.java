@@ -1,9 +1,6 @@
 package com.sms.repository;
 
-import com.sms.model.course.quiz.ModelAnswerVTO;
-import com.sms.model.course.quiz.QuestionDTO;
-import com.sms.model.course.quiz.QuestionVTO;
-import com.sms.model.course.quiz.QuizDTO;
+import com.sms.model.course.quiz.*;
 import com.sms.model.course.quiz.rm.ModelAnswerVTORM;
 import com.sms.model.course.quiz.rm.QuizCloseDateRM;
 import com.sms.model.course.quiz.rm.QuestionVTORM;
@@ -68,6 +65,16 @@ public class QuizRep {
       String sql= "SELECT id ,model_answer FROM question where quiz_id =? ;" ;
       return this.jdbcTemplate.query( sql ,new ModelAnswerVTORM() ,quizID) ;
     }
+
+
+    public void submitQuestionAnswer(int studentID , int quizID , boolean isCorrect , StudentAnswerDTO studentAnswerDTO)
+    {
+          String sql ="INSERT INTO student_answer " +
+                  "(user_id, quiz_id, question_id, answer, is_correct)" +
+                  " VALUES (?,?,?,?,?);\n" ;
+          this.jdbcTemplate.update(sql,studentID,quizID,studentAnswerDTO.getQuestionID(),studentAnswerDTO.getStudentAnswer(),isCorrect) ;
+    }
+
 
 
 

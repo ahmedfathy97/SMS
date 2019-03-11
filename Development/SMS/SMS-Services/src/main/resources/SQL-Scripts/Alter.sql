@@ -163,3 +163,46 @@ CREATE TABLE lecture (
 );
 
 -- yousef end
+
+
+
+
+--fathy start --
+
+
+
+
+CREATE TABLE `sms`.`student_answer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `quiz_id` INT NOT NULL,
+  `question_id` INT NOT NULL,
+  `answer` VARCHAR(25) NOT NULL,
+  `is_correct` TINYINT NOT NULL,
+  `question_score` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `student_id_fk_idx` (`user_id` ASC),
+  INDEX `quiz_id_fk_idx` (`quiz_id` ASC),
+  INDEX `question_id_fk_idx` (`question_id` ASC),
+  CONSTRAINT `student_id_fk`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `sms`.`auth_user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `quiz_id_fk`
+    FOREIGN KEY (`quiz_id`)
+    REFERENCES `sms`.`quiz` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `question_id_fk`
+    FOREIGN KEY (`question_id`)
+    REFERENCES `sms`.`question` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+    ALTER TABLE `sms`.`student_answer`
+    DROP COLUMN `question_score`;
+
+-- fathy end --

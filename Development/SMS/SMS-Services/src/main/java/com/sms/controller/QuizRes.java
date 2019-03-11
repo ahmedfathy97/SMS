@@ -52,11 +52,11 @@ public class QuizRes {
 
 
     @POST
-    @Path("/{quizID}/studentanswers")
+    @Path("/{studentID}/{quizID}/answer")
     @Consumes(MediaType.APPLICATION_JSON)
-    public  void submitQuizAnswers(@PathParam("quizID")int quizID , List<StudentAnswerDTO> studentAnswerDTOList)
+    public  void submitQuizAnswers(@PathParam("studentID")int studentID , @PathParam("quizID")int quizID ,  List<StudentAnswerDTO> studentAnswerDTOList)
      {
-         quizSer.submitQuizAnswers(quizID ,studentAnswerDTOList);
+         quizSer.submitQuizAnswers( studentID ,quizID , studentAnswerDTOList);
      }
 
 }
