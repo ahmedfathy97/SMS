@@ -48,6 +48,7 @@ export class CreateGradeComponent implements OnInit {
     this.courseService.getAllCourseStudents(courseID).subscribe(
       res => {
         this.students = res;
+        this.clearFormArray(this.items);
         for(let i=0; i<this.students.length; i++)
           this.addItem();
         this.courseSelected=true;
@@ -81,8 +82,7 @@ export class CreateGradeComponent implements OnInit {
 
   private addItem(): void {
     this.items.push(this.createItem());
-    this.formData.reset()
-    ;
+    // this.formData.reset();
   }
   private createItem(): FormGroup {
     return this.formBuilder.group({
@@ -92,6 +92,11 @@ export class CreateGradeComponent implements OnInit {
       final: null,
 
     });
+  }
+  clearFormArray = (formArray: FormArray) => {
+    while (formArray.length !== 0) {
+      formArray.removeAt(0)
+    }
   }
 }
 

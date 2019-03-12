@@ -29,14 +29,14 @@ const routes: Routes = [
       {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
 
         {path: 'home', component: HomeComponent},
-    //   {path: 'create-grade', component: CreateGradeComponent},
-    // //  {path:'course/new', component: CourseDetailsComponent},
-    //   {path: 'attend', component: CreateAttendanceComponent} ,
-    //   {path:'course/quiz/new',component:CreateQuizComponent} ,
-    //   //{path:'course/quiz/add_questions',component:AddQuizQuiestionsComponent} ,
-    //   {path: 'attend', component: CreateAttendanceComponent},
-    // //  {path:'course/new', component: CourseDetailsComponent},
-    //   {path:'view-grade', component: ViewGradeComponent},
+      {path: 'create-grade', component: CreateGradeComponent},
+    //  {path:'course/new', component: CourseDetailsComponent},
+      {path: 'attend', component: CreateAttendanceComponent} ,
+      {path:'course/quiz/new',component:CreateQuizComponent} ,
+      //{path:'course/quiz/add_questions',component:AddQuizQuiestionsComponent} ,
+      {path: 'attend', component: CreateAttendanceComponent},
+    //  {path:'course/new', component: CourseDetailsComponent},
+      {path:'view-grade', component: ViewGradeComponent},
 
       {path: 'course',/* component which view all courses*/ children:[
           {path: 'new', component: CreateCourse},
