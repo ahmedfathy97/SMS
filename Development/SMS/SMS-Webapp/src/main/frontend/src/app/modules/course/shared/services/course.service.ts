@@ -10,7 +10,7 @@ import {AttendanceDTO} from "../data/attendance-dto.data";
 @Injectable()
 export class CourseService {
   APP_BASE_URL : string ="http://localhost:8080/api";
-  BASE_URL : string ="/course/";
+  BASE_URL : string = "/course/";
 
 
   constructor(private http:HttpClient) { }
@@ -64,6 +64,10 @@ export class CourseService {
 
   getCourseByID(corID: number){
     return this.http.get<CourseVto>(this.APP_BASE_URL+this.BASE_URL+corID);
+
+  }
+  enrollStudentByID(corID: number){
+    return this.http.post("http://localhost:8080/api/student/enroll/"+corID);
 
   }
 }

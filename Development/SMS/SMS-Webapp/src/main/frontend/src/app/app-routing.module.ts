@@ -44,10 +44,8 @@ const routes: Routes = [
               {path: 'attendance', component: ViewAttendanceComponent , children:[
                   {path: 'new', component: CreateAttendanceComponent},
                   {path: ':stdID', component: ViewStudentAttendanceComponent},
-                ]},
-
-
-
+                ]
+              },
               {path: 'grade', component: ViewGradeComponent , children:[
                   {path: 'new', component: CreateGradeComponent},
                   {path: ':stdID', component: ViewStudentGradeComponent},
