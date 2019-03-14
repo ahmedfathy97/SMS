@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {UserVto} from "./data/user-vto";
 import {Observable} from "rxjs/internal/Observable";
-
 @Injectable()
 export class UserService {
   // APP_BASE_URL : string ="http://localhost:8080/api";
@@ -14,11 +13,11 @@ export class UserService {
     return this.http.get<UserVto>("http://localhost:8080/api/user/"+userID);
   }
 
-  // public uploadImage(image: File): Observable<Response> {
-  //   const formData = new FormData();
-  //
-  //   formData.append('image', image);
-  //
-  //   return this.http.post('/api/v1/image-upload', formData);
-  // }
+  public uploadImage(image: File): Observable<Response> {
+    const formData = new FormData();
+
+    formData.append('image', image);
+
+    return this.http.post('/api/v1/image-upload', formData);
+  }
 }
