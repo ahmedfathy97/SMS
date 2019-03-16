@@ -67,7 +67,7 @@ export class CourseService {
 
   }
   enrollStudentByID(corID: number){
-    return this.http.post("http://localhost:8080/api/student/enroll/"+corID);
+    return this.http.post("http://localhost:8080/api/student/enroll/",corID);
 
   }
 }
