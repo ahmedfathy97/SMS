@@ -6,5 +6,6 @@
   phone:number;
   college:string;
   userName:string;
+  profileImageURL:string;
 
  }
