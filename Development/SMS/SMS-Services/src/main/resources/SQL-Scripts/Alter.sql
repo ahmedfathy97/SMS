@@ -206,3 +206,14 @@ CREATE TABLE `sms`.`student_answer` (
     DROP COLUMN `question_score`;
 
 -- fathy end --
+
+
+--fathy start 15/3/2019 --
+
+ALTER TABLE `sms`.`question`
+ADD COLUMN `question_grade` INT NOT NULL AFTER `quiz_question_type_id`;
+
+ALTER TABLE `sms`.`student_answer`
+ADD COLUMN `student_score` INT NOT NULL AFTER `is_correct`;
+
+--fathy end 15/3/2019 --

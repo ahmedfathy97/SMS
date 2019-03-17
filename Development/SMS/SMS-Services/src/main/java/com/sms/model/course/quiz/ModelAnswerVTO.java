@@ -2,8 +2,21 @@ package com.sms.model.course.quiz;
 
 public class ModelAnswerVTO {
 
-    int questionID ;
-    String modelAnswer ;
+    private  int questionID ;
+    private  String modelAnswer ;
+    private  int questionGrade ;
+
+
+    public ModelAnswerVTO() {
+    }
+
+    public int getQuestionGrade() {
+        return questionGrade;
+    }
+
+    public void setQuestionGrade(int questionGrade) {
+        this.questionGrade = questionGrade;
+    }
 
     public int getQuestionID() {
         return questionID;

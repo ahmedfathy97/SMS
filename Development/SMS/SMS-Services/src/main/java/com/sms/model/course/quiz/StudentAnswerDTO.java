@@ -2,8 +2,9 @@ package com.sms.model.course.quiz;
 
 public class StudentAnswerDTO {
 
-    int questionID ;
-    String studentAnswer ;
+    private int questionID;
+    private String studentAnswer ;
+
 
     public int getQuestionID() {
         return questionID;

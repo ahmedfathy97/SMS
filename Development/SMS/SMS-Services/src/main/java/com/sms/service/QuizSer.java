@@ -1,8 +1,5 @@
 package com.sms.service;
-import com.sms.model.course.quiz.ModelAnswerVTO;
-import com.sms.model.course.quiz.QuestionDTO;
-import com.sms.model.course.quiz.QuestionVTO;
-import com.sms.model.course.quiz.StudentAnswerDTO;
+import com.sms.model.course.quiz.*;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,37 +58,38 @@ public class QuizSer {
 
     public void submitQuizAnswers( int studentID ,int quizID ,List<StudentAnswerDTO> studentAnswerDTOList)
     {
-        boolean isCorrect ;
+        QuestionEvaluate evaluateStudentAnswer ;
         List<ModelAnswerVTO> modelAnswerVTOList =quizRep.getQuestionsModelAnswer(quizID) ;
         for(StudentAnswerDTO studentAnswer :studentAnswerDTOList)
         {
-            isCorrect =this.gradQuestionForStudent( studentAnswer ,modelAnswerVTOList) ;
-            quizRep.submitQuestionAnswer(studentID ,quizID ,isCorrect,studentAnswer);
+            evaluateStudentAnswer =this.gradQuestionForStudent( studentAnswer ,modelAnswerVTOList) ;
+            quizRep.submitQuestionAnswer(studentID ,quizID,evaluateStudentAnswer,studentAnswer);
         }
 
     }
 
 
-//    public boolean gradQuestionForStudent(StudentAnswerDTO studentAnswerDTO)
-//    {
-//
-//    }
-//
-    public boolean gradQuestionForStudent( StudentAnswerDTO studentAnswer ,List<ModelAnswerVTO> modelAnswerVTOList )
+
+    public QuestionEvaluate gradQuestionForStudent(StudentAnswerDTO studentAnswer , List<ModelAnswerVTO> modelAnswerVTOList )
     {
-        boolean isCorrect =false  ;
+        QuestionEvaluate questionEvaluate =new QuestionEvaluate();
            for (ModelAnswerVTO modelAnswer : modelAnswerVTOList)
            {
                if (studentAnswer.getQuestionID()==modelAnswer.getQuestionID())
                {
                    if(studentAnswer.getStudentAnswer().equals(modelAnswer.getModelAnswer()))
                    {
-                       isCorrect =true ;
+                       questionEvaluate.setCorrect(true);
+                       questionEvaluate.setStudentGrade(modelAnswer.getQuestionGrade());
+                   }
+                   else {
+                       questionEvaluate.setCorrect(true);
+                       questionEvaluate.setStudentGrade(0);
                    }
                }
            }
 
-       return isCorrect ;
+       return questionEvaluate ;
     }
 
     }

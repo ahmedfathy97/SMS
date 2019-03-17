@@ -12,10 +12,17 @@
           </select>
           <br>
         </div>
-        <div class="form-group">
-          <label for="question">question:</label>
-          <textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>
-        </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Question:</span>
+            </div>
+            <textarea class="form-control" aria-label="Question:" id="question" formControlName="question"></textarea>
+          </div>
+        <!--<div class="form-group">-->
+          <!--<label for="question">question:</label>-->
+          <!--<textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>-->
+        <!--</div>-->
 
 
           <p *ngIf="trueFalseIsSelsected" > Model Answer : <br> <br>
@@ -23,6 +30,9 @@
             <input type="radio" value="0" formControlName="modelAnswer" class="ml-5" > False
           </p>
           <br><br>
+
+
+
           <div class="form-group" *ngIf="mcqIsSelected">
           <label class="mt-2">model answer:</label>
             <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
@@ -67,6 +77,12 @@
             <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">
           </div>
           </div>
+
+          <div class="form-group">
+            <label for="questionGrade" class="col-form-label">question grade:</label>
+            <input class="form-control" type="number" id="questionGrade" formControlName="questionGrade">
+          </div>
+
         </form>
         <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()"> Add question </button>
       </div>

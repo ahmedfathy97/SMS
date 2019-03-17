@@ -23,10 +23,10 @@ public class QuizRep {
     {
 
         String sql ="INSERT INTO question " +
-                " (question, model_answer, answer1, answer2, answer3, answer4, quiz_id ,quiz_question_type_id) " +
-                "VALUES (?,?,?,?,?,?,?,?);\n" ;
+                " (question, model_answer, answer1, answer2, answer3, answer4, quiz_id ,quiz_question_type_id ,question_grade) " +
+                "VALUES (?,?,?,?,?,?,?,?,?);\n" ;
         this.jdbcTemplate.update(sql,questionData.getQuestion() ,questionData.getModelAnswer(),
-                questionData.getAnswer1(),questionData.getAnswer2(),questionData.getAnswer3(),questionData.getAnswer4(),quizID ,questionData.getQuestionTypeID()) ;
+                questionData.getAnswer1(),questionData.getAnswer2(),questionData.getAnswer3(),questionData.getAnswer4(),quizID ,questionData.getQuestionTypeID() ,questionData.getQuestionGrade()) ;
 
     }
 
@@ -34,7 +34,7 @@ public class QuizRep {
     public List<QuestionVTO> getQuizQuestions(int quizID)
     {
        String sql ="SELECT  id ,question ,quiz_question_type_id," +
-               " answer1 ,answer2 ,answer3 ,answer4 FROM question" +
+               " answer1 ,answer2 ,answer3 ,answer4  FROM question" +
                " where quiz_id = ? ;" ;
 
        return this.jdbcTemplate.query(sql ,new QuestionVTORM() ,quizID) ;
@@ -62,17 +62,17 @@ public class QuizRep {
 
     public List<ModelAnswerVTO> getQuestionsModelAnswer(int quizID)
     {
-      String sql= "SELECT id ,model_answer FROM question where quiz_id =? ;" ;
+      String sql= "SELECT id ,model_answer ,question_grade FROM question where quiz_id =? ;" ;
       return this.jdbcTemplate.query( sql ,new ModelAnswerVTORM() ,quizID) ;
     }
 
 
-    public void submitQuestionAnswer(int studentID , int quizID , boolean isCorrect , StudentAnswerDTO studentAnswerDTO)
+    public void submitQuestionAnswer(int studentID , int quizID ,QuestionEvaluate questionEvaluate , StudentAnswerDTO studentAnswerDTO)
     {
           String sql ="INSERT INTO student_answer " +
-                  "(user_id, quiz_id, question_id, answer, is_correct)" +
-                  " VALUES (?,?,?,?,?);\n" ;
-          this.jdbcTemplate.update(sql,studentID,quizID,studentAnswerDTO.getQuestionID(),studentAnswerDTO.getStudentAnswer(),isCorrect) ;
+                  "(user_id, quiz_id, question_id, answer, is_correct ,student_score)" +
+                  " VALUES (?,?,?,?,?,?);\n" ;
+          this.jdbcTemplate.update(sql,studentID,quizID,studentAnswerDTO.getQuestionID(),studentAnswerDTO.getStudentAnswer(),questionEvaluate.isCorrect(),questionEvaluate.getStudentGrade()) ;
     }
 
 

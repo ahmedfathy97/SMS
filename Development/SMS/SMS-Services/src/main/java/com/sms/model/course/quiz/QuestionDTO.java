@@ -4,6 +4,7 @@ public class QuestionDTO {
     int id ;
     int quizID ;
     int questionTypeID ;
+    int questionGrade ;
     String question ;
     String modelAnswer ;
     String answer1 ;
@@ -13,6 +14,14 @@ public class QuestionDTO {
 
 
     public QuestionDTO() {
+    }
+
+    public int getQuestionGrade() {
+        return questionGrade;
+    }
+
+    public void setQuestionGrade(int questionsGrade) {
+        this.questionGrade = questionsGrade;
     }
 
     public int getId() {

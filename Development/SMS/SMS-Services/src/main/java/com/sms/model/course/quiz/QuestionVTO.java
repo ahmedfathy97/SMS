@@ -3,6 +3,7 @@ package com.sms.model.course.quiz;
 public class QuestionVTO {
     private int id ;
     private int questionTypeID ;
+
     private String question ;
     private String answer1 ;
     private String answer2 ;
@@ -11,6 +12,8 @@ public class QuestionVTO {
 
     public QuestionVTO() {
     }
+
+
 
     public int getQuestionTypeID() {
         return questionTypeID;

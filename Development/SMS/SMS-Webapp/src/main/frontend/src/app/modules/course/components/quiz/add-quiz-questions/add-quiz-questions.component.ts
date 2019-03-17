@@ -22,8 +22,6 @@ export class AddQuizQuestionsComponent implements OnInit {
   table:boolean =false ;
   quizid: number =1;
   editMode:boolean =false ;
-  //msqAnswer :any[] ;
-  //questionData :QuestionDto ;
 
 
 
@@ -63,6 +61,7 @@ export class AddQuizQuestionsComponent implements OnInit {
     questiontype:null ,
     question:null ,
     modelAnswer:null ,
+    questionGrade:null ,
     answer1:null ,
     answer2:null ,
     answer3:null ,
@@ -72,9 +71,11 @@ export class AddQuizQuestionsComponent implements OnInit {
 
  onclickAddQuestion() {
    let questionData :QuestionDto =new QuestionDto()
+   debugger;
    questionData.questionTypeID=this.formData.get('questiontype').value ;
    questionData.question =this.formData.get('question').value;
    questionData.modelAnswer =this.formData.get('modelAnswer').value;
+   questionData.questionGrade=this.formData.get('questionGrade').value ;
    questionData.answer1 =this.formData.get('answer1').value ;
    questionData.answer2 =this.formData.get('answer2').value ;
    questionData.answer3 =this.formData.get('answer3').value ;

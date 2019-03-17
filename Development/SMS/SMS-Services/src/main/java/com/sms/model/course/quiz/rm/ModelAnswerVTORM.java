@@ -11,6 +11,7 @@ public class ModelAnswerVTORM implements org.springframework.jdbc.core.RowMapper
         ModelAnswerVTO modelAnswerVTO =new ModelAnswerVTO() ;
         modelAnswerVTO.setQuestionID(rs.getInt("id"));
         modelAnswerVTO.setModelAnswer(rs.getString("model_answer"));
+        modelAnswerVTO.setQuestionGrade(rs.getInt("question_grade"));
         return modelAnswerVTO;
     }
 }
