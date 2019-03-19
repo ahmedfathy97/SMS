@@ -1,5 +1,6 @@
 package com.sms.controller;
 
+import com.sms.model.course.quiz.CourseQuizesVTO;
 import com.sms.model.course.quiz.QuestionDTO;
 import com.sms.model.course.quiz.QuestionVTO;
 import com.sms.model.course.quiz.StudentAnswerDTO;
@@ -58,5 +59,9 @@ public class QuizRes {
      {
          quizSer.submitQuizAnswers( studentID ,quizID , studentAnswerDTOList);
      }
+
+
+
+
 
 }

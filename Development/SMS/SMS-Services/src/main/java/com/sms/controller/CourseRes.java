@@ -3,6 +3,7 @@ package com.sms.controller;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.CourseDTO;
 import com.sms.model.course.CourseVTO;
+import com.sms.model.course.quiz.CourseQuizesVTO;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.repository.CourseRep;
@@ -93,6 +94,15 @@ public class CourseRes {
         courseSer.createQuiz(courseID, quizData);
     }
 
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/courseQuizes")
+    public List<CourseQuizesVTO> getCourseQuizes(@PathParam("courseID") int courseID)
+    {
+       List<CourseQuizesVTO> courseQuizesVTOList =  courseSer.getCourseQuizes(courseID) ;
+       return courseQuizesVTOList ;
+    }
 
 
     @GET

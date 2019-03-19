@@ -5,6 +5,7 @@ import {CourseVto} from "../data/course-vto";
 import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {AttendanceDTO} from "../data/attendance-dto.data";
+import {CourseQuizesVto} from "../data/quiz/course-quizes-vto";
 
 
 @Injectable()
@@ -13,62 +14,60 @@ export class CourseService {
   BASE_URL : string = "/course/";
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private httpClient:HttpClient) { }
 
   getAllInstructorCourses() {
-    return this.http.get<CourseVto[]>("http://localhost:8080/api/course/instructor/2")
+    return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/instructor/2")
   }
 
   //TODO: Youssef - rename to createNewCourse
   //TODO: Youssef - Use APP_BASE_URL &  BASE_URL
   createNewCourse(details : CourseDTO){
-    return this.http.post(this.APP_BASE_URL+this.BASE_URL , details);
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL , details);
   }
 
 
   getAllCourseStudents( courseID:number) {
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students")
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students")
   }
 
   getCourseGrades(courseID:number){
-    return this.http.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade")
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade")
 
   }
   getStudentGrades(courseID:number,studentID:number){
-    return this.http.get<StdDTO>("http://localhost:8080/api/course/"+ courseID+"/grade/student/"+studentID);
+    return this.httpClient.get<StdDTO>("http://localhost:8080/api/course/"+ courseID+"/grade/student/"+studentID);
 
   }
-
-
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
-    return this.http.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
   }
 
-  // getCloseDate(courseID : number ,quizID : number )
-  // {
-  //   return this.http.get<QuizDto>(this.APP_BASE_URL +this.BASE_URL + courseID + "/quiz/"+ quizID + "/close");
-  //
-  // }
 
+  getCourseQuizes(courseID :number)
+  {
+    return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/courseQuizes");
+  }
 
 
 
   getCourseAttendance (courseID :number){
-    return this.http.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
   }
 
   getStudentAttendance (courseID :number , stdID : number){
-    return this.http.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/student/"+stdID)
+    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/student/"+stdID)
   }
 
   getCourseByID(corID: number){
-    return this.http.get<CourseVto>(this.APP_BASE_URL+this.BASE_URL+corID);
+    return this.httpClient.get<CourseVto>(this.APP_BASE_URL+this.BASE_URL+corID);
 
   }
+
   enrollStudentByID(corID: number){
-    return this.http.post("http://localhost:8080/api/student/enroll/",corID);
-    return this.http.post("http://localhost:8080/api/student/enroll/"+corID, null);
+    return this.httpClient.post("http://localhost:8080/api/student/enroll/",corID);
+    return this.httpClient.post("http://localhost:8080/api/student/enroll/"+corID, null);
 
   }
 }
