@@ -31,6 +31,7 @@ import { CreateLecture } from './modules/course/components/create-lecture/create
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
 import { ViewCourseQuizesComponent } from './modules/course/components/quiz/view-course-quizes/view-course-quizes.component';
+import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
 //import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 
 
@@ -61,6 +62,7 @@ import { ViewCourseQuizesComponent } from './modules/course/components/quiz/view
     CreateLecture,
     AnswerQuestionsComponent,
     ViewCourseQuizesComponent,
+    CourseDetailsComponent,
   //  TutorialsComponent
   ],
   imports: [
