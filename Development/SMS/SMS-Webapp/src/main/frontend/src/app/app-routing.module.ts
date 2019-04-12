@@ -22,6 +22,7 @@ import {UploadComponent} from "./infrastructure/components/manage-attachment/com
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
 import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-questions/answer-questions.component";
 import {ViewCourseQuizesComponent} from "./modules/course/components/quiz/view-course-quizes/view-course-quizes.component";
+import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -51,7 +52,7 @@ const routes: Routes = [
       {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
       {path:'course/quiz/answer_questions',component:AnswerQuestionsComponent} ,
       {path:'course/quizes',component:ViewCourseQuizesComponent} ,
-
+      {path:'course/:corID/course_details' ,component:CourseDetailsComponent} ,
 
       //Manar
       {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
