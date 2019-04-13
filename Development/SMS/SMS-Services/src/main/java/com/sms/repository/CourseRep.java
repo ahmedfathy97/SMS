@@ -1,14 +1,8 @@
 package com.sms.repository;
 
-import com.sms.model.course.CourseDTO;
-import com.sms.model.course.quiz.CourseQuizesVTO;
+import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
-import com.sms.model.course.StdDTO;
-import com.sms.model.course.quiz.rm.CourseQuizesVTORM;
-import com.sms.model.course.rm.CourseViewVTORM;
-import com.sms.model.course.rm.StdDTORM;
-import com.sms.model.course.CourseVTO;
-import com.sms.model.course.rm.CourseVTORM;
+import com.sms.model.course.rm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -62,12 +56,7 @@ public class CourseRep {
     }
 
 
-    public List<CourseQuizesVTO> getCourseQuizes(int courseID)
-    {
-        String sql ="SELECT id ,quiz_name FROM quiz \n" +
-                "Where course_id =?;" ;
-        return this.jdbcTemplate.query(sql ,new CourseQuizesVTORM(),courseID) ;
-    }
+
 
     public CourseVTO findByID(int corID) {
         String sql = "SELECT \n" +
@@ -98,6 +87,19 @@ public class CourseRep {
 
     }
 
+    public List<CourseQuizesVTO> getCourseQuizes(int courseID)
+    {
+        String sql ="SELECT id ,quiz_name FROM quiz \n" +
+                "Where course_id =?;" ;
+        return this.jdbcTemplate.query(sql ,new CourseQuizesVTORM(),courseID) ;
+    }
+
+
+    public List<CourseLecturesVTO> getCourseLectures(int courseID)
+    {
+        String sql ="SELECT id ,title FROM lecture WHERE course_id = ? ;" ;
+        return this.jdbcTemplate.query(sql ,new CourseLecturesVTORM() ,courseID) ;
+    }
 
 
 

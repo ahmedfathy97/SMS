@@ -217,3 +217,22 @@ ALTER TABLE `sms`.`student_answer`
 ADD COLUMN `student_score` INT NOT NULL AFTER `is_correct`;
 
 --fathy end 15/3/2019 --
+
+
+
+--fathy start 13/4/2019
+
+ALTER TABLE `sms`.`lecture`
+ADD COLUMN `course_id` INT NOT NULL AFTER `description`;
+
+
+ALTER TABLE `sms`.`lecture`
+ADD INDEX `fk_course_lectures_idx` (`course_id` ASC);
+ALTER TABLE `sms`.`lecture`
+ADD CONSTRAINT `fk_course_lectures`
+  FOREIGN KEY (`course_id`)
+  REFERENCES `sms`.`course` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+--fathy end 13/4/2019

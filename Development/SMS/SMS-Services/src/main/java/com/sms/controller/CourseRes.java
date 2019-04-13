@@ -1,11 +1,9 @@
 package com.sms.controller;
 
 import com.sms.model.AttendanceDTO;
-import com.sms.model.course.CourseDTO;
-import com.sms.model.course.CourseVTO;
-import com.sms.model.course.quiz.CourseQuizesVTO;
+import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
-import com.sms.model.course.StdDTO;
+import com.sms.model.course.rm.CourseGradesRM;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
 import com.sms.service.AttendanceSer;
@@ -97,12 +95,24 @@ public class CourseRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/courseQuizes")
+    @Path("/{courseID}/Quizes")
     public List<CourseQuizesVTO> getCourseQuizes(@PathParam("courseID") int courseID)
     {
        List<CourseQuizesVTO> courseQuizesVTOList =  courseSer.getCourseQuizes(courseID) ;
        return courseQuizesVTOList ;
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/lectures")
+
+    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID)
+    {
+        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID) ;
+        return courseLecturesVTOList ;
+    }
+
+
 
 
     @GET

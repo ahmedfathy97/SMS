@@ -1,6 +1,7 @@
 package com.sms.service;
 
-import com.sms.model.course.quiz.CourseQuizesVTO;
+import com.sms.model.course.CourseLecturesVTO;
+import com.sms.model.course.CourseQuizesVTO;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
@@ -35,6 +36,13 @@ public class CourseSer {
         List<CourseQuizesVTO> courseQuizesVTOList =  courseRep.getCourseQuizes(courseID);
         return courseQuizesVTOList ;
     }
+
+    public List<CourseLecturesVTO> getCourseLectures(int courseID)
+    {
+        List<CourseLecturesVTO> courseLecturesVTOList =courseRep.getCourseLectures(courseID) ;
+        return courseLecturesVTOList ;
+    }
+
 
 
 

@@ -1,8 +1,7 @@
-package com.sms.model.course.quiz.rm;
+package com.sms.model.course.rm;
 
-import com.sms.model.course.quiz.CourseQuizesVTO;
+import com.sms.model.course.CourseQuizesVTO;
 
-import javax.swing.tree.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

@@ -31,7 +31,7 @@ public class GradeRep {
                 data.getFinalGrd(),cor_id, data.getId());
 
     }
-    public List<StdDTO> findCourseGrades(int cor_id){
+    public List<StdDTO> findCourseGrades(int courseID){
         String sql ="SELECT std.first_name,std.last_name,std.id,\n" +
                 "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
                 "from auth_user std" +
@@ -39,7 +39,7 @@ public class GradeRep {
                 "on std.id=cor.std_id\n" +
                 "where cor_id=?";
 
-        return this.jdbc.query(sql, new CourseGradesRM(), cor_id);
+        return this.jdbc.query(sql, new CourseGradesRM(), courseID);
 
 
     }

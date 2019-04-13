@@ -1,4 +1,4 @@
-package com.sms.model.course.quiz;
+package com.sms.model.course;
 
 public class CourseQuizesVTO {
 
