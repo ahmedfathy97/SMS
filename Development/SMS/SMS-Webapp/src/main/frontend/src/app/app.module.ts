@@ -30,8 +30,10 @@ import {ViewCourseComponent} from "./modules/course/components/view-course/view-
 import { CreateLecture } from './modules/course/components/create-lecture/create-lecture.component';
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
-import { ViewCourseQuizesComponent } from './modules/course/components/quiz/view-course-quizes/view-course-quizes.component';
+import { CourseQuizesComponent } from './modules/course/components/course-details/course-quizes/course-quizes.component';
 import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
+import { CourseLecturesComponent } from './modules/course/components/course-details/course-lectures/course-lectures.component';
+import { LectureDetailsComponent } from './modules/course/components/lecture-details/lecture-details.component';
 //import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 
 
@@ -61,8 +63,10 @@ import { CourseDetailsComponent } from './modules/course/components/course-detai
     ViewStudentAttendanceComponent,
     CreateLecture,
     AnswerQuestionsComponent,
-    ViewCourseQuizesComponent,
+    CourseQuizesComponent,
     CourseDetailsComponent,
+    CourseLecturesComponent,
+    LectureDetailsComponent,
   //  TutorialsComponent
   ],
   imports: [
