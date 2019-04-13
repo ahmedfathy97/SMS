@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {FullLayoutComponent} from "./layout/components/full-layout/full-layout.component";
 import {HomeComponent} from "./modules/home/home.component";
 import {SimpleLayoutComponent} from "./layout/components/simple-layout/simple-layout.component";
@@ -21,25 +21,28 @@ import {CreateLecture} from "./modules/course/components/create-lecture/create-l
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
 import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-questions/answer-questions.component";
-import {ViewCourseQuizesComponent} from "./modules/course/components/quiz/view-course-quizes/view-course-quizes.component";
+import {CourseQuizesComponent} from "./modules/course/components/course-details/course-quizes/course-quizes.component";
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
+import {CourseLecturesComponent} from "./modules/course/components/course-details/course-lectures/course-lectures.component";
+import {LectureDetailsComponent} from "./modules/course/components/lecture-details/lecture-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: '', component: FullLayoutComponent, children:[
+  {
+    path: '', component: FullLayoutComponent, children: [
       {path: 'lecture', component: CreateLecture},
       // OLD ROUTING HALA
       {path: 'create-grade', component: CreateGradeComponent},
-      {path:'view-grade', component: ViewGradeComponent},
-      {path:'std-grade',component:ViewStudentGradeComponent},
+      {path: 'view-grade', component: ViewGradeComponent},
+      {path: 'std-grade', component: ViewStudentGradeComponent},
 
       // OLD ROUTING ABANOUB
-      {path:'attachment/file/upload', component: UploadComponent},
-      {path:'attachment/file/download', component: DownloadComponent},
+      {path: 'attachment/file/upload', component: UploadComponent},
+      {path: 'attachment/file/download', component: DownloadComponent},
 
       //OLD ROUNTING YOUSEF
-      {path:'course/new', component: CreateCourse},
-      {path:'course/:corID', component: ViewCourseComponent},
+      {path: 'course/new', component: CreateCourse},
+      {path: 'course/:corID', component: ViewCourseComponent},
 
       //OLD Routing Yara
       {path: 'attend', component: CreateAttendanceComponent},
@@ -48,52 +51,102 @@ const routes: Routes = [
       //{path: 'tutorials', component: TutorialsComponent},
 
       //OLD ROUTING Ahmed
-      {path:'course/quiz/new',component:CreateQuizComponent} ,
-      {path:'course/quiz/add_questions',component:AddQuizQuestionsComponent} ,
-      {path:'course/quiz/answer_questions',component:AnswerQuestionsComponent} ,
-      {path:'course/quizes',component:ViewCourseQuizesComponent} ,
-      {path:'course/:corID/course_details' ,component:CourseDetailsComponent} ,
+      {path: 'course/quiz/new', component: CreateQuizComponent},
+      {path: 'course/quiz/add_questions', component: AddQuizQuestionsComponent},
+      {path: 'course/quiz/answer_questions', component: AnswerQuestionsComponent},
+      {path: 'course/quizes', component: CourseQuizesComponent},
+      {path: 'course/:corID/course_details', component: CourseDetailsComponent},
 
       //Manar
-      {path:'profile',children:[{path:':userID',component:UserProfileComponent}]},
+      {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
 
       {path: 'home', component: HomeComponent},
       /////////////////////////////// Start  New Routing /////////////////////////////////////
-      {path: 'course',/* component which view all courses*/ children:[
+      {
+        path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
-          {path: ':corID', component: ViewCourseComponent , children:[
-              {path: 'attendance', component: ViewAttendanceComponent , children:[
+          {
+            path: ':courseID', component: CourseDetailsComponent, children: [
+              {
+                path: 'lecture', component: CourseLecturesComponent, children: [
+                  {path: 'new', component: CreateLecture},
+                  {
+                    path: ':lectureID', component: LectureDetailsComponent, childern: [
+
+                      {path: 'upload ', component: UploadComponent},
+                      {path: 'download', component: DownloadComponent},
+
+
+                      // {path:'article'} ,
+                      //
+                      // {path: 'attendance', children:[
+                      //     {path: 'new'},
+                      //     {path: ':stdID',},
+                      //   ]
+                      // },
+                      //
+                      // {path: 'assigment', children:[
+                      //     {path: 'new' },
+                      //     {path: ':studentID'},
+                      //   ]
+                      // },
+
+
+                    ]
+                  },
+                ]
+              },
+
+              {
+                path: 'attendance', children: [
                   {path: 'new', component: CreateAttendanceComponent},
+                  {path: 'allStudentsAttendence', component: ViewAttendanceComponent},
                   {path: ':stdID', component: ViewStudentAttendanceComponent},
                 ]
               },
-              {path: 'grade', component: ViewGradeComponent , children:[
+
+              {
+                path: 'grade', children: [
                   {path: 'new', component: CreateGradeComponent},
-                  {path: ':stdID', component: ViewStudentGradeComponent},
-                ]},
+                  {path: 'allStudentsGrades', component: ViewGradeComponent},
+                  {path: ':studentID /studentGrade', component: ViewStudentGradeComponent},
+                ]
+              },
 
-              {path: 'quiz', /* component which view course's quiz*/ children:[
+              {
+                path: 'quiz', component: CourseQuizesComponent, children: [
                   {path: 'new', component: CreateQuizComponent},
-                  {path: ':quizID',/* component which view course's quiz with quizID*/ children:[
+                  {
+                    path: ':quizID', children: [
                       {path: 'questions', component: AddQuizQuestionsComponent},
+                      {path: 'answerQuiz', component: AnswerQuestionsComponent},
 
-                    ]},
-                ]},
 
-            ]},
+                    ]
+                  },
+                ]
+              },
 
-        ]},
+            ]
+          },
+
+        ]
+      },
       /////////////////////////////// END New Routing /////////////////////////////////////
 
-    ]},
-  {path: '', component: SimpleLayoutComponent, children:[
+    ]
+  },
+  {
+    path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
 
-    ]}
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
