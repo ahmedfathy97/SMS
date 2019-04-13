@@ -25,6 +25,7 @@ import {CourseQuizesComponent} from "./modules/course/components/course-details/
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-lectures/course-lectures.component";
 import {LectureDetailsComponent} from "./modules/course/components/lecture-details/lecture-details.component";
+import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -59,6 +60,8 @@ const routes: Routes = [
 
       //Manar
       {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+
+      {path:'edit',children:[{path:':userID',component:UserEditComponent}]},
 
       {path: 'home', component: HomeComponent},
       /////////////////////////////// Start  New Routing /////////////////////////////////////

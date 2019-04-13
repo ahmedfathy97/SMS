@@ -34,6 +34,7 @@ import { CourseQuizesComponent } from './modules/course/components/course-detail
 import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
 import { CourseLecturesComponent } from './modules/course/components/course-details/course-lectures/course-lectures.component';
 import { LectureDetailsComponent } from './modules/course/components/lecture-details/lecture-details.component';
+import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
 //import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 
 
@@ -67,6 +68,7 @@ import { LectureDetailsComponent } from './modules/course/components/lecture-det
     CourseDetailsComponent,
     CourseLecturesComponent,
     LectureDetailsComponent,
+    UserEditComponent,
   //  TutorialsComponent
   ],
   imports: [
