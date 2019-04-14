@@ -69,9 +69,9 @@ const routes: Routes = [
         path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
           {
-            path: ':courseID', component: CourseDetailsComponent, children: [
+            path: ':courseID',  children: [
               {
-                path: 'lecture', component: CourseLecturesComponent, children: [
+                path: 'lecture', children: [
                   {path: 'new', component: CreateLecture},
                   {
                     path: ':lectureID', component: LectureDetailsComponent, childern: [
@@ -117,12 +117,12 @@ const routes: Routes = [
               },
 
               {
-                path: 'quiz', component: CourseQuizesComponent, children: [
+                path: 'quiz', children: [
                   {path: 'new', component: CreateQuizComponent},
+                  {path: 'questions', component: AddQuizQuestionsComponent},
                   {
                     path: ':quizID', children: [
-                      {path: 'questions', component: AddQuizQuestionsComponent},
-                      {path: 'answerQuiz', component: AnswerQuestionsComponent},
+                      {path: ':studentID/answerQuiz', component: AnswerQuestionsComponent},
 
 
                     ]

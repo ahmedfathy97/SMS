@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../../shared/services/course.service";
 import {StdDTO} from "../../../shared/data/std-dto.data";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-view-grade',
@@ -9,12 +10,17 @@ import {StdDTO} from "../../../shared/data/std-dto.data";
   providers:[CourseService]
 })
 export class ViewGradeComponent implements OnInit {
-
-  constructor( private courseService: CourseService) { }
+  courseID : String ;
+  constructor( private courseService: CourseService , private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      this.courseID = params.get("courseID");
+    })
+  }
   studentList: StdDTO[] = [];
   ngOnInit() {
-    this.courseService.getCourseGrades(4).subscribe(
-      res=>this.studentList = res
+    var courseID = +this.courseID ;
+    this.courseService.getCourseGrades(courseID).subscribe(
+       res=>this.studentList = res
     );
   }
 

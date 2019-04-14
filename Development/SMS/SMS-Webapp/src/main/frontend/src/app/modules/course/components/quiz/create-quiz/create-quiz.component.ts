@@ -1,52 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuizDto} from "../../../shared/data/quiz/quiz-dto";
 import {QuizService} from "../../../shared/services/quiz.service";
 import {CourseService} from "../../../shared/services/course.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-quiz',
   templateUrl: './create-quiz.component.html',
-  styleUrls: ['./create-quiz.component.scss'] ,
-  providers:[FormBuilder ,CourseService]
+  styleUrls: ['./create-quiz.component.scss'],
+  providers: [FormBuilder, CourseService]
 })
 export class CreateQuizComponent implements OnInit {
-  courseID: number = 1;
-  constructor(private formBuilder: FormBuilder ,
-              private courseService :CourseService) { }
+  courseID: string;
+  corID :number ;
+  constructor(private formBuilder: FormBuilder,
+              private courseService: CourseService, private route: ActivatedRoute ,
+              private route1 :Router) {
+    this.route.paramMap.subscribe(params => {
+      this.courseID = params.get("courseID");
+    })
+
+
+  }
 
   ngOnInit() {
   }
 
   formData: FormGroup = this.formBuilder.group({
-    quizName :[null, [Validators.required, Validators.maxLength(25)]],
-    quizGrade:[null,[Validators.required] ],
-    startDate:[null ,[Validators.required] ] ,
-    finishDate:[null ,[Validators.required]]
-  }) ;
+    quizName: [null, [Validators.required, Validators.maxLength(25)]],
+    quizGrade: [null, [Validators.required]],
+    startDate: [null, [Validators.required]],
+    finishDate: [null, [Validators.required]]
+  });
 
-  onSubmitNewQuiz()
-  {
-    let quizData : QuizDto = new QuizDto() ;
-    quizData.quizName =this.formData.get('quizName').value;
-    quizData.grade =this.formData.get('quizGrade').value;
+  onSubmitNewQuiz() {
+    let quizData: QuizDto = new QuizDto();
+    quizData.quizName = this.formData.get('quizName').value;
+    quizData.grade = this.formData.get('quizGrade').value;
     //quizData.courseID = 1;
-    quizData.startDate =this.formData.get('startDate').value ;
-    quizData.finishDate =this.formData.get('finishDate').value ;
-    quizData.isClosed = false ;
-    this.courseService.createNewQuiz(this.courseID, quizData).subscribe(res => {
+    quizData.startDate = this.formData.get('startDate').value;
+    quizData.finishDate = this.formData.get('finishDate').value;
+    quizData.isClosed = false;
+    var courseID = +this.courseID;
+    this.corID = courseID ;
+    this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err);
     });
 
 
-    // this.courseService.createQuizClosure(this.courseID,1, quizData).subscribe(res => {
-    //   console.log("Success2");
-    // }, err => {
-    //   console.log(err);
-    // });
-    //
+
 
   }
 

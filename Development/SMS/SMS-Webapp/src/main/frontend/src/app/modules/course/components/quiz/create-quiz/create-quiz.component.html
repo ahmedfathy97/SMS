@@ -25,7 +25,7 @@
             <input class="form-control" formControlName="finishDate" type="date" id="finish_date">
           </div>
         </form>
-        <button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button>
+        <a [routerLink]="['/course' ,corID ,'quiz','questions']"><button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button> </a>
         <button class="btn btn-dark pull-right">Cancel</button>
       </div>
     </div>

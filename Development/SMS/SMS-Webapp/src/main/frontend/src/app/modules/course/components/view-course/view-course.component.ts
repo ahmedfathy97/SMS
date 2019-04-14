@@ -27,6 +27,7 @@ export class ViewCourseComponent implements OnInit {
     var courseID = +this.corID;
     this.corService.getCourseByID(courseID).subscribe(res => {  this.viewData = res ;});
   }
+
   onEnrollNewStudent(){
     this.corService.enrollStudentByID(1).subscribe(res => {
       console.log("Success");
