@@ -34,11 +34,11 @@ const routes: Routes = [
 
   {path: '', component: FullLayoutComponent, children: [
       // {path: 'lecture', component: CreateLecture},
-      // // OLD ROUTING HALA
-      // {path: 'create-grade', component: CreateGradeComponent},
-      // {path: 'view-grade', component: ViewGradeComponent},
-      // {path: 'std-grade', component: ViewStudentGradeComponent},
-      //
+      // OLD ROUTING HALA
+      {path: 'create-grade', component: CreateGradeComponent},
+      {path: 'view-grade', component: ViewGradeComponent},
+      {path: 'std-grade', component: ViewStudentGradeComponent},
+
       // // OLD ROUTING ABANOUB
       // {path: 'attachment/file/upload', component: UploadComponent},
       // {path: 'attachment/file/download', component: DownloadComponent},
@@ -120,7 +120,10 @@ const routes: Routes = [
 
               {
                 path: 'quiz', children: [
+
                   {path: 'new', component: CreateQuizComponent},
+                  {path: 'courseQuizes', component: CourseQuizesComponent},
+
                   {path: 'questions', component: AddQuizQuestionsComponent},
                   {
                     path: ':quizID', children: [

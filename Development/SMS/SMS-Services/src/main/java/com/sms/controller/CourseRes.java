@@ -14,22 +14,21 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/course")
+@Path("/course/")
 public class CourseRes {
-    private AttendanceSer attendance ;
-
-
+    private AttendanceSer attendance;
     private CourseRep courseRep;
-    private CourseSer courseSer ;
+    private CourseSer courseSer;
     private GradeRep gradeRepository;
-    private QuizRep rep ;
+    private QuizRep rep;
+
     @Autowired
     public CourseRes(
             CourseRep repository,
             CourseSer courseSer,
             GradeRep gradeRepository,
             AttendanceSer attendance
-            ,QuizRep rep ) {
+            , QuizRep rep) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
         this.courseRep = repository;
@@ -45,7 +44,7 @@ public class CourseRes {
 
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createNewCourse(CourseDTO details){
+    public void createNewCourse(CourseDTO details) {
         courseRep.insertNewCourse(details);
     }
 
@@ -59,8 +58,8 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade")
-    public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID){
-           List<StdDTO> list =this.gradeRepository.findCourseGrades(courseID);
+    public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID) {
+        List<StdDTO> list = this.gradeRepository.findCourseGrades(courseID);
         return list;
     }
 
@@ -69,7 +68,7 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/instructor/{instructorID}")
     public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
-        List<CourseVTO> list =this.courseRep.findAllInstructorCourses(instructorID);
+        List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
         return list;
     }
 
@@ -78,76 +77,70 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{corID}")
     public CourseVTO viewCourse(@PathParam("corID") int corID) {
-        CourseVTO viewData =this.courseRep.findByID(corID);
+        CourseVTO viewData = this.courseRep.findByID(corID);
         return viewData;
     }
 
     @POST
     @Path("/{courseID}/lecture")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createNewLecture(@PathParam("courseID") int courseID ,LectureDTO lectureDTO){
+    public void createNewLecture(@PathParam("courseID") int courseID, LectureDTO lectureDTO) {
 
-        courseRep.insertNewLecture(courseID , lectureDTO);
+        courseRep.insertNewLecture(courseID, lectureDTO);
     }
-
 
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")
 
-    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID)
-    {
-        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID) ;
-        return courseLecturesVTOList ;
+    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID) {
+        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID);
+        return courseLecturesVTOList;
     }
 
 
     @POST
     @Path("/{courseID}/quiz")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createQuiz(@PathParam("courseID") int courseID ,QuizDTO quizData ) {
+    public void createQuiz(@PathParam("courseID") int courseID, QuizDTO quizData) {
         courseSer.createQuiz(courseID, quizData);
     }
 
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/Quizes")
-    public List<CourseQuizesVTO> getCourseQuizes(@PathParam("courseID") int courseID)
-    {
-       List<CourseQuizesVTO> courseQuizesVTOList =  courseSer.getCourseQuizes(courseID) ;
-       return courseQuizesVTOList ;
+    @Path("/{courseID}/quizes")
+    public List<CourseQuizesVTO> getCourseQuizes(@PathParam("courseID") int courseID) {
+        List<CourseQuizesVTO> courseQuizesVTOList = courseSer.getCourseQuizes(courseID);
+        return courseQuizesVTOList;
     }
-
-
-
-
 
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/attend")
-    public List<AttendanceDTO> getCourseAttendance (@PathParam("courseID") int courseID) {
+    public List<AttendanceDTO> getCourseAttendance(@PathParam("courseID") int courseID) {
         System.out.print("Sucessfully");
-        List<AttendanceDTO> list =this.attendance.getCourseAttendance(courseID);
-        return list ;
+        List<AttendanceDTO> list = this.attendance.getCourseAttendance(courseID);
+        return list;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/student/{stdID}")
-    public List<AttendanceDTO> getStudentAttendance (@PathParam("courseID") int courseID ,@PathParam("stdID") int stdID) {
+    public List<AttendanceDTO> getStudentAttendance(@PathParam("courseID") int courseID, @PathParam("stdID") int stdID) {
         System.out.print("Sucessfully");
-        List<AttendanceDTO> list =this.attendance.getStudentAttendance(courseID , stdID);
-        return list ;
+        List<AttendanceDTO> list = this.attendance.getStudentAttendance(courseID, stdID);
+        return list;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade/student/{studentID}")
 
-    public StdDTO getStudentGrades (@PathParam("courseID") int courseID,@PathParam("studentID")int studentID){
-        StdDTO list =this.gradeRepository.findStudentGrades(courseID,studentID);
+    public StdDTO getStudentGrades(@PathParam("courseID") int courseID, @PathParam("studentID") int studentID) {
+        StdDTO list = this.gradeRepository.findStudentGrades(courseID, studentID);
         return list;
 
     }

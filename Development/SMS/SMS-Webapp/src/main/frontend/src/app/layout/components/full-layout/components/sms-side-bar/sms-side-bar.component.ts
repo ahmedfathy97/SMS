@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-sms-side-bar',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sms-side-bar.component.css']
 })
 export class SmsSideBarComponent implements OnInit {
-
-  constructor() { }
+  courseID: string;
+  corID :number ;
+  constructor(private route: ActivatedRoute ) {
+    this.route.paramMap.subscribe(params => {
+      this.courseID = params.get("courseID");
+      var courseID  = +this.courseID ;
+      this.corID =courseID ;
+      console.log(this.corID);
+    })
+  }
 
   ngOnInit() {
+
+
   }
 
 }

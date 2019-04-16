@@ -51,7 +51,7 @@ export class CourseService {
 
   getCourseQuizes(courseID :number)
   {
-    return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/courseQuizes");
+    return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/quizes");
   }
 
 
