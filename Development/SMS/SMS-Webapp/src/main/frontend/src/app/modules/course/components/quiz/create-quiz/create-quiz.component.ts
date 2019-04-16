@@ -16,7 +16,7 @@ export class CreateQuizComponent implements OnInit {
   corID :number ;
   constructor(private formBuilder: FormBuilder,
               private courseService: CourseService, private route: ActivatedRoute ,
-              private route1 :Router) {
+              ) {
     this.route.paramMap.subscribe(params => {
       this.courseID = params.get("courseID");
     })

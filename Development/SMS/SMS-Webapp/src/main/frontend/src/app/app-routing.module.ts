@@ -70,12 +70,12 @@ const routes: Routes = [
           {path: 'new', component: CreateCourse},
           {
             path: ':courseID',  children: [
-              {
-                path: 'lecture', children: [
+              {path:'dashboard' ,component: CourseDetailsComponent} ,
+              {path: 'lecture', children: [
                   {path: 'new', component: CreateLecture},
                   {
-                    path: ':lectureID', component: LectureDetailsComponent, childern: [
-
+                    path: ':lectureID',component: LectureDetailsComponent , childern: [
+                     // {path:'dashboard' ,} ,
                       {path: 'upload ', component: UploadComponent},
                       {path: 'download', component: DownloadComponent},
 

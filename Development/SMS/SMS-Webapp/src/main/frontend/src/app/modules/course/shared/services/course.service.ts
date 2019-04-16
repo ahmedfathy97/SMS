@@ -6,6 +6,7 @@ import {StdDTO} from "../data/std-dto.data";
 import {QuizDto} from "../data/quiz/quiz-dto";
 import {AttendanceDTO} from "../data/attendance-dto.data";
 import {CourseQuizesVto} from "../data/quiz/course-quizes-vto";
+import {LectureDto} from "../data/lecture-dto.data";
 
 
 @Injectable()
@@ -20,8 +21,7 @@ export class CourseService {
     return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/instructor/2")
   }
 
-  //TODO: Youssef - rename to createNewCourse
-  //TODO: Youssef - Use APP_BASE_URL &  BASE_URL
+
   createNewCourse(details : CourseDTO){
     return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL , details);
   }
@@ -42,6 +42,10 @@ export class CourseService {
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
     return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
+  }
+
+  createNewLecture(courseID :number ,lectureDto : LectureDto){
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+courseID+"/lecture", lectureDto);
   }
 
 

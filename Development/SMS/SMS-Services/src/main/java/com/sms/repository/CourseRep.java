@@ -102,5 +102,12 @@ public class CourseRep {
     }
 
 
+    public void insertNewLecture( int courseID ,LectureDTO data){
+        String sql =" INSERT INTO lecture(title , lecture_date , video_url , description ,course_id) Values (?,?,?,?,?) ;\n";
+
+        this.jdbcTemplate.update(sql, data.getTitle(), data.getDate(), data.getVideoUrl(), data.getDescription() ,courseID);
+
+    }
+
 
 }

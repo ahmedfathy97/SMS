@@ -13,7 +13,7 @@ public class lectureRep {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void insertNewLecture(LectureDTO data){
+    public void insertNewLecture( int courseID ,LectureDTO data){
         String sql =" INSERT INTO lecture(title , lecture_date , video_url , description)Values(?,?,?,?)";
 
         this.jdbcTemplate.update(sql, data.getTitle(), data.getDate(), data.getVideoUrl(), data.getDescription());

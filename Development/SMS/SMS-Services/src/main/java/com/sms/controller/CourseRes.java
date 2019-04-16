@@ -3,7 +3,6 @@ package com.sms.controller;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
-import com.sms.model.course.rm.CourseGradesRM;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
 import com.sms.service.AttendanceSer;
@@ -20,7 +19,7 @@ public class CourseRes {
     private AttendanceSer attendance ;
 
 
-    private CourseRep repository;
+    private CourseRep courseRep;
     private CourseSer courseSer ;
     private GradeRep gradeRepository;
     private QuizRep rep ;
@@ -33,7 +32,7 @@ public class CourseRes {
             ,QuizRep rep ) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
-        this.repository = repository;
+        this.courseRep = repository;
         this.attendance = attendance;
         this.rep = rep;
     }
@@ -43,19 +42,18 @@ public class CourseRes {
 //    }
 
     @POST
-    //TODO: Youssef - rename Path to / only
+
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    //TODO: Youssef - rename function to createNewCourse
     public void createNewCourse(CourseDTO details){
-        repository.insertNewCourse(details);
+        courseRep.insertNewCourse(details);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/students")
     public List<StdDTO> findCourseStudents(@PathParam("courseID") int courseID) {
-        return this.repository.findAllCourseStudents(courseID);
+        return this.courseRep.findAllCourseStudents(courseID);
     }
 
     @GET
@@ -71,7 +69,7 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/instructor/{instructorID}")
     public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
-        List<CourseVTO> list =this.repository.findAllInstructorCourses(instructorID);
+        List<CourseVTO> list =this.courseRep.findAllInstructorCourses(instructorID);
         return list;
     }
 
@@ -80,8 +78,27 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{corID}")
     public CourseVTO viewCourse(@PathParam("corID") int corID) {
-        CourseVTO viewData =this.repository.findByID(corID);
+        CourseVTO viewData =this.courseRep.findByID(corID);
         return viewData;
+    }
+
+    @POST
+    @Path("/{courseID}/lecture")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createNewLecture(@PathParam("courseID") int courseID ,LectureDTO lectureDTO){
+
+        courseRep.insertNewLecture(courseID , lectureDTO);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/lectures")
+
+    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID)
+    {
+        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID) ;
+        return courseLecturesVTOList ;
     }
 
 
@@ -102,15 +119,7 @@ public class CourseRes {
        return courseQuizesVTOList ;
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/lectures")
 
-    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID)
-    {
-        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID) ;
-        return courseLecturesVTOList ;
-    }
 
 
 

@@ -9,7 +9,5 @@ export class LectureService {
 
   constructor(private http:HttpClient) {}
 
-  createNewLecture(data : LectureDto){
-    return this.http.post(this.APP_BASE_URL+this.Base_URL, data);
-  }
+
 }
