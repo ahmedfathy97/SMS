@@ -1,17 +1,16 @@
 package com.sms.model.lookUp.rm;
 
-import com.sms.model.user.UserVTO;
+import com.sms.model.user.UserData;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserVTORM implements RowMapper<UserVTO> {
+public class UserVTORM implements RowMapper<UserData> {
     @Override
-    public UserVTO mapRow(ResultSet rs, int rowIndex) throws SQLException {
+    public UserData mapRow(ResultSet rs, int rowIndex) throws SQLException {
 
-        UserVTO data=new UserVTO();
-        data.setId(rs.getInt("id"));
+        UserData data=new UserData();
         data.setFullName(rs.getString("full_name"));
         data.setAge(rs.getInt("age"));
         data.setGender(rs.getString("gender"));

@@ -31,7 +31,6 @@ import { CreateLecture } from './modules/course/components/create-lecture/create
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/quiz/answer-questions/answer-questions.component';
 import { CourseQuizesComponent } from './modules/course/components/course-details/course-quizes/course-quizes.component';
-import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
 import { CourseLecturesComponent } from './modules/course/components/course-details/course-lectures/course-lectures.component';
 import { LectureDetailsComponent } from './modules/course/components/lecture-details/lecture-details.component';
 import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
@@ -65,7 +64,6 @@ import { UserEditComponent } from './modules/user/components/user-edit/user-edit
     CreateLecture,
     AnswerQuestionsComponent,
     CourseQuizesComponent,
-    CourseDetailsComponent,
     CourseLecturesComponent,
     LectureDetailsComponent,
     UserEditComponent,

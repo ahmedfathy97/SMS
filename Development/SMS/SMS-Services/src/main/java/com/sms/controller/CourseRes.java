@@ -91,6 +91,7 @@ public class CourseRes {
     }
 
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")

@@ -22,7 +22,6 @@ import {UploadComponent} from "./infrastructure/components/manage-attachment/com
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
 import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-questions/answer-questions.component";
 import {CourseQuizesComponent} from "./modules/course/components/course-details/course-quizes/course-quizes.component";
-import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-lectures/course-lectures.component";
 import {LectureDetailsComponent} from "./modules/course/components/lecture-details/lecture-details.component";
 import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.component";
@@ -30,52 +29,69 @@ import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.c
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {
+    path: '', component: SimpleLayoutComponent, children: [
+      {path: 'login', component: LoginComponent},
+      {path: 'home', component: HomeComponent},
+      // {
+      //   path: 'user', childern: [
+      //     {
+      //       path: ':userID', childern: [
+      //         {path: 'profile', component: UserProfileComponent},
+      //         {path: 'profile', component: UserEditComponent},
+      //       ]
+      //     }
+      //   ]
+      // }
+    ]
+  },
+
+  {
     path: '', component: FullLayoutComponent, children: [
-      {path: 'lecture', component: CreateLecture},
-      // OLD ROUTING HALA
-      {path: 'create-grade', component: CreateGradeComponent},
-      {path: 'view-grade', component: ViewGradeComponent},
-      {path: 'std-grade', component: ViewStudentGradeComponent},
-
-      // OLD ROUTING ABANOUB
-      {path: 'attachment/file/upload', component: UploadComponent},
-      {path: 'attachment/file/download', component: DownloadComponent},
-
-      //OLD ROUNTING YOUSEF
-      {path: 'course/new', component: CreateCourse},
-      {path: 'course/:corID', component: ViewCourseComponent},
-
-      //OLD Routing Yara
-      {path: 'attend', component: CreateAttendanceComponent},
-      {path: 'view-attend', component: ViewAttendanceComponent},
-      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
-      //{path: 'tutorials', component: TutorialsComponent},
-
-      //OLD ROUTING Ahmed
-      {path: 'course/quiz/new', component: CreateQuizComponent},
-      {path: 'course/quiz/add_questions', component: AddQuizQuestionsComponent},
-      {path: 'course/quiz/answer_questions', component: AnswerQuestionsComponent},
-      {path: 'course/quizes', component: CourseQuizesComponent},
-      {path: 'course/:corID/course_details', component: CourseDetailsComponent},
-
+      // {path: 'lecture', component: CreateLecture},
+      // // OLD ROUTING HALA
+      // {path: 'create-grade', component: CreateGradeComponent},
+      // {path: 'view-grade', component: ViewGradeComponent},
+      // {path: 'std-grade', component: ViewStudentGradeComponent},
+      //
+      // // OLD ROUTING ABANOUB
+      // {path: 'attachment/file/upload', component: UploadComponent},
+      // {path: 'attachment/file/download', component: DownloadComponent},
+      //
+      // //OLD ROUNTING YOUSEF
+      // {path: 'course/new', component: CreateCourse},
+      // {path: 'course/:corID', component: ViewCourseComponent},
+      //
+      // //OLD Routing Yara
+      // {path: 'attend', component: CreateAttendanceComponent},
+      // {path: 'view-attend', component: ViewAttendanceComponent},
+      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      // //{path: 'tutorials', component: TutorialsComponent},
+      //
+      // //OLD ROUTING Ahmed
+      // {path: 'course/quiz/new', component: CreateQuizComponent},
+      // {path: 'course/quiz/add_questions', component: AddQuizQuestionsComponent},
+      // {path: 'course/quiz/answer_questions', component: AnswerQuestionsComponent},
+      // {path: 'course/quizes', component: CourseQuizesComponent},
+      // {path: 'course/:corID/course_details', component: CourseDetailsComponent},
+      //
       //Manar
       {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
 
       {path:'edit',children:[{path:':userID',component:UserEditComponent}]},
 
-      {path: 'home', component: HomeComponent},
       /////////////////////////////// Start  New Routing /////////////////////////////////////
       {
         path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
           {
-            path: ':courseID',  children: [
-              {path:'dashboard' ,component: CourseDetailsComponent} ,
-              {path: 'lecture', children: [
+            path: ':courseID', children: [
+             // {path: 'dashboard', component: CourseDetailsComponent},
+              {
+                path: 'lecture', children: [
                   {path: 'new', component: CreateLecture},
                   {
-                    path: ':lectureID',component: LectureDetailsComponent , childern: [
-                     // {path:'dashboard' ,} ,
+                    path: ':lectureID', component: LectureDetailsComponent, childern: [
+                      // {path:'dashboard' ,} ,
                       {path: 'upload ', component: UploadComponent},
                       {path: 'download', component: DownloadComponent},
 
@@ -138,13 +154,9 @@ const routes: Routes = [
       /////////////////////////////// END New Routing /////////////////////////////////////
 
     ]
-  },
-  {
-    path: '', component: SimpleLayoutComponent, children: [
-      {path: 'login', component: LoginComponent},
-
-    ]
   }
+
+
 ];
 
 @NgModule({

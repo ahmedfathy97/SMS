@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserVto} from "../../shared/data/user-vto";
+import {UserData} from "../../shared/data/user-data";
 import {UserService} from "../../shared/user.service";
 import {ActivatedRoute} from "@angular/router";
-import {EditVto} from "../../shared/data/edit-vto";
 
 
 class ImageSnippet {
@@ -18,7 +17,6 @@ class ImageSnippet {
 export class UserEditComponent implements OnInit {
 
   userID: string;
-  private userData: EditVto=new EditVto() ;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) {
@@ -30,10 +28,7 @@ export class UserEditComponent implements OnInit {
 
     ngOnInit()
     {
-      this.userService.findByID(5).subscribe(
-        res => {
-          this.userData = res;
-        });
+
     }
 
 }
