@@ -1,15 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from '@angular/router';
+import {SecurityService} from "../../shared/security.service";
+import {LoginDTO} from "../../shared/data/login-dto.data";
+import {AuthUserVTO} from "../../shared/data/auth-user-vto.data";
+import {LocalStorageService} from "../../../../infrastructure/services/local-storage.service";
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [FormBuilder, SecurityService]
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  formData: FormGroup = this.formBuilder.group({
+    username: [null],
+    password: [null]
+  });
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private securityService: SecurityService,
+              private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
   }
 
+  onLogin(){
+    let data: LoginDTO = new LoginDTO();
+    data.username = this.formData.get('username').value;
+    data.password = this.formData.get('password').value;
+
+    this.securityService.login(data).subscribe(
+      res=> {
+        // let authUser: AuthUserVTO = new AuthUserVTO();
+        // authUser = res;
+        console.log('Login Successfully');
+        this.router.navigate(['/home']);
+
+
+        this.localStorageService.setAuthUser(res);
+      },
+      err=>console.log(err)
+    );
+  }
 }

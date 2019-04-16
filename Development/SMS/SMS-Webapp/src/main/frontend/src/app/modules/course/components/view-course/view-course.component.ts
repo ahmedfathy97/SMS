@@ -11,14 +11,14 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ViewCourseComponent implements OnInit {
 
-  corID : string ;
+  corID : number ;
   private viewData: CourseVto = new CourseVto();
 
 
   constructor(private corService: CourseService,
               private route : ActivatedRoute) {
     this.route.paramMap.subscribe(params =>{
-      this.corID = params.get("corID");
+      this.corID = +params.get("corID");
     })
   }
 

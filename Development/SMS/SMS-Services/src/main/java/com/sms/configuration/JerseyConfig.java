@@ -1,7 +1,6 @@
 package com.sms.configuration;
 
-//import com.sms.controller.AttachmentRes;
-//import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import com.sms.controller.filter.CORSFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +12,6 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         register(CORSFilter.class);
-     //   register(AttachmentRes.class);
-//        register(MultiPartFeature.class);
         packages("com.sms.controller");
 
     }

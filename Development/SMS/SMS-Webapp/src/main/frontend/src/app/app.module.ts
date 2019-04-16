@@ -13,10 +13,7 @@ import { CreateGradeComponent } from './modules/course/components/grade/create-g
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import { CreateAttendanceComponent } from './modules/course/components/attendance/create-attendance/create-attendance.component';
-
-// import { QuillModule } from 'ngx-quill'
-import {HttpClientModule} from "@angular/common/http";
-//import { CreateTutorialComponent } from './modules/components/tutorialcreate-tutorial/create-tutorial.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ViewGradeComponent } from './modules/course/components/grade/view-grade/view-grade.component';
 import { ViewAttendanceComponent } from './modules/course/components/attendance/view-attendance/view-attendance.component';
 import { CreateQuizComponent } from './modules/course/components/quiz/create-quiz/create-quiz.component';
@@ -34,48 +31,32 @@ import { CourseQuizesComponent } from './modules/course/components/course-detail
 import { CourseLecturesComponent } from './modules/course/components/course-details/course-lectures/course-lectures.component';
 import { LectureDetailsComponent } from './modules/course/components/lecture-details/lecture-details.component';
 import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
-//import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
-
+import {RegisterComponent} from "./modules/security/components/register/register.component";
+import {AuthorizeActionDirective} from "./infrastructure/directives/authorization/authorize-action.directive";
+import {AuthorizeViewDirective} from "./infrastructure/directives/authorization/authorize-view.directive";
+import {UnAuthorizedComponent} from "./modules/security/components/un-authorized/un-authorized.component";
+import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.guard";
+import {AuthInterceptor} from "./infrastructure/interceptor/auth-interceptor";
+import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
+import {LocalStorageService} from "./infrastructure/services/local-storage.service";
 
 @NgModule({
   declarations: [
-    FullLayoutComponent,
-    SimpleLayoutComponent,
-    SmsHeaderComponent,
-    SmsSideBarComponent,
-    SmsFooterComponent,
-    HomeComponent,
-    LayoutComponent,
-    LoginComponent,
-    CreateGradeComponent,
-    CreateAttendanceComponent,
-    CreateCourse,
-    ViewCourseComponent,
-    ViewAttendanceComponent,
-    CreateQuizComponent,
-    ViewGradeComponent,
-    UserProfileComponent,
-    ViewGradeComponent,
-    UploadComponent,
-    DownloadComponent,
-    ViewStudentGradeComponent ,
-    AddQuizQuestionsComponent,
-    ViewStudentAttendanceComponent,
-    CreateLecture,
-    AnswerQuestionsComponent,
-    CourseQuizesComponent,
-    CourseLecturesComponent,
-    LectureDetailsComponent,
-    UserEditComponent,
-  //  TutorialsComponent
+    FullLayoutComponent, SimpleLayoutComponent, SmsHeaderComponent, SmsSideBarComponent, SmsFooterComponent,
+    HomeComponent, LayoutComponent, CreateGradeComponent, CreateAttendanceComponent, CreateCourse,
+    ViewCourseComponent, ViewAttendanceComponent, CreateQuizComponent, ViewGradeComponent,
+    UserProfileComponent, UploadComponent, DownloadComponent, ViewStudentGradeComponent ,
+    AddQuizQuestionsComponent, ViewStudentAttendanceComponent, CreateLecture, AnswerQuestionsComponent,
+    CourseQuizesComponent, CourseLecturesComponent, LectureDetailsComponent,
+    UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
+    UnAuthorizedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule
-     // ,QuillModule
-
   ],
-  providers: [],
+  providers: [LocalStorageService, AuthorizationGuard, AuthenticationGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [LayoutComponent]
 })
 export class AppModule { }

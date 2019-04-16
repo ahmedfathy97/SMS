@@ -7,7 +7,6 @@ import {LoginComponent} from "./modules/security/components/login/login.componen
 import {CreateGradeComponent} from "./modules/course/components/grade/create-grade/create-grade.component";
 import {CreateAttendanceComponent} from "./modules/course/components/attendance/create-attendance/create-attendance.component";
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
-import {ViewCourseComponent} from "./modules/course/components/view-course/view-course.component";
 import {ViewAttendanceComponent} from "./modules/course/components/attendance/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/quiz/create-quiz/create-quiz.component";
 import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
@@ -15,38 +14,25 @@ import {ViewGradeComponent} from "./modules/course/components/grade/view-grade/v
 import {ViewStudentGradeComponent} from "./modules/course/components/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/quiz/add-quiz-questions/add-quiz-questions.component";
-//import {TutorialsComponent} from "./modules/course/components/tutorials/tutorials.component";
 import {CreateLecture} from "./modules/course/components/create-lecture/create-lecture.component";
 
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
 import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-questions/answer-questions.component";
-import {CourseQuizesComponent} from "./modules/course/components/course-details/course-quizes/course-quizes.component";
-import {CourseLecturesComponent} from "./modules/course/components/course-details/course-lectures/course-lectures.component";
 import {LectureDetailsComponent} from "./modules/course/components/lecture-details/lecture-details.component";
 import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.component";
+import {RegisterComponent} from "./modules/security/components/register/register.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {
-    path: '', component: SimpleLayoutComponent, children: [
+  {path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
-      {path: 'home', component: HomeComponent},
-      // {
-      //   path: 'user', childern: [
-      //     {
-      //       path: ':userID', childern: [
-      //         {path: 'profile', component: UserProfileComponent},
-      //         {path: 'profile', component: UserEditComponent},
-      //       ]
-      //     }
-      //   ]
-      // }
+      {path: 'register', component: RegisterComponent},
+      {path: 'home', component: HomeComponent}
     ]
   },
 
-  {
-    path: '', component: FullLayoutComponent, children: [
+  {path: '', component: FullLayoutComponent, children: [
       // {path: 'lecture', component: CreateLecture},
       // // OLD ROUTING HALA
       // {path: 'create-grade', component: CreateGradeComponent},
@@ -155,8 +141,6 @@ const routes: Routes = [
 
     ]
   }
-
-
 ];
 
 @NgModule({
