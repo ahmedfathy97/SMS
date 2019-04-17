@@ -4,6 +4,7 @@ import {CourseVto} from "../../../shared/data/course-vto";
 import {CourseService} from "../../../shared/services/course.service";
 import {AttendanceDTO} from "../../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../../shared/services/attendance.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-create-attendance',
@@ -11,26 +12,32 @@ import {AttendanceService} from "../../../shared/services/attendance.service";
   providers: [FormBuilder, CourseService ,AttendanceService],
 })
 export class CreateAttendanceComponent implements OnInit {
-
+  courseID: string;
+  corID :number ;
   formData = this.formBuilder.group({
-    courseID: ['', Validators.required],
+   // courseID: ['', Validators.required],
     attendanceDate: ['', Validators.required]
   });
-  courses: CourseVto [] = [];
+ // courses: CourseVto [] = [];
 
   attendance: AttendanceDTO = new AttendanceDTO();
 
-  constructor(private formBuilder: FormBuilder, private  courseService: CourseService , private  attendanceService: AttendanceService) {
+  constructor(private formBuilder: FormBuilder, private  courseService: CourseService , private  attendanceService: AttendanceService ,
+              private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      this.courseID = params.get("courseID");
+    })
   }
 
   ngOnInit() {
-
-    this.courseService.getAllInstructorCourses().subscribe(
-      res => {
-        this.courses = res;
-        console.log(this.courses);
-      }
-    );
+    var courseID = +this.courseID;
+    this.corID = courseID ;
+    // this.courseService.getAllInstructorCourses().subscribe(
+    //   res => {
+    //     this.courses = res;
+    //     console.log(this.courses);
+    //   }
+    //);
   }
 
   onChangeCourse(courseID) {
@@ -52,7 +59,7 @@ export class CreateAttendanceComponent implements OnInit {
     data.attendanceData = this.formData.get('attendanceDate').value;
     data.students = this.attendance.students;
     console.log(data);
-      this.attendanceService.createNewAttendanceSheet(2, data).subscribe(
+      this.attendanceService.createNewAttendanceSheet(this.corID, data).subscribe(
         res => {
           console.log('request succed')
         },

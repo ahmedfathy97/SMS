@@ -22,6 +22,7 @@ import {AnswerQuestionsComponent} from "./modules/course/components/quiz/answer-
 import {LectureDetailsComponent} from "./modules/course/components/lecture-details/lecture-details.component";
 import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.component";
 import {RegisterComponent} from "./modules/security/components/register/register.component";
+import {CourseQuizesComponent} from "./modules/course/components/course-details/course-quizes/course-quizes.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -48,9 +49,9 @@ const routes: Routes = [
       // {path: 'course/:corID', component: ViewCourseComponent},
       //
       // //OLD Routing Yara
-      // {path: 'attend', component: CreateAttendanceComponent},
-      // {path: 'view-attend', component: ViewAttendanceComponent},
-      // {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
+      {path: 'attend', component: CreateAttendanceComponent},
+      {path: 'view-attend', component: ViewAttendanceComponent},
+      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
       // //{path: 'tutorials', component: TutorialsComponent},
       //
       // //OLD ROUTING Ahmed
