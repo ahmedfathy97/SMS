@@ -15,10 +15,10 @@ export class CreateAttendanceComponent implements OnInit {
   courseID: string;
   corID :number ;
   formData = this.formBuilder.group({
-   // courseID: ['', Validators.required],
+    //courseID: ['', Validators.required],
     attendanceDate: ['', Validators.required]
   });
- // courses: CourseVto [] = [];
+ //courses: CourseVto [] = [];
 
   attendance: AttendanceDTO = new AttendanceDTO();
 
@@ -32,17 +32,7 @@ export class CreateAttendanceComponent implements OnInit {
   ngOnInit() {
     var courseID = +this.courseID;
     this.corID = courseID ;
-    // this.courseService.getAllInstructorCourses().subscribe(
-    //   res => {
-    //     this.courses = res;
-    //     console.log(this.courses);
-    //   }
-    //);
-  }
-
-  onChangeCourse(courseID) {
-    console.log(courseID);
-    this.courseService.getAllCourseStudents(courseID).subscribe(
+    this.courseService.getAllCourseStudents(this.corID).subscribe(
       res => {
         this.attendance.students = res;
         console.log(this.attendance.students);
@@ -55,7 +45,7 @@ export class CreateAttendanceComponent implements OnInit {
 
   onSubmitNewAttendance() {
     let data: AttendanceDTO = new AttendanceDTO();
-    data.course_id = this.formData.get('courseID').value;
+    //data.course_id = this.formData.get('courseID').value;
     data.attendanceData = this.formData.get('attendanceDate').value;
     data.students = this.attendance.students;
     console.log(data);

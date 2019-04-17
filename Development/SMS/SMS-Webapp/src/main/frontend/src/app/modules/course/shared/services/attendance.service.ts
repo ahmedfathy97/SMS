@@ -7,13 +7,13 @@ import {StdDTO} from "../data/std-dto.data";
 @Injectable()
 export class AttendanceService {
   //TODO: Yara - Use APP_BASE_URL &  BASE_URL
-  BASE_URL: string = "http://localhost:8080/api/attendance";
+  BASE_URL: string = "http://localhost:8080/api/attendance/";
 
   constructor(private http: HttpClient) {
   }
 
-  createNewAttendanceSheet(courseID: number, attendanceDate: AttendanceDTO) {
-    return this.http.post(this.BASE_URL + "/2", attendanceDate);
+  createNewAttendanceSheet(courseID: number, attendanceDTO: AttendanceDTO) {
+    return this.http.post(this.BASE_URL + courseID +"/new ", attendanceDTO);
   }
 }
 

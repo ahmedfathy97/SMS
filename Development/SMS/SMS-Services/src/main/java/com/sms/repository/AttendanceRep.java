@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -28,9 +30,11 @@ public class AttendanceRep {
     }
 
     public int insertNewSheet(int courseID , Date sheetDate){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd ");
+        String strDate = dateFormat.format(sheetDate);
         Map<String, Object> parameters = new HashMap<>(2);
         parameters.put("cor_id", courseID);
-        parameters.put("created_on", "2018-05-12");
+        parameters.put("created_on",strDate);
         Number newId = attendanceSJI.executeAndReturnKey(parameters);
         return newId.intValue();
     }
