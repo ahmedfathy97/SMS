@@ -33,113 +33,54 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent} ,
 
-      /////////////////////////////// Start  New Routing /////////////////////////////////////
-      {
-        path: 'course', /* component which view all courses*/ children: [
+      {path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
-          {
-            path: ':courseID'  , children: [
-              {path: 'details', component: CourseDetailsComponent},
-              // {
-              //   path: 'lecture',component :CourseInfoComponent , children: [
-              //     {path: 'new', component: CreateLecture},
-              //     {
-              //       path: ':lectureID', childern: [
-              //         // {path:'dashboard' ,} ,
-              //         {path: 'upload ', component: UploadComponent},
-              //         {path: 'download', component: DownloadComponent},
-              //
-              //
-              //         // {path:'article'} ,
-              //         //
-              //         //
-              //         // {path: 'assigment', children:[
-              //         //     {path: 'new' },
-              //         //     {path: ':studentID'},
-              //         //   ]
-              //         // },
-              //
-              //
-              //       ]
-              //     },
-              //   ]
-              // },
+          {path: ':courseID', component: CourseDetailsComponent, children: [
+              // {path: '', component: /*Announcement List Component*/},
+              {path: 'lecture', children: [
+                  {path: 'new', component: CreateLecture}//,
+                  // {path: ':lectureID', children: [
+                  //     {path: 'upload ', component: UploadComponent},
+                  //     {path: 'download', component: DownloadComponent}
+                  //   ]
+                  // },
+                ]
+              },
 
-              {
-                path: 'attendance', children: [
-                  {path: 'new', component: CreateAttendanceComponent},
-                  {path: 'allStudentsAttendence', component: ViewAttendanceComponent},
-                  {path: ':stdID', component: ViewStudentAttendanceComponent},
+              {path: 'attendance', children: [
+                  {path: '', component: ViewAttendanceComponent},
+                  {path: 'new', component: CreateAttendanceComponent}
                 ]
               },
 
               {
                 path: 'grade', children: [
-                  {path: 'new', component: CreateGradeComponent},
-                  {path: 'allStudentsGrades', component: ViewGradeComponent},
-                  {path: ':studentID /studentGrade', component: ViewStudentGradeComponent},
+                  {path: '', component: ViewGradeComponent},
+                  {path: 'new', component: CreateGradeComponent}
                 ]
               },
 
               {
                 path: 'quiz', children: [
-
+                  {path: '', component: CourseQuizesComponent},
                   {path: 'new', component: CreateQuizComponent},
-                  {path: 'courseQuizes', component: CourseQuizesComponent},
-
                   {path: 'questions', component: AddQuizQuestionsComponent},
-                  {
-                    path: ':quizID', children: [
+                  {path: ':quizID', children: [
                       {path: ':studentID/answerQuiz', component: AnswerQuestionsComponent},
-
                     ]
                   },
                 ]
               },
-
             ]
           },
-
         ]
-      },
-      /////////////////////////////// END New Routing /////////////////////////////////////
+      }
     ]
   },
 
   {path: '', component: FullLayoutComponent, children: [
-      // {path: 'lecture', component: CreateLecture},
-      // OLD ROUTING HALA
-      // {path: 'create-grade', component: CreateGradeComponent},
-      // {path: 'view-grade', component: ViewGradeComponent},
-      // {path: 'std-grade', component: ViewStudentGradeComponent},
-
-      // // OLD ROUTING ABANOUB
-      // {path: 'attachment/file/upload', component: UploadComponent},
-      // {path: 'attachment/file/download', component: DownloadComponent},
-      //
-      // //OLD ROUNTING YOUSEF
-      // {path: 'course/new', component: CreateCourse},
-      // {path: 'course/:corID', component: CourseInfoComponent},
-      //
-      // //OLD Routing Yara
-      {path: 'attend', component: CreateAttendanceComponent},
-      {path: 'view-attend', component: ViewAttendanceComponent},
-      {path: 'view-student-attend', component: ViewStudentAttendanceComponent},
-      // //{path: 'tutorials', component: TutorialsComponent},
-      //
-      // //OLD ROUTING Ahmed
-      // {path: 'course/quiz/new', component: CreateQuizComponent},
-      // {path: 'course/quiz/add_questions', component: AddQuizQuestionsComponent},
-      // {path: 'course/quiz/answer_questions', component: AnswerQuestionsComponent},
-      // {path: 'course/quizes', component: CourseQuizesComponent},
-      // {path: 'course/:corID/course_details', component: CourseDetailsComponent},
-      //
-      //Manar
       {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-
-      {path:'edit',children:[{path:':userID',component:UserEditComponent}]},
-
-
+      {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
     ]
   }
 ];
