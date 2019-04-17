@@ -9,7 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/grade")
+@Path("/grade/")
 public class GradeRes {
     private GradeSer gradeService;
     private GradeRep gradeRepository;
@@ -23,7 +23,7 @@ public class GradeRes {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}")
+    @Path("/{courseID}/new")
     public void createGradeSheet(@PathParam("courseID") int courseID, List<StdDTO> students) {
         this.gradeService.createSheet(courseID, students);
         System.out.print("Data Recieved Sucessfully");

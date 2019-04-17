@@ -4,6 +4,7 @@ import {CourseService} from "../../../../../shared/services/course.service";
 import {GradeService} from "../../../../../shared/services/grade.service";
 import {CourseVto} from "../../../../../shared/data/course-vto";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -13,6 +14,8 @@ import {StdDTO} from "../../../../../shared/data/std-dto.data";
   providers: [FormBuilder,CourseService ,GradeService]
 })
 export class CreateGradeComponent implements OnInit {
+  courseID: string;
+  corID :number ;
   formData: FormGroup = this.formBuilder.group({
     course: [null, [Validators.required]],
     items: new FormArray([])
@@ -20,41 +23,48 @@ export class CreateGradeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private courseService: CourseService,
-              private gradeService:GradeService ) {
+              private gradeService:GradeService , private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      this.courseID = params.get("courseID");
+    })
 
   }
 
-  courses: CourseVto [] = [];
-  courseSelected:boolean=false;
+  // courses: CourseVto [] = [];
+  // courseSelected:boolean=false;
 
   students: StdDTO[] = [];
 
   ngOnInit() {
-    this.courseService.getAllInstructorCourses().subscribe(
-      res => {
-        this.courses = res;
-        console.log(this.courses);
-      }
-    );
-
-
-  }
-
-  onChangeCourse(courseID) {
-    console.log(courseID);
-
-    this.courseService.getAllCourseStudents(courseID).subscribe(
+    var courseID = +this.courseID;
+    this.corID = courseID ;
+    // this.courseService.getAllInstructorCourses().subscribe(
+    //   res => {
+    //     this.courses = res;
+    //     console.log(this.courses);
+    //   }
+    // );
+    // debugger;
+    this.courseService.getAllCourseStudents(this.corID).subscribe(
       res => {
         this.students = res;
         this.clearFormArray(this.items);
         for(let i=0; i<this.students.length; i++)
           this.addItem();
-        this.courseSelected=true;
+        // this.courseSelected=true;
 
 
       }
     );
+
+
   }
+
+  // onChangeCourse(courseID) {
+  //   console.log(courseID);
+  //
+  //
+  // }
 
   onSubmitGradeSheet() {
 
@@ -62,7 +72,7 @@ export class CreateGradeComponent implements OnInit {
       this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
 
     console.log(this.students);
-    this.gradeService.createNewGradeSheet(2,this.students).subscribe(
+    this.gradeService.createNewGradeSheet(this.corID,this.students).subscribe(
       res=> {
         console.log('request succed')
       },

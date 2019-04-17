@@ -42,10 +42,10 @@ public class CourseRep {
 
     public List<StdDTO> findAllCourseStudents(int corID) {
         String sql =
-                "SELECT first_name, last_name, std.id " +
-                        "FROM course_std " +
-                        "LEFT JOIN auth_user std on std.id = course_std.std_id " +
-                        "WHERE cor_id = ? ";
+                "SELECT first_name, last_name, user_detail.user_id \n" +
+                        "                        FROM course_std \n" +
+                        "                        LEFT JOIN user_detail user_detail on user_detail.user_id = course_std.std_id \n" +
+                        "                        WHERE cor_id = ?";
         return this.jdbcTemplate.query(sql, new StdDTORM(), corID);
     }
 

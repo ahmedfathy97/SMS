@@ -14,7 +14,7 @@ public class StdDTORM implements RowMapper<StdDTO> {
         String lastName=rs.getString("last_name");
 
         data.setFullName(firstName + " " +lastName);
-        data.setId(rs.getInt("id"));
+        data.setId(rs.getInt("user_id"));
         return data;
     }
 }

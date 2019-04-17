@@ -12,6 +12,6 @@ export class GradeService {
   }
 
   createNewGradeSheet(courseID:number, students: StdDTO[]){
-    return this.http.post(this.BASE_URL + `/${courseID}`,students);
+    return this.http.post(this.BASE_URL +courseID+"/new" ,students);
   }
 }

@@ -32,15 +32,15 @@
         <div class="card-body">
           <h4 class="header-title">Student Grades</h4>
           <div [formGroup]="formData" class="col-ml-12">
-            <div class="form-group" >
-              <label class="col-form-label">Courses</label>
-              <select (change)="onChangeCourse($event.target.value)" class="form-control" id="course"
-                      formControlName="course">
-                <option *ngFor="let cor of courses" value="{{cor.id}}">{{cor.name}}</option>
-              </select>
-            </div>
+            <!--<div class="form-group" >-->
+              <!--<label class="col-form-label">Courses</label>-->
+              <!--<select (change)="onChangeCourse($event.target.value)" class="form-control" id="course"-->
+                      <!--formControlName="course">-->
+                <!--<option *ngFor="let cor of courses" value="{{cor.id}}">{{cor.name}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
 
-            <div class="data-tables datatable-primary " *ngIf="courseSelected" >
+            <!--<div class="data-tables datatable-primary " *ngIf="courseSelected" >-->
               <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer ">
                 <div class="row" >
                   <div class="col-ml-12">
@@ -85,7 +85,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!--</div>-->
           </div>
         </div>
       </div>
