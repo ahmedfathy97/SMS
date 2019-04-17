@@ -4,23 +4,6 @@ ADD COLUMN mid_1_grd INT(11)  AFTER std_id,
 ADD COLUMN semi_final_grd INT(11)  AFTER mid_1_grd,
 ADD COLUMN mid_2_grd INT(11)  AFTER semi_final_grd,
 ADD COLUMN final_grd INT(11)  AFTER mid_2_grd;
-
-INSERT INTO auth_user (user_name, user_pass, first_name, last_name) VALUES ('Hala', '12', 'Hala', 'Mahmoud');
-INSERT INTO auth_user (user_name, user_pass, first_name, last_name) VALUES ('Yara', '132', 'Yara', 'Abd El Rahman');
-INSERT INTO auth_user (user_name, user_pass, first_name, last_name) VALUES ('Ahmed', '1234', 'Ahmed', 'Fathy');
-INSERT INTO auth_user (user_name, user_pass, first_name, last_name) VALUES ('Yousef', '10', 'yousef', 'Reda');
-
-INSERT INTO course_std (cor_id, std_id) VALUES (2, 3);
-INSERT INTO course_std (cor_id, std_id) VALUES (2, 4);
-INSERT INTO course_std (cor_id, std_id) VALUES (2, 5);
-INSERT INTO course_std (cor_id, std_id) VALUES (1, 2);
-INSERT INTO course_std (cor_id, std_id) VALUES (1, 3);
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 1);
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 2);
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 3);
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 4);
-
-
 -- end hala
 
 -- Youssef
@@ -88,9 +71,7 @@ INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('3', 'written');
 
 
 -- fathy End
---hala start
-INSERT INTO course_std (cor_id, std_id) VALUES (4, 6);
--- hala End
+
 
 -- Abanoub Start --
 
@@ -114,34 +95,12 @@ CREATE TABLE attachment (
 
 -- Abanoub End --
 
--- fathy start--
+-- fathy start --
 ALTER TABLE question
 CHANGE COLUMN question_content  question VARCHAR(500) NOT NULL ,
 CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 -- fathy end --
 
---start Manar
-
-ALTER TABLE `sms`.`auth_user`
-ADD COLUMN `age` INT NOT NULL AFTER `last_name`,
-ADD COLUMN `gender` VARCHAR(45) NOT NULL AFTER `age`,
-ADD COLUMN `e_mail` VARCHAR(100) NOT NULL AFTER `gender`,
-ADD COLUMN `phone` INT NOT NULL AFTER `e_mail`,
-ADD COLUMN `college` VARCHAR(100) NULL AFTER `phone`;
-
-ALTER TABLE `sms`.`auth_user`
-CHANGE COLUMN `phone` `phone` INT(11) NULL ;
-
-UPDATE `sms`.`auth_user` SET `gender`='male', `e_mail`='ahned@jhj', `phone`='125' WHERE `id`='1';
-UPDATE `sms`.`auth_user` SET `gender`='male', `e_mail`='ahmed@khhkhna', `phone`='126' WHERE `id`='2';
-UPDATE `sms`.`auth_user` SET `gender`='female', `e_mail`='ajhjhj@jjhj', `phone`='125' WHERE `id`='3';
-UPDATE `sms`.`auth_user` SET `gender`='female', `e_mail`='hjhjhjh@jhjh', `phone`='1478' WHERE `id`='4';
-UPDATE `sms`.`auth_user` SET `gender`='male', `e_mail`='ggfgfg@jh', `phone`='1258' WHERE `id`='5';
-UPDATE `sms`.`auth_user` SET `gender`='male', `e_mail`='gfgffg', `phone`='965' WHERE `id`='6';
-
-INSERT INTO `sms`.`auth_user` (`id`, `user_name`, `user_pass`, `first_name`, `last_name`, `age`, `gender`, `e_mail`, `phone`) VALUES ('7', 'manar', '1569', 'manar', 'el sayed', '20', 'female', 'kjuytr@huyt.com', '15897');
-
---end manar
 
 -- fathy start --
 ALTER TABLE `sms`.`quiz`
@@ -167,7 +126,7 @@ CREATE TABLE lecture (
 
 
 
---fathy start --
+-- fathy start --
 
 
 
@@ -208,7 +167,7 @@ CREATE TABLE `sms`.`student_answer` (
 -- fathy end --
 
 
---fathy start 15/3/2019 --
+-- fathy start 15/3/2019 --
 
 ALTER TABLE `sms`.`question`
 ADD COLUMN `question_grade` INT NOT NULL AFTER `quiz_question_type_id`;
@@ -216,11 +175,11 @@ ADD COLUMN `question_grade` INT NOT NULL AFTER `quiz_question_type_id`;
 ALTER TABLE `sms`.`student_answer`
 ADD COLUMN `student_score` INT NOT NULL AFTER `is_correct`;
 
---fathy end 15/3/2019 --
+-- fathy end 15/3/2019 --
 
 
 
---fathy start 13/4/2019
+-- fathy start 13/4/2019
 
 ALTER TABLE `sms`.`lecture`
 ADD COLUMN `course_id` INT NOT NULL AFTER `description`;
@@ -235,4 +194,4 @@ ADD CONSTRAINT `fk_course_lectures`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
---fathy end 13/4/2019
+-- fathy end 13/4/2019
