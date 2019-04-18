@@ -210,3 +210,9 @@ CREATE TABLE `sms`.`announcment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 -- yara end --
+
+
+-- ahmed start ---
+ALTER TABLE announcment
+CHANGE COLUMN id id INT(11) NOT NULL AUTO_INCREMENT ;
+-- ahmed end ---
