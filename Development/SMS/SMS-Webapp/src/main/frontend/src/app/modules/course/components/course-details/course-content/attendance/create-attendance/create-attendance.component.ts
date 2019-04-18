@@ -32,16 +32,6 @@ export class CreateAttendanceComponent implements OnInit {
   ngOnInit() {
     var courseID = +this.courseID;
     this.corID = courseID ;
-    // this.courseService.getAllInstructorCourses().subscribe(
-    //   res => {
-    //     this.courses = res;
-    //     console.log(this.courses);
-    //   }
-    //);
-  }
-
-  onChangeCourse(courseID) {
-    console.log(courseID);
     this.courseService.getAllCourseStudents(courseID).subscribe(
       res => {
         this.attendance.students = res;
@@ -51,11 +41,22 @@ export class CreateAttendanceComponent implements OnInit {
     );
   }
 
+  // onChangeCourse(courseID) {
+  //   console.log(courseID);
+  //   this.courseService.getAllCourseStudents(courseID).subscribe(
+  //     res => {
+  //       this.attendance.students = res;
+  //       console.log(this.attendance.students);
+  //
+  //     }
+  //   );
+  // }
+
   exist : boolean = false ;
 
   onSubmitNewAttendance() {
     let data: AttendanceDTO = new AttendanceDTO();
-    data.course_id = this.formData.get('courseID').value;
+    //data.course_id = this.formData.get('courseID').value;
     data.attendanceData = this.formData.get('attendanceDate').value;
     data.students = this.attendance.students;
     console.log(data);
