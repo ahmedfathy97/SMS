@@ -16,6 +16,7 @@ class ImageSnippet {
 })
 export class UserEditComponent implements OnInit {
 
+  private userData: UserData=new  UserData();
   userID: string;
 
   constructor(private userService: UserService,
@@ -28,7 +29,9 @@ export class UserEditComponent implements OnInit {
 
     ngOnInit()
     {
-
+      var userID =+this.userID ;
+      this.userService.findByID(userID).subscribe(
+        res=> { this.userData=res ;});
     }
 
 }

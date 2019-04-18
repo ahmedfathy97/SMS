@@ -75,3 +75,15 @@ INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id,
 VALUES (3, 'C', 3, '2018-5-12', '2018-8-12', 2, 2, 2, 2, 'Programming Language');
 INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (4, 'C#', 3, '2018-5-12', '2018-8-12', 2, 2, 2, 2, 'Programming Language');
+
+--manar--
+UPDATE `sms`.`user_detail` SET `age`='20', `gender`='male', `phone`='0115698753', `college`='engneerig' WHERE `user_id`='1';
+UPDATE `sms`.`user_detail` SET `age`='45', `gender`='male', `phone`='010255998', `college`='law' WHERE `user_id`='2';
+UPDATE `sms`.`user_detail` SET `age`='35', `gender`='female', `phone`='0156986540', `college`='arts' WHERE `user_id`='3';
+
+UPDATE `sms`.`user_detail` SET `user_name`='Ahmed-Mater' WHERE `user_id`='1';
+UPDATE `sms`.`user_detail` SET `user_name`='Ali-Maher' WHERE `user_id`='2';
+UPDATE `sms`.`user_detail` SET `user_name`='Mona-Ramy' WHERE `user_id`='3';
+--manar--
+UPDATE `sms`.`user_detail` SET `user_name`='Ahmed Mater' WHERE `user_id`='1';
+

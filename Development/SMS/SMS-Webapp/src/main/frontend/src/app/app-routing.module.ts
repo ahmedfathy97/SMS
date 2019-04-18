@@ -32,6 +32,9 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent} ,
+      {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+      {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
+
 
       {path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
