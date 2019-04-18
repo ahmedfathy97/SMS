@@ -146,20 +146,6 @@ CREATE TABLE cor_std_att (
 );
 
 -- yousef ----
----manar--
-ALTER TABLE `sms`.`user_detail`
-ADD COLUMN `age` INT NOT NULL AFTER `email`,
-ADD COLUMN `gender` VARCHAR(45) NOT NULL AFTER `age`,
-ADD COLUMN `phone` INT NOT NULL AFTER `gender`,
-ADD COLUMN `college` VARCHAR(45) NOT NULL AFTER `phone`;
-
-ALTER TABLE `sms`.`user_detail`
-ADD COLUMN `user_name` VARCHAR(45) NOT NULL AFTER `college`;
-
-
-
-
----manar---
 
 
 
