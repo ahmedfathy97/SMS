@@ -195,3 +195,18 @@ ADD CONSTRAINT `fk_course_lectures`
   ON UPDATE NO ACTION;
 
 -- fathy end 13/4/2019
+-- yara start --
+CREATE TABLE `sms`.`announcment` (
+  `id` INT NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
+  `content` VARCHAR(255) NOT NULL,
+  `announ_date` DATE NOT NULL,
+  `course_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_announcment_course_idx` (`course_id` ASC),
+  CONSTRAINT `fk_announcment_course`
+    FOREIGN KEY (`course_id`)
+    REFERENCES `sms`.`course` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+-- yara end --
