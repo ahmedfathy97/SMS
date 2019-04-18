@@ -109,6 +109,7 @@ public class CourseRep {
 
     }
 
+
     public void createAnnouncement(int course_id, Announcement announcement) {
         String sql = "INSERT INTO announcement ( title, content , course_id)" +
                 " Values (?,?,?) ";
