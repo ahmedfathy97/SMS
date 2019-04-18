@@ -1,19 +1,15 @@
 package com.sms.controller;
 
 
-import com.sms.model.AttendanceDTO;
 import com.sms.model.course.Announcement;
 import com.sms.service.AnnouncementSer;
-import com.sms.service.AttendanceSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
-@Path("/announcement")
+@Path("/announcment/")
 public class AnnouncementRes {
     private AnnouncementSer announcementSer;
 
@@ -27,9 +23,21 @@ public class AnnouncementRes {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
     public void createAttendanceSheet(@PathParam("courseID") int courseID, Announcement announcement) {
-        System.out.print("Data Recieved Sucessfully");
-        System.out.print(announcement.toString());
         this.announcementSer.createAnnouncement(courseID, announcement);
     }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/announcmentList")
+    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID)
+    {
+        List<Announcement> announcementList =announcementSer.getCourseAnnouncments(courseID) ;
+        return announcementList ;
+    }
+
+
+
+
 
 }
