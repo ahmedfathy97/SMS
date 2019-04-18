@@ -14,7 +14,7 @@ public class UserDataRM implements RowMapper<UserData> {
         data.setFullName(rs.getString("full_name"));
         data.setAge(rs.getInt("age"));
         data.setGender(rs.getString("gender"));
-        data.setE_mail(rs.getString("e_mail"));
+        data.setE_mail(rs.getString("email"));
         data.setPhone(rs.getInt("phone"));
         data.setCollege(rs.getString("college"));
         data.setUserName(rs.getString("user_name"));
