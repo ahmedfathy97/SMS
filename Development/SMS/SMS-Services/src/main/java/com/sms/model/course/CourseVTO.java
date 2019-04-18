@@ -6,7 +6,7 @@ import java.util.Date;
 public class CourseVTO implements Serializable {
 
     private  int id;
-    private String name;
+    //private String name;
     private  String courseName;
     private int  duration ;
     private Date startDate ;
@@ -40,13 +40,13 @@ public class CourseVTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public int getDuration() {
         return duration;
@@ -120,21 +120,6 @@ public class CourseVTO implements Serializable {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "CourseVTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", duration=" + duration +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", corCategory='" + corCategory + '\'' +
-                ", corType='" + corType + '\'' +
-                ", corLevel='" + corLevel + '\'' +
-                ", instructorName='" + instructorName + '\'' +
-                ", studentNum=" + studentNum +
-                ", description='" + description + '\'' +
-                '}';
+
     }
-}
+

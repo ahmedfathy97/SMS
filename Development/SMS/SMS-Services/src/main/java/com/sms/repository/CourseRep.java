@@ -21,10 +21,19 @@ public class CourseRep {
 
 
     public List<CourseVTO> findAllInstructorCourses(int instrID) {
-        String sql = "SELECT id,cor_name FROM course where instructor_id =? ";
+        String sql = "SELECT id,cor_name,duration ,start_date,end_date, description FROM course where instructor_id =? ";
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
+    public List<CourseVTO> findAllStudentCourse(int stdID){
+        String sql ="SELECT cor.id ,std_id,cor_name,duration ,start_date,end_date, description\n" +
+                "FROM course_std  std\n" +
+                "LEFT JOIN course cor on std.cor_id = cor.id\n" +
+                "where std_id = ?";
+        return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
 
+
+
+    }
     public void insertNewCourse(CourseDTO details) {
         String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +
                 " category_id ,type_id , level_id , description ,instructor_id) Values (?,?,?,?,?,?,?,?,1) ";

@@ -3,6 +3,7 @@ package com.sms.service;
 import com.sms.model.course.Announcement;
 import com.sms.model.course.CourseLecturesVTO;
 import com.sms.model.course.CourseQuizesVTO;
+import com.sms.model.course.CourseVTO;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
@@ -42,6 +43,12 @@ public class CourseSer {
     {
         List<CourseLecturesVTO> courseLecturesVTOList =courseRep.getCourseLectures(courseID) ;
         return courseLecturesVTOList ;
+    }
+    public List<CourseVTO> findStudentCourses(int studentID){
+        List<CourseVTO> CourseVTOList =courseRep.findAllStudentCourse(studentID);
+        return CourseVTOList;
+
+
     }
 
 

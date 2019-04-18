@@ -66,11 +66,20 @@ public class CourseRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/instructor/{instructorID}")
+    @Path("/{instructorID}/courses")
     public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
         List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
         return list;
     }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{studentID}/studentcourses")
+    public List<CourseVTO> findStudentCourses(@PathParam("studentID") int studentID){
+        List<CourseVTO> list = this.courseSer.findStudentCourses(studentID);
+        return list;
+
+    }
+
 
 
     @GET

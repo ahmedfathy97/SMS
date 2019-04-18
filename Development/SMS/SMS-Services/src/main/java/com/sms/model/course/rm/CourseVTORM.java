@@ -12,7 +12,11 @@ public class CourseVTORM implements RowMapper<CourseVTO> {
     public CourseVTO mapRow(ResultSet rs, int rowIndex) throws SQLException {
         CourseVTO data=new CourseVTO();
         data.setId(rs.getInt("id"));
-        data.setName(rs.getString("cor_name"));
+        data.setCourseName(rs.getString("cor_name"));
+        data.setDuration(rs.getInt("duration"));
+        data.setStartDate(rs.getDate("start_date"));
+        data.setEndDate(rs.getDate("end_date"));
+        data.setDescription(rs.getString("description"));
         return data;
     }
 }
