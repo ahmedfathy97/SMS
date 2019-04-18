@@ -25,14 +25,11 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
     public List<CourseVTO> findAllStudentCourse(int stdID){
-        String sql ="SELECT cor.id ,std_id,cor_name,duration ,start_date,end_date, description\n" +
-                "FROM course_std  std\n" +
-                "LEFT JOIN course cor on std.cor_id = cor.id\n" +
+        String sql ="SELECT cor.id ,std_id,cor_name,duration ,start_date,end_date, description " +
+                "FROM course_std  std " +
+                "LEFT JOIN course cor on std.cor_id = cor.id " +
                 "where std_id = ?";
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
-
-
-
     }
     public void insertNewCourse(CourseDTO details) {
         String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +

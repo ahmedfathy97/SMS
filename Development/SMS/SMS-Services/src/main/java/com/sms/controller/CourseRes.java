@@ -1,8 +1,10 @@
 package com.sms.controller;
 
+import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
 import com.sms.service.AttendanceSer;
@@ -11,6 +13,8 @@ import com.sms.service.CourseSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -41,7 +45,6 @@ public class CourseRes {
 //    }
 
     @POST
-
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createNewCourse(CourseDTO details) {
@@ -71,11 +74,13 @@ public class CourseRes {
         List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
         return list;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{studentID}/studentcourses")
-    public List<CourseVTO> findStudentCourses(@PathParam("studentID") int studentID){
-        List<CourseVTO> list = this.courseSer.findStudentCourses(studentID);
+    @Path("/")
+    public List<CourseVTO> findStudentCourses(@Context ContainerRequestContext request) {
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+        List<CourseVTO> list = this.courseSer.findAllCourses(currentUser);
         return list;
 
     }

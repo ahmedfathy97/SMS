@@ -52,11 +52,23 @@ public class SecurityRep {
         String sql = "SELECT auth.id, det.first_name, det.last_name, auth.username, auth.user_password, " +
                 "det.email " +
                 "FROM auth_user auth " +
-                    "LEFT JOIN user_detail det ON auth.id = det.user_id " +
+                "LEFT JOIN user_detail det ON auth.id = det.user_id " +
                 "where auth.username = ?";
         List<UserVTO> list = this.jdbc.query(sql, new UserVTORM(), username);
 
         return (list.size() == 0) ? null: list.get(0);
+    }
+
+    public List<Integer> findUserRoles(String username){
+        String sql = "SELECT role_id FROM auth_user_role auth where auth.username = ?";
+        List<Integer> list = this.jdbc.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getInt("role_id");
+            }
+        }, username);
+
+        return list;
     }
 
     public boolean isUserHasView(int userID, List<Integer> viewIDs){

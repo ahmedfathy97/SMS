@@ -1,16 +1,19 @@
 package com.sms.service;
 
+import com.sms.model.authorization.AuthRoles;
 import com.sms.model.course.Announcement;
 import com.sms.model.course.CourseLecturesVTO;
 import com.sms.model.course.CourseQuizesVTO;
 import com.sms.model.course.CourseVTO;
 import com.sms.model.course.quiz.QuizDTO;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,8 +47,12 @@ public class CourseSer {
         List<CourseLecturesVTO> courseLecturesVTOList =courseRep.getCourseLectures(courseID) ;
         return courseLecturesVTOList ;
     }
-    public List<CourseVTO> findStudentCourses(int studentID){
-        List<CourseVTO> CourseVTOList =courseRep.findAllStudentCourse(studentID);
+    public List<CourseVTO> findAllCourses(UserVTO currentUser){
+        List<CourseVTO> CourseVTOList = new ArrayList<>();
+        if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
+            CourseVTOList = courseRep.findAllStudentCourse(currentUser.getId());
+        else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
+            CourseVTOList =courseRep.findAllStudentCourse(currentUser.getId());
         return CourseVTOList;
 
 

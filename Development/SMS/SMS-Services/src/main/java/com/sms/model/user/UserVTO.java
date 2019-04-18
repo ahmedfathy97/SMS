@@ -1,6 +1,7 @@
 package com.sms.model.user;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserVTO implements Serializable {
 
@@ -10,6 +11,7 @@ public class UserVTO implements Serializable {
     private String username;
     private String password;
     private String email;
+    private List<Integer> roleIDs;
 
     String fullName;
     int age;
@@ -124,6 +126,14 @@ public class UserVTO implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public List<Integer> getRoleIDs() {
+        return roleIDs;
+    }
+
+    public void setRoleIDs(List<Integer> roleIDs) {
+        this.roleIDs = roleIDs;
     }
 
     @Override
