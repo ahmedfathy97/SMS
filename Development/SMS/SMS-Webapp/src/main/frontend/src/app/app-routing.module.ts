@@ -25,6 +25,7 @@ import {CourseQuizesComponent} from "./modules/course/components/course-details/
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-content/lecture/course-lectures/course-lectures.component";
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
+import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -39,7 +40,7 @@ const routes: Routes = [
       {path: 'course', /* component which view all courses*/ children: [
           {path: 'new', component: CreateCourse},
           {path: ':courseID', component: CourseDetailsComponent, children: [
-              // {path: '', component: /*Announcement List Component*/},
+               {path: 'announcement', component: CreateAnnouncmentComponent},
               {path: 'lecture', children: [
                   {path: 'new', component: CreateLecture}//,
                   // {path: ':lectureID', children: [

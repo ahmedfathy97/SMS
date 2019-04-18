@@ -15,19 +15,19 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <form>
+          <form [formGroup]="formData">
 
             <div class="row">
               <div class="form-group col-md-6">
                 <label class="col-form-label">Title</label>
-                <input class="form-control" type="text" id="Title">
+                <input class="form-control" type="text" id="Title" formControlName="title">
               </div>
             </div>
 
             <div class="row">
             <div class="form-group col-md-6">
               <label class="col-form-label">Description</label>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Enter Your Announcement " rows="5" ></textarea>
+              <textarea class="form-control" aria-label="With textarea" formControlName="description" placeholder="Enter Your Announcement " rows="5" ></textarea>
             </div>
             </div>
 
@@ -36,7 +36,7 @@
 
 
           <button type="submit" class="btn btn-danger pull-right ml-2">Discrad</button>
-          <button type="submit" class="btn  btn-success pull-right ml-2" (click)="saveData()">Save</button>
+          <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAnnouncement()">Save</button>
 
         </div>
 

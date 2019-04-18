@@ -40,6 +40,7 @@ import {LocalStorageService} from "./infrastructure/services/local-storage.servi
 import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
 import {CourseQuizesComponent} from "./modules/course/components/course-details/course-content/quiz/course-quizes/course-quizes.component";
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-content/lecture/course-lectures/course-lectures.component";
+import { CreateAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component';
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ViewAnnouncmentComponent } from './modules/course/components/course-det
     CourseQuizesComponent, CourseLecturesComponent,CourseDetailsComponent ,
     UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
     UnAuthorizedComponent,
+    CreateAnnouncmentComponent,
     ViewAnnouncmentComponent,
   ],
   imports: [
