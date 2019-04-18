@@ -1,5 +1,6 @@
 package com.sms.service;
 
+import com.sms.model.course.Announcement;
 import com.sms.model.course.CourseLecturesVTO;
 import com.sms.model.course.CourseQuizesVTO;
 import com.sms.model.course.quiz.QuizDTO;
@@ -15,7 +16,6 @@ import java.util.List;
 public class CourseSer {
     private CourseRep courseRep ;
     private QuizRep quizRep ;
-
     @Autowired
     public CourseSer(CourseRep courseRep , QuizRep quizRep) {
         this.courseRep = courseRep;
@@ -44,6 +44,35 @@ public class CourseSer {
         return courseLecturesVTOList ;
     }
 
+
+    public void createAnnouncement (int courseID , Announcement announcement)
+    {
+
+        courseRep.createAnnouncement(courseID,announcement);
+    }
+
+
+
+    public List<Announcement> getCourseAnnouncments(int courseID)
+    {
+        List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID) ;
+        return  announcementList ;
+    }
+
+
+//    public void createAnnouncement (int courseID , Announcement announcement)
+//    {
+//
+//        courseRep.createAnnouncement(courseID,announcement);
+//    }
+
+
+
+//    public List<Announcement> getCourseAnnouncments(int courseID)
+//    {
+//        List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID) ;
+//        return  announcementList ;
+//    }
 
 
 
