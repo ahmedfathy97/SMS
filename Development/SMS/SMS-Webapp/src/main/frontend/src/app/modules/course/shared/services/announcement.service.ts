@@ -4,7 +4,7 @@ import {Announcement} from "../data/announcement";
 
 @Injectable()
 export class AnnouncementService {
-  BASE_URL: string = "http://localhost:8080/api/attendance/";
+  BASE_URL: string = "http://localhost:8080/api/announcment/";
 
   constructor(private http: HttpClient) {
   }
