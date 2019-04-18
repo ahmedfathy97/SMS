@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserVTORM implements RowMapper<UserData> {
+public class UserDataRM implements RowMapper<UserData> {
     @Override
     public UserData mapRow(ResultSet rs, int rowIndex) throws SQLException {
 

@@ -1,6 +1,6 @@
 package com.sms.repository;
 
-import com.sms.model.lookUp.rm.UserVTORM;
+import com.sms.model.lookUp.rm.UserDataRM;
 import com.sms.model.user.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,7 +23,7 @@ public class UserRep {
         String sql = "SELECT id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,e_mail,phone,college,user_name FROM auth_user u \n" +
                 "WHERE  u.id= ? ";
 
-        List<UserData> user = this.jdbcTemplate.query(sql, new UserVTORM(), userID);
+        List<UserData> user = this.jdbcTemplate.query(sql, new UserDataRM(), userID);
         return user.get(0);
     }
 
