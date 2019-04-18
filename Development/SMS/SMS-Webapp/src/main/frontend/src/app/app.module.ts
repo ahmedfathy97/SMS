@@ -42,6 +42,7 @@ import {CourseQuizesComponent} from "./modules/course/components/course-details/
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-content/lecture/course-lectures/course-lectures.component";
 import { CreateAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component';
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
+import {CourseDataService} from "./modules/course/shared/services/course-data.service";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,9 @@ import { ViewAnnouncmentComponent } from './modules/course/components/course-det
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule
   ],
-  providers: [LocalStorageService, AuthorizationGuard, AuthenticationGuard,
+  providers: [
+    CourseDataService,
+    LocalStorageService, AuthorizationGuard, AuthenticationGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [LayoutComponent]
 })

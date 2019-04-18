@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -7,15 +7,11 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./course-side-bar.component.css']
 })
 export class CourseSideBarComponent implements OnInit {
-  courseID: string;
-  corID :number ;
-  constructor(private route: ActivatedRoute ) {
-    this.route.paramMap.subscribe(params => {
-      this.courseID = params.get("courseID");
-      var courseID  = +this.courseID ;
-      this.corID =courseID ;
-      console.log(this.corID);
-    })
+
+  @Input() corID: number;
+  constructor()
+  {
+
   }
 
   ngOnInit() {
