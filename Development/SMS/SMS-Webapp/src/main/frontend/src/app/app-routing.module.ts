@@ -38,6 +38,7 @@ const routes: Routes = [
 
 
       {path: 'course', /* component which view all courses*/ children: [
+
           {path: 'new', component: CreateCourse},
           {path: ':courseID', component: CourseDetailsComponent, children: [
                {path: 'announcement', component: CreateAnnouncmentComponent},
