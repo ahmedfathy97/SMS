@@ -109,5 +109,22 @@ public class CourseRep {
 
     }
 
+    public void createAnnouncement(int course_id, Announcement announcement) {
+        String sql = "INSERT INTO announcement ( title, content , course_id)" +
+                " Values (?,?,?) ";
+
+        this.jdbcTemplate.update(sql, announcement.getTitle(), announcement.getContent(), course_id);
+
+    }
+
+
+
+    public List<Announcement> getCourseAnnouncments(int courseID)
+    {
+        String sql ="SELECT title ,content ,announ_date From announcment \n" +
+                "where course_id = ? ;" ;
+
+        return this.jdbcTemplate.query(sql ,new AnnouncmentVTORM() ,courseID);
+    }
 
 }

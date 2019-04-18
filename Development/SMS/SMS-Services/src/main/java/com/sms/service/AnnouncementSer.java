@@ -17,17 +17,5 @@ public class AnnouncementSer {
         this.announcementRep = announcementRep;
     }
 
-    public void createAnnouncement (int courseID , Announcement announcement)
-    {
 
-        announcementRep.createAnnouncement(courseID,announcement);
-    }
-
-
-
-    public List<Announcement> getCourseAnnouncments(int courseID)
-    {
-        List<Announcement> announcementList =announcementRep.getCourseAnnouncments(courseID) ;
-        return  announcementList ;
-    }
 }

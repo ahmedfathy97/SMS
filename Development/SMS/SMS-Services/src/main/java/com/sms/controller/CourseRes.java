@@ -145,4 +145,24 @@ public class CourseRes {
 
     }
 
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/newAnnouncment")
+    public void createAttendanceSheet(@PathParam("courseID") int courseID, Announcement announcement) {
+        this.courseSer.createAnnouncement(courseID, announcement);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/announcmentList")
+    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID)
+    {
+        List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID) ;
+        return announcementList ;
+    }
+
+
+
 }
