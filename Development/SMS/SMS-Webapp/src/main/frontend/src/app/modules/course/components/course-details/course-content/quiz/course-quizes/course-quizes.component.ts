@@ -24,18 +24,23 @@ export class CourseQuizesComponent implements OnInit {
     // })
     this.corDataService.corID.subscribe(
       data =>{
-        debugger ;
         this.corID = data;
         console.log(data);
+        this.getCourseQuizes();
       }
     );
     this.corDataService.requestCorID.next(true);
   }
 
   ngOnInit() {
-    debugger;
     // var courseID = +this.courseID;
     // this.corID = courseID;
+
+
+
+  }
+
+  getCourseQuizes(){
     this.courseService.getCourseQuizes(this.corID).subscribe(res => {
       console.log("Success");
       debugger;
@@ -43,8 +48,6 @@ export class CourseQuizesComponent implements OnInit {
     }, err => {
       console.log(err);
     });
-
-
   }
 
 }

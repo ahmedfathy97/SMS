@@ -4,7 +4,8 @@ import {CourseDataService} from "../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-course-details',
-  templateUrl: './course-details.component.html'
+  templateUrl: './course-details.component.html',
+  providers: [CourseDataService]
 })
 export class CourseDetailsComponent implements OnInit {
   // courseID: string;
@@ -14,6 +15,7 @@ export class CourseDetailsComponent implements OnInit {
               private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.corID = +params.get("courseID");
+      // this.corDataService.corID.next(this.corID);
 
 
       // var courseID  = +this.courseID ;
@@ -22,7 +24,6 @@ export class CourseDetailsComponent implements OnInit {
     });
     this.corDataService.requestCorID.subscribe(
       data => {
-        debugger;
         this.corDataService.corID.next(this.corID);
       }
     )

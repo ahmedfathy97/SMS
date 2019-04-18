@@ -62,7 +62,6 @@ import {CourseDataService} from "./modules/course/shared/services/course-data.se
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule
   ],
   providers: [
-    CourseDataService,
     LocalStorageService, AuthorizationGuard, AuthenticationGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [LayoutComponent]
