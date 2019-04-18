@@ -40,6 +40,7 @@ import {LocalStorageService} from "./infrastructure/services/local-storage.servi
 import { CourseDetailsComponent } from './modules/course/components/course-details/course-details.component';
 import {CourseQuizesComponent} from "./modules/course/components/course-details/course-content/quiz/course-quizes/course-quizes.component";
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-content/lecture/course-lectures/course-lectures.component";
+import { CourseListComponent } from './modules/course/components/course-list/course-list.component';
 import { CreateAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component';
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
 import {CourseDataService} from "./modules/course/shared/services/course-data.service";
@@ -54,6 +55,7 @@ import {CourseDataService} from "./modules/course/shared/services/course-data.se
     CourseQuizesComponent, CourseLecturesComponent,CourseDetailsComponent ,
     UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
     UnAuthorizedComponent,
+    CourseListComponent,
     CreateAnnouncmentComponent,
     ViewAnnouncmentComponent,
   ],

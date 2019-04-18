@@ -195,6 +195,10 @@ ADD CONSTRAINT `fk_course_lectures`
   ON UPDATE NO ACTION;
 
 -- fathy end 13/4/2019
+--start hala 18/4/2019
+INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('2', '1', '2');
+INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('3', '4', '2');
+INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('4', '3', '2');
 -- yara start --
 CREATE TABLE `sms`.`announcment` (
   `id` INT NOT NULL,
@@ -234,3 +238,5 @@ DROP COLUMN `user_name`;
 
 ---manar---
 
+
+--end hala
