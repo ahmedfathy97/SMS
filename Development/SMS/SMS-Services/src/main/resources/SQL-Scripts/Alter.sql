@@ -229,5 +229,8 @@ ALTER TABLE `sms`.`user_detail`
 ADD COLUMN `user_name` VARCHAR(45) NOT NULL AFTER `college`;
 
 
+ALTER TABLE `sms`.`user_detail`
+DROP COLUMN `user_name`;
+
 ---manar---
 
