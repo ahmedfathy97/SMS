@@ -126,6 +126,7 @@ public class CourseRes {
         return list;
     }
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/student/{stdID}")
