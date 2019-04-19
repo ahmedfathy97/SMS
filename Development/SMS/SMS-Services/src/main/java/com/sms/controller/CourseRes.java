@@ -133,7 +133,7 @@ public class CourseRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/attend")
+    @Path("/{courseID}/attendance")
     public List<AttendanceDTO> getCourseAttendance(@PathParam("courseID") int courseID) {
         System.out.print("Sucessfully");
         List<AttendanceDTO> list = this.attendance.getCourseAttendance(courseID);

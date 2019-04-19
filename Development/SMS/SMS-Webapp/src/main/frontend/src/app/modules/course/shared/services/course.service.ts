@@ -58,7 +58,7 @@ export class CourseService {
 
 
   getCourseAttendance (courseID :number){
-    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/attend")
+    return this.httpClient.get<AttendanceDTO[]>(this.APP_BASE_URL+this.BASE_URL +courseID+"/attendance")
   }
 
   getStudentAttendance (courseID :number , stdID : number){

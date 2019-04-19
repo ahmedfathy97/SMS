@@ -3,6 +3,7 @@ import {AttendanceService} from "../../../../../shared/services/attendance.servi
 import {CourseService} from "../../../../../shared/services/course.service";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-view-attendance',
@@ -11,19 +12,32 @@ import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 })
 export class ViewAttendanceComponent implements OnInit {
 
+  corID :number ;
   attendanceList :AttendanceDTO [] = [];
   tableView : any [][] ;
-  constructor( private attendanceService : CourseService ) { }
+  constructor( private attendanceService : CourseService , private corDataService: CourseDataService, )
+  {
+      this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+        this.getCourseAttendance();
+      }
+      );
+    this.corDataService.requestCorID.next(true);
+  }
 
   ngOnInit() {
-    this.attendanceService.getCourseAttendance(2).subscribe(
-    res => {
-      this.attendanceList = res;
-    console.log(this.attendanceList);
-    this.transformTable();
-    }
-    )
+  }
 
+  getCourseAttendance(){
+    this.attendanceService.getCourseAttendance(this.corID).subscribe(
+      res => {
+        this.attendanceList = res;
+        console.log(this.attendanceList);
+        this.transformTable();
+      }
+    )
   }
 
   transformTable(){

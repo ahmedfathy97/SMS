@@ -17,7 +17,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let row of tableView | slice:1:tableView.length;index as i;">
-              <td >{{i}}</td>
+              <td >{{i+1}}</td>
               <td >{{row[0]}}</td>
               <td *ngFor="let isAttend  of tableView[i] | slice:1:tableView[i].length ; index as j;">
                 <span class="badge badge-primary" *ngIf=" isAttend">attend</span>
