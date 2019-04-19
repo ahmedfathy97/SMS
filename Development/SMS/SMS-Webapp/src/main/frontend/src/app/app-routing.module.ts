@@ -41,8 +41,9 @@ const routes: Routes = [
 
           {path: 'new', component: CreateCourse},
           {path: ':courseID', component: CourseDetailsComponent, children: [
-               {path: 'announcement', component: CreateAnnouncmentComponent},
+              {path: 'announcement', component: CreateAnnouncmentComponent},
               {path: 'lecture', children: [
+                  {path:'' ,component: CourseLecturesComponent} ,
                   {path: 'new', component: CreateLecture}//,
                   // {path: ':lectureID', children: [
                   //     {path: 'upload ', component: UploadComponent},
