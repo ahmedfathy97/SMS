@@ -1,3 +1,16 @@
-<p>
-  view-announcment works!
-</p>
+<div class="fw-icons pull-right " ><a [routerLink] ="['/course' ,corID ,'announcment']"><i
+  class="fa fa-plus-circle"></i>
+  Add new announcment</a>
+</div>
+<div class="card m-5 " *ngFor="let announcment of announcmentList">
+  <div class="card-body">
+
+    <p class="pull-right">{{announcment.announcmentDate}}</p>
+    <br>
+    <p> subject :</p>
+    <p>{{announcment.title}}</p>
+    <br>
+    <p> details : </p>
+    <p> {{announcment.content}}</p>
+  </div>
+</div>
