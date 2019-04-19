@@ -8,20 +8,13 @@ import {CourseDataService} from "../../shared/services/course-data.service";
   providers: [CourseDataService]
 })
 export class CourseDetailsComponent implements OnInit {
-  // courseID: string;
   corID :number ;
-
   constructor(private route: ActivatedRoute,
               private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.corID = +params.get("courseID");
-      // this.corDataService.corID.next(this.corID);
-
-
-      // var courseID  = +this.courseID ;
-      // this.corID =courseID ;
-      // console.log(this.corID);
     });
+
     this.corDataService.requestCorID.subscribe(
       data => {
         this.corDataService.corID.next(this.corID);

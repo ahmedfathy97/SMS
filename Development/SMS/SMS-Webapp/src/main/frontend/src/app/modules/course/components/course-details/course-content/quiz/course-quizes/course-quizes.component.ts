@@ -13,15 +13,11 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 
 })
 export class CourseQuizesComponent implements OnInit {
-  // courseID: string;
   corID: number ;
   quizList:CourseQuizesVto[] ;
   constructor(private courseService: CourseService,
               private corDataService: CourseDataService,
               private route: ActivatedRoute ) {
-    // this.route.paramMap.subscribe(params => {
-    //   this.corID = +params.get("courseID");
-    // })
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
@@ -33,18 +29,14 @@ export class CourseQuizesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // var courseID = +this.courseID;
-    // this.corID = courseID;
-
-
 
   }
 
   getCourseQuizes(){
     this.courseService.getCourseQuizes(this.corID).subscribe(res => {
-      console.log("Success");
-      debugger;
       this.quizList = res;
+      console.log(this.quizList);
+
     }, err => {
       console.log(err);
     });

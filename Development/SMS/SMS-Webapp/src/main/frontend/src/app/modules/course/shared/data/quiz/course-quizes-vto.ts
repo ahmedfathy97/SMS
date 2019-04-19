@@ -1,6 +1,6 @@
 export class CourseQuizesVto {
 
-  id :number ;
+  quizID :number ;
   quizName :string ;
 
 }

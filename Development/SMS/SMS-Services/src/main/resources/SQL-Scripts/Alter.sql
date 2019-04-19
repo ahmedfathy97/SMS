@@ -239,4 +239,10 @@ DROP COLUMN `user_name`;
 ---manar---
 
 
---end hala
+-- ahmed  start--
+ALTER TABLE `sms`.`question`
+CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
+
+ALTER TABLE `sms`.`question`
+CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
+-- ahmed  end  --

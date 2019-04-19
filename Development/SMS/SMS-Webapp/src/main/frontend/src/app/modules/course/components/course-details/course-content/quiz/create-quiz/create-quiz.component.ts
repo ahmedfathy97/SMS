@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {QuizDto} from "../../../../../shared/data/quiz/quiz-dto";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-create-quiz',
@@ -12,15 +13,17 @@ import {QuizDto} from "../../../../../shared/data/quiz/quiz-dto";
   providers: [FormBuilder, CourseService]
 })
 export class CreateQuizComponent implements OnInit {
-  courseID: string;
   corID :number ;
   constructor(private formBuilder: FormBuilder,
-              private courseService: CourseService, private route: ActivatedRoute ,
-              ) {
-    this.route.paramMap.subscribe(params => {
-      this.courseID = params.get("courseID");
-    })
-
+              private courseService: CourseService,private corDataService: CourseDataService) {
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+        //this.onSubmitNewQuiz()
+      }
+    );
+    this.corDataService.requestCorID.next(true);
 
   }
 
@@ -38,12 +41,10 @@ export class CreateQuizComponent implements OnInit {
     let quizData: QuizDto = new QuizDto();
     quizData.quizName = this.formData.get('quizName').value;
     quizData.grade = this.formData.get('quizGrade').value;
-    //quizData.courseID = 1;
     quizData.startDate = this.formData.get('startDate').value;
     quizData.finishDate = this.formData.get('finishDate').value;
     quizData.isClosed = false;
-    var courseID = +this.courseID;
-    this.corID = courseID ;
+    console.log(quizData);
     this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
       console.log("Success");
     }, err => {

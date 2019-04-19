@@ -13,20 +13,20 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AddQuizQuestionsComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,
-              private quizService: QuizService, private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(params => {
-      this.quizId = params.get("quizID");
-    })
-  }
-
   questionTypeList: QuestionType [];
   questionsList: QuestionDto[] = [];
   mcqIsSelected: boolean = false;
   trueFalseIsSelsected: boolean = false;
   table: boolean = false;
-  quizId: string;
+  quizId: number;
   editMode: boolean = false;
+  constructor(private formBuilder: FormBuilder,
+              private quizService: QuizService, private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      this.quizId = +params.get("quizID");
+    })
+  }
+
 
 
   getALLquestionsTypes() {
@@ -103,8 +103,7 @@ export class AddQuizQuestionsComponent implements OnInit {
 
 
   onSubmitQuestionsTable() {
-    var quizID = +this.quizId;
-    this.quizService.createQuizQuestions(quizID, this.questionsList).subscribe(res => {
+    this.quizService.createQuizQuestions(this.quizId, this.questionsList).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err)

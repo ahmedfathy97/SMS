@@ -41,7 +41,7 @@ export class CourseService {
   }
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/quiz",quizData);
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ courseID +"/newQuiz",quizData);
   }
 
   createNewLecture(courseID :number ,lectureDto : LectureDto){

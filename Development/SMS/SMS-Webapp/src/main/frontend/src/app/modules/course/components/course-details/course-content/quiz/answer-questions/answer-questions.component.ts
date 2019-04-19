@@ -13,14 +13,14 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AnswerQuestionsComponent implements OnInit {
   studentID: number =1 ;
-  quizID:string ;
+  quizID:number ;
   quizQuestions: QuestionVto[] =[];
   studentAnswers:StudentAnswerDto[] =[] ;
 
   constructor(private formBuilder: FormBuilder ,
               private quizService: QuizService ,private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
-      this.quizID = params.get("quizID");
+      this.quizID = +params.get("quizID");
     })
   }
 
@@ -33,8 +33,7 @@ export class AnswerQuestionsComponent implements OnInit {
   }) ;
 
   getQuizQuestions() {
-    var quizID = +this.quizID ;
-    this.quizService.getQuizQuestions(quizID).subscribe(res => {
+    this.quizService.getQuizQuestions(this.quizID).subscribe(res => {
       console.log("Success");
       this.quizQuestions = res;
     }, err => {
@@ -45,7 +44,7 @@ export class AnswerQuestionsComponent implements OnInit {
   onSubmitAnswers()
   {
     let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
-    var quizID = +this.quizID ;
+     //var quizID = +this.quizID ;
 
     for(let question of this.quizQuestions)
     {
@@ -54,8 +53,8 @@ export class AnswerQuestionsComponent implements OnInit {
       this.studentAnswers.push(studentAnswer);
     }
 
-    this.quizService.submitQuizAnswersForStudent(this.studentID ,quizID,this.studentAnswers).subscribe(res => {
-      console.log("Success");
+    this.quizService.submitQuizAnswersForStudent(this.studentID ,this.quizID,this.studentAnswers).subscribe(res => {
+      console.log("Success");``
     }, err => {
       console.log(err);
     } );

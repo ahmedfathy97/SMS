@@ -1,14 +1,22 @@
 <div class="col-md-8 mt-5 offset-2">
+
   <div class="card">
     <div class="card-body">
-      <h4 class="header-title">Course Quizes</h4>
+      <h4 class="header-title" >Course Quizes</h4>
+      <div class="fw-icons" ><a [routerLink] ="['/course' ,corID ,'quiz' ,'new']"><i
+        class="fa fa-plus-circle"></i>
+        Add new quiz</a>
+      </div>
       <ul class="list-group" >
-       <a href="#" ><li class="list-group-item" *ngFor="let quiz of quizList">{{quiz.quizName}}</li> </a>
+        <div *ngFor="let quiz of quizList">
+       <a [routerLink] ="['/course',corID ,'quiz', quiz.quizID ,'answerQuiz']" >
+         <li class="list-group-item">{{quiz.quizName}}</li>
+       </a>
+          <br>
+        </div>
       </ul>
     </div>
   </div>
 </div>
 
-<!--<div *ngFor="let quiz of quizList">-->
-   <!--<a href="#">{{quiz.quizName}}</a>-->
-<!--</div>-->
+

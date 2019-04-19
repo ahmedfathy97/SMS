@@ -71,7 +71,7 @@ const routes: Routes = [
                   {path: 'new', component: CreateQuizComponent},
                   {path: 'questions', component: AddQuizQuestionsComponent},
                   {path: ':quizID', children: [
-                      {path: ':studentID/answerQuiz', component: AnswerQuestionsComponent},
+                      {path: 'answerQuiz', component: AnswerQuestionsComponent},
                     ]
                   },
                 ]
