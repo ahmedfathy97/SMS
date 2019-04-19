@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CourseVto} from "../../../../../shared/data/course-vto";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../../../../shared/services/attendance.service";
 import {ActivatedRoute} from "@angular/router";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-create-attendance',
@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
   providers: [FormBuilder, CourseService ,AttendanceService],
 })
 export class CreateAttendanceComponent implements OnInit {
-  courseID: string;
+  // courseID: string;
   corID :number ;
   formData = this.formBuilder.group({
     attendanceDate: ['', Validators.required]
@@ -20,17 +20,26 @@ export class CreateAttendanceComponent implements OnInit {
 
   attendance: AttendanceDTO = new AttendanceDTO();
 
-  constructor(private formBuilder: FormBuilder, private  courseService: CourseService , private  attendanceService: AttendanceService ,
+  constructor(private formBuilder: FormBuilder, private  courseService: CourseService ,
+              private  attendanceService: AttendanceService ,
+              private corDataService: CourseDataService,
               private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(params => {
-      this.courseID = params.get("courseID");
-    })
+    // this.route.paramMap.subscribe(params =>  {
+    //   this.courseID = params.get("courseID");
+    // })
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+      }
+    );
+    this.corDataService.requestCorID.next(true);
   }
 
   ngOnInit() {
     debugger ;
-    var courseID = +this.courseID;
-    this.corID = courseID ;
+    // var courseID = +this.courseID;
+    // this.corID = courseID ;
     this.courseService.getAllCourseStudents(this.corID).subscribe(
       res => {
         this.attendance.students = res;
