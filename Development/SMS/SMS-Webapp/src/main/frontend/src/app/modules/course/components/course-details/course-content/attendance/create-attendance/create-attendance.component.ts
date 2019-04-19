@@ -24,22 +24,19 @@ export class CreateAttendanceComponent implements OnInit {
               private  attendanceService: AttendanceService ,
               private corDataService: CourseDataService,
               private route: ActivatedRoute) {
-    // this.route.paramMap.subscribe(params =>  {
-    //   this.courseID = params.get("courseID");
-    // })
+
+
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
-        console.log(data);
+        this.getCourseStudents() ;
       }
     );
     this.corDataService.requestCorID.next(true);
   }
 
-  ngOnInit() {
-    debugger ;
-    // var courseID = +this.courseID;
-    // this.corID = courseID ;
+  getCourseStudents()
+  {
     this.courseService.getAllCourseStudents(this.corID).subscribe(
       res => {
         this.attendance.students = res;
@@ -47,6 +44,10 @@ export class CreateAttendanceComponent implements OnInit {
 
       }
     );
+  }
+
+  ngOnInit() {
+
   }
 
 
