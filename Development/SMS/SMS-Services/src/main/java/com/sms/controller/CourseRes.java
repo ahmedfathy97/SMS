@@ -18,7 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/course/")
+@Path("/course")
 public class CourseRes {
     private AttendanceSer attendance;
     private CourseRep courseRep;
@@ -164,7 +164,9 @@ public class CourseRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/newAnnouncment")
-    public void createAttendanceSheet(@PathParam("courseID") int courseID, Announcement announcement) {
+    public void createAnnouncement(@PathParam("courseID") int courseID, Announcement announcement) {
+        System.out.print("Data Recieved Sucessfully");
+        System.out.print(announcement.toString());
         this.courseSer.createAnnouncement(courseID, announcement);
     }
 

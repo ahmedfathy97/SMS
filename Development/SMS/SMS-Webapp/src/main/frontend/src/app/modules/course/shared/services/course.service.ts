@@ -76,6 +76,9 @@ export class CourseService {
 
   }
 
+  createNewAnnouncement(courseID: number, announcement : Announcement) {
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL + courseID +"/newAnnouncment", announcement);
+  }
 
   getCourseAnnouncments(courseID :number)
   {
