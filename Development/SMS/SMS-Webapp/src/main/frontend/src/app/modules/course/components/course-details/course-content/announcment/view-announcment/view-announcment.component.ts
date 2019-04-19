@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../../../../shared/services/course.service";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {Announcement} from "../../../../../shared/data/announcment";
 
 @Component({
   selector: 'app-view-announcment',
@@ -8,10 +10,30 @@ import {CourseService} from "../../../../../shared/services/course.service";
   providers: [CourseService]
 })
 export class ViewAnnouncmentComponent implements OnInit {
-
-  constructor() { }
+  corID: number ;
+  announcmentList :Announcement[] ;
+  constructor( private corDataService: CourseDataService ,
+               private courseService :CourseService) {
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+        this.getCourseAnnouncments();
+      }
+    );
+    this.corDataService.requestCorID.next(true);
+  }
 
   ngOnInit() {
+  }
+
+  getCourseAnnouncments()
+  {
+    this.courseService.getCourseAnnouncments(this.corID).subscribe(res => {
+      this.announcmentList = res;
+    }, err => {
+      console.log(err);
+    });
   }
 
 }

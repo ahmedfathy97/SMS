@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AnnouncementService} from "../../../../../shared/services/announcement.service";
 import {ActivatedRoute} from "@angular/router";
-import {Announcement} from "../../../../../shared/data/announcement";
+import {Announcement} from "../../../../../shared/data/announcment";
 @Component({
   selector: 'app-create-announcment',
   templateUrl: './create-announcment.component.html',

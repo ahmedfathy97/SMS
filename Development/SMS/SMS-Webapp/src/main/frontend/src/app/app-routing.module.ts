@@ -26,6 +26,7 @@ import {CourseLecturesComponent} from "./modules/course/components/course-detail
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
+import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -41,7 +42,8 @@ const routes: Routes = [
 
           {path: 'new', component: CreateCourse},
           {path: ':courseID', component: CourseDetailsComponent, children: [
-              {path: 'announcement', component: CreateAnnouncmentComponent},
+              {path:'',component:ViewAnnouncmentComponent} ,
+               {path: 'announcment', component: CreateAnnouncmentComponent},
               {path: 'lecture', children: [
                   {path:'' ,component: CourseLecturesComponent} ,
                   {path: 'new', component: CreateLecture}//,

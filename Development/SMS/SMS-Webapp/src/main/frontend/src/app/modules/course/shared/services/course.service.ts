@@ -7,6 +7,7 @@ import {QuizDto} from "../data/quiz/quiz-dto";
 import {AttendanceDTO} from "../data/attendance-dto.data";
 import {CourseQuizesVto} from "../data/quiz/course-quizes-vto";
 import {LectureDto} from "../data/lecture-dto.data";
+import {Announcement} from "../data/announcment";
 
 
 @Injectable()
@@ -73,5 +74,11 @@ export class CourseService {
     return this.httpClient.post("http://localhost:8080/api/student/enroll/",corID);
     return this.httpClient.post("http://localhost:8080/api/student/enroll/"+corID, null);
 
+  }
+
+
+  getCourseAnnouncments(courseID :number)
+  {
+    return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList") ;
   }
 }

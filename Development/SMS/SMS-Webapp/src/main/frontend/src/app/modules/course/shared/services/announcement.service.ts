@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Announcement} from "../data/announcement";
+import {Announcement} from "../data/announcment";
 
 @Injectable()
 export class AnnouncementService {
