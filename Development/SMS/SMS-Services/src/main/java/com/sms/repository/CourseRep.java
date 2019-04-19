@@ -117,7 +117,7 @@ public class CourseRep {
 
 
     public void createAnnouncement(int course_id, Announcement announcement) {
-        String sql = "INSERT INTO announcement ( title, content , course_id , announ_date)" +
+        String sql = "INSERT INTO announcment ( title, content , course_id , announ_date)" +
                 " Values (?,?,?,?) ";
 
         this.jdbcTemplate.update(sql, announcement.getTitle(), announcement.getContent(), course_id ,"2019-04-19");
