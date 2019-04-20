@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AttachmentService} from "../../shared/attachment.service";
-import {FileDTO} from "../../shared/data/FileDTO";
+import {FileVTO} from "../../shared/data/FileVTO";
 
 @Component({
   selector: 'app-upload',

@@ -43,7 +43,10 @@ import {CourseLecturesComponent} from "./modules/course/components/course-detail
 import { CourseListComponent } from './modules/course/components/course-list/course-list.component';
 import { CreateAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component';
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
-import {CourseDataService} from "./modules/course/shared/services/course-data.service";
+import { LectureDetailsComponent } from './modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -58,10 +61,12 @@ import {CourseDataService} from "./modules/course/shared/services/course-data.se
     CourseListComponent,
     CreateAnnouncmentComponent,
     ViewAnnouncmentComponent,
+    LectureDetailsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule
+    AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule,
+    NgbModule
   ],
   providers: [
     LocalStorageService, AuthorizationGuard, AuthenticationGuard,

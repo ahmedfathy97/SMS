@@ -41,7 +41,7 @@
                 <tr *ngFor="let file of files; let i = index;">
                   <th scope="row">{{i+1}}</th>
                   <td>{{file.name}}</td>
-                  <td>{{formatBytes(file.size)}}</td>
+                  <td>{{formatBytes(file.size,2)}}</td>
                   <td>
                     <i class="fa fa-trash-o" (click)="delete(i)"></i>
                     <i class="fa fa-upload pl--10"></i>

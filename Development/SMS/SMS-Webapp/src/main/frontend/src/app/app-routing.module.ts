@@ -28,6 +28,7 @@ import {CourseInfoComponent} from "./modules/course/components/course-details/co
 import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
+import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -37,6 +38,13 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent} ,
       {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
       {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
+
+      /* for some purposes  */
+      {path: 'lecture', component: LectureDetailsComponent},
+      {path: 'upload', component: UploadComponent},
+      {path: 'download', component: DownloadComponent},
+
+
 
 
       {path: 'course', /* component which view all courses*/ children: [
