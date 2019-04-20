@@ -1,10 +1,7 @@
 package com.sms.service;
 
 import com.sms.model.authorization.AuthRoles;
-import com.sms.model.course.Announcement;
-import com.sms.model.course.CourseLecturesVTO;
-import com.sms.model.course.CourseQuizesVTO;
-import com.sms.model.course.CourseVTO;
+import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.CourseRep;
@@ -47,13 +44,16 @@ public class CourseSer {
         List<CourseLecturesVTO> courseLecturesVTOList =courseRep.getCourseLectures(courseID) ;
         return courseLecturesVTOList ;
     }
-    public List<CourseVTO> findAllCourses(UserVTO currentUser){
-        List<CourseVTO> CourseVTOList = new ArrayList<>();
+    public CourseResultSet findAllCourses(UserVTO currentUser){
+        List<CourseVTO> courseVTOList = new ArrayList<>();
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
-            CourseVTOList = courseRep.findAllInstructorCourses(currentUser.getId());
+            courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId());
         else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
-            CourseVTOList =courseRep.findAllStudentCourse(currentUser.getId());
-        return CourseVTOList;
+            courseVTOList =courseRep.findAllStudentCourse(currentUser.getId());
+
+        CourseResultSet resultSet = new CourseResultSet();
+        resultSet.setList(courseVTOList);
+        return resultSet;
 
 
     }

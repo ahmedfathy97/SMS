@@ -44,13 +44,13 @@ public class GradeRep {
 
     }
     public StdDTO findStudentGrades(int courseID,int stdID){
-        String sql ="SELECT std.first_name,std.last_name,std.id,\n" +
+        String sql ="SELECT std.first_name,std.last_name,std.user_id,\n" +
                 "                cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
-                "                from auth_user std\n" +
+                "                from user_detail std\n" +
                 "                   left join course_std cor\n" +
-                "                on std.id=cor.std_id\n" +
+                "                on std.user_id=cor.std_id\n" +
                 "where cor_id=?"+
-                "                And std.id=?\n" ;
+                "                And std.user_id=?\n" ;
 
 
         StdDTO std = this.jdbc.queryForObject(sql, new CourseGradesRM(), courseID,stdID );

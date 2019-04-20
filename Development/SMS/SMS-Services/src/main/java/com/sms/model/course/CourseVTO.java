@@ -8,6 +8,7 @@ public class CourseVTO implements Serializable {
     private  int id;
     //private String name;
     private  String courseName;
+    private  String imagePath;
     private int  duration ;
     private Date startDate ;
     private Date endDate ;
@@ -120,6 +121,12 @@ public class CourseVTO implements Serializable {
         this.description = description;
     }
 
-
+    public String getImagePath() {
+        return imagePath;
     }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+}
 

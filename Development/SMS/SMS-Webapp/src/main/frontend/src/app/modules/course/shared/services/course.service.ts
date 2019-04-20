@@ -8,6 +8,7 @@ import {AttendanceDTO} from "../data/attendance-dto.data";
 import {CourseQuizesVto} from "../data/quiz/course-quizes-vto";
 import {LectureDto} from "../data/lecture-dto.data";
 import {Announcement} from "../data/announcment";
+import {CourseResultSet} from "../data/course-result-set.data";
 import {LectureVto} from "../data/lecture-vto";
 
 
@@ -58,6 +59,9 @@ export class CourseService {
 
   findAllCourses(courseID :number){
     return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/"+courseID);
+  }
+  findAllCourses(){
+    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course");
 
   }
 

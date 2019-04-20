@@ -62,7 +62,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                     request.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Incorrect User Password").build());
                 else{
                     user.setPassword(null);
-                    user.setRoleIDs(this.securityRep.findUserRoles(user.getUsername()));
+                    user.setRoleIDs(this.securityRep.findUserRoles(user.getId()));
                     request.setProperty(AuthenticationFilter.AUTH_USER, user);
                 }
             } catch (Exception e) {

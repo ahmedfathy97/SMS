@@ -246,3 +246,7 @@ CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
 ALTER TABLE `sms`.`question`
 CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
 -- ahmed  end  --
+--start hala
+ALTER TABLE `sms`.`course`
+ADD COLUMN `image_path` VARCHAR(45) NULL AFTER `description`;
+--end hala

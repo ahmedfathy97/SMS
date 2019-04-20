@@ -1,5 +1,6 @@
 export class CourseVto {
   id:number;
+  imagePath:String;
   name:string;
   courseName : string;
   duration: number;

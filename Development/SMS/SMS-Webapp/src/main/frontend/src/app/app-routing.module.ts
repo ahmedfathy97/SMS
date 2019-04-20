@@ -31,7 +31,7 @@ import {ViewAnnouncmentComponent} from "./modules/course/components/course-detai
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: '', pathMatch: 'full', redirectTo: 'course'},
   {path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
@@ -50,7 +50,7 @@ const routes: Routes = [
       {path: 'course', /* component which view all courses*/ children: [
 
           {path: 'new', component: CreateCourse},
-          {path: 'list', component: CourseListComponent},
+          {path: '', component: CourseListComponent},
           {path: ':courseID', component: CourseDetailsComponent, children: [
               {path:'',component:ViewAnnouncmentComponent} ,
                {path: 'announcment', component: CreateAnnouncmentComponent},
@@ -75,7 +75,8 @@ const routes: Routes = [
               {
                 path: 'grade', children: [
                   {path: '', component: ViewGradeComponent},
-                  {path: 'new', component: CreateGradeComponent}
+                  {path: 'new', component: CreateGradeComponent},
+                  {path:'edit/:stdID', component:CreateGradeComponent}
                 ]
               },
 

@@ -2,6 +2,7 @@ package com.sms.controller;
 
 import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
+import com.sms.model.annotation.Authenticated;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
@@ -76,11 +77,10 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-    public List<CourseVTO> findAllCourses(@Context ContainerRequestContext request) {
+    @Authenticated()
+    public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        List<CourseVTO> list = this.courseSer.findAllCourses(currentUser);
-        return list;
-
+        return this.courseSer.findAllCourses(currentUser);
     }
 
 

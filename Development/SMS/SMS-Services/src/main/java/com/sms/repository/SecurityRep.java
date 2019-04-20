@@ -59,14 +59,14 @@ public class SecurityRep {
         return (list.size() == 0) ? null: list.get(0);
     }
 
-    public List<Integer> findUserRoles(String username){
-        String sql = "SELECT role_id FROM auth_user_role auth where auth.username = ?";
+    public List<Integer> findUserRoles(int userID){
+        String sql = "SELECT role_id FROM auth_user_role where user_id = ?";
         List<Integer> list = this.jdbc.query(sql, new RowMapper<Integer>() {
             @Override
             public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
                 return rs.getInt("role_id");
             }
-        }, username);
+        }, userID);
 
         return list;
     }
