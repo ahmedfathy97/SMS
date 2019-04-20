@@ -57,9 +57,9 @@ export class CourseService {
     return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/quizes");
   }
 
-  findAllCourses(courseID :number){
-    return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/"+courseID);
-  }
+  // findAllCourses(courseID :number){
+  //   return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/"+courseID);
+  // }
   findAllCourses(){
     return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course");
 
