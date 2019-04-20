@@ -100,3 +100,4 @@ export class CourseService {
     return this.httpClient.get<LectureVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures");
   }
 }
+
