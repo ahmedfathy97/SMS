@@ -18,11 +18,11 @@
 
         <div class="form-group">
           <label for="start_date" class="col-form-label">Start Date</label>
-          <input class="form-control" formControlName="startDate" type="date" id="start_date">
+          <input class="form-control" formControlName="startDate" type="lectureDate" id="start_date">
         </div>
           <div class="form-group">
             <label for="finish_date" class="col-form-label">close Date</label>
-            <input class="form-control" formControlName="finishDate" type="date" id="finish_date">
+            <input class="form-control" formControlName="finishDate" type="lectureDate" id="finish_date">
           </div>
         </form>
         <a [routerLink]="['/course' ,corID ,'quiz','questions']"><button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button> </a>

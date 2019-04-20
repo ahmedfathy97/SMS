@@ -9,7 +9,6 @@ import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +38,10 @@ public class CourseSer {
         return courseQuizesVTOList ;
     }
 
-    public List<CourseLecturesVTO> getCourseLectures(int courseID)
+    public List<LectureVTO> getCourseLectures(int courseID)
     {
-        List<CourseLecturesVTO> courseLecturesVTOList =courseRep.getCourseLectures(courseID) ;
-        return courseLecturesVTOList ;
+        List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;
+        return lectureVTOList;
     }
     public CourseResultSet findAllCourses(UserVTO currentUser){
         List<CourseVTO> courseVTOList = new ArrayList<>();

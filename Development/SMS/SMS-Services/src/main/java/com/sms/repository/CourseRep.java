@@ -101,9 +101,9 @@ public class CourseRep {
     }
 
 
-    public List<CourseLecturesVTO> getCourseLectures(int courseID)
+    public List<LectureVTO> getCourseLectures(int courseID)
     {
-        String sql ="SELECT id ,title FROM lecture WHERE course_id = ? ;" ;
+        String sql ="SELECT id ,title ,lecture_date FROM lecture WHERE course_id = ? ;" ;
         return this.jdbcTemplate.query(sql ,new CourseLecturesVTORM() ,courseID) ;
     }
 

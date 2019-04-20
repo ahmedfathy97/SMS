@@ -2,20 +2,20 @@ package com.sms.model.course;
 
 import java.util.Date;
 
-public class CourseLecturesVTO {
+public class LectureVTO {
 
     private int lectureID;
     private String lectureTitle;
-    private Date date ;
-    public CourseLecturesVTO() {
+    private Date lectureDate;
+    public LectureVTO() {
     }
 
-    public Date getDate() {
-        return date;
+    public Date getLectureDate() {
+        return lectureDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setLectureDate(Date lectureDate) {
+        this.lectureDate = lectureDate;
     }
 
     public int getLectureID() {

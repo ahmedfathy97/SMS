@@ -11,7 +11,7 @@ import {LectureVto} from "../../../../../shared/data/lecture-vto";
 })
 export class CourseLecturesComponent implements OnInit {
   corID: number ;
-  lecList: LectureVto[] ;
+  lectureList: LectureVto[] ;
 
   constructor(private corDataService: CourseDataService,
               private courseService: CourseService,) {
@@ -27,10 +27,11 @@ export class CourseLecturesComponent implements OnInit {
 
   ngOnInit() {
   }
+
   getCourseLectures(){
     this.courseService.getCourseLectures(this.corID).subscribe(res => {
-      this.lecList = res;
-      console.log(this.lecList);
+      this.lectureList = res;
+      console.log(this.lectureList);
 
     }, err => {
       console.log(err);

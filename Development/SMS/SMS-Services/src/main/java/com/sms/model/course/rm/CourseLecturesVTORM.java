@@ -1,6 +1,6 @@
 package com.sms.model.course.rm;
 
-import com.sms.model.course.CourseLecturesVTO;
+import com.sms.model.course.LectureVTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +9,10 @@ public class CourseLecturesVTORM implements org.springframework.jdbc.core.RowMap
 
     @Override
     public Object mapRow(ResultSet rs, int rowindex) throws SQLException {
-        CourseLecturesVTO courseLecturesVTO = new CourseLecturesVTO() ;
-        courseLecturesVTO.setLectureID(rs.getInt("id"));
-        courseLecturesVTO.setLectureTitle(rs.getString("title"));
-        courseLecturesVTO.setDate(rs.getDate("lecture_date"));
-        return courseLecturesVTO ;
+        LectureVTO lectureVTO = new LectureVTO() ;
+        lectureVTO.setLectureID(rs.getInt("id"));
+        lectureVTO.setLectureTitle(rs.getString("title"));
+        lectureVTO.setLectureDate(rs.getDate("lecture_date"));
+        return lectureVTO;
     }
 }

@@ -34,7 +34,7 @@ export class CreateLecture implements OnInit {
   onSubmitNewLecture() {
     let lectureDto: LectureDto = new LectureDto();
     lectureDto.title = this.formData.get('title').value;
-    lectureDto.date = this.formData.get('date').value;
+    lectureDto.date = this.formData.get('lectureDate').value;
     lectureDto.videoUrl = this.formData.get('videoUrl').value;
     lectureDto.description = this.formData.get('description').value;
     var courseID = +this.courseID;

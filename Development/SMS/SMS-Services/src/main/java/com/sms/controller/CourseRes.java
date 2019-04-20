@@ -107,9 +107,9 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")
 
-    public List<CourseLecturesVTO> getCourseLectures(@PathParam("courseID") int courseID) {
-        List<CourseLecturesVTO> courseLecturesVTOList = courseSer.getCourseLectures(courseID);
-        return courseLecturesVTOList;
+    public List<LectureVTO> getCourseLectures(@PathParam("courseID") int courseID) {
+        List<LectureVTO> lectureVTOList = courseSer.getCourseLectures(courseID);
+        return lectureVTOList;
     }
 
 

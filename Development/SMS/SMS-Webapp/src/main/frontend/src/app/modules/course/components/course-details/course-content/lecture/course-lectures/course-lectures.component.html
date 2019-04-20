@@ -9,7 +9,7 @@
           Add new lecture</a>
       </div>
       <!--<ul class="list-group" >-->
-      <!--<div *ngFor="let lec of lecList">-->
+      <!--<div *ngFor="let lec of lectureList">-->
 
 
       <!--</a>-->
@@ -22,27 +22,12 @@
             <tr class="heading-td">
               <td class="lec-num">#</td>
               <td class="lec-title">Title</td>
-              <td class="lec-date">Date</td>
+              <td class="lec-lectureDate">Date</td>
             </tr>
-            <tr>
-              <td class="lec-num">Dashcoin</td>
-              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
-              <td class="lec-date">$ 56746,857</td>
-            </tr>
-            <tr>
-              <td class="lec-num">LiteCoin</td>
-              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
-              <td class="lec-date">$ 56746,857</td>
-            </tr>
-            <tr>
-              <td class="lec-num">Euthorium</td>
-              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
-              <td class="lec-date">$ 56746,857</td>
-            </tr>
-            <tr>
-              <td class="lec-num">Bitcoindash</td>
-              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
-              <td class="lec-date">$ 56746,857</td>
+            <tr *ngFor="let lecture of lectureList , index as i">
+              <td class="lec-num">{{i +1}}</td>
+              <td class="lec-title">{{lecture.lectureTitle}}></td>
+              <td class="lec-lectureDate">{{lecture.lectureDate}}</td>
             </tr>
           </table>
         </div>

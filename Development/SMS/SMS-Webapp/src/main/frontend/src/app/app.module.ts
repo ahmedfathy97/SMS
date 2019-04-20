@@ -45,7 +45,7 @@ import { CreateAnnouncmentComponent } from './modules/course/components/course-d
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
 import { LectureDetailsComponent } from './modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -66,7 +66,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule,
-    NgbModule
+    //NgbModule
   ],
   providers: [
     LocalStorageService, AuthorizationGuard, AuthenticationGuard,
