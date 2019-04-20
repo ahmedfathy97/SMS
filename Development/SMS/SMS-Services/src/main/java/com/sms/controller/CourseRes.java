@@ -40,9 +40,7 @@ public class CourseRes {
         this.rep = rep;
     }
 
-    //    public CourseRes(GradeRep gradeRepository) {
-//        this.gradeRepository = gradeRepository;
-//    }
+
 
     @POST
     @Path("/")
@@ -94,6 +92,7 @@ public class CourseRes {
         CourseVTO viewData = this.courseRep.findByID(corID);
         return viewData;
     }
+
 
     @POST
     @Path("/{courseID}/lecture")

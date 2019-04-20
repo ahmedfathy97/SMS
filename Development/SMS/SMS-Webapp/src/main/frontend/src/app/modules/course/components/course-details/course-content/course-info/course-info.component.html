@@ -49,7 +49,7 @@
           <label id="start-date" class="col-form-label ml-1">{{viewData.startDate}}</label>
         </div>
 
-        <div class="d-inline-block col-6">t
+        <div class="d-inline-block col-6">
           <label for="end-date" class="col-form-label font-weight-bold text-dark">End Date :</label>
           <label id="end-date" class="col-form-label ml-1">{{viewData.endDate}}</label>
         </div>
@@ -65,7 +65,6 @@
           <label id="cor-type" class="col-form-label ml-1">{{viewData.corType}}</label>
         </div>
 
-        <app-view-grade></app-view-grade>
 
         <div class="d-inline-block col-6">
           <label for="cor-level" class="col-form-label font-weight-bold text-dark">Course Level :</label>
@@ -89,9 +88,10 @@
           <label for="description" class="col-form-label font-weight-bold text-dark">Description :</label>
           <label id="description" class="col-form-label ml-1">{{viewData.description}}</label>
         </div>
-        <div class="card-action">
-          <button class="btn btn-primary col-6 mt-1 offset-2" (click)="onEnrollNewStudent()">Enroll</button>
-        </div>
+
+        <!--<div class="card-action">-->
+          <!--<button class="btn btn-primary col-6 mt-1 offset-2" (click)="onEnrollNewStudent()">Enroll</button>-->
+        <!--</div>-->
 
       </div>
     </div>

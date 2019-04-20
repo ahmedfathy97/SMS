@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../../../shared/services/course.service";
 import {CourseVto} from "../../../../shared/data/course-vto";
 import {ActivatedRoute} from "@angular/router";
+import {CourseDataService} from "../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-view-course',
@@ -12,24 +13,31 @@ import {ActivatedRoute} from "@angular/router";
 export class CourseInfoComponent implements OnInit {
 
   corID : number ;
-  private viewData: CourseVto = new CourseVto();
+  viewData: CourseVto = new CourseVto();
 
 
-  constructor(private corService: CourseService,
-              private route : ActivatedRoute) {
-    this.route.paramMap.subscribe(params =>{
-      this.corID = +params.get("corID");
-    })
+  constructor(private corService: CourseService,private corDataService: CourseDataService){
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+        this.getCourseInformation() ;
+      }
+    );
+    this.corDataService.requestCorID.next(true);
   }
 
 
+  getCourseInformation()
+  {
+    this.corService.getCourseByID(this.corID).subscribe(res => {  this.viewData = res ;});
+  }
+
   ngOnInit() {
-    var courseID = +this.corID;
-    this.corService.getCourseByID(courseID).subscribe(res => {  this.viewData = res ;});
   }
 
   onEnrollNewStudent(){
-    this.corService.enrollStudentByID(1).subscribe(res => {
+    this.corService.enrollStudentByID(this.corID).subscribe(res => {
       console.log("Success");
     }, err => {
       console.log(err)});

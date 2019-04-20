@@ -46,6 +46,7 @@ const routes: Routes = [
           {path: ':courseID', component: CourseDetailsComponent, children: [
               {path:'',component:ViewAnnouncmentComponent} ,
                {path: 'announcment', component: CreateAnnouncmentComponent},
+              {path: 'information', component: CourseInfoComponent},
               {path: 'lecture', children: [
                   {path:'' ,component: CourseLecturesComponent} ,
                   {path: 'new', component: CreateLecture}//,

@@ -77,7 +77,7 @@ public class CourseRep {
                 "cor_t.label_en cor_type, \n" +
                 "l.label_en cor_level \n" +
                 "FROM course c \n" +
-                "LEFT JOIN auth_user u ON c.instructor_id = u.id\n" +
+                "LEFT JOIN user_detail u ON c.instructor_id = u.user_id\n" +
                 "LEFT JOIN cor_category g ON c.category_id = g.id\n" +
                 "LEFT JOIN cor_type cor_t ON c.type_id = cor_t.id\n" +
                 "LEFT JOIN cor_level l ON c.level_id = l.id\n" +

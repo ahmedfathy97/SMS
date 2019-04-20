@@ -27,6 +27,7 @@ export class ViewAttendanceComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
   }
 
+
   ngOnInit() {
   }
 
