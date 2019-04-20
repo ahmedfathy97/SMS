@@ -5,6 +5,7 @@ import {GradeService} from "../../../../../shared/services/grade.service";
 import {CourseVto} from "../../../../../shared/data/course-vto";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {ActivatedRoute} from "@angular/router";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {ActivatedRoute} from "@angular/router";
   providers: [FormBuilder,CourseService ,GradeService]
 })
 export class CreateGradeComponent implements OnInit {
-  courseID: string;
+
   corID :number ;
   formData: FormGroup = this.formBuilder.group({
     course: [null, [Validators.required]],
@@ -23,28 +24,18 @@ export class CreateGradeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private courseService: CourseService,
+              private corDataService: CourseDataService,
               private gradeService:GradeService , private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(params => {
-      this.courseID = params.get("courseID");
-    })
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        this.getCourseStudents();
 
+
+  });
+    this.corDataService.requestCorID.next(true);
   }
-
-  // courses: CourseVto [] = [];
-  // courseSelected:boolean=false;
-
-  students: StdDTO[] = [];
-
-  ngOnInit() {
-    var courseID = +this.courseID;
-    this.corID = courseID ;
-    // this.courseService.getAllInstructorCourses().subscribe(
-    //   res => {
-    //     this.courses = res;
-    //     console.log(this.courses);
-    //   }
-    // );
-    // debugger;
+  getCourseStudents(){
     this.courseService.getAllCourseStudents(this.corID).subscribe(
       res => {
         this.students = res;
@@ -55,7 +46,25 @@ export class CreateGradeComponent implements OnInit {
 
 
       }
-    );
+    )
+
+  }
+  // courses: CourseVto [] = [];
+  // courseSelected:boolean=false;
+
+  students: StdDTO[] = [];
+
+  ngOnInit() {
+    // var courseID = +this.courseID;
+    // this.corID = courseID ;
+    // this.courseService.getAllInstructorCourses().subscribe(
+    //   res => {
+    //     this.courses = res;
+    //     console.log(this.courses);
+    //   }
+    // );
+    // debugger;
+
 
 
   }

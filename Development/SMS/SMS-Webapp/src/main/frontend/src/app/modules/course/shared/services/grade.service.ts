@@ -6,7 +6,7 @@ import {StdDTO} from "../data/std-dto.data";
 
 @Injectable()
 export class GradeService {
-  BASE_URL : string = ConfigParam.APP_BASE_URL  + "/grade";
+  BASE_URL : string = ConfigParam.APP_BASE_URL  + "/grade/";
 
   constructor(private http:HttpClient) {
   }

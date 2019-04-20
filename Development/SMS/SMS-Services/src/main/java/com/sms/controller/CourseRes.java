@@ -67,18 +67,18 @@ public class CourseRes {
     }
 
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{instructorID}/courses")
-    public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
-        List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
-        return list;
-    }
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/{instructorID}/courses")
+//    public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
+//        List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
+//        return list;
+//    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-    public List<CourseVTO> findStudentCourses(@Context ContainerRequestContext request) {
+    public List<CourseVTO> findAllCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         List<CourseVTO> list = this.courseSer.findAllCourses(currentUser);
         return list;

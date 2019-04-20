@@ -50,7 +50,7 @@ public class CourseSer {
     public List<CourseVTO> findAllCourses(UserVTO currentUser){
         List<CourseVTO> CourseVTOList = new ArrayList<>();
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
-            CourseVTOList = courseRep.findAllStudentCourse(currentUser.getId());
+            CourseVTOList = courseRep.findAllInstructorCourses(currentUser.getId());
         else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
             CourseVTOList =courseRep.findAllStudentCourse(currentUser.getId());
         return CourseVTOList;

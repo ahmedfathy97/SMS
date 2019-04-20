@@ -26,6 +26,7 @@ import {CourseLecturesComponent} from "./modules/course/components/course-detail
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
+import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
       {path: 'course', /* component which view all courses*/ children: [
 
           {path: 'new', component: CreateCourse},
+          {path: 'list', component: CourseListComponent},
           {path: ':courseID', component: CourseDetailsComponent, children: [
               {path:'',component:ViewAnnouncmentComponent} ,
                {path: 'announcment', component: CreateAnnouncmentComponent},
@@ -48,7 +50,7 @@ const routes: Routes = [
                   {path:'' ,component: CourseLecturesComponent} ,
                   {path: 'new', component: CreateLecture}//,
                   // {path: ':lectureID', children: [
-                  //     {path: 'upload ', component: UploadComponent},
+                  //     {path: 'upload ', component: UploadComponent},p
                   //     {path: 'download', component: DownloadComponent}
                   //   ]
                   // },

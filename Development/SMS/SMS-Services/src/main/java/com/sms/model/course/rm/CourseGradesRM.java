@@ -14,7 +14,7 @@ public class CourseGradesRM implements RowMapper<StdDTO> {
         String lastName=rs.getString("last_name");
 
         data.setFullName(firstName + " " +lastName);
-        data.setId(rs.getInt("id"));
+        data.setId(rs.getInt("user_id"));
         data.setMidTermOne(rs.getInt("mid_1_grd"));
         data.setSemiFinal(rs.getInt("semi_final_grd"));
         data.setMidTermTwo(rs.getInt("mid_2_grd"));
