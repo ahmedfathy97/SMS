@@ -7,7 +7,7 @@ public class File implements Serializable {
 
     private int id;
     private String name;
-    private String type;
+    private String contentType;
     private String extension;
     private long size;
     private String file_path;
@@ -18,10 +18,10 @@ public class File implements Serializable {
     public File() {
     }
 
-    public File(int id, String name, String type, String extension, long size, String file_path, Date upload_date, int sourceID, int fileSourceID) {
+    public File(int id, String name, String contentType, String extension, long size, String file_path, Date upload_date, int sourceID, int fileSourceID) {
         this.id = id;
         this.name = name;
-        this.type = type;
+        this.contentType = contentType;
         this.extension = extension;
         this.size = size;
         this.file_path = file_path;
@@ -30,11 +30,11 @@ public class File implements Serializable {
         this.fileSourceID = fileSourceID;
     }
 
-    public File(String name, String type, String extension, int size, int sourceID) {
+    public File(String name, String contentType, String extension, int size, int sourceID) {
 
 //        this.id = id;
         this.name = name;
-        this.type = type;
+        this.contentType = contentType;
         this.extension = extension;
         this.size = size;
 //        this.file_path = file_path;
@@ -58,12 +58,12 @@ public class File implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     public String getExtension() {
@@ -123,7 +123,7 @@ public class File implements Serializable {
         return "File{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", contentType='" + contentType + '\'' +
                 ", extension='" + extension + '\'' +
                 ", size=" + size +
                 ", file_path='" + file_path + '\'' +
