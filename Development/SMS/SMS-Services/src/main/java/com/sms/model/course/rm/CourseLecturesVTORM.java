@@ -12,6 +12,7 @@ public class CourseLecturesVTORM implements org.springframework.jdbc.core.RowMap
         CourseLecturesVTO courseLecturesVTO = new CourseLecturesVTO() ;
         courseLecturesVTO.setLectureID(rs.getInt("id"));
         courseLecturesVTO.setLectureTitle(rs.getString("title"));
+        courseLecturesVTO.setDate(rs.getDate("lecture_date"));
         return courseLecturesVTO ;
     }
 }

@@ -1,3 +1,54 @@
-<p>
-  course-lectures works!
-</p>
+<div class="col-md-8 mt-5 offset-2">
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title" >Course Lectures</h4>
+      <div class="fw-icons" >
+        <a [routerLink] ="['/course' ,corID ,'lecture' ,'new']">
+          <i class="fa fa-plus-circle"></i>
+          Add new lecture</a>
+      </div>
+      <!--<ul class="list-group" >-->
+      <!--<div *ngFor="let lec of lecList">-->
+
+
+      <!--</a>-->
+      <!--<br>-->
+      <!--</div>-->
+      <!--</ul>-->
+      <div class="market-status-table mt-4">
+        <div class="table-responsive">
+          <table class="dbkit-table">
+            <tr class="heading-td">
+              <td class="lec-num">#</td>
+              <td class="lec-title">Title</td>
+              <td class="lec-date">Date</td>
+            </tr>
+            <tr>
+              <td class="lec-num">Dashcoin</td>
+              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+              <td class="lec-date">$ 56746,857</td>
+            </tr>
+            <tr>
+              <td class="lec-num">LiteCoin</td>
+              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+              <td class="lec-date">$ 56746,857</td>
+            </tr>
+            <tr>
+              <td class="lec-num">Euthorium</td>
+              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+              <td class="lec-date">$ 56746,857</td>
+            </tr>
+            <tr>
+              <td class="lec-num">Bitcoindash</td>
+              <td class="lec-title">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+              <td class="lec-date">$ 56746,857</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

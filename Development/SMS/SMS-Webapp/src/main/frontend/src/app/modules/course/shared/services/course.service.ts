@@ -8,6 +8,7 @@ import {AttendanceDTO} from "../data/attendance-dto.data";
 import {CourseQuizesVto} from "../data/quiz/course-quizes-vto";
 import {LectureDto} from "../data/lecture-dto.data";
 import {Announcement} from "../data/announcment";
+import {LectureVto} from "../data/lecture-vto";
 
 
 @Injectable()
@@ -88,5 +89,10 @@ export class CourseService {
   getCourseAnnouncments(courseID :number)
   {
     return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList") ;
+  }
+
+  getCourseLectures(courseID :number)
+  {
+    return this.httpClient.get<LectureVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures");
   }
 }
