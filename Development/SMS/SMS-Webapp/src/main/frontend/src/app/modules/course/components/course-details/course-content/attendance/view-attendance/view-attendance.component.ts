@@ -12,6 +12,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 })
 export class ViewAttendanceComponent implements OnInit {
 
+  display : boolean = false ;
   corID :number ;
   attendanceList :AttendanceDTO [] = [];
   tableView : any [][] ;
@@ -37,8 +38,14 @@ export class ViewAttendanceComponent implements OnInit {
         this.attendanceList = res;
         console.log(this.attendanceList);
         this.transformTable();
+
+        if (this.attendanceList.length != 0 )
+        {
+          this.display=true;
+        }
       }
     )
+
   }
 
   transformTable(){
