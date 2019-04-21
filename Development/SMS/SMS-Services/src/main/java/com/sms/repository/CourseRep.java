@@ -5,6 +5,7 @@ import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.rm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CourseRep {
 
     private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert attendanceSJI;
 
     @Autowired
     public CourseRep(JdbcTemplate jdbcTemplate) {

@@ -116,6 +116,7 @@ public class CourseRes {
     @POST
     @Path("/{courseID}/newQuiz")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public void createQuiz(@PathParam("courseID") int courseID, QuizDTO quizData) {
         courseSer.createQuiz(courseID, quizData);
     }

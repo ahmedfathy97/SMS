@@ -15,6 +15,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 export class CreateQuizComponent implements OnInit {
   corID :number ;
   constructor(private formBuilder: FormBuilder,
+              private router: Router,
               private courseService: CourseService,private corDataService: CourseDataService) {
     this.corDataService.corID.subscribe(
       data =>{
