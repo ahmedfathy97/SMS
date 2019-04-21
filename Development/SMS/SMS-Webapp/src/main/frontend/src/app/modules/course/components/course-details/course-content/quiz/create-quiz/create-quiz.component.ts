@@ -47,7 +47,9 @@ export class CreateQuizComponent implements OnInit {
     quizData.isClosed = false;
     console.log(quizData);
     this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
+      console.log(res);
       console.log("Success");
+      // this.router.navigate([`/course/${this.corID}/quiz/${quizID}`])
     }, err => {
       console.log(err);
     });

@@ -25,10 +25,10 @@ public class CourseSer {
 
 
 
-    public void createQuiz(int courseID ,QuizDTO quizData )
+    public int createQuiz(int courseID ,QuizDTO quizData )
     {
 
-        courseRep.insertNewQuiz(courseID,quizData);
+        return courseRep.insertNewQuiz(courseID,quizData);
     }
 
 

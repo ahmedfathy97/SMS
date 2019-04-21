@@ -8,16 +8,23 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CourseRep {
 
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcInsert attendanceSJI;
+    private SimpleJdbcInsert quizSJI;
 
     @Autowired
-    public CourseRep(JdbcTemplate jdbcTemplate) {
+    public CourseRep(JdbcTemplate jdbcTemplate, DataSource dataSource) {
+        quizSJI = new SimpleJdbcInsert(dataSource).withTableName("quiz")
+                .usingGeneratedKeyColumns("id");
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -58,9 +65,19 @@ public class CourseRep {
     }
 
 
-    public void insertNewQuiz(int courseID, QuizDTO quizData) {
-        String sql = "INSERT INTO quiz ( quiz_name, grade, start_date, close_date , course_id , auto_close ) VALUES (? ,? ,?,? ,? ,?);\n";
-        this.jdbcTemplate.update(sql, quizData.getQuizName(), quizData.getGrade(), quizData.getStartDate(), quizData.getFinishDate(), courseID, quizData.isClosed());
+    public int insertNewQuiz(int courseID, QuizDTO quizData) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+
+        Map<String, Object> parameters = new HashMap<>(6);
+        parameters.put("quiz_name", quizData.getQuizName());
+        parameters.put("grade",quizData.getGrade());
+        parameters.put("start_date",dateFormat.format(quizData.getStartDate()));
+        parameters.put("close_date",dateFormat.format(quizData.getFinishDate()));
+        parameters.put("course_id",courseID);
+        parameters.put("auto_close",quizData.isClosed());
+
+        Number newId = quizSJI.executeAndReturnKey(parameters);
+        return newId.intValue();
     }
 
 
