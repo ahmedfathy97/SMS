@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {QuizDto} from "../../../../../shared/data/quiz/quiz-dto";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
+import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.data";
 
 @Component({
   selector: 'app-create-quiz',
@@ -14,14 +16,15 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 })
 export class CreateQuizComponent implements OnInit {
   corID :number ;
+  currentUser: AuthUserVTO;
   constructor(private formBuilder: FormBuilder,
-              private router: Router,
+              private router: Router, private localStorageSerice: LocalStorageService,
               private courseService: CourseService,private corDataService: CourseDataService) {
+    this.currentUser = this.localStorageSerice.getCurrentUser();
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
         console.log(data);
-        //this.onSubmitNewQuiz()
       }
     );
     this.corDataService.requestCorID.next(true);
@@ -47,9 +50,8 @@ export class CreateQuizComponent implements OnInit {
     quizData.isClosed = false;
     console.log(quizData);
     this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
-      console.log(res);
-      console.log("Success");
-      // this.router.navigate([`/course/${this.corID}/quiz/${quizID}`])
+      let quizID:number = res;
+      this.router.navigate([`/course/${this.corID}/quiz/${quizID}/questions`])
     }, err => {
       console.log(err);
     });
