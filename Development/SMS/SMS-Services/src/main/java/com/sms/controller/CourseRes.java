@@ -50,29 +50,6 @@ public class CourseRes {
         courseRep.insertNewCourse(details);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/students")
-    public List<StdDTO> findCourseStudents(@PathParam("courseID") int courseID) {
-        return this.courseRep.findAllCourseStudents(courseID);
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/grade")
-    public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID) {
-        List<StdDTO> list = this.gradeRepository.findCourseGrades(courseID);
-        return list;
-    }
-
-
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/{instructorID}/courses")
-//    public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
-//        List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
-//        return list;
-//    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -83,8 +60,6 @@ public class CourseRes {
         return this.courseSer.findAllCourses(currentUser);
     }
 
-
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{corID}")
@@ -92,6 +67,42 @@ public class CourseRes {
         CourseVTO viewData = this.courseRep.findByID(corID);
         return viewData;
     }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/students")
+    public List<StdDTO> findCourseStudents(@PathParam("courseID") int courseID) {
+        return this.courseRep.findAllCourseStudents(courseID);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/grade")
+    public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID) {
+        List<StdDTO> list = this.gradeRepository.findCourseGrades(courseID);
+        return list;
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/grade/student/{studentID}")
+    public StdDTO getStudentGrades(@PathParam("courseID") int courseID, @PathParam("studentID") int studentID) {
+        StdDTO list = this.gradeRepository.findStudentGrades(courseID, studentID);
+        return list;
+
+    }
+
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/{instructorID}/courses")
+//    public List<CourseVTO> findInstructorCourses(@PathParam("instructorID") int instructorID) {
+//        List<CourseVTO> list = this.courseRep.findAllInstructorCourses(instructorID);
+//        return list;
+//    }
+
 
 
     @POST
@@ -150,15 +161,7 @@ public class CourseRes {
         return list;
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/grade/student/{studentID}")
 
-    public StdDTO getStudentGrades(@PathParam("courseID") int courseID, @PathParam("studentID") int studentID) {
-        StdDTO list = this.gradeRepository.findStudentGrades(courseID, studentID);
-        return list;
-
-    }
 
 
     @POST
