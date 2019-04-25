@@ -1,142 +1,146 @@
-<div class="page-title-area">
-  <div class="row align-items-center content-header">
-    <div class="col-sm-6">
-      <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">Add Questions</h4>
-        <br>
-        <ul class="breadcrumbs pull-left mt-3">
-          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
-          <li><span>add questions</span></li>
-        </ul>
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">Add Questions</h4>
+          <br>
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
+            <li><span>add questions</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row" >
-  <div class="col-6 mt-2"  >
-    <div class="card" class="mr-2" >
-      <div class="card-body">
-        <h4 class="header-title">Add questions</h4>
-        <hr>
-        <form [formGroup]="formData">
-        <div class="form-group" >
-          <label for="quesiontype">Select question type</label>
-          <select   class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
-            <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
-          </select>
-          <br>
+  <div class="page-content-area">
+    <div class="row" >
+      <div class="col-6 mt-2"  >
+        <div class="card" class="mr-2" >
+          <div class="card-body">
+            <h4 class="header-title">Add questions</h4>
+            <hr>
+            <form [formGroup]="formData">
+              <div class="form-group" >
+                <label for="quesiontype">Select question type</label>
+                <select   class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
+                  <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
+                </select>
+                <br>
+              </div>
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Question:</span>
+                </div>
+                <textarea class="form-control" aria-label="Question:" id="question" formControlName="question"></textarea>
+              </div>
+              <!--<div class="form-group">-->
+              <!--<label for="question">question:</label>-->
+              <!--<textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>-->
+              <!--</div>-->
+
+
+              <p *ngIf="trueFalseIsSelsected" > Model Answer : <br> <br>
+                <input type="radio" value="1" formControlName="modelAnswer" class="ml-5" >True
+                <input type="radio" value="0" formControlName="modelAnswer" class="ml-5" > False
+              </p>
+              <br><br>
+
+
+
+              <div class="form-group" *ngIf="mcqIsSelected">
+                <label class="mt-2">model answer:</label>
+                <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
+                <br>
+
+                <label class="custom-control-label">choise1</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="radio" value="1" formControlName="modelAnswer" >
+
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer1">
+                </div>
+
+                <label class="custom-control-label">choise2</label>
+                <div class="input-group mb-3" >
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="radio" value="2" formControlName="modelAnswer" >
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer2">
+                </div>
+                <label class="custom-control-label">choise3</label>
+                <div class="input-group mb-3" >
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="radio" value="3" formControlName="modelAnswer" >
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer3">
+                </div>
+                <label class="custom-control-label">choise4</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="radio" value="4" formControlName="modelAnswer" >
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="questionGrade" class="col-form-label">question grade:</label>
+                <input class="form-control" type="number" id="questionGrade" formControlName="questionGrade">
+              </div>
+
+            </form>
+            <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()"> Add question </button>
+          </div>
         </div>
-
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Question:</span>
-            </div>
-            <textarea class="form-control" aria-label="Question:" id="question" formControlName="question"></textarea>
-          </div>
-        <!--<div class="form-group">-->
-          <!--<label for="question">question:</label>-->
-          <!--<textarea class="form-control" rows="5" id="question" formControlName="question"></textarea>-->
-        <!--</div>-->
-
-
-          <p *ngIf="trueFalseIsSelsected" > Model Answer : <br> <br>
-            <input type="radio" value="1" formControlName="modelAnswer" class="ml-5" >True
-            <input type="radio" value="0" formControlName="modelAnswer" class="ml-5" > False
-          </p>
-          <br><br>
-
-
-
-          <div class="form-group" *ngIf="mcqIsSelected">
-          <label class="mt-2">model answer:</label>
-            <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
-            <br>
-
-          <label class="custom-control-label">choise1</label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input type="radio" value="1" formControlName="modelAnswer" >
-
-              </div>
-            </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer1">
-          </div>
-
-          <label class="custom-control-label">choise2</label>
-          <div class="input-group mb-3" >
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input type="radio" value="2" formControlName="modelAnswer" >
-              </div>
-            </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer2">
-          </div>
-          <label class="custom-control-label">choise3</label>
-          <div class="input-group mb-3" >
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input type="radio" value="3" formControlName="modelAnswer" >
-              </div>
-            </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer3">
-          </div>
-          <label class="custom-control-label">choise4</label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input type="radio" value="4" formControlName="modelAnswer" >
-              </div>
-            </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" formControlName="answer4">
-          </div>
-          </div>
-
-          <div class="form-group">
-            <label for="questionGrade" class="col-form-label">question grade:</label>
-            <input class="form-control" type="number" id="questionGrade" formControlName="questionGrade">
-          </div>
-
-        </form>
-        <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()"> Add question </button>
       </div>
-  </div>
-</div>
-  <div class="col-6 mt-5" style="margin: auto">
-      <div class="card ml-3 mr-5" *ngIf="table">
-        <div class="card-body">
-          <h4 class="header-title">Questions Table</h4>
-          <div class="single-table">
-            <div class="table-responsive">
-              <table class="table table-hover progress-table text-center">
-                <thead class="text-uppercase">
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">question</th>
-                  <th scope="col">action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of questionsList; index as i">
-                  <td>{{i+1}}</td>
-                  <td>{{item.question}}</td>
-                  <td>
-                    <ul class="d-flex justify-content-center">
-                      <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit" (click)="editQuestion(i)" [hidden]="editMode"></i></a></li>
-                      <li><a href="#" class="text-danger"><i class="ti-trash" (click)="deleteQuestion(i)"></i></a></li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+      <div class="col-6 mt-5" style="margin: auto">
+        <div class="card ml-3 mr-5" *ngIf="table">
+          <div class="card-body">
+            <h4 class="header-title">Questions Table</h4>
+            <div class="single-table">
+              <div class="table-responsive">
+                <table class="table table-hover progress-table text-center">
+                  <thead class="text-uppercase">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">question</th>
+                    <th scope="col">action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of questionsList; index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{item.question}}</td>
+                    <td>
+                      <ul class="d-flex justify-content-center">
+                        <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit" (click)="editQuestion(i)" [hidden]="editMode"></i></a></li>
+                        <li><a href="#" class="text-danger"><i class="ti-trash" (click)="deleteQuestion(i)"></i></a></li>
+                      </ul>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          </div>
+        </div>
+        <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]" > <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button> </a>
       </div>
-    <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]" > <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button> </a>
+    </div>
   </div>
-</div>
+  </div>
 
 
 

@@ -1,48 +1,56 @@
-<div class="page-title-area">
-  <div class="row align-items-center content-header">
-    <div class="col-sm-6">
-      <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">New Quiz</h4>
-        <br>
-        <ul class="breadcrumbs pull-left mt-3">
-          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
-          <li><span>New</span></li>
-        </ul>
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">New Quiz</h4>
+          <br>
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
+            <li><span>New</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-6 mt-5 mb-5 " style="margin: auto">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="header-title">Create New Quiz</h4>
-        <form [formGroup]="formData">
-        <div class="form-group">
-          <label for="quiz_name" class="col-form-label">Quiz Name</label>
-          <input class="form-control" formControlName="quizName" type="text" id="quiz_name">
-          <small *ngIf="formData.get('quizName').hasError('required')">quiz name is required</small>
-          <small *ngIf="formData.get('quizName').hasError('maxlength')">quiz has max length 25 character</small>
-        </div>
-        <div class="form-group">
-          <label for="quiz_grade" class="col-form-label">Grade</label>
-          <input class="form-control" formControlName="quizGrade" type="number" id="quiz_grade">
-        </div>
 
-        <div class="form-group">
-          <label for="start_date" class="col-form-label">Start Date</label>
-          <input class="form-control" formControlName="startDate" type="lectureDate" id="start_date">
-        </div>
-          <div class="form-group">
-            <label for="finish_date" class="col-form-label">close Date</label>
-            <input class="form-control" formControlName="finishDate" type="lectureDate" id="finish_date">
+  <div class="page-content-area">
+    <div class="row">
+      <div class="col-6 mt-5 mb-5 " style="margin: auto">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="header-title">Create New Quiz</h4>
+            <form [formGroup]="formData">
+              <div class="form-group">
+                <label for="quiz_name" class="col-form-label">Quiz Name</label>
+                <input class="form-control" formControlName="quizName" type="text" id="quiz_name">
+                <small *ngIf="formData.get('quizName').hasError('required')">quiz name is required</small>
+                <small *ngIf="formData.get('quizName').hasError('maxlength')">quiz has max length 25 character</small>
+              </div>
+              <div class="form-group">
+                <label for="quiz_grade" class="col-form-label">Grade</label>
+                <input class="form-control" formControlName="quizGrade" type="number" id="quiz_grade">
+              </div>
+
+              <div class="form-group">
+                <label for="start_date" class="col-form-label">Start Date</label>
+                <input class="form-control" formControlName="startDate" type="lectureDate" id="start_date">
+              </div>
+              <div class="form-group">
+                <label for="finish_date" class="col-form-label">close Date</label>
+                <input class="form-control" formControlName="finishDate" type="lectureDate" id="finish_date">
+              </div>
+            </form>
+            <a ><button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button> </a>
+            <button class="btn btn-dark pull-right">Cancel</button>
           </div>
-        </form>
-        <a ><button  class="btn btn-primary pull-right ml-2" (click)="onSubmitNewQuiz()">Next</button> </a>
-        <button class="btn btn-dark pull-right">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
+
+
