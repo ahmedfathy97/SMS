@@ -1,3 +1,19 @@
+<div class="page-title-area">
+  <div class="row align-items-center content-header">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Quiz</h4>
+      </div>
+      <div class="breadcrumbs-area clearfix">
+        <ul class="breadcrumbs pull-left mt-3">
+          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
+          <li><span>answer</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-12 mt-2">
     <div class="card-body " style="background-color: white" >
@@ -51,7 +67,7 @@
       </form>
     </div>
     <br>
-    <button class="btn btn-primary " style="margin-left: 40%; margin-bottom: 2%" (click)="onSubmitAnswers()"> Submit </button>
+    <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]"><button class="btn btn-primary " style="margin-left: 40%; margin-bottom: 2%" (click)="onSubmitAnswers()"> Submit </button> </a>
     <br>
   </div>
 </div>

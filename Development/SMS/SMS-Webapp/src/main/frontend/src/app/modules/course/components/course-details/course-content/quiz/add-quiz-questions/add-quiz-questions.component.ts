@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuestionType} from "../../../../../shared/data/quiz/question-type";
 import {QuestionDto} from "../../../../../shared/data/quiz/question-dto";
 import {ActivatedRoute} from "@angular/router";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-add-quiz-quiestions',
@@ -12,7 +13,8 @@ import {ActivatedRoute} from "@angular/router";
   providers: [FormBuilder, QuizService]
 })
 export class AddQuizQuestionsComponent implements OnInit {
-
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
   questionTypeList: QuestionType [];
   questionsList: QuestionDto[] = [];
   mcqIsSelected: boolean = false;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../shared/user.service";
 import {UserData} from "../../shared/data/user-data";
 import {ActivatedRoute} from "@angular/router";
-import {EditData} from "../../shared/data/edit-data";
+//import {EditData} from "../../shared/data/edit-data";
 
 
 class ImageSnippet {
@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService:UserService,
               private route:ActivatedRoute,
-              private editService:EditData) {
+             /* private editService:EditData */) {
     this.route.paramMap.subscribe(params => {
       this.userID = params.get("userID");
 

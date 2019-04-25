@@ -4,6 +4,11 @@ import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {CourseQuizesVto} from "../../../../../shared/data/quiz/course-quizes-vto";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {
+  AngularFullRoutes,
+  replaceCorID,
+  replaceQuizID
+} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-course-quizes',
@@ -13,6 +18,11 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 
 })
 export class CourseQuizesComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
+  replaceQuizID =replaceQuizID;
+
+
   corID: number ;
   quizList:CourseQuizesVto[] ;
   constructor(private courseService: CourseService,

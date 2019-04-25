@@ -1,3 +1,18 @@
+<div class="page-title-area">
+  <div class="row align-items-center content-header">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">Add Questions</h4>
+        <br>
+        <ul class="breadcrumbs pull-left mt-3">
+          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
+          <li><span>add questions</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row" >
   <div class="col-6 mt-2"  >
     <div class="card" class="mr-2" >
@@ -119,7 +134,7 @@
           </div>
           </div>
       </div>
-    <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button>
+    <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]" > <button class="btn btn-primary mt-3" style="margin-left: 40%" *ngIf="table" (click)="onSubmitQuestionsTable()"> Submit </button> </a>
   </div>
 </div>
 

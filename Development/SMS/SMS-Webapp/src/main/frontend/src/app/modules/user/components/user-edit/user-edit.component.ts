@@ -3,7 +3,7 @@ import {UserData} from "../../shared/data/user-data";
 import {UserService} from "../../shared/user.service";
 
 import {FormBuilder, Validators} from "@angular/forms";
-import {EditData} from "../../shared/data/edit-data";
+//import {EditData} from "../../shared/data/edit-data";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -36,19 +36,19 @@ export class UserEditComponent implements OnInit {
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
-              private editService: EditData,
+             /* private editService: EditData */
               private route: ActivatedRoute) {
 
     this.route.paramMap.subscribe(params => {
       this.userID = +params.get("userID");
     });
-    this.editService.userID.subscribe(
-      data => {
-        this.userID = data;
-        console.log(data);
-
-      }
-    );
+    // this.editService.userID.subscribe(
+    //   data => {
+    //     this.userID = data;
+    //     console.log(data);
+    //
+    //   }
+    // );
   }
     ngOnInit()
     {

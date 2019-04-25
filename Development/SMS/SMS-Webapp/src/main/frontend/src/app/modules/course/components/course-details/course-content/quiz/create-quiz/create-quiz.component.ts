@@ -6,6 +6,7 @@ import {QuizDto} from "../../../../../shared/data/quiz/quiz-dto";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
 import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.data";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 
 @Component({
@@ -15,6 +16,8 @@ import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.
   providers: [FormBuilder, CourseService]
 })
 export class CreateQuizComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
   corID :number ;
   currentUser: AuthUserVTO;
   constructor(private formBuilder: FormBuilder,
