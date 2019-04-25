@@ -1,20 +1,35 @@
+<div class="page-title-area">
+  <div class="row align-items-center content-header">
+    <div class="col-sm-6">
+      <div class="breadcrumbs-area clearfix">
+        <h4 class="page-title pull-left">View Attendance</h4>
+      </div>
+      <div class="breadcrumbs-area clearfix">
+        <ul class="breadcrumbs pull-left mt-3">
+          <li><a [routerLink]="ROUTES.COURSE_LIST">Course</a></li>
+          <li><span>Attendance</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-6 clearfix">
+      <div class="pull-right">
+        <a class="btn btn-success btn-header"
+           [routerLink] ="[replaceCorID(ROUTES.COR_NEW_Attendance, corID)]">
+          <i class="fa fa-plus pr--10"></i> Add Attendance</a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="col-lg-12">
   <div class="card">
     <div class="card-body">
-      <h4 class="header-title">Attendance Sheet</h4>
       <div class="single-table">
         <div class="table-responsive">
-          <div class="fw-icons pull-right " >
-            <a [routerLink] ="['/course' ,corID ,'attendance' , 'new']">
-              <i
-            class="fa fa-plus-circle"></i>
-            Add new attendance sheet </a>
-          </div>
           <table class="table text-center" *ngIf="display">
-            <thead class="text-uppercase bg-info">
+            <thead class="text-uppercase bg-secondary">
             <tr class="text-white">
               <th>#</th>
-              <th >Name</th>
+              <th>Name</th>
               <th *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">
                 <!--<ng-template [ngIf]="i!=0"></ng-template>-->
                 {{sheet}}
@@ -23,10 +38,10 @@
             </thead>
             <tbody>
             <tr *ngFor="let row of tableView | slice:1:tableView.length;index as i;">
-              <td >{{i+1}}</td>
-              <td >{{row[0]}}</td>
+              <td>{{i+1}}</td>
+              <td>{{row[0]}}</td>
               <td *ngFor="let isAttend  of tableView[i] | slice:1:tableView[i].length ; index as j;">
-                <span class="badge badge-primary" *ngIf=" isAttend">attend</span>
+                <span class="badge badge-secondary" *ngIf=" isAttend">attend</span>
                 <span class="badge badge-danger" *ngIf=" !isAttend">absent</span>
               </td>
             </tr>
@@ -35,11 +50,11 @@
         </div>
       </div>
 
-      <div>
-        <a [routerLink] ="['/course' ,corID ,'attendance' , 'new']">
-        <button type="submit" class="btn btn-primary btn-rounded pull-right mt-5 ml-4" *ngIf="display">Edit</button>
-        </a>
-      </div>
+      <!--<div>-->
+        <!--<a [routerLink]="['/course' ,corID ,'attendance' , 'new']">-->
+          <!--<button type="submit" class="btn btn-primary btn-rounded pull-right mt-5 ml-4" *ngIf="display">Edit</button>-->
+        <!--</a>-->
+      <!--</div>-->
     </div>
   </div>
 </div>

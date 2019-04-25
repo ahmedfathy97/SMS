@@ -4,6 +4,7 @@ import {CourseService} from "../../../../../shared/services/course.service";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-view-attendance',
@@ -11,7 +12,8 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
   providers : [CourseService]
 })
 export class ViewAttendanceComponent implements OnInit {
-
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
   display : boolean = false ;
   corID :number ;
   attendanceList :AttendanceDTO [] = [];
