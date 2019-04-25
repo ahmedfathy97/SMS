@@ -195,7 +195,7 @@ ADD CONSTRAINT `fk_course_lectures`
   ON UPDATE NO ACTION;
 
 -- fathy end 13/4/2019
---start hala 18/4/2019
+-- start hala 18/4/2019
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('2', '1', '2');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('3', '4', '2');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('4', '3', '2');
@@ -222,7 +222,7 @@ CHANGE COLUMN id id INT(11) NOT NULL AUTO_INCREMENT ;
 -- ahmed end ---
 
 
----manar--
+-- -manar--
 ALTER TABLE `sms`.`user_detail`
 ADD COLUMN `age` INT NOT NULL AFTER `email`,
 ADD COLUMN `gender` VARCHAR(45) NOT NULL AFTER `age`,
@@ -236,7 +236,7 @@ ADD COLUMN `user_name` VARCHAR(45) NOT NULL AFTER `college`;
 ALTER TABLE `sms`.`user_detail`
 DROP COLUMN `user_name`;
 
----manar---
+-- -manar---
 
 
 -- ahmed  start--
@@ -246,7 +246,7 @@ CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
 ALTER TABLE `sms`.`question`
 CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
 -- ahmed  end  --
---start hala
+-- start hala
 ALTER TABLE `sms`.`course`
 ADD COLUMN `image_path` VARCHAR(45) NULL AFTER `description`;
---end hala
+-- end hala

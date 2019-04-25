@@ -140,8 +140,7 @@ CREATE TABLE cor_std_att (
   is_attended INT NOT NULL,
   CONSTRAINT fk_cor_std_att_course FOREIGN KEY (cor_id) REFERENCES course (id),
   CONSTRAINT fk_cor_std_att_attendance FOREIGN KEY (att_id) REFERENCES course (id),
-  -- TODO: Yara - There is extra comma on the last line here - remove it and take care in the next time
-  CONSTRAINT fk_cor_std_auth_user FOREIGN KEY (std_id) REFERENCES course (id),
+  CONSTRAINT fk_cor_std_auth_user FOREIGN KEY (std_id) REFERENCES course (id)
 
 );
 

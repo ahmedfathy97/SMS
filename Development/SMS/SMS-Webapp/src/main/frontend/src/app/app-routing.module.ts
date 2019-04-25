@@ -35,14 +35,14 @@ const routes: Routes = [
   {path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'home', component: HomeComponent} ,
-      {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-      {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
-
-      /* for some purposes  */
-      {path: 'lecture', component: LectureDetailsComponent},
-      {path: 'upload', component: UploadComponent},
-      {path: 'download', component: DownloadComponent},
+      // {path: 'home', component: HomeComponent} ,
+      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+      // {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
+      //
+      // /* for some purposes  */
+      // {path: 'lecture', component: LectureDetailsComponent},
+      // {path: 'upload', component: UploadComponent},
+      // {path: 'download', component: DownloadComponent},
 
 
 
@@ -50,7 +50,6 @@ const routes: Routes = [
       {path: 'course', /* component which view all courses*/ children: [
 
           {path: 'new', component: CreateCourse},
-          {path: '', component: CourseListComponent},
           {path: ':courseID', component: CourseDetailsComponent, children: [
               {path:'',component:ViewAnnouncmentComponent} ,
                {path: 'announcment', component: CreateAnnouncmentComponent},
@@ -99,8 +98,9 @@ const routes: Routes = [
   },
 
   {path: '', component: FullLayoutComponent, children: [
-      {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-      {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
+      {path: 'courses', component: CourseListComponent}
+      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+      // {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
     ]
   }
 ];

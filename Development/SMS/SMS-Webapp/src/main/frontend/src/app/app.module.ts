@@ -44,6 +44,7 @@ import { CourseListComponent } from './modules/course/components/course-list/cou
 import { CreateAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component';
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
 import { LectureDetailsComponent } from './modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component';
+import {SmsSideBarComponent} from "./layout/components/full-layout/components/sms-side-bar/sms-side-bar.component";
 
 
 
@@ -57,7 +58,7 @@ import { LectureDetailsComponent } from './modules/course/components/course-deta
     CourseQuizesComponent, CourseLecturesComponent,CourseDetailsComponent ,
     UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
     UnAuthorizedComponent,
-    CourseListComponent,
+    CourseListComponent, SmsSideBarComponent,
     CreateAnnouncmentComponent,
     ViewAnnouncmentComponent,
     LectureDetailsComponent,

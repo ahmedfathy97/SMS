@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFullRoutes} from "../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-full-layout',
