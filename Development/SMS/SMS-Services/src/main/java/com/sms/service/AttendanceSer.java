@@ -32,7 +32,7 @@ public class AttendanceSer {
 
     public List<AttendanceDTO> getCourseAttendance(int courseID) {
 
-        List<StdDTO> stdList = this.rep.findAllCourseStudents(2);
+        List<StdDTO> stdList = this.rep.findAllCourseStudents(courseID);
         List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
         List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
         for (StdDTO i : stdAttendance) {
@@ -84,7 +84,7 @@ public class AttendanceSer {
 
     public List<AttendanceDTO> getStudentAttendance(int courseID , int stdID) {
 
-        List<StdDTO> stdList = this.repository.findCourseStudent(2,1);
+        List<StdDTO> stdList = this.repository.findCourseStudent(courseID,stdID);
         List<StdDTO> stdAttendance = this.repository.viewAttendSheetStudent(courseID , stdID);
         List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
         for (StdDTO i : stdAttendance) {
