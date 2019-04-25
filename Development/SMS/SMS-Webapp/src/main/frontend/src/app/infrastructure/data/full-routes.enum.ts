@@ -4,6 +4,10 @@ export enum AngularFullRoutes {
   // COURSE_HOME = "/course",
   COR_VIEW_ANNOUNCEMENT = "/course/${corID}/announcement",
   COR_NEW_ANNOUNCEMENT = "/course/${corID}/announcement/new",
+  COR_CREATE_GRADE = "/course/${corID}/grade/new",
+  COR_VIEW_GRADE = "/course/${corID}/grade",
+
+
   COR_NEW_QUIZ ="/course/${corID}/quiz/new" ,
   COR_VIEW_QUIZ ="/course/${corID}/quiz" ,
   COR_ANSWER_QUIZ ="/course/${corID}/quiz/${quizID}/answerQuiz" ,

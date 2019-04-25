@@ -1,26 +1,46 @@
 <!--TODO: Hala - Don't Use Cards check the home.component.html and make use of it-->
 <div class="page-title-area">
-  <div class="row align-items-center">
+  <div class="row align-items-center content-header">
     <div class="col-sm-6">
       <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">Dashboard</h4>
-        <ul class="breadcrumbs pull-left">
-          <li><a href="index.html">Home</a></li>
-          <li><span>Dashboard</span></li>
+        <h4 class="page-title pull-left">Grade</h4>
+        <br/>
+        <ul class="breadcrumbs pull-left mt-3">
+          <li><a [routerLink]="ROUTES.COURSE_LIST">Course</a></li>
+          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_GRADE, corID)]">ViewGrade</a></li>
+          <li><span>New</span></li>
         </ul>
       </div>
     </div>
+    <!--<div class="col-sm-6">-->
+      <!--<div class="breadcrumbs-area clearfix">-->
+        <!--<h4 class="page-title pull-left">Dashboard</h4>-->
+        <!--<ul class="breadcrumbs pull-left">-->
+          <!--<li><a href="index.html">Home</a></li>-->
+          <!--<li><span>Dashboard</span></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="col-sm-6 clearfix">
-      <div class="user-profile pull-right">
-        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-        <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> User Name <i class="fa fa-angle-down"></i></h4>
+      <!--<div class="user-profile pull-right">-->
+        <!--<img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">-->
+        <!--<h4 class="user-name dropdown-toggle" data-toggle="dropdown"> User Name <i class="fa fa-angle-down"></i></h4>-->
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Message</a>
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Log Out</a>
         </div>
-      </div>
+
     </div>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Grade</label>
+    <select class="form-control">
+      <option>Mid One</option>
+      <option>Semi Final</option>
+      <option>Mid Two</option>
+      <option>Final</option>
+    </select>
   </div>
 </div>
 <div class="main-content-inner">
@@ -47,25 +67,25 @@
                     <table  id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed"
                            role="grid"
                            aria-describedby="dataTable2_info" style="width: 100%;">
-                      <thead class="text-capitalize">
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                            style="width: 84px;" aria-sort="ascending">Name
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                            style="width: 84px;">Mid-1-Grd
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                            style="width: 84px;">Semi-Final-Grd
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                            style="width: 84px;">Mid-2-Grd
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"
-                            style="width: 84px;">Final-Grd
-                        </th>
-                      </tr>
-                      </thead>
+                      <!--<thead class="text-uppercase bg-secondary">-->
+                      <!--<   role="row" class="text-white">-->
+                        <!--<th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"-->
+                            <!--style="width: 84px;" aria-sort="ascending">Name-->
+                        <!--</th>-->
+                        <!--<th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"-->
+                            <!--style="width: 84px;">Mid-One-Grd-->
+                        <!--</th>-->
+                        <!--<th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"-->
+                            <!--style="width: 84px;">Semi-Final-Grd-->
+                        <!--</th>-->
+                        <!--<th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"-->
+                            <!--style="width: 84px;">Mid-Two-Grd-->
+                        <!--</th>-->
+                        <!--<th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1"-->
+                            <!--style="width: 84px;">Final-Grd-->
+                        <!--</th>-->
+                      <!--</tr>-->
+                      <!--</thead>-->
                       <tbody formArrayName="items">
                       <tr role="row" class="odd"
                           *ngFor="let item of items.controls; index as i" [formGroupName]="i">
@@ -79,7 +99,7 @@
                       </tbody>
                     </table>
                     <div class="card-action mt-2 pull-right">
-                      <button type="button" class="btn btn-primary mb-3" (click)="onSubmitGradeSheet()" >Submit
+                      <button type="button" class="btn btn-success mb-3" (click)="onSubmitGradeSheet()" >Submit
                       </button>
                     </div>
                   </div>

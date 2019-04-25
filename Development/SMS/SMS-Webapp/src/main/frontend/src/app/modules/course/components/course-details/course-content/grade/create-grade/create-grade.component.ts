@@ -6,6 +6,7 @@ import {CourseVto} from "../../../../../shared/data/course-vto";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {ActivatedRoute} from "@angular/router";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 
 @Component({
@@ -15,6 +16,8 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
   providers: [FormBuilder,CourseService ,GradeService]
 })
 export class CreateGradeComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
 
   corID :number ;
   stdID: number;
