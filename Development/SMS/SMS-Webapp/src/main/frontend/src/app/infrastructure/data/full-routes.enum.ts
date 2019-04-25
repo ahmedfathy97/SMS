@@ -7,6 +7,8 @@ export enum AngularFullRoutes {
   COR_NEW_QUIZ ="/course/${corID}/quiz/new" ,
   COR_VIEW_QUIZ ="/course/${corID}/quiz" ,
   COR_ADD_QUIZ_QUISTIONS = "/course/${corID}/quiz/${quizID}/questions" ,
+  COR_NEW_Attendance = "/course/${corID}/attendance/new",
+  COR_VIEW_Attendance = "/course/${corID}/attendance",
 
   FACULTY_LIST = "/faculties",
 
