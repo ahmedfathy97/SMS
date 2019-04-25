@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../shared/user.service";
 import {UserData} from "../../shared/data/user-data";
 import {ActivatedRoute} from "@angular/router";
+import {EditData} from "../../shared/data/edit-data";
 
 
 class ImageSnippet {
@@ -19,10 +20,12 @@ export class UserProfileComponent implements OnInit {
 
    userID:string;
 
+
    private userData: UserData=new  UserData();
 
   constructor(private userService:UserService,
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              private editService:EditData) {
     this.route.paramMap.subscribe(params => {
       this.userID = params.get("userID");
 
@@ -35,6 +38,10 @@ export class UserProfileComponent implements OnInit {
       res=> { this.userData=res ;});
   }
 
+  onEdit(){
+
+
+  }
   // selectedFile: ImageSnippet;
   // processFile(imageInput: any) {
   //   const file: File = imageInput.files[0];
@@ -56,6 +63,10 @@ export class UserProfileComponent implements OnInit {
   //
   // }
 
+  onEdit(){
 
+
+
+  }
 
 }

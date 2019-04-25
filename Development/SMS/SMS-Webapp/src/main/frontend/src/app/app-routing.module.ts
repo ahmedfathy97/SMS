@@ -35,6 +35,22 @@ const routes: Routes = [
   {path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'home', component: HomeComponent} ,
+
+
+      {path: 'user', children:
+          [
+            {path: 'profile/:userID', component: UserProfileComponent},
+            {path:'edit/:userID',component:UserEditComponent}
+                //{path:'',component:UserEditComponent},
+            ]
+      } ,
+
+
+      /* for some purposes  */
+      {path: 'lecture', component: LectureDetailsComponent},
+      {path: 'upload', component: UploadComponent},
+      {path: 'download', component: DownloadComponent},
       // {path: 'home', component: HomeComponent} ,
       // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
       // {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,

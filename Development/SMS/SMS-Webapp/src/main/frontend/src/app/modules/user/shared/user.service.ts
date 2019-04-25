@@ -14,8 +14,8 @@ export class UserService {
     return this.http.get<UserData>("http://localhost:8080/api/user/"+userID+"/profile");
   }
 
-  findBYID(userID:number){
-    return this.http.get<UserData>("http://localhost:8080/api/edit/"+userID);
+ editProfile(userID:number){
+    return this.http.get<UserData>("http://localhost:8080/api/user/"+userID+"/edit");
 
   }
 

@@ -46,6 +46,7 @@ import { ViewAnnouncmentComponent } from './modules/course/components/course-det
 import { LectureDetailsComponent } from './modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component';
 import {SmsSideBarComponent} from "./layout/components/full-layout/components/sms-side-bar/sms-side-bar.component";
 
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import {SmsSideBarComponent} from "./layout/components/full-layout/components/sm
   imports: [
     BrowserModule,
     AppRoutingModule,ReactiveFormsModule,CommonModule,FormsModule,HttpClientModule,
+  //  NgbModule
   ],
   providers: [
     LocalStorageService, AuthorizationGuard, AuthenticationGuard,

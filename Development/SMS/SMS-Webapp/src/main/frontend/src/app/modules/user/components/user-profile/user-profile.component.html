@@ -89,7 +89,7 @@
                   <hr>
 
                   <div class="card-action">
-                    <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2">Edit</button>
+                    <a [routerLink] ="['/user',userID,'edit',userData.userID]"><button class="btn  btn-primary btn-sm pull-right mr-2 mb-2" (click)="onEdit()"> Edit</button></a>
                   </div>
 
           </div>
