@@ -2,3 +2,15 @@
 .clickable{
   cursor: pointer;
 }
+
+
+.content-header{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-header{
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  font-size: 16px !important;
+}
