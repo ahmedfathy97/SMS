@@ -30,13 +30,19 @@ public class CourseRep {
 
 
     public List<CourseVTO> findAllInstructorCourses(int instrID) {
-        String sql = "SELECT image_path,id,cor_name,duration ,start_date,end_date, description FROM course where instructor_id =? ";
+        String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
+                "a.first_name, a.last_name  " +
+                "FROM course cor " +
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
+                "where cor.instructor_id = ? ";
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
     public List<CourseVTO> findAllStudentCourse(int stdID){
-        String sql ="SELECT image_path, cor.id ,std_id,cor_name,duration ,start_date,end_date, description " +
+        String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
+                "description, a.first_name, a.last_name " +
                 "FROM course_std  std " +
                 "LEFT JOIN course cor on std.cor_id = cor.id " +
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
                 "where std_id = ?";
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
     }

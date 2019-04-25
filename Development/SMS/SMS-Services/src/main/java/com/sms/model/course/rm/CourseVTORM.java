@@ -18,6 +18,7 @@ public class CourseVTORM implements RowMapper<CourseVTO> {
         data.setStartDate(rs.getDate("start_date"));
         data.setEndDate(rs.getDate("end_date"));
         data.setDescription(rs.getString("description"));
+        data.setInstructorName(rs.getString("first_name") + " " + rs.getString("last_name"));
         return data;
     }
 }
