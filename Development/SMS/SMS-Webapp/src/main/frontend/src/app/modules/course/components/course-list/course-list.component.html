@@ -6,7 +6,7 @@
         <div class="card card-bordered">
           <img class="card-img-top img-fluid course-img" src="{{course.imagePath}}" alt="image">
           <div class="card-body">
-            <h5 class="title clickable" [routerLink]="[ROUTES.COURSE_HOME, course.id]">
+            <h5 class="title clickable" [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, course.id)]">
               {{course.courseName}}
             </h5>
             <h5 class="title">

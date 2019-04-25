@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Announcement} from "../../../../../shared/data/announcment";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {CourseService} from "../../../../../shared/services/course.service";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 @Component({
   selector: 'app-create-announcment',
   templateUrl: './create-announcment.component.html',
@@ -13,6 +14,8 @@ import {CourseService} from "../../../../../shared/services/course.service";
 
 })
 export class CreateAnnouncmentComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
 
   //courseID: string;
   corID :number ;
