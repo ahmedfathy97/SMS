@@ -32,6 +32,34 @@ insert into auth_user (id, username, user_password, is_active, created_on) value
 insert into auth_user (id, username, user_password, is_active, created_on) values (27, 'Student_27', 'e10adc3949ba59abbe56e057f20f883e', 1, '2019-04-05');
 insert into auth_user (id, username, user_password, is_active, created_on) values (28, 'Student_28', 'e10adc3949ba59abbe56e057f20f883e', 1, '2018-11-18');
 insert into auth_user (id, username, user_password, is_active, created_on) values (29, 'Student_29', 'e10adc3949ba59abbe56e057f20f883e', 1, '2019-03-26');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (2, 'Student', 'User 2', 'student.user2@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (3, 'Student', 'User 3', 'student.user3@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (4, 'Instructor', 'User 4', 'instructor.user4@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (5, 'Instructor', 'User 5', 'instructor.user5@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (6, 'Instructor', 'User 6', 'instructor.user6@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (7, 'Student', 'User 7', 'student.user7@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (8, 'Student', 'User 8', 'student.user8@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (9, 'System Admin', 'User 9', 'system.admin.user9@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (10, 'Student', 'User 10', 'student.user10@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (11, 'Student', 'User 11', 'student.user11@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (12, 'Student', 'User 12', 'student.user12@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (13, 'Student', 'User 13', 'student.user13@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (14, 'Student', 'User 14', 'student.user14@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (15, 'System Admin', 'User 15', 'system.admin.user15@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (16, 'Student', 'User 16', 'student.user16@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (17, 'Student', 'User 17', 'student.user17@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (18, 'Student', 'User 18', 'student.user18@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (19, 'Student', 'User 19', 'student.user19@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (20, 'Student', 'User 20', 'student.user20@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (21, 'Student', 'User 21', 'student.user21@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (22, 'Student', 'User 22', 'student.user22@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (23, 'Student', 'User 23', 'student.user23@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (24, 'Student', 'User 24', 'student.user24@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (25, 'Student', 'User 25', 'student.user25@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (26, 'Student', 'User 26', 'student.user26@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (27, 'Student', 'User 27', 'student.user27@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (28, 'Student', 'User 28', 'student.user28@sms.com');
+INSERT INTO user_detail (user_id, first_name, last_name, email) VALUE (29, 'Student', 'User 29', 'student.user29@sms.com');
 
 INSERT INTO auth_role (id, label_ar, description_ar) VALUE (1, 'Instructor', 'Teaching Courses');
 INSERT INTO auth_role (id, label_ar, description_ar) VALUE (2, 'Student', 'Learning Courses');
@@ -125,7 +153,7 @@ VALUES (4, 'C#', 3, '2018-5-22', '2018-8-03', 1, 2, 2, 2, 'The Complete C# Progr
 '/assets/images/course/c-sharp.jpg');
 
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 12);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 15);
+INSERT INTO course_std (cor_id, std_id) VALUE (1, 18);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 16);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 17);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 22);

@@ -30,23 +30,27 @@ public class AttendanceSer {
 
     }
 
+    private List<StdDTO> cloneList(List<StdDTO> students){
+        List<StdDTO> newStdList = new ArrayList<>();
+        for (StdDTO std : students )
+            newStdList.add(std.clone());
+        return newStdList;
+    }
     public List<AttendanceDTO> getCourseAttendance(int courseID) {
 
         List<StdDTO> stdList = this.rep.findAllCourseStudents(courseID);
         List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
         List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
-        for (StdDTO i : stdAttendance) {
-            if(attendanceDTOList.size() == 0)
-            {
-                AttendanceDTO item = new AttendanceDTO();
-                List<StdDTO> newStdList = new ArrayList<>();
-                for (StdDTO std : stdList )
-                    newStdList.add(std.clone());
-                item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(newStdList);
-                attendanceDTOList.add(item);
-            }
 
+
+//        if(attendanceDTOList.size() == 0) {
+//            AttendanceDTO item = new AttendanceDTO();
+//            item.setAttendanceData(i.getAttendanceDate());
+//            item.setStudents(cloneList(stdList));
+//            attendanceDTOList.add(item);
+//        }
+
+        for (StdDTO i : stdAttendance) {
             boolean isFound = false ;
             for (AttendanceDTO sheet : attendanceDTOList) {
                 if (i.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
@@ -58,7 +62,8 @@ public class AttendanceSer {
             {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(stdList);
+                item.setStudents(cloneList(stdList));
+//                item.setStudents(stdList);
                 attendanceDTOList.add(item);
             }
 
@@ -74,9 +79,12 @@ public class AttendanceSer {
                         break;
                     }
             }
+            System.out.println(sheet);
+            System.out.println("");
         }
 
 
+        System.out.println(attendanceDTOList);
        return attendanceDTOList ;
     }
 

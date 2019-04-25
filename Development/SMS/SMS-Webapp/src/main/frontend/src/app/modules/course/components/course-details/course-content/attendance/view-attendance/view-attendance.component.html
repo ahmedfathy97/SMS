@@ -40,9 +40,9 @@
             <tr *ngFor="let row of tableView | slice:1:tableView.length;index as i;">
               <td>{{i+1}}</td>
               <td>{{row[0]}}</td>
-              <td *ngFor="let isAttend  of tableView[i] | slice:1:tableView[i].length ; index as j;">
-                <span class="badge badge-secondary" *ngIf=" isAttend">Attend</span>
-                <span class="badge badge-danger" *ngIf=" !isAttend">Absent</span>
+              <td *ngFor="let isAttend of row | slice:1:row.length ; index as j;">
+                <span class="badge badge-secondary" *ngIf="isAttend">Attend</span>
+                <span class="badge badge-danger" *ngIf="!isAttend">Absent</span>
               </td>
             </tr>
             </tbody>

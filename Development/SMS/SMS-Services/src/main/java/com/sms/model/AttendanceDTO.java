@@ -34,7 +34,7 @@ public class AttendanceDTO {
 
     @Override
     public String toString() {
-        return "AttendanceDTO{" +
+        return "\nAttendanceDTO{" +
                 "attendanceData=" + attendanceData +
                 ", students=" + students +
                 '}';

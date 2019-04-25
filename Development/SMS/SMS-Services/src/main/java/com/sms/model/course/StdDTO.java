@@ -95,14 +95,14 @@ public class StdDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "StdDTO{" +
+        return "\nStdDTO{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", isAttend=" + isAttend +
-                ", midTermOne=" + midTermOne +
-                ", semiFinal=" + semiFinal +
-                ", midTermTwo=" + midTermTwo +
-                ", finalGrd=" + finalGrd +
+//                ", midTermOne=" + midTermOne +
+//                ", semiFinal=" + semiFinal +
+//                ", midTermTwo=" + midTermTwo +
+//                ", finalGrd=" + finalGrd +
                 ", attendanceDate=" + attendanceDate +
                 '}';
     }
