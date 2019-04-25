@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         // let authUser: AuthUserVTO = new AuthUserVTO();
         // authUser = res;
         console.log('Login Successfully');
-        this.router.navigate(['/course']);
+        this.router.navigate(['/courses']);
 
 
         this.localStorageService.setAuthUser(res);

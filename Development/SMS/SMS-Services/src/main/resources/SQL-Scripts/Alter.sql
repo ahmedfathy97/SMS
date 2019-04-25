@@ -196,9 +196,9 @@ ADD CONSTRAINT `fk_course_lectures`
 
 -- fathy end 13/4/2019
 -- start hala 18/4/2019
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('2', '1', '2');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('3', '4', '2');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('4', '3', '2');
+# INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('2', '1', '2');
+# INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('3', '4', '2');
+# INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('4', '3', '2');
 -- yara start --
 CREATE TABLE `sms`.`announcment` (
   `id` INT NOT NULL,
@@ -240,11 +240,11 @@ DROP COLUMN `user_name`;
 
 
 -- ahmed  start--
-ALTER TABLE `sms`.`question`
-CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
-
-ALTER TABLE `sms`.`question`
-CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
+# ALTER TABLE `sms`.`question`
+# CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
+#
+# ALTER TABLE `sms`.`question`
+# CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
 -- ahmed  end  --
 -- start hala
 ALTER TABLE `sms`.`course`
