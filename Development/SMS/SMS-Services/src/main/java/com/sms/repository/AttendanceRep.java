@@ -30,7 +30,7 @@ public class AttendanceRep {
     }
 
     public int insertNewSheet(int courseID , Date sheetDate){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd ");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
         String strDate = dateFormat.format(sheetDate);
         Map<String, Object> parameters = new HashMap<>(2);
         parameters.put("cor_id", courseID);
@@ -45,11 +45,11 @@ public class AttendanceRep {
 
 
     public List<StdDTO> viewAttendSheetInstructor (int corID) {
-        String sql= "select username , att.created_on , is_attended"+
-       " from course_std c_std left join auth_user u_std on c_std.std_id = u_std.id"+
+        String sql= "select first_name, last_name , att.created_on , is_attended"+
+       " from course_std c_std left join user_detail u_std on c_std.std_id = u_std.user_id"+
         " left join attendance att on c_std.cor_id = att.cor_id"+
         " left join cor_std_att c_att on att.id = c_att.att_id"+
-        " and u_std.id = c_att.std_id"+
+        " and u_std.user_id = c_att.std_id"+
         " where c_std.cor_id = ?" ;
         return this.jdbc.query(sql, new AttendanceDTORM(), corID);
     }

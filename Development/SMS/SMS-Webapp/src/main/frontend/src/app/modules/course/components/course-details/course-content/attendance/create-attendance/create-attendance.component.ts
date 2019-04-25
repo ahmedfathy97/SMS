@@ -5,6 +5,7 @@ import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../../../../shared/services/attendance.service";
 import {ActivatedRoute} from "@angular/router";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-create-attendance',
@@ -12,6 +13,8 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
   providers: [FormBuilder, CourseService ,AttendanceService],
 })
 export class CreateAttendanceComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
   // courseID: string;
   corID :number ;
   formData = this.formBuilder.group({
