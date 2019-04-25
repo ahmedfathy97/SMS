@@ -17,15 +17,17 @@
     </div>
   </div>
   <!-- main content area start -->
-  <div class="main-content" style="min-height: 554px;">
+  <div class="main-content">
     <!-- header area start -->
     <div class="header-area">
       <app-sms-header class="row align-items-center"></app-sms-header>
     </div>
-    <router-outlet></router-outlet>
+    <!--<div style="overflow-y: scroll;">-->
+      <router-outlet></router-outlet>
+    <!--</div>-->
   </div>
 
-  <app-sms-footer ></app-sms-footer>
+  <app-sms-footer style="position: relative;"></app-sms-footer>
 </div>
 
 
