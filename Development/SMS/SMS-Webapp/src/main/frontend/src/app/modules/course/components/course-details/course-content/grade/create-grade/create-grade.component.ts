@@ -47,7 +47,7 @@ export class CreateGradeComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
   }
   getCourseStudents(){
-    this.courseService.getAllCourseStudents(this.corID).subscribe(
+    this.courseService.getAllCourseStudents(this.corID, this.formData.get('gradeType').value, null).subscribe(
       res => {
         this.students = res;
         this.clearFormArray(this.items);

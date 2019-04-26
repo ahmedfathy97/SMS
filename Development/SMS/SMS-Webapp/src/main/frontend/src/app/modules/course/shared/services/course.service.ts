@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {CourseDTO} from "../data/course/course-dto.data";
 import {CourseVto} from "../data/course-vto";
 import {StdDTO} from "../data/std-dto.data";
@@ -30,8 +30,15 @@ export class CourseService {
   }
 
 
-  getAllCourseStudents( courseID:number) {
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students")
+  getAllCourseStudents( courseID:number, gradeType:string, attendanceDate:Date) {
+    let parameters: HttpParams = new HttpParams();
+    if (gradeType != null)
+      parameters = parameters.append('gradeType', gradeType);
+    if (attendanceDate != null)
+      parameters = parameters.append('attendanceDate', attendanceDate.toString());
+
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students",
+      {params: parameters});
   }
 
   getCourseGrades(courseID:number){

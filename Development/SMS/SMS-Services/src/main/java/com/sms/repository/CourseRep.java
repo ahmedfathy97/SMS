@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +86,6 @@ public class CourseRep {
                 StdDTO std=new StdDTO();
                 String firstName=rs.getString("first_name");
                 String lastName=rs.getString("last_name");
-
                 std.setFullName(firstName + " " +lastName);
                 std.setId(rs.getInt("user_id"));
                 std.setMidTermOne(rs.getInt("mid_1_grd"));
@@ -98,6 +98,29 @@ public class CourseRep {
         }, corID);
     }
 
+
+
+    public List<StdDTO> findAllStudentsAttendance(int corID , Date attendanceDate ) {
+        String sql= "select first_name, last_name , u_std.user_id , is_attended"+
+                " from course_std c_std left join user_detail u_std on c_std.std_id = u_std.user_id"+
+                " left join attendance att on c_std.cor_id = att.cor_id"+
+                " left join cor_std_att c_att on att.id = c_att.att_id"+
+                " and u_std.user_id = c_att.std_id"+
+                " where c_std.cor_id = ?" +
+                " and and att.created_on = ? " ;
+        return this.jdbcTemplate.query(sql, new RowMapper<StdDTO>() {
+            @Override
+            public StdDTO mapRow(ResultSet rs, int i) throws SQLException {
+                StdDTO data=new StdDTO();
+                String firstName=rs.getString("first_name");
+                String lastName=rs.getString("last_name");
+                data.setFullName(firstName + " " +lastName);
+                data.setId(rs.getInt("user_id"));
+                data.setIsAttend(rs.getBoolean("is_attended"));
+                return data;
+            }
+        }, corID , attendanceDate);
+    }
 
 
     public int insertNewQuiz(int courseID, QuizDTO quizData) {

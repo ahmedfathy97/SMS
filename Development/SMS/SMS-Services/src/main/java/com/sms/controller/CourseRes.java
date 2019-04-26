@@ -77,7 +77,7 @@ public class CourseRes {
             @PathParam("courseID") int courseID,
             @QueryParam("gradeType") String gradeType,
             @QueryParam("attendanceDate") Date attendanceDate) {
-        return this.courseRep.findAllCourseStudents(courseID);
+        return this.courseSer.findAllCourseStudents(courseID , gradeType , attendanceDate );
     }
 
 

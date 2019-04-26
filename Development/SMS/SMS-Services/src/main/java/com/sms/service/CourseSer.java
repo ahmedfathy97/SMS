@@ -31,7 +31,7 @@ public class CourseSer {
         if(gradeType != null){
 
         }else if (attendanceDate != null){
-
+            students = this.courseRep.findAllStudentsAttendance(corID , attendanceDate);
         } else
             students = this.courseRep.findAllCourseStudents(corID);
         return students;

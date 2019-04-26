@@ -40,7 +40,8 @@ export class CreateAttendanceComponent implements OnInit {
 
   getCourseStudents()
   {
-    this.courseService.getAllCourseStudents(this.corID).subscribe(
+    this.courseService.getAllCourseStudents(this.corID, null,
+      this.formData.get('attendanceDate').value).subscribe(
       res => {
         this.attendance.students = res;
         console.log(this.attendance.students);

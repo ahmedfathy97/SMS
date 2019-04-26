@@ -1,66 +1,63 @@
 <div class="page-content">
 
-<div class="page-title-area">
-  <div class="row align-items-center content-header">
-    <div class="col-sm-6">
-      <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">New Attendance</h4>
-        <br/>
-        <ul class="breadcrumbs pull-left mt-3">
-          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance, corID)]">Attendance</a></li>
-          <li><span>New</span></li>
-        </ul>
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">New Attendance</h4>
+          <br/>
+          <div class="breadcrumbs-area clearfix">
+            <ul class="breadcrumbs pull-left mt-3">
+              <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+              <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance, corID)]">Attendance</a></li>
+              <li><span>New</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <div class="page-content-area">
 
-<div class="offset-2 col-lg-8 mt-5 pb-5">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="header-title">Create New Attendance</h4>
+    <div class="offset-2 col-lg-8 mt-5 pb-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title">Create New Attendance</h4>
 
-      <form [formGroup]="formData">
+          <form [formGroup]="formData">
 
-        <div class="row">
-          <div class="form-group col-md-12 mb-4" >
-            <label for="example-date-input" class="col-form-label ">Attendance Date</label>
-            <input class="form-control" type="date" value="2018-03-05" id="example-date-input" formControlName="attendanceDate">
+            <div class="row">
+              <div class="form-group col-md-12 mb-4">
+                <label for="example-date-input" class="col-form-label ">Attendance Date</label>
+                <input class="form-control" type="date" id="example-date-input"
+                       formControlName="attendanceDate">
+              </div>
+            </div>
+
+
+          </form>
+          <div class="row">
+            <div class="custom-control custom-checkbox col-md-3 " *ngFor="let item of attendance.students; index as i">
+              <input type="checkbox" class="custom-control-input" id="{{'std'+i}}" (change)="toggleStdAttendance(i)">
+              <label class="custom-control-label" for="{{'std'+i}}">{{item.fullName}}</label>
+            </div>
           </div>
+
+
+          <!--<button type="submit" class="btn btn-success mt-3 col-md-1 pull-right mg-l-15" (click)="onSubmitNewAttendance()">Submit</button>-->
+          <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAttendance()">Submit
+          </button>
+
+
         </div>
 
 
-
-      </form>
-      <div class="custom-control custom-checkbox" *ngFor="let item of attendance.students; index as i">
-        <input type="checkbox" class="custom-control-input" id="{{'std'+i}}" (change)="toggleStdAttendance(i)">
-        <label class="custom-control-label" for="{{'std'+i}}">{{item.fullName}}</label>
-        <hr>
       </div>
-
-
-      <!--<div class="form-check" *ngFor="let item of attendance.students; index as i">-->
-        <!--<input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="toggleStdAttendance(i)">-->
-        <!--<label class="form-check-label" for="exampleCheck1">{{item.fullName}}</label>-->
-        <!--<hr>-->
-      <!--</div>-->
-
-
-
-        <!--<button type="submit" class="btn btn-success mt-3 col-md-1 pull-right mg-l-15" (click)="onSubmitNewAttendance()">Submit</button>-->
-        <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAttendance()">Submit</button>
-
-
     </div>
 
-
   </div>
-</div>
 
-  </div>
 </div>
 
 
