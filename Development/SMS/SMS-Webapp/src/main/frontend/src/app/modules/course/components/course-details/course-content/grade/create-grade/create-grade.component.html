@@ -1,4 +1,4 @@
-<!--TODO: Hala - Don't Use Cards check the home.component.html and make use of it-->
+
 <div class="page-content">
 <div class="page-title-area">
   <div class="row align-items-center content-header">
@@ -41,7 +41,6 @@
                 <option value="FF">Final</option>
               </select>
             </div>
-            <!--<div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer ">-->
               <div class="row" formArrayName="items">
                 <div class="col-ml-6" *ngFor="let item of items.controls; index as i" [formGroupName]="i">
 
@@ -52,17 +51,7 @@
                     </div>
                   </div>
 
-                  <!--<table id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed"-->
-                         <!--role="grid"-->
-                         <!--aria-describedby="dataTable2_info" style="width: 100%;">-->
-                    <!--<tbody formArrayName="items">-->
-                    <!--<tr role="row" class="odd"-->
-                        <!--*ngFor="let item of items.controls; index as i" [formGroupName]="i">-->
-                      <!--<td>{{students[i].fullName}}</td>-->
-                      <!--<td><input type="text" class="form-control" formControlName="grade"/></td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
+
                 </div>
               </div>
             <!--</div>-->
