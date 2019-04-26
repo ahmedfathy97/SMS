@@ -4,9 +4,10 @@ import {CourseService} from "../../../../../shared/services/course.service";
 import {GradeService} from "../../../../../shared/services/grade.service";
 import {CourseVto} from "../../../../../shared/data/course-vto";
 import {StdDTO} from "../../../../../shared/data/std-dto.data";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
 
 
 @Component({
@@ -31,6 +32,8 @@ export class CreateGradeComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private courseService: CourseService,
               private corDataService: CourseDataService,
+              private router: Router, private localStorageSerice: LocalStorageService,
+
               private gradeService:GradeService , private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.stdID = +params.get("stdID");
@@ -52,7 +55,6 @@ export class CreateGradeComponent implements OnInit {
         this.students = res;
         this.clearFormArray(this.items);
         for(let i=0; i<this.students.length; i++) {
-          debugger;
           if(this.formData.get("gradeType").value=='M1') {
             this.addItem(this.students[i].midTermOne);
 
@@ -108,7 +110,9 @@ export class CreateGradeComponent implements OnInit {
     console.log(this.students);
     this.gradeService.createNewGradeSheet(this.corID,this.students,gradeType).subscribe(
       res=> {
-        console.log('request succed')
+        // console.log('request succed')
+        this.router.navigate([`/course/${this.corID}/grade`])
+
       },
       error1 => {
         console.log(error1)

@@ -106,7 +106,7 @@ const routes: Routes = [
                 path: 'grade', children: [
                   {path: '', component: ViewGradeComponent},
                   {path: 'new', component: CreateGradeComponent},
-                  {path:'edit/:stdID', component:CreateGradeComponent}
+                  // {path:'edit/:stdID', component:CreateGradeComponent}
                 ]
               },
 
