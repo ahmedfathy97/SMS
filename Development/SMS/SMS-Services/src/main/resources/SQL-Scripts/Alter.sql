@@ -264,7 +264,7 @@ ADD COLUMN image_path VARCHAR(45) NULL AFTER description;
 -- end hala
 
 
---start manar--
+-- start manar--
 CREATE TABLE college (
   id INT NOT NULL,
   labelEN VARCHAR(45) NOT NULL,
@@ -332,4 +332,4 @@ UPDATE `sms`.`user_detail` SET `college_id`='1' WHERE `user_id`='1';
 UPDATE `sms`.`user_detail` SET `college_id`='2' WHERE `user_id`='2';
 UPDATE `sms`.`user_detail` SET `college_id`='3' WHERE `user_id`='3';
 
---end manar--
+-- end manar--

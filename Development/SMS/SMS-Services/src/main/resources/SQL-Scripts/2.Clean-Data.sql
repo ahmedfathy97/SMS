@@ -192,7 +192,6 @@ INSERT INTO course_std (cor_id, std_id) VALUE (1, 25);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 26);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 29);
 
-
 INSERT INTO course_std (cor_id, std_id) VALUE (2, 2);
 INSERT INTO course_std (cor_id, std_id) VALUE (2, 3);
 INSERT INTO course_std (cor_id, std_id) VALUE (2, 12);

@@ -34,7 +34,7 @@ import {SettingSideBarComponent} from "./modules/settings/components/setting-det
 import {SettingDetailsComponent} from "./modules/settings/components/setting-details/setting-details.component";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'courses'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
@@ -53,7 +53,10 @@ const routes: Routes = [
       {path:'settings',children:
         [
           {path:'',component:SettingDetailsComponent ,children:[
-              {path:'users',component:UserListComponent}
+              {path:'users',component:UserListComponent},
+              {path: 'user', children: [
+                  {path: ':userID', component: UserProfileComponent}
+                ]}
             ]} ,
         ]
       },
