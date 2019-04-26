@@ -29,7 +29,9 @@ import {CreateAnnouncmentComponent} from "./modules/course/components/course-det
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
-import {UserListComponent} from "./modules/settings/components/setting-detail/user-list/user-list.component";
+import {UserListComponent} from "./modules/settings/components/setting-content/user-list/user-list.component";
+import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
+import {SettingDetailsComponent} from "./modules/settings/components/setting-details/setting-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'courses'},
@@ -48,16 +50,20 @@ const routes: Routes = [
       } ,
 
 
-      {path:'setting',children:
+      {path:'settings',children:
         [
-          {path:'users',component:UserListComponent}
+          {path:'',component:SettingDetailsComponent ,children:[
+              {path:'users',component:UserListComponent}
+            ]} ,
         ]
       },
+
 
       /* for some purposes  */
       {path: 'lecture', component: LectureDetailsComponent},
       {path: 'upload', component: UploadComponent},
       {path: 'download', component: DownloadComponent},
+
       // {path: 'home', component: HomeComponent} ,
       // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
       // {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,

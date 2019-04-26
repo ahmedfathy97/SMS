@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes} from "../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-setting-side-bar',
@@ -7,9 +7,8 @@ import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enu
   styleUrls: ['./setting-side-bar.component.css']
 })
 export class SettingSideBarComponent implements OnInit {
+
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
- // replaceUserID= replaceUserID;
-  @Input() userID: number;
 
   constructor() { }
 

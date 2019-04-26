@@ -6,8 +6,6 @@ export enum AngularFullRoutes {
   COR_NEW_ANNOUNCEMENT = "/course/${corID}/announcement/new",
   COR_CREATE_GRADE = "/course/${corID}/grade/new",
   COR_VIEW_GRADE = "/course/${corID}/grade",
-
-
   COR_NEW_QUIZ ="/course/${corID}/quiz/new" ,
   COR_VIEW_QUIZ ="/course/${corID}/quiz" ,
   COR_ANSWER_QUIZ ="/course/${corID}/quiz/${quizID}/answerQuiz" ,
@@ -20,7 +18,9 @@ export enum AngularFullRoutes {
 
 
 
-  SETTINGS = "/settings"
+  SETTINGS = "/settings",
+  SETTING_USER_LIST ="/settings/users"
+
 }
 
 export function replaceCorID(route:string, id) {
@@ -32,3 +32,6 @@ export function replaceQuizID(route:string ,corID, quizID) {
   return route.replace("${corID}", corID);
 
 }
+// export function replaceUserID(route:string, id) {
+//   return route.replace("${userID}", id);
+// }
