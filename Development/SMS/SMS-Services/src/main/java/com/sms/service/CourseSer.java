@@ -26,11 +26,11 @@ public class CourseSer {
     }
 
 
-    public List<StdDTO> findAllCourseStudents(int corID, String gradeType, Date attendanceDate){
+    public List<StdDTO> findAllCourseStudents(int corID, String gradeType, String attendanceDate){
         List<StdDTO> students = new ArrayList<>();
         if(gradeType != null){
             students=this.courseRep.findAllTypeGrade(corID)   ;
-        }else if (attendanceDate != null){
+        }else if (attendanceDate != null && !attendanceDate.isEmpty()){
             students = this.courseRep.findAllStudentsAttendance(corID , attendanceDate);
         } else
             students = this.courseRep.findAllCourseStudents(corID);

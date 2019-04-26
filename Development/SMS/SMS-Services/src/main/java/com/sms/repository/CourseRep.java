@@ -100,14 +100,14 @@ public class CourseRep {
 
 
 
-    public List<StdDTO> findAllStudentsAttendance(int corID , Date attendanceDate ) {
+    public List<StdDTO> findAllStudentsAttendance(int corID , String attendanceDate ) {
         String sql= "select first_name, last_name , u_std.user_id , is_attended"+
                 " from course_std c_std left join user_detail u_std on c_std.std_id = u_std.user_id"+
                 " left join attendance att on c_std.cor_id = att.cor_id"+
                 " left join cor_std_att c_att on att.id = c_att.att_id"+
                 " and u_std.user_id = c_att.std_id"+
                 " where c_std.cor_id = ?" +
-                " and and att.created_on = ? " ;
+                " and att.created_on = ? " ;
         return this.jdbcTemplate.query(sql, new RowMapper<StdDTO>() {
             @Override
             public StdDTO mapRow(ResultSet rs, int i) throws SQLException {

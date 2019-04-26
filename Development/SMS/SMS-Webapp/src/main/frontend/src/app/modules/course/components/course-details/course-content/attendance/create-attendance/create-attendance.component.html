@@ -31,6 +31,7 @@
               <div class="form-group col-md-12 mb-4">
                 <label for="example-date-input" class="col-form-label ">Attendance Date</label>
                 <input class="form-control" type="date" id="example-date-input"
+                       (change)="getCourseStudents()"
                        formControlName="attendanceDate">
               </div>
             </div>
@@ -39,7 +40,7 @@
           </form>
           <div class="row">
             <div class="custom-control custom-checkbox col-md-3 " *ngFor="let item of attendance.students; index as i">
-              <input type="checkbox" class="custom-control-input" id="{{'std'+i}}" (change)="toggleStdAttendance(i)">
+              <input type="checkbox" class="custom-control-input" [checked]="item.isAttend" id="{{'std'+i}}" (change)="toggleStdAttendance(i)">
               <label class="custom-control-label" for="{{'std'+i}}">{{item.fullName}}</label>
             </div>
           </div>

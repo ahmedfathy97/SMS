@@ -76,7 +76,7 @@ public class CourseRes {
     public List<StdDTO> findCourseStudents(
             @PathParam("courseID") int courseID,
             @QueryParam("gradeType") String gradeType,
-            @QueryParam("attendanceDate") Date attendanceDate) {
+            @QueryParam("attendanceDate") String attendanceDate) {
         return this.courseSer.findAllCourseStudents(courseID , gradeType , attendanceDate );
     }
 
