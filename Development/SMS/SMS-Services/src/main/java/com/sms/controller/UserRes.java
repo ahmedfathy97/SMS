@@ -1,19 +1,22 @@
 package com.sms.controller;
 
 import com.sms.model.user.UserData;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.List;
 
-@Path("/user/")
+@Path("/user")
 public class UserRes {
-    @Autowired
     private UserRep userRep;
+    @Autowired
+    public UserRes(UserRep repository) {
+        this.userRep =repository ;
+    }
 
     @GET
     @Path("/{userID}/profile")
@@ -27,11 +30,27 @@ public class UserRes {
 
     @GET
     @Path("/{userID}/edit")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void editUserData(@PathParam("userID") int userID ,UserData userData) {
 
          this.userRep.updateUserData(userID ,userData );
 
+
+    }
+//    @POST
+//    @Path("/filter")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void filter(UserList data){
+//        System.out.println("Data is received successfully");
+//        System.out.println(data.toString());
+//
+//    }
+    @GET
+    @Path("/find")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<UserVTO> findAllUsers(){
+        List<UserVTO> result=this.userRep.findAll();
+        return result;
 
     }
 }

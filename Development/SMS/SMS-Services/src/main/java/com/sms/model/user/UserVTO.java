@@ -20,6 +20,10 @@ public class UserVTO implements Serializable {
     int phone;
     String college;
     String userName;
+    String country;
+    String university;
+    String birth_date;
+
 
     public UserVTO() {
     }
@@ -136,10 +140,40 @@ public class UserVTO implements Serializable {
         this.roleIDs = roleIDs;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getBirth_date() {
+        return birth_date;
+    }
+
+    public void setBirth_date(String birth_date) {
+        this.birth_date = birth_date;
+    }
+
     @Override
     public String toString() {
         return "UserVTO{" +
                 "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roleIDs=" + roleIDs +
                 ", fullName='" + fullName + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
@@ -147,6 +181,9 @@ public class UserVTO implements Serializable {
                 ", phone=" + phone +
                 ", college='" + college + '\'' +
                 ", userName='" + userName + '\'' +
+                ", country='" + country + '\'' +
+                ", university='" + university + '\'' +
+                ", birth_date='" + birth_date + '\'' +
                 '}';
     }
 }
