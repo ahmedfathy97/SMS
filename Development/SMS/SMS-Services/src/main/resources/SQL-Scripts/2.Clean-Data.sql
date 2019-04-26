@@ -152,6 +152,35 @@ INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id,
 VALUES (4, 'C#', 3, '2018-5-22', '2018-8-03', 1, 2, 2, 2, 'The Complete C# Programming Course. Master C# and .NET Framework - learn with code challenges, exercises, and real-life examples! 4.4 (208).',
 '/assets/images/course/c-sharp.jpg');
 
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (5, 'Alogorithms', 30 , '2019-4-26', '2019-8-03', 1, 2, 2, 2, 'introduction to the design and analysis of algorithms, enabling you to discover how individuals are connected.');
+
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (6, 'Neural Network', 45 , '2019-5-1', '2019-8-06', 1, 2, 2, 2, 'Like the course I just released on Hidden Markov Models, Recurrent Neural Networks are all about learning sequences - but whereas Markov Models are limited by the Markov assumption, Recurrent Neural Networks are not - and as a result, they are more expressive, and more powerful than anything we’ve seen on tasks that we haven’t made progress on in decades.');
+
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (7, 'Data Structure', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Learn about data structures that are used in computational thinking – both basic and advanced.');
+
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (8, 'Object Oriented Programming', 70 , '2019-6-01', '2019-10-01', 1, 2, 2, 2, 'In this course, we''ll get you up and running with classes, objects, methods, properties and all that  stuff by building a real (and epic) application');
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
+VALUES (9, 'Image processing', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Fundamentals of Digital Image and Video Processing. COURSE. Fundamentals of Digital Image and Video Processing');
+
+
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (10, 'Math1', 55 , '2019-5-20', '2019-7-03', 1, 2, 2, 2, 'This is the first of a two-course sequence in elementary and intermediate algebra');
+
+
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
+VALUES (11, 'Physics', 100 , '2019-6-01' ,'2019-12-03', 1, 2 ,2, 2,'fundmentals of physiscs for beginners');
+
+
+
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 12);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 18);
 INSERT INTO course_std (cor_id, std_id) VALUE (1, 16);

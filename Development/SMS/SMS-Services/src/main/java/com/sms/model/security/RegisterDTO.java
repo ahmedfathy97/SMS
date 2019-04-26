@@ -8,8 +8,18 @@ public class RegisterDTO implements Serializable {
     private String username;
     private String password;
     private String email;
+    private int roleID ;
+
 
     public RegisterDTO() {
+    }
+
+    public int getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
     public String getFirstName() {

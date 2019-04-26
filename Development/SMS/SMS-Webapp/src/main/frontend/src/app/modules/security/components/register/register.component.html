@@ -16,6 +16,13 @@
                 <div class="hpanel">
                   <div class="panel-body">
                     <form [formGroup]="formData">
+                      <div class="form-group" >
+                        <label for="roleType">Select your role</label>
+                        <select   class="form-control" id="roleType" formControlName="roleType"  >
+                          <option *ngFor="let role of roleList" [ngValue]="role.roleID" >{{role.roleName}}</option>
+                        </select>
+                        <br>
+                      </div>
                       <div class="row">
                         <div class="form-group col-lg-6">
                           <label>First Name</label>

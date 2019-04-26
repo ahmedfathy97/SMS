@@ -3,12 +3,14 @@ package com.sms.service;
 import com.sms.model.security.LoginDTO;
 import com.sms.model.security.RegisterDTO;
 import com.sms.model.security.AuthUserVTO;
+import com.sms.model.security.RolesVTO;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.SecurityRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SecuritySer {
@@ -52,5 +54,10 @@ public class SecuritySer {
         data.setPassword(hashedPassword);
 
         this.securityRep.insertUser(data);
+    }
+
+
+    public List<RolesVTO> getAllRoles() throws Exception {
+          return  this.securityRep.getAllRoles() ;
     }
 }

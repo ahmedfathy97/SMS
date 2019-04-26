@@ -253,6 +253,10 @@ CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 #
 # ALTER TABLE `sms`.`question`
 # CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
+
+ALTER TABLE `sms`.`course`
+CHANGE COLUMN `cor_name` `cor_name` VARCHAR(200) NOT NULL ,
+CHANGE COLUMN `description` `description` VARCHAR(500) NULL DEFAULT NULL ;
 -- ahmed  end  --
 -- start hala
 ALTER TABLE sms.course

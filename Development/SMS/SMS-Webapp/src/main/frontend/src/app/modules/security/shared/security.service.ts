@@ -3,6 +3,7 @@ import {RegisterDTO} from "./data/register-dto.data";
 import {Injectable} from "@angular/core";
 import {LoginDTO} from "./data/login-dto.data";
 import {AuthUserVTO} from "./data/auth-user-vto.data";
+import {RolesVto} from "./data/roles-Vto";
 
 @Injectable()
 export class SecurityService {
@@ -16,6 +17,11 @@ export class SecurityService {
 
   login(data: LoginDTO){
     return this.http.post<AuthUserVTO>('http://localhost:8080/api/login', data);
+  }
+
+  getAllRoles()
+  {
+    return this.http.get<RolesVto[]>('http://localhost:8080/api/roles') ;
   }
 
   testAuthentication(){

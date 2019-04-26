@@ -1,6 +1,8 @@
 package com.sms.repository;
 
 import com.sms.model.security.RegisterDTO;
+import com.sms.model.security.RolesVTO;
+import com.sms.model.security.RolesVTORM;
 import com.sms.model.user.UserVTO;
 import com.sms.model.user.rm.UserVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +46,30 @@ public class SecurityRep {
 
         String sql = "INSERT INTO user_detail (user_id, first_name, last_name, email) " +
                 "VALUES (?, ?, ?, ?)";
+        this.jdbc.update(sql, id,data.getFirstName(), data.getLastName(), data.getEmail());
 
-        this.jdbc.update(sql, id, data.getFirstName(), data.getLastName(), data.getEmail());
+        String sql2 = "INSERT INTO auth_user_role (user_id, role_id) values (?,?);";
+        this.jdbc.update(sql2, id , data.getRoleID());
+
+        List<Integer> roleViews =this.getRoleViews(data.getRoleID()) ;
+        List<Integer> roleActions =this.getRoleActions(data.getRoleID()) ;
+
+         for ( int  roleView :roleViews )
+         {
+             String sql3 = "INSERT INTO auth_user_view (user_id ,view_id) values (?,?);";
+             this.jdbc.update(sql3, id ,roleView);
+         }
+
+        for(int roleAction :roleActions)
+        {
+            String sql4 = "INSERT INTO auth_user_action (user_id , action_id) values (?,?);";
+            this.jdbc.update(sql4, id ,roleAction);
+        }
+
+
+
     }
+
 
     public UserVTO selectByUserName(String username){
         String sql = "SELECT auth.id, det.first_name, det.last_name, auth.username, auth.user_password, " +
@@ -126,5 +149,38 @@ public class SecurityRep {
         }, userID);
 
         return result;
+    }
+
+
+    public List<Integer> getRoleViews(int roleID){
+        String sql = "SELECT view_id FROM auth_role_view WHERE role_id = ?;";
+        List<Integer> result = this.jdbc.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getInt("view_id");
+            }
+        }, roleID);
+
+        return result;
+    }
+
+
+    public List<Integer> getRoleActions(int roleID){
+        String sql = "SELECT action_id FROM sms.auth_role_action where role_id =? ;";
+        List<Integer> result = this.jdbc.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getInt("action_id");
+            }
+        }, roleID);
+
+        return result;
+    }
+
+
+    public List<RolesVTO> getAllRoles() throws Exception {
+        String sql = "SELECT id ,label_ar  FROM auth_role ";
+        List<RolesVTO> rolesVTOList =this.jdbc.query(sql ,new RolesVTORM());
+        return  rolesVTOList ;
     }
 }
