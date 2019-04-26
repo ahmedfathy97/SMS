@@ -29,6 +29,7 @@ import {CreateAnnouncmentComponent} from "./modules/course/components/course-det
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
+import {UserListComponent} from "./modules/settings/components/setting-detail/user-list/user-list.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'courses'},
@@ -46,6 +47,12 @@ const routes: Routes = [
             ]
       } ,
 
+
+      {path:'setting',children:
+        [
+          {path:'users',component:UserListComponent}
+        ]
+      },
 
       /* for some purposes  */
       {path: 'lecture', component: LectureDetailsComponent},

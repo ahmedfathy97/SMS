@@ -45,6 +45,8 @@ import { CreateAnnouncmentComponent } from './modules/course/components/course-d
 import { ViewAnnouncmentComponent } from './modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component';
 import { LectureDetailsComponent } from './modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component';
 import {SmsSideBarComponent} from "./layout/components/full-layout/components/sms-side-bar/sms-side-bar.component";
+import {UserListComponent} from "./modules/settings/components/setting-detail/user-list/user-list.component";
+//import { SettindSidebarComponent } from './modules/settings/components/setting-side-bar/settind-sidebar.component';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 //import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -64,6 +66,7 @@ import {SmsSideBarComponent} from "./layout/components/full-layout/components/sm
     CreateAnnouncmentComponent,
     ViewAnnouncmentComponent,
     LectureDetailsComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
