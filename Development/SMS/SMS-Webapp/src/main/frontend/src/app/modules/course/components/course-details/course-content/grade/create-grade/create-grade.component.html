@@ -1,4 +1,5 @@
 <!--TODO: Hala - Don't Use Cards check the home.component.html and make use of it-->
+<div class="page-content">
 <div class="page-title-area">
   <div class="row align-items-center content-header">
     <div class="col-sm-6">
@@ -24,12 +25,10 @@
   </div>
 
 </div>
-<div class="main-content-inner">
+  <div class="page-content-area">
+    <div class="offset-2 col-lg-8">
 
-  <!-- market value area start -->
-  <div class="row mt-5 mb-5">
-    <div class="col-12">
-      <div class="card">
+    <div class="card">
         <div class="card-body">
           <h4 class="header-title">Student Grades</h4>
           <div [formGroup]="formData">
@@ -44,7 +43,7 @@
             </div>
             <!--<div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer ">-->
               <div class="row" formArrayName="items">
-                <div class="col-ml-4" *ngFor="let item of items.controls; index as i" [formGroupName]="i">
+                <div class="col-ml-6" *ngFor="let item of items.controls; index as i" [formGroupName]="i">
 
                   <div class="form-group row">
                     <label class="col-sm-7 col-form-label">{{students[i].fullName}}</label>
@@ -76,11 +75,11 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
 
 
-
+</div>
 
 
 

@@ -89,9 +89,9 @@ public class CourseRep {
                 std.setFullName(firstName + " " +lastName);
                 std.setId(rs.getInt("user_id"));
                 std.setMidTermOne(rs.getInt("mid_1_grd"));
-                std.setMidTermOne(rs.getInt("semi_final_grd"));
-                std.setMidTermOne(rs.getInt("mid_2_grd"));
-                std.setMidTermOne(rs.getInt("final_grd"));
+                std.setSemiFinal(rs.getInt("semi_final_grd"));
+                std.setMidTermTwo(rs.getInt("mid_2_grd"));
+                std.setFinalGrd(rs.getInt("final_grd"));
 
                 return std;
             }
