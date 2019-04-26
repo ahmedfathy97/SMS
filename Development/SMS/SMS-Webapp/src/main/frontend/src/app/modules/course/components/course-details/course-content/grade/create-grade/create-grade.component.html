@@ -46,7 +46,7 @@
           <div [formGroup]="formData" class="col-ml-6">
             <div class="form-group">
               <label class="col-form-label">Grade</label>
-              <select class="form-control" id="grade" formControlName="gradeType">
+              <select  (change)="getCourseStudents()" class="form-control" id="grade" formControlName="gradeType">
                 <option value="M1">Mid One</option>
                 <option value="SF" >Semi Final</option>
                 <option VALUE="M2">Mid Two</option>

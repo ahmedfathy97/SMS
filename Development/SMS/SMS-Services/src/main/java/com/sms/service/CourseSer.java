@@ -29,7 +29,7 @@ public class CourseSer {
     public List<StdDTO> findAllCourseStudents(int corID, String gradeType, Date attendanceDate){
         List<StdDTO> students = new ArrayList<>();
         if(gradeType != null){
-
+            students=this.courseRep.findAllTypeGrade(corID)   ;
         }else if (attendanceDate != null){
             students = this.courseRep.findAllStudentsAttendance(corID , attendanceDate);
         } else

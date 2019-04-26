@@ -52,13 +52,18 @@ export class CreateGradeComponent implements OnInit {
         this.students = res;
         this.clearFormArray(this.items);
         for(let i=0; i<this.students.length; i++) {
-          // if(this.students[i].id == this.stdID){
-          //   this.courseService.getStudentGrades(this.corID, this.stdID).subscribe(
-          //     res => this.addItem(res.newGrade)
-          //   )
-            //Rest Call to get the Grades of this Student
-          // }else
-            this.addItem(null);
+          debugger;
+          if(this.formData.get("gradeType").value=='M1') {
+            this.addItem(this.students[i].midTermOne);
+
+          }else if (this.formData.get("gradeType").value=='SF') {
+            this.addItem(this.students[i].semiFinal);
+          }
+          else if (this.formData.get("gradeType").value=='M2') {
+            this.addItem(this.students[i].midTermTwo);
+          }else
+            this.addItem(this.students[i].finalGrd)
+
         }
         // this.courseSelected=true;
 
@@ -87,11 +92,11 @@ export class CreateGradeComponent implements OnInit {
 
   }
 
-  onChangeType() {
-    console.log();
-
-
-  }
+  // onChangeType() {
+  //   console.log();
+  //
+  //
+  // }
 
   onSubmitGradeSheet() {
 

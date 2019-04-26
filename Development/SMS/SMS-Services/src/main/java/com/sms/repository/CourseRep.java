@@ -73,7 +73,7 @@ public class CourseRep {
                         "                        WHERE cor_id = ?";
         return this.jdbcTemplate.query(sql, new StdDTORM(), corID);
     }
-    public List<StdDTO> findAllTypeGrade(int corID,String gradeType) {
+    public List<StdDTO> findAllTypeGrade(int corID) {
         String sql =
                 "SELECT first_name, last_name, user_detail.user_id,mid_1_grd,semi_final_grd,\n" +
                         "mid_2_grd,final_grd \n" +
