@@ -64,9 +64,9 @@ ADD CONSTRAINT fk_question_quiz_question_type
 CHANGE COLUMN date due_date DATE NOT NULL ;
 
 
-INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('1', 'mcq');
-INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('2', 'truefalse');
-INSERT INTO `sms`.`question_type` (`id`, `label_en`) VALUES ('3', 'written');
+INSERT INTO sms.question_type (id, label_en) VALUES ('1', 'mcq');
+INSERT INTO sms.question_type (id, label_en) VALUES ('2', 'truefalse');
+INSERT INTO sms.question_type (id, label_en) VALUES ('3', 'written');
 
 
 
@@ -103,12 +103,12 @@ CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 
 
 -- fathy start --
-ALTER TABLE `sms`.`quiz`
-CHANGE COLUMN `due_date` `start_date` DATE NOT NULL ,
-ADD COLUMN `close_date` DATE NOT NULL AFTER `course_id`;
+ALTER TABLE sms.quiz
+CHANGE COLUMN due_date start_date DATE NOT NULL ,
+ADD COLUMN close_date DATE NOT NULL AFTER course_id;
 
-ALTER TABLE `sms`.`quiz`
-ADD COLUMN `auto_close` TINYINT NULL AFTER `close_date`;
+ALTER TABLE sms.quiz
+ADD COLUMN auto_close TINYINT NULL AFTER close_date;
 
 -- fathy end --
 
@@ -131,49 +131,49 @@ CREATE TABLE lecture (
 
 
 
-CREATE TABLE `sms`.`student_answer` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
-  `quiz_id` INT NOT NULL,
-  `question_id` INT NOT NULL,
-  `answer` VARCHAR(25) NOT NULL,
-  `is_correct` TINYINT NOT NULL,
-  `question_score` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `student_id_fk_idx` (`user_id` ASC),
-  INDEX `quiz_id_fk_idx` (`quiz_id` ASC),
-  INDEX `question_id_fk_idx` (`question_id` ASC),
-  CONSTRAINT `student_id_fk`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `sms`.`auth_user` (`id`)
+CREATE TABLE sms.student_answer (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  quiz_id INT NOT NULL,
+  question_id INT NOT NULL,
+  answer VARCHAR(25) NOT NULL,
+  is_correct TINYINT NOT NULL,
+  question_score INT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX student_id_fk_idx (user_id ASC),
+  INDEX quiz_id_fk_idx (quiz_id ASC),
+  INDEX question_id_fk_idx (question_id ASC),
+  CONSTRAINT student_id_fk
+    FOREIGN KEY (user_id)
+    REFERENCES sms.auth_user (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `quiz_id_fk`
-    FOREIGN KEY (`quiz_id`)
-    REFERENCES `sms`.`quiz` (`id`)
+  CONSTRAINT quiz_id_fk
+    FOREIGN KEY (quiz_id)
+    REFERENCES sms.quiz (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `question_id_fk`
-    FOREIGN KEY (`question_id`)
-    REFERENCES `sms`.`question` (`id`)
+  CONSTRAINT question_id_fk
+    FOREIGN KEY (question_id)
+    REFERENCES sms.question (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 
-    ALTER TABLE `sms`.`student_answer`
-    DROP COLUMN `question_score`;
+    ALTER TABLE sms.student_answer
+    DROP COLUMN question_score;
 
 -- fathy end --
 
 
 -- fathy start 15/3/2019 --
 
-ALTER TABLE `sms`.`question`
-ADD COLUMN `question_grade` INT NOT NULL AFTER `quiz_question_type_id`;
+ALTER TABLE sms.question
+ADD COLUMN question_grade INT NOT NULL AFTER quiz_question_type_id;
 
-ALTER TABLE `sms`.`student_answer`
-ADD COLUMN `student_score` INT NOT NULL AFTER `is_correct`;
+ALTER TABLE sms.student_answer
+ADD COLUMN student_score INT NOT NULL AFTER is_correct;
 
 -- fathy end 15/3/2019 --
 
@@ -181,36 +181,39 @@ ADD COLUMN `student_score` INT NOT NULL AFTER `is_correct`;
 
 -- fathy start 13/4/2019
 
-ALTER TABLE `sms`.`lecture`
-ADD COLUMN `course_id` INT NOT NULL AFTER `description`;
+ALTER TABLE sms.lecture
+ADD COLUMN course_id INT NOT NULL AFTER description;
 
 
-ALTER TABLE `sms`.`lecture`
-ADD INDEX `fk_course_lectures_idx` (`course_id` ASC);
-ALTER TABLE `sms`.`lecture`
-ADD CONSTRAINT `fk_course_lectures`
-  FOREIGN KEY (`course_id`)
-  REFERENCES `sms`.`course` (`id`)
+ALTER TABLE sms.lecture
+ADD INDEX fk_course_lectures_idx (course_id ASC);
+ALTER TABLE sms.lecture
+ADD CONSTRAINT fk_course_lectures
+  FOREIGN KEY (course_id)
+  REFERENCES sms.course (id)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
 -- fathy end 13/4/2019
 -- start hala 18/4/2019
+INSERT INTO sms.course_std (id, cor_id, std_id) VALUES ('2', '1', '2');
+INSERT INTO sms.course_std (id, cor_id, std_id) VALUES ('3', '4', '2');
+INSERT INTO sms.course_std (id, cor_id, std_id) VALUES ('4', '3', '2');
 # INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('2', '1', '2');
 # INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('3', '4', '2');
 # INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`) VALUES ('4', '3', '2');
 -- yara start --
-CREATE TABLE `sms`.`announcment` (
-  `id` INT NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(255) NOT NULL,
-  `announ_date` DATE NOT NULL,
-  `course_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_announcment_course_idx` (`course_id` ASC),
-  CONSTRAINT `fk_announcment_course`
-    FOREIGN KEY (`course_id`)
-    REFERENCES `sms`.`course` (`id`)
+CREATE TABLE sms.announcment (
+  id INT NOT NULL,
+  title VARCHAR(45) NOT NULL,
+  content VARCHAR(255) NOT NULL,
+  announ_date DATE NOT NULL,
+  course_id INT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX fk_announcment_course_idx (course_id ASC),
+  CONSTRAINT fk_announcment_course
+    FOREIGN KEY (course_id)
+    REFERENCES sms.course (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 -- yara end --
@@ -223,23 +226,28 @@ CHANGE COLUMN id id INT(11) NOT NULL AUTO_INCREMENT ;
 
 
 -- -manar--
-ALTER TABLE `sms`.`user_detail`
-ADD COLUMN `age` INT NOT NULL AFTER `email`,
-ADD COLUMN `gender` VARCHAR(45) NOT NULL AFTER `age`,
-ADD COLUMN `phone` INT NOT NULL AFTER `gender`,
-ADD COLUMN `college` VARCHAR(45) NOT NULL AFTER `phone`;
+ALTER TABLE sms.user_detail
+ADD COLUMN age INT NOT NULL AFTER email,
+ADD COLUMN gender VARCHAR(45) NOT NULL AFTER age,
+ADD COLUMN phone INT NOT NULL AFTER gender,
+ADD COLUMN college VARCHAR(45) NOT NULL AFTER phone;
 
-ALTER TABLE `sms`.`user_detail`
-ADD COLUMN `user_name` VARCHAR(45) NOT NULL AFTER `college`;
+ALTER TABLE sms.user_detail
+ADD COLUMN user_name VARCHAR(45) NOT NULL AFTER college;
 
 
-ALTER TABLE `sms`.`user_detail`
-DROP COLUMN `user_name`;
+ALTER TABLE sms.user_detail
+DROP COLUMN user_name;
 
 -- -manar---
 
 
 -- ahmed  start--
+ALTER TABLE sms.question
+CHANGE COLUMN question_content question VARCHAR(500) NOT NULL ;
+
+ALTER TABLE sms.question
+CHANGE COLUMN question_answer model_answer VARCHAR(500) NOT NULL ;
 # ALTER TABLE `sms`.`question`
 # CHANGE COLUMN `question_content` `question` VARCHAR(500) NOT NULL ;
 #
@@ -247,6 +255,77 @@ DROP COLUMN `user_name`;
 # CHANGE COLUMN `question_answer` `model_answer` VARCHAR(500) NOT NULL ;
 -- ahmed  end  --
 -- start hala
-ALTER TABLE `sms`.`course`
-ADD COLUMN `image_path` VARCHAR(45) NULL AFTER `description`;
+ALTER TABLE sms.course
+ADD COLUMN image_path VARCHAR(45) NULL AFTER description;
 -- end hala
+
+
+--start manar--
+CREATE TABLE college (
+  id INT NOT NULL,
+  labelEN VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_unique (id ASC));
+
+
+
+CREATE TABLE university (
+  id INT NOT NULL,
+  labelEN VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_unique (id ASC));
+
+
+
+CREATE TABLE country (
+  id INT NOT NULL,
+  labelEN VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_unique (id ASC));
+
+
+
+INSERT INTO college (id, labelEN) VALUES ('1', 'engineering');
+INSERT INTO college (id, labelEN) VALUES ('2', 'low');
+
+INSERT INTO university (id, labelEN) VALUES ('1', 'Benha');
+INSERT INTO university (id, labelEN) VALUES ('2', 'Cairo');
+
+INSERT INTO country (id, labelEN) VALUES ('1', 'Egypt');
+INSERT INTO country (id, labelEN) VALUES ('2', 'Sudan');
+
+
+ALTER TABLE sms.user_detail
+ADD COLUMN college_id INT NULL AFTER user_name,
+ADD COLUMN country_id INT NULL AFTER college_id,
+ADD COLUMN university_id INT NULL AFTER country_id,
+ADD INDEX college_id_user_detail_idx (college_id ASC),
+ADD CONSTRAINT fk_user_detail_college
+  FOREIGN KEY (college_id)
+  REFERENCES sms.college (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+
+ADD INDEX country_id_user_detail_idx (country_id ASC),
+ADD CONSTRAINT fk_user_detail_country
+  FOREIGN KEY (country_id)
+  REFERENCES sms.country (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+
+ADD INDEX university_id_user_detail_idx (university_id ASC),
+ADD CONSTRAINT fk_user_detail_university
+  FOREIGN KEY (university_id)
+  REFERENCES sms.university (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `sms`.`user_detail`
+ADD COLUMN `birth_date` DATE NULL AFTER `university_id`;
+
+UPDATE `sms`.`user_detail` SET `college_id`='1' WHERE `user_id`='1';
+UPDATE `sms`.`user_detail` SET `college_id`='2' WHERE `user_id`='2';
+UPDATE `sms`.`user_detail` SET `college_id`='3' WHERE `user_id`='3';
+
+--end manar--
