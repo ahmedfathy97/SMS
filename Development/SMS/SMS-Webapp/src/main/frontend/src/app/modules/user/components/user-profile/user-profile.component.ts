@@ -38,10 +38,7 @@ export class UserProfileComponent implements OnInit {
       res=> { this.userData=res ;});
   }
 
-  onEdit(){
 
-
-  }
   // selectedFile: ImageSnippet;
   // processFile(imageInput: any) {
   //   const file: File = imageInput.files[0];
