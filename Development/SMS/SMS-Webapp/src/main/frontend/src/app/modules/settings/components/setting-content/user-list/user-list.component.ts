@@ -59,44 +59,44 @@ export class UserListComponent implements OnInit {
 
 
 
-  findallcollege(){
-    let col_data: College=new College();
-    col_data.id=this.formData.get('id').value;
-    col_data.labelEN=this.formData.get('labelEN').value;
-    console.log(col_data);
-    this.userService.findallcollege().subscribe(res =>
-    {
-      console.log(res);
-      this.collegeArrayList=res;
-    })
-  }
-  findalluniversity(){
-    let uni_data: University=new University();
-    uni_data.id=this.formData.get('id').value;
-    uni_data.labelEN=this.formData.get('labelEN').value;
-    console.log(uni_data);
-
-    this.userService.findalluniversity().subscribe(res=> {
-      console.log(res);
-      this.universityArrayList=res;
-
-    })
-  }
-  findallcountry(){
-    let co_data: Country=new Country();
-    co_data.id=this.formData.get('id').value;
-    co_data.labelEN=this.formData.get('labelEN').value;
-    console.log(co_data);
-
-    this.userService.findallcountry().subscribe(res=> {
-      console.log(res);
-      this.countryArrayList = res;
-
-
-    })
-
-  }
-  clear(): void {
-    this.formData.reset();
-  }
+  // findallcollege(){
+  //   let col_data: College=new College();
+  //   col_data.id=this.formData.get('id').value;
+  //   col_data.labelEN=this.formData.get('labelEN').value;
+  //   console.log(col_data);
+  //   this.userService.findallcollege().subscribe(res =>
+  //   {
+  //     console.log(res);
+  //     this.collegeArrayList=res;
+  //   })
+  // }
+  // findalluniversity(){
+  //   let uni_data: University=new University();
+  //   uni_data.id=this.formData.get('id').value;
+  //   uni_data.labelEN=this.formData.get('labelEN').value;
+  //   console.log(uni_data);
+  //
+  //   this.userService.findalluniversity().subscribe(res=> {
+  //     console.log(res);
+  //     this.universityArrayList=res;
+  //
+  //   })
+  // }
+  // findallcountry(){
+  //   let co_data: Country=new Country();
+  //   co_data.id=this.formData.get('id').value;
+  //   co_data.labelEN=this.formData.get('labelEN').value;
+  //   console.log(co_data);
+  //
+  //   this.userService.findallcountry().subscribe(res=> {
+  //     console.log(res);
+  //     this.countryArrayList = res;
+  //
+  //
+  //   })
+  //
+  // }
+  // clear(): void {
+  //   this.formData.reset();
+  // }
 }
