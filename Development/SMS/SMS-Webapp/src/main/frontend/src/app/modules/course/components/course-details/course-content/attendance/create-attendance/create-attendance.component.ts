@@ -3,9 +3,10 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 import {AttendanceService} from "../../../../../shared/services/attendance.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
 
 @Component({
   selector: 'app-create-attendance',
@@ -24,6 +25,7 @@ export class CreateAttendanceComponent implements OnInit {
   attendance: AttendanceDTO = new AttendanceDTO();
 
   constructor(private formBuilder: FormBuilder, private  courseService: CourseService ,
+              private router: Router, private localStorageSerice: LocalStorageService,
               private  attendanceService: AttendanceService ,
               private corDataService: CourseDataService,
               private route: ActivatedRoute) {
@@ -38,14 +40,23 @@ export class CreateAttendanceComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
   }
 
+  isUpdated: boolean = false;
   getCourseStudents()
   {
     this.courseService.getAllCourseStudents(this.corID, null,
       this.formData.get('attendanceDate').value).subscribe(
       res => {
-        this.attendance.students = res;
-        console.log(this.attendance.students);
-
+        if(res.length == 0) {
+          this.courseService.getAllCourseStudents(this.corID, null, null).subscribe(
+            res => {
+              this.attendance.students = res
+            }
+          );
+          this.isUpdated = false;
+        } else {
+          this.isUpdated = true;
+          this.attendance.students = res;
+        }
       }
     );
   }
@@ -56,7 +67,7 @@ export class CreateAttendanceComponent implements OnInit {
 
 
 
-  exist : boolean = false ;
+  //isUpdate : boolean = false ;
 
   onSubmitNewAttendance() {
     let data: AttendanceDTO = new AttendanceDTO();
@@ -65,13 +76,12 @@ export class CreateAttendanceComponent implements OnInit {
     console.log(data);
       this.attendanceService.createNewAttendanceSheet(this.corID, data).subscribe(
         res => {
-          console.log('request succed')
-        },
+          this.router.navigate([`/course/${this.corID}/attendance`])        },
         error1 => {
           console.log(error1)
         }
       );
-      this.exist = true ;
+      //this.isUpdate = true ;
   };
 
 

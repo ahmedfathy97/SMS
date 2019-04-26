@@ -32,6 +32,8 @@ public class CourseSer {
             students=this.courseRep.findAllTypeGrade(corID)   ;
         }else if (attendanceDate != null && !attendanceDate.isEmpty()){
             students = this.courseRep.findAllStudentsAttendance(corID , attendanceDate);
+//            if(students.size()==0)
+//                students = this.courseRep.findAllCourseStudents(corID);
         } else
             students = this.courseRep.findAllCourseStudents(corID);
         return students;
