@@ -5,10 +5,13 @@ import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.rm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -69,6 +72,32 @@ public class CourseRep {
                         "                        WHERE cor_id = ?";
         return this.jdbcTemplate.query(sql, new StdDTORM(), corID);
     }
+    public List<StdDTO> findAllTypeGrade(int corID,String gradeType) {
+        String sql =
+                "SELECT first_name, last_name, user_detail.user_id,mid_1_grd,semi_final_grd,\n" +
+                        "mid_2_grd,final_grd \n" +
+                        "FROM course_std \n" +
+                        "LEFT JOIN user_detail user_detail on user_detail.user_id = course_std.std_id \n" +
+                        "WHERE cor_id = ?\n";
+        return this.jdbcTemplate.query(sql, new RowMapper<StdDTO>() {
+            @Override
+            public StdDTO mapRow(ResultSet rs, int rowIndex) throws SQLException {
+                StdDTO std=new StdDTO();
+                String firstName=rs.getString("first_name");
+                String lastName=rs.getString("last_name");
+
+                std.setFullName(firstName + " " +lastName);
+                std.setId(rs.getInt("user_id"));
+                std.setMidTermOne(rs.getInt("mid_1_grd"));
+                std.setMidTermOne(rs.getInt("semi_final_grd"));
+                std.setMidTermOne(rs.getInt("mid_2_grd"));
+                std.setMidTermOne(rs.getInt("final_grd"));
+
+                return std;
+            }
+        }, corID);
+    }
+
 
 
     public int insertNewQuiz(int courseID, QuizDTO quizData) {

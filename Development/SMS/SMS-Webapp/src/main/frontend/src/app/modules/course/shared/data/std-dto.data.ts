@@ -7,4 +7,5 @@ export class StdDTO {
   midTermTwo:number;
   finalGrd:number;
   attendanceDate:Date;
+  newGrade:number;
 }

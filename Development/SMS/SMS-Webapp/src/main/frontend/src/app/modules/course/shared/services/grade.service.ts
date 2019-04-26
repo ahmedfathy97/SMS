@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
 import {StdDTO} from "../data/std-dto.data";
 
@@ -11,7 +11,11 @@ export class GradeService {
   constructor(private http:HttpClient) {
   }
 
-  createNewGradeSheet(courseID:number, students: StdDTO[]){
-    return this.http.post(this.BASE_URL +courseID+"/new" ,students);
+  createNewGradeSheet(courseID:number, students: StdDTO[],gradeType:string){
+    let parameters: HttpParams = new HttpParams();
+    parameters = parameters.append('gradeType', gradeType);
+
+    return this.http.post(this.BASE_URL +courseID+"/new" ,students,
+      {params: parameters});
   }
 }

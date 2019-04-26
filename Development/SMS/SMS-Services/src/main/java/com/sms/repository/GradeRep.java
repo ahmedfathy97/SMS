@@ -23,12 +23,32 @@ public class GradeRep {
 
 
 
-    public void insertStudentGrd( int cor_id, StdDTO data) {
+    public void insertMidTermOne( int cor_id, StdDTO data) {
         String sql = "update course_std "+
-       " SET  mid_1_grd=?, semi_final_grd=?, mid_2_grd=?, final_grd=? "+
+       " SET  mid_1_grd=?  "+
         "WHERE   cor_id=? AND  std_id = ? ";
-        this.jdbc.update(sql,data.getMidTermOne(), data.getSemiFinal(),data.getMidTermTwo(),
-                data.getFinalGrd(),cor_id, data.getId());
+        this.jdbc.update(sql,data.getNewGrade(),cor_id, data.getId());
+
+    }
+    public void insertSemiFinal( int cor_id, StdDTO data) {
+        String sql = "update course_std "+
+                " SET  semi_final_grd=?  "+
+                "WHERE   cor_id=? AND  std_id = ? ";
+        this.jdbc.update(sql,data.getNewGrade(),cor_id, data.getId());
+
+    }
+    public void insertMidTermTwo( int cor_id, StdDTO data) {
+        String sql = "update course_std "+
+                " SET  mid_2_grd=?  "+
+                "WHERE   cor_id=? AND  std_id = ? ";
+        this.jdbc.update(sql,data.getNewGrade(),cor_id, data.getId());
+
+    }
+    public void insertFinalGrd( int cor_id, StdDTO data) {
+        String sql = "update course_std "+
+                " SET  final_grd=?  "+
+                "WHERE   cor_id=? AND  std_id = ? ";
+        this.jdbc.update(sql, data.getNewGrade(),cor_id, data.getId());
 
     }
     public List<StdDTO> findCourseGrades(int courseID){

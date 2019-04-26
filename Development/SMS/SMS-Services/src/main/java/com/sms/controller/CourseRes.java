@@ -17,6 +17,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 @Path("/course")
@@ -72,7 +73,10 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/students")
-    public List<StdDTO> findCourseStudents(@PathParam("courseID") int courseID) {
+    public List<StdDTO> findCourseStudents(
+            @PathParam("courseID") int courseID,
+            @QueryParam("gradeType") String gradeType,
+            @QueryParam("attendanceDate") Date attendanceDate) {
         return this.courseRep.findAllCourseStudents(courseID);
     }
 

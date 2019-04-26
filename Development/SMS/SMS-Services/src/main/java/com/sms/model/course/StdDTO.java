@@ -14,9 +14,18 @@ public class StdDTO implements Serializable {
     private int midTermTwo;
     private int finalGrd;
     private Date attendanceDate ;
+    private int  newGrade;
 
 
     public StdDTO() {
+    }
+
+    public int getNewGrade() {
+        return newGrade;
+    }
+
+    public void setNewGrade(int newGrade) {
+        this.newGrade = newGrade;
     }
 
     public int getId() {

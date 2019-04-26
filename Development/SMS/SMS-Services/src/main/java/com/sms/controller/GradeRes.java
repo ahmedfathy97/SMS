@@ -24,8 +24,9 @@ public class GradeRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    public void createGradeSheet(@PathParam("courseID") int courseID, List<StdDTO> students) {
-        this.gradeService.createSheet(courseID, students);
+    public void createGradeSheet(@PathParam("courseID") int courseID, List<StdDTO> students,
+                                 @QueryParam("gradeType") String gradeType) {
+        this.gradeService.createSheet(courseID, students, gradeType);
         System.out.print("Data Recieved Sucessfully");
         System.out.print(students.toString());
 

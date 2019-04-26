@@ -33,15 +33,7 @@
 
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-form-label">Grade</label>
-    <select class="form-control">
-      <option>Mid One</option>
-      <option>Semi Final</option>
-      <option>Mid Two</option>
-      <option>Final</option>
-    </select>
-  </div>
+
 </div>
 <div class="main-content-inner">
 
@@ -51,7 +43,16 @@
       <div class="card">
         <div class="card-body">
           <h4 class="header-title">Student Grades</h4>
-          <div [formGroup]="formData" class="col-ml-12">
+          <div [formGroup]="formData" class="col-ml-6">
+            <div class="form-group">
+              <label class="col-form-label">Grade</label>
+              <select class="form-control" id="grade" formControlName="gradeType">
+                <option value="M1">Mid One</option>
+                <option value="SF" >Semi Final</option>
+                <option VALUE="M2">Mid Two</option>
+                <option value="FF">Final</option>
+              </select>
+            </div>
             <!--<div class="form-group" >-->
               <!--<label class="col-form-label">Courses</label>-->
               <!--<select (change)="onChangeCourse($event.target.value)" class="form-control" id="course"-->
@@ -63,7 +64,7 @@
             <!--<div class="data-tables datatable-primary " *ngIf="courseSelected" >-->
               <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer ">
                 <div class="row" >
-                  <div class="col-ml-12">
+                  <div class="col-ml-6">
                     <table  id="dataTable2" class="text-center dataTable no-footer dtr-inline collapsed"
                            role="grid"
                            aria-describedby="dataTable2_info" style="width: 100%;">
@@ -91,10 +92,10 @@
                           *ngFor="let item of items.controls; index as i" [formGroupName]="i">
                         <td>{{students[i].fullName}}</td>
 
-                        <td><input type="text" class="form-control" formControlName="midTermOne"/></td>
-                        <td><input type="text" class="form-control" formControlName="semiFinal"/></td>
-                        <td><input type="text" class="form-control" formControlName="midTermTwo"/></td>
-                        <td><input type="text" class="form-control" formControlName="final"/></td>
+                        <td><input type="text" class="form-control" formControlName="grade"/></td>
+                        <!--<td><input type="text" class="form-control" formControlName="semiFinal"/></td>-->
+                        <!--<td><input type="text" class="form-control" formControlName="midTermTwo"/></td>-->
+                        <!--<td><input type="text" class="form-control" formControlName="final"/></td>-->
                       </tr>
                       </tbody>
                     </table>

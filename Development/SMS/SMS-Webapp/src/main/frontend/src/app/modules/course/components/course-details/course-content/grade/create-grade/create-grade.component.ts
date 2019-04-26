@@ -21,9 +21,11 @@ export class CreateGradeComponent implements OnInit {
 
   corID :number ;
   stdID: number;
+  // gradeType:number;
   formData: FormGroup = this.formBuilder.group({
     course: [null, [Validators.required]],
-    items: new FormArray([])
+    items: new FormArray([]),
+    gradeType:[null, [Validators.required]]
   });
 
   constructor(private formBuilder: FormBuilder,
@@ -50,13 +52,13 @@ export class CreateGradeComponent implements OnInit {
         this.students = res;
         this.clearFormArray(this.items);
         for(let i=0; i<this.students.length; i++) {
-          if(this.students[i].id == this.stdID){
-            this.courseService.getStudentGrades(this.corID, this.stdID).subscribe(
-              res => this.addItem(res.midTermOne, res.semiFinal, res.midTermTwo, res.finalGrd)
-            )
+          // if(this.students[i].id == this.stdID){
+          //   this.courseService.getStudentGrades(this.corID, this.stdID).subscribe(
+          //     res => this.addItem(res.newGrade)
+          //   )
             //Rest Call to get the Grades of this Student
-          }else
-            this.addItem(null, null, null, null);
+          // }else
+            this.addItem(null);
         }
         // this.courseSelected=true;
 
@@ -85,22 +87,21 @@ export class CreateGradeComponent implements OnInit {
 
   }
 
-  // onChangeCourse(courseID) {
-  //   console.log(courseID);
-  //
-  //
-  // }
+  onChangeType() {
+    console.log();
+
+
+  }
 
   onSubmitGradeSheet() {
 
-    for(let i=0; i<this.students.length; i++) {
-      this.students[i].midTermOne = this.items.at(i).get('midTermOne').value;
-      this.students[i].midTermTwo = this.items.at(i).get("midTermTwo").value;
-      this.students[i].semiFinal=this.items.at(i).get("semiFinal").value;
-      this.students[i].finalGrd=this.items.at(i).get("final").value;
-    }
+    for(let i=0; i<this.students.length; i++)
+      this.students[i].newGrade = this.items.at(i).get('grade').value;
+
+    let gradeType: string = this.formData.get('gradeType').value;
+
     console.log(this.students);
-    this.gradeService.createNewGradeSheet(this.corID,this.students).subscribe(
+    this.gradeService.createNewGradeSheet(this.corID,this.students,gradeType).subscribe(
       res=> {
         console.log('request succed')
       },
@@ -116,12 +117,9 @@ export class CreateGradeComponent implements OnInit {
     return this.formData.get('items') as FormArray;
   }
 
-  private addItem(midTermOne:number, semiFinal:number, midTerm:number, final:number): void {
+  private addItem(grade:number): void {
     this.items.push(this.formBuilder.group({
-      midTermOne: midTermOne,
-      semiFinal: semiFinal,
-      midTermTwo: midTerm,
-      final: final,
+      grade: grade,
 
     }));
     // this.formData.reset();

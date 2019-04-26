@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class CourseSer {
     private CourseRep courseRep ;
     private QuizRep quizRep ;
+
+
     @Autowired
     public CourseSer(CourseRep courseRep , QuizRep quizRep) {
         this.courseRep = courseRep;
@@ -23,6 +26,16 @@ public class CourseSer {
     }
 
 
+    public List<StdDTO> findAllCourseStudents(int corID, String gradeType, Date attendanceDate){
+        List<StdDTO> students = new ArrayList<>();
+        if(gradeType != null){
+
+        }else if (attendanceDate != null){
+
+        } else
+            students = this.courseRep.findAllCourseStudents(corID);
+        return students;
+    }
 
 
     public int createQuiz(int courseID ,QuizDTO quizData )
