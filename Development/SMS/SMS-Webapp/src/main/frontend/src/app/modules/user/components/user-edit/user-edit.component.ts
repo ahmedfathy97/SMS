@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserData} from "../../shared/data/user-data";
 import {UserService} from "../../shared/user.service";
-
 import {FormBuilder, Validators} from "@angular/forms";
 //import {EditData} from "../../shared/data/edit-data";
 import {ActivatedRoute} from "@angular/router";
