@@ -5,6 +5,7 @@ import {College} from "../../../shared/data/college";
 import {University} from "../../../shared/data/university";
 import {Country} from "../../../shared/data/country";
 import {UserVtoData} from "../../../shared/data/user-vto.data";
+import {AngularFullRoutes, replaceUserID} from "../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-user-list',
@@ -13,6 +14,10 @@ import {UserVtoData} from "../../../shared/data/user-vto.data";
   providers:[FormBuilder,UserService]
 })
 export class UserListComponent implements OnInit {
+
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceUserID =replaceUserID;
+
   userList:UserVtoData[]=[];
   formData :FormGroup=this.formBuilder.group({
     fullname:[null,[Validators.required,Validators.maxLength(20)]],

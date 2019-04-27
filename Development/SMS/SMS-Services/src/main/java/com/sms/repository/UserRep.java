@@ -25,9 +25,11 @@ public class UserRep {
     }
 
     public UserData findUserByID(int userID) {
-        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,email,phone,college,s.username FROM user_detail d \n" +
-                "                left join auth_user s \n" +
-                "                on d.user_id = s.id ;" ;
+        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,email,phone,college,s.username " +
+                "FROM user_detail d " +
+                "left join auth_user s " +
+                "on d.user_id = s.id " +
+                "where user_id =?" ;
         List<UserData> user = this.jdbcTemplate.query(sql, new UserDataRM(), userID);
         return user.get(0);
     }

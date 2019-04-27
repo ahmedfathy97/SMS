@@ -132,13 +132,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let user_detail of userList ; index as i ;">
+            <tr  *ngFor="let userDetail of userList ; index as i ;">
               <td>{{i+1}}</td>
-              <td>{{user_detail.fullName}}</td>
-              <td>{{user_detail.birthDate}}</td>
-              <td>{{user_detail.college}}</td>
-              <td>{{user_detail.university}}</td>
-              <td>{{user_detail.country}}</td>
+              <td> <a [routerLink] ="[replaceUserID(ROUTES.USER_PROFILE,userDetail.userID)]">{{userDetail.fullName}}</a></td>
+              <td>{{userDetail.birthDate}}</td>
+              <td>{{userDetail.college}}</td>
+              <td>{{userDetail.university}}</td>
+              <td>{{userDetail.country}}</td>
 
             </tr>
 

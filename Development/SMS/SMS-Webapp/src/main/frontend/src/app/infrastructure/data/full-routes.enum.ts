@@ -15,12 +15,9 @@ export enum AngularFullRoutes {
 
 
   FACULTY_LIST = "/faculties",
-
-
-
   SETTINGS = "/settings",
-  SETTING_USER_LIST ="/settings/users"
-
+  SETTING_USER_LIST ="/settings/users",
+  USER_PROFILE="/settings/user/${userID}"
 }
 
 export function replaceCorID(route:string, id) {
@@ -32,6 +29,6 @@ export function replaceQuizID(route:string ,corID, quizID) {
   return route.replace("${corID}", corID);
 
 }
-// export function replaceUserID(route:string, id) {
-//   return route.replace("${userID}", id);
-// }
+ export function replaceUserID(route:string,userID) {
+  return route.replace("${userID}",userID);
+ }

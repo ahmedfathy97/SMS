@@ -10,5 +10,6 @@ export class UserVtoData {
   university:string;
   fullName:string;
   birthDate:string;
+  userID:number;
 
 }
