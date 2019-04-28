@@ -11,7 +11,7 @@ public class UserData implements Serializable {
     String gender;
     String e_mail;
     int phone;
-    String college;
+   // String college;
 
 
     public UserData() {
@@ -73,13 +73,13 @@ public class UserData implements Serializable {
         this.phone = phone;
     }
 
-    public String getCollege() {
-        return college;
-    }
-
-    public void setCollege(String college) {
-        this.college = college;
-    }
+//    public String getCollege() {
+//        return college;
+//    }
+//
+//    public void setCollege(String college) {
+//        this.college = college;
+//    }
 
     public String getUserName() {
         return userName;
