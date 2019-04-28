@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../../user/shared/user.service";
+//import {UserService} from "../../../../user/shared/user.service";
 import {College} from "../../../shared/data/college";
 import {University} from "../../../shared/data/university";
 import {Country} from "../../../shared/data/country";
 import {UserVtoData} from "../../../shared/data/user-vto.data";
 import {AngularFullRoutes, replaceUserID} from "../../../../../infrastructure/data/full-routes.enum";
+import {UserService} from "../../../shared/services/user.service";
 
 @Component({
   selector: 'app-user-list',
