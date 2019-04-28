@@ -1,0 +1,100 @@
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">User Profile</h4>
+        </div>
+        <div class="breadcrumbs-area clearfix">
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[replaceUserID(ROUTES.USER_PROFILE,userID)]">Profile</a></li>
+            <li><span>User</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-content-area">
+
+    <!--<div class="image pull-left col-md-1 offset-3">-->
+
+    <!--<div *ngIf="selectedFile" class="img-preview-container">-->
+
+    <!--<div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"-->
+    <!--[ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<div *ngIf="selectedFile.pending" class="img-loading-overlay">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="img-spinning-circle"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+
+    <!--<label class="image-upload-container btn ">-->
+    <!--<input #imageInput-->
+    <!--type="file"-->
+    <!--accept="image/*"-->
+    <!--(change)="processFile(imageInput)">-->
+    <!--</label>-->
+    <div class="row">
+      <div class=" offset-2 col-md-8">
+        <div class="col-12">
+          <div class="card">
+
+            <div class="card-body">
+              <h5>{{userData.userName}}</h5>
+              <hr>
+              <h2 class="header-title">About Me</h2>
+
+              <div class="d-inline-block col-md-12">
+                <label for="full-name" class="col-form-label">Full Name: &nbsp; &nbsp; &nbsp; </label>
+                <label id="full-name" class="col-form-label">{{userData.fullName}}</label>
+              </div>
+              <hr>
+              <div class="d-inline-block col-md-12">
+                <label for="age" class="col-form-label">Age: &nbsp; &nbsp; &nbsp; </label>
+                <label id="age" class="col-form-label">{{userData.age}}</label>
+              </div>
+
+              <hr>
+
+              <div class="d-inline-block col-md-12" colspan="2">
+                <label for="gender" class="col-form-label">Gender: &nbsp; &nbsp; &nbsp; </label>
+                <label id="gender" class="col-form-label">{{userData.gender}}</label>
+              </div>
+              <hr>
+              <div class="d-inline-block col-md-12">
+                <label for="e_mail" class="col-form-label">E_mail: &nbsp; &nbsp; &nbsp;</label>
+
+                <label id="e_mail" class="col-form-label"><a href="#">{{userData.e_mail}}</a></label>
+              </div>
+              <hr>
+              <div class="d-inline-block col-12">
+                <label for="phone" class="col-form-label">Phone: &nbsp; &nbsp; &nbsp; </label>
+                <label id="phone" class="col-form-label">{{userData.phone}}</label>
+              </div>
+              <!--<hr>-->
+              <!--<div class="d-inline-block col-12">-->
+                <!--<label for="college" class="col-form-label">College: &nbsp; &nbsp; &nbsp; </label>-->
+                <!--<label id="college" class="col-form-label">{{userData.college}}</label>-->
+              <!--</div>-->
+            </div>
+
+            <hr>
+
+            <div class="card-action">
+              <a [routerLink]="['/user',userID,'edit',userData.userID]">
+                <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2" (click)="onEdit()"> Edit</button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,85 @@
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">User Edit</h4>
+        </div>
+        <div class="breadcrumbs-area clearfix">
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[replaceUserID(ROUTES.EDIT,userID)]">Edit</a></li>
+            <li><span>User</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-content-area">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <!-- Textual inputs start -->
+        <div class=" offset-2 col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="header-title">Edit Profile</h1>
+
+      <hr>
+
+
+             <div class="row">
+              <div class="form-group">
+                <label for="first-name" class="col-form-label">First Name</label>
+                <input class="form-control" type="fullname" value= "{{userData.fullName}}" id="first-name" formControlName="firstname">
+              </div>
+
+              <div class="form-group">
+                <label for="last-name" class="col-form-label">Last Name</label>
+                <input class="form-control" type="lastname" value= {{userData.fullName}} id="last-name" formControlName="lastname">
+              </div>
+             </div>
+
+
+
+              <div class="form-group">
+                <label for="age" class="col-form-label">Age</label>
+                <input class="form-control" type="age" value="name@example.com" id="age" formControlName="age">
+              </div>
+
+              <div class="form-group">
+                <label for="gender" class="col-form-label">Gender</label>
+                <input class="form-control" type="gender" value="name@example.com" id="gender" formControlName="gender">
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="col-form-label">E_mail</label>
+                <input class="form-control" type="email" value="name@example.com" id="email" formControlName="email">
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="col-form-label">Phone</label>
+                <input class="form-control" type="phone" value="" id="phone" formControlName="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="college" class="col-form-label">College</label>
+                <input class="form-control" type="college" value="" id="college" formControlName="college">
+              </div>
+
+              <div class="form-group">
+                <label for="user-name" class="col-form-label">User Name</label>
+                <input class="form-control" type="username" value="" id="user-name" formControlName="username">
+              </div>
+              <hr>
+
+              <div class="card-action">
+                <button class="btn   btn-success btn-sm pull-right mr-2 mb-2" (click)="onSaveEdit()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
