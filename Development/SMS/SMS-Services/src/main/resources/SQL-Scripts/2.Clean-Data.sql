@@ -165,61 +165,31 @@ VALUES (7, 'Data Structure', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Learn a
 
 
 INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
-VALUES (8, 'Object Oriented Programming', 70 , '2019-6-01', '2019-10-01', 1, 2, 2, 2, 'In this course, we''ll get you up and running with classes, objects, methods, properties and all that  stuff by building a real (and epic) application');
-
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
-VALUES (9, 'Image processing', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Fundamentals of Digital Image and Video Processing. COURSE. Fundamentals of Digital Image and Video Processing');
+VALUES (8, 'Object Oriented Programming', 70 , '2019-6-01', '2019-10-01', 1, 2, 2, 2, 'In this course, we''ll get you up and running with classes, objects');
 
 
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
-VALUES (10, 'Math1', 55 , '2019-5-20', '2019-7-03', 1, 2, 2, 2, 'This is the first of a two-course sequence in elementary and intermediate algebra');
-
-
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
-VALUES (11, 'Physics', 100 , '2019-6-01' ,'2019-12-03', 1, 2 ,2, 2,'fundmentals of physiscs for beginners');
 
 
 
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 12);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 18);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 16);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 17);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 22);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 23);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 24);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 25);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 26);
-INSERT INTO course_std (cor_id, std_id) VALUE (1, 29);
+INSERT INTO college (id, labelEN) VALUES ('1', 'engineering');
+INSERT INTO college (id, labelEN) VALUES ('2', 'low');
 
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 2);
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 3);
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 12);
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 16);
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 23);
-INSERT INTO course_std (cor_id, std_id) VALUE (2, 24);
+INSERT INTO university (id, labelEN) VALUES ('1', 'Benha');
+INSERT INTO university (id, labelEN) VALUES ('2', 'Cairo');
 
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 2);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 3);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 17);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 19);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 20);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 8);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 18);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 10);
-INSERT INTO course_std (cor_id, std_id) VALUE (3, 29);
+INSERT INTO country (id, labelEN) VALUES ('1', 'Egypt');
+INSERT INTO country (id, labelEN) VALUES ('2', 'Sudan');
 
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 3);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 7);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 8);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 13);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 14);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 15);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 18);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 19);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 22);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 23);
-INSERT INTO course_std (cor_id, std_id) VALUE (4, 24);
+INSERT INTO question_type (id, label_en) VALUES ('1', 'mcq');
+INSERT INTO question_type (id, label_en) VALUES ('2', 'truefalse');
+
+
+
+UPDATE user_detail SET college_id='1' WHERE user_id='1';
+UPDATE user_detail SET college_id='2' WHERE user_id='2';
+
+
 
 
 INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('1', 'Quiz 1', 'The last date for the Quiz on Sunday 14-5-2019', '2019-05-20', '1');
@@ -233,7 +203,6 @@ INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `cours
 We want to improve the level and study well', '2019-04-22', '1');
 INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('9', 'Quiz 3', 'The last date for the Quiz on Saturday 16-7-2019', '2019-09-20', '1');
 INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('10', 'Assi 2', 'This is the second Assignment for Java', '2019-10-15', '1');
-
 
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('1', '1', '2019-01-03');
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('2', '1', '2019-02-24');
@@ -252,72 +221,72 @@ INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('14', '8',
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('15', '4', '2019-05-08');
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('16', '8', '2019-03-07');
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('17', '5', '2019-10-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('18', '10', '2019-11-24');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('19', '10', '2019-09-11');
+INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('18', '8', '2019-11-24');
+INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('19', '7', '2019-09-11');
 INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('20', '5', '2019-03-02');
 
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('1', 'quiz1', '10', '2019-6-12', '1', '2019-6-15', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('2', 'quiz2', '20', '2019-7-12', '1', '2019-7-15', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('2', 'quiz2', '20', '2019-7-12', '1', '2019-7-15', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('3', 'quiz3', '15', '2019-8-12', '1', '2019-8-15', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('4', 'quiz4', '5', '2019-9-12', '1', '2019-9-15', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('4', 'quiz4', '5', '2019-9-12', '1', '2019-9-15', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('5', 'quiz1', '10', '2019-4-10', '2', '2019-4-12', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('6', 'quiz2', '30', '2019-5-10', '2', '2019-5-12', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('6', 'quiz2', '30', '2019-5-10', '2', '2019-5-12', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('7', 'quiz3', '12', '2019-6-10', '2', '2019-6-12', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('8', 'quiz4', '18', '2019-7-10', '2', '2019-7-12', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('8', 'quiz4', '18', '2019-7-10', '2', '2019-7-12', '1');
 
 
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('9', 'quiz1', '20', '2019-1-5', '3', '2019-1-6', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('10', 'quiz2', '30', '2019-2-5', '3', '2019-2-6', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('10', 'quiz2', '30', '2019-2-5', '3', '2019-2-6', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('11', 'quiz3', '14', '2019-3-5', '3', '2019-3-6', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('12', 'quiz4', '16', '2019-4-5', '3', '2019-4-6', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('12', 'quiz4', '16', '2019-4-5', '3', '2019-4-6', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('13', 'quiz1', '5', '2019-4-11', '4', '2019-4-13', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('14', 'quiz2', '19', '2019-5-11', '4', '2019-5-13', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('14', 'quiz2', '19', '2019-5-11', '4', '2019-5-13', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('15', 'quiz3', '12', '2019-6-11', '4', '2019-6-13', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('16', 'quiz4', '10', '2019-7-11', '4', '2019-7-13', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('16', 'quiz4', '10', '2019-7-11', '4', '2019-7-13', '1');
 
 
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('17', 'quiz1', '16', '2019-10-1', '5', '2019-10-2', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('18', 'quiz2', '15', '2019-11-1', '5', '2019-11-2', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('18', 'quiz2', '15', '2019-11-1', '5', '2019-11-2', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('19', 'quiz3', '20', '2019-12-1', '5', '2019-12-2', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('20', 'quiz4', '17', '2019-1-1', '5', '2019-1-2', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('20', 'quiz4', '17', '2019-1-1', '5', '2019-1-2', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('21', 'quiz1', '15', '2019-2-24', '6', '2019-2-26', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('22', 'quiz2', '5', '2019-3-24', '6', '2019-3-26', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('22', 'quiz2', '5', '2019-3-24', '6', '2019-3-26', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('23', 'quiz3', '10', '2019-4-24', '6', '2019-4-26', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('24', 'quiz4', '30', '2019-5-24', '6', '2019-5-26', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('24', 'quiz4', '30', '2019-5-24', '6', '2019-5-26', '1');
 
 
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('25', 'quiz1', '11', '2019-2-29', '7', '2019-2-30', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('25', 'quiz1', '11', '2019-2-26', '7', '2019-2-27', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('26', 'quiz2', '10', '2019-3-28', '7', '2019-3-29', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('26', 'quiz2', '10', '2019-3-28', '7', '2019-3-29', '1');
 
 INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('27', 'quiz3', '5', '2019-4-27', '7', '2019-4-28', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('28', 'quiz4', '10', '2019-5-24', '7', '2019-5-25', '0');
+INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `auto_close`) VALUES ('28', 'quiz4', '10', '2019-5-24', '7', '2019-5-25', '1');
 
 
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('1', '1', '2', '10', '7', '5', '9');
