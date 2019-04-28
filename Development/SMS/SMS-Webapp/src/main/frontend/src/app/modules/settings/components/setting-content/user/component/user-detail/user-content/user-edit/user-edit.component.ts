@@ -25,7 +25,7 @@ export class UserEditComponent implements OnInit {
   replaceUserID =replaceUserID;
 
 
-  userID:string;
+  // userID:string;
 
   private userEdit: UserData = new UserData();
   //userID: string;
