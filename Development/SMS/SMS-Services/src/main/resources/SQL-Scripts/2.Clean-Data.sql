@@ -297,18 +297,62 @@ INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_fin
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('6', '2', '2', '10', '9', '5', '9');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('7', '2', '14', '5', '3', '5', '2');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('8', '2', '16', '9', '1', '5', '0');
-
-
-
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('9', '2', '8', '10', '8', '3', '10');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('10', '2', '7', '3', '9', '9', '0');
-
-
-
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('11', '3', '23', '4', '2', '8', '6');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('12', '3', '25', '10', '4', '4', '7');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('13', '3', '11', '6', '3', '6', '1');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('14', '3', '2', '10', '8', '9', '0');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('15', '3', '3', '4', '4', '4', '7');
 INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('16', '3', '7', '6', '10', '7', '10');
+
+
+
+
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('1', 'Lecture 1', '2019-01-01', 'https://www.youtube.com/watch?v=grEKMHGYyns', ' Our goal in this chapter is to convince you that writing a computer program is easier than writing a piece of text such as a paragraph or an essay. In this chapter, we take you through these building blocks, get you started on programming in Java, and study a variety of interesting programs.', '1');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('2', 'Lecture 2', '2019-01-07', 'https://www.youtube.com/watch?v=g-FEpgMBQM8', 'To understand a programming language you must practice the programs, this way you can learn the language faster. This page includes java programs on various java topics such as control statements, loops, classes & objects, functions, arrays etc. All the programs are tested and provided with the output. If you new to java and want to learn java before trying out these program, then read my ', '1');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('3', 'Lecture 3', '2019-01-14', 'https://www.youtube.com/watch?v=rgjFEDxMIVI', 'dfsggdg', '1');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('4', 'Lecture 4', '2019-01-21', 'https://www.youtube.com/watch?v=FbviMTJ_vP8&list=PL1DUmTEdeA6K7rdxKiWJq6JIxTvHalY8f', 'Java is one of the most popular and widely used programming language and platform. A platform is an environment that helps to develop and run programs written in any programming language.', '1');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('5', 'Lecture 5', '2019-01-28', 'https://www.youtube.com/watch?v=4dgQXq__h80&list=PLnIa3_sMwepKaIVwBdaNAF-aMXJ2U90xW', 'Java is fast, reliable and secure. From desktop to web applications, scientific supercomputers to gaming consoles, cell phones to the Internet, Java is used in every nook and corner.', '1');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('6', 'Lecture 1', '2019-05-01', 'https://www.youtube.com/watch?v=z1FdInL8sjg&list=PLCInYL3l2AajFAiw4s1U4QbGszcQ-rAb3', 'C++ ranks 4th in popularity according to 2016 IEEE spectrum Top Programming Language ranking. Learning C++ is a wise investment for all programmers.
+This guide answers all your questions related to C++ on what is it, when is it used, why is it used and how to get yourself started with it.', '2');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('7', 'Lecture 2', '2019-05-05', 'https://www.youtube.com/watch?v=gh-OzzgGdxg&list=PLrD0HM23WhqFB7O20Vk92Nb9-3zvBpdbt', 'This is one of those questions you need to ask before starting any programming language. It helps you understand the scope of the language, the real world usability and how far you can get with it in terms of support. Here are 5 reasons why you should learn C++.', '2');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('8', 'Lecture 3', '2019-05-10', 'https://www.youtube.com/watch?v=Fr6wJ5_Hok0&list=PL1DUmTEdeA6IUD9Gt5rZlQfbZyAWXd-oD', 'With the use of C++ in development of modern games, operating systems, browsers, and much more, it is safe to say that C++ is irreplaceable.
+Many major applications like
+Adobe Products like Photoshop, Illustrator, InDesign
+Amazon - one of the biggest e-commerce sites
+Autodesk products for Computer Aided Design
+Facebook - social networking site are heavy C++ centric products.', '2');
+ INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('9', 'Lecture 1', '2019-07-01', 'https://www.youtube.com/watch?v=v6XYgITEtSI&list=PLEOFNTP51GtcjR1dwlwAWGpQuJxP4lrO7', 'C is a powerful general-purpose programming language. It is fast, portable and available in all platforms.If you are new to programming, C is a good choice to start your programming journey.', '3');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('10', 'Lecture 2', '2019-07-10', 'https://www.youtube.com/watch?v=KJgsSFOSQv0', 'As mentioned, it’s a good language to start learning programming. If you know C programming, you will not just understand how your program works, but will also be able to create a mental picture on how a computer works.', '3');
+ INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('11', 'Lecture 1', '2019-09-01', 'https://www.youtube.com/watch?v=q7_qSBw8FEY&list=PLHIfW1KZRIfkDF2xTIB5kX8gdthmLTufx', 'C# is a general-purpose, modern and object-oriented programming language pronounced as “C sharp”. It was developed by Microsoft led by Anders Hejlsberg and his team within the .Net ', '4');
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('12', 'Lecture 2', '2019-09-10', 'https://www.youtube.com/watch?v=74VQ_JmJXzI&list=PLwj1YcMhLRN24KqNI0xQrNscBfLnYeJpL', 'As the placement season is back so are we to help you ace the interview. We have selected some most commonly asked and must do practice problems for you.
+You can also take part in our mock placement contests which will help you learn different topics and practice at the same time, simulating the feeling of a real placement test environment.', '4');
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('13', 'Lecture 3', '2019-09-20', 'https://www.youtube.com/watch?v=tzq-DJeNIrU', 'Interoperability enables you to preserve and take advantage of existing investments in unmanaged code. Code that runs under the control of the common language runtime (CLR) is called managed code, and code that runs outside the CLR is called unmanaged code. COM, COM+, C++ components, ActiveX components, and Microsoft Windows API are examples of unmanaged code.', '4');
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('14', 'Lecture 4', '2019-09-30', 'https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6', 'The C#  exception handling features help you deal with any unexpected or exceptional situations that occur when a program is running. Exception handling uses the try, catch, and finally keywords to try actions that may not succeed, to handle failures when you decide that it is reasonable to do so, and to clean up resources afterward', '4');
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('15', 'Lecture 5', '2019-10-01', 'https://www.youtube.com/watch?v=GhQdlIFylQ8', 'Collections provide a more flexible way to work with groups of objects. Unlike arrays, the group of objects you work with can grow and shrink dynamically as the needs of the application change. For some collections, you can assign a key to any object that you put into the collection so that you can quickly retrieve the object by using the key.', '4');
+
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('16', 'Lecture 6', '2019-10-15', 'https://www.youtube.com/watch?v=wfWxdh-_k_4', 'Attributes provide a powerful method of associating metadata, or declarative information, with code (assemblies, types, methods, properties, and so forth). After an attribute is associated with a program entity, the attribute can be queried at run time by using a technique called reflection. For more information', '4');
+
+INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('17', 'Lecture 7', '2019-10-30', 'https://www.youtube.com/watch?v=nAFaXnG1XJI&list=PL1565idytjOS3lXcVN4iDFmZDWUJaNCfS', 'This section provides detailed information on key C# language features and features accessible to C# through the .NET Framework.Most of this section assumes that you already know something about C# and general programming concepts. If you are a complete beginner with programming or with C#', '4');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
