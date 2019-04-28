@@ -271,7 +271,7 @@ CREATE TABLE lecture (
   title      VARCHAR(25),
   lecture_date   DATE   NOT NULL,
   video_url  VARCHAR(1000) ,
-  description   VARCHAR(200) ,
+  description   VARCHAR(1000) ,
   course_id INT NOT NULL ,
   CONSTRAINT fk_course_lectures FOREIGN KEY (course_id) REFERENCES sms.course (id)
 );
