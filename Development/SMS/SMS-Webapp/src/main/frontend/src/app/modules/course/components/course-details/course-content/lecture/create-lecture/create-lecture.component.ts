@@ -4,6 +4,7 @@ import {CourseService} from "../../../../../shared/services/course.service";
 import {ActivatedRoute} from "@angular/router";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 
 @Component({
@@ -16,13 +17,17 @@ export class CreateLecture implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
 
-  courseID :string ;
   corID :number ;
   constructor(private formBuilder: FormBuilder,
-              private courseService: CourseService,private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(params => {
-      this.courseID = params.get("courseID");
-    })
+              private courseService: CourseService,private route: ActivatedRoute ,
+              private corDataService: CourseDataService) {
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+      }
+    );
+    this.corDataService.requestCorID.next(true);
+
   }
 
   ngOnInit() {
@@ -30,7 +35,7 @@ export class CreateLecture implements OnInit {
 
   formData: FormGroup = this.formBuilder.group({
     title: [null, [Validators.maxLength(25)]],
-    date: [null, [Validators.required]],
+    lectureDate: [null, [Validators.required]],
     videoUrl: [null],
     description: [null, [Validators.maxLength(200)]]
   });
@@ -41,8 +46,6 @@ export class CreateLecture implements OnInit {
     lectureDto.date = this.formData.get('lectureDate').value;
     lectureDto.videoUrl = this.formData.get('videoUrl').value;
     lectureDto.description = this.formData.get('description').value;
-    var courseID = +this.courseID;
-    this.corID = courseID ;
     this.courseService.createNewLecture(this.corID ,lectureDto).subscribe(res => {
       console.log("Success");
     }, err => {

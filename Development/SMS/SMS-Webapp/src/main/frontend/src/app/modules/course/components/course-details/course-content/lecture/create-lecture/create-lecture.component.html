@@ -37,7 +37,7 @@
 
                     <div class="form-group  col-12">
                       <label for="example-lectureDate-input" class="col-form-label">Date</label>
-                      <input class="form-control" formControlName="date" type="date" id="example-lectureDate-input">
+                      <input class="form-control" formControlName="lectureDate" type="date" id="example-lectureDate-input">
                     </div>
 
                     <div class="form-group  col-12">
@@ -53,11 +53,7 @@
                     </div>
 
 
-                      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">
-                    <button class="btn btn-success  mt-1 col-5 offset-3"
-                              (click)="onSubmitNewLecture()">Submit
-                      </button>
-                      </a>
+                      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"> <button class="btn btn-success mt-1 col-5 offset-3" (click)="onSubmitNewLecture()" >Submit </button> </a>
 
                   </form>
                 </div>

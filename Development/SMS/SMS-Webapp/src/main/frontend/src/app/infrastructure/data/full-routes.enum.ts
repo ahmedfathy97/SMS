@@ -12,7 +12,7 @@ export enum AngularFullRoutes {
   COR_NEW_Attendance = "/course/${corID}/attendance/new",
   COR_VIEW_Attendance = "/course/${corID}/attendance",
   COR_CREATE_LECTURE = "/course/${corID}/lecture/new",
-  COR_VIEW_LECTURES = "/course/${corID}/lectures",
+  COR_VIEW_LECTURES = "/course/${corID}/lecture",
 
 
 
