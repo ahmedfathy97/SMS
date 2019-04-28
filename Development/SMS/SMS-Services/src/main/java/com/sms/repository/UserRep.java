@@ -25,7 +25,7 @@ public class UserRep {
     }
 
     public UserData findUserByID(int userID) {
-        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,email,phone,college,s.username " +
+        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,email,phone,s.username " +
                 "FROM user_detail d " +
                 "left join auth_user s " +
                 "on d.user_id = s.id " +
@@ -40,7 +40,7 @@ public class UserRep {
                 "set first_name=? , last_name=?,age=? gender=?,email=?,phone=?,college=?,user_name=?" +
                 "where user_id =?  and id=?" ;
 
-        this.jdbcTemplate.update(sql ,userData.getUserName(),userData.getFirstName() ,userData.getLastName() ,userData.getAge() ,userData.getE_mail() ,userData.getGender() ,userData.getPhone() ,userData.getCollege() ,userID);
+        this.jdbcTemplate.update(sql ,userData.getUserName(),userData.getFirstName() ,userData.getLastName() ,userData.getAge() ,userData.getE_mail() ,userData.getGender() ,userData.getPhone() ,userID);
 
 
     }
