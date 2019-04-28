@@ -44,10 +44,10 @@
               <div class="row" formArrayName="items">
                 <div class="col-ml-6" *ngFor="let item of items.controls; index as i" [formGroupName]="i">
 
-                  <div class="form-group row">
-                    <label class="col-sm-7 col-form-label">{{students[i].fullName}}</label>
-                    <div class="col-sm-5">
-                      <input type="text" class="form-control" formControlName="grade">
+                  <div class="form-group row ml-1">
+                    <label class="col-sm-5 col-form-label">{{students[i].fullName}}</label>
+                    <div class="col-sm-5 ">
+                      <input type="text" class="form-control " formControlName="grade">
                     </div>
                   </div>
 
