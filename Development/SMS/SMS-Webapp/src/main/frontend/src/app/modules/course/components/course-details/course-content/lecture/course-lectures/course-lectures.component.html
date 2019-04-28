@@ -1,53 +1,60 @@
-<div class="page-title-area">
-  <div class="row align-items-center content-header">
-    <div class="col-sm-6">
-      <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">New Lecture</h4>
-      </div>
-      <div class="breadcrumbs-area clearfix">
-        <ul class="breadcrumbs pull-left mt-3">
-          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-          <li><span>Lectures</span></li>
+<div class="page-content">
 
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-6 clearfix">
-      <div class="pull-right">
-        <a class="btn btn-success btn-header"
-           [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">
-          <i class="fa fa-plus pr--10"></i> Add Lecture</a>
-      </div>
-    </div>
-  </div>
-</div>
+ <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">New Lecture</h4>
+        </div>
+        <div class="breadcrumbs-area clearfix">
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><span>Lectures</span></li>
 
-<div class="col-md-8 mt-5 offset-2">
-
-  <div class="card">
-    <div class="card-body">
-      <h4 class="header-title" >Course Lectures</h4>
-      <div class="market-status-table mt-4">
-        <div class="table-responsive">
-          <table class="dbkit-table">
-            <tr class="heading-td">
-              <td class="lec-num">#</td>
-              <td class="lec-title">Title</td>
-              <td class="lec-lectureDate">Date</td>
-            </tr>
-            <tr *ngFor="let lecture of lectureList , index as i">
-              <td class="lec-num">{{i +1}}</td>
-              <td class="lec-title">{{lecture.lectureTitle}}></td>
-              <td class="lec-lectureDate">{{lecture.lectureDate}}</td>
-            </tr>
-          </table>
+          </ul>
         </div>
       </div>
-
-
+      <div class="col-sm-6 clearfix">
+        <div class="pull-right">
+          <a class="btn btn-success btn-header"
+             [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">
+            <i class="fa fa-plus pr--10"></i> Add Lecture</a>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="page-content-area">
+    <div class="col-md-8 mt-5 offset-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title" >Course Lectures</h4>
+          <div class="market-status-table mt-4">
+            <div class="table-responsive">
+              <table class="dbkit-table">
+                <tr class="heading-td">
+                  <td class="lec-num">#</td>
+                  <td class="lec-title">Title</td>
+                  <td class="lec-lectureDate">Date</td>
+                </tr>
+                <tr *ngFor="let lecture of lectureList , index as i">
+                  <td class="lec-num">{{i +1}}</td>
+                  <td class="lec-title">{{lecture.lectureTitle}}></td>
+                  <td class="lec-lectureDate">{{lecture.lectureDate}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>
+
 
 
 
