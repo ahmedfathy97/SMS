@@ -15,7 +15,7 @@ export class AuthorizationGuard implements CanActivate {
     if(this.localStorageService.getCurrentUser().viewIDs.includes(route.data.viewID))
       return true;
     else
-      this.router.navigate(['/403']);
+      this.router.navigate(['/login']);
 
   }
 

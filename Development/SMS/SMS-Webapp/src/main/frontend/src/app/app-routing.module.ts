@@ -32,6 +32,9 @@ import {LectureDetailsComponent} from "./modules/course/components/course-detail
 import {UserListComponent} from "./modules/settings/components/setting-content/user-list/user-list.component";
 import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
 import {SettingDetailsComponent} from "./modules/settings/components/setting-details/setting-details.component";
+import {AuthViews} from "./infrastructure/directives/authorization/data/auth-views.enum";
+import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.guard";
+import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -53,7 +56,8 @@ const routes: Routes = [
       {path:'settings',children:
         [
           {path:'',component:SettingDetailsComponent ,children:[
-              {path:'users',component:UserListComponent},
+              {path:'users',component:UserListComponent, data: {viewID: AuthViews.USER_LIST},
+                canActivate:[AuthenticationGuard, AuthorizationGuard]},
               {path: 'user', children: [
                   {path: ':userID', component: UserProfileComponent}
                 ]}
@@ -67,7 +71,7 @@ const routes: Routes = [
       {path: 'upload', component: UploadComponent},
       {path: 'download', component: DownloadComponent},
 
-      // {path: 'home', component: HomeComponent} ,
+      // {path:  'home', component: HomeComponent} ,
       // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
       // {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
       //

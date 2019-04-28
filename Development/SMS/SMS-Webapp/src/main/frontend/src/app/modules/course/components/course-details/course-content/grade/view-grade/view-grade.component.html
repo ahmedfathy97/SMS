@@ -29,6 +29,7 @@
     <div class="col-sm-6 clearfix">
       <div class="pull-right">
         <a class="btn btn-success btn-header"
+           *authorizeAction="[AUTH_ACTIONS.COR_ADD_GRADE]"
            [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_GRADE, corID)]">
           <i class="fa fa-plus pr--10"></i> Add Grade</a>
       </div>

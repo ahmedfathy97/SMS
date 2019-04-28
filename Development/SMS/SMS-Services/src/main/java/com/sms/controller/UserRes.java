@@ -1,5 +1,7 @@
 package com.sms.controller;
 
+import com.sms.model.annotation.Authenticated;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.user.UserData;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
@@ -48,6 +50,7 @@ public class UserRes {
     @GET
     @Path("/find")
     @Produces(MediaType.APPLICATION_JSON)
+    //@Authenticated(views = {AuthViews.USER_LIST})
     public List<UserVTO> findAllUsers(){
         List<UserVTO> result=this.userRep.findAll();
         return result;

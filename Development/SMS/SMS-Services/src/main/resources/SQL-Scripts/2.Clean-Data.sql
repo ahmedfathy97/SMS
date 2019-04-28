@@ -65,6 +65,19 @@ INSERT INTO auth_role (id, label_ar, description_ar) VALUE (1, 'Instructor', 'Te
 INSERT INTO auth_role (id, label_ar, description_ar) VALUE (2, 'Student', 'Learning Courses');
 INSERT INTO auth_role (id, label_ar, description_ar) VALUE (3, 'System Admin', 'Managing System');
 
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (1, 'User-List', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (3,1);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (9,1);
+
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (1, 'Add-Grade', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (1,1);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (1,1);
+
+
+
+
+
+
 INSERT INTO auth_user_role (user_id, role_id) VALUE (1, 1);
 INSERT INTO auth_user_role (user_id, role_id) VALUE (4, 1);
 INSERT INTO auth_user_role (user_id, role_id) VALUE (5, 1);
@@ -73,7 +86,9 @@ INSERT INTO auth_user_role (user_id, role_id) VALUE (30, 1);
 
 INSERT INTO auth_user_role (user_id, role_id) VALUE (9, 3);
 INSERT INTO auth_user_role (user_id, role_id) VALUE (15, 3);
-# INSERT INTO auth_view (id, label_ar, description_ar) VALUE (1, 'View-Course', 'Viewing Course Details Page');
+
+INSERT INTO auth_user_role (user_id, role_id) VALUE (17, 2);
+
 # INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Create-Course', 'Viewing Create Course Page');
 # INSERT INTO auth_view (id, label_ar, description_ar) VALUE (3, 'Create-Translation', 'Viewing Create Course Translation Page');
 #
