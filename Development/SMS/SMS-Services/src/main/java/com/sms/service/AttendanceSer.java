@@ -3,6 +3,7 @@ package com.sms.service;
 
 import com.sms.model.AttendanceDTO;
 import com.sms.model.course.StdDTO;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.AttendanceRep;
 import com.sms.repository.CourseRep;
 import com.sms.repository.GradeRep;
@@ -25,7 +26,10 @@ public class AttendanceSer {
         this.rep = rep;
     }
 
-    public void createSheet(int courseID, AttendanceDTO data , boolean isUpdate ) {
+    public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data , boolean isUpdate ) throws Exception {
+        boolean isInstructor = this.rep.isInstructor(currentUser.getId(),courseID);
+        if(!isInstructor)
+            throw new Exception("Only Course Instructor can add Attendance");
         if (isUpdate == false) {
             int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
             for (StdDTO student : data.getStudents())

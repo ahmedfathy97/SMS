@@ -32,7 +32,20 @@ public class CourseRep {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public boolean isInstructor(int userID, int courseID)
+    {
+        String sql = "select cor_name from course \n" +
+                "where instructor_id = ? \n" +
+                "and id = ? ";
+        List result = this.jdbcTemplate.query(sql, new RowMapper<Object>() {
+            @Override
+            public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Object();
+            }
+        },userID , courseID);
 
+        return result.size() != 0 ;
+    }
     public List<CourseVTO> findAllInstructorCourses(int instrID) {
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +

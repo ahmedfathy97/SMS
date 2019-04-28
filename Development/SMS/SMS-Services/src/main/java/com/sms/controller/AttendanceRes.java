@@ -1,11 +1,16 @@
 package com.sms.controller;
 
+import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 
+import com.sms.model.annotation.Authenticated;
+import com.sms.model.user.UserVTO;
 import com.sms.service.AttendanceSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 @Path("/attendance")
@@ -25,12 +30,14 @@ public class AttendanceRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    public void createAttendanceSheet(@PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
-                                      @QueryParam("isUpdate") boolean isUpdate)
-    {
+    @Authenticated()
+    public void createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
+                                      @QueryParam("isUpdate") boolean isUpdate) throws Exception {
+
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         System.out.print("Data Recieved Sucessfully");
         System.out.print(attendanceDate.toString());
-        this.attendanceSer.createSheet(courseID, attendanceDate , isUpdate );
+        this.attendanceSer.createSheet(currentUser,courseID, attendanceDate , isUpdate );
     }
 
 
