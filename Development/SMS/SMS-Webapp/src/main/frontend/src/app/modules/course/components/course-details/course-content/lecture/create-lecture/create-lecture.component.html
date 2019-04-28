@@ -1,69 +1,70 @@
-<!-- page create lecture area start -->
-<div class="page-title-area">
-  <div class="row align-items-center">
-    <div class="col-sm-6">
-      <div class="breadcrumbs-area clearfix">
-        <h4 class="page-title pull-left">Dashboard</h4>
-        <ul class="breadcrumbs pull-left">
-          <li><a href="index.html">create lecture</a></li>
-          <li><span>Dashboard</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-6 clearfix">
-      <div class="user-profile pull-right">
-        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-        <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> User Name <i class="fa fa-angle-down"></i></h4>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Message</a>
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Log Out</a>
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">New Lecture</h4>
+        </div>
+        <div class="breadcrumbs-area clearfix">
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><span>New lecture</span></li>
+          </ul>
         </div>
       </div>
+
     </div>
   </div>
-</div>
-<div class="main-content-inner">
-  <!-- create lecture area start -->
-  <div class="row mt-5 mb-5">
-    <div class="col-8 offset-2">
-      <div class="card">
-        <div class="card-body ">
-          <div class="d-sm-flex justify-content-between align-items-center">
-            <h4 class="header-title mb-0  ">Create Lecture</h4>
-          </div>
-          <form [formGroup]="formData" >
-            <div class="form-group  col-12">
-              <label for="example-text-input" class="col-form-label ">Title</label>
-              <input class="form-control d-inline " formControlName="title" type="text"
-                     value="Enter Lecture Title" id="example-text-input">
-            </div>
-
-            <div class="form-group  col-12">
-              <label for="example-lectureDate-input" class="col-form-label">Date</label>
-              <input class="form-control" formControlName="lectureDate" type="lectureDate" id="example-lectureDate-input">
-            </div>
-
-            <div class="form-group  col-12">
-              <label for="url" class="col-form-label">Video URL</label>
-              <input class="form-control" formControlName="videoUrl" type="url"
-                     value="Enter Lecture Title" id="url">
-            </div>
-
-            <div class="form-group col-12">
-              <label for="example-text-input" class="col-form-label">Description</label>
-              <textarea class="form-control" formControlName="description" type="text"
-                        value="Enter Description - less than 200 char"></textarea>
-            </div>
 
 
-            <!--<div class="row">-->
-              <div class="card-action">
-                <button class="btn btn-success col-10 mt-1 offset-1" (click)="onSubmitNewLecture()">Submit</button>
+  <div class="page-content-area">
+    <div class="col-md-10 mt-5 offset-1">
+      <div class="main-content-inner">
+        <div class="row mt-5 mb-5">
+          <div class="col-8 offset-2">
+            <div class="card">
+              <div class="card-body ">
+                <div class="d-sm-flex justify-content-between align-items-center">
+                  <h4 class="header-title mb-0  ">Create Lecture</h4>
+                </div>
+                <div>
+                  <form [formGroup]="formData">
+                    <div class="form-group  col-12">
+                      <label for="example-text-input" class="col-form-label ">Title</label>
+                      <input class="form-control d-inline " formControlName="title" type="text"
+                             value="Enter Lecture Title" id="example-text-input">
+                    </div>
+
+                    <div class="form-group  col-12">
+                      <label for="example-lectureDate-input" class="col-form-label">Date</label>
+                      <input class="form-control" formControlName="date" type="date" id="example-lectureDate-input">
+                    </div>
+
+                    <div class="form-group  col-12">
+                      <label for="url" class="col-form-label">Video URL</label>
+                      <input class="form-control" formControlName="videoUrl" type="url"
+                             value="Enter Lecture Title" id="url">
+                    </div>
+
+                    <div class="form-group col-12">
+                      <label for="example-text-input" class="col-form-label">Description</label>
+                      <textarea class="form-control" formControlName="description" type="text"
+                                value="Enter Description - less than 200 char"></textarea>
+                    </div>
+
+
+                      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">
+                    <button class="btn btn-success  mt-1 col-5 offset-3"
+                              (click)="onSubmitNewLecture()">Submit
+                      </button>
+                      </a>
+
+                  </form>
+                </div>
+
               </div>
-            <!--</div>-->
-          </form>
-
+            </div>
+          </div>
         </div>
       </div>
     </div>

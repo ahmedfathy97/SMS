@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {LectureVto} from "../../../../../shared/data/lecture-vto";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-course-lectures',
@@ -10,6 +11,9 @@ import {LectureVto} from "../../../../../shared/data/lecture-vto";
   providers: [CourseService]
 })
 export class CourseLecturesComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
+
   corID: number ;
   lectureList: LectureVto[] ;
 

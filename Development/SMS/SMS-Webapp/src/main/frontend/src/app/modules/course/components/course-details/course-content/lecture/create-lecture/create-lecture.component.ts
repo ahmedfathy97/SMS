@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {ActivatedRoute} from "@angular/router";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 
 
 @Component({
@@ -12,6 +13,9 @@ import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
   providers: [FormBuilder ,CourseService]
 })
 export class CreateLecture implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
+
   courseID :string ;
   corID :number ;
   constructor(private formBuilder: FormBuilder,
