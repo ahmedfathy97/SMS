@@ -9,6 +9,8 @@ import com.sms.repository.GradeRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +25,18 @@ public class AttendanceSer {
         this.rep = rep;
     }
 
-    public void createSheet(int courseID, AttendanceDTO data) {
-        int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
-        for(StdDTO student: data.getStudents())
-            this.repository.insertStudentAttendance(sheetID, courseID, student);
-
+    public void createSheet(int courseID, AttendanceDTO data , boolean isUpdate ) {
+        if (isUpdate == false) {
+            int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
+            for (StdDTO student : data.getStudents())
+                this.repository.insertStudentAttendance(sheetID, courseID, student);
+        } else if(isUpdate == true) {
+            for (StdDTO student : data.getStudents()) {
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+                String strDate = dateFormat.format(data.getAttendanceData());
+                this.repository.updateStudentAttendance(courseID,strDate,student);
+            }
+        }
     }
 
     private List<StdDTO> cloneList(List<StdDTO> students){

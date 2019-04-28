@@ -62,7 +62,6 @@ export class CreateAttendanceComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
 
@@ -74,9 +73,9 @@ export class CreateAttendanceComponent implements OnInit {
     data.attendanceData = this.formData.get('attendanceDate').value;
     data.students = this.attendance.students;
     console.log(data);
-      this.attendanceService.createNewAttendanceSheet(this.corID, data).subscribe(
+      this.attendanceService.createNewAttendanceSheet(this.corID, this.isUpdated ,data).subscribe(
         res => {
-          this.router.navigate([`/course/${this.corID}/attendance`])        },
+          this.router.navigate([`/course/${this.corID}/attendance`])},
         error1 => {
           console.log(error1)
         }

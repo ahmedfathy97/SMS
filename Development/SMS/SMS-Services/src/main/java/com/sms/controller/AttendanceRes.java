@@ -25,10 +25,12 @@ public class AttendanceRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    public void createAttendanceSheet(@PathParam("courseID") int courseID, AttendanceDTO attendanceDate) {
+    public void createAttendanceSheet(@PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
+                                      @QueryParam("isUpdate") boolean isUpdate)
+    {
         System.out.print("Data Recieved Sucessfully");
         System.out.print(attendanceDate.toString());
-        this.attendanceSer.createSheet(courseID, attendanceDate);
+        this.attendanceSer.createSheet(courseID, attendanceDate , isUpdate );
     }
 
 

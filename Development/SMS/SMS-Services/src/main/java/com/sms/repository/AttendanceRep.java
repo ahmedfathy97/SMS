@@ -43,6 +43,17 @@ public class AttendanceRep {
         String sql = "INSERT INTO cor_std_att ( att_id , cor_id , std_id , is_attended ) value (?,?,?,?)";
         this.jdbc.update(sql , attendanceSheetID, courseID , data.getId() ,data.getIsAttend() ? "1" : "0"); }
 
+    public void updateStudentAttendance(int courseID, String attendanceDate , StdDTO data)
+    {
+        String sql = "update cor_std_att cor " +
+        " left join attendance att on att.id = cor.att_id " +
+        " and att.created_on = ? " +
+        " set is_attended = ? " +
+        " where cor.cor_id = ? " +
+        " and cor.std_id = ? " ;
+
+        this.jdbc.update(sql , attendanceDate , data.getIsAttend() ? "1" : "0"  , courseID , data.getId());
+    }
 
     public List<StdDTO> viewAttendSheetInstructor (int corID) {
         String sql= "select first_name, last_name , att.created_on , is_attended"+
