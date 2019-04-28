@@ -2,6 +2,7 @@ package com.sms.controller;
 
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthActions;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.StdDTO;
 import com.sms.repository.GradeRep;
 import com.sms.service.GradeSer;
@@ -26,7 +27,8 @@ public class GradeRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    @Authenticated(actions = {AuthActions.COR_ADD_GRADE})
+    @Authenticated(actions = {AuthActions.COR_ADD_GRADE},
+    views = {AuthViews.ADD_GRADE})
     public void createGradeSheet(@PathParam("courseID") int courseID, List<StdDTO> students,
                                  @QueryParam("gradeType") String gradeType) {
         this.gradeService.createSheet(courseID, students, gradeType);
