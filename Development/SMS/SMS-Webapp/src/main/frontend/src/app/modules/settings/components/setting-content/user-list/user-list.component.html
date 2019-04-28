@@ -149,7 +149,7 @@
             <tbody>
             <tr  *ngFor="let userDetail of userList ; index as i ;">
               <td>{{i+1}}</td>
-              <td> <a [routerLink] ="[replaceUserID(ROUTES.USER_PROFILE,userDetail.userID)]">{{userDetail.fullName}}</a></td>
+              <td> <a [routerLink] ="[replaceUserID(ROUTES.USER_PROFILE,userDetail.id)]">{{userDetail.fullName}}</a></td>
               <td>{{userDetail.birthDate}}</td>
               <td>{{userDetail.college}}</td>
               <td>{{userDetail.university}}</td>

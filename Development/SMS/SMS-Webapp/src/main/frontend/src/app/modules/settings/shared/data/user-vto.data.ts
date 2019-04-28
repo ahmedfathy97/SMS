@@ -1,5 +1,5 @@
 export class UserVtoData {
-
+   id:number;
   firstName:string;
   lastName:string;
   userName:string;
@@ -10,6 +10,6 @@ export class UserVtoData {
   university:string;
   fullName:string;
   birthDate:string;
-  userID:number;
+
 
 }

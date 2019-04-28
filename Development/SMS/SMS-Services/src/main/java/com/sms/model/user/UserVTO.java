@@ -23,7 +23,7 @@ public class UserVTO implements Serializable {
     String country;
     String university;
     String birth_date;
-    int userID;
+
 
 
     public UserVTO() {
@@ -165,13 +165,6 @@ public class UserVTO implements Serializable {
         this.birth_date = birth_date;
     }
 
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
 
     @Override
     public String toString() {
@@ -193,7 +186,6 @@ public class UserVTO implements Serializable {
                 ", country='" + country + '\'' +
                 ", university='" + university + '\'' +
                 ", birth_date='" + birth_date + '\'' +
-                ", userID=" + userID +
                 '}';
     }
 }
