@@ -25,10 +25,10 @@ import { ViewStudentAttendanceComponent } from './modules/course/components/cour
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import { CreateLecture } from './modules/course/components/course-details/course-content/lecture/create-lecture/create-lecture.component';
-import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
+//import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
 import { AnswerQuestionsComponent } from './modules/course/components/course-details/course-content/quiz/answer-questions/answer-questions.component';
 
-import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
+//import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
 import {RegisterComponent} from "./modules/security/components/register/register.component";
 import {AuthorizeActionDirective} from "./infrastructure/directives/authorization/authorize-action.directive";
 import {AuthorizeViewDirective} from "./infrastructure/directives/authorization/authorize-view.directive";
@@ -47,7 +47,16 @@ import { LectureDetailsComponent } from './modules/course/components/course-deta
 import {SmsSideBarComponent} from "./layout/components/full-layout/components/sms-side-bar/sms-side-bar.component";
 import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
 import { SettingDetailsComponent } from './modules/settings/components/setting-details/setting-details.component';
-import {UserListComponent} from "./modules/settings/components/setting-content/user-list/user-list.component";
+// import {UserListComponent} from "./modules/settings/components/setting-content/user-list/user-list.component";
+// import { UserDetailComponent } from './modules/settings/components/setting-content/user/user-detail/user-detail.component';
+// import { UserSideBarComponent } from './modules/settings/components/setting-content/user/user-detail/user-side-bar/user-side-bar.component';
+//import { UserContentComponent } from './modules/settings/components/setting-content/user/user-detail/user-content/user-content.component';
+import { UserSettingsComponent } from './modules/settings/components/setting-content/user/component/user-detail/user-content/user-settings/user-settings.component';
+import {UserProfileComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-profile/user-profile.component";
+import {UserEditComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-edit/user-edit.component";
+import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
+import {UserDetailComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-detail.component";
+import {UserSideBarComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-side-bar/user-side-bar.component";
 //import { SettindSidebarComponent } from './modules/settings/components/setting-side-bar/settind-sidebar.component';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -70,7 +79,11 @@ import {UserListComponent} from "./modules/settings/components/setting-content/u
     LectureDetailsComponent,
     UserListComponent,
     SettingSideBarComponent,
-    SettingDetailsComponent
+    SettingDetailsComponent,
+    UserDetailComponent,
+    UserSideBarComponent,
+    UserSettingsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -83,4 +96,6 @@ import {UserListComponent} from "./modules/settings/components/setting-content/u
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [LayoutComponent]
 })
-export class AppModule { }
+export class AppModule {
+  private static UserContentComponent: any;
+}
