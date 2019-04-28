@@ -9,7 +9,7 @@ import {CreateAttendanceComponent} from "./modules/course/components/course-deta
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {ViewAttendanceComponent} from "./modules/course/components/course-details/course-content/attendance/view-attendance/view-attendance.component";
 import {CreateQuizComponent} from "./modules/course/components/course-details/course-content/quiz/create-quiz/create-quiz.component";
-import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
+import {UserProfileComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-profile/user-profile.component";
 import {ViewGradeComponent} from "./modules/course/components/course-details/course-content/grade/view-grade/view-grade.component";
 import {ViewStudentGradeComponent} from "./modules/course/components/course-details/course-content/grade/view-student-grade/view-student-grade.component";
 import {ViewStudentAttendanceComponent} from "./modules/course/components/course-details/course-content/attendance/view-student-attendance/view-student-attendance.component";
@@ -19,7 +19,7 @@ import {CreateLecture} from "./modules/course/components/course-details/course-c
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
 import {AnswerQuestionsComponent} from "./modules/course/components/course-details/course-content/quiz/answer-questions/answer-questions.component";
-import {UserEditComponent} from "./modules/user/components/user-edit/user-edit.component";
+import {UserEditComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-edit/user-edit.component";
 import {RegisterComponent} from "./modules/security/components/register/register.component";
 import {CourseQuizesComponent} from "./modules/course/components/course-details/course-content/quiz/course-quizes/course-quizes.component";
 import {CourseLecturesComponent} from "./modules/course/components/course-details/course-content/lecture/course-lectures/course-lectures.component";
@@ -29,23 +29,36 @@ import {CreateAnnouncmentComponent} from "./modules/course/components/course-det
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
-import {UserListComponent} from "./modules/settings/components/setting-content/user-list/user-list.component";
+import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
 import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
 import {SettingDetailsComponent} from "./modules/settings/components/setting-details/setting-details.component";
+import {UserDetailComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-detail.component";
 import {AuthViews} from "./infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.guard";
 import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
-  {path: '', component: SimpleLayoutComponent, children: [
+  {
+    path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'home', component: HomeComponent} ,
+      {path: 'home', component: HomeComponent},
 
-
-      {path: 'user', children:
+      {
+        path: 'settings', component: SettingDetailsComponent, children:
           [
+            {path: 'users', component: UserListComponent}
+          ]
+      },
+      {
+        path: 'user', children: [
+          {
+            path: ':userID', component: UserDetailComponent, children: [
+              {path: 'profile', component: UserProfileComponent},
+              {path: 'edit', component: UserEditComponent}
+            ]
+          },
             {path: 'profile/:userID', component: UserProfileComponent},
             {path:'edit/:userID',component:UserEditComponent}
                 //{path:'',component:UserEditComponent},
@@ -71,29 +84,23 @@ const routes: Routes = [
       {path: 'upload', component: UploadComponent},
       {path: 'download', component: DownloadComponent},
 
-      // {path:  'home', component: HomeComponent} ,
-      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-      // {path:'edit',children:[{path:':userID',component:UserEditComponent}]} ,
-      //
-      // /* for some purposes  */
-      // {path: 'lecture', component: LectureDetailsComponent},
-      // {path: 'upload', component: UploadComponent},
-      // {path: 'download', component: DownloadComponent},
-
-
-
-
       {path: 'course', /* component which view all courses*/ children: [
+      {
+        path: 'course', /* component which view all courses*/ children: [
 
           {path: 'new', component: CreateCourse},
-          {path: ':courseID', component: CourseDetailsComponent, children: [
-              {path:'announcement', children:[
-                  {path:'', component:ViewAnnouncmentComponent} ,
+          {
+            path: ':courseID', component: CourseDetailsComponent, children: [
+              {
+                path: 'announcement', children: [
+                  {path: '', component: ViewAnnouncmentComponent},
                   {path: 'new', component: CreateAnnouncmentComponent}
-              ]},
+                ]
+              },
               {path: 'information', component: CourseInfoComponent},
-              {path: 'lecture', children: [
-                  {path:'' ,component: CourseLecturesComponent} ,
+              {
+                path: 'lecture', children: [
+                  {path: '', component: CourseLecturesComponent},
                   {path: 'new', component: CreateLecture}//,
                   // {path: ':lectureID', children: [
                   //     {path: 'upload ', component: UploadComponent},p
@@ -103,7 +110,8 @@ const routes: Routes = [
                 ]
               },
 
-              {path: 'attendance', children: [
+              {
+                path: 'attendance', children: [
                   {path: '', component: ViewAttendanceComponent},
                   {path: 'new', component: CreateAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE},
                     canActivate:[AuthenticationGuard, AuthorizationGuard]}
@@ -123,7 +131,8 @@ const routes: Routes = [
                 path: 'quiz', children: [
                   {path: '', component: CourseQuizesComponent},
                   {path: 'new', component: CreateQuizComponent},
-                  {path: ':quizID', children: [
+                  {
+                    path: ':quizID', children: [
                       {path: 'questions', component: AddQuizQuestionsComponent},
                       {path: 'answerQuiz', component: AnswerQuestionsComponent},
                     ]
@@ -135,15 +144,9 @@ const routes: Routes = [
         ]
       }
     ]
-  },
-
-  {path: '', component: FullLayoutComponent, children: [
-      {path: 'courses', component: CourseListComponent}
-      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-      // {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
-    ]
   }
-];
+  ]}
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
