@@ -45,12 +45,12 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent},
 
-      {
-        path: 'settings', component: SettingDetailsComponent, children:
-          [
-            {path: 'users', component: UserListComponent}
-          ]
-      },
+      // {
+      //   path: 'settings', component: SettingDetailsComponent, children:
+      //     [
+      //       {path: 'users', component: UserListComponent}
+      //     ]
+      // },
       {
         path: 'user', children: [
           {
@@ -84,7 +84,13 @@ const routes: Routes = [
       {path: 'upload', component: UploadComponent},
       {path: 'download', component: DownloadComponent},
 
-      {path: 'course', /* component which view all courses*/ children: [
+      {path: '', component: FullLayoutComponent, children: [
+          {path: 'courses', component: CourseListComponent}
+          // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+          // {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
+        ] } ,
+
+
       {
         path: 'course', /* component which view all courses*/ children: [
 
@@ -145,7 +151,6 @@ const routes: Routes = [
       }
     ]
   }
-  ]}
 ]
 
 @NgModule({
