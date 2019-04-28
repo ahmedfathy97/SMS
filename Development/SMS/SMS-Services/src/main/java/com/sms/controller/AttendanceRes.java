@@ -12,6 +12,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/attendance")
 public class AttendanceRes {
@@ -34,10 +35,15 @@ public class AttendanceRes {
     public void createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
                                       @QueryParam("isUpdate") boolean isUpdate) throws Exception {
 
-        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        System.out.print("Data Recieved Sucessfully");
-        System.out.print(attendanceDate.toString());
-        this.attendanceSer.createSheet(currentUser,courseID, attendanceDate , isUpdate );
+        try {
+            UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+            System.out.print("Data Recieved Sucessfully");
+            System.out.print(attendanceDate.toString());
+            this.attendanceSer.createSheet(currentUser, courseID, attendanceDate, isUpdate);
+        } catch (Exception e) {
+            request.abortWith(Response.status(Response.Status.BAD_REQUEST)
+                    .entity("User doesn't have privilege to enter").build());
+        }
     }
 
 

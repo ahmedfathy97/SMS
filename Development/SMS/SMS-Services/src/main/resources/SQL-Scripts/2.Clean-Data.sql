@@ -89,6 +89,9 @@ INSERT INTO auth_user_role (user_id, role_id) VALUE (15, 3);
 
 INSERT INTO auth_user_role (user_id, role_id) VALUE (17, 2);
 
+
+
+
 # INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Create-Course', 'Viewing Create Course Page');
 # INSERT INTO auth_view (id, label_ar, description_ar) VALUE (3, 'Create-Translation', 'Viewing Create Course Translation Page');
 #
