@@ -1,3 +1,8 @@
+----yara( role action )------
+INSERT INTO auth_user_role (user_id, role_id) VALUE (10, 2);
+----------------
+
+
 -----Yara View (Create Attendance)----
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (3, 'Add-Attendance', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,3);
