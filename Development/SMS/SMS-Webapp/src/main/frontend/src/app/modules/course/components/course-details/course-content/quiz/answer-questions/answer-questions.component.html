@@ -22,11 +22,11 @@
           <h4 class="header-title">Questions</h4>
           <hr>
           <form [formGroup]="formData">
+            <div formArrayName="questions" >
             <div  *ngFor="let item of quizQuestions; index as i">
-              <label>{{item.id}} . </label>
+              <label formControlName="questionID" >{{item.id}} . </label>
               <label>{{item.question}}</label>
               <br><br>
-
 
 
               <div *ngIf="item.questionTypeID ==1">
@@ -63,6 +63,7 @@
                   <input type="radio" id="{{'falseAnswer_'+i}}"  name="studentAnswer" class="custom-control-input" formControlName="studentAnswer">
                   <label class="custom-control-label" for="{{'falseAnswer_'+i}}">False</label>
                 </div>
+              </div>
               </div>
               <hr>
             </div>

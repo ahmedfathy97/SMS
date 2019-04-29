@@ -54,6 +54,7 @@ export class CreateGradeComponent implements OnInit {
       res => {
         this.students = res;
         this.clearFormArray(this.items);
+
         for(let i=0; i<this.students.length; i++) {
           if(this.formData.get("gradeType").value=='M1') {
             this.addItem(this.students[i].midTermOne);

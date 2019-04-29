@@ -28,9 +28,9 @@ export class QuizService {
     return this.httpClient.get<QuestionType[]>(this.BASE_URL+"/lookup/questionType") ;
   }
 
-  submitQuizAnswersForStudent( userID :number ,quizID :number , studentAnswerDTOList : StudentAnswerDto[]  )
+  submitQuizAnswersForStudent( quizID :number , studentAnswerDTOList : StudentAnswerDto[]  )
   {
-    return this.httpClient.post(this.BASE_URL + "/quiz/" +userID +"/" +quizID +"/answer" ,studentAnswerDTOList) ;
+    return this.httpClient.post(this.BASE_URL + "/quiz/"  +"/" +quizID +"/answer" ,studentAnswerDTOList) ;
   }
   getQuizQuestions(quizID : number)
   {

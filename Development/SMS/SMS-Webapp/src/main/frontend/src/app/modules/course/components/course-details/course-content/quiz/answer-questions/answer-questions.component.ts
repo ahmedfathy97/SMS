@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionVto} from "../../../../../shared/data/quiz/question-vto";
 import {QuizService} from "../../../../../shared/services/quiz.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StudentAnswerDto} from "../../../../../shared/data/quiz/student-answer-dto";
 import {ActivatedRoute} from "@angular/router";
 import {
@@ -20,7 +20,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 export class AnswerQuestionsComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
-  studentID: number =1 ;
+  //studentID: number =1 ;
   corID :number ;
   quizID:number ;
   quizQuestions: QuestionVto[] =[];
@@ -43,12 +43,46 @@ export class AnswerQuestionsComponent implements OnInit {
   }
 
 
-
-
   formData: FormGroup = this.formBuilder.group({
-    questionID :null ,
-    studentAnswer:null ,
-  }) ;
+    questions: new FormArray([]),
+  });
+
+
+  private  get questions(): FormArray {
+    return this.formData.get('questions') as FormArray;
+  }
+
+  private addItem(answer:string): void {
+    this.questions.push(this.formBuilder.group({
+      questionID :null ,
+      studentAnswer:null ,
+    }));
+  }
+
+
+  clearFormArray = (formArray: FormArray) => {
+    while (formArray.length !== 0) {
+      formArray.removeAt(0)
+    }
+  }
+
+  onSubmitAnswers()
+  {
+    let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
+    for(let question of this.quizQuestions)
+    {
+      studentAnswer.questionID =question.id ;
+      studentAnswer.studentAnswer= this.formData.get('studentAnswer').value ;
+      this.studentAnswers.push(studentAnswer);
+    }
+
+
+    this.quizService.submitQuizAnswersForStudent(this.quizID,this.studentAnswers).subscribe(res => {
+      console.log("Success");``
+    }, err => {
+      console.log(err);
+    } );
+  }
 
   getQuizQuestions() {
     this.quizService.getQuizQuestions(this.quizID).subscribe(res => {
@@ -57,25 +91,6 @@ export class AnswerQuestionsComponent implements OnInit {
     }, err => {
       console.log(err);
     });
-  }
-
-  onSubmitAnswers()
-  {
-    let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
-     //var quizID = +this.quizID ;
-
-    for(let question of this.quizQuestions)
-    {
-      studentAnswer.questionID =question.id ;
-      studentAnswer.studentAnswer= this.formData.get('studentAnswer').value ;
-      this.studentAnswers.push(studentAnswer);
-    }
-
-    this.quizService.submitQuizAnswersForStudent(this.studentID ,this.quizID,this.studentAnswers).subscribe(res => {
-      console.log("Success");``
-    }, err => {
-      console.log(err);
-    } );
   }
 
   ngOnInit() {

@@ -1,9 +1,10 @@
-----yara( role action )------
+ USE sms ;
+ -- yara( role action )------
 INSERT INTO auth_user_role (user_id, role_id) VALUE (10, 2);
-----------------
 
 
------Yara View (Create Attendance)----
+
+-- Yara View (Create Attendance)----
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (3, 'Add-Attendance', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,3);
@@ -11,9 +12,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,3);
------Yara View (Attendance)----
+----- Yara View (Attendance)----
 
------Yara Action (View Attendance)
+----- Yara Action (View Attendance)
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (3, 'Add-Attendance', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,3);
@@ -21,9 +22,9 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,3);
------Yara Action (View Attendance)
+-- Yara Action (View Attendance)
 
------Yara View (Create Announcement)----
+-- Yara View (Create Announcement)----
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (4, 'Add-Announcement', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,4);
@@ -31,9 +32,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,4);
------Yara View (Announcement)----
+-- Yara View (Announcement)----
 
------Yara Action (View Announcement)
+-- Yara Action (View Announcement)
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (4, 'Add-Announcement', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,4);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,4);
@@ -41,13 +42,14 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,4);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,4);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,4);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,4);
------Yara Action (View Announcement)
+-- Yara Action (View Announcement)
 
 
---start hala--
+-- start hala --
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Add-Grade', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,2);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,2);
+-- end hala --
 --end hala----
 
 -- Youssef Lec Auth --

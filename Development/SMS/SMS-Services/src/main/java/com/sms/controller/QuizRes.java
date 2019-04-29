@@ -1,13 +1,18 @@
 package com.sms.controller;
 
+import com.sms.controller.filter.AuthenticationFilter;
+import com.sms.model.annotation.Authenticated;
 import com.sms.model.course.quiz.QuestionDTO;
 import com.sms.model.course.quiz.QuestionVTO;
 import com.sms.model.course.quiz.StudentAnswerDTO;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.QuizRep;
 import com.sms.service.QuizSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -52,11 +57,13 @@ public class QuizRes {
 
 
     @POST
-    @Path("/{studentID}/{quizID}/answer")
+    @Path("/{quizID}/answer")
     @Consumes(MediaType.APPLICATION_JSON)
-    public  void submitQuizAnswers(@PathParam("studentID")int studentID , @PathParam("quizID")int quizID ,  List<StudentAnswerDTO> studentAnswerDTOList)
+    @Authenticated()
+    public  void submitQuizAnswers(@Context ContainerRequestContext request, @PathParam("quizID")int quizID , List<StudentAnswerDTO> studentAnswerDTOList)
      {
-         quizSer.submitQuizAnswers( studentID ,quizID , studentAnswerDTOList);
+         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+         quizSer.submitQuizAnswers( currentUser.getId() ,quizID , studentAnswerDTOList);
      }
 
 
