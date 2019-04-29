@@ -26,9 +26,6 @@ public class AttendanceRes {
         this.attendanceSer = attendanceSer;
     }
 
-
-
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

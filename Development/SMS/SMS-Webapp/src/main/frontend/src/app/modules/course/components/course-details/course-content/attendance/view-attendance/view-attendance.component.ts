@@ -5,6 +5,7 @@ import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {AttendanceDTO} from "../../../../../shared/data/attendance-dto.data";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-view-attendance',
@@ -12,6 +13,7 @@ import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructu
   providers : [CourseService]
 })
 export class ViewAttendanceComponent implements OnInit {
+  AUTH_ACTION: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   display : boolean = false ;
