@@ -4,6 +4,7 @@ import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthActions;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
@@ -150,7 +151,7 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/attendance")
-    @Authenticated(actions = {AuthActions.COR_ADD_ATTENDANCE})
+    @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
     public List<AttendanceDTO> getCourseAttendance(@PathParam("courseID") int courseID) {
         System.out.print("Sucessfully");
         List<AttendanceDTO> list = this.attendance.getCourseAttendance(courseID);
@@ -173,6 +174,7 @@ public class CourseRes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/newAnnouncment")
+    @Authenticated(actions = {AuthActions.COR_ADD_ANNOUNCEMENT})
     public void createAnnouncement(@PathParam("courseID") int courseID, Announcement announcement) {
         System.out.print("Data Recieved Sucessfully");
         System.out.print(announcement.toString());
@@ -183,6 +185,7 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/announcmentList")
+    @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
     public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID)
     {
         List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID) ;

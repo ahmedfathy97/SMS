@@ -18,6 +18,26 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (6,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,3);
 -----Yara Action (View Attendance)
 
+-----Yara View (Create Announcement)----
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (4, 'Add-Announcement', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,4);
+-----Yara View (Announcement)----
+
+-----Yara Action (View Announcement)
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (4, 'Add-Announcement', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (1,4);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (1,4);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (4,4);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (5,4);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (6,4);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (30,4);
+-----Yara Action (View Announcement)
+
 
 --start hala--
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Add-Grade', '');

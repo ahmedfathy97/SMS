@@ -3,6 +3,8 @@ import {CourseService} from "../../../../../shared/services/course.service";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {Announcement} from "../../../../../shared/data/announcment";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 @Component({
   selector: 'app-view-announcment',
@@ -11,6 +13,7 @@ import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructu
   providers: [CourseService]
 })
 export class ViewAnnouncmentComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
 
