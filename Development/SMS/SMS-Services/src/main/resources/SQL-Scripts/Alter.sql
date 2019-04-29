@@ -49,3 +49,19 @@ INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Add-Grade', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,2);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,2);
 --end hala----
+
+-- Youssef Lec Auth --
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '7');
+
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '7');
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Create-lec', 'creat lec component');
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
+
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
+
+
+

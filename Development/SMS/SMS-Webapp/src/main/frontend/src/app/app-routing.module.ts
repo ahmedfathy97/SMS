@@ -108,7 +108,8 @@ const routes: Routes = [
               {
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent},
-                  {path: 'new', component: CreateLecture}//,
+                  {path: 'new', component: CreateLecture ,
+                    data: {viewID: AuthViews.CREATE_LEC}, canActivate:[AuthenticationGuard, AuthorizationGuard]}//,
                   // {path: ':lectureID', children: [
                   //     {path: 'upload ', component: UploadComponent},p
                   //     {path: 'download', component: DownloadComponent}

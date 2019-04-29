@@ -3,6 +3,7 @@ package com.sms.controller;
 import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.annotation.Authenticated;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.authorization.AuthActions;
 import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.*;
@@ -57,7 +58,8 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-    @Authenticated()
+//    @Authenticated()
+    @Authenticated(views = {AuthViews.CREATE_LEC})
     public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         return this.courseSer.findAllCourses(currentUser);
