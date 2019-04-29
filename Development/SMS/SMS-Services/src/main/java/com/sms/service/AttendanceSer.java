@@ -30,6 +30,7 @@ public class AttendanceSer {
         boolean isInstructor = this.rep.isInstructor(currentUser.getId(),courseID);
         if(!isInstructor)
             throw new Exception("Only Course Instructor can add Attendance");
+
         if (isUpdate == false) {
             int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
             for (StdDTO student : data.getStudents())

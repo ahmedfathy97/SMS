@@ -75,7 +75,9 @@ export class CreateAttendanceComponent implements OnInit {
     console.log(data);
       this.attendanceService.createNewAttendanceSheet(this.corID, this.isUpdated ,data).subscribe(
         res => {
-          this.router.navigate([`/course/${this.corID}/attendance`])},
+          console.log(res);
+          // this.router.navigate([`/course/${this.corID}/attendance`])
+          },
         error1 => {
           console.log(error1)
         }

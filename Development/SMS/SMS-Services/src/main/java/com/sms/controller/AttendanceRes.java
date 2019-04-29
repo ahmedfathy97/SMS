@@ -4,6 +4,7 @@ import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 
 import com.sms.model.annotation.Authenticated;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.user.UserVTO;
 import com.sms.service.AttendanceSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +31,22 @@ public class AttendanceRes {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    @Authenticated()
-    public void createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
-                                      @QueryParam("isUpdate") boolean isUpdate) throws Exception {
+    @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
+    public Response createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
+                                      @QueryParam("isUpdate") boolean isUpdate) {
 
         try {
             UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
             System.out.print("Data Recieved Sucessfully");
             System.out.print(attendanceDate.toString());
             this.attendanceSer.createSheet(currentUser, courseID, attendanceDate, isUpdate);
+            return Response.noContent().build();
         } catch (Exception e) {
-            request.abortWith(Response.status(Response.Status.BAD_REQUEST)
-                    .entity("User doesn't have privilege to enter").build());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+//            request.abortWith(Response.status(Response.Status.BAD_REQUEST)
+//                    .entity(e.getMessage()).build());
         }
     }
 
