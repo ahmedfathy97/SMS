@@ -72,6 +72,12 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (9,1);
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (1, 'Add-Grade', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,1);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,1);
+--new instructor(action Grade)
+INSERT INTO auth_user_action (user_id, action_id) VALUE (4,1);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (5,1);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (6,1);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (30,1);
+--end
 
 
 

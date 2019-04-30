@@ -45,12 +45,21 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (30,4);
 -- Yara Action (View Announcement)
 
 
--- start hala --
+-- start hala --(view Grade)
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Add-Grade', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,2);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,2);
+--new instructor
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,2);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,2);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,2);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,2);
+--------
+
+
+
 -- end hala --
---end hala----
+
 
 -- Youssef Lec Auth --
 INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
