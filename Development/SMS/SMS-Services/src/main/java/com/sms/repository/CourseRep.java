@@ -145,7 +145,7 @@ public class CourseRep {
         parameters.put("start_date",dateFormat.format(quizData.getStartDate()));
         parameters.put("close_date",dateFormat.format(quizData.getFinishDate()));
         parameters.put("course_id",courseID);
-        parameters.put("auto_close",quizData.isClosed());
+        parameters.put("is_closed",quizData.isClosed());
 
         Number newId = quizSJI.executeAndReturnKey(parameters);
         return newId.intValue();

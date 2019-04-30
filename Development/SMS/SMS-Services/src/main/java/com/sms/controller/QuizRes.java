@@ -2,9 +2,7 @@ package com.sms.controller;
 
 import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.annotation.Authenticated;
-import com.sms.model.course.quiz.QuestionDTO;
-import com.sms.model.course.quiz.QuestionVTO;
-import com.sms.model.course.quiz.StudentAnswerDTO;
+import com.sms.model.course.quiz.*;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.QuizRep;
 import com.sms.service.QuizSer;
@@ -67,7 +65,23 @@ public class QuizRes {
      }
 
 
+    @POST
+    @Path("/{quizID}/close")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void closeQuiz (int quizID)
+    {
+        quizSer.closeQuiz(quizID);
 
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{quizID}/quizDetails")
+    public QuizInformationVTO getQuizInformation(@PathParam("quizID")int quizID)
+    {
+        return quizSer.getQuizInformation(quizID) ;
+    }
 
 
 }

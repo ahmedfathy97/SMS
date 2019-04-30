@@ -66,4 +66,8 @@ INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
 INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
 
 
+-- ahmed start --
+ALTER TABLE `sms`.`quiz`
+CHANGE COLUMN `auto_close` `is_closed` TINYINT(4) NULL DEFAULT NULL ;
+-- ahmed end --
 

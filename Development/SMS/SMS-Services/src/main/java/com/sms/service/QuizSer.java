@@ -92,6 +92,19 @@ public class QuizSer {
        return questionEvaluate ;
     }
 
+
+    public void closeQuiz (int quizID)
+    {
+
+        quizRep.closeQuiz(quizID);
+    }
+
+
+    public QuizInformationVTO getQuizInformation(int quizID)
+    {
+       return quizRep.getQuizInformation(quizID) ;
+    }
+
     }
 
 
