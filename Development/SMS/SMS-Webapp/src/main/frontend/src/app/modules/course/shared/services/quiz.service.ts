@@ -45,10 +45,10 @@ export class QuizService {
   }
 
 
-  // closeQuiz(quizID : number )
-  // {
-  //   return this.httpClient.post( this.BASE_URL + "/quiz/"+ quizID +"/close" ,quizDetails) ;
-  // }
+  closeQuiz(quizID : number )
+  {
+    return this.httpClient.put( this.BASE_URL + "/quiz/"+ quizID +"/close" ,null) ;
+  }
 
   getQuizDetails(quizID : number)
   {

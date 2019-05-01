@@ -111,10 +111,7 @@ public class QuizSer {
     }
 
 
-//    public List<QuizResult> getQuizResult( int studentID ,int quizID )
-//    {
-//          return quizRep.getQuizResult(studentID ,quizID) ;
-//    }
+
 
     }
 

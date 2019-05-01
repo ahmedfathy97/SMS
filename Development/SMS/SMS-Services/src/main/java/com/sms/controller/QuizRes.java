@@ -84,14 +84,6 @@ public class QuizRes {
     }
 
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/{quizID}/results")
-//    public List<QuizResult> getQuizResult(@Context ContainerRequestContext request, @PathParam("quizID")int quizID )
-//    {
-//        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-//        return quizSer.getQuizResult(currentUser.getId() ,quizID) ;
-//    }
 
 
 }

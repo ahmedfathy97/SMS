@@ -36,9 +36,9 @@ import {UserDetailComponent} from "./modules/settings/components/setting-content
 import {AuthViews} from "./infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.guard";
 import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
+import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-main-detail/quiz-main-detail-component";
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
-import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -148,7 +148,7 @@ const routes: Routes = [
                     path: ':quizID', children: [
                       {path: 'questions', component: AddQuizQuestionsComponent},
                       {path: 'answerQuiz', component: AnswerQuestionsComponent},
-                      {path: 'quizDetails', component: QuizDetailsComponent},
+                      {path: 'quizDetails', component: QuizMainDetailComponent},
 
                     ]
                   },

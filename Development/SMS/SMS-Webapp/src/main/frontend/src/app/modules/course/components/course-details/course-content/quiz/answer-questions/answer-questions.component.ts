@@ -52,10 +52,10 @@ export class AnswerQuestionsComponent implements OnInit {
     return this.formData.get('questions') as FormArray;
   }
 
-  private addItem(answer:string): void {
+  private addItem(questionID:number): void {
     this.questions.push(this.formBuilder.group({
-      questionID :null ,
-      studentAnswer:null ,
+      questionID : questionID ,
+      studentAnswer: null ,
     }));
   }
 
@@ -88,6 +88,12 @@ export class AnswerQuestionsComponent implements OnInit {
     this.quizService.getQuizQuestions(this.quizID).subscribe(res => {
       console.log("Success");
       this.quizQuestions = res;
+      this.clearFormArray(this.questions) ;
+
+      for(let question of this.quizQuestions)
+      {
+          this.addItem(question.id) ;
+      }
     }, err => {
       console.log(err);
     });
