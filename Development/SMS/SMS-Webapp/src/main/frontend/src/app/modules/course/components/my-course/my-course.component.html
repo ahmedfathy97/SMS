@@ -1,0 +1,57 @@
+<div class="page-content">
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">Courses</h4>
+          <br/>
+          <ul class="breadcrumbs pull-left mt-3">
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6 clearfix">
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Message</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Log Out</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="page-content-area">
+    <div class="offset-2 col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <!--<div class="card-area">-->
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mt-5" *ngFor="let course of resultSet.list">
+                <div class="card card-bordered">
+                  <img class="card-img-top img-fluid course-img" src="{{course.imagePath}}" alt="image">
+                  <div class="card-body">
+                    <h5 class="title clickable" [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, course.id)]">
+                      {{course.courseName}}
+                    </h5>
+                    <h5 class="title">
+                      {{course.duration}} Hr - {{course.startDate | date: 'dd MMM yyyy'}}
+                    </h5>
+                    <h5 class="title">
+                      By {{course.instructorName}}
+                    </h5>
+                    <p class="card-text">{{course.description}}</p>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          <!--</div>-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

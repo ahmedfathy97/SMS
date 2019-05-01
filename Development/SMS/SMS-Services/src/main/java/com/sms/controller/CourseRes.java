@@ -5,7 +5,6 @@ import com.sms.model.AttendanceDTO;
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthViews;
 import com.sms.model.authorization.AuthActions;
-import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
@@ -20,7 +19,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import java.util.Date;
 import java.util.List;
 
 @Path("/course")
@@ -60,8 +58,21 @@ public class CourseRes {
     @Path("/")
     @Authenticated()
     public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
+    @Authenticated()
+//    @Authenticated(views = {AuthViews.CREATE_LEC})
+    public CourseResultSet myCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        return this.courseSer.findAllCourses(currentUser);
+        return this.courseSer.myCourses(currentUser);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all")
+    @Authenticated()
+
+    public CourseResultSet findAllCourses() {
+
+        return this.courseSer.findALLCourses();
     }
 
     @GET

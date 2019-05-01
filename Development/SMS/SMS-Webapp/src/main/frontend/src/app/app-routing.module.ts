@@ -26,7 +26,7 @@ import {CourseLecturesComponent} from "./modules/course/components/course-detail
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
-import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
+// import {MyCourseListComponent} from "./modules/course/components/my-course-list/my-course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
 import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
@@ -36,6 +36,8 @@ import {UserDetailComponent} from "./modules/settings/components/setting-content
 import {AuthViews} from "./infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.guard";
 import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
+import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
+import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 
 const routes: Routes = [
@@ -86,7 +88,9 @@ const routes: Routes = [
       {path: 'download', component: DownloadComponent},
 
       {path: '', component: FullLayoutComponent, children: [
-          {path: 'courses', component: CourseListComponent}
+          {path: 'my-courses', component: MyCourseComponent},
+          {path: 'courses', component: CourseListComponent},
+
           // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           // {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
         ] } ,

@@ -68,8 +68,11 @@ export class CourseService {
   //   return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/"+courseID);
   // }
   findAllCourses(){
-    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course");
+    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/all");
 
+  }
+  findAllMyCourses(){
+    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course");
   }
 
 

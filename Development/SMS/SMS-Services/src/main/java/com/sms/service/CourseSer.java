@@ -58,7 +58,14 @@ public class CourseSer {
         List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;
         return lectureVTOList;
     }
-    public CourseResultSet findAllCourses(UserVTO currentUser){
+    public CourseResultSet findALLCourses(){
+        List<CourseVTO> courseVTOList = new ArrayList<>();
+        courseVTOList = courseRep.findALLCourses();
+        CourseResultSet resultSet = new CourseResultSet();
+        resultSet.setList(courseVTOList);
+        return resultSet;
+    }
+    public CourseResultSet myCourses(UserVTO currentUser){
         List<CourseVTO> courseVTOList = new ArrayList<>();
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
             courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId());

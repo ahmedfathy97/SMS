@@ -57,6 +57,7 @@ import {UserEditComponent} from "./modules/settings/components/setting-content/u
 import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
 import {UserDetailComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-detail.component";
 import {UserSideBarComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-side-bar/user-side-bar.component";
+import { MyCourseComponent } from './modules/course/components/my-course/my-course.component';
 import { QuizDetailsComponent } from './modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component';
 //import { SettindSidebarComponent } from './modules/settings/components/setting-side-bar/settind-sidebar.component';
 
@@ -85,6 +86,7 @@ import { QuizDetailsComponent } from './modules/course/components/course-details
     UserSideBarComponent,
     UserSettingsComponent,
     QuizDetailsComponent,
+    MyCourseComponent,
 
   ],
   imports: [
