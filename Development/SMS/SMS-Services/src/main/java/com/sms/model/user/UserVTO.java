@@ -5,24 +5,23 @@ import java.util.List;
 
 public class UserVTO implements Serializable {
 
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private String email;
-    private List<Integer> roleIDs;
-
-    String fullName;
-    int age;
-    String gender;
-    String e_mail;
-    int phone;
-    String college;
-    String userName;
-    String country;
-    String university;
-    String birth_date;
+        private int id;
+        private String firstName;
+        private String lastName;
+        private String username;
+        private String password;
+        private String email;
+        private List<Integer> roleIDs;
+        int userID;
+        String fullName;
+        int age;
+        String gender;
+        int phone;
+        String college;
+        String userName;
+        String country;
+        String university;
+        String birth_date;
 
 
 
@@ -101,13 +100,7 @@ public class UserVTO implements Serializable {
         this.gender = gender;
     }
 
-    public String getE_mail() {
-        return e_mail;
-    }
 
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
-    }
 
     public int getPhone() {
         return phone;
@@ -179,7 +172,6 @@ public class UserVTO implements Serializable {
                 ", fullName='" + fullName + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
-                ", e_mail='" + e_mail + '\'' +
                 ", phone=" + phone +
                 ", college='" + college + '\'' +
                 ", userName='" + userName + '\'' +

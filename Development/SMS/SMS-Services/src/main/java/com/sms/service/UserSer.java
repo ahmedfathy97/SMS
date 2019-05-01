@@ -1,5 +1,5 @@
 package com.sms.service;
-import com.sms.model.user.UserData;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ public class UserSer {
         this.userRep=userRep;
     }
 
-    public UserData findByID(int userID) {
+    public UserVTO findByID(int userID) {
 
         return this.userRep.findUserByID(userID);
     }
