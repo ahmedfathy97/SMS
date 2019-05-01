@@ -28,44 +28,65 @@
         <form [formGroup]="formData">
           <div class="form-group d-inline-block col-6">
             <label for="example-text-input" class="col-form-label">Name</label>
-            <input class="form-control" formControlName="courseName" type="text"
-                   value="Enter Course Name - less than 25 char" id="example-text-input">
+            <input class="form-control" formControlName="courseName" type="text" id="example-text-input"
+                   [ngClass]="{ 'is-invalid': f.courseName.dirty && f.courseName.errors?.required }">
+            <div *ngIf="submitted && f.courseName.errors" class="invalid-feedback">
+                <small *ngIf="f.courseName.errors?.required">Course name can't be null </small>
+                <small *ngIf="f.courseName.errors?.maxlength">length of course name less than 25 letter </small>
+            </div>
           </div>
 
           <div class="form-group d-inline-block col-6">
             <label for="example-number-input" class="col-form-label">Duration</label>
             <input class="form-control" formControlName="duration" type="number" value="Duration with Hours"
-                   id="example-number-input">
+                   id="example-number-input"
+                   [ngClass]="{ 'is-invalid': f.duration.dirty && f.duration.errors?.required }">
+            <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                <small *ngIf="f.duration.errors?.required">duration can't be null </small>
+                <small *ngIf="f.duration.errors?.min">duration can't be less than 1 hour </small>
+            </div>
           </div>
 
           <div class="form-group d-inline-block col-6">
             <label for="example-lectureDate-input" class="col-form-label">Start Date</label>
-            <input class="form-control" formControlName="startDate" type="lectureDate" id="example-lectureDate-input">
+            <input class="form-control" formControlName="startDate" type="lectureDate" id="example-lectureDate-input"
+                   [ngClass]="{ 'is-invalid': f.startDate.dirty && f.startDate.errors?.required }">
+
+            <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                <small *ngIf="f.startDate.errors.required">Start Date can't be null </small>
+            </div>
           </div>
 
           <div class="form-group d-inline-block col-6">
             <label for="example-lectureDate-input" class="col-form-label">End Date</label>
-            <input class="form-control" formControlName="endDate" type="lectureDate" id="example-lectureDate">
+            <input class="form-control" formControlName="endDate" type="lectureDate" id="example-lectureDate"
+                   [ngClass]="{ 'is-invalid': f.endDate.dirty && f.endDate.errors?.required }">
+            <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+              <small *ngIf="f.endDate.errors?.required">End Date can't be null </small>
+            </div>
           </div>
 
 
           <div class="form-group d-inline-block col-4">
             <label class="col-form-label">Category</label>
-            <select class="form-control" formControlName="categoryID">
+            <select class="form-control" formControlName="categoryID"
+                    [ngClass]="{ 'is-invalid': f.categoryID.dirty && f.categoryID.errors?.required }">
               <option *ngFor="let category of corCategoryList" [ngValue]="category.id">{{category.labelEN}}</option>
             </select>
           </div>
 
           <div class="form-group d-inline-block col-4">
             <label class="col-form-label">Type</label>
-            <select class="form-control" formControlName="typeID">
+            <select class="form-control" formControlName="typeID"
+                    [ngClass]="{ 'is-invalid': f.typeID.dirty && f.typeID.errors?.required }">
               <option *ngFor="let type of corTypeList" [ngValue]="type.id">{{type.labelEN}}</option>
             </select>
           </div>
 
           <div class="form-group d-inline-block col-4">
             <label class="col-form-label">Level</label>
-            <select class="form-control" formControlName="levelID">
+            <select class="form-control" formControlName="levelID"
+                    [ngClass]="{ 'is-invalid': f.levelID.dirty && f.levelID.errors?.required }">
               <option *ngFor="let level of corLevelList" [ngValue]="level.id">{{level.labelEN}}</option>
             </select>
           </div>
@@ -73,7 +94,12 @@
           <div class="form-group">
             <label for="example-text-input" class="col-form-label">Description</label>
             <textarea class="form-control" formControlName="description" type="text"
-                      value="Enter Description - less than 200 char"></textarea>
+                      [ngClass]="{ 'is-invalid': f.description.errors?.max(500)}"></textarea>
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors?.max">
+                <small>description must less than 500 letter </small>
+              </div>
+            </div>
           </div>
 
 

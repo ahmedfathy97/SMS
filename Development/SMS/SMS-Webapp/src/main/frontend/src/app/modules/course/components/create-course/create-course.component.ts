@@ -6,33 +6,29 @@ import {CorLevel} from "../../shared/data/lookup/course/cor-level.data";
 import {CorType} from "../../shared/data/lookup/course/cor-type.data";
 import {CourseService} from "../../shared/services/course.service";
 import {LookupService} from "../../../../infrastructure/services/lookup.service";
+import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-course-details',
   templateUrl: './create-course.component.html',
   providers: [CourseService, LookupService]
 })
-// TODO: Youssef - rename to CreateCourse
-// TODO: Youssef - move component to /modules/course/components/create-course
+
 export class CreateCourse implements OnInit {
-  // TODO: Youssef - rename to corCategoryList remember changes in html
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+
   corCategoryList: CorCategory[] = [];
-  // TODO: Youssef - rename to corTypeList remember changes in html
   corTypeList: CorType[] = [];
-  // TODO: Youssef - rename to corLevelList remember changes in html
   corLevelList: CorLevel[] = [];
 
 
   constructor(private formBuilder: FormBuilder,
-              // TODO: Youssef - rename to corService
               private corService: CourseService,
-              // TODO: Youssef - rename to lookupService
               private lookupService: LookupService) {
 
   }
 
   ngOnInit() {
-    //TODO: YOussef - Check these lines again
     this.lookupService.findCorCategory().subscribe(res => {
       this.corCategoryList = res;
     });
@@ -46,6 +42,7 @@ export class CreateCourse implements OnInit {
   }
 
 
+  submitted = false;
 
   formData: FormGroup = this.formBuilder.group({
     courseName: [null, [Validators.required, Validators.maxLength(25)]],
@@ -55,27 +52,44 @@ export class CreateCourse implements OnInit {
     categoryID: [null, Validators.required],
     typeID: [null, Validators.required],
     levelID: [null, Validators.required],
-    description: [null, [Validators.maxLength(200)]]
+    description: [null, [Validators.maxLength(500)]]
   });
 
-  // TODO: Youssef - onSubmitNewCourse
+  // convenience getter for easy access to form fields
+  get f() { return this.formData.controls; }
+
   onSubmitNewCourse() {
-    let details: CourseDTO = new CourseDTO();
+    this.submitted = true;
+    this.formData.get('courseName').markAsDirty();
+    this.formData.get('duration').markAsDirty();
+    this.formData.get('startDate').markAsDirty();
+    this.formData.get('endDate').markAsDirty();
+    this.formData.get('categoryID').markAsDirty();
+    this.formData.get('typeID').markAsDirty();
+    this.formData.get('levelID').markAsDirty();
+    this.formData.get('description').markAsDirty();
 
-    details.courseName = this.formData.get('courseName').value;
-    details.duration = this.formData.get('duration').value;
-    details.startDate = this.formData.get('startDate').value;
-    details.endDate = this.formData.get('endDate').value;
-    details.categoryID = this.formData.get('categoryID').value;
-    details.typeID = this.formData.get('typeID').value;
-    details.levelID = this.formData.get('levelID').value;
-    details.description = this.formData.get('description').value;
 
-    this.corService.createNewCourse(details).subscribe(res => {
-      console.log("Success");
-    }, err => {
-      console.log(err);
-    });
+
+    // stop here if form is invalid
+    if (!this.formData.invalid) {
+      let details: CourseDTO = new CourseDTO();
+
+      details.courseName = this.formData.get('courseName').value;
+      details.duration = this.formData.get('duration').value;
+      details.startDate = this.formData.get('startDate').value;
+      details.endDate = this.formData.get('endDate').value;
+      details.categoryID = this.formData.get('categoryID').value;
+      details.typeID = this.formData.get('typeID').value;
+      details.levelID = this.formData.get('levelID').value;
+      details.description = this.formData.get('description').value;
+
+      this.corService.createNewCourse(details).subscribe(res => {
+        console.log("Success");
+      }, err => {
+        console.log(err);
+      });
+    }
   }
 
 }
