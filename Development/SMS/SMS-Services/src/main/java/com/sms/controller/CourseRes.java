@@ -57,8 +57,8 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
     @Authenticated()
-    public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
-    @Authenticated()
+//    public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
+//    @Authenticated()
 //    @Authenticated(views = {AuthViews.CREATE_LEC})
     public CourseResultSet myCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
