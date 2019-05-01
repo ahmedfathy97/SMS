@@ -77,6 +77,9 @@ export class CreateCourse implements OnInit {
 
       details.courseName = this.formData.get('courseName').value;
       details.duration = this.formData.get('duration').value;
+
+      console.log(this.formData.get('startDate').value);
+
       details.startDate = this.formData.get('startDate').value;
       details.endDate = this.formData.get('endDate').value;
       details.categoryID = this.formData.get('categoryID').value;

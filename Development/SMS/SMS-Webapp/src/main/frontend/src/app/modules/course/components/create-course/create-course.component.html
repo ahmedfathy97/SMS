@@ -49,7 +49,7 @@
 
           <div class="form-group d-inline-block col-6">
             <label for="example-lectureDate-input" class="col-form-label">Start Date</label>
-            <input class="form-control" formControlName="startDate" type="lectureDate" id="example-lectureDate-input"
+            <input class="form-control" formControlName="startDate" type="date" id="example-lectureDate-input"
                    [ngClass]="{ 'is-invalid': f.startDate.dirty && f.startDate.errors?.required }">
 
             <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
@@ -59,7 +59,7 @@
 
           <div class="form-group d-inline-block col-6">
             <label for="example-lectureDate-input" class="col-form-label">End Date</label>
-            <input class="form-control" formControlName="endDate" type="lectureDate" id="example-lectureDate"
+            <input class="form-control" formControlName="endDate" type="date" id="example-lectureDate"
                    [ngClass]="{ 'is-invalid': f.endDate.dirty && f.endDate.errors?.required }">
             <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
               <small *ngIf="f.endDate.errors?.required">End Date can't be null </small>
