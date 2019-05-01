@@ -88,3 +88,15 @@ INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
 INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
 
 ---end
+
+--new image--
+UPDATE `sms`.`course` SET `image_path`='/assets/images/course/hala1.png' WHERE `id`='2';
+
+UPDATE `sms`.`course` SET `image_path`='/assets/images/course/Programming.jpg' WHERE `id`='5';
+
+UPDATE `sms`.`course` SET `image_path`='/assets/images/course/neural.jpg' WHERE `id`='6';
+
+UPDATE `sms`.`course` SET `image_path`='/assets/images/course/data.jpg' WHERE `id`='7';
+
+UPDATE `sms`.`course` SET `image_path`='/assets/images/course/c++.jpg' WHERE `id`='8';
+--end----
