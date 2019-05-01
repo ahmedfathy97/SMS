@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {QuizService} from "../../../../../shared/services/quiz.service";
 import {QuizInformationVto} from "../../../../../shared/data/quiz/quiz-information-vto";
 import {ActivatedRoute} from "@angular/router";
-import {AngularFullRoutes} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes ,replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 @Component({
@@ -14,7 +14,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 export class QuizMainDetailComponent implements OnInit {
 
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
-  replaceQuizID = replaceQuizID;
+  //replaceQuizID = replaceQuizID;
   replaceCorID = replaceCorID;
   corID: number;
   quizId: number;
