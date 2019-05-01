@@ -10,6 +10,7 @@ import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.CourseRep;
 import com.sms.repository.QuizRep;
+import com.sms.repository.StudentRep;
 import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
 import com.sms.service.CourseSer;
@@ -28,6 +29,8 @@ public class CourseRes {
     private CourseSer courseSer;
     private GradeRep gradeRepository;
     private QuizRep rep;
+    private StudentRep repStd;
+
 
     @Autowired
     public CourseRes(
@@ -35,12 +38,13 @@ public class CourseRes {
             CourseSer courseSer,
             GradeRep gradeRepository,
             AttendanceSer attendance
-            , QuizRep rep) {
+            , QuizRep rep,StudentRep repStd) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
         this.courseRep = repository;
         this.attendance = attendance;
         this.rep = rep;
+        this.repStd=repStd;
     }
 
 
@@ -52,6 +56,14 @@ public class CourseRes {
         courseRep.insertNewCourse(details);
     }
 
+    @POST
+    @Path("/{corID}/enroll")
+    @Authenticated()
+    public void enrollStudentByID(@PathParam("corID") int corID, @Context ContainerRequestContext request){
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+        repStd.insertStudent(currentUser.getId(),corID);
+
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

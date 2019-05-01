@@ -1,5 +1,6 @@
 package com.sms.repository;
 
+import com.sms.model.user.UserVTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,11 +13,11 @@ public class StudentRep {
     public StudentRep(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
-    public void insertStudent(int courseID,  int studentid){
+    public void insertStudent(int stdID,int corID){
         String sql="INSERT INTO course_std" +
                 "(cor_id,std_id)" +
                 "VALUES(?,?)";
-        this.jdbc.update(sql,courseID,studentid);
+        this.jdbc.update(sql,corID, stdID);
 
     }
 }

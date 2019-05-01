@@ -91,8 +91,8 @@ export class CourseService {
   }
 
   enrollStudentByID(corID: number){
-    return this.httpClient.post("http://localhost:8080/api/student/enroll/",corID);
-    return this.httpClient.post("http://localhost:8080/api/student/enroll/"+corID, null);
+    return this.httpClient.post("http://localhost:8080/api/course/"+corID+"/enroll",null);
+    // return this.httpClient.post("http://localhost:8080/api/student/enroll");
 
   }
 
