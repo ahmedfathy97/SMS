@@ -13,6 +13,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import java.sql.ResultSet;
@@ -118,6 +120,37 @@ public class QuizRep {
     }
 
 
+    public List<QuizResult> getQuizResult ( int studentID ,int quizID )
+    {
+        String sql ="select q.question , q.answer1, q.answer2,\n" +
+                "                q.answer3,q.answer4,q.model_answer ,q.quiz_question_type_id, s.answer,s.is_correct, s.student_score\n" +
+                "                from question q left join student_answer s on s.quiz_id = q.quiz_id\n" +
+                "                and s.question_id = q.id \n" +
+                "                where s.user_id = ? \n" +
+                "                and q.quiz_id = ? ; " ;
+
+        List<QuizResult> data = this.jdbcTemplate.query(sql, new RowMapper<QuizResult>() {
+            @Override
+            public QuizResult mapRow(ResultSet resultSet, int i) throws SQLException {
+                QuizResult result = new QuizResult() ;
+                result.setQuestion(resultSet.getString("question"));
+                result.setAnswer1(resultSet.getString("answer1"));
+                result.setAnswer2(resultSet.getString("answer2"));
+                result.setAnswer3(resultSet.getString("answer3"));
+                result.setAnswer4(resultSet.getString("answer4"));
+                result.setModelAnswer(resultSet.getString("model_answer"));
+                result.setQuizQuestionTypeID(resultSet.getInt("quiz_question_type_id"));
+                result.setStudentAnswer(resultSet.getString("answer"));
+                result.setCorrect(resultSet.getBoolean("is_correct"));
+                result.setStudentGrade(resultSet.getInt("student_score"));
+
+                return result ;
+
+            }
+        }, studentID , quizID );
+
+        return data;
+    }
 
     public boolean  isAnswered(int studentID ,int quizID)
     {

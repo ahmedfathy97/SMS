@@ -7,6 +7,7 @@ import {QuestionDto} from "../data/quiz/question-dto";
 import {QuestionVto} from "../data/quiz/question-vto";
 import {StudentAnswerDto} from "../data/quiz/student-answer-dto";
 import {QuizInformationVto} from "../data/quiz/quiz-information-vto";
+import {QuizResult} from "../data/quiz/quiz-result-dto";
 
 
 @Injectable()
@@ -56,6 +57,10 @@ export class QuizService {
   }
 
 
+  getQuizResult(quizID : number )
+  {
+    return this.httpClient.get<QuizResult[]>(this.BASE_URL+"/quiz/"+quizID+"/results")
+  }
 
 
 }

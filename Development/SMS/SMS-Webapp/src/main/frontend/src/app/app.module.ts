@@ -60,6 +60,7 @@ import {UserSideBarComponent} from "./modules/settings/components/setting-conten
 import { MyCourseComponent } from './modules/course/components/my-course/my-course.component';
 import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
 import { QuizDetailsComponent } from './modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component';
+import { QuizResultComponent } from './modules/course/components/course-details/course-content/quiz/quiz-result/quiz-result.component';
 //import { SettindSidebarComponent } from './modules/settings/components/setting-side-bar/settind-sidebar.component';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -89,6 +90,7 @@ import { QuizDetailsComponent } from './modules/course/components/course-details
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
+    QuizResultComponent,
 
   ],
   imports: [

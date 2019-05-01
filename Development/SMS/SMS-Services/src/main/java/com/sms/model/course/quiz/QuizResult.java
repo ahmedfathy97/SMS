@@ -9,10 +9,8 @@ public class QuizResult {
     private String modelAnswer;
     private String studentAnswer;
     private int studentGrade ;
-
-    public String getQuestion() {
-        return question;
-    }
+    private Boolean isCorrect ;
+    private int quizQuestionTypeID ;
 
     public void setQuestion(String question) {
         this.question = question;
@@ -72,5 +70,25 @@ public class QuizResult {
 
     public void setStudentGrade(int studentGrade) {
         this.studentGrade = studentGrade;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public Boolean getCorrect() {
+        return isCorrect;
+    }
+
+    public void setCorrect(Boolean correct) {
+        isCorrect = correct;
+    }
+
+    public int getQuizQuestionTypeID() {
+        return quizQuestionTypeID;
+    }
+
+    public void setQuizQuestionTypeID(int quizQuestionTypeID) {
+        this.quizQuestionTypeID = quizQuestionTypeID;
     }
 }
