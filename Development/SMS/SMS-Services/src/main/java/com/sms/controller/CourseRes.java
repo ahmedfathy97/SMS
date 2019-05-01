@@ -58,8 +58,7 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-//    @Authenticated()
-    @Authenticated(views = {AuthViews.CREATE_LEC})
+    @Authenticated()
     public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         return this.courseSer.findAllCourses(currentUser);
