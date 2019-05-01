@@ -40,7 +40,6 @@ import {CourseListComponent} from "./modules/course/components/course-list/cours
 import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
 import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
 import {QuizResult} from "./modules/course/shared/data/quiz/quiz-result-dto";
-import {QuizResultComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-result/quiz-result.component";
 import {AuthActions} from "./infrastructure/directives/authorization/data/auth-actions.enum";
 
 const routes: Routes = [
@@ -152,7 +151,6 @@ const routes: Routes = [
                       {path: 'questions', component: AddQuizQuestionsComponent},
                       {path: 'answerQuiz', component: AnswerQuestionsComponent},
                       {path: 'quizDetails', component: QuizMainDetailComponent},
-                      {path: 'quizResult', component: QuizResultComponent},
 
                     ]
                   },

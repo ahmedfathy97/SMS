@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
-import {QuizResult} from "../../../../../shared/data/quiz/quiz-result-dto";
 import {ActivatedRoute} from "@angular/router";
-import {CourseDataService} from "../../../../../shared/services/course-data.service";
-import {QuizService} from "../../../../../shared/services/quiz.service";
+import {QuizService} from "../../../../../../shared/services/quiz.service";
+import {QuizResult} from "../../../../../../shared/data/quiz/quiz-result-dto";
+import {CourseDataService} from "../../../../../../shared/services/course-data.service";
+import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-quiz-result',
