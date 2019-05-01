@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {QuizService} from "../../../../../../shared/services/quiz.service";
 import {QuizInformationVto} from "../../../../../../shared/data/quiz/quiz-information-vto";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
-import {AngularFullRoutes} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-quiz-main-detail',
