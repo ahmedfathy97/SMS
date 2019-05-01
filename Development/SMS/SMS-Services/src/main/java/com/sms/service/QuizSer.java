@@ -112,7 +112,38 @@ public class QuizSer {
 
 
 
+    public int quizState(UserVTO currentUser ,int quizID)
+    {
 
+        int quizState ;
+        if(currentUser.getRoleIDs().contains(1))
+        {
+            quizState = 1 ;
+        }
+        else
+        {
+           boolean isOpened = quizRep.isQuizOpen(quizID) ;
+           if(isOpened==true) {
+               boolean isAnswered = quizRep.isAnswered(currentUser.getId(), quizID);
+               if (isAnswered == true)
+               {
+                   quizState = 3 ;
+               }
+               else
+               {
+                   quizState = 4 ;
+               }
+           } else
+           {
+                  quizState =2 ;
+           }
+
+        }
+       return quizState ;
     }
+
+
+
+}
 
 

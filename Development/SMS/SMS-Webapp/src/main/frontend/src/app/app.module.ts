@@ -26,7 +26,7 @@ import {CreateCourse} from "./modules/course/components/create-course/create-cou
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import { CreateLecture } from './modules/course/components/course-details/course-content/lecture/create-lecture/create-lecture.component';
 //import {UserProfileComponent} from "./modules/user/components/user-profile/user-profile.component";
-import { AnswerQuestionsComponent } from './modules/course/components/course-details/course-content/quiz/answer-questions/answer-questions.component';
+import { AnswerQuestionsComponent } from './modules/course/components/course-details/course-content/quiz/quiz-details/answer-questions/answer-questions.component';
 
 //import { UserEditComponent } from './modules/user/components/user-edit/user-edit.component';
 import {RegisterComponent} from "./modules/security/components/register/register.component";
@@ -58,7 +58,8 @@ import {UserListComponent} from "./modules/settings/components/setting-content/u
 import {UserDetailComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-detail.component";
 import {UserSideBarComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-side-bar/user-side-bar.component";
 import { MyCourseComponent } from './modules/course/components/my-course/my-course.component';
-import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-main-detail/quiz-main-detail.component";
+import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
+import { QuizDetailsComponent } from './modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component';
 //import { SettindSidebarComponent } from './modules/settings/components/setting-side-bar/settind-sidebar.component';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -87,6 +88,7 @@ import {QuizMainDetailComponent} from "./modules/course/components/course-detail
     UserSettingsComponent,
     MyCourseComponent,
     QuizMainDetailComponent,
+    QuizDetailsComponent,
 
   ],
   imports: [

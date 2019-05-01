@@ -18,7 +18,7 @@ import {CreateLecture} from "./modules/course/components/course-details/course-c
 
 import {UploadComponent} from "./infrastructure/components/manage-attachment/components/upload/upload.component";
 import {DownloadComponent} from "./infrastructure/components/manage-attachment/components/download/download.component";
-import {AnswerQuestionsComponent} from "./modules/course/components/course-details/course-content/quiz/answer-questions/answer-questions.component";
+import {AnswerQuestionsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/answer-questions/answer-questions.component";
 import {UserEditComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-edit/user-edit.component";
 import {RegisterComponent} from "./modules/security/components/register/register.component";
 import {CourseQuizesComponent} from "./modules/course/components/course-details/course-content/quiz/course-quizes/course-quizes.component";
@@ -38,7 +38,7 @@ import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.gua
 import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
-import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-main-detail/quiz-main-detail.component";
+import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},

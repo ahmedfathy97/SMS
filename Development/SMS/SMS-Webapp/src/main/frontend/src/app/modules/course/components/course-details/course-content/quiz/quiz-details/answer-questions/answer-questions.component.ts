@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {QuestionVto} from "../../../../../shared/data/quiz/question-vto";
-import {QuizService} from "../../../../../shared/services/quiz.service";
+import {QuestionVto} from "../../../../../../shared/data/quiz/question-vto";
+import {QuizService} from "../../../../../../shared/services/quiz.service";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {StudentAnswerDto} from "../../../../../shared/data/quiz/student-answer-dto";
+import {StudentAnswerDto} from "../../../../../../shared/data/quiz/student-answer-dto";
 import {ActivatedRoute} from "@angular/router";
 import {
   AngularFullRoutes,
   replaceCorID,
   replaceQuizID
-} from "../../../../../../../infrastructure/data/full-routes.enum";
-import {CourseDataService} from "../../../../../shared/services/course-data.service";
+} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-answer-questions',

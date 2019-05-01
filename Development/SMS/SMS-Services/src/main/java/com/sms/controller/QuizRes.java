@@ -84,6 +84,16 @@ public class QuizRes {
     }
 
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{quizID}/state")
+    public int quizState(@Context ContainerRequestContext request ,int quizID)
+    {
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+        return quizSer.quizState( currentUser ,quizID) ;
+    }
+
+
 
 
 }

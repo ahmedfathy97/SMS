@@ -1,14 +1,22 @@
 package com.sms.repository;
 
+import com.sms.controller.filter.AuthenticationFilter;
+import com.sms.model.course.StdDTO;
 import com.sms.model.course.quiz.*;
 import com.sms.model.course.quiz.rm.ModelAnswerVTORM;
 import com.sms.model.course.quiz.rm.QuizCloseDateRM;
 import com.sms.model.course.quiz.rm.QuestionVTORM;
 import com.sms.model.course.quiz.rm.QuizInformationVTORM;
+import com.sms.model.user.UserVTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -82,7 +90,8 @@ public class QuizRep {
 
     public QuizInformationVTO getQuizInformation(int quizID) {
 
-        String sql = "SELECT quiz_name , grade ,start_date , close_date ,  count(distinct user_id) AS numberofstudentanswers\n" +
+        String sql = "SELECT quiz_name , grade ,start_date , close_date ,  " +
+                "count(distinct user_id) AS numberofstudentanswers\n" +
                 "FROM student_answer sa Left join quiz q\n" +
                 "ON sa.quiz_id = q.id \n" +
                 "where q.id = ? ;";
@@ -92,7 +101,39 @@ public class QuizRep {
     }
 
 
+    public boolean isQuizOpen(int quizID)
+    {
+        String sql ="SELECT is_closed FROM quiz WHERE id = ? AND is_closed = 0" ;
 
+
+        List<Object> results = this.jdbcTemplate.query(sql, new RowMapper<Object>() {
+            @Override
+            public Object mapRow(ResultSet rs, int i) throws SQLException {
+                return new Object();
+
+            }
+        }, quizID);
+
+        return results.size() !=0;
+    }
+
+
+
+    public boolean  isAnswered(int studentID ,int quizID)
+    {
+        String sql ="SELECT id FROM student_answer WHERE user_id = ? AND quiz_id =? " ;
+
+
+        List<Object> results = this.jdbcTemplate.query(sql, new RowMapper<Object>() {
+            @Override
+            public Object mapRow(ResultSet rs, int i) throws SQLException {
+                return new Object();
+
+            }
+        }, studentID , quizID);
+
+        return results.size() !=0;
+    }
 
 
 }
