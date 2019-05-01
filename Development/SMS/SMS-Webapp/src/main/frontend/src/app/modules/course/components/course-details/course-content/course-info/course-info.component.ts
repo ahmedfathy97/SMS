@@ -3,6 +3,8 @@ import {CourseService} from "../../../../shared/services/course.service";
 import {CourseVto} from "../../../../shared/data/course-vto";
 import {ActivatedRoute} from "@angular/router";
 import {CourseDataService} from "../../../../shared/services/course-data.service";
+import {AuthActions} from "../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-view-course',
@@ -11,6 +13,9 @@ import {CourseDataService} from "../../../../shared/services/course-data.service
   providers:[CourseService]
 })
 export class CourseInfoComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
 
   corID : number ;
   viewData: CourseVto = new CourseVto();
@@ -22,11 +27,15 @@ export class CourseInfoComponent implements OnInit {
         this.corID = data;
         console.log(data);
         this.getCourseInformation() ;
+        this.corService.getStudentIsEnroll(this.corID).subscribe(res =>{
+          this.isStudentEnroll = res;
+        console.log(res);
+        });
       }
     );
     this.corDataService.requestCorID.next(true);
   }
-
+isStudentEnroll:boolean=false;
 
   getCourseInformation()
   {

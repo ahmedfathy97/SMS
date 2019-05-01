@@ -121,3 +121,16 @@ UPDATE `sms`.`user_detail` SET `age`='35', `gender`='male', `phone`='01254789' W
 UPDATE `sms`.`user_detail` SET `age`='55', `gender`='female', `phone`='0321458' WHERE `user_id`='6';
 UPDATE `sms`.`user_detail` SET `age`='25', `gender`='male', `phone`='012587' WHERE `user_id`='7';
 --manar--
+
+--auth action on enroll student --
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (5, 'ENROLL_STUDENT', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (2,5);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (2,5);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (10,5);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (7,5)
+
+--------------
+----- hala( role action )------
+INSERT INTO auth_user_role (user_id, role_id) VALUE (7, 2);
+INSERT INTO auth_user_role (user_id, role_id) VALUE (2, 2);
+--------

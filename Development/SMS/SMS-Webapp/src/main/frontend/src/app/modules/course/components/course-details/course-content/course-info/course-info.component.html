@@ -13,8 +13,10 @@
         </div>
       </div>
       <div class="col-sm-6 clearfix">
-        <div class="pull-right">
-          <button class="btn btn-success btn-header" (click)="onEnrollNewStudent()">Enroll</button>
+        <div class="pull-right" *ngIf="!isStudentEnroll">
+          <button class="btn btn-success btn-header"
+                  *authorizeAction="[AUTH_ACTIONS.ENROLL_STUDENT]"
+                  (click)="onEnrollNewStudent()">Enroll</button>
 
         </div>
       </div>

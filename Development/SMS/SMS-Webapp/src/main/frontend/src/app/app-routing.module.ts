@@ -39,6 +39,7 @@ import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.g
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
 import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
+import {AuthActions} from "./infrastructure/directives/authorization/data/auth-actions.enum";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},

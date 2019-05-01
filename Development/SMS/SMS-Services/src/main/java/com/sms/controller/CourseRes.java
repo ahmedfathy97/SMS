@@ -58,11 +58,19 @@ public class CourseRes {
 
     @POST
     @Path("/{corID}/enroll")
-    @Authenticated()
+    @Authenticated(actions = {AuthActions.ENROLL_STUDENT})
     public void enrollStudentByID(@PathParam("corID") int corID, @Context ContainerRequestContext request){
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         repStd.insertStudent(currentUser.getId(),corID);
 
+    }
+    @GET
+    @Path("/{corID}/isStudent")
+    @Authenticated()
+    public boolean isStudent(@PathParam("corID") int corID,@Context ContainerRequestContext request){
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+
+         return this.courseRep.isEnrolled(currentUser.getId(),corID);
     }
 
     @GET

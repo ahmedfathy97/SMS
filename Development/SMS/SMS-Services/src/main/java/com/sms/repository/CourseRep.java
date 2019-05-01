@@ -46,6 +46,20 @@ public class CourseRep {
 
         return result.size() != 0 ;
     }
+    public boolean isEnrolled(int userID, int courseID){
+        String sql = "select id from course_std \n" +
+                "                where std_id = ?\n" +
+                "                and cor_id = ?";
+        List result = this.jdbcTemplate.query(sql, new RowMapper<Object>() {
+            @Override
+            public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Object();
+            }
+        }, userID, courseID);
+        return result.size() != 0 ;
+
+    }
+
     public List<CourseVTO> findAllInstructorCourses(int instrID) {
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +

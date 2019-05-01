@@ -10,6 +10,7 @@ import {LectureDto} from "../data/lecture-dto.data";
 import {Announcement} from "../data/announcment";
 import {CourseResultSet} from "../data/course-result-set.data";
 import {LectureVto} from "../data/lecture-vto";
+import {isBoolean} from "util";
 
 
 @Injectable()
@@ -93,6 +94,10 @@ export class CourseService {
   enrollStudentByID(corID: number){
     return this.httpClient.post("http://localhost:8080/api/course/"+corID+"/enroll",null);
     // return this.httpClient.post("http://localhost:8080/api/student/enroll");
+
+  }
+  getStudentIsEnroll(corID: number){
+    return this.httpClient.get<boolean>("http://localhost:8080/api/course/"+corID+"/isStudent");
 
   }
 
