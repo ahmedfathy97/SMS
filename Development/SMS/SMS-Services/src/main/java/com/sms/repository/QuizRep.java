@@ -92,4 +92,11 @@ public class QuizRep {
     }
 
 
+//    public List<QuizResult> getQuizResult( int studentID ,int quizID )
+//    {
+//
+//    }
+
+
+
 }

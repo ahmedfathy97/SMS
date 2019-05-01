@@ -1,9 +1,14 @@
 package com.sms.service;
+import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.course.quiz.*;
+import com.sms.model.user.UserVTO;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.PathParam;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -83,7 +88,7 @@ public class QuizSer {
                        questionEvaluate.setStudentGrade(modelAnswer.getQuestionGrade());
                    }
                    else {
-                       questionEvaluate.setCorrect(true);
+                       questionEvaluate.setCorrect(false);
                        questionEvaluate.setStudentGrade(0);
                    }
                }
@@ -104,6 +109,12 @@ public class QuizSer {
     {
        return quizRep.getQuizInformation(quizID) ;
     }
+
+
+//    public List<QuizResult> getQuizResult( int studentID ,int quizID )
+//    {
+//          return quizRep.getQuizResult(studentID ,quizID) ;
+//    }
 
     }
 
