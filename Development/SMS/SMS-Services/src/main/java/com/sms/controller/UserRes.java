@@ -28,10 +28,10 @@ public class UserRes {
     }
 
 
-    @GET
+    @POST
     @Path("/{userID}/edit")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void editUserData(@PathParam("userID") int userID ,UserVTO userVTO) {
+    public void editUserVto(@PathParam("userID") int userID ,UserVTO userVTO) {
 
          this.userRep.updateUserVto(userID ,userVTO );
 

@@ -18,8 +18,8 @@ export class UserService {
     return this.http.get<UserVtoData>("http://localhost:8080/api/user/"+userID+"/profile");
   }
 
- editProfile(userID:number){
-    return this.http.get<UserVtoData>("http://localhost:8080/api/user/"+userID+"/edit");
+  editProfile(userID:number ,edit:UserVtoData){
+    return this.http.post("http://localhost:8080/api/user/"+userID+"/edit",edit);
 
   }
 

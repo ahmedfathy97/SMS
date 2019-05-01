@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-//import {UserData} from "../../shared/data/user-data";
-//import {UserService} from "../../shared/user.service";
 import {FormBuilder, Validators} from "@angular/forms";
-//import {EditData} from "../../shared/data/edit-data";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../../../shared/services/user.service";
-//import {UserData} from "../../../../../../../shared/data/user-data";
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infrastructure/data/full-routes.enum";
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
@@ -102,10 +98,11 @@ export class UserEditComponent implements OnInit {
       userEdit.lastName = this.formData.get('lastName').value;
       userEdit.age = this.formData.get('age').value;
       userEdit.gender = this.formData.get('gender').value;
-      userEdit.email = this.formData.get('e_mail').value;
+      userEdit.email = this.formData.get('email').value;
       userEdit.userName = this.formData.get('userName').value;
+      userEdit.phone=this.formData.get('phone').value;
       console.log(userEdit);
-      this.userService.editProfile(this.userID).subscribe(res => {
+      this.userService.editProfile(this.userID, userEdit).subscribe(res => {
         console.log("Success");
       }, err => {
         console.log(err);

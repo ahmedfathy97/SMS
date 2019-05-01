@@ -53,10 +53,10 @@ public class UserRep {
 
     public void updateUserVto(int userID ,UserVTO userVTO){
         String sql= "update user_detail " +
-                "set first_name=? , last_name=?,age=? gender=?,email=?,phone=?,college=?,user_name=?" +
-                "where user_id =?  and id=?" ;
+                "set first_name=?,last_name=?,age=?,gender=?,email=?,phone=? " +
+                "where user_id =?" ;
 
-        this.jdbcTemplate.update(sql ,userVTO.getUserName(),userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge() ,userVTO.getEmail() ,userVTO.getGender() ,userVTO.getPhone() ,userID);
+        this.jdbcTemplate.update(sql,userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge() ,userVTO.getEmail() ,userVTO.getGender() ,userVTO.getPhone() ,userID);
 
 
     }
