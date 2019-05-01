@@ -1,4 +1,14 @@
  USE sms ;
+
+
+ --manar(view user_profile)--
+ INSERT INTO auth_view (id, label_ar, description_ar) VALUE (5, 'User-Profile', '');
+ INSERT INTO auth_role_view (role_id, view_id) VALUE (1,5);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (1,5);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (9,5);
+--manar--
+
  -- yara( role action )------
 INSERT INTO auth_user_role (user_id, role_id) VALUE (10, 2);
 
@@ -13,6 +23,7 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (5,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,3);
 ----- Yara View (Attendance)----
+
 
 ----- Yara Action (View Attendance)
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (3, 'Add-Attendance', '');
@@ -100,3 +111,13 @@ UPDATE `sms`.`course` SET `image_path`='/assets/images/course/data.jpg' WHERE `i
 
 UPDATE `sms`.`course` SET `image_path`='/assets/images/course/c++.jpg' WHERE `id`='8';
 --end----
+
+--manar--
+UPDATE `sms`.`user_detail` SET `age`='50', `gender`='male', `phone`='0123654' WHERE `user_id`='1';
+UPDATE `sms`.`user_detail` SET `age`='20', `gender`='female', `phone`='45893210' WHERE `user_id`='2';
+UPDATE `sms`.`user_detail` SET `age`='23', `gender`='female', `phone`='014785' WHERE `user_id`='3';
+UPDATE `sms`.`user_detail` SET `age`='40', `gender`='male', `phone`='0258963' WHERE `user_id`='4';
+UPDATE `sms`.`user_detail` SET `age`='35', `gender`='male', `phone`='01254789' WHERE `user_id`='5';
+UPDATE `sms`.`user_detail` SET `age`='55', `gender`='female', `phone`='0321458' WHERE `user_id`='6';
+UPDATE `sms`.`user_detail` SET `age`='25', `gender`='male', `phone`='012587' WHERE `user_id`='7';
+--manar--
