@@ -17,6 +17,7 @@
       <div class="col-sm-6 clearfix">
         <div class="pull-right">
           <a class="btn btn-success btn-header"
+             *authorizeView="[AUTH_ACTIONS.ADD_LEC]"
              [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">
             <i class="fa fa-plus pr--10"></i> Add Lecture</a>
         </div>

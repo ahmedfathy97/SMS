@@ -62,16 +62,12 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (30,2);
 
 
 -- Youssef Lec Auth --
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
-
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '7');
-
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '7');
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
 
 INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Create-lec', 'creat lec component');
-
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
-
 INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
 
 

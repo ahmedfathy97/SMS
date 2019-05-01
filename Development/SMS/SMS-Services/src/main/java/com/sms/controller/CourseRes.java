@@ -116,8 +116,8 @@ public class CourseRes {
     @POST
     @Path("/{courseID}/lecture")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Authenticated(actions = {AuthActions.ADD_LEC})
     public void createNewLecture(@PathParam("courseID") int courseID, LectureDTO lectureDTO) {
-
         courseRep.insertNewLecture(courseID, lectureDTO);
     }
 
@@ -125,7 +125,6 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")
-
     public List<LectureVTO> getCourseLectures(@PathParam("courseID") int courseID) {
         List<LectureVTO> lectureVTOList = courseSer.getCourseLectures(courseID);
         return lectureVTOList;

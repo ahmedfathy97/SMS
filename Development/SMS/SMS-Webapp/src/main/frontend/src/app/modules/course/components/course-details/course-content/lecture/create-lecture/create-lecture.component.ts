@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
   providers: [FormBuilder ,CourseService]
 })
 export class CreateLecture implements OnInit {
+
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
 
