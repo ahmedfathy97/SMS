@@ -62,9 +62,6 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (30,2);
 
 
 -- Youssef Lec Auth --
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
 
 INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Create-lec', 'creat lec component');
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
@@ -76,3 +73,18 @@ ALTER TABLE `sms`.`quiz`
 CHANGE COLUMN `auto_close` `is_closed` TINYINT(4) NULL DEFAULT NULL ;
 -- ahmed end --
 
+-- 1/5 yousef--
+
+DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='7';
+
+DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='7';
+
+DELETE FROM `sms`.`auth_view` WHERE `id`='7';
+
+
+
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
+
+---end
