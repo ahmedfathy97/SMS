@@ -88,6 +88,9 @@ const routes: Routes = [
       {path: 'download', component: DownloadComponent},
 
       {path: '', component: FullLayoutComponent, children: [
+          {path: 'courses', component: CourseListComponent },
+          {path: 'course/new', component: CreateCourse},
+      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           {path: 'my-courses', component: MyCourseComponent},
           {path: 'courses', component: CourseListComponent},
 
@@ -98,10 +101,7 @@ const routes: Routes = [
 
       {
         path: 'course', /* component which view all courses*/ children: [
-
-          {path: 'new', component: CreateCourse},
-          {
-            path: ':courseID', component: CourseDetailsComponent, children: [
+          {path: ':courseID', component: CourseDetailsComponent, children: [
               {
                 path: 'announcement', children: [
                   {path: '', component: ViewAnnouncmentComponent},
