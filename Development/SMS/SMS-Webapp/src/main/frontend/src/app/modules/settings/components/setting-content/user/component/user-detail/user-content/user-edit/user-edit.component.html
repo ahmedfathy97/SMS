@@ -25,53 +25,47 @@
               <h1 class="header-title">Edit Profile</h1>
 
       <hr>
+              <form [formGroup]="formData">
 
-
-             <div class="row">
-              <div class="form-group">
-                <label for="first-name" class="col-form-label">First Name</label>
-                <input class="form-control" type="fullname" value= "{{userData.fullName}}" id="first-name" formControlName="firstname">
+              <div class="form-group d-inline-block col-6">
+                <label for="firstname" class="col-form-label">First Name</label>
+                <input class="form-control" type="firstname" id="firstname" formControlName="firstName">
               </div>
 
-              <div class="form-group">
-                <label for="last-name" class="col-form-label">Last Name</label>
-                <input class="form-control" type="lastname" value= {{userData.fullName}} id="last-name" formControlName="lastname">
+               <div class="form-group d-inline-block col-6">
+                <label for="lastname" class="col-form-label">Last Name</label>
+                <input class="form-control" type="lastname" id="lastname" formControlName="lastName">
               </div>
-             </div>
 
 
 
-              <div class="form-group">
+
+              <div class="form-group d-inline-block col-6">
                 <label for="age" class="col-form-label">Age</label>
-                <input class="form-control" type="age" value="name@example.com" id="age" formControlName="age">
+                <input class="form-control" type="age" id="age" formControlName="age">
               </div>
 
-              <div class="form-group">
-                <label for="gender" class="col-form-label">Gender</label>
-                <input class="form-control" type="gender" value="name@example.com" id="gender" formControlName="gender">
+              <div class="form-group d-inline-block col-6">
+                <label for="gender" class="col-form-label ">Gender</label>
+                <input class="form-control" type="gender" id="gender" formControlName="gender">
               </div>
 
-              <div class="form-group">
+              <div class="form-group d-inline-block col-6">
                 <label for="email" class="col-form-label">E_mail</label>
-                <input class="form-control" type="email" value="name@example.com" id="email" formControlName="email">
+                <input class="form-control" type="email" id="email" formControlName="email">
               </div>
 
-              <div class="form-group">
+              <div class="form-group d-inline-block col-6">
                 <label for="phone" class="col-form-label">Phone</label>
-                <input class="form-control" type="phone" value="" id="phone" formControlName="phone">
+                <input class="form-control" type="phone" id="phone" formControlName="phone">
               </div>
 
-              <div class="form-group">
-                <label for="college" class="col-form-label">College</label>
-                <input class="form-control" type="college" value="" id="college" formControlName="college">
-              </div>
-
-              <div class="form-group">
+              <div class="form-group d-inline-block col-6">
                 <label for="user-name" class="col-form-label">User Name</label>
-                <input class="form-control" type="username" value="" id="user-name" formControlName="username">
+                <input class="form-control" type="username" id="user-name" formControlName="userName">
               </div>
               <hr>
-
+              </form>
               <div class="card-action">
                 <button class="btn   btn-success btn-sm pull-right mr-2 mb-2" (click)="onSaveEdit()">Save</button>
               </div>

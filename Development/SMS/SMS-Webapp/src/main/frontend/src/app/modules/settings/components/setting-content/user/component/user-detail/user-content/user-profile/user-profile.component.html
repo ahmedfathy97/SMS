@@ -42,36 +42,36 @@
           <div class="card">
 
             <div class="card-body">
-              <h5>{{userData.userName}}</h5>
+              <h5>{{userVto.userName}}</h5>
               <hr>
               <h2 class="header-title">About Me</h2>
 
               <div class="d-inline-block col-md-12">
                 <label for="full-name" class="col-form-label">Full Name: &nbsp; &nbsp; &nbsp; </label>
-                <label id="full-name" class="col-form-label">{{userData.fullName}}</label>
+                <label id="full-name" class="col-form-label">{{userVto.fullName}}</label>
               </div>
               <hr>
               <div class="d-inline-block col-md-12">
                 <label for="age" class="col-form-label">Age: &nbsp; &nbsp; &nbsp; </label>
-                <label id="age" class="col-form-label">{{userData.age}}</label>
+                <label id="age" class="col-form-label">{{userVto.age}}</label>
               </div>
 
               <hr>
 
               <div class="d-inline-block col-md-12" colspan="2">
                 <label for="gender" class="col-form-label">Gender: &nbsp; &nbsp; &nbsp; </label>
-                <label id="gender" class="col-form-label">{{userData.gender}}</label>
+                <label id="gender" class="col-form-label">{{userVto.gender}}</label>
               </div>
               <hr>
               <div class="d-inline-block col-md-12">
                 <label for="e_mail" class="col-form-label">E_mail: &nbsp; &nbsp; &nbsp;</label>
 
-                <label id="e_mail" class="col-form-label"><a href="#">{{userData.e_mail}}</a></label>
+                <label id="e_mail" class="col-form-label"><a href="#">{{userVto.e_mail}}</a></label>
               </div>
               <hr>
               <div class="d-inline-block col-12">
                 <label for="phone" class="col-form-label">Phone: &nbsp; &nbsp; &nbsp; </label>
-                <label id="phone" class="col-form-label">{{userData.phone}}</label>
+                <label id="phone" class="col-form-label">{{userVto.phone}}</label>
               </div>
               <!--<hr>-->
               <!--<div class="d-inline-block col-12">-->
@@ -83,8 +83,8 @@
             <hr>
 
             <div class="card-action">
-              <a [routerLink]="['/user',userID,'edit',userData.userID]">
-                <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2" (click)="onEdit()"> Edit</button>
+              <a [routerLink]="[replaceUserID(ROUTES.EDIT,userVto.id)]">
+                <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2"> Edit</button>
               </a>
             </div>
 

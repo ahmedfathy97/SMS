@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../../../shared/services/user.service";
-import {UserData} from "../../../../../../../shared/data/user-data";
+//import {UserData} from "../../../../../../../shared/data/user-data";
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infrastructure/data/full-routes.enum";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
+import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 
 // class ImageSnippet {
 //
@@ -25,7 +26,7 @@ export class UserProfileComponent implements OnInit {
    userID:number;
 
 
-   private userData: UserData=new  UserData();
+   private userVto: UserVtoData=new  UserVtoData();
 
   constructor(private userService:UserService,
               private userDataService:UserDataService,
@@ -45,8 +46,8 @@ export class UserProfileComponent implements OnInit {
         this.userID = data;
         console.log(data);
         this.userService.findByID(this.userID).subscribe(
-          res=> { this.userData=res ;});
-        // this.getCourseAnnouncments();
+
+          res=> { this.userVto= res ;});
       }
     );
     this.userDataService.requestUserID.next(true);
