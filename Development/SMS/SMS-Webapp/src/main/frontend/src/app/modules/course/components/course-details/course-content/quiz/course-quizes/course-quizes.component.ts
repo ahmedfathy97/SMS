@@ -9,6 +9,7 @@ import {
   replaceCorID,
   replaceQuizID
 } from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-course-quizes',
@@ -18,6 +19,7 @@ import {
 
 })
 export class CourseQuizesComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   replaceQuizID =replaceQuizID;

@@ -144,13 +144,18 @@ const routes: Routes = [
 
               {
                 path: 'quiz', children: [
-                  {path: '', component: CourseQuizesComponent},
-                  {path: 'new', component: CreateQuizComponent},
+                  {path: '', component: CourseQuizesComponent ,data: {viewID: AuthViews.COURSE_QUIZES},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                  {path: 'new', component: CreateQuizComponent , data: {viewID: AuthViews.CREATE_QUIZ},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {
                     path: ':quizID', children: [
-                      {path: 'questions', component: AddQuizQuestionsComponent},
-                      {path: 'answerQuiz', component: AnswerQuestionsComponent},
-                      {path: 'quizDetails', component: QuizMainDetailComponent},
+                      {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'quizDetails', component: QuizMainDetailComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
 
                     ]
                   },

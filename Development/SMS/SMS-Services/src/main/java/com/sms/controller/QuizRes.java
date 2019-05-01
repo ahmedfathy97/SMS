@@ -2,6 +2,8 @@ package com.sms.controller;
 
 import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.annotation.Authenticated;
+import com.sms.model.authorization.AuthActions;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.quiz.*;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.QuizRep;
@@ -29,6 +31,7 @@ public class QuizRes {
     @POST
     @Path("/{quizID}/questions")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Authenticated(actions = {AuthActions.COR_ADD_QUESTION})
     public void createQuizQuestions(@PathParam("quizID") int quizID, List<QuestionDTO> questionList) {
         quizSer.createQuizQuestions(quizID, questionList);
     }
@@ -57,7 +60,7 @@ public class QuizRes {
     @POST
     @Path("/{quizID}/answer")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Authenticated()
+    @Authenticated(actions = {AuthActions.ANSWER_QUESTION})
     public  void submitQuizAnswers(@Context ContainerRequestContext request, @PathParam("quizID")int quizID , List<StudentAnswerDTO> studentAnswerDTOList)
      {
          UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
@@ -78,6 +81,7 @@ public class QuizRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/quizDetails")
+    @Authenticated(views = {AuthViews.QUIZ_DETAILS})
     public QuizInformationVTO getQuizInformation(@PathParam("quizID")int quizID)
     {
         return quizSer.getQuizInformation(quizID) ;

@@ -4,4 +4,9 @@ export enum AuthViews {
   ADD_ATTENDANCE = 3,
   ADD_ANNOUNCEMENT = 4,
   CREATE_LEC = 9,
+  COURSE_QUIZES = 10 ,
+  CREATE_QUIZ = 11 ,
+  ADD_QUESTION = 12 ,
+  ANSWER_QUESTION = 13 ,
+  QUIZ_DETAILS = 14 ,
 }

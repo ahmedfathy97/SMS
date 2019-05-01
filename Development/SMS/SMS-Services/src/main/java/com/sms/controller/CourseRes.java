@@ -165,6 +165,7 @@ public class CourseRes {
     @Path("/{courseID}/newQuiz")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Authenticated(actions = {AuthActions.CREATE_QUIZ})
     public int createQuiz(@PathParam("courseID") int courseID, QuizDTO quizData) {
         return courseSer.createQuiz(courseID, quizData);
     }
@@ -173,6 +174,7 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/quizes")
+    @Authenticated(views = {AuthViews.COURSE_QUIZES})
     public List<CourseQuizesVTO> getCourseQuizes(@PathParam("courseID") int courseID) {
         List<CourseQuizesVTO> courseQuizesVTOList = courseSer.getCourseQuizes(courseID);
         return courseQuizesVTOList;
