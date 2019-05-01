@@ -1,7 +1,6 @@
 package com.sms.repository;
 
-import com.sms.model.lookUp.rm.UserDataRM;
-import com.sms.model.user.UserData;
+//import com.sms.model.lookUp.rm.UserDataRM;
 import com.sms.model.user.UserVTO;
 import com.sms.model.user.rm.UserVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +23,40 @@ public class UserRep {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public UserData findUserByID(int userID) {
-        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ,age,gender,email,phone,s.username " +
+    public UserVTO findUserByID(int userID) {
+        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ," +
+                "first_name,last_name,age,gender,email,phone,s.username " +
                 "FROM user_detail d " +
                 "left join auth_user s " +
                 "on d.user_id = s.id " +
-                "where user_id =?" ;
-        List<UserData> user = this.jdbcTemplate.query(sql, new UserDataRM(), userID);
+                "where user_id =?";
+        List<UserVTO> user = this.jdbcTemplate.query(sql, new RowMapper<UserVTO>() {
+            @Override
+            public UserVTO mapRow(ResultSet rs, int i) throws SQLException {
+                UserVTO data=new UserVTO();
+                data.setId(rs.getInt("user_id"));
+                data.setFullName(rs.getString("full_name"));
+                data.setFirstName(rs.getString("first_name"));
+                data.setLastName(rs.getString("last_name"));
+                data.setAge(rs.getInt("age"));
+                data.setGender(rs.getString("gender"));
+                data.setEmail(rs.getString("email"));
+                data.setPhone(rs.getInt("phone"));
+                //data.setCollege(rs.getString("college"));
+                data.setUserName(rs.getString("username"));
+                return data;
+            }
+        }, userID);
         return user.get(0);
     }
 
 
-    public void updateUserData(int userID ,UserData userData){
+    public void updateUserVto(int userID ,UserVTO userVTO){
         String sql= "update user_detail " +
                 "set first_name=? , last_name=?,age=? gender=?,email=?,phone=?,college=?,user_name=?" +
                 "where user_id =?  and id=?" ;
 
-        this.jdbcTemplate.update(sql ,userData.getUserName(),userData.getFirstName() ,userData.getLastName() ,userData.getAge() ,userData.getE_mail() ,userData.getGender() ,userData.getPhone() ,userID);
+        this.jdbcTemplate.update(sql ,userVTO.getUserName(),userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge() ,userVTO.getEmail() ,userVTO.getGender() ,userVTO.getPhone() ,userID);
 
 
     }

@@ -1,14 +1,11 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {UserData} from "../data/user-data";
+//import {UserData} from "../data/user-data";
 import {Observable} from "rxjs/internal/Observable";
 import {College} from "../data/college";
 import {University} from "../data/university";
 import {Country} from "../data/country";
 import {UserVtoData} from "../data/user-vto.data";
-
-class UserVTO {
-}
 
 @Injectable()
 export class UserService {
@@ -18,11 +15,11 @@ export class UserService {
 
   findByID(userID:number){
  //return this.http.get<UserData>(this.APP_BASE_URL+this.BASE_URL+userID);
-    return this.http.get<UserData>("http://localhost:8080/api/user/"+userID+"/profile");
+    return this.http.get<UserVtoData>("http://localhost:8080/api/user/"+userID+"/profile");
   }
 
  editProfile(userID:number){
-    return this.http.get<UserData>("http://localhost:8080/api/user/"+userID+"/edit");
+    return this.http.get<UserVtoData>("http://localhost:8080/api/user/"+userID+"/edit");
 
   }
 

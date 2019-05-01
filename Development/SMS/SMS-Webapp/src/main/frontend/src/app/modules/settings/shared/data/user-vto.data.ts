@@ -10,6 +10,9 @@ export class UserVtoData {
   university:string;
   fullName:string;
   birthDate:string;
+  age:number;
+  gender:string;
+  phone:number;
 
 
 }

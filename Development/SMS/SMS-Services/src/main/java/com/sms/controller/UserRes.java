@@ -2,14 +2,12 @@ package com.sms.controller;
 
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthViews;
-import com.sms.model.user.UserData;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 import java.util.List;
 
 @Path("/user")
@@ -23,9 +21,9 @@ public class UserRes {
     @GET
     @Path("/{userID}/profile")
     @Produces(MediaType.APPLICATION_JSON)
-    public UserData getUserData(@PathParam("userID") int userID) {
-        UserData userData = this.userRep.findUserByID(userID);
-        return userData;
+    public UserVTO getUserVto(@PathParam("userID") int userID) {
+        UserVTO userVTO = this.userRep.findUserByID(userID);
+        return userVTO;
 
     }
 
@@ -33,9 +31,9 @@ public class UserRes {
     @GET
     @Path("/{userID}/edit")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void editUserData(@PathParam("userID") int userID ,UserData userData) {
+    public void editUserData(@PathParam("userID") int userID ,UserVTO userVTO) {
 
-         this.userRep.updateUserData(userID ,userData );
+         this.userRep.updateUserVto(userID ,userVTO );
 
 
     }
@@ -50,7 +48,7 @@ public class UserRes {
     @GET
     @Path("/find")
     @Produces(MediaType.APPLICATION_JSON)
-    //@Authenticated(views = {AuthViews.USER_LIST})
+    @Authenticated(views = {AuthViews.USER_LIST})
     public List<UserVTO> findAllUsers(){
         List<UserVTO> result=this.userRep.findAll();
         return result;
