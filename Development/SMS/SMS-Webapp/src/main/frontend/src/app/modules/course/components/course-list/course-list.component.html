@@ -45,16 +45,16 @@
     <!--</div>-->
   <!--</div>-->
   <div class="page-content-area">
-    <div class="offset-2 col-lg-8">
+    <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
           <!--<div class="card-area">-->
           <div class="row">
-            <div class="col-lg-3 col-md-6 mt-5" *ngFor="let course of resultSet.list">
+            <div class="col-lg-3 mt-2" *ngFor="let course of resultSet.list">
               <div class="card card-bordered">
                 <img class="card-img-top img-fluid course-img" src="{{course.imagePath}}" alt="image">
                 <div class="card-body">
-                  <h5 class="title clickable" [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, course.id)]">
+                  <h5 class="title text-success clickable" [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, course.id)]">
                     {{course.courseName}}
                   </h5>
                   <h5 class="title">
