@@ -91,7 +91,9 @@ const routes: Routes = [
 
       {path: '', component: FullLayoutComponent, children: [
           {path: 'courses', component: CourseListComponent },
-          {path: 'course/new', component: CreateCourse},
+          {path: 'course/new', component: CreateCourse ,
+            data: {viewID: AuthViews.CREATE_LEC},
+            canActivate:[AuthenticationGuard, AuthorizationGuard]},
       // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           {path: 'my-courses', component: MyCourseComponent},
           {path: 'courses', component: CourseListComponent},
@@ -116,7 +118,7 @@ const routes: Routes = [
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent},
                   {path: 'new', component: CreateLecture ,
-                    data: {viewID: AuthViews.CREATE_LEC}, canActivate:[AuthenticationGuard, AuthorizationGuard]}//,
+                    data: {viewID: AuthViews.CREATE_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]}//,
                   // {path: ':lectureID', children: [
                   //     {path: 'upload ', component: UploadComponent},p
                   //     {path: 'download', component: DownloadComponent}

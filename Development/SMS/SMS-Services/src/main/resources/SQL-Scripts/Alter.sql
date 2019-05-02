@@ -121,6 +121,15 @@ UPDATE `sms`.`user_detail` SET `age`='55', `gender`='female', `phone`='0321458' 
 UPDATE `sms`.`user_detail` SET `age`='25', `gender`='male', `phone`='012587' WHERE `user_id`='7';
 --manar--
 
+--- yousef new --
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('12', 'Add-Cor', 'Add cor Button');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '12');
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '12');
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('13', 'Create-Cor', 'create cor component');
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '13');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '13');
+
 --auth action on enroll student --
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (5, 'ENROLL_STUDENT', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (2,5);
