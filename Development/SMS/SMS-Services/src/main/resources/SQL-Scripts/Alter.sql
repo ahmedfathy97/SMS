@@ -32,6 +32,34 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,3);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,3);
+
+----student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,3);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,3);
+--------end--------
+
 -- Yara Action (View Attendance)
 
 -- Yara View (Create Announcement)----
@@ -42,6 +70,31 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,4);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,4);
+-- student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,4);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,4);
 -- Yara View (Announcement)----
 
 -- Yara Action (View Announcement)
@@ -97,7 +150,7 @@ INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7'
 INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
 INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
 
----end
+-- end
 
 --new image--
 UPDATE `sms`.`course` SET `image_path`='/assets/images/course/hala1.png' WHERE `id`='2';
@@ -137,14 +190,14 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (2,5);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (10,5);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (7,5)
 
---------------
------ hala( role action )------
+
+-- hala( role action )------
 INSERT INTO auth_user_role (user_id, role_id) VALUE (7, 2);
 INSERT INTO auth_user_role (user_id, role_id) VALUE (2, 2);
 
 
 --Ahmed View (course quizes)----
----instructor
+--instructor
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (10, 'Course-Quizes', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,10);
@@ -152,7 +205,7 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,10);
-----student
+--student
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (2,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (3,10);
@@ -177,9 +230,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (26,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (27,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (28,10);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (29,10);
---------end--------
+--end--------
 
------Ahmed action (course quizes)----
+--Ahmed action (course quizes)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (10, 'Course-Quizes', '');
 INSERT INTO auth_role_action (role_id, action_id ) VALUE (1,10);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,10);
@@ -187,11 +240,11 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,10);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,10);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,10);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,10);
---------end--------
+--end--------
 
 
 --Ahmed View (create quize)----
----instructor
+--instructor
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (11, 'Create-Quizes', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,11);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,11);
@@ -199,9 +252,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,11);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,11);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,11);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,11);
---------end--------
+--end--------
 
------Ahmed action (create quiz)----
+--Ahmed action (create quiz)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (11, 'Create-Quizes', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,11);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,11);
@@ -209,10 +262,10 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,11);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,11);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,11);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,11);
---------end--------
+--end--------
 
 --Ahmed View (add question)----
----instructor
+--instructor
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (12, 'Add_Question', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,12);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,12);
@@ -220,9 +273,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,12);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,12);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,12);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,12);
---------end--------
+--end--------
 
------Ahmed action (add question)----
+--Ahmed action (add question)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (12, 'Add_Question', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,12);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,12);
@@ -230,11 +283,11 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,12);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,12);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,12);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,12);
---------end--------
+--end--------
 
 
 --Ahmed View (answer question)----
----student
+--student
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (13, 'Answer_Question', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,13);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (2,13);
@@ -260,9 +313,8 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (26,13);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (27,13);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (28,13);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (29,13);
---------end--------
-
------Ahmed action (answer question)----
+--end--------
+--Ahmed action (answer question)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (13, 'Answer_Question', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (2,13);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (2,13);
@@ -288,11 +340,10 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (26,13);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (27,13);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (28,13);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (29,13);
-
---------end--------
+--end--------
 
 --Ahmed View (add question)----
----instructor
+--instructor
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (14, 'Quiz_Details', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (1,14);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (1,14);
@@ -300,9 +351,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,14);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,14);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,14);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,14);
---------end--------
+--end--------
 
------Ahmed action (add question)----
+--Ahmed action (add question)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (14, 'Quiz_Details', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (1,14);
@@ -310,4 +361,4 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,14);
---------end--------
+--end--------
