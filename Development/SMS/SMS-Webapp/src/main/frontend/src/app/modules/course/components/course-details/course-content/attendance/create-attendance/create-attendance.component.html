@@ -20,7 +20,11 @@
 
   <div class="page-content-area">
 
-    <div class="offset-2 col-lg-8 mt-5 pb-5">
+    <div class="offset-2 col-lg-8">
+      <app-alert [data]="alert"></app-alert>
+    </div>
+
+    <div class="offset-2 col-lg-8">
       <div class="card">
         <div class="card-body">
           <h4 class="header-title">Create New Attendance</h4>
@@ -28,7 +32,7 @@
           <form [formGroup]="formData">
 
             <div class="row">
-              <div class="form-group col-md-12 mb-4">
+              <div class="form-group col-md-12">
                 <label for="example-date-input" class="col-form-label ">Attendance Date</label>
                 <input class="form-control" type="date" id="example-date-input"
                        (change)="getCourseStudents()"
@@ -46,7 +50,6 @@
           </div>
 
 
-          <!--<button type="submit" class="btn btn-success mt-3 col-md-1 pull-right mg-l-15" (click)="onSubmitNewAttendance()">Submit</button>-->
           <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAttendance()">Submit
           </button>
 

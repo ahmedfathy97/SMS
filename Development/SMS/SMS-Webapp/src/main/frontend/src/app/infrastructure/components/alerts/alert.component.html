@@ -1,0 +1,14 @@
+<div class="alert-items mb-4 mt-3">
+<span role="alert" class="alert" *ngIf="data?.appear"
+      [ngClass]="{
+        'alert-success': data.status == 's',
+        'alert-danger': data.status == 'f',
+        'alert-warning': data.status == 'w'
+      }">
+
+    {{data.message}}
+  <!--<button type="button" class="close" (click)="onCloseAlert()">-->
+    <!--<span aria-hidden="true" class="fa fa-close"></span>-->
+  <!--</button>-->
+</span>
+</div>

@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
+import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
+import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
 
 @Component({
   selector: 'app-create-attendance',
@@ -22,6 +25,8 @@ export class CreateAttendanceComponent implements OnInit {
     attendanceDate: ['', Validators.required]
   });
 
+  alert: AlertInput = new AlertInput();
+
   attendance: AttendanceDTO = new AttendanceDTO();
 
   constructor(private formBuilder: FormBuilder, private  courseService: CourseService ,
@@ -29,7 +34,6 @@ export class CreateAttendanceComponent implements OnInit {
               private  attendanceService: AttendanceService ,
               private corDataService: CourseDataService,
               private route: ActivatedRoute) {
-
 
     this.corDataService.corID.subscribe(
       data =>{
@@ -76,10 +80,12 @@ export class CreateAttendanceComponent implements OnInit {
       this.attendanceService.createNewAttendanceSheet(this.corID, this.isUpdated ,data).subscribe(
         res => {
           console.log(res);
-          // this.router.navigate([`/course/${this.corID}/attendance`])
+          this.alert = new SuccessAlert();
+          // this.router.navigate([`/course/${this.corID}/attendance`]);
           },
         error1 => {
-          console.log(error1)
+          this.alert = new FailureAlert(error1);
+          console.log(error1);
         }
       );
       //this.isUpdate = true ;
