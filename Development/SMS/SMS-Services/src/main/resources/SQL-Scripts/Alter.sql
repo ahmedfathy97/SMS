@@ -172,12 +172,12 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (29,10);
 
 -----Ahmed action (course quizes)----
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (10, 'Course-Quizes', '');
-INSERT INTO auth_role_action (role_id, view_id) VALUE (1,10);
-INSERT INTO auth_user_action (user_id, view_id) VALUE (1,10);
-INSERT INTO auth_user_action (user_id, view_id) VALUE (4,10);
-INSERT INTO auth_user_action (user_id, view_id) VALUE (5,10);
-INSERT INTO auth_user_action (user_id, view_id) VALUE (6,10);
-INSERT INTO auth_user_action (user_id, view_id) VALUE (30,10);
+INSERT INTO auth_role_action (role_id, action_id ) VALUE (1,10);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (1,10);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (4,10);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (5,10);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (6,10);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (30,10);
 --------end--------
 
 
