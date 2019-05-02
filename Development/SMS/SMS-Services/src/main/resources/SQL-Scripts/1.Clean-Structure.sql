@@ -254,11 +254,11 @@ CREATE TABLE file_source (
 
 CREATE TABLE attachment (
   file_id            INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  file_name     VARCHAR(60)  NOT NULL,
-  content_type  VARCHAR(20)  NOT NULL,
+  file_name     VARCHAR(100)  NOT NULL,
+  content_type  VARCHAR(30)  NOT NULL,
   file_size	INT	    Not NULL,
-  extension     VARCHAR(6)   NOT NULL,
-  file_path     VARCHAR(100) NOT NULL,
+  extension     VARCHAR(10)   NOT NULL,
+  file_path     VARCHAR(150) NOT NULL,
   upload_date   DATE         NOT NULL,
   source_id     INT          NOT NULL,
   file_src_id   INT          ,

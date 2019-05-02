@@ -9,7 +9,6 @@ public class FileRm implements RowMapper<File> {
     @Override
     public File mapRow(ResultSet rs, int rowIndex) throws SQLException {
         File file = new File();
-
         file.setId(rs.getInt("file_id"));
         file.setName(rs.getString("file_name"));
         file.setSize(rs.getInt("file_size"));

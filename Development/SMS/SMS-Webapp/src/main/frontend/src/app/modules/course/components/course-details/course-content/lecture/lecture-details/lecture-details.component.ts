@@ -22,6 +22,7 @@ export class LectureDetailsComponent implements OnInit {
 
   lectureID:number;
 
+
   files:FileVTO[] = [];
 
   constructor(private fileService: AttachmentService,
