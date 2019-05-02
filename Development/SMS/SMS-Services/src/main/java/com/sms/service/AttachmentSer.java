@@ -33,6 +33,7 @@ public class AttachmentSer {
             // Change path to work on windows
             java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" + name);
             Files.copy(file, path);
+
         } catch (FileAlreadyExistsException e) {
             System.out.println("File already exists with the same name: " + name);
 //            java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" +"("+ 2 +")" + name);
@@ -73,7 +74,7 @@ public class AttachmentSer {
             System.err.println(x);
          }
 
-//        try {
+//        try ng
 //            this.attachmentRep.deleteFile(fileID);
 //        } catch (Exception e) {
 //            System.err.println("Got an exception! ");

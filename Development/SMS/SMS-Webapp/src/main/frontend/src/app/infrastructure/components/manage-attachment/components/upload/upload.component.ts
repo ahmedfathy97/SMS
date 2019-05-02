@@ -34,8 +34,8 @@ export class UploadComponent implements OnInit {
 
     }
   }
-
-  onUpload() {
+// sourceID : 1#for attachment , 2# assignment
+  onUpload(sourceID, fileSrcID) {
     const fd = new FormData();
     for (let i = 0; i < this.files.length; i++) {
       let file = this.files[i];
@@ -43,9 +43,9 @@ export class UploadComponent implements OnInit {
       let type: string = file.type;
       let extension: string = file.name.split('.').pop();
       let name: string = file.name;
-      // console.log(file)
+
       fd.append("file", file);
-      this.service.uploadFiles(fd, name, type, size, extension);
+      this.service.uploadFiles(fd, name, type, size, extension, 1, 1);
     }
 
     // this.service.uploadFiles(fd)

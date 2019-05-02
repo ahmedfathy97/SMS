@@ -1,8 +1,9 @@
 <div class="list-group pl--30">
               <ul class="list-group-item" style="border: none" *ngFor="let file of fileList; let i = index;">
                 <li style="list-style-type:disc;">
-                  <a href="" target="_blank" (click)="download(file.id)" download>{{file.name}}</a>
+                  <a style="color: #2c71da; cursor: pointer" target="_blank" (click)="download(file.id, file.name, file.contentType)" >{{file.name}}</a>
 <!--                <span>{{formatBytes(file.size,2)}}</span>-->
                 </li>
                </ul>
 </div>
+

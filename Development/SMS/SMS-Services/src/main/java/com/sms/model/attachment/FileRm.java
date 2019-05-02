@@ -15,6 +15,8 @@ public class FileRm implements RowMapper<File> {
         file.setSize(rs.getInt("file_size"));
         file.setContentType(rs.getString("content_type"));
         file.setUpload_date(rs.getDate("upload_date"));
+        file.setSourceID(rs.getInt("source_id"));
+
 
         System.out.println(file.toString());
         return file;

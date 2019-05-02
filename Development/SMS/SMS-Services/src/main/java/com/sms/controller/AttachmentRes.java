@@ -126,6 +126,8 @@ public class AttachmentRes {
             @QueryParam("type") String type,
             @QueryParam("size") long size,
             @QueryParam("ext") String ext,
+            @QueryParam("sourceID") int sourceID,
+            @QueryParam("fileSrcID") int fileSrcID,
             @FormDataParam("file") InputStream fileContent,
             @FormDataParam("file") FormDataContentDisposition fileDisposition)
     {
@@ -138,8 +140,9 @@ public class AttachmentRes {
         file.setContentType(type);
         file.setSize(size);
         file.setExtension(ext);
-        file.setFile_path(filePath + fileName);
-        file.setSourceID(1);
+        file.setFile_path(filePath + name);
+        file.setSourceID(sourceID);
+        file.setFileSourceID(fileSrcID);
         file.setUpload_date();
 
         String fileDetails = "File saved at " + filePath;
@@ -154,38 +157,30 @@ public class AttachmentRes {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/files/{sourceID}")
-    public List<File> getFilesBySourceId(@PathParam("sourceID") int sourceID) {
-        List<File> files = this.repository.findFiles(1);
+    @Path("/files")
+    public List<File> listFiles(@QueryParam("sourceID") int sourceID,
+                                @QueryParam("fileSrcID") int fileSrcID)
+    {
+        List<File> files = this.repository.findFiles(sourceID ,fileSrcID);
         System.out.println(files.get(0).toString());
         return files;
     }
 
 //    /* Download Files */
-//    @GET
-////    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-//    @Path("/downloadFile/{fileID}")
-//    public ResponseEntity<Resource> downloadFileById(@PathParam("fileID") int fileID) throws IOException{
-//        File fileFromRep = this.repository.getFile(fileID);
-////        String path = this.repository.getFile(fileID);
+    @GET
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Path("/downloadFile/{fileID}")
+    public Response downloadFileById(@PathParam("fileID") int fileID) throws IOException{
+        File fileFromRep = this.repository.getFile(fileID);
+
+        java.io.File file = new java.io.File(fileFromRep.getFile_path());
+        java.nio.file.Path filePath = Paths.get(file.getAbsolutePath());
+
+         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
+
+        return Response.ok().entity(resource.getByteArray()).type(fileFromRep.getContentType()).build();
 //
-//        java.io.File file = new java.io.File(fileFromRep.getFile_path());
-//        java.nio.file.Path filePath = Paths.get(file.getAbsolutePath());
-//
-//         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-//        headers.add("Pragma", "no-cache");
-//        headers.add("Expires", "0");
-//
-//        return ResponseEntity.ok()
-//                .headers(headers)
-//                .contentLength(file.length())
-//                .contentType(org.springframework.http.MediaType.parseMediaType(fileFromRep.getContentType()))
-//                .body(resource);
-////
-//    }
+    }
 
 
 //    /* Download Files */

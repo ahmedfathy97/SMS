@@ -8,10 +8,9 @@ export class FileVTO {
   content: File;
   extension: string;
   sourceID: number;
+  fileSourceID:number;
 
-  // fileSourceID:number;
-
-  constructor(id: number, name: string, type: string, extension: string, size: number, uploadDate: Date,sourceID: number, dueDate?: Date ,// ,fileSourceID:number
+  constructor(id: number, name: string, type: string, extension: string, size: number, uploadDate: Date,sourceID: number ,fileSourceID:number,dueDate?: Date
   ) {
     this.id = id;
     this.name = name;
@@ -22,7 +21,7 @@ export class FileVTO {
     this.uploadDate = uploadDate;
     // this.dueDate = dueDate;
     this.sourceID = sourceID;
-    // this.fileSourceID = fileSourceID;
+    this.fileSourceID = fileSourceID;
   }
 
 }

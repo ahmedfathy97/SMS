@@ -23,19 +23,19 @@ public class AttachmentRep {
 
     public void insertNewFile(File file) {
         String sql = "INSERT INTO attachment (file_name, content_type, file_size,extension," +
-                "  file_path, upload_date, source_id) VALUES (?, ?, ?, ?, ?, ?, ?) ";
+                "  file_path, upload_date, source_id, file_src_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 
         this.jdbcTemplate.update(sql, file.getName(), file.getContentType(), file.getSize(), file.getExtension(),
-                file.getFile_path(), file.getUpload_date(), file.getSourceID());
+                file.getFile_path(), file.getUpload_date(), file.getSourceID(), file.getFileSourceID());
     }
 
     // For Listing purposes
-    public List<File> findFiles(int source_id) {
-        String sql = "SELECT file_id, file_name, file_size,content_type, upload_date " +
+    public List<File> findFiles(int sourceID ,int file_src_id) {
+        String sql = "SELECT file_id, file_name, file_size,content_type, upload_date, source_id " +
                 "FROM attachment " +
-                "WHERE source_id = ?";
+                "WHERE source_id = ? AND file_src_id = ?  ";
 
-        List<File> files = this.jdbcTemplate.query(sql, new FileRm(), source_id);
+        List<File> files = this.jdbcTemplate.query(sql, new FileRm(), sourceID, file_src_id);
         return files;
     }
 
@@ -55,7 +55,7 @@ public class AttachmentRep {
                 return file;
             }
         }, fileID);
-        System.out.println("inside Rep: " + files.get(0));
+//        System.out.println("inside Rep: " + files.get(0));
         return files.get(0);
     }
 

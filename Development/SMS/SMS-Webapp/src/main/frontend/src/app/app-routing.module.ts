@@ -64,23 +64,23 @@ const routes: Routes = [
               {path: 'edit', component: UserEditComponent}
             ]
           },
-            {path: 'profile/:userID', component: UserProfileComponent},
-            {path:'edit/:userID',component:UserEditComponent}
-                //{path:'',component:UserEditComponent},
-            ]
+          {path: 'profile/:userID', component: UserProfileComponent},
+          {path:'edit/:userID',component:UserEditComponent}
+          //{path:'',component:UserEditComponent},
+        ]
       } ,
 
 
       {path:'settings',children:
-        [
-          {path:'',component:SettingDetailsComponent ,children:[
-              {path:'users',component:UserListComponent, data: {viewID: AuthViews.USER_LIST},
-                canActivate:[AuthenticationGuard, AuthorizationGuard]},
-              {path: 'user', children: [
-                  {path: ':userID', component: UserProfileComponent}
-                ]}
-            ]} ,
-        ]
+          [
+            {path:'',component:SettingDetailsComponent ,children:[
+                {path:'users',component:UserListComponent, data: {viewID: AuthViews.USER_LIST},
+                  canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                {path: 'user', children: [
+                    {path: ':userID', component: UserProfileComponent}
+                  ]}
+              ]} ,
+          ]
       },
 
 
@@ -94,7 +94,7 @@ const routes: Routes = [
           {path: 'course/new', component: CreateCourse ,
             data: {viewID: AuthViews.CREATE_LEC},
             canActivate:[AuthenticationGuard, AuthorizationGuard]},
-      // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
+          // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           {path: 'my-courses', component: MyCourseComponent},
           {path: 'courses', component: CourseListComponent},
 
@@ -118,63 +118,63 @@ const routes: Routes = [
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent},
                   {path: 'new', component: CreateLecture ,
-                    data: {viewID: AuthViews.CREATE_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]}//,
-                  // {path: ':lectureID', children: [
-                  //     {path: 'upload ', component: UploadComponent},p
-                  //     {path: 'download', component: DownloadComponent}
-                  //   ]
-                  // },
-                ]
-              },
+                    data: {viewID: AuthViews.CREATE_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                  {path: ':lectureID',component: LectureDetailsComponent ,children: [
+                      // {path: 'upload ', component: UploadComponent},
+                      //     {path: 'download', component: DownloadComponent}
+                        ]
+                      },
+                    ]
+                  },
 
-              {
-                path: 'attendance', children: [
-                  {path: '', component: ViewAttendanceComponent ,
-                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                  {path: 'new', component: CreateAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE},
-                    canActivate:[AuthenticationGuard, AuthorizationGuard]}
-                ]
-              },
-
-              {
-                path: 'grade', children: [
-                  {path: '', component: ViewGradeComponent},
-                  {path: 'new', component: CreateGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
-                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                  // {path:'edit/:stdID', component:CreateGradeComponent}
-                ]
-              },
-
-              {
-                path: 'quiz', children: [
-                  {path: '', component: CourseQuizesComponent ,data: {viewID: AuthViews.COURSE_QUIZES},
-                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                  {path: 'new', component: CreateQuizComponent , data: {viewID: AuthViews.CREATE_QUIZ},
-                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {
-                    path: ':quizID', children: [
-                      {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
+                    path: 'attendance', children: [
+                      {path: '', component: ViewAttendanceComponent ,
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {path: 'quizDetails', component: QuizMainDetailComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'new', component: CreateAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]}
+                    ]
+                  },
 
+                  {
+                    path: 'grade', children: [
+                      {path: '', component: ViewGradeComponent},
+                      {path: 'new', component: CreateGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      // {path:'edit/:stdID', component:CreateGradeComponent}
+                    ]
+                  },
+
+                  {
+                    path: 'quiz', children: [
+                      {path: '', component: CourseQuizesComponent ,data: {viewID: AuthViews.COURSE_QUIZES},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'new', component: CreateQuizComponent , data: {viewID: AuthViews.CREATE_QUIZ},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {
+                        path: ':quizID', children: [
+                          {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
+                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                          {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
+                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                          {path: 'quizDetails', component: QuizMainDetailComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
+                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
+
+                        ]
+                      },
                     ]
                   },
                 ]
               },
             ]
-          },
+          }
         ]
       }
     ]
-  }
-]
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {
-}
+    @NgModule({
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+    })
+    export class AppRoutingModule {
+    }

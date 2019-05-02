@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AttachmentService} from "../../shared/attachment.service";
 import {FileVTO} from "../../shared/data/FileVTO";
 
@@ -9,44 +9,47 @@ import {FileVTO} from "../../shared/data/FileVTO";
   providers: [AttachmentService]
 })
 export class DownloadComponent implements OnInit {
+  @Input("sourceID") sourceID
+  @Input("fileSrcID") fileSrcID
   fileList: FileVTO[] = [];
   file:any;
 
-  // change hard coded to dynamically
-  filesRetrievalID:number = 1;
-  constructor(private service: AttachmentService) {
+
+    constructor(private service: AttachmentService) {
   }
 
   ngOnInit() {
-    this.retrieveFilesList(this.filesRetrievalID)}
+    this.retrieveFilesList(this.sourceID, this.fileSrcID);
+  }
 
-  /*  id depends on the source  */
-  retrieveFilesList(id:number){
-      this.service.viewFiles(id).subscribe(
-        res => this.fileList = res
-      )
+  retrieveFilesList(sourceID:number, fileSrcID:number){
+      this.service.viewFiles(sourceID, fileSrcID).subscribe(res => {
+        this.fileList = res;
+        console.log(this.fileList);
+      })
+    return this.fileList;
   }
 
   /*  Download by File ID  */
-  download(fileID){
-    // //   this.service.downloadFile(fileID).subscribe(data=>
-    // //    this.file = data,//console.log(data),
-    // //    error => console.log('Error downloading the file.'),
-    // //      () => console.info('OK')
+  download(fileID, fileName, type){
+    //   this.service.downloadFile(fileID).subscribe(data=>
+    //    this.file = data,//console.log(data),
+    //    error => console.log('Error downloading the file.'),
+    //      () => console.info('OK')
     // // );
-    // this.service.downloadFile(fileID).subscribe(
-    //   (response: any) =>{
-    //     let dataType = response.type;
-    //     let binaryData = [];
-    //     binaryData.push(response);
-    //     let downloadLink = document.createElement('a');
-    //     downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
-    //     // if (filename)
-    //     //   downloadLink.setAttribute('download', filename);
-    //     document.body.appendChild(downloadLink);
-    //     downloadLink.click();
-    //   }
-    // )
+    this.service.downloadFile(fileID).subscribe(
+      (response: any) =>{
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+        if (fileName)
+          downloadLink.setAttribute('download', fileName);
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+      }
+    )
   }
 
 
@@ -54,7 +57,6 @@ export class DownloadComponent implements OnInit {
   deleteFile(fileID:number){
 
   }
-
 
   /* Format of file size */
   formatBytes(bytes, decimals) {

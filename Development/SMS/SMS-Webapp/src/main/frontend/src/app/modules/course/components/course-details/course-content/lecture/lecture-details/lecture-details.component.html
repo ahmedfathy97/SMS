@@ -27,6 +27,29 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--  &lt;!&ndash; page title area end &ndash;&gt;-->
+  <div class="page-title-area">
+    <div class="row align-items-center content-header">
+      <div class="col-sm-6">
+        <div class="breadcrumbs-area clearfix">
+          <h4 class="page-title pull-left">New Lecture</h4>
+        </div>
+        <div class="breadcrumbs-area clearfix">
+          <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><a [routerLink]="[ROUTES.COR_VIEW_LECTURES]">Lectures</a></li>
+
+          </ul>
+        </div>
+      </div>
+<!--      <div class="col-sm-6 clearfix">-->
+<!--        <div class="pull-right">-->
+<!--          <a class="btn btn-success btn-header"-->
+<!--             [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">-->
+<!--            <i class="fa fa-plus pr&#45;&#45;10"></i> Add Lecture</a>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
   <div class="main-content-inner">
     <!-- accroding start -->
     <div class="row">
@@ -52,12 +75,8 @@
                 </div>
                 <div id="accordion11" class="collapse show" data-parent="#accordion1">
                   <div class="card-body">
-                    <!--                    <ul *ngFor="let assignment of attachments;">-->
-                    <!--                      <li>{{assignment.name}}</li>-->
-                    <!--&lt;!&ndash;                      <li>{{assignment.dueDate}}</li>&ndash;&gt;-->
-                    <!--                    </ul>-->
-                    <app-download></app-download>
                   </div>
+                  <app-download [fileSrcID] = "1" [sourceID] = "lectureID"></app-download>
                 </div>
               </div>
             </div>
@@ -79,11 +98,7 @@
                 </div>
                 <div id="accordion21" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
-<!--                    <ul *ngFor="let assignment of attachments;">-->
-<!--                      <li>{{assignment.name}}</li>-->
-<!--&lt;!&ndash;                      <li>{{assignment.dueDate}}</li>&ndash;&gt;-->
-<!--                    </ul>-->
-                    <app-download></app-download>
+                    <app-download [fileSrcID] = "2" [sourceID] = "lectureID"></app-download>
                   </div>
                 </div>
               </div>
@@ -116,7 +131,7 @@
                     <!--                      <li>{{assignment.name}}</li>-->
                     <!--&lt;!&ndash;                      <li>{{assignment.dueDate}}</li>&ndash;&gt;-->
                     <!--                    </ul>-->
-                    <app-download></app-download>
+<!--                    <app-download [fileSrcID] = "lectureID" [sourceID] = "sourceID"></app-download>-->
                   </div>
                 </div>
               </div>
