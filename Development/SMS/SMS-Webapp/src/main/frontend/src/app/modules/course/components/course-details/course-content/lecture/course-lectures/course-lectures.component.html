@@ -40,8 +40,11 @@
                 </tr>
                 <tr *ngFor="let lecture of lectureList , index as i">
                   <td class="lec-num">{{i +1}}</td>
-                  <td class="lec-title">{{lecture.lectureTitle}}></td>
+<!--                  <td class="lec-title">{{lecture.lectureTitle}}></td>-->
+                  <td class="lec-title"><a [routerLink] ="[replaceLecID(ROUTES.COR_LECTURE, corID ,lecture.lectureID)]">
+                    {{lecture.lectureTitle}}</a></td>
                   <td class="lec-lectureDate">{{lecture.lectureDate}}</td>
+
                 </tr>
               </table>
             </div>

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {LectureVto} from "../../../../../shared/data/lecture-vto";
-import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceCorID, replaceLecID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {LectureDataService} from "../../../../../shared/services/lecture-data.service";
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
@@ -16,12 +17,16 @@ export class CourseLecturesComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
+  replaceLecID = replaceLecID;
 
   corID: number ;
-  lectureList: LectureVto[] ;
+  lectureList: LectureVto[];
+
+  lectureID: number;
 
   constructor(private corDataService: CourseDataService,
-              private courseService: CourseService,) {
+              private courseService: CourseService,
+              private lecDataSer: LectureDataService) {
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;

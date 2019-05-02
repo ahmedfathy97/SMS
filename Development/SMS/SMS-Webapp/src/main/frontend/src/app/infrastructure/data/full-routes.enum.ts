@@ -16,6 +16,7 @@ export enum AngularFullRoutes {
   COR_VIEW_Attendance = "/course/${corID}/attendance",
   COR_CREATE_LECTURE = "/course/${corID}/lecture/new",
   COR_VIEW_LECTURES = "/course/${corID}/lecture",
+  COR_LECTURE = "/course/${corID}/lecture/${lectureID}",
   COR_CREATE = "/",
 
 
@@ -40,3 +41,8 @@ export function replaceQuizID(route:string ,corID, quizID) {
  export function replaceUserID(route:string,userID) {
   return route.replace("${userID}",userID);
  }
+
+export function replaceLecID(route:string, corID, lectureID) {
+  route = route.replace("${lectureID}", lectureID);
+  return route.replace("${corID}", corID);
+}
