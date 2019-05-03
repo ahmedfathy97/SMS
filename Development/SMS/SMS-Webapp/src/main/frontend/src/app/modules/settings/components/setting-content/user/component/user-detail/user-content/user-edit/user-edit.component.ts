@@ -22,52 +22,31 @@ export class UserEditComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceUserID =replaceUserID;
 
-
-  //userID:string;
-  // userID:string;
-
   private userEdit: UserVtoData = new UserVtoData();
   //userID: string;
   formData = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    firstName: ['', [Validators.required,Validators.maxLength(25)]],
+    lastName: ['',[ Validators.required,Validators.maxLength(25)]],
     age: ['', Validators.required],
     gender: ['', Validators.required],
-    email: ['', Validators.required],
-    phone: ['', Validators.required],
-    userName: ['', Validators.required],
+    email: ['', [Validators.required,Validators.maxLength(30)]],
+    phone: ['', [Validators.required,Validators.maxLength(11)]],
+    userName: ['',[Validators.required,Validators.maxLength(25)]],
 
   });
-   userID: number;
+
+  get edit() { return this.formData.controls; }
+   userID:number;
   private userVto: UserVtoData=new  UserVtoData();
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
              private userDataService:UserDataService,
              /* private editService: EditData */
               private route: ActivatedRoute) {
-
-    // this.route.paramMap.subscribe(params => {
-    //   this.userID = +params.get("userID");
-    // });
-    // this.editService.userID.subscribe(
-    //   data => {
-    //     this.userID = data;
-    //     console.log(data);
-    //
-    //   }
-    // );
   }
     ngOnInit()
     {
-      // this.route.paramMap.subscribe(params => {
-      //   this.userID = +params.get("userID");
-      //
-      //
-      //     var userID =+this.userID ;
-      //   this.userService.findByID(this.userID).subscribe(
-      //     res=> { this.userVto=res ;});
-      //
-      // })
+
 
 
       this.userDataService.userID.subscribe(
@@ -77,13 +56,14 @@ export class UserEditComponent implements OnInit {
 
             res=> { this.userVto= res ;
 
-            this.formData.get('firstName').reset(this.userVto.firstName);
-            this.formData.get('lastName').reset(this.userVto.lastName);
+              this.formData.get('firstName').reset(this.userVto.firstName);
+              this.formData.get('lastName').reset(this.userVto.lastName);
               this.formData.get('age').reset(this.userVto.age);
+              this.formData.get('gender').reset(this.userVto.gender);
               this.formData.get('email').reset(this.userVto.email);
               this.formData.get('phone').reset(this.userVto.phone);
               this.formData.get('userName').reset(this.userVto.userName);
-              this.formData.get('gender').reset(this.userVto.gender);
+
 
 
             });

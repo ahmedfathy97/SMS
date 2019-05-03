@@ -27,28 +27,33 @@
       <hr>
               <form [formGroup]="formData">
 
-              <div class="form-group d-inline-block col-6">
+               <div class="form-group d-inline-block col-6">
                 <label for="firstname" class="col-form-label">First Name</label>
-                <input class="form-control" type="firstname" id="firstname" formControlName="firstName">
-              </div>
+                <input class="form-control" type="text" id="firstname"  formControlName="firstName"
+                       [ngClass]="{ 'is-invalid': edit.firstName.dirty && edit.firstName.errors?.required }">
+                <div *ngIf="submitted && edit.firstName.errors" class="invalid-feedback">
+                  <small *ngIf="edit.firstName.errors?.required"> Fristname can't be null </small>
+                  <small *ngIf="edit.firstName.errors?.maxlength">length of Firstname less than 25 letter </small>
+                </div>
+                </div>
 
                <div class="form-group d-inline-block col-6">
                 <label for="lastname" class="col-form-label">Last Name</label>
-                <input class="form-control" type="lastname" id="lastname" formControlName="lastName">
+                <input class="form-control" type="text" id="lastname" formControlName="lastName">
               </div>
 
 
-
+                <div class="form-group d-inline-block col-6">
+                <label for="gender" class="col-form-label ">Gender</label>
+                <input class="form-control" type="text" id="gender" formControlName="gender">
+                </div>
 
               <div class="form-group d-inline-block col-6">
                 <label for="age" class="col-form-label">Age</label>
-                <input class="form-control" type="age" id="age" formControlName="age">
+                <input class="form-control" type="number" id="age" formControlName="age">
               </div>
 
-              <div class="form-group d-inline-block col-6">
-                <label for="gender" class="col-form-label ">Gender</label>
-                <input class="form-control" type="gender" id="gender" formControlName="gender">
-              </div>
+
 
               <div class="form-group d-inline-block col-6">
                 <label for="email" class="col-form-label">E_mail</label>
@@ -57,13 +62,9 @@
 
               <div class="form-group d-inline-block col-6">
                 <label for="phone" class="col-form-label">Phone</label>
-                <input class="form-control" type="phone" id="phone" formControlName="phone">
+                <input class="form-control" type="number" id="phone" formControlName="phone">
               </div>
 
-              <div class="form-group d-inline-block col-6">
-                <label for="user-name" class="col-form-label">User Name</label>
-                <input class="form-control" type="username" id="user-name" formControlName="userName">
-              </div>
               <hr>
               </form>
               <div class="card-action">

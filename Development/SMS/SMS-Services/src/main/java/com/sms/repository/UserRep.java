@@ -56,7 +56,7 @@ public class UserRep {
                 "set first_name=?,last_name=?,age=?,gender=?,email=?,phone=? " +
                 "where user_id =?" ;
 
-        this.jdbcTemplate.update(sql,userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge() ,userVTO.getEmail() ,userVTO.getGender() ,userVTO.getPhone() ,userID);
+        this.jdbcTemplate.update(sql,userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge(),userVTO.getGender(),userVTO.getEmail() ,userVTO.getPhone() ,userID);
 
 
     }
