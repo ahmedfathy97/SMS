@@ -4,11 +4,12 @@ export enum AuthActions {
   COR_ADD_ANNOUNCEMENT = 4,
   ADD_COR = 8,
   ADD_LEC = 9,
-
   ENROLL_STUDENT=5 ,
   COURSE_QUIZES = 10 ,
   CREATE_QUIZ = 11 ,
   COR_ADD_QUESTION = 12 ,
   ANSWER_QUESTION = 13 ,
   QUIZ_DETAILS =  14 ,
+  CLOSE_QUIZ = 15 ,
+
 }

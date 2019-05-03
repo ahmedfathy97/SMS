@@ -69,9 +69,10 @@ public class QuizRes {
      }
 
 
-    @POST
+    @PUT
     @Path("/{quizID}/close")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Authenticated(actions = {AuthActions.CLOSE_QUIZ})
     public void closeQuiz (int quizID)
     {
         quizSer.closeQuiz(quizID);

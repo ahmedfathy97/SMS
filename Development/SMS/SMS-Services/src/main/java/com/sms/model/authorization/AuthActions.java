@@ -13,7 +13,8 @@ public enum AuthActions {
     CREATE_QUIZ (11),
     COR_ADD_QUESTION(12),
     ANSWER_QUESTION(13),
-    QUIZ_DETAILS(14);
+    QUIZ_DETAILS(14),
+    CLOSE_QUIZ(15) ;
     private int id;
 
     AuthActions(int id){

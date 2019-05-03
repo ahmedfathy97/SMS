@@ -489,3 +489,13 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (27,16);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (28,16);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (29,16);
 -- end-- -- -- --
+
+-- ahmed authaction (close quiz)
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (15, 'Close_quiz', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (1,15);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (1,15);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (4,15);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (5,15);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (6,15);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (30,15);
+-- end --

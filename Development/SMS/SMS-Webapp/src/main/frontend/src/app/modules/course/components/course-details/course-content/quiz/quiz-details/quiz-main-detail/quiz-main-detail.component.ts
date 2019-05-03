@@ -4,6 +4,7 @@ import {QuizService} from "../../../../../../shared/services/quiz.service";
 import {QuizInformationVto} from "../../../../../../shared/data/quiz/quiz-information-vto";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-quiz-main-detail',
@@ -12,13 +13,13 @@ import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastru
   providers: [QuizService],
 })
 export class QuizMainDetailComponent implements OnInit {
-
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   //replaceQuizID = replaceQuizID;
   replaceCorID = replaceCorID;
   corID: number;
   quizId: number;
-  quizDetials :QuizInformationVto ;
+  quizDetails :QuizInformationVto ;
 
   constructor(private corDataService: CourseDataService,
               private quizService: QuizService, private route: ActivatedRoute) {
@@ -30,6 +31,7 @@ export class QuizMainDetailComponent implements OnInit {
         data => {
           this.corID = data;
           console.log(data);
+          this.getQuizInformation() ;
         }
       );
 
@@ -40,14 +42,22 @@ export class QuizMainDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getQuizInformation() ;
   }
 
 
   getQuizInformation() {
 
     this.quizService.getQuizDetails(this.quizId).subscribe(res => {
-      this.quizDetials = res ;
+      this.quizDetails = res ;
+    }, err => {
+      console.log(err);
+    });
+  }
+
+
+  onClickCloseQuiz()
+  {
+    this.quizService.closeQuiz(this.quizId).subscribe(res => {
     }, err => {
       console.log(err);
     });
