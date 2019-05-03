@@ -41,6 +41,7 @@ public class QuizRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/questionsView")
+    @Authenticated(views = {AuthViews.ANSWER_QUESTION})
     public List<QuestionVTO> getQuizQuestions(@PathParam("quizID") int quizID) {
         List<QuestionVTO> questionsList = quizSer.getQuizQuestions(quizID);
         return questionsList;
@@ -81,7 +82,7 @@ public class QuizRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/quizDetails")
-    @Authenticated(views = {AuthViews.QUIZ_DETAILS})
+    @Authenticated(views = {AuthViews.MAIN_DETAILS})
     public QuizInformationVTO getQuizInformation(@PathParam("quizID")int quizID)
     {
         return quizSer.getQuizInformation(quizID) ;
@@ -91,7 +92,7 @@ public class QuizRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/results")
-    @Authenticated()
+    @Authenticated(views = {AuthViews.QUIZ_RESULT})
     public List<QuizResult> getQuizResult(@Context ContainerRequestContext request, @PathParam("quizID")int quizID  )
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
@@ -101,7 +102,7 @@ public class QuizRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/state")
-    @Authenticated()
+    @Authenticated(views = {AuthViews.QUIZ_DETAILS})
     public int quizState(@PathParam("quizID")int quizID, @Context ContainerRequestContext request)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
