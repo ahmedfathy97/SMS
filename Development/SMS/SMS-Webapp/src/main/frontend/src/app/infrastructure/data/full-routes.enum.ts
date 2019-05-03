@@ -17,7 +17,7 @@ export enum AngularFullRoutes {
   COR_CREATE_LECTURE = "/course/${corID}/lecture/new",
   COR_VIEW_LECTURES = "/course/${corID}/lecture",
   COR_LECTURE = "/course/${corID}/lecture/${lectureID}",
-  COR_CREATE = "/",
+  COR_CREATE = "/course/new",
 
 
 

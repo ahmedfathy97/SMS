@@ -6,6 +6,7 @@ USE sms ;
  -- manar(view user_profile)--
  INSERT INTO auth_view (id, label_ar, description_ar) VALUE (5, 'User-Profile', '');
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,5);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (1,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (4,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,5);
@@ -396,4 +397,47 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (4,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (5,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,14);
+-- end-- -- -- --
+
+
+------ New Script ADD COURSE (Youssef) ------
+DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='9';
+DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='13';
+
+DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='9';
+DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='13';
+
+DELETE FROM `sms`.`auth_view` WHERE `id`='9';
+DELETE FROM `sms`.`auth_view` WHERE `id`='13';
+
+--------------
+DELETE FROM `sms`.`auth_role_action` WHERE `role_id`='1' and`action_id`='7';
+DELETE FROM `sms`.`auth_role_action` WHERE `role_id`='1' and`action_id`='12';
+
+DELETE FROM `sms`.`auth_user_action` WHERE `user_id`='1' and`action_id`='7';
+DELETE FROM `sms`.`auth_user_action` WHERE `user_id`='1' and`action_id`='12';
+
+DELETE FROM `sms`.`auth_action` WHERE `id`='7';
+DELETE FROM `sms`.`auth_action` WHERE `id`='12';
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course');
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course actions');
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '8');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '8');
+
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '8');
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '8');
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add_Lec', 'create new lecture');
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add_Lec', 'create new lecture actions');
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '9');
+
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '9');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
+
+
+------------ END --------------------
 -- end-- -- -- --
