@@ -1,12 +1,15 @@
 USE sms ;
 
 
+ -- manar(view user_profile)--
  --manar(view user_profile)
  --instructor
  INSERT INTO auth_view (id, label_ar, description_ar) VALUE (5, 'User-Profile', '');
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,5);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (1,5);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (9,5);
+-- manar--
 INSERT INTO auth_user_view (user_id, view_id) VALUE (4,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,5);
@@ -93,8 +96,10 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,3);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,3);
+-- Yara View (Attendance)----
 -- -- - Yara View (Attendance)-- --
 
+-- Yara Action (View Attendance)
 -- -- - Yara Action (View Attendance)
 INSERT INTO auth_action (id, label_ar, description_ar) VALUE (3, 'Add-Attendance', '');
 INSERT INTO auth_role_action (role_id, action_id) VALUE (1,3);
@@ -436,24 +441,6 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (30,14);
 
 
 ------ New Script ADD COURSE (Youssef) ------
-DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='9';
-DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='13';
-
-DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='9';
-DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='13';
-
-DELETE FROM `sms`.`auth_view` WHERE `id`='9';
-DELETE FROM `sms`.`auth_view` WHERE `id`='13';
-
---------------
-DELETE FROM `sms`.`auth_role_action` WHERE `role_id`='1' and`action_id`='7';
-DELETE FROM `sms`.`auth_role_action` WHERE `role_id`='1' and`action_id`='12';
-
-DELETE FROM `sms`.`auth_user_action` WHERE `user_id`='1' and`action_id`='7';
-DELETE FROM `sms`.`auth_user_action` WHERE `user_id`='1' and`action_id`='12';
-
-DELETE FROM `sms`.`auth_action` WHERE `id`='7';
-DELETE FROM `sms`.`auth_action` WHERE `id`='12';
 
 INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course');
 INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course actions');
