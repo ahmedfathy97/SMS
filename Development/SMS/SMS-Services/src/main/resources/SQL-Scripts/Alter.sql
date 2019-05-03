@@ -1,18 +1,16 @@
 USE sms ;
  -- manar(view user_profile)--
- --manar(view user_profile)
- --instructor
+ -- manar(view user_profile)
+ -- instructor
  INSERT INTO auth_view (id, label_ar, description_ar) VALUE (5, 'User-Profile', '');
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,5);
- INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (1,5);
- INSERT INTO auth_user_view (user_id, view_id) VALUE (9,5);
 -- manar--
 INSERT INTO auth_user_view (user_id, view_id) VALUE (4,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,5);
---student
+-- student
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (3,5);
@@ -37,12 +35,12 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (26,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (27,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (28,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (29,5);
---system admin
+-- system admin
 INSERT INTO auth_role_view (role_id, view_id) VALUE (3,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE(9,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (15,5);
- --manar(view user_edit)
- --instructor
+ -- manar(view user_edit)
+ -- instructor
  INSERT INTO auth_view (id, label_ar, description_ar) VALUE (6, 'User-Edit', '');
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,6);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (1,6);
@@ -50,7 +48,7 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (5,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (6,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,6);
---student
+-- student
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (2,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (3,6);
@@ -75,11 +73,11 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (26,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (27,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (28,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (29,6);
---system admin
+-- system admin
 INSERT INTO auth_role_view (role_id, view_id) VALUE (3,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE(9,6);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (15,6);
---manar end--
+-- manar end--
 
 
 
@@ -195,14 +193,9 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (30,2);
 
 
 
---  end hala --
 
 
---  Youssef Lec Auth --
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Create-lec', 'creat lec component');
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
 
 
 --  ahmed start --
@@ -210,21 +203,7 @@ ALTER TABLE `sms`.`quiz`
 CHANGE COLUMN `auto_close` `is_closed` TINYINT(4) NULL DEFAULT NULL ;
 --  ahmed end --
 
---  1/5 yousef--
 
-DELETE FROM `sms`.`auth_role_view` WHERE `role_id`='1' and`view_id`='7';
-
-DELETE FROM `sms`.`auth_user_view` WHERE `user_id`='1' and`view_id`='7';
-
-DELETE FROM `sms`.`auth_view` WHERE `id`='7';
-
-
-
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
-
---  end
 
 -- new image--
 UPDATE `sms`.`course` SET `image_path`='/assets/images/course/hala1.png' WHERE `id`='2';
@@ -429,27 +408,21 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (6,14);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,14);
 -- end-- -- -- --
 
-
------- New Script ADD COURSE (Youssef) ------
-
+-- -- -- New Script ADD COURSE (Youssef) ------
 INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course');
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course actions');
-
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '8');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '8');
-
 INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '8');
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course actions');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '8');
 INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '8');
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add_Lec', 'create new lecture');
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add_Lec', 'create new lecture actions');
 
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Create-lec', 'creat lec component');
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '9');
-
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '9');
 INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
 
+INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('7', 'Add-lec', 'Add Lec Button');
+INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
+INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
 
------------- END --------------------
--- end-- -- -- --
+-- -- -- -- -- -- END --------------------
