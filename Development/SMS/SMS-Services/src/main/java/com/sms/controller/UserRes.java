@@ -21,6 +21,7 @@ public class UserRes {
     @GET
     @Path("/{userID}/profile")
     @Produces(MediaType.APPLICATION_JSON)
+    @Authenticated(views = {AuthViews.USER_PROFILE})
     public UserVTO getUserVto(@PathParam("userID") int userID) {
         UserVTO userVTO = this.userRep.findUserByID(userID);
         return userVTO;
@@ -31,6 +32,7 @@ public class UserRes {
     @POST
     @Path("/{userID}/edit")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Authenticated(views = {AuthViews.USER_EDIT})
     public void editUserVto(@PathParam("userID") int userID ,UserVTO userVTO) {
 
          this.userRep.updateUserVto(userID ,userVTO );
