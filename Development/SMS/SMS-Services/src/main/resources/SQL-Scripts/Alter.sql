@@ -3,7 +3,6 @@ USE sms ;
 
  --manar(view user_profile)
  --instructor
- -- manar(view user_profile)--
  INSERT INTO auth_view (id, label_ar, description_ar) VALUE (5, 'User-Profile', '');
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,5);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (2,5);
@@ -41,9 +40,45 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (29,5);
 INSERT INTO auth_role_view (role_id, view_id) VALUE (3,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE(9,5);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (15,5);
---manar--
- INSERT INTO auth_user_view (user_id, view_id) VALUE (9,5);
--- manar--
+ --manar(view user_edit)
+ --instructor
+ INSERT INTO auth_view (id, label_ar, description_ar) VALUE (6, 'User-Edit', '');
+ INSERT INTO auth_role_view (role_id, view_id) VALUE (1,6);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (1,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,6);
+--student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,6);
+--system admin
+INSERT INTO auth_role_view (role_id, view_id) VALUE (3,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE(9,6);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (15,6);
+--manar end--
 
  --  yara( role action )-- -- --
 INSERT INTO auth_user_role (user_id, role_id) VALUE (10, 2);

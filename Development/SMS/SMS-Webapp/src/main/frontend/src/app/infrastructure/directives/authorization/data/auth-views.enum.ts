@@ -3,6 +3,8 @@ export enum AuthViews {
   ADD_GRADE = 2,
   ADD_ATTENDANCE = 3,
   ADD_ANNOUNCEMENT = 4,
+  USER_PROFILE=5,
+  USER_EDIT=6,
   CREATE_LEC = 9,
   CREATE_COR = 13,
 

@@ -60,16 +60,17 @@ const routes: Routes = [
         path: 'user', children: [
           {
             path: ':userID', component: UserDetailComponent, children: [
-              {path: 'profile', component: UserProfileComponent},
-              {path: 'edit', component: UserEditComponent}
+              {path: 'profile', component: UserProfileComponent,data: {viewID: AuthViews.USER_PROFILE},
+                canActivate:[AuthenticationGuard, AuthorizationGuard]},
+              {path: 'edit', component: UserEditComponent,data: {viewID: AuthViews.USER_EDIT},
+                canActivate:[AuthenticationGuard, AuthorizationGuard]}
             ]
           },
-          {path: 'profile/:userID', component: UserProfileComponent},
-          {path:'edit/:userID',component:UserEditComponent}
-          //{path:'',component:UserEditComponent},
+          // {path: 'profile/:userID', component: UserProfileComponent},
+          // {path:'edit/:userID',component:UserEditComponent}
+
         ]
       } ,
-
 
       {path:'settings',children:
           [
@@ -77,7 +78,8 @@ const routes: Routes = [
                 {path:'users',component:UserListComponent, data: {viewID: AuthViews.USER_LIST},
                   canActivate:[AuthenticationGuard, AuthorizationGuard]},
                 {path: 'user', children: [
-                    {path: ':userID', component: UserProfileComponent}
+                    {path: ':userID', component: UserProfileComponent,data: {viewID: AuthViews.USER_PROFILE},
+                      canActivate:[AuthenticationGuard, AuthorizationGuard]}
                   ]}
               ]} ,
           ]

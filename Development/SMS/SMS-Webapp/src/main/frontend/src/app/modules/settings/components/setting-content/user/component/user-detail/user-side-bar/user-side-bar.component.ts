@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {AuthViews} from "../../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 @Component({
   selector: 'app-user-side-bar',
@@ -9,6 +10,7 @@ import {AngularFullRoutes, replaceUserID} from "../../../../../../../../infrastr
 export class UserSideBarComponent implements OnInit {
 
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  AUTH_VIEWS: typeof AuthViews = AuthViews;
   replaceUserID=replaceUserID;
   @Input() userID:number;
   constructor() { }
