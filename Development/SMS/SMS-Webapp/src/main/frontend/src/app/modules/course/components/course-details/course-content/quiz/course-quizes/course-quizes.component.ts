@@ -4,11 +4,7 @@ import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {CourseQuizesVto} from "../../../../../shared/data/quiz/course-quizes-vto";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
-import {
-  AngularFullRoutes,
-  replaceCorID,
-  replaceQuizID
-} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes ,replaceCorID ,replaceQuizID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({

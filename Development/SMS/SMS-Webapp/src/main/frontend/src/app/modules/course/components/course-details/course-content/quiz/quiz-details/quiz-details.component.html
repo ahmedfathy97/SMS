@@ -1,3 +1,3 @@
-<p>
-  quiz-details works!
-</p>
+<app-answer-questions  *ngIf="quizState ==4"></app-answer-questions>
+<app-quiz-main-detail  *ngIf="quizState ==1" ></app-quiz-main-detail>
+<app-quiz-result *ngIf="quizState ==2"></app-quiz-result>

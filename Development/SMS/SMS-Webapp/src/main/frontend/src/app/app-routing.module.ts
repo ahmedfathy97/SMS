@@ -41,6 +41,7 @@ import {MyCourseComponent} from "./modules/course/components/my-course/my-course
 import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
 import {QuizResult} from "./modules/course/shared/data/quiz/quiz-result-dto";
 import {AuthActions} from "./infrastructure/directives/authorization/data/auth-actions.enum";
+import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -94,7 +95,7 @@ const routes: Routes = [
       {path: '', component: FullLayoutComponent, children: [
           {path: 'courses', component: CourseListComponent },
           {path: 'course/new', component: CreateCourse ,
-            data: {viewID: AuthViews.CREATE_LEC},
+            data: {viewID: AuthViews.ADD_LEC},
             canActivate:[AuthenticationGuard, AuthorizationGuard]},
           // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           {path: 'my-courses', component: MyCourseComponent},
@@ -120,7 +121,7 @@ const routes: Routes = [
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent},
                   {path: 'new', component: CreateLecture ,
-                    data: {viewID: AuthViews.CREATE_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                    data: {viewID: AuthViews.ADD_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {path: ':lectureID',component: LectureDetailsComponent ,children: [
                       // {path: 'upload ', component: UploadComponent},
                       //     {path: 'download', component: DownloadComponent}
@@ -147,20 +148,20 @@ const routes: Routes = [
                     ]
                   },
 
+              {
+                path: 'quiz', children: [
+                  {path: '', component: CourseQuizesComponent ,data: {viewID: AuthViews.COURSE_QUIZES},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                  {path: 'new', component: CreateQuizComponent , data: {viewID: AuthViews.CREATE_QUIZ},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {
-                    path: 'quiz', children: [
-                      {path: '', component: CourseQuizesComponent ,data: {viewID: AuthViews.COURSE_QUIZES},
+                    path: ':quizID', children: [
+                      {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {path: 'new', component: CreateQuizComponent , data: {viewID: AuthViews.CREATE_QUIZ},
+                      // {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
+                      //   canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'quizDetails', component: QuizDetailsComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {
-                        path: ':quizID', children: [
-                          {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
-                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                          {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
-                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                          {path: 'quizDetails', component: QuizMainDetailComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
-                            canActivate:[AuthenticationGuard, AuthorizationGuard]},
 
                         ]
                       },

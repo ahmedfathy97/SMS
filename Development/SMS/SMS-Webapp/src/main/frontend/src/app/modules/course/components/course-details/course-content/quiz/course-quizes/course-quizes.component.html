@@ -30,7 +30,7 @@
           <h4 class="header-title">Course Quizes</h4>
           <ul class="list-group">
             <div *ngFor="let quiz of quizList">
-              <a [routerLink]="[replaceQuizID(ROUTES.COR_ANSWER_QUIZ , corID , quiz.quizID)]">
+              <a [routerLink]="[replaceQuizID(ROUTES.COR_VIEW_QUIZ_DETAILS , corID , quiz.quizID)]">
                 <li class="list-group-item">{{quiz.quizName}}</li>
               </a>
               <br>

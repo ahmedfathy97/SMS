@@ -62,5 +62,9 @@ export class QuizService {
     return this.httpClient.get<QuizResult[]>(this.BASE_URL+"/quiz/"+quizID+"/results")
   }
 
+  getQuizState(quizID : number)
+  {
+    return this.httpClient.get<number>(this.BASE_URL+"/quiz/"+quizID+"/state");
 
+  }
 }
