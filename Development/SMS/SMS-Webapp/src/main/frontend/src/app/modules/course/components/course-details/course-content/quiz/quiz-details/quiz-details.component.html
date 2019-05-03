@@ -1,3 +1,17 @@
+<ng-template [authorizeView]="[AUTH_VIEWS.ANSWER_QUESTION]">
 <app-answer-questions  *ngIf="quizState ==4"></app-answer-questions>
-<app-quiz-main-detail  *ngIf="quizState ==1" ></app-quiz-main-detail>
-<app-quiz-result *ngIf="quizState ==2"></app-quiz-result>
+</ng-template>
+
+<ng-template [authorizeView]="[AUTH_VIEWS.MAIN_DETAILS]">
+  <app-quiz-main-detail  *ngIf="quizState ==1" ></app-quiz-main-detail>
+</ng-template>
+
+<ng-template [authorizeView]="[AUTH_VIEWS.QUIZ_RESULT]" >
+  <app-quiz-result *ngIf="quizState ==2"></app-quiz-result>
+</ng-template>
+
+
+<ng-template [authorizeView]="[AUTH_VIEWS.QUIZ_RESULT]" >
+  <h3 *ngIf="quizState ==3" class="align-middle">Comming Soon</h3>
+</ng-template>
+

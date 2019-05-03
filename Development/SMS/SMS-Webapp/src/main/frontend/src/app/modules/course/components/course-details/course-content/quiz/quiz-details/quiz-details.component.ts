@@ -3,6 +3,8 @@ import {AngularFullRoutes, replaceCorID ,replaceQuizID} from "../../../../../../
 import {ActivatedRoute} from "@angular/router";
 import {QuizService} from "../../../../../shared/services/quiz.service";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 @Component({
   selector: 'app-quiz-details',
@@ -11,6 +13,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
   providers:[QuizService]
 })
 export class QuizDetailsComponent implements OnInit {
+  AUTH_VIEWS: typeof AuthViews = AuthViews;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceQuizID = replaceQuizID;
   replaceCorID = replaceCorID;
