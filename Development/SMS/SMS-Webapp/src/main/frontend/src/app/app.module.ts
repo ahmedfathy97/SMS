@@ -56,6 +56,7 @@ import {QuizMainDetailComponent} from "./modules/course/components/course-detail
 import {AlertComponent} from "./infrastructure/components/alerts/alert.component";
 import {QuizResultComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-result/quiz-result.component";
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
+import {textSubStrPipe} from "./infrastructure/pipes/text-sub-str.pipe";
 
 @NgModule({
   declarations: [
@@ -80,14 +81,13 @@ import {QuizDetailsComponent} from "./modules/course/components/course-details/c
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
-    QuizResultComponent,
+    QuizResultComponent,textSubStrPipe
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule,
-    //  NgbModule
-    // NgbModule
+    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule//,
+    //NgbModule.forRoot()
   ],
   providers: [
     LocalStorageService, AuthorizationGuard, AuthenticationGuard,

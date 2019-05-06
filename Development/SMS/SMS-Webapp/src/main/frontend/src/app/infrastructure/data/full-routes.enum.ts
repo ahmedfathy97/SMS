@@ -1,5 +1,6 @@
 
 export enum AngularFullRoutes {
+  LOGIN = "/login",
   COURSE_LIST = "/courses",
   // COURSE_HOME = "/course",
   // _COURSE_LIST="/courses",
@@ -18,6 +19,7 @@ export enum AngularFullRoutes {
   COR_VIEW_LECTURES = "/course/${corID}/lecture",
   COR_LECTURE = "/course/${corID}/lecture/${lectureID}",
   COR_CREATE = "/course/new",
+
 
 
 

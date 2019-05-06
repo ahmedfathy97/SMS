@@ -1,10 +1,11 @@
 
 <ul class="metismenu" id="menu">
-  <li class="active">
-    <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, corID)]"><i></i><span>Home</span></a>
+  <li [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, corID)]"
+  >
+    <a> <i></i><span>Home</span></a>
   </li>
-  <li>
-    <a [routerLink] = "['/course',corID,'lecture']"><i ></i><span>Lectures </span></a>
+  <li [routerLink] = "['/course',corID,'lecture']" routerLinkActive="active">
+    <i ></i><span>Lectures </span>
   </li>
   <li>
     <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]"><i ></i><span>Quizes </span></a>

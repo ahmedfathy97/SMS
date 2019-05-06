@@ -462,7 +462,7 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (6,15);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (30,15);
 -- Ahmed View (Main_Details)
 
---yara view (quiz_result)---
+-- yara view (quiz_result)---
 INSERT INTO auth_view (id, label_ar, description_ar) VALUE (16, 'Quiz_Result', '');
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,16);
 INSERT INTO auth_user_view (user_id, view_id) VALUE (2,16);

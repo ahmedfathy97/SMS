@@ -18,4 +18,8 @@ export class LocalStorageService {
     let authUser: AuthUserVTO = JSON.parse(json);
     return authUser;
   }
+
+  clearAuthUser(){
+    localStorage.removeItem(LocalStorageService.AUTH_USER);
+  }
 }

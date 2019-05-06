@@ -1,29 +1,22 @@
 
 <ul class="metismenu" id="menu">
-  <li class="active">
-    <a class="clickable" aria-expanded="true" [routerLink]="ROUTES.MY_COURSES">
+  <li [routerLink]="ROUTES.MY_COURSES" routerLinkActive="active">
+    <a href="javascript:void(0)" class="clickable" aria-expanded="true" >
       <i class="ti-book"></i>
       <span>MyCourses</span>
     </a>
   </li>
-  <li>
-    <a class="clickable" aria-expanded="true" [routerLink]="ROUTES.COURSE_LIST">
+  <li [routerLink]="ROUTES.COURSE_LIST" routerLinkActive="active">
+    <a  href="javascript:void(0)" class="clickable" aria-expanded="true">
       <i class="ti-book"></i>
       <span>Courses</span>
     </a>
   </li>
 
-  <li>
-    <a class="clickable" aria-expanded="true" [routerLink]="ROUTES.FACULTY_LIST">
-      <i class="fa fa-university"></i>
-      <span>Faculties</span>
-    </a>
-  </li>
-  <li>
-    <a class="clickable" aria-expanded="true" [routerLink]="ROUTES.SETTINGS">
-      <i class="ti-settings"></i>
+  <li [routerLink]="ROUTES.SETTINGS" routerLinkActive="active">
+    <a href="javascript:void(0)" class="clickable" aria-expanded="true">
+      <i class="fa ti-settings"></i>
       <span>Settings</span>
     </a>
   </li>
-
 </ul>
