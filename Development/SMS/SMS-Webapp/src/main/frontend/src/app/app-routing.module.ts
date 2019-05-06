@@ -132,7 +132,7 @@ const routes: Routes = [
 
                   {
                     path: 'attendance', children: [
-                      {path: '', component: ViewAttendanceComponent ,
+                      {path: '', component: ViewAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE} ,
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
                       {path: 'new', component: CreateAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]}

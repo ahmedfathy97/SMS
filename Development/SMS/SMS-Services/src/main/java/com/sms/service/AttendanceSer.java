@@ -26,30 +26,31 @@ public class AttendanceSer {
         this.rep = rep;
     }
 
-    public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data , boolean isUpdate ) throws Exception {
-        boolean isInstructor = this.rep.isInstructor(currentUser.getId(),courseID);
-        if(!isInstructor)
+    public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data, boolean isUpdate) throws Exception {
+        boolean isInstructor = this.rep.isInstructor(currentUser.getId(), courseID);
+        if (!isInstructor)
             throw new Exception("Only Course Instructor can add Attendance");
 
         if (isUpdate == false) {
             int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
             for (StdDTO student : data.getStudents())
                 this.repository.insertStudentAttendance(sheetID, courseID, student);
-        } else if(isUpdate == true) {
+        } else if (isUpdate == true) {
             for (StdDTO student : data.getStudents()) {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
                 String strDate = dateFormat.format(data.getAttendanceData());
-                this.repository.updateStudentAttendance(courseID,strDate,student);
+                this.repository.updateStudentAttendance(courseID, strDate, student);
             }
         }
     }
 
-    private List<StdDTO> cloneList(List<StdDTO> students){
+    private List<StdDTO> cloneList(List<StdDTO> students) {
         List<StdDTO> newStdList = new ArrayList<>();
-        for (StdDTO std : students )
+        for (StdDTO std : students)
             newStdList.add(std.clone());
         return newStdList;
     }
+
     public List<AttendanceDTO> getCourseAttendance(int courseID) {
 
         List<StdDTO> stdList = this.rep.findAllCourseStudents(courseID);
@@ -65,15 +66,14 @@ public class AttendanceSer {
 //        }
 
         for (StdDTO i : stdAttendance) {
-            boolean isFound = false ;
+            boolean isFound = false;
             for (AttendanceDTO sheet : attendanceDTOList) {
-                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
-                    isFound = true ;
+                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0) {
+                    isFound = true;
                     break;
                 }
             }
-            if (!isFound)
-            {
+            if (!isFound) {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(i.getAttendanceDate());
                 item.setStudents(cloneList(stdList));
@@ -84,52 +84,44 @@ public class AttendanceSer {
 
         }
 
-        for(AttendanceDTO sheet:attendanceDTOList){
-            for(StdDTO std: sheet.getStudents()){
-                for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+        for (AttendanceDTO sheet : attendanceDTOList) {
+            for (StdDTO std : sheet.getStudents()) {
+                for (StdDTO stdDto : stdAttendance)
+                    if (stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0 &&
                             std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
                         break;
                     }
             }
-            System.out.println(sheet);
-            System.out.println("");
         }
-
-
-        System.out.println(attendanceDTOList);
-       return attendanceDTOList ;
+        return attendanceDTOList;
     }
 
 
+    public List<AttendanceDTO> getStudentAttendance(int courseID, int stdID) {
 
-    public List<AttendanceDTO> getStudentAttendance(int courseID , int stdID) {
-
-        List<StdDTO> stdList = this.repository.findCourseStudent(courseID,stdID);
-        List<StdDTO> stdAttendance = this.repository.viewAttendSheetStudent(courseID , stdID);
+        List<StdDTO> stdList = this.repository.findCourseStudent(courseID, stdID);
+        List<StdDTO> stdAttendance = this.repository.viewAttendSheetStudent(courseID, stdID);
         List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
         for (StdDTO i : stdAttendance) {
-            if(attendanceDTOList.size() == 0)
-            {
+            if (attendanceDTOList.size() == 0) {
                 AttendanceDTO item = new AttendanceDTO();
                 List<StdDTO> newStdList = new ArrayList<>();
-                for (StdDTO std : stdList )
+                for (StdDTO std : stdList)
                     newStdList.add(std.clone());
                 item.setAttendanceData(i.getAttendanceDate());
                 item.setStudents(newStdList);
                 attendanceDTOList.add(item);
             }
 
-            boolean isFound = false ;
+            boolean isFound = false;
             for (AttendanceDTO sheet : attendanceDTOList) {
-                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 ) {
-                    isFound = true ;
+                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0) {
+                    isFound = true;
                     break;
                 }
             }
-            if (!isFound)
-            {
+            if (!isFound) {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(i.getAttendanceDate());
                 item.setStudents(stdList);
@@ -139,10 +131,10 @@ public class AttendanceSer {
 
         }
 
-        for(AttendanceDTO sheet:attendanceDTOList){
-            for(StdDTO std: sheet.getStudents()){
-                for(StdDTO stdDto: stdAttendance)
-                    if(stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData())== 0 &&
+        for (AttendanceDTO sheet : attendanceDTOList) {
+            for (StdDTO std : sheet.getStudents()) {
+                for (StdDTO stdDto : stdAttendance)
+                    if (stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0 &&
                             std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
                         break;
@@ -151,10 +143,8 @@ public class AttendanceSer {
         }
 
 
-        return attendanceDTOList ;
+        return attendanceDTOList;
     }
-
-
 
 
 }
