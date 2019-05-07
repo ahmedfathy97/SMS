@@ -119,13 +119,16 @@ const routes: Routes = [
               {path: 'information', component: CourseInfoComponent},
               {
                 path: 'lecture', children: [
-                  {path: '', component: CourseLecturesComponent},
+                  {path: '', component: CourseLecturesComponent, data: {viewID: AuthViews.COURSE_LECTURES},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {path: 'new', component: CreateLecture ,
                     data: {viewID: AuthViews.ADD_LEC}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                  {path: ':lectureID',component: LectureDetailsComponent ,children: [
-                      // {path: 'upload ', component: UploadComponent},
-                      //     {path: 'download', component: DownloadComponent}
-                        ]
+                  {path: ':lectureID',component: LectureDetailsComponent,
+                    data: {viewID: AuthViews.LECTURE_DETAILS},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard], children: [
+                      {path: 'addMaterial', component: UploadComponent, data: {viewID: AuthViews.ADD_MATERIAL},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                         ]
                       },
                     ]
                   },

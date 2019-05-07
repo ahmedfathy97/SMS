@@ -20,4 +20,10 @@
   <li>
     <a [routerLink] = "['/course',corID,'information']"><i></i><span>Course Information</span></a>
   </li>
+
+  <li>
+    <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
+      [routerLink] = "['/course',corID,'lecture', lecID,'addMaterial']"><i ></i><span>Add Material </span></a>
+  </li>
+
 </ul>

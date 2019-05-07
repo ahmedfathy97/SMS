@@ -14,4 +14,7 @@ export enum AuthViews {
   QUIZ_DETAILS = 14 ,
   MAIN_DETAILS = 15 ,
   QUIZ_RESULT = 16 ,
+  ADD_MATERIAL = 7,
+  LECTURE_DETAILS = 17,
+  COURSE_LECTURES = 18,
 }

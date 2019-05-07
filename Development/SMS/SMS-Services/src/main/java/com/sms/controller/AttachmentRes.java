@@ -162,7 +162,7 @@ public class AttachmentRes {
                                 @QueryParam("fileSrcID") int fileSrcID)
     {
         List<File> files = this.repository.findFiles(sourceID ,fileSrcID);
-        System.out.println(files.get(0).toString());
+//        System.out.println(files.get(0).toString());
         return files;
 
     }
@@ -183,22 +183,5 @@ public class AttachmentRes {
 //
     }
 
-
-//    /* Download Files */
-//    @GET
-//    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-//    @Path("/downloadFile/{fileID}")
-//    public Response downloadFileById(@PathParam("fileID") int fileID) {
-//        File fileFromRep = this.repository.getFile(fileID);
-//
-//        java.io.File file = new java.io.File(fileFromRep.getFile_path());
-//        Response.ResponseBuilder response = Response.ok((Object) file);
-//
-//
-//        response.header("Content-Disposition", "attachment; filename="+ file.getName());
-////        response.header("Content-Disposition", "attachment; filename="+ fileFromRep.getName() + fileFromRep.getExtension());
-//
-//        return response.build();
-//    }
 
 }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {AngularFullRoutes, replaceCorID} from "../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceCorID, replaceLecID} from "../../../../../infrastructure/data/full-routes.enum";
+import {AuthViews} from "../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 @Component({
   selector: 'app-course-side-bar',
@@ -9,8 +10,12 @@ import {AngularFullRoutes, replaceCorID} from "../../../../../infrastructure/dat
 })
 export class CourseSideBarComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  AUTH_VIEWS: typeof AuthViews = AuthViews;
   replaceCorID = replaceCorID;
+  replaceLecID = replaceLecID;
+
   @Input() corID: number;
+  @Input() lecID: number;
   constructor()
   {
 

@@ -1,77 +1,45 @@
 
-<div class="main-content" style="min-height: 645px;">
+<div class="page-content">
 
-<!--  &lt;!&ndash; page title area start &ndash;&gt;-->
-<!--  <div class="page-title-area">-->
-<!--    <div class="row align-items-center">-->
-<!--      <div class="col-sm-6">-->
-<!--        <div class="breadcrumbs-area clearfix">-->
-<!--          <h4 class="page-title pull-left">Dashboard</h4>-->
-<!--          <ul class="breadcrumbs pull-left">-->
-<!--            <li><a href="index.html">Home</a></li>-->
-<!--            <li><span>Accordion</span></li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-sm-6 clearfix">-->
-<!--        <div class="user-profile pull-right">-->
-<!--          <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">-->
-<!--          <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>-->
-<!--          <div class="dropdown-menu">-->
-<!--            <a class="dropdown-item" href="#">Message</a>-->
-<!--            <a class="dropdown-item" href="#">Settings</a>-->
-<!--            <a class="dropdown-item" href="#">Log Out</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; page title area end &ndash;&gt;-->
   <div class="page-title-area">
     <div class="row align-items-center content-header">
       <div class="col-sm-6">
         <div class="breadcrumbs-area clearfix">
-          <h4 class="page-title pull-left">New Lecture</h4>
+          <h4 class="page-title pull-left">{{lectureData.title}}</h4>
         </div>
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-            <li><a [routerLink]="[ROUTES.COR_VIEW_LECTURES]">Lectures</a></li>
-
+            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">Lectures</a></li>
+<!--            <li><a [routerLink]="[ROUTES.COR_VIEW_LECTURES]">Lectures</a></li>-->
+            <li><span>Lecture</span></li>
           </ul>
         </div>
       </div>
-<!--      <div class="col-sm-6 clearfix">-->
-<!--        <div class="pull-right">-->
-<!--          <a class="btn btn-success btn-header"-->
-<!--             [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">-->
-<!--            <i class="fa fa-plus pr&#45;&#45;10"></i> Add Lecture</a>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
   </div>
-  <div class="main-content-inner">
+
+  <div class="page-content-area mb-3 mr-3 ml-3">
     <!-- accroding start -->
-    <div class="row">
-      <!--   Lecture Title   -->
-      <div class="col-lg-12 mt-5 title">
-        <div class="card">
-          <div class="card-body">
-            <h3>{{lectureTitle}}</h3>
-          </div>
-        </div>
-      </div>
+    <div class="row " >
+<!--      &lt;!&ndash;   Lecture Title   &ndash;&gt;-->
+<!--      <div class="col-lg-12 mt-5 title ">-->
+<!--        <div class="card">-->
+<!--          <div class="card-body">-->
+<!--            <h3>{{lectureTitle}}</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
       <!-- Attachments:-  accordion style 1 start -->
-      <div class="col-lg-6 mt-4">
+      <div class="col-lg-6 mt-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="header-title"> Attachments </h4>
+<!--            <h4 class="header-title"> Attachments </h4>-->
             <div id="accordion1" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
-                  <a class="card-link" data-toggle="collapse" href="#accordion11">Collapsible Group
-                    Item #1</a>
+                  <a class="card-link" data-toggle="collapse" href="#accordion11">Attachments</a>
                 </div>
                 <div id="accordion11" class="collapse show" data-parent="#accordion1">
                   <div class="card-body">
@@ -87,15 +55,14 @@
       <!-- Attachment End  -->
 
       <!-- Assignment:- accordion style 3 start -->
-      <div class="col-lg-6 mt-4">
+      <div class="col-lg-6 mt-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="header-title">Assignments </h4>
+<!--            <h4 class="header-title">Assignments </h4>-->
             <div id="accordion2" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
-                  <a class="card-link" data-toggle="collapse" href="#accordion21">Collapsible Group
-                    Item #1</a>
+                  <a class="card-link" data-toggle="collapse" href="#accordion21">Assignment</a>
                 </div>
                 <div id="accordion21" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
@@ -110,10 +77,10 @@
       <!-- Assignment End -->
 
       <!-- Videos:- accordion style 2 start -->
-      <div class="col-lg-12 mt-5">
+      <div class="col-lg-12 mt-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="header-title">Videos</h4>
+<!--            <h4 class="header-title">Videos</h4>-->
 <!--            <ul class="list-group" *ngFor="let video of videos;">-->
 <!--              <li class="list-group-item d-flex justify-content-between align-items-center">-->
 <!--                  {{video.tile}}-->
@@ -123,8 +90,7 @@
             <div id="accordion3" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
-                  <a class="card-link" data-toggle="collapse" href="#accordion31">Collapsible Group
-                    Item #1</a>
+                  <a class="card-link" data-toggle="collapse" href="#accordion31">Videos</a>
                 </div>
                 <div id="accordion31" class="collapse show" data-parent="#accordion3">
                   <div class="card-body">
@@ -133,6 +99,9 @@
                     <!--&lt;!&ndash;                      <li>{{assignment.dueDate}}</li>&ndash;&gt;-->
                     <!--                    </ul>-->
 <!--                    <app-download [fileSrcID] = "lectureID" [sourceID] = "sourceID"></app-download>-->
+                    <p class="card-text bg-light" style="transform: rotate(0);">
+                      <a href="" class=" stretched-link"><i>{{lectureData.videoUrl}}</i></a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -142,7 +111,7 @@
       <!-- Videos End -->
 
       <!-- Video player:- accordion style 4 start -->
-      <div class="col-lg-12 mt-5">
+      <div class="col-lg-12 mt-2">
         <div class="card" >
           <div class="card-body">
             <h4 class="header-title">Video player </h4>
@@ -158,3 +127,62 @@
   </div>
 </div>
 </div>
+
+
+
+<!-- Different style -->
+<!--   ASSIGN & ATTACH   -->
+<!--<div class="col-lg-12 mt-2">-->
+<!--  <div class="card">-->
+<!--    <div class="card-body">-->
+<!--      <div class="row">-->
+
+<!--        &lt;!&ndash; Attachments:-  accordion style 1 start &ndash;&gt;-->
+<!--        <div class="col-lg-6 ">-->
+<!--          &lt;!&ndash;        <div class="card">&ndash;&gt;-->
+<!--          &lt;!&ndash;          <div class="card-body">&ndash;&gt;-->
+<!--          &lt;!&ndash;            <h4 class="header-title"> Attachments </h4>&ndash;&gt;-->
+<!--          <div id="accordion1" class="according accordion-s3">-->
+<!--            <div class="card">-->
+<!--              <div class="card-header">-->
+<!--                <a class="card-link" data-toggle="collapse" href="#accordion11">Attachments</a>-->
+<!--              </div>-->
+<!--              <div id="accordion11" class="collapse show" data-parent="#accordion1">-->
+<!--                <div class="card-body">-->
+<!--                </div>-->
+<!--                <app-download [fileSrcID] = "1" [sourceID] = "lectureID"></app-download>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--          &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash; Attachment End  &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Assignment:- accordion style 3 start &ndash;&gt;-->
+<!--        <div class="col-lg-6 ">-->
+<!--          &lt;!&ndash;        <div class="card">&ndash;&gt;-->
+<!--          &lt;!&ndash;          <div class="card-body">&ndash;&gt;-->
+<!--          &lt;!&ndash;            <h4 class="header-title">Assignments </h4>&ndash;&gt;-->
+<!--          <div id="accordion2" class="according accordion-s3">-->
+<!--            <div class="card">-->
+<!--              <div class="card-header">-->
+<!--                <a class="card-link" data-toggle="collapse" href="#accordion21">Assignment</a>-->
+<!--              </div>-->
+<!--              <div id="accordion21" class="collapse show" data-parent="#accordion2">-->
+<!--                <div class="card-body">-->
+<!--                  <app-download [fileSrcID] = "2" [sourceID] = "lectureID"></app-download>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--        &lt;!&ndash; Assignment End &ndash;&gt;-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

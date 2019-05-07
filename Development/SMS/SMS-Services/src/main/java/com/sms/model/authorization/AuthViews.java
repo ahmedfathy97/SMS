@@ -15,7 +15,8 @@ public enum AuthViews {
     ANSWER_QUESTION(13),
     QUIZ_DETAILS(14),
     MAIN_DETAILS (15) ,
-    QUIZ_RESULT(16);
+    QUIZ_RESULT(16),
+    ADD_MATERIAL(7);
     private int id;
 
     AuthViews(int id){

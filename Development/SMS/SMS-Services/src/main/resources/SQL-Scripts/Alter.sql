@@ -499,3 +499,58 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (5,15);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (6,15);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,15);
 -- end --
+
+
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('7', 'Add-Matrial');
+INSERT INTO `sms`.`auth_user_view` (`user_id`) VALUES ('1');
+
+
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '7');
+
+UPDATE `sms`.`auth_view` SET `label_ar` = 'Add-Material' WHERE (`id` = '7');
+
+ALTER TABLE `sms`.`file_source`
+    CHANGE COLUMN `lable_en` `lable_en` VARCHAR(15) NOT NULL ;
+
+INSERT INTO `sms`.`file_source` (`id`, `lable_en`) VALUES ('1', 'attachment');
+INSERT INTO `sms`.`file_source` (`id`, `lable_en`) VALUES ('2', 'assignment');
+
+ALTER TABLE `sms`.`attachment`
+    CHANGE COLUMN `content_type` `content_type` VARCHAR(50) NOT NULL ;
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('17', 'Lecture_Details');
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('2', '17');
+
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('2', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('3', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('7', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('8', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('10', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('11', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('12', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('13', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('14', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('5', '17');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('6', '17');
+
+
+INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('18', 'Course_Lectures');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('2', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('3', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('4', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('5', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('6', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('7', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('8', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('11', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('10', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('12', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('13', '18');
+INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('14', '18');
+
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '18');
+INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('2', '18');

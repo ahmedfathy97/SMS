@@ -1,22 +1,31 @@
-//package com.sms.controller;
-//
-//import com.sms.model.course.LectureDTO;
-//import com.sms.repository.lectureRep;
-//import org.springframework.beans.factory.annotation.Autowired;
-//
-//import javax.ws.rs.Consumes;
-//import javax.ws.rs.POST;
-//import javax.ws.rs.Path;
-//import javax.ws.rs.core.MediaType;
-//
-//@Path("/lecture")
-//public class LectureRes {
-//    private lectureRep repository;
-//
-//    @Autowired
-//    public LectureRes(lectureRep repository) {
-//        this.repository = repository;
-//    }
+package com.sms.controller;
 
-//
-//}
+import com.sms.model.attachment.File;
+import com.sms.model.course.LectureDTO;
+import com.sms.repository.lectureRep;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
+@Path("/lecture")
+public class LectureRes {
+    private lectureRep repository;
+
+    @Autowired
+    public LectureRes(lectureRep repository) {
+        this.repository = repository;
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{lecID}")
+    public LectureDTO listFiles(@PathParam("lecID") int lecID)
+     {
+        LectureDTO lecture = this.repository.getLecture(lecID);
+        return lecture;
+
+    }
+}
