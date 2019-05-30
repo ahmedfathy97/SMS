@@ -1,11 +1,16 @@
 package com.sms;
 
+import com.sms.configuration.JerseyConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 
 import java.text.MessageFormat;
 
 @SpringBootApplication
+@EnableAutoConfiguration
+@Import({ JerseyConfig.class })
 public class SMSApplication {
 
     public static void main(String[] args) {

@@ -34,4 +34,53 @@
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <build.path>SMS_ver_1.0</build.path>
+        <build.path.directory>../../../Deployment/${build.path}</build.path.directory>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <!--Copy Database Scripts-->
+                    <execution>
+                        <id>Copy Database Scripts</id>
+                        <!-- here the phase you need -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../../Deployment/${build.path}/DB-Scripts</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>SMS-Services/src/main/resources/SQL-Script</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>1.Clean-Structure.sql</include>
+                                        <include>2.Clean-Data.sql</include>
+                                        <include>Alter.sql</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -13,10 +13,23 @@
     </a>
   </li>
 
-  <li [routerLink]="ROUTES.SETTINGS" routerLinkActive="active">
-    <a href="javascript:void(0)" class="clickable" aria-expanded="true">
-      <i class="fa ti-settings"></i>
+  <!--<li [routerLink]="ROUTES.SETTINGS" routerLinkActive="active">-->
+    <!--<a href="javascript:void(0)" class="clickable" aria-expanded="true">-->
+      <!--<i class="fa ti-settings"></i>-->
+      <!--<span>Settings</span>-->
+    <!--</a>-->
+  <!--</li>-->
+
+  <li class="active">
+    <a href="javascript:void(0)" aria-expanded="false">
+      <i class="ti-settings"></i>
       <span>Settings</span>
     </a>
+    <ul class="collapse" id="settingMenu">
+      <li>
+        <a [routerLink]="[ROUTES.SETTING_USER_LIST]" routerLinkActive="active"><i class="ti-user"></i><span>Users</span></a>
+      </li>
+    </ul>
   </li>
+
 </ul>

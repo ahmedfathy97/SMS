@@ -1,3 +1,5 @@
+package com.sms.controller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewController {
 
-    @RequestMapping({ "/course/**", "/section/**"})
+    @RequestMapping({ "/course/**", "/section/**", "/login/**"})
     public String index() {
         return "forward:/index.html";
     }

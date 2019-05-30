@@ -7,6 +7,7 @@ import {AngularFullRoutes} from "../../../infrastructure/data/full-routes.enum";
   styleUrls: ['./full-layout.component.css']
 })
 export class FullLayoutComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
 
   constructor() { }
 

@@ -17,6 +17,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.1.1</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -27,8 +33,8 @@
                 <version>1.3</version>
 
                 <configuration>
-                    <nodeVersion>v8.12.0</nodeVersion>
-                    <npmVersion>6.4.1</npmVersion>
+                    <nodeVersion>v9.2.0</nodeVersion>
+                    <npmVersion>5.5.1</npmVersion>
                     <workingDirectory>src/main/frontend</workingDirectory>
                 </configuration>
 
@@ -64,7 +70,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <outputDirectory>D:/SMS/target</outputDirectory>
+                    <outputDirectory>${build.path.directory}</outputDirectory>
                     <finalName>Web-App</finalName>
                 </configuration>
             </plugin>

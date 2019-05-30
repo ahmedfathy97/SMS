@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "../../../target/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,27 +25,33 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/bootstrap.min.css",
-              "src/assets/css/default-css.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/metisMenu.css",
               "src/assets/css/owl.carousel.min.css",
-              "src/assets/css/responsive.css",
               "src/assets/css/slicknav.min.css",
-              "src/assets/css/styles.css",
               "src/assets/css/themify-icons.css",
-              "src/assets/css/typography.css"
+              "src/assets/css/typography.css",
+              "src/assets/css/default-css.css",
+              "src/assets/css/styles.css",
+              "src/assets/css/responsive.css",
             ],
             "scripts": [
-              "src/assets/js/metisMenu.min.js",
-              "src/assets/js/popper.min.js",
-              "src/assets/js/owl.carousel.min.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/jquery.slicknav.min.js",
-              "src/assets/js/jquery.slimscroll.min.js",
-              "src/assets/js/scripts.js",
-              "src/assets/js/plugins.js",
+              "src/assets/js/vendor/modernizr-2.8.3.min.js",
               "src/assets/js/vendor/jquery-2.2.4.min.js",
-              "src/assets/js/vendor/modernizr-2.8.3.min.js"
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/metisMenu.min.js",
+              "src/assets/js/jquery.slimscroll.min.js",
+              "src/assets/js/jquery.slicknav.min.js",
+
+              "src/assets/js/bar-chart.js",
+              "src/assets/js/line-chart.js",
+              "src/assets/js/maps.js",
+              "src/assets/js/pie-chart.js",
+
+              "src/assets/js/plugins.js",
+              "src/assets/js/scripts.js"
 
             ]
           },

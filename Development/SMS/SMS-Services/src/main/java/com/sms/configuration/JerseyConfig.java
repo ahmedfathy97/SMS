@@ -1,6 +1,6 @@
 package com.sms.configuration;
 
-import com.sms.controller.AttachmentRes;
+import com.sms.controller.*;
 import com.sms.controller.filter.CORSFilter;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -16,8 +16,28 @@ public class JerseyConfig extends ResourceConfig {
         register(CORSFilter.class);
         register(AttachmentRes.class);
         register(MultiPartFeature.class);
-        packages("com.sms.controller");
+        register(AttachmentRes.class);
+        register(AttendanceRes.class);
+        register(CourseRes.class);
+        register(GradeRes.class);
+        register(LectureRes.class);
+        register(LookupRes.class);
+        register(QuizRes.class);
+        register(SecurityRes.class);
+        register(UserRes.class);
+//        packages("com.sms.controller");
 
     }
-
+//    @Autowired
+//    ApplicationContext appCtx;
+//
+//    @PostConstruct
+//    public void setup() {
+//        log.info("Rest classes found:");
+//        Map<String,Object> beans = appCtx.getBeansWithAnnotation(Path.class);
+//        for (Object o : beans.values()) {
+//            log.info(" -> " + o.getClass().getName());
+//            register(o);
+//        }
+//    }
 }
