@@ -5,6 +5,9 @@ import {QuizInformationVto} from "../../../../../../shared/data/quiz/quiz-inform
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
+import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 
 @Component({
   selector: 'app-quiz-main-detail',
@@ -20,7 +23,7 @@ export class QuizMainDetailComponent implements OnInit {
   corID: number;
   quizId: number;
   quizDetails :QuizInformationVto ;
-
+  alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
@@ -49,7 +52,9 @@ export class QuizMainDetailComponent implements OnInit {
 
     this.quizService.getQuizDetails(this.quizId).subscribe(res => {
       this.quizDetails = res ;
+      this.alert = new SuccessAlert();
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }
@@ -58,7 +63,9 @@ export class QuizMainDetailComponent implements OnInit {
   onClickCloseQuiz()
   {
     this.quizService.closeQuiz(this.quizId).subscribe(res => {
+      this.alert = new SuccessAlert();
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }

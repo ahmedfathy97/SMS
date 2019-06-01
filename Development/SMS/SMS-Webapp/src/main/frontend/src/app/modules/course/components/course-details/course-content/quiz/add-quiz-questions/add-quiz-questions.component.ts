@@ -5,6 +5,9 @@ import {QuestionType} from "../../../../../shared/data/quiz/question-type";
 import {QuestionDto} from "../../../../../shared/data/quiz/question-dto";
 import {ActivatedRoute} from "@angular/router";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
+import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
 
 @Component({
   selector: 'app-add-quiz-quiestions',
@@ -22,6 +25,7 @@ export class AddQuizQuestionsComponent implements OnInit {
   table: boolean = false;
   quizId: number;
   editMode: boolean = false;
+  alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
@@ -107,7 +111,9 @@ export class AddQuizQuestionsComponent implements OnInit {
   onSubmitQuestionsTable() {
     this.quizService.createQuizQuestions(this.quizId, this.questionsList).subscribe(res => {
       console.log("Success");
+      this.alert = new SuccessAlert();
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err)
     });
   }

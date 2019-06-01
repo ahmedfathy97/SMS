@@ -12,7 +12,6 @@ public class UserVTO implements Serializable {
         private String password;
         private String email;
         private List<Integer> roleIDs;
-        int userID;
         String fullName;
         int age;
         String gender;

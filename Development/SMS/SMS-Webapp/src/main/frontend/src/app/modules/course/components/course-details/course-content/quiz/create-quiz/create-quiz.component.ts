@@ -7,6 +7,9 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
 import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.data";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
+import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
 
 
 @Component({
@@ -20,6 +23,7 @@ export class CreateQuizComponent implements OnInit {
   replaceCorID = replaceCorID;
   corID :number ;
   currentUser: AuthUserVTO;
+  alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
               private router: Router, private localStorageSerice: LocalStorageService,
               private courseService: CourseService,private corDataService: CourseDataService) {
@@ -54,8 +58,10 @@ export class CreateQuizComponent implements OnInit {
     console.log(quizData);
     this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
       let quizID:number = res;
-      this.router.navigate([`/course/${this.corID}/quiz/${quizID}/questions`])
+      this.router.navigate([`/course/${this.corID}/quiz/${quizID}/questions`]) ;
+      this.alert = new SuccessAlert()
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
 

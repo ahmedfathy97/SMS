@@ -6,6 +6,9 @@ import {CourseQuizesVto} from "../../../../../shared/data/quiz/course-quizes-vto
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes ,replaceCorID ,replaceQuizID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
+import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
 
 @Component({
   selector: 'app-course-quizes',
@@ -19,7 +22,7 @@ export class CourseQuizesComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   replaceQuizID =replaceQuizID;
-
+  alert: AlertInput = new AlertInput();
 
   corID: number ;
   quizList:CourseQuizesVto[] ;
@@ -43,7 +46,9 @@ export class CourseQuizesComponent implements OnInit {
   getCourseQuizes(){
     this.courseService.getCourseQuizes(this.corID).subscribe(res => {
       this.quizList = res;
+      this.alert = new SuccessAlert();
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }

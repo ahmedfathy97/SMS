@@ -104,7 +104,7 @@ public class QuizRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{quizID}/state")
     @Authenticated(views = {AuthViews.QUIZ_DETAILS})
-    public int quizState(@PathParam("quizID")int quizID, @Context ContainerRequestContext request)
+    public int quizState( @Context ContainerRequestContext request ,@PathParam("quizID")int quizID)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         return quizSer.quizState( currentUser ,quizID) ;

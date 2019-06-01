@@ -10,6 +10,9 @@ import {
   replaceQuizID
 } from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
+import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 
 @Component({
   selector: 'app-answer-questions',
@@ -25,7 +28,7 @@ export class AnswerQuestionsComponent implements OnInit {
   quizID:number ;
   quizQuestions: QuestionVto[] =[];
   studentAnswers:StudentAnswerDto[] =[] ;
-
+  alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder ,
               private quizService: QuizService ,private route: ActivatedRoute ,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
@@ -78,8 +81,10 @@ export class AnswerQuestionsComponent implements OnInit {
 
 
     this.quizService.submitQuizAnswersForStudent(this.quizID,this.studentAnswers).subscribe(res => {
-      console.log("Success");``
+      console.log("Success");
+      this.alert = new SuccessAlert();
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     } );
   }
@@ -88,6 +93,7 @@ export class AnswerQuestionsComponent implements OnInit {
     this.quizService.getQuizQuestions(this.quizID).subscribe(res => {
       console.log("Success");
       this.quizQuestions = res;
+      this.alert = new SuccessAlert();
       this.clearFormArray(this.questions) ;
 
       for(let question of this.quizQuestions)
@@ -95,6 +101,7 @@ export class AnswerQuestionsComponent implements OnInit {
           this.addItem(question.id) ;
       }
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }
