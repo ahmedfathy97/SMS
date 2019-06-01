@@ -4,6 +4,8 @@ import {QuizService} from "../../../../../../shared/services/quiz.service";
 import {QuizResult} from "../../../../../../shared/data/quiz/quiz-result-dto";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
+import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 
 @Component({
   selector: 'app-quiz-result',
@@ -17,7 +19,7 @@ export class QuizResultComponent implements OnInit {
   corID: number;
   quizId: number;
   quizResult : QuizResult[] ;
-
+  alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
@@ -44,6 +46,7 @@ export class QuizResultComponent implements OnInit {
       this.quizResult = res ;
       console.log(this.quizResult) ;
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }
