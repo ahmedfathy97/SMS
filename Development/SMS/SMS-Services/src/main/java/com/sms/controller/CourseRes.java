@@ -91,10 +91,9 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
     @Authenticated()
+    public CourseResultSet findAllCourses(@QueryParam("pageNum") int pageNum) {
 
-    public CourseResultSet findAllCourses() {
-
-        return this.courseSer.findALLCourses();
+        return this.courseSer.findALLCourses(pageNum);
     }
 
     @GET

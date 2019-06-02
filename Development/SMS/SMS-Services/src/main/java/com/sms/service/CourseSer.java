@@ -58,11 +58,16 @@ public class CourseSer {
         List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;
         return lectureVTOList;
     }
-    public CourseResultSet findALLCourses(){
-        List<CourseVTO> courseVTOList = new ArrayList<>();
-        courseVTOList = courseRep.findALLCourses();
+    public CourseResultSet findALLCourses(int pageNum){
         CourseResultSet resultSet = new CourseResultSet();
+
+        List<CourseVTO> courseVTOList =  courseRep.findALLCourses(pageNum);
         resultSet.setList(courseVTOList);
+
+        int count = courseRep.findALLCoursesCount();
+        resultSet.setTotalRecords(count);
+
+
         return resultSet;
     }
     public CourseResultSet myCourses(UserVTO currentUser){
