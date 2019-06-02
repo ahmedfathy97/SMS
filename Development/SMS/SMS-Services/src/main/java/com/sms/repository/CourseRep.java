@@ -68,13 +68,28 @@ public class CourseRep {
                 "where cor.instructor_id = ? ";
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
-    public List<CourseVTO> findALLCourses() {
+    public List<CourseVTO> findALLCourses(int pageNum) {
+        int pageSize = 2;
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
-                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " ;
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
+                "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1)) ;
 
         return this.jdbcTemplate.query(sql, new CourseVTORM());
+    }
+    public int findALLCoursesCount() {
+        String sql = "SELECT COUNT(*) AS record_count " +
+                "FROM course cor " +
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id ";
+
+        List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        });
+        return totalCount.get(0);
     }
     public List<CourseVTO> findAllStudentCourse(int stdID){
         String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +

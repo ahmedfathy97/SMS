@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../../../shared/services/user.service";
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infrastructure/data/full-routes.enum";
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
+import {ConfigParam} from "../../../../../../../../../infrastructure/common/config-param";
 
 
 // class ImageSnippet {
@@ -26,10 +27,10 @@ export class UserEditComponent implements OnInit {
   //userID: string;
   formData = this.formBuilder.group({
     firstName: ['', [Validators.required,Validators.maxLength(25)]],
-    lastName: ['',[ Validators.required,Validators.maxLength(25)]],
+    lastName: ['',[ Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
     age: ['', Validators.required],
     gender: ['', Validators.required],
-    email: ['', [Validators.required,Validators.maxLength(30)]],
+    email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^[A-Za-z]+@[A-Za-z]+\.com$')]],
     phone: ['', [Validators.required,Validators.maxLength(11)]],
     userName: ['',[Validators.required,Validators.maxLength(25)]],
 
@@ -73,21 +74,29 @@ export class UserEditComponent implements OnInit {
     }
     onSaveEdit()
     {
-      let userEdit: UserVtoData = new UserVtoData();
-      userEdit.firstName = this.formData.get('firstName').value;
-      userEdit.lastName = this.formData.get('lastName').value;
-      userEdit.age = this.formData.get('age').value;
-      userEdit.gender = this.formData.get('gender').value;
-      userEdit.email = this.formData.get('email').value;
-      userEdit.userName = this.formData.get('userName').value;
-      userEdit.phone=this.formData.get('phone').value;
-      console.log(userEdit);
-      this.userService.editProfile(this.userID, userEdit).subscribe(res => {
-        console.log("Success");
-      }, err => {
-        console.log(err);
-      });
+      // this.edit.firstName.markAsDirty();
+      // this.edit.lastName.markAsDirty();
+      // this.edit.age.markAsDirty();
+      ConfigParam.markControlsDirty(this.formData);
 
+      if(this.formData.valid) {
+        let userEdit: UserVtoData = new UserVtoData();
+        userEdit.firstName = this.formData.get('firstName').value;
+        userEdit.lastName = this.formData.get('lastName').value;
+        userEdit.age = this.formData.get('age').value;
+        userEdit.gender = this.formData.get('gender').value;
+        userEdit.email = this.formData.get('email').value;
+        userEdit.userName = this.formData.get('userName').value;
+        userEdit.phone = this.formData.get('phone').value;
+
+        this.userService.editProfile(this.userID, userEdit).subscribe(res => {
+          console.log("Success");
+        }, err => {
+          console.log(err);
+        });
+      }
     }
+
+
 
 }

@@ -68,8 +68,12 @@ export class CourseService {
   // findAllCourses(courseID :number){
   //   return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/"+courseID);
   // }
-  findAllCourses(){
-    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/all");
+  findAllCourses(pageNum: number){
+    let queryParameter: HttpParams = new HttpParams();
+
+    queryParameter = queryParameter.append('pageNum', pageNum.toString());
+    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/all",
+      {params: queryParameter});
 
   }
   findAllMyCourses(){

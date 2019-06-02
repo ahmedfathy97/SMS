@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,9 +28,12 @@ public class AttendanceSer {
     }
 
     public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data, boolean isUpdate) throws Exception {
-        boolean isInstructor = this.rep.isInstructor(currentUser.getId(), courseID);
+        boolean isInstructor = this.rep.isInstructor(1, courseID);
         if (!isInstructor)
             throw new Exception("Only Course Instructor can add Attendance");
+
+        if(data.getAttendanceData().before(new Date()))
+            throw new Exception("Can't insert Attendance in the past");
 
         if (isUpdate == false) {
             int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());

@@ -34,7 +34,6 @@ public class AttendanceRes {
     @Authenticated(actions = {AuthActions.COR_ADD_ATTENDANCE})
     public Response createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
                                       @QueryParam("isUpdate") boolean isUpdate) {
-
         try {
             UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
             System.out.print("Data Recieved Sucessfully");

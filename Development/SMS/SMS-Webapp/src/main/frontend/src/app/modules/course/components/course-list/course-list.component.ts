@@ -22,12 +22,22 @@ export class CourseListComponent implements OnInit {
 
   }
   resultSet: CourseResultSet = new CourseResultSet();
-
+  pageNum: number = 1;
   ngOnInit() {
-    this.courseService.findAllCourses().subscribe(
+    this.onSearch();
+  }
+
+
+  onSearch(){
+
+    this.courseService.findAllCourses(this.pageNum).subscribe(
       res=>this.resultSet = res
     );
+  }
 
+  onPageChange(pageNum){
+    this.pageNum = pageNum;
+    this.onSearch();
   }
 
 }

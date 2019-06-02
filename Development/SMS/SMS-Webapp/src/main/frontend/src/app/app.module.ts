@@ -57,6 +57,7 @@ import {AlertComponent} from "./infrastructure/components/alerts/alert.component
 import {QuizResultComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-result/quiz-result.component";
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 import {textSubStrPipe} from "./infrastructure/pipes/text-sub-str.pipe";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -85,7 +86,7 @@ import {textSubStrPipe} from "./infrastructure/pipes/text-sub-str.pipe";
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, NgxPaginationModule,
     AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule//,
     //NgbModule.forRoot()
   ],
