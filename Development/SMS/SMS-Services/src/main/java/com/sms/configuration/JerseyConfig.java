@@ -1,6 +1,8 @@
 package com.sms.configuration;
 
 import com.sms.controller.*;
+import com.sms.controller.filter.AuthenticationFilter;
+import com.sms.controller.filter.AuthorizationFilter;
 import com.sms.controller.filter.CORSFilter;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -14,6 +16,8 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         register(CORSFilter.class);
+        register(AuthorizationFilter.class);
+        register(AuthenticationFilter.class);
         register(AttachmentRes.class);
         register(MultiPartFeature.class);
         register(AttachmentRes.class);
