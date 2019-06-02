@@ -25,6 +25,7 @@ export class CreateAttendanceComponent implements OnInit {
     attendanceDate: ['', Validators.required]
   });
 
+  form(){return this.formData.controls;}
   alert: AlertInput = new AlertInput();
 
   attendance: AttendanceDTO = new AttendanceDTO();

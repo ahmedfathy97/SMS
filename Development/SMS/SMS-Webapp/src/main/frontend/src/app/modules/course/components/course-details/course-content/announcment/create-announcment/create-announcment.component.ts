@@ -6,6 +6,9 @@ import {Announcement} from "../../../../../shared/data/announcment";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
+import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
 @Component({
   selector: 'app-create-announcment',
   templateUrl: './create-announcment.component.html',
@@ -17,21 +20,21 @@ export class CreateAnnouncmentComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
 
+
   //courseID: string;
   corID :number ;
   formData = this.formBuilder.group({
     title: ['', Validators.required],
     description :['', Validators.required],
   });
+  get form() { return this.formData.controls; }
 
+  alert: AlertInput = new AlertInput();
   announcement: Announcement = new Announcement();
-
   constructor(private formBuilder: FormBuilder, private courseService : CourseService ,
               private corDataService: CourseDataService,
               private route: ActivatedRoute) {
-    // this.route.paramMap.subscribe(params =>  {
-    //   this.courseID = params.get("courseID");
-    // })
+
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
@@ -45,15 +48,17 @@ export class CreateAnnouncmentComponent implements OnInit {
   }
 
   onSubmitNewAnnouncement() {
+    this.form.title.markAsDirty();
     let announcement: Announcement = new Announcement();
     announcement.title = this.formData.get('title').value;
     announcement.content= this.formData.get('description').value;
-    // var courseID = +this.courseID;
-    // this.corID = courseID ;
-    this.courseService.createNewAnnouncement(this.corID ,announcement).subscribe(res => {
-      console.log("Success");
+    this.courseService.createNewAnnouncement(this.corID ,announcement).subscribe(
+      res => {
+        console.log("Success");
+        this.alert = new SuccessAlert();
     }, err => {
-      console.log(err);
+        this.alert = new FailureAlert(err);
+        console.log(err);
     });
   }
 

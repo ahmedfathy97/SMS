@@ -58,16 +58,11 @@ public class CourseSer {
         List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;
         return lectureVTOList;
     }
-    public CourseResultSet findALLCourses(int pageNum){
+    public CourseResultSet findALLCourses(){
+        List<CourseVTO> courseVTOList = new ArrayList<>();
+        courseVTOList = courseRep.findALLCourses();
         CourseResultSet resultSet = new CourseResultSet();
-
-        List<CourseVTO> courseVTOList =  courseRep.findALLCourses(pageNum);
         resultSet.setList(courseVTOList);
-
-        int count = courseRep.findALLCoursesCount();
-        resultSet.setTotalRecords(count);
-
-
         return resultSet;
     }
     public CourseResultSet myCourses(UserVTO currentUser){
@@ -85,8 +80,10 @@ public class CourseSer {
     }
 
 
-    public void createAnnouncement (int courseID , Announcement announcement)
-    {
+    public void createAnnouncement (UserVTO currentUser,int courseID , Announcement announcement) throws Exception {
+        boolean isInstructor = this.courseRep.isInstructor(currentUser.getId(), courseID);
+        if (!isInstructor)
+            throw new Exception("Only Course Instructor can add Announcement");
 
         courseRep.createAnnouncement(courseID,announcement);
     }

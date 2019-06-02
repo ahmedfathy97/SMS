@@ -5,13 +5,14 @@
       <div class="col-sm-6">
         <div class="breadcrumbs-area clearfix">
           <h4 class="page-title pull-left">New Attendance</h4>
-        </div>
-        <div class="breadcrumbs-area clearfix">
-          <ul class="breadcrumbs pull-left mt-3">
-            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance, corID)]">Attendance</a></li>
-            <li><span>New</span></li>
-          </ul>
+          <br/>
+          <div class="breadcrumbs-area clearfix">
+            <ul class="breadcrumbs pull-left mt-3">
+              <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+              <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance, corID)]">Attendance</a></li>
+              <li><span>New</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -32,10 +33,14 @@
 
             <div class="row">
               <div class="form-group col-md-12">
-                <label for="example-date-input" class="col-form-label ">Attendance Date</label>
+                <label for="example-date-input" class="col-form-label ">Attendance Date </label>
                 <input class="form-control" type="date" id="example-date-input"
                        (change)="getCourseStudents()"
                        formControlName="attendanceDate">
+                <!--<div class="invalid-feedback" *ngIf="form.attendanceDate.dirty && form.attendanceDate.errors != null">-->
+                  <!--<small *ngIf="form.attendanceDate.errors?.required">Date is mandatory</small>-->
+                <!--</div>-->
+
               </div>
             </div>
 

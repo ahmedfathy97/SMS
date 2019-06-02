@@ -20,6 +20,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/course")
@@ -90,9 +91,10 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
     @Authenticated()
-    public CourseResultSet findAllCourses(@QueryParam("pageNum") int pageNum) {
 
-        return this.courseSer.findALLCourses(pageNum);
+    public CourseResultSet findAllCourses() {
+
+        return this.courseSer.findALLCourses();
     }
 
     @GET
@@ -208,10 +210,17 @@ public class CourseRes {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/newAnnouncment")
     @Authenticated(actions = {AuthActions.COR_ADD_ANNOUNCEMENT})
-    public void createAnnouncement(@PathParam("courseID") int courseID, Announcement announcement) {
-        System.out.print("Data Recieved Sucessfully");
-        System.out.print(announcement.toString());
-        this.courseSer.createAnnouncement(courseID, announcement);
+    public Response createAnnouncement(@Context ContainerRequestContext request,@PathParam("courseID") int courseID, Announcement announcement) {
+        try {
+            UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+            System.out.print("Data Recieved Sucessfully");
+            System.out.print(announcement.toString());
+            this.courseSer.createAnnouncement(currentUser,courseID, announcement);
+            return Response.noContent().build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+
     }
 
 

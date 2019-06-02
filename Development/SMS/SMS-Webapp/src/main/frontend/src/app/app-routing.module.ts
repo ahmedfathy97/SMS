@@ -95,7 +95,7 @@ const routes: Routes = [
       {path: '', component: FullLayoutComponent, children: [
           {path: 'courses', component: CourseListComponent },
           {path: 'course/new', component: CreateCourse ,
-            data: {viewID: AuthViews.ADD_COR},
+            data: {viewID: AuthViews.ADD_LEC},
             canActivate:[AuthenticationGuard, AuthorizationGuard]},
           // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           {path: 'my-courses', component: MyCourseComponent},
@@ -122,7 +122,7 @@ const routes: Routes = [
                   {path: '', component: CourseLecturesComponent, data: {viewID: AuthViews.COURSE_LECTURES},
                     canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {path: 'new', component: CreateLecture ,
-                    data: {viewID: AuthViews.ADD_LEC}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                    data: {viewID: AuthViews.ADD_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {path: ':lectureID',component: LectureDetailsComponent,
                     data: {viewID: AuthViews.LECTURE_DETAILS},
                     canActivate:[AuthenticationGuard, AuthorizationGuard], children: [
