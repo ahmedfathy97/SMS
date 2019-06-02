@@ -40,8 +40,16 @@
       <div class=" offset-2 col-md-8">
         <div class="col-12">
           <div class="card">
+            <hr>
+
+            <div class="card-action">
+              <a [routerLink]="[replaceUserID(ROUTES.EDIT,userVto.id)]">
+                <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2"> Edit</button>
+              </a>
+            </div>
 
             <div class="card-body">
+              <hr>
               <h5>{{userVto.userName}}</h5>
               <hr>
               <h2 class="header-title">About Me</h2>
@@ -52,8 +60,8 @@
               </div>
               <hr>
               <div class="d-inline-block col-md-12">
-                <label for="age" class="col-form-label">Age: &nbsp; &nbsp; &nbsp; </label>
-                <label id="age" class="col-form-label">{{userVto.age}}</label>
+                <label for="birthDate" class="col-form-label">BirthDate: &nbsp; &nbsp; &nbsp; </label>
+                <label id="birthDate" class="col-form-label">{{userVto.birthDate}}</label>
               </div>
 
               <hr>
@@ -80,13 +88,13 @@
               <!--</div>-->
             </div>
 
-            <hr>
+            <!--<hr>-->
 
-            <div class="card-action">
-              <a [routerLink]="[replaceUserID(ROUTES.EDIT,userVto.id)]">
-                <button class="btn  btn-primary btn-sm pull-right mr-2 mb-2"> Edit</button>
-              </a>
-            </div>
+            <!--<div class="card-action">-->
+              <!--<a [routerLink]="[replaceUserID(ROUTES.EDIT,userVto.id)]">-->
+                <!--<button class="btn  btn-primary btn-sm pull-right mr-2 mb-2"> Edit</button>-->
+              <!--</a>-->
+            <!--</div>-->
 
           </div>
         </div>

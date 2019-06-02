@@ -13,14 +13,14 @@ public class UserVTO implements Serializable {
         private String email;
         private List<Integer> roleIDs;
         String fullName;
-        int age;
+       // int age;
         String gender;
         int phone;
         String college;
         String userName;
         String country;
         String university;
-        String birth_date;
+        String birthDate;
 
 
 
@@ -83,13 +83,13 @@ public class UserVTO implements Serializable {
         this.fullName = fullName;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
 
     public String getGender() {
         return gender;
@@ -149,14 +149,13 @@ public class UserVTO implements Serializable {
         this.university = university;
     }
 
-    public String getBirth_date() {
-        return birth_date;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirth_date(String birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
-
 
     @Override
     public String toString() {
@@ -169,14 +168,13 @@ public class UserVTO implements Serializable {
                 ", email='" + email + '\'' +
                 ", roleIDs=" + roleIDs +
                 ", fullName='" + fullName + '\'' +
-                ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", phone=" + phone +
                 ", college='" + college + '\'' +
                 ", userName='" + userName + '\'' +
                 ", country='" + country + '\'' +
                 ", university='" + university + '\'' +
-                ", birth_date='" + birth_date + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 '}';
     }
 }

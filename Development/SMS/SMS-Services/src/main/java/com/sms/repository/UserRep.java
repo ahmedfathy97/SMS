@@ -38,7 +38,8 @@ public class UserRep {
                 data.setFullName(rs.getString("full_name"));
                 data.setFirstName(rs.getString("first_name"));
                 data.setLastName(rs.getString("last_name"));
-                data.setAge(rs.getInt("age"));
+                //data.setAge(rs.getInt("age"));
+                data.setBirthDate(rs.getString("birthdate"));
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
                 data.setPhone(rs.getInt("phone"));
@@ -53,10 +54,10 @@ public class UserRep {
 
     public void updateUserVto(int userID ,UserVTO userVTO){
         String sql= "update user_detail " +
-                "set first_name=?,last_name=?,age=?,gender=?,email=?,phone=? " +
+                "set first_name=?,last_name=?,birth_date=?,gender=?,email=?,phone=? " +
                 "where user_id =?" ;
 
-        this.jdbcTemplate.update(sql,userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getAge(),userVTO.getGender(),userVTO.getEmail() ,userVTO.getPhone() ,userID);
+        this.jdbcTemplate.update(sql,userVTO.getFirstName() ,userVTO.getLastName() ,userVTO.getBirthDate(),userVTO.getGender(),userVTO.getEmail() ,userVTO.getPhone() ,userID);
 
 
     }
@@ -81,9 +82,7 @@ public class UserRep {
                 data.setCollege(rs.getString("college_name"));
                 data.setCountry(rs.getString("country_name"));
                 data.setUniversity(rs.getString("university_name"));
-                data.setBirth_date(rs.getString("birth_date"));
-
-
+                data.setBirthDate(rs.getString("birth_date"));
                 return data;
             }
         });

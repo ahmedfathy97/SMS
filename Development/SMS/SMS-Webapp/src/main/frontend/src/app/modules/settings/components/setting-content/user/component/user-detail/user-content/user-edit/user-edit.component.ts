@@ -28,9 +28,9 @@ export class UserEditComponent implements OnInit {
   formData = this.formBuilder.group({
     firstName: ['', [Validators.required,Validators.maxLength(25)]],
     lastName: ['',[ Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
-    age: ['', Validators.required],
+    birthDate: ['', Validators.required,Validators.pattern('^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$')],
     gender: ['', Validators.required],
-    email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^[A-Za-z]+@[A-Za-z]+\.com$')]],
+    email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]],
     phone: ['', [Validators.required,Validators.maxLength(11)]],
     userName: ['',[Validators.required,Validators.maxLength(25)]],
 
@@ -59,7 +59,7 @@ export class UserEditComponent implements OnInit {
 
               this.formData.get('firstName').reset(this.userVto.firstName);
               this.formData.get('lastName').reset(this.userVto.lastName);
-              this.formData.get('age').reset(this.userVto.age);
+              this.formData.get('birthDate').reset(this.userVto.birthDate);
               this.formData.get('gender').reset(this.userVto.gender);
               this.formData.get('email').reset(this.userVto.email);
               this.formData.get('phone').reset(this.userVto.phone);
@@ -83,7 +83,7 @@ export class UserEditComponent implements OnInit {
         let userEdit: UserVtoData = new UserVtoData();
         userEdit.firstName = this.formData.get('firstName').value;
         userEdit.lastName = this.formData.get('lastName').value;
-        userEdit.age = this.formData.get('age').value;
+        userEdit.birthDate = this.formData.get('birthDate').value;
         userEdit.gender = this.formData.get('gender').value;
         userEdit.email = this.formData.get('email').value;
         userEdit.userName = this.formData.get('userName').value;
