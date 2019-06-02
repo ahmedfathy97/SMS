@@ -61,7 +61,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
-    FullLayoutComponent, SimpleLayoutComponent, SmsHeaderComponent, CourseSideBarComponent, SmsFooterComponent,
+    FullLayoutComponent, SimpleLayoutComponent,
+    SmsHeaderComponent, CourseSideBarComponent, SmsFooterComponent,
     HomeComponent, LayoutComponent, CreateGradeComponent, CreateAttendanceComponent, CreateCourse,
     CourseInfoComponent, ViewAttendanceComponent, CreateQuizComponent, ViewGradeComponent,
     UserProfileComponent, UploadComponent, DownloadComponent, ViewStudentGradeComponent,
