@@ -8,6 +8,7 @@ import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructu
 import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
 import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {CourseDataService} from "../../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-add-quiz-quiestions',
@@ -21,16 +22,26 @@ export class AddQuizQuestionsComponent implements OnInit {
   questionTypeList: QuestionType [];
   questionsList: QuestionDto[] = [];
   mcqIsSelected: boolean = false;
+  corID: number ;
   trueFalseIsSelsected: boolean = false;
   table: boolean = false;
   quizId: number;
   editMode: boolean = false;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
-              private quizService: QuizService, private route: ActivatedRoute) {
+              private quizService: QuizService, private route: ActivatedRoute,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.quizId = +params.get("quizID");
-    })
+    }) ,
+
+    this.corDataService.corID.subscribe(
+      data =>{
+        this.corID = data;
+        console.log(data);
+
+      }
+    );
+    this.corDataService.requestCorID.next(true);
   }
 
 

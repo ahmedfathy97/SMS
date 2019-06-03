@@ -93,7 +93,7 @@ export class AnswerQuestionsComponent implements OnInit {
     this.quizService.getQuizQuestions(this.quizID).subscribe(res => {
       console.log("Success");
       this.quizQuestions = res;
-      this.alert = new SuccessAlert();
+     // this.alert = new SuccessAlert();
       this.clearFormArray(this.questions) ;
 
       for(let question of this.quizQuestions)

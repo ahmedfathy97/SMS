@@ -46,7 +46,7 @@ export class CourseQuizesComponent implements OnInit {
   getCourseQuizes(){
     this.courseService.getCourseQuizes(this.corID).subscribe(res => {
       this.quizList = res;
-      this.alert = new SuccessAlert();
+     // this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);
