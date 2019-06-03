@@ -16,10 +16,19 @@ export class MyCourseComponent implements OnInit {
 
   constructor(private courseService: CourseService) { }
   resultSet: CourseResultSet = new CourseResultSet();
+  pageNum: number = 1;
   ngOnInit() {
-    this.courseService.findAllMyCourses().subscribe(
+    this.onSearch()
+
+  }
+  onSearch(){
+    this.courseService.findAllMyCourses(this.pageNum).subscribe(
       res=>this.resultSet = res
     );
+  }
+  onPageChange(pageNum){
+    this.pageNum = pageNum;
+    this.onSearch();
   }
 
 }

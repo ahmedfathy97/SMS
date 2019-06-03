@@ -60,12 +60,15 @@ public class CourseRep {
 
     }
 
-    public List<CourseVTO> findAllInstructorCourses(int instrID) {
+    public List<CourseVTO> findAllInstructorCourses(int instrID,int pageNum) {
+        int pageSize = 2;
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
-                "where cor.instructor_id = ? ";
+                "where cor.instructor_id = ? "+
+                "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
+
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
     public List<CourseVTO> findALLCourses(int pageNum) {
@@ -91,13 +94,15 @@ public class CourseRep {
         });
         return totalCount.get(0);
     }
-    public List<CourseVTO> findAllStudentCourse(int stdID){
+    public List<CourseVTO> findAllStudentCourse(int stdID,int pageNum){
+        int pageSize = 2;
         String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
                 "description, a.first_name, a.last_name " +
                 "FROM course_std  std " +
                 "LEFT JOIN course cor on std.cor_id = cor.id " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
-                "where std_id = ?";
+                "where std_id = ?"+
+                "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1)) ;
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
     }
     public void insertNewCourse(CourseDTO details) {

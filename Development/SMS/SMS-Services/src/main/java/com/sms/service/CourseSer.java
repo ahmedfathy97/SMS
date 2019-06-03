@@ -70,12 +70,12 @@ public class CourseSer {
 
         return resultSet;
     }
-    public CourseResultSet myCourses(UserVTO currentUser){
+    public CourseResultSet myCourses(UserVTO currentUser,int pageNum){
         List<CourseVTO> courseVTOList = new ArrayList<>();
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
-            courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId());
+            courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId(),pageNum);
         else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
-            courseVTOList =courseRep.findAllStudentCourse(currentUser.getId());
+            courseVTOList =courseRep.findAllStudentCourse(currentUser.getId(),pageNum);
 
         CourseResultSet resultSet = new CourseResultSet();
         resultSet.setList(courseVTOList);

@@ -82,9 +82,9 @@ public class CourseRes {
 //    public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
 //    @Authenticated()
 //    @Authenticated(views = {AuthViews.CREATE_LEC})
-    public CourseResultSet myCourses(@Context ContainerRequestContext request) {
+    public CourseResultSet myCourses(@Context ContainerRequestContext request,@QueryParam("pageNum") int pageNum) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        return this.courseSer.myCourses(currentUser);
+        return this.courseSer.myCourses(currentUser,pageNum);
     }
 
     @GET
