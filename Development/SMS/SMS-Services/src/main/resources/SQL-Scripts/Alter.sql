@@ -551,3 +551,50 @@ INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('14', '18');
 
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '18');
 INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('2', '18');
+
+
+
+
+
+
+-- ahmed start --
+CREATE TABLE exam (
+  id INT NOT NULL AUTO_INCREMENT,
+  exam_name VARCHAR(45) NOT NULL,
+  grade INT NOT NULL,
+  course_id INT NOT NULL ,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_exam_course  FOREIGN KEY (course_id)  REFERENCES course (id)
+  );
+
+
+
+CREATE TABLE exam_question (
+  id INT NOT NULL AUTO_INCREMENT,
+  question VARCHAR(500) NOT NULL,
+  model_answer VARCHAR(500) NOT NULL,
+  answer1 VARCHAR(500) NULL,
+  answer2 VARCHAR(500) NULL,
+  answer3 VARCHAR(500) NULL,
+  answer4 VARCHAR(500) NULL,
+  exam_id INT NOT NULL,
+  exam_question_type_id INT NOT NULL,
+  question_grade INT NOT NULL ,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_question_exam FOREIGN KEY (exam_id) REFERENCES exam (id) ,
+  CONSTRAINT fk_question_type FOREIGN KEY (exam_question_type_id) REFERENCES question_type (id)
+    );
+
+CREATE TABLE student_exam_answer (
+  id INT NOT NULL AUTO_INCREMENT,
+  student_id INT NOT NULL,
+  exam_id INT NOT NULL,
+  question_id INT NOT NULL,
+  answer VARCHAR(25) NOT NULL,
+  is_correct TINYINT NOT NULL,
+  student_score INT NOT NULL ,
+  PRIMARY KEY (id),
+  CONSTRAINT student_id FOREIGN KEY (student_id)  REFERENCES sms.auth_user (id) ,
+  CONSTRAINT exam_id_fk FOREIGN KEY (exam_id) REFERENCES sms.exam (id) ,
+  CONSTRAINT question_id FOREIGN KEY (question_id) REFERENCES sms.exam_question (id)
+  );
