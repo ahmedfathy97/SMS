@@ -261,7 +261,8 @@ public class CourseRep {
     public List<Announcement> getCourseAnnouncments(int courseID)
     {
         String sql ="SELECT title ,content ,announ_date From announcment \n" +
-                "where course_id = ? ;" ;
+                "where course_id = ? " +
+                "order by announ_date  " ;
 
         return this.jdbcTemplate.query(sql ,new AnnouncmentVTORM() ,courseID);
     }
