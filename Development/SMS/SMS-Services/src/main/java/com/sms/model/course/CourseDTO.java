@@ -7,14 +7,18 @@ import java.util.Date;
 //TODO: Youssef - move Class to /model/course/
 public class CourseDTO implements Serializable {
     //TODO: Youssef - rename Class to name - remember to change model in Angular too
-    private String  courseName ;
-    private int  duration ;
-    private Date startDate ;
-    private Date endDate ;
-    private int categoryID ;
-    private int typeID ;
+    private String courseName;
+    private int duration;
+    private Date startDate;
+    private Date endDate;
+    private int categoryID;
+    private int typeID;
     private int levelID;
-    private String description ;
+    private int midOneGrd;
+    private int semiFinalGrd;
+    private int midTwoGrd;
+    private int finalGrd;
+    private String description;
 
     public CourseDTO() {
     }
@@ -74,6 +78,22 @@ public class CourseDTO implements Serializable {
     public void setLevelID(int levelID) {
         this.levelID = levelID;
     }
+
+    public int getMidOneGrd() { return midOneGrd; }
+
+    public void setMidOneGrd(int midOneGrd) { this.midOneGrd = midOneGrd; }
+
+    public int getSemiFinalGrd() { return semiFinalGrd; }
+
+    public void setSemiFinalGrd(int semiFinalGrd) { this.semiFinalGrd = semiFinalGrd; }
+
+    public int getMidTwoGrd() { return midTwoGrd; }
+
+    public void setMidTwoGrd(int midTwoGrd) { this.midTwoGrd = midTwoGrd; }
+
+    public int getFinalGrd() { return finalGrd; }
+
+    public void setFinalGrd(int finalGrd) { this.finalGrd = finalGrd; }
 
     public String getDescription() {
         return description;

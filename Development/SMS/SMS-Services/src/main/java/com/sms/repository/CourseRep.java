@@ -103,6 +103,7 @@ public class CourseRep {
     public void insertNewCourse(CourseDTO details) {
         String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +
                 " category_id ,type_id , level_id , description ,instructor_id) Values (?,?,?,?,?,?,?,?,1) ";
+        String sql2 = "INSERT INTO exam(exam_name , grade ,course_id ) Values (?,?,?) ";
 
         this.jdbcTemplate.update(sql,
                 details.getCourseName(),
@@ -112,6 +113,10 @@ public class CourseRep {
                 details.getCategoryID(),
                 details.getTypeID(),
                 details.getLevelID(),
+                details.getMidOneGrd(),
+                details.getSemiFinalGrd(),
+                details.getMidTwoGrd(),
+                details.getFinalGrd(),
                 details.getDescription());
     }
 

@@ -10,7 +10,7 @@
       <div class="breadcrumbs-area clearfix">
         <ul class="breadcrumbs pull-left">
           <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-          <li><span>Create Course</span></li>
+          <li><span>New</span></li>
         </ul>
       </div>
     </div>
@@ -27,7 +27,7 @@
         </div>
         <form [formGroup]="formData">
           <div class="form-group d-inline-block col-6">
-            <label for="example-text-input" class="col-form-label">Name</label>
+            <label for="example-text-input" class="col-form-label">Name*</label>
             <input class="form-control" formControlName="courseName" type="text" id="example-text-input"
                    [ngClass]="{ 'is-invalid': f.courseName.dirty && f.courseName.errors?.required }">
             <div *ngIf="submitted && f.courseName.errors" class="invalid-feedback">
@@ -37,7 +37,7 @@
           </div>
 
           <div class="form-group d-inline-block col-6">
-            <label for="example-number-input" class="col-form-label">Duration</label>
+            <label for="example-number-input" class="col-form-label">Duration*</label>
             <input class="form-control" formControlName="duration" type="number" value="Duration with Hours"
                    id="example-number-input"
                    [ngClass]="{ 'is-invalid': f.duration.dirty && f.duration.errors?.required }">
@@ -48,7 +48,7 @@
           </div>
 
           <div class="form-group d-inline-block col-6">
-            <label for="example-lectureDate-input" class="col-form-label">Start Date</label>
+            <label for="example-lectureDate-input" class="col-form-label">Start Date*</label>
             <input class="form-control" formControlName="startDate" type="date" id="example-lectureDate-input"
                    [ngClass]="{ 'is-invalid': f.startDate.dirty && f.startDate.errors?.required }">
 
@@ -58,7 +58,7 @@
           </div>
 
           <div class="form-group d-inline-block col-6">
-            <label for="example-lectureDate-input" class="col-form-label">End Date</label>
+            <label for="example-lectureDate-input" class="col-form-label">End Date*</label>
             <input class="form-control" formControlName="endDate" type="date" id="example-lectureDate"
                    [ngClass]="{ 'is-invalid': f.endDate.dirty && f.endDate.errors?.required }">
             <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
@@ -68,7 +68,7 @@
 
 
           <div class="form-group d-inline-block col-4">
-            <label class="col-form-label">Category</label>
+            <label class="col-form-label">Category*</label>
             <select class="form-control" formControlName="categoryID"
                     [ngClass]="{ 'is-invalid': f.categoryID.dirty && f.categoryID.errors?.required }">
               <option *ngFor="let category of corCategoryList" [ngValue]="category.id">{{category.labelEN}}</option>
@@ -76,7 +76,7 @@
           </div>
 
           <div class="form-group d-inline-block col-4">
-            <label class="col-form-label">Type</label>
+            <label class="col-form-label">Type*</label>
             <select class="form-control" formControlName="typeID"
                     [ngClass]="{ 'is-invalid': f.typeID.dirty && f.typeID.errors?.required }">
               <option *ngFor="let type of corTypeList" [ngValue]="type.id">{{type.labelEN}}</option>
@@ -84,14 +84,54 @@
           </div>
 
           <div class="form-group d-inline-block col-4">
-            <label class="col-form-label">Level</label>
+            <label class="col-form-label">Level*</label>
             <select class="form-control" formControlName="levelID"
                     [ngClass]="{ 'is-invalid': f.levelID.dirty && f.levelID.errors?.required }">
               <option *ngFor="let level of corLevelList" [ngValue]="level.id">{{level.labelEN}}</option>
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="form-group d-inline-block col-6">
+            <label for="midOneGrd" class="col-form-label">MID-ONE-GRD*</label>
+            <input class="form-control" formControlName="midOneGrd" type="number" value="number"
+                   id="midOneGrd"
+                   [ngClass]="{ 'is-invalid': f.midOneGrd.dirty && f.midOneGrd.errors?.required }">
+            <div *ngIf="submitted && f.midOneGrd.errors" class="invalid-feedback">
+              <small *ngIf="f.midOneGrd.errors?.required">MID-ONE-GRD can't be null .</small>
+            </div>
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="semiFinalGrd" class="col-form-label">SEMI-FINAL-GRD*</label>
+            <input class="form-control" formControlName="semiFinalGrd" type="number" value="number"
+                   id="semiFinalGrd"
+                   [ngClass]="{ 'is-invalid': f.semiFinalGrd.dirty && f.semiFinalGrd.errors?.required }">
+            <div *ngIf="submitted && f.semiFinalGrd.errors" class="invalid-feedback">
+              <small *ngIf="f.semiFinalGrd.errors?.required">SEMI-FINAL-GRD can't be null .</small>
+            </div>
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="midTwoGrd" class="col-form-label">MID-TWO-GRD*</label>
+            <input class="form-control" formControlName="midTwoGrd" type="number" value="number"
+                   id="midTwoGrd"
+                   [ngClass]="{ 'is-invalid': f.midTwoGrd.dirty && f.midTwoGrd.errors?.required }">
+            <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+              <small *ngIf="f.midTwoGrd.errors?.required">MID-TWO-GRD can't be null .</small>
+            </div>
+          </div>
+
+          <div class="form-group d-inline-block col-6">
+            <label for="finalGrd" class="col-form-label">FINAL-GRD*</label>
+            <input class="form-control" formControlName="finalGrd" type="number" value="number"
+                   id="finalGrd"
+                   [ngClass]="{ 'is-invalid': f.finalGrd.dirty && f.finalGrd.errors?.required }">
+            <div *ngIf="submitted && f.finalGrd.errors" class="invalid-feedback">
+              <small *ngIf="f.finalGrd.errors?.required">FINAL-GRD can't be null .</small>
+            </div>
+          </div>
+
+          <div class="form-group d-inline-block col-12">
             <label for="example-text-input" class="col-form-label">Description</label>
             <textarea class="form-control" formControlName="description" type="text"
                       [ngClass]="{ 'is-invalid': f.description.errors?.max(500)}"></textarea>
@@ -103,10 +143,10 @@
           </div>
 
 
-          <div class="row pull-right">
+          <div class="form-group  d-inline-block  col-10 offset-2 ">
             <div class="card-action">
-              <button class="btn btn-success" (click)="onSubmitNewCourse()">Next</button>
-              <button class="ml-2 btn btn-danger">Back</button>
+              <button class="btn btn-success col-5" (click)="onSubmitNewCourse()">Create</button>
+              <button class="ml-2 btn btn-danger col-5">Clear</button>
             </div>
           </div>
         </form>
