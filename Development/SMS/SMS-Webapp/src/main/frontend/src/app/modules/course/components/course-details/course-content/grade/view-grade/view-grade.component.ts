@@ -5,6 +5,7 @@ import {StdDTO} from "../../../../../shared/data/std-dto.data";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
 
 @Component({
   selector: 'app-view-grade',
@@ -26,18 +27,23 @@ export class ViewGradeComponent implements OnInit {
   }); this.corDataService.requestCorID.next(true);
   }
 
-  studentList: StdDTO[] = [];
+  // studentList: StdDTO[] = [];
       getCourseGrade(){
-      this.courseService.getCourseGrades(this.corID).subscribe(
-        res=>this.studentList = res
+      this.courseService.getCourseGrades(this.corID,this.pageNum).subscribe(
+        res=>this.resultSet.studentList = res
       );
 //       if(this.studentList.length != 0){
 //        this.display=true;
 // }
     }
+  resultSet: CourseResultSet = new CourseResultSet();
+  pageNum:number=1;
   ngOnInit() {
 
-
+this.getCourseGrade()
   }
-
+  onPageChange(pageNum){
+    this.pageNum = pageNum;
+    this.getCourseGrade();
+      }
 }

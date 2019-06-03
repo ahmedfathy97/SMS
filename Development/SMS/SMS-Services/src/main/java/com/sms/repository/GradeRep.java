@@ -51,13 +51,16 @@ public class GradeRep {
         this.jdbc.update(sql, data.getNewGrade(),cor_id, data.getId());
 
     }
-    public List<StdDTO> findCourseGrades(int courseID){
+    public List<StdDTO> findCourseGrades(int courseID,int pageNum){
+        int pageSize = 2;
         String sql ="SELECT std.first_name,std.last_name,std.user_id,\n" +
-                "                cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
-                "                from user_detail std\n" +
-                "                left join course_std cor\n" +
-                "                on std.user_id=cor.std_id\n" +
-                "                where cor_id=?";
+                "                               cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
+                "                               from user_detail std\n" +
+                "                                left join course_std cor\n" +
+                "                               on std.user_id=cor.std_id\n" +
+                "                                where cor_id=1\n" +
+                "                                LIMIT "+pageSize+"offest"+ (pageSize* (pageNum-1));
+
 
         return this.jdbc.query(sql, new CourseGradesRM(), courseID);
 

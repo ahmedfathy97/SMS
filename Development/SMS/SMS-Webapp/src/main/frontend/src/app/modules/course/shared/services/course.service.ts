@@ -42,8 +42,14 @@ export class CourseService {
       {params: parameters});
   }
 
-  getCourseGrades(courseID:number){
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade")
+  getCourseGrades(courseID:number,pageNum:number){
+    let queryParameter: HttpParams = new HttpParams();
+
+    queryParameter = queryParameter.append('pageNum', pageNum.toString());
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade",
+      {params: queryParameter}
+
+      );
 
   }
   getStudentGrades(courseID:number,studentID:number){
