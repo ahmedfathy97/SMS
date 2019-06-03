@@ -232,6 +232,11 @@ public class CourseRes {
         List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID , pageNum ) ;
         return announcementList ;
     }
+//    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID )
+//    {
+//        List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID ) ;
+//        return announcementList ;
+//    }
 
 
 

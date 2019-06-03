@@ -122,6 +122,10 @@ export class CourseService {
     return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList" ,
       {params: queryParam}) ;
   }
+  // getCourseAnnouncments(courseID :number )
+  // {
+  //   return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList") ;
+  // }
 
   getCourseLectures(courseID :number)
   {

@@ -101,6 +101,11 @@ public class CourseSer {
         return  announcementList ;
     }
 
+//    public List<Announcement> getCourseAnnouncments(int courseID )
+//    {
+//        List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID) ;
+//        return  announcementList ;
+//    }
 
 //    public void createAnnouncement (int courseID , Announcement announcement)
 //    {
