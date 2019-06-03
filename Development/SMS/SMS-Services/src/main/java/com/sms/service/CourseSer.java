@@ -95,9 +95,9 @@ public class CourseSer {
 
 
 
-    public List<Announcement> getCourseAnnouncments(int courseID)
+    public List<Announcement> getCourseAnnouncments(int courseID , int pageNum)
     {
-        List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID) ;
+        List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID , pageNum) ;
         return  announcementList ;
     }
 

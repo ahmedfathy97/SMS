@@ -5,6 +5,7 @@ import {Announcement} from "../../../../../shared/data/announcment";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
+import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
 
 @Component({
   selector: 'app-view-announcment',
@@ -18,7 +19,9 @@ export class ViewAnnouncmentComponent implements OnInit {
   replaceCorID = replaceCorID;
 
   corID: number ;
-  announcmentList :Announcement[] ;
+  resultSet: CourseResultSet = new CourseResultSet();
+  pageNum: number = 1;
+  // announcmentList :Announcement[] ;
   constructor( private corDataService: CourseDataService ,
                private courseService :CourseService) {
     this.corDataService.corID.subscribe(
@@ -32,15 +35,23 @@ export class ViewAnnouncmentComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getCourseAnnouncments();
   }
 
   getCourseAnnouncments()
   {
-    this.courseService.getCourseAnnouncments(this.corID).subscribe(res => {
-      this.announcmentList = res;
+    this.courseService.getCourseAnnouncments(this.corID , this.pageNum).subscribe(res => {
+      this.resultSet.announcList = res;
     }, err => {
       console.log(err);
     });
   }
 
+  onPageChange(pageNum)
+  {
+    this.pageNum = pageNum ;
+    this.getCourseAnnouncments();
+
+  }
 }

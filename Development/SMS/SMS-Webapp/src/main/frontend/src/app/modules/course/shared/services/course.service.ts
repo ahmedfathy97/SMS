@@ -109,9 +109,12 @@ export class CourseService {
     return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL + courseID +"/newAnnouncment", announcement);
   }
 
-  getCourseAnnouncments(courseID :number)
+  getCourseAnnouncments(courseID :number , pageNum : number )
   {
-    return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList") ;
+    let queryParam : HttpParams = new HttpParams () ;
+    queryParam = queryParam.append('pageNum',pageNum.toString());
+    return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList" ,
+      {params: queryParam}) ;
   }
 
   getCourseLectures(courseID :number)
