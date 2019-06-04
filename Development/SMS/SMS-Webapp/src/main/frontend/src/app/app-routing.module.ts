@@ -42,6 +42,9 @@ import {QuizMainDetailComponent} from "./modules/course/components/course-detail
 import {QuizResult} from "./modules/course/shared/data/quiz/quiz-result-dto";
 import {AuthActions} from "./infrastructure/directives/authorization/data/auth-actions.enum";
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
+import {CourseExamsComponent} from "./modules/course/components/course-details/course-content/exam/course-exams/course-exams.component";
+import {AddExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/add-exam-questions/add-exam-questions.component";
+import {ExamDetailsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/exam-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -170,6 +173,18 @@ const routes: Routes = [
                       },
                     ]
                   },
+              {
+                path: 'exam', children: [
+                  {path: '', component: CourseExamsComponent},
+                  {
+                    path: ':examID', children: [
+                      {path: 'questions', component: AddExamQuestionsComponent} ,
+                      {path: 'examDetails', component: ExamDetailsComponent},
+
+                    ]
+                  },
+                ]
+              },
                 ]
               },
             ]

@@ -21,7 +21,7 @@ export class QuizService {
 
   createQuizQuestions(quizId: number ,questionsList:QuestionDto[])
   {
-    return this.httpClient.post(this.BASE_URL+"/quiz/"+ quizId + "/questions",questionsList) ;
+    return this.httpClient.post(this.BASE_URL+"/exam/"+ quizId + "/questions",questionsList) ;
   }
 
 
@@ -32,39 +32,39 @@ export class QuizService {
 
   submitQuizAnswersForStudent( quizID :number , studentAnswerDTOList : StudentAnswerDto[]  )
   {
-    return this.httpClient.post(this.BASE_URL + "/quiz/"  +"/" +quizID +"/answer" ,studentAnswerDTOList) ;
+    return this.httpClient.post(this.BASE_URL + "/exam/"  +"/" +quizID +"/answer" ,studentAnswerDTOList) ;
   }
   getQuizQuestions(quizID : number)
   {
-     return this.httpClient.get<QuestionVto[]>(this.BASE_URL+"/quiz/" + quizID +"/questionsView") ;
+     return this.httpClient.get<QuestionVto[]>(this.BASE_URL+"/exam/" + quizID +"/questionsView") ;
   }
 
   createQuizClosure(courseID : number ,quizID : number , data : QuizDto){
 
-    return this.httpClient.post(this.BASE_URL + "/quiz/" + courseID + quizID , data);
+    return this.httpClient.post(this.BASE_URL + "/exam/" + courseID + quizID , data);
 
   }
 
 
   closeQuiz(quizID : number )
   {
-    return this.httpClient.put( this.BASE_URL + "/quiz/"+ quizID +"/close" ,null) ;
+    return this.httpClient.put( this.BASE_URL + "/exam/"+ quizID +"/close" ,null) ;
   }
 
   getQuizDetails(quizID : number)
   {
-    return this.httpClient.get<QuizInformationVto>(this.BASE_URL + "/quiz/" +quizID+"/quizDetails" )
+    return this.httpClient.get<QuizInformationVto>(this.BASE_URL + "/exam/" +quizID+"/examDetails" )
   }
 
 
   getQuizResult(quizID : number )
   {
-    return this.httpClient.get<QuizResult[]>(this.BASE_URL+"/quiz/"+quizID+"/results")
+    return this.httpClient.get<QuizResult[]>(this.BASE_URL+"/exam/"+quizID+"/results")
   }
 
   getQuizState(quizID : number)
   {
-    return this.httpClient.get<number>(this.BASE_URL+"/quiz/"+quizID+"/state");
+    return this.httpClient.get<number>(this.BASE_URL+"/exam/"+quizID+"/state");
 
   }
 }

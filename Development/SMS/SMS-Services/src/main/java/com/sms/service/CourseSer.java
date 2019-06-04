@@ -53,6 +53,12 @@ public class CourseSer {
         return courseQuizesVTOList ;
     }
 
+    public List<CourseExamsVTO> getCourseExams(int courseID)
+    {
+        List<CourseExamsVTO> courseQuizesVTOList =  courseRep.getCourseExams(courseID);
+        return courseQuizesVTOList ;
+    }
+
     public List<LectureVTO> getCourseLectures(int courseID)
     {
         List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;

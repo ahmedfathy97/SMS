@@ -1,40 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {QuizService} from "../../../../../../shared/services/quiz.service";
+import {AngularFullRoutes, replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {QuizInformationVto} from "../../../../../../shared/data/quiz/quiz-information-vto";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
-import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
-import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {QuizService} from "../../../../../../shared/services/quiz.service";
+import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
-import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {ExamServices} from "../../../../../../shared/services/exam.services";
+import {ExamInformationVto} from "../../../../../../shared/data/quiz/exam-information-vto";
 
 @Component({
-  selector: 'app-quiz-main-detail',
-  templateUrl: './quiz-main-detail.component.html',
-  styleUrls: ['./quiz-main-detail.component.scss'] ,
-  providers: [QuizService],
+  selector: 'app-exam-main-detail',
+  templateUrl: './exam-main-detail.component.html',
+  styleUrls: ['./exam-main-detail.component.css'] ,
+  providers :[ExamServices] ,
 })
-export class QuizMainDetailComponent implements OnInit {
+export class ExamMainDetailComponent implements OnInit {
+
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   //replaceQuizID = replaceQuizID;
   replaceCorID = replaceCorID;
   corID: number;
-  quizId: number;
-  quizDetails :QuizInformationVto ;
+  examId: number;
+  examDetails :ExamInformationVto ;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
-              private quizService: QuizService, private route: ActivatedRoute) {
+              private examService: ExamServices, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
-      this.quizId = +params.get("examID");
+      this.examId = +params.get("examID");
     }) ,
 
       this.corDataService.corID.subscribe(
         data => {
           this.corID = data;
           console.log(data);
-          this.getQuizInformation() ;
+          this.getExamInformation() ;
         }
       );
 
@@ -48,10 +51,10 @@ export class QuizMainDetailComponent implements OnInit {
   }
 
 
-  getQuizInformation() {
+  getExamInformation() {
 
-    this.quizService.getQuizDetails(this.quizId).subscribe(res => {
-      this.quizDetails = res ;
+    this.examService.getExamDetails(this.examId).subscribe(res => {
+      this.examDetails = res ;
       this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
@@ -60,14 +63,15 @@ export class QuizMainDetailComponent implements OnInit {
   }
 
 
-  onClickCloseQuiz()
+  onClickCloseExam()
   {
-    this.quizService.closeQuiz(this.quizId).subscribe(res => {
+    this.examService.closeExam(this.examId).subscribe(res => {
       this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);
     });
   }
+
 
 }

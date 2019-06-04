@@ -99,7 +99,15 @@ public class ExamSer {
         int examState ;
         if(currentUser.getRoleIDs().contains(1))
         {
-            examState = 1 ;
+            boolean examputted =examRep.examPutted(examID) ;
+            if (examputted == true)
+            {
+                examState = 1 ;
+            }
+            else{
+                examState =5 ;
+            }
+
         }
         else
         {

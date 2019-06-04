@@ -58,6 +58,12 @@ import {QuizResultComponent} from "./modules/course/components/course-details/co
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 import {textSubStrPipe} from "./infrastructure/pipes/text-sub-str.pipe";
 import {NgxPaginationModule} from "ngx-pagination";
+import { AddExamQuestionsComponent } from './modules/course/components/course-details/course-content/exam/add-exam-questions/add-exam-questions.component';
+import { CourseExamsComponent } from './modules/course/components/course-details/course-content/exam/course-exams/course-exams.component';
+import { ExamDetailsComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-details.component';
+import { ExamMainDetailComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-main-detail/exam-main-detail.component';
+import { ExamResultComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-result/exam-result.component';
+import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 
 @NgModule({
   declarations: [
@@ -83,7 +89,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
-    QuizResultComponent,textSubStrPipe
+    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent
 
   ],
   imports: [

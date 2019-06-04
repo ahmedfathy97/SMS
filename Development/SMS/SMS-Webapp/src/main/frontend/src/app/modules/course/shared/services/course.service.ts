@@ -11,6 +11,7 @@ import {Announcement} from "../data/announcment";
 import {CourseResultSet} from "../data/course-result-set.data";
 import {LectureVto} from "../data/lecture-vto";
 import {isBoolean} from "util";
+import {CourseExamsVto} from "../data/quiz/course-exams-vto";
 
 
 @Injectable()
@@ -69,6 +70,11 @@ export class CourseService {
   getCourseQuizes(courseID :number)
   {
     return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/quizes");
+  }
+
+  getCourseExams(courseID :number)
+  {
+    return this.httpClient.get<CourseExamsVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/exams");
   }
 
   // findAllCourses(courseID :number){

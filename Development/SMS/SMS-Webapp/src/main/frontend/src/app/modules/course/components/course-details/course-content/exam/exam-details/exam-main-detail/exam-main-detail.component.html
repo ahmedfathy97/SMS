@@ -13,7 +13,7 @@
       </div>
       <div class="col-sm-6 clearfix">
         <div class="pull-right">
-          <button class="btn btn-success btn-header" *authorizeAction="[AUTH_ACTIONS.CLOSE_QUIZ]" (click)="onClickCloseQuiz()"> close Quiz </button>
+          <button class="btn btn-success btn-header" *authorizeAction="[AUTH_ACTIONS.CLOSE_QUIZ]" (click)="onClickCloseExam()"> close Quiz </button>
         </div>
       </div>
     </div>
@@ -29,34 +29,34 @@
           <div class="card">
             <div class="card-body">
               <div class="d-sm-flex justify-content-between align-items-center">
-                <h4 class="header-title mb-0">{{quizDetails.quizName}}</h4>
+                <h4 class="header-title mb-0">{{examDetails.quizName}}</h4>
               </div>
 
               <!--<div class="d-inline-block col-6">-->
-                <!--<label for="course-name" class="col-form-label font-weight-bold text-dark "> Quiz Name : </label>-->
-                <!--<label id="course-name" class="col-form-label label label-info ml-1">{{examDetails.quizName}}</label>-->
+              <!--<label for="course-name" class="col-form-label font-weight-bold text-dark "> Quiz Name : </label>-->
+              <!--<label id="course-name" class="col-form-label label label-info ml-1">{{examDetails.quizName}}</label>-->
 
               <!--</div>-->
               <div class="d-inline-block col-6">
                 <label for="duration" class="col-form-label font-weight-bold text-dark"> Grade :</label>
-                <label id="duration" class="col-form-label ml-1">{{quizDetails.grade}}</label>
+                <label id="duration" class="col-form-label ml-1">{{examDetails.grade}}</label>
               </div>
 
               <div class="d-inline-block col-6">
                 <label for="start-lectureDate" class="col-form-label font-weight-bold text-dark">Start Date :</label>
-                <label id="start-lectureDate" class="col-form-label ml-1">{{quizDetails.startDate}}</label>
+                <label id="start-lectureDate" class="col-form-label ml-1">{{examDetails.startDate}}</label>
               </div>
 
 
               <div class="d-inline-block col-6">
                 <label for="end-lectureDate" class="col-form-label font-weight-bold text-dark">End Date :</label>
-                <label id="end-lectureDate" class="col-form-label ml-1">{{quizDetails.finishDate}}</label>
+                <label id="end-lectureDate" class="col-form-label ml-1">{{examDetails.finishDate}}</label>
               </div>
 
 
               <div class="d-inline-block col-6">
                 <label for="cor-category" class="col-form-label font-weight-bold text-dark">number of student answers : </label>
-                <label id="cor-category" class="col-form-label ml-1">{{quizDetails.numberofStudentsAnswers}}</label>
+                <label id="cor-category" class="col-form-label ml-1">{{examDetails.numberofStudentsAnswers}}</label>
               </div>
 
               <!--<div class="card-action">-->

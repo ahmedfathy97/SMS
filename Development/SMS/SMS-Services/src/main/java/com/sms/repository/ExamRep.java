@@ -176,4 +176,21 @@ public class ExamRep {
         return results.size() !=0;
     }
 
+
+    public boolean  examPutted(int examID)
+    {
+        String sql ="SELECT id FROM exam_question WHERE exam_id = ?  " ;
+
+
+        List<Object> results = this.jdbcTemplate.query(sql, new RowMapper<Object>() {
+            @Override
+            public Object mapRow(ResultSet rs, int i) throws SQLException {
+                return new Object();
+
+            }
+        }, examID);
+
+        return results.size() !=0;
+    }
+
 }

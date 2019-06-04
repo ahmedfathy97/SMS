@@ -1,0 +1,20 @@
+<!--<div class="offset-2 col-lg-8">-->
+<!--<app-alert [data]="alert"></app-alert>-->
+<!--</div>-->
+<!--<ng-template [authorizeView]="[AUTH_VIEWS.ANSWER_QUESTION]">-->
+  <app-answer-exam-questions  *ngIf="examState ==4"></app-answer-exam-questions>
+<!--</ng-template>-->
+  <app-add-exam-questions *ngIf="examState ==5"></app-add-exam-questions>
+<!--<ng-template [authorizeView]="[AUTH_VIEWS.MAIN_DETAILS]">-->
+  <app-exam-main-detail  *ngIf="examState ==1" ></app-exam-main-detail>
+<!--</ng-template>-->
+
+<!--<ng-template [authorizeView]="[AUTH_VIEWS.QUIZ_RESULT]" >-->
+  <app-exam-result *ngIf="examState ==2"></app-exam-result>
+<!--</ng-template>-->
+
+
+<!--<ng-template [authorizeView]="[AUTH_VIEWS.QUIZ_RESULT]" >-->
+  <h3 *ngIf="examState ==3" class="align-middle">Comming Soon</h3>
+<!--</ng-template>-->
+

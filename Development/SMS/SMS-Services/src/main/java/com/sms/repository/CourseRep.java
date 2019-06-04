@@ -237,6 +237,22 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql ,new CourseQuizesVTORM(),courseID) ;
     }
 
+    public List<CourseExamsVTO> getCourseExams(int courseID)
+    {
+        String sql ="SELECT id ,exam_name FROM exam \n" +
+                "Where course_id =?;" ;
+        List<CourseExamsVTO> courseExams = this.jdbcTemplate.query(sql, new RowMapper<CourseExamsVTO>() {
+            @Override
+            public CourseExamsVTO mapRow(ResultSet rs, int i) throws SQLException {
+                CourseExamsVTO courseExamsVTO =new CourseExamsVTO() ;
+                courseExamsVTO.setExamID(rs.getInt("id"));
+                courseExamsVTO.setExamName(rs.getString("exam_name"));
+                return courseExamsVTO ;
+            }
+        }, courseID) ;
+        return courseExams ;
+    }
+
 
     public List<LectureVTO> getCourseLectures(int courseID)
     {

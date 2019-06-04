@@ -94,7 +94,7 @@ public class ExamRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/state")
     //@Authenticated(views = {AuthViews.QUIZ_DETAILS})
-    public int quizState( @Context ContainerRequestContext request ,@PathParam("examID")int examID)
+    public int examState(@Context ContainerRequestContext request , @PathParam("examID")int examID)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         return examSer.examState( currentUser ,examID) ;
