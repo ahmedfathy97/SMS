@@ -53,6 +53,7 @@ public class CourseRes {
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Authenticated(actions = {AuthActions.ADD_COR})
     public void createNewCourse(CourseDTO details) {
         courseRep.insertNewCourse(details);

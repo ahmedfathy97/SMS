@@ -24,12 +24,14 @@ public class CourseRep {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcInsert quizSJI;
+    private SimpleJdbcInsert courseInsert;
 
     @Autowired
     public CourseRep(JdbcTemplate jdbcTemplate, DataSource dataSource) {
-        quizSJI = new SimpleJdbcInsert(dataSource).withTableName("quiz")
-                .usingGeneratedKeyColumns("id");
+        quizSJI = new SimpleJdbcInsert(dataSource).withTableName("quiz").usingGeneratedKeyColumns("id");
         this.jdbcTemplate = jdbcTemplate;
+        this.courseInsert = new SimpleJdbcInsert(dataSource).withTableName("course").usingGeneratedKeyColumns("id");
+
     }
 
     public boolean isInstructor(int userID, int courseID)
@@ -106,9 +108,26 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
     }
     public void insertNewCourse(CourseDTO details) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("cor_name",details.getCourseName());
+        parameters.put("duration", details.getDuration());
+        parameters.put("start_date", details.getStartDate());
+        parameters.put("end_date", details.getEndDate());
+        parameters.put("category_id",details.getCategoryID());
+        parameters.put("type_id", details.getTypeID());
+        parameters.put("level_id", details.getLevelID());
+        parameters.put("description", details.getDescription());
+        parameters.put("instructor_id", 1);                            // current user
+        parameters.put("mid_one_grd", details.getMidOneGrd());
+        parameters.put("semi_final_grd", details.getSemiFinalGrd());
+        parameters.put("mid_two_grd", details.getMidTwoGrd());
+        parameters.put("final_grd", details.getFinalGrd());
+
+        int id = this.courseInsert.executeAndReturnKey(parameters).intValue();
+
+
         String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +
                 " category_id ,type_id , level_id , description ,instructor_id) Values (?,?,?,?,?,?,?,?,1) ";
-        String sql2 = "INSERT INTO exam(exam_name , grade ,course_id ) Values (?,?,?) ";
 
         this.jdbcTemplate.update(sql,
                 details.getCourseName(),
@@ -123,6 +142,13 @@ public class CourseRep {
                 details.getMidTwoGrd(),
                 details.getFinalGrd(),
                 details.getDescription());
+
+        String sql2 = "INSERT INTO exam(exam_name , grade ,course_id ) Values (?,?,?) ";
+        this.jdbcTemplate.update(sql2,"mid_one_grd",details.getMidOneGrd(),id);
+        this.jdbcTemplate.update(sql2,"semi_final_grd",details.getSemiFinalGrd(),id);
+        this.jdbcTemplate.update(sql2,"mid_two_grd",details.getMidTwoGrd(),id);
+        this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),id);
+
     }
 
     public List<StdDTO> findAllCourseStudents(int corID) {
