@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AttachmentService} from "../../shared/attachment.service";
 import {FileVTO} from "../../shared/data/FileVTO";
+import {AuthActions} from "../../../../directives/authorization/data/auth-actions.enum";
+import {AngularFullRoutes, replaceCorID} from "../../../../data/full-routes.enum";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-upload',
@@ -10,12 +13,29 @@ import {FileVTO} from "../../shared/data/FileVTO";
   providers: [AttachmentService]
 })
 export class UploadComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
+  corID: number ;
+  lectureID: number;
+
 
   // files:FileList;
   files: Array<File> = [];
 
-  constructor(private http: HttpClient, private service: AttachmentService) {
-  }
+  constructor(private http: HttpClient, private service: AttachmentService,
+              private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      this.lectureID = +params.get("lectureID");
+      this.corID = +params.get("corID");
+
+    });
+    console.log("inside upload: ")
+    console.log("LectureDetails: "+ this.lectureID)
+    console.log("corID: "+ this.corID)
+
+      }
+
 
   ngOnInit() {
   }

@@ -56,7 +56,8 @@
           </div>
           <hr>
           <div class="input-group-append pt-4 pull-right">
-            <button class="btn btn-secondary" type="button" (click)="onUpload(111,1)">Upload</button>
+            <button *authorizeAction="[AUTH_ACTIONS.ADD_MATERIAL]"
+              class="btn btn-secondary" type="button" (click)="onUpload(111,1)">Upload</button>
           </div>
         </div>
       </div>

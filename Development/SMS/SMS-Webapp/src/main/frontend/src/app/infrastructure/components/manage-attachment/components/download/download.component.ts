@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AttachmentService} from "../../shared/attachment.service";
 import {FileVTO} from "../../shared/data/FileVTO";
+import {AuthActions} from "../../../../directives/authorization/data/auth-actions.enum";
+import {AngularFullRoutes} from "../../../../data/full-routes.enum";
 
 @Component({
   selector: 'app-download',
@@ -9,6 +11,8 @@ import {FileVTO} from "../../shared/data/FileVTO";
   providers: [AttachmentService]
 })
 export class DownloadComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
+
   @Input("sourceID") sourceID
   @Input("fileSrcID") fileSrcID
   fileList: FileVTO[] = [];

@@ -2,6 +2,7 @@ export enum AuthActions {
   COR_ADD_GRADE = 1 ,
   COR_ADD_ATTENDANCE = 3 ,
   COR_ADD_ANNOUNCEMENT = 4,
+  ADD_MATERIAL = 7,
   ADD_COR = 8,
   ADD_LEC = 9,
   ENROLL_STUDENT=5 ,
@@ -11,5 +12,6 @@ export enum AuthActions {
   ANSWER_QUESTION = 13 ,
   QUIZ_DETAILS =  14 ,
   CLOSE_QUIZ = 15 ,
+  DOWNLOAD_MATERIAL = 16 ,
 
 }
