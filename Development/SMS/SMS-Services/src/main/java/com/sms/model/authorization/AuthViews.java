@@ -7,6 +7,7 @@ public enum AuthViews {
     ADD_ANNOUNCEMENT(4),
     USER_PROFILE(5),
     USER_EDIT(6),
+    ADD_MATERIAL(7),
     ADD_COR(8) ,
     ADD_LEC(9),
     COURSE_QUIZES (10) ,
@@ -16,7 +17,9 @@ public enum AuthViews {
     QUIZ_DETAILS(14),
     MAIN_DETAILS (15) ,
     QUIZ_RESULT(16),
-    ADD_MATERIAL(7);
+    LECTURE_DETAILS(17),
+    COURSE_LECTURES(18);
+
     private int id;
 
     AuthViews(int id){
