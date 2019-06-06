@@ -129,7 +129,8 @@ const routes: Routes = [
                   {path: ':lectureID',component: LectureDetailsComponent,
                     data: {viewID: AuthViews.LECTURE_DETAILS},
                     canActivate:[AuthenticationGuard, AuthorizationGuard], children: [
-                      {path: 'addMaterial', component: UploadComponent, data: {viewID: AuthViews.ADD_MATERIAL},
+                      {path: 'upload', component: UploadComponent,
+                        data: {viewID: AuthViews.ADD_MATERIAL},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
                          ]
                       },

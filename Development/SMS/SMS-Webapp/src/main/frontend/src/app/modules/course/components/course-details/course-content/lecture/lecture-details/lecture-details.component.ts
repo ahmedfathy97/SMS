@@ -7,6 +7,7 @@ import {AngularFullRoutes, replaceCorID, replaceLecID} from "../../../../../../.
 import {LectureService} from "../../../../../shared/services/lecture.service";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
 import {LectureVto} from "../../../../../shared/data/lecture-vto";
+import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-lecture-details',
@@ -15,9 +16,11 @@ import {LectureVto} from "../../../../../shared/data/lecture-vto";
   providers: [AttachmentService, LectureService]
 })
 export class LectureDetailsComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   // replaceLecID = replaceLecID;
   replaceCorID = replaceCorID;
+  replaceLecID = replaceLecID;
   corID :number ;
 
   lectureData: LectureDto;
