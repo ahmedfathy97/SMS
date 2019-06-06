@@ -1,6 +1,9 @@
 package com.sms.controller;
 
+import com.sms.model.annotation.Authenticated;
 import com.sms.model.attachment.File;
+import com.sms.model.authorization.AuthActions;
+import com.sms.model.authorization.AuthViews;
 import com.sms.repository.AttachmentRep;
 import com.sms.service.AttachmentSer;
 import org.glassfish.jersey.media.multipart.*;
@@ -112,6 +115,7 @@ public class AttachmentRes {
 
     @DELETE
     @Path("/{fileID}")
+    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
     public void removeFile(@PathParam("fileID") int fileID) {
         this.service.deleteFile(fileID);
     }
@@ -121,6 +125,7 @@ public class AttachmentRes {
     @Path("/file")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
     public Response uploadFile(
             @QueryParam("name") String name,
             @QueryParam("type") String type,
@@ -158,6 +163,8 @@ public class AttachmentRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/files")
+//    @Authenticated(views = {AuthViews.LECTURE_DETAILS})
+
     public List<File> listFiles(@QueryParam("sourceID") int sourceID,
                                 @QueryParam("fileSrcID") int fileSrcID)
     {
@@ -171,13 +178,15 @@ public class AttachmentRes {
     @GET
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     @Path("/downloadFile/{fileID}")
+    @Authenticated(actions = {AuthActions.DOWNLOAD_MATERIAL})
+
     public Response downloadFileById(@PathParam("fileID") int fileID) throws IOException{
         File fileFromRep = this.repository.getFile(fileID);
 
         java.io.File file = new java.io.File(fileFromRep.getFile_path());
         java.nio.file.Path filePath = Paths.get(file.getAbsolutePath());
 
-         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
+        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
 
         return Response.ok().entity(resource.getByteArray()).type(fileFromRep.getContentType()).build();
 //
