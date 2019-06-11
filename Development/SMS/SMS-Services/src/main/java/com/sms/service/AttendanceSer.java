@@ -28,7 +28,7 @@ public class AttendanceSer {
     }
 
     public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data, boolean isUpdate) throws Exception {
-        boolean isInstructor = this.rep.isInstructor(1, courseID);
+        boolean isInstructor = this.rep.isInstructor(currentUser.getId(), courseID);
         if (!isInstructor)
             throw new Exception("Only Course Instructor can add Attendance");
 
