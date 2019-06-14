@@ -107,7 +107,7 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
     }
 
-    public void insertNewCourse( int userID ,CourseDTO details) {
+    public int  insertNewCourse( int instructorID ,CourseDTO details) {
 
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("cor_name",details.getCourseName());
@@ -118,7 +118,7 @@ public class CourseRep {
         parameters.put("type_id", details.getTypeID());
         parameters.put("level_id", details.getLevelID());
         parameters.put("description", details.getDescription());
-        parameters.put("instructor_id", userID);                            // current user
+        parameters.put("instructor_id", instructorID);
 //        parameters.put("mid_one_grd", details.getMidOneGrd());
 //        parameters.put("semi_final_grd", details.getSemiFinalGrd());
 //        parameters.put("mid_two_grd", details.getMidTwoGrd());
@@ -129,7 +129,7 @@ public class CourseRep {
         this.jdbcTemplate.update(sql2,"semi_final_grd",details.getSemiFinalGrd(),ID);
         this.jdbcTemplate.update(sql2,"mid_two_grd",details.getMidTwoGrd(),ID);
         this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),ID);
-
+        return ID ;
 
 
 
