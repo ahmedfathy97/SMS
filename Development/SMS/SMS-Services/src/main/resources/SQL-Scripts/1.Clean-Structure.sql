@@ -193,7 +193,7 @@ CREATE TABLE quiz (
   course_id INT NOT NULL ,
   start_date DATE NOT NULL ,
   close_date DATE NOT NULL ,
-  auto_close TINYINT NULL ,
+  is_closed TINYINT(4) NULL DEFAULT NULL  ,
   PRIMARY KEY (id),
   CONSTRAINT fk_quiz_course  FOREIGN KEY (course_id)  REFERENCES course (id)
   );
@@ -249,13 +249,13 @@ CREATE TABLE announcment (
 
 CREATE TABLE file_source (
   id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  lable_en   INT NOT NULL
+  lable_en   varchar(15) NOT NULL
 );
 
 CREATE TABLE attachment (
   file_id            INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
   file_name     VARCHAR(100)  NOT NULL,
-  content_type  VARCHAR(30)  NOT NULL,
+  content_type  VARCHAR(50)  NOT NULL,
   file_size	INT	    Not NULL,
   extension     VARCHAR(10)   NOT NULL,
   file_path     VARCHAR(150) NOT NULL,
