@@ -12,6 +12,7 @@ export enum AngularFullRoutes {
   COR_NEW_QUIZ ="/course/${corID}/quiz/new" ,
   COR_VIEW_QUIZ ="/course/${corID}/quiz" ,
   COR_VIEW_QUIZ_DETAILS = "/course/${corID}/quiz/${quizID}/quizDetails" ,
+  COR_VIEW_QUIZ_QUESTIONS="/course/${corID}/quiz/${quizID}/answerQuiz" ,
   COR_VIEW_EXAM ="/course/${corID}/exam" ,
   COR_VIEW_EXAM_DETAILS ="/course/${corID}/exam/${examID}/examDetails" ,
   COR_NEW_Attendance = "/course/${corID}/attendance/new",

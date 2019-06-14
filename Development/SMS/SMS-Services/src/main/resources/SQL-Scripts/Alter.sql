@@ -699,4 +699,9 @@ CREATE TABLE student_exam_answer (
   );
 
 
-
+ INSERT INTO auth_role_view (role_id, view_id) VALUE (1,13);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (1,13);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (4,13);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (5,13);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (6,13);
+ INSERT INTO auth_user_view (user_id, view_id) VALUE (30,13);

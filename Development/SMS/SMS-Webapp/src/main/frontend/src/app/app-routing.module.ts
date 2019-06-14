@@ -165,8 +165,8 @@ const routes: Routes = [
                     path: ':quizID', children: [
                       {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      // {path: 'answerQuiz', component: AnswerQuestionsComponent,data: {viewID: AuthViews.ANSWER_QUESTION},
-                      //   canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                       {path: 'answerQuiz', component: AnswerQuestionsComponent ,data: {viewID: AuthViews.QUIZ_DETAILS},
+                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
                       {path: 'quizDetails', component: QuizDetailsComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
 
