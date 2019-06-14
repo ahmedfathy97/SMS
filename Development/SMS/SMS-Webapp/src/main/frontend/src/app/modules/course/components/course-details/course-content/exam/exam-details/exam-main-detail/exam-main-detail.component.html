@@ -6,14 +6,16 @@
           <h4 class="page-title pull-left">Quiz</h4>
           <br>
           <ul class="breadcrumbs pull-left">
-            <li><a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_QUIZ ,corID)]">quiz</a></li>
+            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ ,corID)]">quiz</a></li>
             <li><span>Details</span></li>
           </ul>
         </div>
       </div>
       <div class="col-sm-6 clearfix">
         <div class="pull-right">
-          <button class="btn btn-success btn-header" *authorizeAction="[AUTH_ACTIONS.CLOSE_QUIZ]" (click)="onClickCloseExam()"> close Quiz </button>
+          <button class="btn btn-success btn-header" *authorizeAction="[AUTH_ACTIONS.CLOSE_QUIZ]"
+                  (click)="onClickCloseExam()"> close Quiz
+          </button>
         </div>
       </div>
     </div>
@@ -23,45 +25,6 @@
       <app-alert [data]="alert"></app-alert>
     </div>
     <div class="main-content-inner">
-
-      <!--<div class="row mt-5 mb-5">-->
-        <!--<div class="col-12">-->
-          <!--<div class="card">-->
-            <!--<div class="card-body">-->
-              <!--<div class="d-sm-flex justify-content-between align-items-center">-->
-                <!--<h4 class="header-title mb-0">{{examDetails.quizName}}</h4>-->
-              <!--</div>-->
-
-              <!--&lt;!&ndash;<div class="d-inline-block col-6">&ndash;&gt;-->
-              <!--&lt;!&ndash;<label for="course-name" class="col-form-label font-weight-bold text-dark "> Quiz Name : </label>&ndash;&gt;-->
-              <!--&lt;!&ndash;<label id="course-name" class="col-form-label label label-info ml-1">{{examDetails.quizName}}</label>&ndash;&gt;-->
-
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--<div class="d-inline-block col-6">-->
-                <!--<label for="duration" class="col-form-label font-weight-bold text-dark"> Grade :</label>-->
-                <!--<label id="duration" class="col-form-label ml-1">{{examDetails.grade}}</label>-->
-              <!--</div>-->
-
-              <!--<div class="d-inline-block col-6">-->
-                <!--<label for="start-lectureDate" class="col-form-label font-weight-bold text-dark">Start Date :</label>-->
-                <!--<label id="start-lectureDate" class="col-form-label ml-1">{{examDetails.startDate}}</label>-->
-              <!--</div>-->
-
-
-              <!--<div class="d-inline-block col-6">-->
-                <!--<label for="end-lectureDate" class="col-form-label font-weight-bold text-dark">End Date :</label>-->
-                <!--<label id="end-lectureDate" class="col-form-label ml-1">{{examDetails.finishDate}}</label>-->
-              <!--</div>-->
-
-
-              <!--<div class="d-inline-block col-6">-->
-                <!--<label for="cor-category" class="col-form-label font-weight-bold text-dark">number of student answers : </label>-->
-                <!--<label id="cor-category" class="col-form-label ml-1">{{examDetails.numberofStudentsAnswers}}</label>-->
-              <!--</div>-->
-
-              <!--<div class="card-action">-->
-              <!--<button class="btn btn-primary col-6 mt-1 offset-2" (click)="onEnrollNewStudent()">Enroll</button>-->
-              <!--</div>-->
       <div class="card">
         <div class="card-body">
           <h4 class="header-title">Exam Informations For Instructor</h4>
@@ -80,14 +43,12 @@
                   <td>{{examDetails.grade}}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Start Date </th>
+                  <th scope="row">Start Date</th>
                   <td>{{examDetails.startDate}}</td>
-
                 </tr>
                 <tr>
                   <th scope="row">Finish Date</th>
                   <td>{{examDetails.finishDate}}</td>
-
                 </tr>
                 <tr>
                   <th scope="row">Number Of Students Answers</th>
@@ -99,7 +60,7 @@
           </div>
         </div>
       </div>
-            </div>
-          </div>
-        </div>
+    </div>
+  </div>
+</div>
 

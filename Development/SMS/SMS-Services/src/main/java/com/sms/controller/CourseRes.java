@@ -55,8 +55,9 @@ public class CourseRes {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Authenticated(actions = {AuthActions.ADD_COR})
-    public void createNewCourse(CourseDTO details) {
-        courseRep.insertNewCourse(details);
+    public void createNewCourse(@Context ContainerRequestContext request, CourseDTO details) {
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+        courseRep.insertNewCourse(currentUser.getId() , details);
     }
 
     @POST
