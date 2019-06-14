@@ -119,10 +119,7 @@ public class CourseRep {
         parameters.put("level_id", details.getLevelID());
         parameters.put("description", details.getDescription());
         parameters.put("instructor_id", instructorID);
-//        parameters.put("mid_one_grd", details.getMidOneGrd());
-//        parameters.put("semi_final_grd", details.getSemiFinalGrd());
-//        parameters.put("mid_two_grd", details.getMidTwoGrd());
-//        parameters.put("final_grd", details.getFinalGrd());
+
         int ID = this.courseSJI.executeAndReturnKey(parameters).intValue() ;
         String sql2 = "INSERT INTO exam(exam_name , grade , course_id ) Values (?,?,?) ";
         this.jdbcTemplate.update(sql2,"mid_one_grd",details.getMidOneGrd(),ID);
@@ -130,30 +127,6 @@ public class CourseRep {
         this.jdbcTemplate.update(sql2,"mid_two_grd",details.getMidTwoGrd(),ID);
         this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),ID);
         return ID ;
-
-
-
-
-
-//        String sql = "INSERT INTO course(cor_name , duration ,start_date , end_date ," +
-//                " category_id ,type_id , level_id , description ,instructor_id) Values (?,?,?,?,?,?,?,?,1) ";
-//
-//        this.jdbcTemplate.update(sql,
-//                details.getCourseName(),
-//                details.getDuration(),
-//                details.getStartDate(),
-//                details.getEndDate(),
-//                details.getCategoryID(),
-//                details.getTypeID(),
-//                details.getLevelID(),
-//                details.getMidOneGrd(),
-//                details.getSemiFinalGrd(),
-//                details.getMidTwoGrd(),
-//                details.getFinalGrd(),
-//                details.getDescription());
-
-
-
     }
 
     public List<StdDTO> findAllCourseStudents(int corID) {
