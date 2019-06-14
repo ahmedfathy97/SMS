@@ -54,12 +54,13 @@ export class ExamServices {
 
   getExamResult(examID : number )
   {
-    return this.httpClient.get<QuizResult[]>(this.BASE_URL+"/exam/"+examID+"/results")
+    return this.httpClient.get<QuizResult[]>(this.BASE_URL+ "/exam/" +examID+"/results")
   }
 
   getExamState(examID : number)
+
   {
-    return this.httpClient.get<number>(this.BASE_URL+"/exam/"+examID+"/state");
+    return this.httpClient.get<number>(this.BASE_URL+ "/exam/" + examID +"/state");
 
   }
 }

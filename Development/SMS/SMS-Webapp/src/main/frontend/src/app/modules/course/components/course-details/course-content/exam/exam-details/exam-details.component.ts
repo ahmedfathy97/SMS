@@ -27,16 +27,19 @@ export class ExamDetailsComponent implements OnInit {
                private route: ActivatedRoute ,private examService :ExamServices) {
     this.route.paramMap.subscribe(params => {
       this.examId = +params.get("examID");
-      this.examService.getExamState(this.examId).subscribe(res => {
-        this.examState = res ;
-        this.alert = new SuccessAlert();
-      }, err => {
-        this.alert = new FailureAlert(err);
-        console.log(err);
-      });
     })
+    this.getExamState() ;
+  }
 
-
+  getExamState()
+  {
+    this.examService.getExamState(this.examId).subscribe(res => {
+      this.examState = res ;
+      this.alert = new SuccessAlert();
+    }, err => {
+      this.alert = new FailureAlert(err);
+      console.log(err);
+    });
   }
 
   ngOnInit() {

@@ -59,7 +59,6 @@ export class CreateQuizComponent implements OnInit {
     this.courseService.createNewQuiz(this.corID, quizData).subscribe(res => {
       let quizID:number = res;
       this.router.navigate([`/course/${this.corID}/quiz/${quizID}/questions`]) ;
-     // this.alert = new SuccessAlert()
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);

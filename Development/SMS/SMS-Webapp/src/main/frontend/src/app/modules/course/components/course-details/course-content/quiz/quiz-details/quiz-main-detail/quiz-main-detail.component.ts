@@ -27,7 +27,7 @@ export class QuizMainDetailComponent implements OnInit {
   constructor(private corDataService: CourseDataService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
-      this.quizId = +params.get("examID");
+      this.quizId = +params.get("quizID");
     }) ,
 
       this.corDataService.corID.subscribe(
@@ -52,7 +52,6 @@ export class QuizMainDetailComponent implements OnInit {
 
     this.quizService.getQuizDetails(this.quizId).subscribe(res => {
       this.quizDetails = res ;
-      this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);

@@ -55,7 +55,6 @@ export class ExamMainDetailComponent implements OnInit {
 
     this.examService.getExamDetails(this.examId).subscribe(res => {
       this.examDetails = res ;
-      this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);
@@ -66,7 +65,6 @@ export class ExamMainDetailComponent implements OnInit {
   onClickCloseExam()
   {
     this.examService.closeExam(this.examId).subscribe(res => {
-      this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);

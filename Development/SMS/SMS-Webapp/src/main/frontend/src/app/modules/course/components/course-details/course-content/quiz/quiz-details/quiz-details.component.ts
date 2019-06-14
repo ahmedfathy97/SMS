@@ -26,17 +26,19 @@ export class QuizDetailsComponent implements OnInit {
   constructor(private corDataService: CourseDataService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
-      this.quizId = +params.get("examID");
-      this.quizService.getQuizState(this.quizId).subscribe(res => {
-        this.quizState = res ;
-        this.alert = new SuccessAlert();
-      }, err => {
-        this.alert = new FailureAlert(err);
-        console.log(err);
-      });
-    })
+      this.quizId = +params.get("quizID");
+    }) ;
+    this.getQuizState() ;
+  }
 
-
+  getQuizState()
+  {
+    this.quizService.getQuizState(this.quizId).subscribe(res => {
+      this.quizState = res ;
+    }, err => {
+      this.alert = new FailureAlert(err);
+      console.log(err);
+    });
   }
 
   ngOnInit() {

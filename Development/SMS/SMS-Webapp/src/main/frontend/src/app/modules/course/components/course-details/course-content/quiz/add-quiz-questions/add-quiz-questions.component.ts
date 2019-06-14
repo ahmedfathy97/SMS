@@ -51,6 +51,7 @@ export class AddQuizQuestionsComponent implements OnInit {
       console.log("Success");
       this.questionTypeList = res;
     }, err => {
+      this.alert = new FailureAlert(err);
       console.log(err);
     });
   }
@@ -122,7 +123,6 @@ export class AddQuizQuestionsComponent implements OnInit {
   onSubmitQuestionsTable() {
     this.quizService.createQuizQuestions(this.quizId, this.questionsList).subscribe(res => {
       console.log("Success");
-      this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err)

@@ -1,5 +1,8 @@
 export class ExamInformationVto {
 
-  examID :number ;
   examName:string ;
+  grade : number ;
+  startDate : Date ;
+  finishDate : Date ;
+  numberofStudentsAnswers: number ;
 }
