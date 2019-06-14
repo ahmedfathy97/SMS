@@ -18,7 +18,14 @@ public enum AuthViews {
     MAIN_DETAILS (15) ,
     QUIZ_RESULT(16),
     LECTURE_DETAILS(17),
-    COURSE_LECTURES(18);
+    COURSE_LECTURES(18),
+    ADD_EXAM_QUESTION(19),
+    ANSWER_EXAM_QUESTION(20),
+    EXAM_DETAILS(21),
+    EXAM_MAIN_DETAILS (22) ,
+    EXAM_RESULT(23) ,
+    COURSE_EXAMS(24) ;
+
 
     private int id;
 

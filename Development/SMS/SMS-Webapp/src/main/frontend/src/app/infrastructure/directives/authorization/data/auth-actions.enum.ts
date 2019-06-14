@@ -13,5 +13,9 @@ export enum AuthActions {
   QUIZ_DETAILS =  14 ,
   CLOSE_QUIZ = 15 ,
   DOWNLOAD_MATERIAL = 16 ,
+  CLOSE_EXAM= 17 ,
+  ANSWER_EXAM_QUESTION =18 ,
+
+
 
 }

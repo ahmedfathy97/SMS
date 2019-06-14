@@ -659,45 +659,6 @@ INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('30', '18');
 
 
 -- ahmed start --
-CREATE TABLE exam (
-  id INT NOT NULL AUTO_INCREMENT,
-  exam_name VARCHAR(45) NOT NULL,
-  grade INT NOT NULL,
-  course_id INT NOT NULL ,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_exam_course  FOREIGN KEY (course_id)  REFERENCES course (id)
-  );
-
-CREATE TABLE exam_question (
-  id INT NOT NULL AUTO_INCREMENT,
-  question VARCHAR(500) NOT NULL,
-  model_answer VARCHAR(500) NOT NULL,
-  answer1 VARCHAR(500) NULL,
-  answer2 VARCHAR(500) NULL,
-  answer3 VARCHAR(500) NULL,
-  answer4 VARCHAR(500) NULL,
-  exam_id INT NOT NULL,
-  exam_question_type_id INT NOT NULL,
-  question_grade INT NOT NULL ,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_question_exam FOREIGN KEY (exam_id) REFERENCES exam (id) ,
-  CONSTRAINT fk_question_type FOREIGN KEY (exam_question_type_id) REFERENCES question_type (id)
-    );
-
-CREATE TABLE student_exam_answer (
-  id INT NOT NULL AUTO_INCREMENT,
-  student_id INT NOT NULL,
-  exam_id INT NOT NULL,
-  question_id INT NOT NULL,
-  answer VARCHAR(25) NOT NULL,
-  is_correct TINYINT NOT NULL,
-  student_score INT NOT NULL ,
-  PRIMARY KEY (id),
-  CONSTRAINT student_id FOREIGN KEY (student_id)  REFERENCES sms.auth_user (id) ,
-  CONSTRAINT exam_id_fk FOREIGN KEY (exam_id) REFERENCES sms.exam (id) ,
-  CONSTRAINT question_id FOREIGN KEY (question_id) REFERENCES sms.exam_question (id)
-  );
-
 
  INSERT INTO auth_role_view (role_id, view_id) VALUE (1,13);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (1,13);
@@ -705,3 +666,206 @@ CREATE TABLE student_exam_answer (
  INSERT INTO auth_user_view (user_id, view_id) VALUE (5,13);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (6,13);
  INSERT INTO auth_user_view (user_id, view_id) VALUE (30,13);
+
+
+
+
+-- Ahmed View (course exams)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (24, 'COURSE_EXAMS', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,24);
+-- student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,24);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,24);
+-- end-- -- -- --
+
+
+
+
+
+-- Ahmed View (add exam question)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (19, 'ADD_EXAM_QUESTION', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,19);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,19);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,19);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,19);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,19);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,19);
+-- end-- -- -- --
+
+
+
+-- Ahmed View (answer question)-- --
+-- student
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (20, 'ANSWER_EXAM_QUESTION', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10 ,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,20);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,20);
+-- end-- -- -- --
+-- Ahmed action (answer exam question)-- --
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (18, 'ANSWER_EXAM_QUESTION', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (2,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (2,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (3,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (7,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (8,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (10,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (11,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (12,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (13,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (14,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (16,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (17,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (18,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (19,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (20,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (21,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (22,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (23,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (24,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (25,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (26,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (27,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (28,18);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (29,18);
+-- end-- -- -- --
+
+-- Ahmed View (Exam_Details)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (21, 'EXAM_DETAILS', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,21);
+-- student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,21);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,21);
+-- end-- -- -- --
+
+
+
+
+
+
+
+-- Ahmed View (Main_Details)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (22, 'EXAM_MAIN_DETAILS', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,22);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,22);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,22);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,22);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,22);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,22);
+
+
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (23, 'EXAM_RESULT', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,23);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,23);
+-- end-- -- -- --
+
+-- ahmed auth action (close exam)
+INSERT INTO auth_action (id, label_ar, description_ar) VALUE (17, 'CLOSE_EXAM', '');
+INSERT INTO auth_role_action (role_id, action_id) VALUE (1,17);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (1,17);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (4,17);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (5,17);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (6,17);
+INSERT INTO auth_user_action (user_id, action_id) VALUE (30,17);
+
+

@@ -187,7 +187,7 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/exams")
-    //@Authenticated(views = {AuthViews.COURSE_QUIZES})
+    @Authenticated(views = {AuthViews.COURSE_EXAMS})
     public List<CourseExamsVTO> getCourseExams(@PathParam("courseID") int courseID) {
         List<CourseExamsVTO> courseExamsVTOList = courseSer.getCourseExams(courseID);
         return courseExamsVTOList;

@@ -1,6 +1,9 @@
 package com.sms.controller;
 
 import com.sms.controller.filter.AuthenticationFilter;
+import com.sms.model.annotation.Authenticated;
+import com.sms.model.authorization.AuthActions;
+import com.sms.model.authorization.AuthViews;
 import com.sms.model.course.ExamInformationVTO;
 import com.sms.model.course.quiz.*;
 import com.sms.model.user.UserVTO;
@@ -26,8 +29,8 @@ public class ExamRes {
     @POST
     @Path("/{examID}/questions")
     @Consumes(MediaType.APPLICATION_JSON)
-   // @Authenticated(actions = {AuthActions.COR_ADD_QUESTION})
-    public void createExamQuestions(@PathParam("examID") int examID, List<QuestionDTO> questionList) {
+    @Authenticated(views = {AuthViews.ADD_EXAM_QUESTION})
+   public void createExamQuestions(@PathParam("examID") int examID, List<QuestionDTO> questionList) {
         examSer.createExamQuestions(examID, questionList);
     }
 
@@ -36,7 +39,7 @@ public class ExamRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/questionsView")
-   // @Authenticated(views = {AuthViews.ANSWER_QUESTION})
+    @Authenticated(views = {AuthViews.ANSWER_EXAM_QUESTION})
     public List<QuestionVTO> getExamQuestions(@PathParam("examID") int examID) {
         List<QuestionVTO> questionsList = examSer.getExamQuestions(examID);
         return questionsList;
@@ -51,7 +54,7 @@ public class ExamRes {
     @POST
     @Path("/{examID}/answer")
     @Consumes(MediaType.APPLICATION_JSON)
-    //@Authenticated(actions = {AuthActions.ANSWER_QUESTION})
+    @Authenticated(actions = {AuthActions.ANSWER_EXAM_QUESTION})
     public  void submitExamAnswers(@Context ContainerRequestContext request, @PathParam("examID")int examID , List<StudentAnswerDTO> studentAnswerDTOList)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
@@ -62,7 +65,7 @@ public class ExamRes {
     @PUT
     @Path("/{examID}/close")
     @Consumes(MediaType.APPLICATION_JSON)
-    //@Authenticated(actions = {AuthActions.CLOSE_QUIZ})
+    @Authenticated(actions = {AuthActions.CLOSE_EXAM})
     public void closeExam (@PathParam("examID")int examID )
     {
         examSer.closeExam(examID);
@@ -73,7 +76,7 @@ public class ExamRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/Details")
-    //@Authenticated(views = {AuthViews.MAIN_DETAILS})
+    @Authenticated(views = {AuthViews.EXAM_MAIN_DETAILS})
     public ExamInformationVTO getExamInformation(@PathParam("examID")int examID)
     {
         return examSer.getExamInformation(examID) ;
@@ -83,7 +86,7 @@ public class ExamRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/results")
-    //@Authenticated(views = {AuthViews.QUIZ_RESULT})
+    @Authenticated(views = {AuthViews.EXAM_RESULT})
     public List<QuizResult> getQuizResult(@Context ContainerRequestContext request, @PathParam("examID")int examID  )
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
@@ -93,7 +96,7 @@ public class ExamRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/state")
-    //@Authenticated(views = {AuthViews.QUIZ_DETAILS})
+    @Authenticated(views = {AuthViews.EXAM_DETAILS})
     public int examState(@Context ContainerRequestContext request , @PathParam("examID")int examID)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);

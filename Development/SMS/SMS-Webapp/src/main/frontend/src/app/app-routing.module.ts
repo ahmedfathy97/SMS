@@ -45,6 +45,7 @@ import {QuizDetailsComponent} from "./modules/course/components/course-details/c
 import {CourseExamsComponent} from "./modules/course/components/course-details/course-content/exam/course-exams/course-exams.component";
 import {AddExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/add-exam-questions/add-exam-questions.component";
 import {ExamDetailsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/exam-details.component";
+import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -165,7 +166,7 @@ const routes: Routes = [
                     path: ':quizID', children: [
                       {path: 'questions', component: AddQuizQuestionsComponent , data: {viewID: AuthViews.ADD_QUESTION},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                       {path: 'answerQuiz', component: AnswerQuestionsComponent ,data: {viewID: AuthViews.QUIZ_DETAILS},
+                       {path: 'answerQuiz', component: AnswerQuestionsComponent ,data: {viewID: AuthViews.ANSWER_QUESTION},
                          canActivate:[AuthenticationGuard, AuthorizationGuard]},
                       {path: 'quizDetails', component: QuizDetailsComponent,data: {viewID: AuthViews.QUIZ_DETAILS},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
@@ -176,11 +177,16 @@ const routes: Routes = [
                   },
               {
                 path: 'exam', children: [
-                  {path: '', component: CourseExamsComponent},
+                  {path: '', component: CourseExamsComponent ,data: {viewID: AuthViews.COURSE_EXAMS},
+                    canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {
                     path: ':examID', children: [
-                      {path: 'questions', component: AddExamQuestionsComponent} ,
-                      {path: 'examDetails', component: ExamDetailsComponent},
+                      {path: 'questions', component: AddExamQuestionsComponent ,data: {viewID: AuthViews.ADD_EXAM_QUESTION},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]} ,
+                      {path: 'answerExam', component: AnswerExamQuestionsComponent ,data: {viewID: AuthViews.ANSWER_EXAM_QUESTION},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'examDetails', component: ExamDetailsComponent ,data: {viewID: AuthViews.EXAM_DETAILS},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
 
                     ]
                   },
