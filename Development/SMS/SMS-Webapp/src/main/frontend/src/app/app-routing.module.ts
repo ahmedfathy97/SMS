@@ -45,12 +45,14 @@ import {QuizDetailsComponent} from "./modules/course/components/course-details/c
 import {CourseExamsComponent} from "./modules/course/components/course-details/course-content/exam/course-exams/course-exams.component";
 import {AddExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/add-exam-questions/add-exam-questions.component";
 import {ExamDetailsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/exam-details.component";
+import {WelcomeComponent} from "./modules/welcome page/welcome/welcome.component";
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {
     path: '', component: SimpleLayoutComponent, children: [
+      {path: 'welcome', component: WelcomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent},

@@ -64,6 +64,7 @@ import { ExamDetailsComponent } from './modules/course/components/course-details
 import { ExamMainDetailComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-main-detail/exam-main-detail.component';
 import { ExamResultComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-result/exam-result.component';
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
+import { WelcomeComponent } from './modules/welcome page/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,7 @@ import {AnswerExamQuestionsComponent} from "./modules/course/components/course-d
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
-    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent
+    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, WelcomeComponent
 
   ],
   imports: [
