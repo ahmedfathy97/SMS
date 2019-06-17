@@ -1,0 +1,34 @@
+
+	
+	1. Introduction (About the Project)
+	2. Full Plan (Done and Out of Scope)	
+		(Training & Start Working)
+	4. Technologies (Angular, Restful Web Services, Spring Boot, MySQL, Intellij & Source Control)
+		(Introduction about each Technology)
+	5. Maven for Build & Deployment
+	3. System Design & Architecture & Software Life Cycle
+	7. Authorization & Authentication AuthO2 & How it works
+		https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+	8. User Guide (How to use the System)
+	9. 
+
+	
+	sparkle
+	Innovative Learning
+	Knowledge 
+	All you can learn -(AYCL)
+	URiversity = your + university
+	UvSocity = university + society
+	EduSys = education + system
+	MY University
+	builders of glories BoG
+	
+	Online University & College (OUaC)
+	Online University for Students & Instructor (OUSI)
+	Student & Instructor of My University (SaIoMU)
+	
+
+
+
+
+	
