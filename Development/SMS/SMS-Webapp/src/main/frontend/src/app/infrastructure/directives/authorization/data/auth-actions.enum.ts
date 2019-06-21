@@ -1,6 +1,6 @@
 export enum AuthActions {
   COR_ADD_GRADE = 1 ,
-  COR_ADD_ATTENDANCE = 3 ,
+  ADD_ATTENDANCE = 3 ,
   COR_ADD_ANNOUNCEMENT = 4,
   ADD_MATERIAL = 7,
   ADD_COR = 8,
