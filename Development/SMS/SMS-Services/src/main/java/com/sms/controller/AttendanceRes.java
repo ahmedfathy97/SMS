@@ -5,7 +5,6 @@ import com.sms.model.AttendanceDTO;
 
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthActions;
-import com.sms.model.authorization.AuthViews;
 import com.sms.model.user.UserVTO;
 import com.sms.service.AttendanceSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class AttendanceRes {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/new")
-    @Authenticated(actions = {AuthActions.COR_ADD_ATTENDANCE})
+    @Authenticated(actions = {AuthActions.ADD_ATTENDANCE})
     public Response createAttendanceSheet(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, AttendanceDTO attendanceDate ,
                                       @QueryParam("isUpdate") boolean isUpdate) {
         try {
