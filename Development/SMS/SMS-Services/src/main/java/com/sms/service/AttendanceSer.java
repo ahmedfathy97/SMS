@@ -61,14 +61,6 @@ public class AttendanceSer {
         List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
         List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
 
-
-//        if(attendanceDTOList.size() == 0) {
-//            AttendanceDTO item = new AttendanceDTO();
-//            item.setAttendanceData(i.getAttendanceDate());
-//            item.setStudents(cloneList(stdList));
-//            attendanceDTOList.add(item);
-//        }
-
         for (StdDTO i : stdAttendance) {
             boolean isFound = false;
             for (AttendanceDTO sheet : attendanceDTOList) {
@@ -81,7 +73,6 @@ public class AttendanceSer {
                 AttendanceDTO item = new AttendanceDTO();
                 item.setAttendanceData(i.getAttendanceDate());
                 item.setStudents(cloneList(stdList));
-//                item.setStudents(stdList);
                 attendanceDTOList.add(item);
             }
 

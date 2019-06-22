@@ -118,7 +118,7 @@ const routes: Routes = [
               {
                 path: 'announcement', children: [
                   {path: '', component: ViewAnnouncmentComponent},
-                  {path: 'new', component: CreateAnnouncmentComponent , data: {viewID: AuthViews.ADD_ATTENDANCE} ,
+                  {path: 'new', component: CreateAnnouncmentComponent , data: {viewID: AuthViews.ADD_ANNOUNCEMENT} ,
                     canActivate:[AuthenticationGuard, AuthorizationGuard] }
                 ]
               },

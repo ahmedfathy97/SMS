@@ -1,50 +1,50 @@
-<div class="page-content">
-  <div class="page-title-area">
-    <div class="row align-items-center content-header">
-      <div class="col-sm-6">
-        <div class="breadcrumbs-area clearfix">
-          <h4 class="page-title pull-left">New Announcement</h4>
-        </div>
-        <div class="breadcrumbs-area clearfix">
-          <ul class="breadcrumbs pull-left mt-3">
-            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-            <li><span>Announcement</span></li>
+<!--<div class="page-content">-->
+<!--<div class="page-title-area">-->
+<!--<div class="row align-items-center content-header">-->
+<!--<div class="col-sm-6">-->
+<!--<div class="breadcrumbs-area clearfix">-->
+<!--<h4 class="page-title pull-left">New Announcement</h4>-->
+<!--</div>-->
+<!--<div class="breadcrumbs-area clearfix">-->
+<!--<ul class="breadcrumbs pull-left mt-3">-->
+<!--<li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>-->
+<!--<li><span>Announcement</span></li>-->
 
-          </ul>
-        </div>
-      </div>
-      <div class="col-sm-6 clearfix">
-        <div class="pull-right">
-          <a class="btn btn-success btn-header"
-             *authorizeAction="[AUTH_ACTIONS.ADD_ATTENDANCE]"
-             [routerLink]="[replaceCorID(ROUTES.COR_NEW_ANNOUNCEMENT, corID)]">
-            <i class="fa fa-plus pr--10"></i> Add Announcement</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-6 clearfix">-->
+<!--<div class="pull-right">-->
+<!--<a class="btn btn-success btn-header"-->
+<!--*authorizeAction="[AUTH_ACTIONS.ADD_ATTENDANCE]"-->
+<!--[routerLink]="[replaceCorID(ROUTES.COR_NEW_ANNOUNCEMENT, corID)]">-->
+<!--<i class="fa fa-plus pr&#45;&#45;10"></i> Add Announcement</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 
-  <div class="page-content-area">
-    <div class="offset-3 col-lg-6 mt-5" *ngFor="let announcment of resultSet.announcList | paginate: { id: 'announcList',
+<!--<div class="page-content-area">-->
+<div  *ngFor="let announcment of resultSet.announcList | paginate: { id: 'announcList',
                 itemsPerPage: 2 ,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="header-title">{{announcment.title}}</h4>
-          <p>
-            {{announcment.content}}
-          </p>
-          <h5 class="date-footer pull-right mt-4">
-            {{announcment.announcmentDate | date: 'dd MMM yyyy h:mm a' }}</h5>
-
-        </div>
-
-      </div>
-
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title">{{announcment.title}}</h4>
+      <p>
+        {{announcment.content}}
+      </p>
+      <h5 class="date-footer pull-right mt-4">
+        {{announcment.announcmentDate | date: 'dd MMM yyyy h:mm a' }}</h5>
 
     </div>
+
+  </div>
+
+
+</div>
 
 
 <div class="mt-5">
@@ -57,8 +57,8 @@
 
 </div>
 
-  </div>
-</div>
+<!--</div>-->
+<!--</div>-->
 
 
 

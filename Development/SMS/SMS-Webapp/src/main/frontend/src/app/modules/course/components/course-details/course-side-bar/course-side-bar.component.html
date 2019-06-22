@@ -1,7 +1,7 @@
 
 <ul class="metismenu" id="menu">
   <li>
-    <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, corID)]"> <i></i><span>Home</span></a>
+    <a [routerLink] = "['/course',corID,'information']"><i></i><span>Course Information</span></a>
   </li>
   <li>
     <a [routerLink] = "['/course',corID,'lecture']"><i ></i><span>Lectures </span></a>
@@ -24,9 +24,6 @@
     <a [routerLink] = "['/course',corID,'grade']"><i></i><span>Grades</span></a>
   </li>
 
-  <li>
-    <a [routerLink] = "['/course',corID,'information']"><i></i><span>Course Information</span></a>
-  </li>
 
   <li>
     <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"

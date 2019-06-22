@@ -19,6 +19,14 @@
                   (click)="onEnrollNewStudent()">Enroll</button>
 
         </div>
+        <div class="col-sm-12 clearfix">
+        <div class="pull-right">
+        <a class="btn btn-success btn-header"
+        *authorizeAction="[AUTH_ACTIONS.ADD_ATTENDANCE]"
+        [routerLink]="[replaceCorID(ROUTES.COR_NEW_ANNOUNCEMENT, corID)]">
+        <i class="fa fa-plus pr--10"></i> Add Announcement</a>
+        </div>
+        </div>
       </div>
       <!--<div class="col-sm-6 clearfix">-->
         <!--<div class="user-profile pull-right">-->
@@ -36,7 +44,7 @@
   <div class="main-content-inner">
     <!-- View course area start -->
     <div class="row mt-5 mb-5">
-      <div class="col-12">
+      <div class="col-8">
         <div class="card">
           <div class="card-body">
             <div class="d-sm-flex justify-content-between align-items-center">
@@ -98,7 +106,16 @@
               <label id="description" class="col-form-label ml-1">{{viewData.description}}</label>
             </div>
 
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
 
+            <!--<div class="col-4">-->
+              <app-view-announcment></app-view-announcment>
+            <!--</div>-->
 
           </div>
         </div>
