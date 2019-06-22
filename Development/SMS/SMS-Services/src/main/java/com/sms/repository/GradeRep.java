@@ -63,6 +63,8 @@ public class GradeRep {
                 "                               where cor_id = ?\n" +
                 "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
 
+//                "                                where cor_id = ? \n" +
+//                "                                LIMIT "+pageSize+" offset "+ (pageSize* (pageNum-1));
 
 
         return this.jdbc.query(sql, new CourseGradesRM(), courseID);
