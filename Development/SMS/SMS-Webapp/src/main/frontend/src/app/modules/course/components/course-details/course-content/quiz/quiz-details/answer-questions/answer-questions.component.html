@@ -7,9 +7,10 @@
         </div>
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
             <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
-            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">quiz</a></li>
-            <li><span>answer</span></li>
+            <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">Quiz</a></li>
+            <li><span>Answer</span></li>
           </ul>
         </div>
       </div>
