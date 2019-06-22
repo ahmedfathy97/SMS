@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseService} from "../../shared/services/course.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../infrastructure/data/full-routes.enum";
 import {CourseResultSet} from "../../shared/data/course-result-set.data";
+import {AuthActions} from "../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-my-course',
@@ -10,6 +11,7 @@ import {CourseResultSet} from "../../shared/data/course-result-set.data";
   providers: [CourseService]
 })
 export class MyCourseComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   corID : number ;

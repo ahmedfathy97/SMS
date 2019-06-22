@@ -8,6 +8,7 @@
       </div>
       <div class="breadcrumbs-area clearfix">
         <ul class="breadcrumbs pull-left mt-3">
+          <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
           <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
           <li><span>Grade</span></li>
         </ul>
@@ -26,7 +27,7 @@
         <a class="btn btn-success btn-header"
            *authorizeAction="[AUTH_ACTIONS.COR_ADD_GRADE]"
            [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_GRADE, corID)]">
-          <i class="fa fa-plus pr--10"></i> Add Grade</a>
+          <i class="fa fa-plus pr--10"></i> Edit Grade</a>
       </div>
     </div>
   </div>
@@ -46,9 +47,9 @@
             <tr class="text-white">
 
               <th>Student Name</th>
-              <th>Mid-One-Grd</th>
-              <th>Semi-Final-Grd</th>
-              <th>Mid-Two-Grd</th>
+              <th>Mid-Term-Grd</th>
+              <!--<th>Semi-Final-Grd</th>-->
+              <!--<th>Mid-Two-Grd</th>-->
               <th>Final-Grd</th>
 
             </tr>
@@ -60,8 +61,8 @@
                 totalItems: resultSet.totalRecords }">
               <td> {{student.fullName}}</td>
               <td>{{student.midTermOne}}</td>
-              <td>{{student.semiFinal}}</td>
-              <td>{{student.midTermTwo}}</td>
+              <!--<td>{{student.semiFinal}}</td>-->
+              <!--<td>{{student.midTermTwo}}</td>-->
               <td>{{student.finalGrd}}</td>
               <!--<td>-->
                 <!--<a >-->

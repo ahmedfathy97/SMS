@@ -1,7 +1,7 @@
 
 <ul class="metismenu" id="menu">
   <li>
-    <a [routerLink] = "['/course',corID,'information']"><i></i><span>Course Information</span></a>
+    <a [routerLink] = "[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Course Information</span></a>
   </li>
   <li>
     <a [routerLink] = "['/course',corID,'lecture']"><i ></i><span>Lectures </span></a>
