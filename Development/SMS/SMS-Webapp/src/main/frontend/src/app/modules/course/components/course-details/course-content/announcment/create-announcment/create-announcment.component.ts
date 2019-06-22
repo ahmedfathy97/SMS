@@ -61,5 +61,9 @@ export class CreateAnnouncmentComponent implements OnInit {
         console.log(err);
     });
   }
+  clear()
+  {
+    this.formData.reset();
+  }
 
 }

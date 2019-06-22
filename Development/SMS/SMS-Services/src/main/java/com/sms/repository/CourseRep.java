@@ -285,7 +285,7 @@ public class CourseRep {
 
     public List<Announcement> getCourseAnnouncments(int courseID , int pageNum)
     {
-        int pageSize = 2 ;
+        int pageSize = 3 ;
         String sql ="SELECT title ,content ,announ_date From announcment \n" +
                 "where course_id = ? " +
                 "order by announ_date  " +
@@ -293,14 +293,6 @@ public class CourseRep {
 
         return this.jdbcTemplate.query(sql ,new AnnouncmentVTORM() ,courseID);
     }
-//    public List<Announcement> getCourseAnnouncments(int courseID)
-//    {
-//      //  int pageSize = 2 ;
-//        String sql ="SELECT title ,content ,announ_date From announcment \n" +
-//                "where course_id = ? " +
-//                "order by announ_date  " ;
-//
-//        return this.jdbcTemplate.query(sql ,new AnnouncmentVTORM() ,courseID);
-//    }
+
 
 }

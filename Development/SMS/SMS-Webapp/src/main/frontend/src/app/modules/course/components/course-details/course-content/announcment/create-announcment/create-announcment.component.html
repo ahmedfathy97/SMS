@@ -64,8 +64,8 @@
 
           <div class="row">
             <div class="col-md-12">
-              <button type="clear" class="btn btn-danger pull-right ml-2">Discrad</button>
-              <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAnnouncement()">Save
+              <button type="clear" class="btn btn-danger pull-right ml-2" (click)= "clear()">Clear</button>
+              <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAnnouncement()" [disabled]="formData.invalid" >Save
               </button>
             </div>
           </div>

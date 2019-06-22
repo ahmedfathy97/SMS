@@ -4,10 +4,11 @@
     <div class="row align-items-center content-header">
       <div class="col-sm-6">
         <div class="breadcrumbs-area clearfix">
-          <h4 class="page-title pull-left">New Attendance</h4>
+          <h4 class="page-title pull-left">Create Attendance</h4>
           <br/>
           <div class="breadcrumbs-area clearfix">
             <ul class="breadcrumbs pull-left mt-3">
+              <li><a [routerLink]="[ROUTES.Welcome]">Home</a></li>
               <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
               <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance, corID)]">Attendance</a></li>
               <li><span>New</span></li>
@@ -54,8 +55,8 @@
           </div>
 
 
-          <button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAttendance()">Submit
-          </button>
+          <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_Attendance , corID)]" ><button type="submit" class="btn  btn-success pull-right ml-2" (click)="onSubmitNewAttendance()" [disabled]="formData.invalid">Submit
+          </button></a>
 
 
         </div>

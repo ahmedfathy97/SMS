@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CourseService} from "../../../../../shared/services/course.service";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 //import {Announcement} from "../../../../../shared/data/announcment";
@@ -14,6 +14,7 @@ import {CourseResultSet} from "../../../../../shared/data/course-result-set.data
   providers: [CourseService]
 })
 export class ViewAnnouncmentComponent implements OnInit {
+  @Input() inCourseHome: boolean = false;
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
