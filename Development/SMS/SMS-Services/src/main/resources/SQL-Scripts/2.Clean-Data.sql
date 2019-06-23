@@ -1219,10 +1219,78 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (6,17);
 INSERT INTO auth_user_action (user_id, action_id) VALUE (30,17);
 
 
+-- Hala View (course list)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (25, 'Course_list', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,25);
+-- student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,25);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,25);
+-- end-- -- -- --
 
 
-
-
+-- Hala View (MY_COURSE)-- --
+-- instructor
+INSERT INTO auth_view (id, label_ar, description_ar) VALUE (26, 'My_Course', '');
+INSERT INTO auth_role_view (role_id, view_id) VALUE (1,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (1,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (4,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (5,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (6,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (30,26);
+-- student
+INSERT INTO auth_role_view (role_id, view_id) VALUE (2,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (2,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (3,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (7,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (8,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (10,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (11,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (12,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (13,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (14,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (16,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (17,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (18,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (19,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (20,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (21,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (22,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (23,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (24,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (25,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (26,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (27,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (28,26);
+INSERT INTO auth_user_view (user_id, view_id) VALUE (29,26);
+-- end-- -- -- --
 
 
 

@@ -24,7 +24,9 @@ public enum AuthViews {
     EXAM_DETAILS(21),
     EXAM_MAIN_DETAILS (22) ,
     EXAM_RESULT(23) ,
-    COURSE_EXAMS(24) ;
+    COURSE_EXAMS(24),
+    COURSE_LIST(25),
+    MY_COURSE(26);
 
 
     private int id;

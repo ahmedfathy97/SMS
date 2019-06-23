@@ -104,8 +104,10 @@ const routes: Routes = [
             data: {viewID: AuthViews.ADD_LEC},
             canActivate:[AuthenticationGuard, AuthorizationGuard]},
           // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
-          {path: 'my-courses', component: MyCourseComponent},
-          {path: 'courses', component: CourseListComponent},
+          {path: 'my-courses', component: MyCourseComponent , data: {viewID: AuthViews.MY_COURSE} ,
+            canActivate:[AuthenticationGuard, AuthorizationGuard]},
+          {path: 'courses', component: CourseListComponent, data: {viewID: AuthViews.COURSE_LIST} ,
+            canActivate:[AuthenticationGuard, AuthorizationGuard]},
 
           // {path: 'profile', children: [{path: ':userID', component: UserProfileComponent}]},
           // {path:'edit',children:[{path:':userID',component:UserEditComponent}]}
