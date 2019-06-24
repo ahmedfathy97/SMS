@@ -6,9 +6,8 @@
       <div class="breadcrumbs-area clearfix mt-2">
         <h4 class="page-title pull-left">New Course</h4>
       </div>
-
       <div class="breadcrumbs-area clearfix">
-        <ul class="breadcrumbs pull-left">
+        <ul class="breadcrumbs pull-left mt-3">
           <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
           <li><span>New</span></li>
         </ul>
@@ -92,7 +91,7 @@
           </div>
 
           <div class="form-group d-inline-block col-6">
-            <label for="midOneGrd" class="col-form-label">MID-ONE-GRD*</label>
+            <label for="midOneGrd" class="col-form-label">Mid Term grade*</label>
             <input class="form-control" formControlName="midOneGrd" type="number" value="number"
                    id="midOneGrd"
                    [ngClass]="{ 'is-invalid': f.midOneGrd.dirty && f.midOneGrd.errors?.required }">
@@ -101,33 +100,33 @@
             </div>
           </div>
 
-          <div class="form-group d-inline-block col-6">
-            <label for="semiFinalGrd" class="col-form-label">SEMI-FINAL-GRD*</label>
-            <input class="form-control" formControlName="semiFinalGrd" type="number" value="number"
-                   id="semiFinalGrd"
-                   [ngClass]="{ 'is-invalid': f.semiFinalGrd.dirty && f.semiFinalGrd.errors?.required }">
-            <div *ngIf="submitted && f.semiFinalGrd.errors" class="invalid-feedback">
-              <small *ngIf="f.semiFinalGrd.errors?.required">SEMI-FINAL-GRD can't be null .</small>
-            </div>
-          </div>
+          <!--<div class="form-group d-inline-block col-6">-->
+            <!--<label for="semiFinalGrd" class="col-form-label">SEMI-FINAL-GRD*</label>-->
+            <!--<input class="form-control" formControlName="semiFinalGrd" type="number" value="number"-->
+                   <!--id="semiFinalGrd"-->
+                   <!--[ngClass]="{ 'is-invalid': f.semiFinalGrd.dirty && f.semiFinalGrd.errors?.required }">-->
+            <!--<div *ngIf="submitted && f.semiFinalGrd.errors" class="invalid-feedback">-->
+              <!--<small *ngIf="f.semiFinalGrd.errors?.required">SEMI-FINAL-GRD can't be null .</small>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group d-inline-block col-6">-->
+            <!--<label for="midTwoGrd" class="col-form-label">MID-TWO-GRD*</label>-->
+            <!--<input class="form-control" formControlName="midTwoGrd" type="number" value="number"-->
+                   <!--id="midTwoGrd"-->
+                   <!--[ngClass]="{ 'is-invalid': f.midTwoGrd.dirty && f.midTwoGrd.errors?.required }">-->
+            <!--<div *ngIf="submitted && f.duration.errors" class="invalid-feedback">-->
+              <!--<small *ngIf="f.midTwoGrd.errors?.required">MID-TWO-GRD can't be null .</small>-->
+            <!--</div>-->
+          <!--</div>-->
 
           <div class="form-group d-inline-block col-6">
-            <label for="midTwoGrd" class="col-form-label">MID-TWO-GRD*</label>
-            <input class="form-control" formControlName="midTwoGrd" type="number" value="number"
-                   id="midTwoGrd"
-                   [ngClass]="{ 'is-invalid': f.midTwoGrd.dirty && f.midTwoGrd.errors?.required }">
-            <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
-              <small *ngIf="f.midTwoGrd.errors?.required">MID-TWO-GRD can't be null .</small>
-            </div>
-          </div>
-
-          <div class="form-group d-inline-block col-6">
-            <label for="finalGrd" class="col-form-label">FINAL-GRD*</label>
+            <label for="finalGrd" class="col-form-label">Final grade*</label>
             <input class="form-control" formControlName="finalGrd" type="number" value="number"
                    id="finalGrd"
                    [ngClass]="{ 'is-invalid': f.finalGrd.dirty && f.finalGrd.errors?.required }">
             <div *ngIf="submitted && f.finalGrd.errors" class="invalid-feedback">
-              <small *ngIf="f.finalGrd.errors?.required">FINAL-GRD can't be null .</small>
+              <small *ngIf="f.finalGrd.errors?.required">Final grade can't be null .</small>
             </div>
           </div>
 

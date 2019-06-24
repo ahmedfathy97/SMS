@@ -53,8 +53,8 @@ export class CreateCourse implements OnInit {
     typeID: [null, Validators.required],
     levelID: [null, Validators.required],
     midOneGrd: [null, Validators.required],
-    semiFinalGrd: [null, Validators.required],
-    midTwoGrd: [null, Validators.required],
+    // semiFinalGrd: [null, Validators.required],
+    // midTwoGrd: [null, Validators.required],
     finalGrd: [null, Validators.required],
     description: [null, [Validators.maxLength(500)]]
   });
@@ -72,8 +72,8 @@ export class CreateCourse implements OnInit {
     this.formData.get('typeID').markAsDirty();
     this.formData.get('levelID').markAsDirty();
     this.formData.get('midOneGrd').markAsDirty();
-    this.formData.get('semiFinalGrd').markAsDirty();
-    this.formData.get('midTwoGrd').markAsDirty();
+    // this.formData.get('semiFinalGrd').markAsDirty();
+    // this.formData.get('midTwoGrd').markAsDirty();
     this.formData.get('finalGrd').markAsDirty();
     this.formData.get('description').markAsDirty();
 
@@ -94,8 +94,8 @@ export class CreateCourse implements OnInit {
       details.typeID = this.formData.get('typeID').value;
       details.levelID = this.formData.get('levelID').value;
       details.midOneGrd = this.formData.get('midOneGrd').value;
-      details.semiFinalGrd = this.formData.get('semiFinalGrd').value;
-      details.midTwoGrd = this.formData.get('midTwoGrd').value;
+      // details.semiFinalGrd = this.formData.get('semiFinalGrd').value;
+      // details.midTwoGrd = this.formData.get('midTwoGrd').value;
       details.finalGrd = this.formData.get('finalGrd').value;
       details.description = this.formData.get('description').value;
 
