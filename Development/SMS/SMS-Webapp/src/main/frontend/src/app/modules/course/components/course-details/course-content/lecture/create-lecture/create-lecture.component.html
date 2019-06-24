@@ -32,29 +32,47 @@
                     <div class="form-group  col-12">
                       <label for="example-text-input" class="col-form-label ">Title</label>
                       <input class="form-control d-inline " formControlName="title" type="text"
-                             value="Enter Lecture Title" id="example-text-input">
+                             value="Enter Lecture Title" id="example-text-input"
+                             [ngClass]="{'is-invalid': form.title.dirty && form.title.errors != null}">
+                      <small *ngIf="formData.get('title').hasError('maxlength')">length should be less than 25</small>
+                      <small *ngIf="form.title.errors?.required">Title is required</small>
+
+
                     </div>
 
                     <div class="form-group  col-12">
                       <label for="example-lectureDate-input" class="col-form-label">Date</label>
-                      <input class="form-control" formControlName="lectureDate" type="date" id="example-lectureDate-input">
+                      <input class="form-control" formControlName="lectureDate" type="date"
+                             id="example-lectureDate-input"
+                             [ngClass]="{'is-invalid': form.lectureDate.dirty && form.lectureDate.errors != null}">
+                      <small *ngIf="form.lectureDate.errors?.required">Lecture date is required</small>
+
                     </div>
 
                     <div class="form-group  col-12">
                       <label for="url" class="col-form-label">Video URL</label>
                       <input class="form-control" formControlName="videoUrl" type="url"
-                             value="Enter Lecture Title" id="url">
+                             value="video URL" id="url">
+
                     </div>
 
                     <div class="form-group col-12">
                       <label for="example-text-input" class="col-form-label">Description</label>
                       <textarea class="form-control" formControlName="description" type="text"
                                 value="Enter Description - less than 200 char"></textarea>
+                      <small *ngIf="formData.get('description').hasError('maxlength')">Description length less than
+                        200
+                      </small>
+
                     </div>
+                    <div>
 
+                      <button type="clear" class="btn btn-danger pull-right ml-2" (click)="clear()">Clear</button>
 
-                      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"> <button class="btn btn-success mt-1 col-5 offset-3" (click)="onSubmitNewLecture()" >Submit </button> </a>
-
+                      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">
+                        <button class="btn btn-success mt-1 col-5 offset-3" (click)="onSubmitNewLecture()">Submit</button>
+                      </a>
+                    </div>
                   </form>
                 </div>
 

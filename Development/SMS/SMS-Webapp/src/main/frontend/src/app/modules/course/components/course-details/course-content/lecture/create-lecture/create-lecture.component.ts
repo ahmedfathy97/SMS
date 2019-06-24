@@ -36,11 +36,12 @@ export class CreateLecture implements OnInit {
   }
 
   formData: FormGroup = this.formBuilder.group({
-    title: [null, [Validators.maxLength(25)]],
+    title: [null, [Validators.maxLength(25),Validators.required]],
     lectureDate: [null, [Validators.required]],
     videoUrl: [null],
     description: [null, [Validators.maxLength(200)]]
   });
+  get form() { return this.formData.controls; }
 
   onSubmitNewLecture() {
     let lectureDto: LectureDto = new LectureDto();
@@ -53,5 +54,9 @@ export class CreateLecture implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+  clear()
+  {
+    this.formData.reset();
   }
 }
