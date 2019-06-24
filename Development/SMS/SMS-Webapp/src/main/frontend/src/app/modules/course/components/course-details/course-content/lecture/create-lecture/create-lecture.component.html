@@ -65,12 +65,12 @@
                       </small>
 
                     </div>
-                    <div>
+                    <div class="pull-right">
 
-                      <button type="clear" class="btn btn-danger pull-right ml-2" (click)="clear()">Clear</button>
+                      <button type="clear" class="btn btn-danger ml-1 pull-right" (click)="clear()">Clear</button>
 
                       <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">
-                        <button class="btn btn-success mt-1 col-5 offset-3" (click)="onSubmitNewLecture()">Submit</button>
+                        <button class="btn btn-success pull-right" (click)="onSubmitNewLecture()">Submit</button>
                       </a>
                     </div>
                   </form>
