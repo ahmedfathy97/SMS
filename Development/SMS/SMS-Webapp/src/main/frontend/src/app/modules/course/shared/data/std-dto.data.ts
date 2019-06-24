@@ -1,3 +1,5 @@
+import {QuizVTO} from "./quiz-vto-data";
+
 export class StdDTO {
   id :number;
   fullName:string;
@@ -8,4 +10,5 @@ export class StdDTO {
   finalGrd:number;
   attendanceDate:Date;
   newGrade:number;
+  quizes:QuizVTO []=[];
 }

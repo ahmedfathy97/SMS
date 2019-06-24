@@ -15,7 +15,15 @@ public class StdDTO implements Serializable {
     private int finalGrd;
     private Date attendanceDate ;
     private int  newGrade;
+private List<QuizVTO> quizes;
 
+    public List<QuizVTO> getQuizes() {
+        return quizes;
+    }
+
+    public void setQuizes(List<QuizVTO> quizes) {
+        this.quizes = quizes;
+    }
 
     public StdDTO() {
     }
