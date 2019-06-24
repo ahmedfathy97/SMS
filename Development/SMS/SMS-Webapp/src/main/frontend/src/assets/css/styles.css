@@ -105,7 +105,8 @@
 }
 
 .main-content-inner {
-  padding: 0 30px 50px;
+  /*padding: 0 30px 50px;*/
+  padding-top: 20px;
 }
 
 /*------------------------- END Core Css -------------------*/
