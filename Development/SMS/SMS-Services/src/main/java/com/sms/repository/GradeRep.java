@@ -2,6 +2,7 @@ package com.sms.repository;
 
 import com.sms.model.course.StdDTO;
 import com.sms.model.course.rm.CourseGradesRM;
+import com.sms.model.course.rm.QuizVTORM;
 import com.sms.model.course.rm.StdDTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -86,4 +87,78 @@ public class GradeRep {
 
         return std;
     }
+    public List<StdDTO> findQuizGrades(int courseID){
+        String sql=
+                "SELECT \n" +
+                "    q0.first_name,\n" +
+                "    q0.last_name,\n" +
+                "    q1.std_grade AS q1_std_grade,\n" +
+                "    q1.quiz_grade AS q1_quiz_grade,\n" +
+                "    q2.std_grade AS q2_std_grade,\n" +
+                "    q2.quiz_grade AS q2_quiz_grade,\n" +
+                "    q3.std_grade AS q3_std_grade,\n" +
+                "    q3.quiz_grade AS q3_quiz_grade\n" +
+                "FROM\n" +
+                "    (SELECT \n" +
+                "        s.user_id,\n" +
+                "            std.first_name,\n" +
+                "            std.last_name,\n" +
+                "            s.quiz_id,\n" +
+                "            q.quiz_name,\n" +
+                "            SUM(s.student_score) AS total_mark,\n" +
+                "            q.grade\n" +
+                "    FROM\n" +
+                "        student_answer s\n" +
+                "    LEFT JOIN quiz q ON s.quiz_id = q.id\n" +
+                "    LEFT JOIN user_detail std ON std.user_id = s.user_id\n" +
+                "    WHERE\n" +
+                "        course_id = ?\n" +
+                "    GROUP BY s.quiz_id , s.user_id) q0\n" +
+                "        LEFT JOIN\n" +
+                "    (SELECT \n" +
+                "        s.user_id,\n" +
+                "            s.quiz_id,\n" +
+                "            q.quiz_name,\n" +
+                "            SUM(s.student_score) AS std_grade,\n" +
+                "            q.grade AS quiz_grade\n" +
+                "    FROM\n" +
+                "        student_answer s\n" +
+                "    LEFT JOIN quiz q ON s.quiz_id = q.id\n" +
+                "    WHERE\n" +
+                "        course_id = ?\n" +
+                "    GROUP BY s.quiz_id , s.user_id) q1 ON q0.user_id = q1.user_id\n" +
+                "        AND q1.quiz_name = 'quiz1'\n" +
+                "        LEFT JOIN\n" +
+                "    (SELECT \n" +
+                "        s.user_id,\n" +
+                "            s.quiz_id,\n" +
+                "            q.quiz_name,\n" +
+                "            SUM(s.student_score) AS std_grade,\n" +
+                "            q.grade AS quiz_grade\n" +
+                "    FROM\n" +
+                "        student_answer s\n" +
+                "    LEFT JOIN quiz q ON s.quiz_id = q.id\n" +
+                "    WHERE\n" +
+                "        course_id = ?\n" +
+                "    GROUP BY s.quiz_id , s.user_id) q2 ON q0.user_id = q2.user_id\n" +
+                "        AND q2.quiz_name = 'quiz2'\n" +
+                "        LEFT JOIN\n" +
+                "    (SELECT \n" +
+                "        s.user_id,\n" +
+                "            s.quiz_id,\n" +
+                "            q.quiz_name,\n" +
+                "            SUM(s.student_score) AS std_grade,\n" +
+                "            q.grade AS quiz_grade\n" +
+                "    FROM\n" +
+                "        student_answer s\n" +
+                "    LEFT JOIN quiz q ON s.quiz_id = q.id\n" +
+                "    WHERE\n" +
+                "        course_id = ?\n" +
+                "    GROUP BY s.quiz_id , s.user_id) q3 ON q0.user_id = q3.user_id\n" +
+                "        AND q3.quiz_name = 'quiz3'; \n" +
+                "\n";
+        return this.jdbc.query(sql, new QuizVTORM(), courseID, courseID, courseID, courseID);
+
+    }
+
 }

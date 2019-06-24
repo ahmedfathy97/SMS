@@ -47,6 +47,7 @@ import {AddExamQuestionsComponent} from "./modules/course/components/course-deta
 import {ExamDetailsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/exam-details.component";
 import {WelcomeComponent} from "./modules/welcome page/welcome/welcome.component";
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
+import {QuizGradeComponent} from "./modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -156,6 +157,9 @@ const routes: Routes = [
                       {path: '', component: ViewGradeComponent},
                       {path: 'new', component: CreateGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'quizes', component: QuizGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
+                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+
                       // {path:'edit/:stdID', component:CreateGradeComponent}
                     ]
                   },

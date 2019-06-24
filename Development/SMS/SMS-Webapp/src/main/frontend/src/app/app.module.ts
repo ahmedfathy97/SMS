@@ -65,6 +65,7 @@ import { ExamMainDetailComponent } from './modules/course/components/course-deta
 import { ExamResultComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-result/exam-result.component';
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 import { WelcomeComponent } from './modules/welcome page/welcome/welcome.component';
+import { QuizGradeComponent } from './modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { WelcomeComponent } from './modules/welcome page/welcome/welcome.compone
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
-    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, WelcomeComponent
+    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, WelcomeComponent, QuizGradeComponent
 
   ],
   imports: [

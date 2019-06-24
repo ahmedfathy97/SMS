@@ -33,4 +33,10 @@ public class GradeSer {
                 this.repository.insertFinalGrd(courseID, std);
         System.out.print("Data is inserted Sucessfully");
     }
+
+    public List<StdDTO> getQuizGrade(int courseID){
+        List<StdDTO> quiz= repository.findQuizGrades(courseID);
+        return quiz;
+
+    }
 }
