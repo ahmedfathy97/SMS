@@ -18,11 +18,17 @@ public class CourseVTO implements Serializable {
     private String instructorName;
     private int    studentNum;
     private String description ;
-
-
-
+    private int instructorID;
 
     public CourseVTO() {
+    }
+
+    public int getInstructorID() {
+        return instructorID;
+    }
+
+    public void setInstructorID(int instructorID) {
+        this.instructorID = instructorID;
     }
 
     public String getCourseName() {

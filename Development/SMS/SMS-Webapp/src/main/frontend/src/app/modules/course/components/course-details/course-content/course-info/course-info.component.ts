@@ -4,7 +4,7 @@ import {CourseVto} from "../../../../shared/data/course-vto";
 import {ActivatedRoute} from "@angular/router";
 import {CourseDataService} from "../../../../shared/services/course-data.service";
 import {AuthActions} from "../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
-import {AngularFullRoutes, replaceCorID} from "../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceCorID, replaceUserID} from "../../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-view-course',
@@ -16,6 +16,8 @@ export class CourseInfoComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
+  replaceUserID =replaceUserID;
+
 
   corID : number ;
   viewData: CourseVto = new CourseVto();

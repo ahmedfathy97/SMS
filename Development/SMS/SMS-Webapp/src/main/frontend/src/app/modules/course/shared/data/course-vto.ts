@@ -10,6 +10,7 @@ export class CourseVto {
   corType: string;
   corLevel: string;
   instructorName: string;
+  instructorID : number;
   studentNum: number;
   description: string;
 }

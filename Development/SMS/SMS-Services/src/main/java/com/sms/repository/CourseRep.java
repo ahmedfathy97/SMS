@@ -206,28 +206,37 @@ public class CourseRep {
 
 
     public CourseVTO findByID(int corID) {
-        String sql = "SELECT \n" +
-                "c.cor_name,\n" +
-                "c.duration, \n" +
-                "c.start_date,\n" +
-                "c.end_date,\n" +
-                "concat(u.first_name,u.last_name) as Instructor_Name,\n" +
-                "c.description ,\n" +
-                "COALESCE(t.cat_count, 0) AS course_std,\n" +
-                "g.label_en cor_category,\n" +
-                "cor_t.label_en cor_type, \n" +
-                "l.label_en cor_level \n" +
-                "FROM course c \n" +
-                "LEFT JOIN user_detail u ON c.instructor_id = u.user_id\n" +
-                "LEFT JOIN cor_category g ON c.category_id = g.id\n" +
-                "LEFT JOIN cor_type cor_t ON c.type_id = cor_t.id\n" +
-                "LEFT JOIN cor_level l ON c.level_id = l.id\n" +
-                "LEFT JOIN(\n" +
-                "SELECT cor_id , COUNT(*) AS cat_count\n" +
-                "FROM course_std\n" +
-                "GROUP BY cor_id ) t\n" +
-                "ON c.id = t.cor_id \n" +
-                "WHERE c.id = ?";
+        String sql = "\n" +
+                "SELECT \n" +
+                "    c.cor_name,\n" +
+                "    c.duration,\n" +
+                "    c.start_date,\n" +
+                "    c.end_date,\n" +
+                "    c.instructor_id,\n" +
+                "    CONCAT(u.first_name, u.last_name) AS Instructor_Name,\n" +
+                "    c.description,\n" +
+                "    COALESCE(t.cat_count, 0) AS course_std,\n" +
+                "    g.label_en cor_category,\n" +
+                "    cor_t.label_en cor_type,\n" +
+                "    l.label_en cor_level\n" +
+                "FROM\n" +
+                "    course c\n" +
+                "        LEFT JOIN\n" +
+                "    user_detail u ON c.instructor_id = u.user_id\n" +
+                "        LEFT JOIN\n" +
+                "    cor_category g ON c.category_id = g.id\n" +
+                "        LEFT JOIN\n" +
+                "    cor_type cor_t ON c.type_id = cor_t.id\n" +
+                "        LEFT JOIN\n" +
+                "    cor_level l ON c.level_id = l.id\n" +
+                "        LEFT JOIN\n" +
+                "    (SELECT \n" +
+                "        cor_id, COUNT(*) AS cat_count\n" +
+                "    FROM\n" +
+                "        course_std\n" +
+                "    GROUP BY cor_id) t ON c.id = t.cor_id\n" +
+                "WHERE\n" +
+                "    c.id = ?;";
 
         CourseVTO course = this.jdbcTemplate.queryForObject(sql, new CourseViewVTORM(), corID);
         return course;

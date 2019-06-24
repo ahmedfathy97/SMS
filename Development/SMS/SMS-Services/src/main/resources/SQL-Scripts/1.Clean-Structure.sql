@@ -141,7 +141,7 @@ CREATE TABLE course (
   duration      INT         NOT NULL,
   start_date    DATE        NOT NULL,
   end_date      DATE,
-  instructor_id INT         NOT NULL,
+  instructorID INT         NOT NULL,
   category_id   INT         NOT NULL,
   type_id       INT         NOT NULL,
   level_id      INT         NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE course (
   CONSTRAINT fk_course_cor_category FOREIGN KEY (category_id) REFERENCES cor_category (id),
   CONSTRAINT fk_course_cor_type FOREIGN KEY (type_id) REFERENCES cor_type (id),
   CONSTRAINT fk_course_cor_level FOREIGN KEY (level_id) REFERENCES cor_level (id),
-  CONSTRAINT fk_course_auth_user FOREIGN KEY (instructor_id) REFERENCES auth_user (id)
+  CONSTRAINT fk_course_auth_user FOREIGN KEY (instructorID) REFERENCES auth_user (id)
 );
 
 CREATE TABLE course_std (

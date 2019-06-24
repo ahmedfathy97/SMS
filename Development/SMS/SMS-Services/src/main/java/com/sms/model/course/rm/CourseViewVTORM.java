@@ -20,7 +20,9 @@ public class CourseViewVTORM implements RowMapper<CourseVTO> {
         data.setCorLevel(rs.getString("cor_level"));
         data.setStudentNum(rs.getInt("course_std"));
         data.setInstructorName(rs.getString("Instructor_Name"));
+        data.setInstructorID(rs.getInt("instructor_id"));
         data.setDescription(rs.getString("description"));
+
         return data;
     }
 }
