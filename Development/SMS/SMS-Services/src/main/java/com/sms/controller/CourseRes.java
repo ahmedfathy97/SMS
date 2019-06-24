@@ -14,6 +14,7 @@ import com.sms.repository.StudentRep;
 import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
 import com.sms.service.CourseSer;
+import com.sms.service.GradeSer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -31,10 +32,12 @@ public class CourseRes {
     private GradeRep gradeRepository;
     private QuizRep rep;
     private StudentRep repStd;
+    private GradeSer gradeService;
 
 
     @Autowired
     public CourseRes(
+            GradeSer gradeService,
             CourseRep repository,
             CourseSer courseSer,
             GradeRep gradeRepository,
@@ -46,6 +49,7 @@ public class CourseRes {
         this.attendance = attendance;
         this.rep = rep;
         this.repStd=repStd;
+        this.gradeService = gradeService;
     }
 
 
@@ -77,6 +81,14 @@ return 5;
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
 
          return this.courseRep.isEnrolled(currentUser.getId(),corID);
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{courseID}/grade/quizes")
+    public List<StdDTO> getQuizGrades(@PathParam("courseID") int courseID){
+        List<StdDTO> list = this.gradeService.getQuizGrade(courseID);
+        return list;
+
     }
 
     @GET

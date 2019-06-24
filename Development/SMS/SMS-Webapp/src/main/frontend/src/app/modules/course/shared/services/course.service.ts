@@ -54,8 +54,9 @@ export class CourseService {
 
   }
   getQuizGrades(courseID:number){
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/grade/"+ courseID+"/grades");
+    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+ courseID+"/quizes");
   }
+
 
   getStudentGrades(courseID:number,studentID:number){
     return this.httpClient.get<StdDTO>("http://localhost:8080/api/course/"+ courseID+"/grade/student/"+studentID);

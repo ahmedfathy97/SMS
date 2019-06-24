@@ -37,14 +37,7 @@ public class GradeRes {
 
 
     }
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{courseID}/grades")
-    public List<StdDTO> getQuizGrades(@PathParam("courseID") int courseID){
-        List<StdDTO> list = this.gradeService.getQuizGrade(courseID);
-        return list;
 
-    }
 
 
 

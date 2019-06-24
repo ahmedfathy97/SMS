@@ -3,6 +3,9 @@ import {CourseService} from "../../../../shared/services/course.service";
 import {StdDTO} from "../../../../shared/data/std-dto.data";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {GradeService} from "../../../../shared/services/grade.service";
+import {ActivatedRoute} from "@angular/router";
+import {CourseDataService} from "../../../../shared/services/course-data.service";
 
 @Component({
   selector: 'app-quiz-grade',
@@ -18,7 +21,12 @@ export class QuizGradeComponent implements OnInit {
   corID :number ;
   studentQuiz: StdDTO[] = [];
 
-  constructor(private courseService: CourseService) { }
+  constructor(
+    private courseService: CourseService,private route: ActivatedRoute,
+              private corDataService: CourseDataService) {
+    this.corDataService.corID.subscribe(data=>{this.corID=data; console.log(data);this.getQuizGrades();});
+    this.corDataService.requestCorID.next(true);
+  }
 
   ngOnInit() {
     this.getQuizGrades();
