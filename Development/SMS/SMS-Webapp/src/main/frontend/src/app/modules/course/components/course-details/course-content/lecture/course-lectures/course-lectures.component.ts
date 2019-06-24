@@ -24,6 +24,8 @@ export class CourseLecturesComponent implements OnInit {
 
   lectureID: number;
 
+  currentDate: Date = new Date();
+
   constructor(private corDataService: CourseDataService,
               private courseService: CourseService,
               private lecDataSer: LectureDataService) {
@@ -43,6 +45,8 @@ export class CourseLecturesComponent implements OnInit {
   getCourseLectures(){
     this.courseService.getCourseLectures(this.corID).subscribe(res => {
       this.lectureList = res;
+      for(let item of this.lectureList)
+        item.lectureDate = new Date(item.lectureDate);
       console.log(this.lectureList);
 
     }, err => {
