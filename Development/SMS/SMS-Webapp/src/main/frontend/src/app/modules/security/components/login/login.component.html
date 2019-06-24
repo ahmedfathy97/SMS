@@ -1,50 +1,92 @@
 
-<div class="main-content-inner">
-
-  <div class="row mt-5 mb-5">
-    <div class="offset-3 col-6">
-      <div class="card">
-        <div class="card-body">
-<div class="error-pagewrap">
-  <div class="error-page-int">
-    <div class="text-center m-b-md custom-login">
-      <h3>PLEASE LOGIN TO APP</h3>
-      <p>This is the best app ever!</p>
-    </div>
-    <div class="content-error">
-      <div class="hpanel">
-        <div class="panel-body">
-          <form [formGroup]="formData">
-            <div class="form-group">
-              <label class="control-label" for="username">Username</label>
-              <input type="text" placeholder="example@gmail.com" title="Please enter you username"
-                     id="username" formControlName="username" class="form-control">
-              <span class="help-block small">Your unique username to app</span>
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="password">Password</label>
-              <input type="password" title="Please enter your password" placeholder="******"
-                     formControlName="password" id="password" class="form-control">
-              <span class="help-block small">Yur strong password</span>
-            </div>
-            <!--<div class="checkbox login-checkbox">-->
-              <!--<label>-->
-                <!--<input type="checkbox" class="i-checks"> Remember me </label>-->
-              <!--<p class="help-block small">(if this is a private computer)</p>-->
+<!-- login area start -->
+<div class="login-area login-s2">
+  <div class="container">
+    <div class="login-box ptb--10">
+      <form style="width: 450px;">
+        <div class="login-form-head">
+          <h4>Sign In</h4>
+          <p>Welcome to E-Peak System</p>
+        </div>
+        <div class="login-form-body" [formGroup]="formData">
+          <div class="form-gp">
+            <input type="text" formControlName="username">
+            <i class="ti-user"></i>
+          </div>
+          <div class="form-gp">
+            <input type="password" formControlName="password">
+            <i class="ti-lock"></i>
+          </div>
+          <!--<div class="row mb-4 rmber-area">-->
+            <!--<div class="col-6">-->
+              <!--<div class="custom-control custom-checkbox mr-sm-2">-->
+                <!--<input type="checkbox" class="custom-control-input" id="customControlAutosizing">-->
+                <!--<label class="custom-control-label" for="customControlAutosizing">Remember Me</label>-->
+              <!--</div>-->
             <!--</div>-->
-            <button class="btn btn-success btn-block loginbtn" (click)="onLogin()">Login</button>
-            <a class="btn btn-default btn-block" href="#">Register</a>
-          </form>
+            <!--<div class="col-6 text-right">-->
+              <!--<a href="#">Forgot Password?</a>-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="submit-btn-area">
+            <button id="form_submit" type="submit" (click)="onLogin()">Submit <i class="ti-arrow-right"></i></button>
+          </div>
+          <div class="form-footer text-center mt-5">
+            <p class="text-muted">Don't have an account? <a href="#">Sign up</a></p>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="text-center login-footer">
-      <p>Copyright © 2019. All rights reserved.</p>
+      </form>
     </div>
   </div>
 </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- login area end -->
+
+<!--<div class="main-content-inner">-->
+
+  <!--<div class="row mt-5 mb-5">-->
+    <!--<div class="offset-3 col-6">-->
+      <!--<div class="card">-->
+        <!--<div class="card-body">-->
+<!--<div class="error-pagewrap">-->
+  <!--<div class="error-page-int">-->
+    <!--<div class="text-center m-b-md custom-login">-->
+      <!--<h3>PLEASE LOGIN TO APP</h3>-->
+      <!--<p>This is the best app ever!</p>-->
+    <!--</div>-->
+    <!--<div class="content-error">-->
+      <!--<div class="hpanel">-->
+        <!--<div class="panel-body">-->
+          <!--<form [formGroup]="formData">-->
+            <!--<div class="form-group">-->
+              <!--<label class="control-label" for="username">Username</label>-->
+              <!--<input type="text" placeholder="example@gmail.com" title="Please enter you username"-->
+                     <!--id="username" formControlName="username" class="form-control">-->
+              <!--<span class="help-block small">Your unique username to app</span>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<label class="control-label" for="password">Password</label>-->
+              <!--<input type="password" title="Please enter your password" placeholder="******"-->
+                     <!--formControlName="password" id="password" class="form-control">-->
+              <!--<span class="help-block small">Yur strong password</span>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="checkbox login-checkbox">&ndash;&gt;-->
+              <!--&lt;!&ndash;<label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="checkbox" class="i-checks"> Remember me </label>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="help-block small">(if this is a private computer)</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<button class="btn btn-success btn-block loginbtn" (click)="onLogin()">Login</button>-->
+            <!--<a class="btn btn-default btn-block" href="#">Register</a>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="text-center login-footer">-->
+      <!--<p>Copyright © 2019. All rights reserved.</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
