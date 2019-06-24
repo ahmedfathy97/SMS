@@ -57,7 +57,8 @@ public class CourseRes {
     @Authenticated(actions = {AuthActions.ADD_COR})
     public int createNewCourse(@Context ContainerRequestContext request, CourseDTO details) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-         return  courseRep.insertNewCourse(currentUser.getId() , details);
+return 5;
+//         return  courseRep.insertNewCourse(currentUser.getId() , details);
     }
 
     @POST
@@ -68,6 +69,7 @@ public class CourseRes {
         repStd.insertStudent(currentUser.getId(),corID);
 
     }
+
     @GET
     @Path("/{corID}/isStudent")
     @Authenticated()

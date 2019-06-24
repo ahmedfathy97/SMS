@@ -97,52 +97,6 @@ INSERT INTO auth_user_role (user_id, role_id) VALUE (17, 2);
 
 
 
-
-# INSERT INTO auth_view (id, label_ar, description_ar) VALUE (2, 'Create-Course', 'Viewing Create Course Page');
-# INSERT INTO auth_view (id, label_ar, description_ar) VALUE (3, 'Create-Translation', 'Viewing Create Course Translation Page');
-#
-# INSERT INTO auth_action (id, label_ar, description_ar) VALUE (1, 'Enroll-Course', '');
-# INSERT INTO auth_action (id, label_ar, description_ar) VALUE (2, 'Submit-Course', '');
-# INSERT INTO auth_action (id, label_ar, description_ar) VALUE (3, 'Submit-Translation', '');
-# INSERT INTO auth_action (id, label_ar, description_ar) VALUE (4, 'Edit-Translation', '');
-
-# INSERT INTO auth_role_view (role_id, view_id) VALUE (1,1);
-# INSERT INTO auth_role_view (role_id, view_id) VALUE (1,2);
-# INSERT INTO auth_role_action (role_id, action_id) VALUE (1,2);
-
-# INSERT INTO auth_role_view (role_id, view_id) VALUE (2,1);
-# INSERT INTO auth_role_action (role_id, action_id) VALUE (2,1);
-
-# INSERT INTO auth_role (id, label_ar, description_ar) VALUE (3, 'Translator', 'Translating Courses');
-# INSERT INTO auth_role_view (role_id, view_id) VALUE (3,1);
-# INSERT INTO auth_role_view (role_id, view_id) VALUE (3,3);
-# INSERT INTO auth_role_action (role_id, action_id) VALUE (3,3);
-# INSERT INTO auth_role_action (role_id, action_id) VALUE (3,4);
-
-# INSERT INTO auth_user_role (user_id, role_id) VALUE (1,1);
-# INSERT INTO auth_user_role (user_id, role_id) VALUE (1,3);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (1,1);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (1,2);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (1,3);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (1,2);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (1,3);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (1,4);
-
-# INSERT INTO auth_user_role (user_id, role_id) VALUE (2,2);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (2,1);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (2,3);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (2,1);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (2,3);
-
-# INSERT INTO auth_user_role (user_id, role_id) VALUE (3,3);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (3,1);
-# INSERT INTO auth_user_view (user_id, view_id) VALUE (3,3);
-# INSERT INTO auth_user_action (user_id, action_id) VALUE (3,3);
-
-# SELECT * FROM auth_user_view WHERE user_id = 1 AND view_id IN (3, 2);
-# SELECT * FROM auth_user_action WHERE user_id = 1 AND action_id = 4;
-
-
 INSERT INTO cor_category (id, label_en) VALUES (1, 'Design');
 INSERT INTO cor_category (id, label_en) VALUES (2, 'Artificial Intelligence');
 INSERT INTO cor_category (id, label_en) VALUES (3, 'IT');
@@ -191,11 +145,6 @@ VALUES (7, 'Data Structure', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Learn a
 INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (8, 'Object Oriented Programming', 70 , '2019-6-01', '2019-10-01', 1, 2, 2, 2, 'In this course, we''ll get you up and running with classes, objects');
 
-
-
-
-
-
 INSERT INTO college (id, labelEN) VALUES ('1', 'engineering');
 INSERT INTO college (id, labelEN) VALUES ('2', 'low');
 
@@ -208,159 +157,157 @@ INSERT INTO country (id, labelEN) VALUES ('2', 'Sudan');
 INSERT INTO question_type (id, label_en) VALUES ('1', 'mcq');
 INSERT INTO question_type (id, label_en) VALUES ('2', 'truefalse');
 
-
-
 UPDATE user_detail SET college_id='1' WHERE user_id='1';
 UPDATE user_detail SET college_id='2' WHERE user_id='2';
 
 
 
 
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('1', 'Quiz 1', 'The last date for the Quiz on Sunday 14-5-2019', '2019-05-20', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('2', 'Assi 1', 'This is the first Assignment for Java', '2019-06-21', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('3', 'Attention', 'The next session has been canceled', '2019-07-12', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('4', 'Grades', 'The result of first Quiz will be announced on Sunday', '2019-08-20', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('5', 'Attention', 'We will be increase a lecture  to the java course  and will be announced next Saturday', '2019-01-20', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('6', 'Quiz 2', 'The last date for the Quiz on Saturday 11-6-2019', '2019-02-14', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('7', 'Attention', 'Special videos will be uploaded to this course to facilitate understanding of the content', '2019-03-25', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('8', 'Grades', 'The second QIZ scores are unsatisfactory
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('1', 'Quiz 1', 'The last date for the Quiz on Sunday 14-5-2019', '2019-05-20', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('2', 'Assi 1', 'This is the first Assignment for Java', '2019-06-21', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('3', 'Attention', 'The next session has been canceled', '2019-07-12', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('4', 'Grades', 'The result of first Quiz will be announced on Sunday', '2019-08-20', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('5', 'Attention', 'We will be increase a lecture  to the java course  and will be announced next Saturday', '2019-01-20', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('6', 'Quiz 2', 'The last date for the Quiz on Saturday 11-6-2019', '2019-02-14', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('7', 'Attention', 'Special videos will be uploaded to this course to facilitate understanding of the content', '2019-03-25', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('8', 'Grades', 'The second QIZ scores are unsatisfactory
 We want to improve the level and study well', '2019-04-22', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('9', 'Quiz 3', 'The last date for the Quiz on Saturday 16-7-2019', '2019-09-20', '1');
-INSERT INTO `sms`.`announcment` (`id`, `title`, `content`, `announ_date`, `course_id`) VALUES ('10', 'Assi 2', 'This is the second Assignment for Java', '2019-10-15', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('9', 'Quiz 3', 'The last date for the Quiz on Saturday 16-7-2019', '2019-09-20', '1');
+INSERT INTO announcment (id, title, content, announ_date, course_id) VALUES ('10', 'Assi 2', 'This is the second Assignment for Java', '2019-10-15', '1');
 
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('1', '1', '2019-01-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('2', '1', '2019-02-24');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('3', '6', '2019-04-12');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('4', '6', '2019-03-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('5', '1', '2019-07-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('6', '2', '2019-08-25');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('7', '2', '2019-09-24');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('8', '2', '2019-05-11');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('9', '3', '2019-01-04');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('10', '7', '2019-04-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('11', '7', '2019-08-10');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('12', '3', '2019-02-14');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('13', '4', '2019-09-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('14', '8', '2019-01-15');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('15', '4', '2019-05-08');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('16', '8', '2019-03-07');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('17', '5', '2019-10-03');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('18', '8', '2019-11-24');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('19', '7', '2019-09-11');
-INSERT INTO `sms`.`attendance` (`id`, `cor_id`, `created_on`) VALUES ('20', '5', '2019-03-02');
-
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('1', 'quiz1', '10', '2019-6-12', '1', '2019-6-15', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('2', 'quiz2', '20', '2019-7-12', '1', '2019-7-15', '1');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('3', 'quiz3', '15', '2019-8-12', '1', '2019-8-15', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('4', 'quiz4', '5', '2019-9-12', '1', '2019-9-15', '1');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('5', 'quiz1', '10', '2019-4-10', '2', '2019-4-12', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('6', 'quiz2', '30', '2019-5-10', '2', '2019-5-12', '1');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('7', 'quiz3', '12', '2019-6-10', '2', '2019-6-12', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('8', 'quiz4', '18', '2019-7-10', '2', '2019-7-12', '1');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('1', '1', '2019-01-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('2', '1', '2019-02-24');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('3', '6', '2019-04-12');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('4', '6', '2019-03-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('5', '1', '2019-07-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('6', '2', '2019-08-25');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('7', '2', '2019-09-24');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('8', '2', '2019-05-11');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('9', '3', '2019-01-04');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('10', '7', '2019-04-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('11', '7', '2019-08-10');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('12', '3', '2019-02-14');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('13', '4', '2019-09-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('14', '8', '2019-01-15');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('15', '4', '2019-05-08');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('16', '8', '2019-03-07');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('17', '5', '2019-10-03');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('18', '8', '2019-11-24');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('19', '7', '2019-09-11');
+INSERT INTO attendance (id, cor_id, created_on) VALUES ('20', '5', '2019-03-02');
 
 
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('1', 'quiz1', '10', '2019-6-12', '1', '2019-6-15', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('9', 'quiz1', '20', '2019-1-5', '3', '2019-1-6', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('2', 'quiz2', '20', '2019-7-12', '1', '2019-7-15', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('10', 'quiz2', '30', '2019-2-5', '3', '2019-2-6', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('3', 'quiz3', '15', '2019-8-12', '1', '2019-8-15', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('11', 'quiz3', '14', '2019-3-5', '3', '2019-3-6', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('4', 'quiz4', '5', '2019-9-12', '1', '2019-9-15', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('12', 'quiz4', '16', '2019-4-5', '3', '2019-4-6', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('5', 'quiz1', '10', '2019-4-10', '2', '2019-4-12', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('13', 'quiz1', '5', '2019-4-11', '4', '2019-4-13', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('6', 'quiz2', '30', '2019-5-10', '2', '2019-5-12', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('14', 'quiz2', '19', '2019-5-11', '4', '2019-5-13', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('7', 'quiz3', '12', '2019-6-10', '2', '2019-6-12', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('15', 'quiz3', '12', '2019-6-11', '4', '2019-6-13', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('16', 'quiz4', '10', '2019-7-11', '4', '2019-7-13', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('8', 'quiz4', '18', '2019-7-10', '2', '2019-7-12', '1');
 
 
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('17', 'quiz1', '16', '2019-10-1', '5', '2019-10-2', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('9', 'quiz1', '20', '2019-1-5', '3', '2019-1-6', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('18', 'quiz2', '15', '2019-11-1', '5', '2019-11-2', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('10', 'quiz2', '30', '2019-2-5', '3', '2019-2-6', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('19', 'quiz3', '20', '2019-12-1', '5', '2019-12-2', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('11', 'quiz3', '14', '2019-3-5', '3', '2019-3-6', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('20', 'quiz4', '17', '2019-1-1', '5', '2019-1-2', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('12', 'quiz4', '16', '2019-4-5', '3', '2019-4-6', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('21', 'quiz1', '15', '2019-2-24', '6', '2019-2-26', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('13', 'quiz1', '5', '2019-4-11', '4', '2019-4-13', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('22', 'quiz2', '5', '2019-3-24', '6', '2019-3-26', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('14', 'quiz2', '19', '2019-5-11', '4', '2019-5-13', '1');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('23', 'quiz3', '10', '2019-4-24', '6', '2019-4-26', '0');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('15', 'quiz3', '12', '2019-6-11', '4', '2019-6-13', '0');
 
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('24', 'quiz4', '30', '2019-5-24', '6', '2019-5-26', '1');
-
-
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('25', 'quiz1', '11', '2019-2-26', '7', '2019-2-27', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('26', 'quiz2', '10', '2019-3-28', '7', '2019-3-29', '1');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('27', 'quiz3', '5', '2019-4-27', '7', '2019-4-28', '0');
-
-INSERT INTO `sms`.`quiz` (`id`, `quiz_name`, `grade`, `start_date`, `course_id`, `close_date`, `is_closed`) VALUES ('28', 'quiz4', '10', '2019-5-24', '7', '2019-5-25', '1');
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('16', 'quiz4', '10', '2019-7-11', '4', '2019-7-13', '1');
 
 
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('1', '1', '2', '10', '7', '5', '9');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('2', '1', '3', '9', '9', '6', '9');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('3', '1', '8', '2', '3', '3', '5');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('4', '1', '10', '10', '6', '5', '7');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('5', '1', '7', '4', '9', '5', '3');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('6', '2', '2', '10', '9', '5', '9');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('7', '2', '14', '5', '3', '5', '2');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('8', '2', '16', '9', '1', '5', '0');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('9', '2', '8', '10', '8', '3', '10');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('10', '2', '7', '3', '9', '9', '0');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('11', '3', '23', '4', '2', '8', '6');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('12', '3', '25', '10', '4', '4', '7');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('13', '3', '11', '6', '3', '6', '1');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('14', '3', '2', '10', '8', '9', '0');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('15', '3', '3', '4', '4', '4', '7');
-INSERT INTO `sms`.`course_std` (`id`, `cor_id`, `std_id`, `mid_1_grd`, `semi_final_grd`, `mid_2_grd`, `final_grd`) VALUES ('16', '3', '7', '6', '10', '7', '10');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('17', 'quiz1', '16', '2019-10-1', '5', '2019-10-2', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('18', 'quiz2', '15', '2019-11-1', '5', '2019-11-2', '1');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('19', 'quiz3', '20', '2019-12-1', '5', '2019-12-2', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('20', 'quiz4', '17', '2019-1-1', '5', '2019-1-2', '1');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('21', 'quiz1', '15', '2019-2-24', '6', '2019-2-26', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('22', 'quiz2', '5', '2019-3-24', '6', '2019-3-26', '1');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('23', 'quiz3', '10', '2019-4-24', '6', '2019-4-26', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('24', 'quiz4', '30', '2019-5-24', '6', '2019-5-26', '1');
 
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('1', 'Lecture 1', '2019-01-01', 'https://www.youtube.com/watch?v=grEKMHGYyns', ' Our goal in this chapter is to convince you that writing a computer program is easier than writing a piece of text such as a paragraph or an essay. In this chapter, we take you through these building blocks, get you started on programming in Java, and study a variety of interesting programs.', '1');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('2', 'Lecture 2', '2019-01-07', 'https://www.youtube.com/watch?v=g-FEpgMBQM8', 'To understand a programming language you must practice the programs, this way you can learn the language faster. This page includes java programs on various java topics such as control statements, loops, classes & objects, functions, arrays etc. All the programs are tested and provided with the output. If you new to java and want to learn java before trying out these program, then read my ', '1');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('3', 'Lecture 3', '2019-01-14', 'https://www.youtube.com/watch?v=rgjFEDxMIVI', 'dfsggdg', '1');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('4', 'Lecture 4', '2019-01-21', 'https://www.youtube.com/watch?v=FbviMTJ_vP8&list=PL1DUmTEdeA6K7rdxKiWJq6JIxTvHalY8f', 'Java is one of the most popular and widely used programming language and platform. A platform is an environment that helps to develop and run programs written in any programming language.', '1');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('5', 'Lecture 5', '2019-01-28', 'https://www.youtube.com/watch?v=4dgQXq__h80&list=PLnIa3_sMwepKaIVwBdaNAF-aMXJ2U90xW', 'Java is fast, reliable and secure. From desktop to web applications, scientific supercomputers to gaming consoles, cell phones to the Internet, Java is used in every nook and corner.', '1');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('6', 'Lecture 1', '2019-05-01', 'https://www.youtube.com/watch?v=z1FdInL8sjg&list=PLCInYL3l2AajFAiw4s1U4QbGszcQ-rAb3', 'C++ ranks 4th in popularity according to 2016 IEEE spectrum Top Programming Language ranking. Learning C++ is a wise investment for all programmers.
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('25', 'quiz1', '11', '2019-2-26', '7', '2019-2-27', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('26', 'quiz2', '10', '2019-3-28', '7', '2019-3-29', '1');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('27', 'quiz3', '5', '2019-4-27', '7', '2019-4-28', '0');
+
+INSERT INTO quiz (id, quiz_name, grade, start_date, course_id, close_date, is_closed) VALUES ('28', 'quiz4', '10', '2019-5-24', '7', '2019-5-25', '1');
+
+
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('1', '1', '2', '10', '7', '5', '9');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('2', '1', '3', '9', '9', '6', '9');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('3', '1', '8', '2', '3', '3', '5');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('4', '1', '10', '10', '6', '5', '7');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('5', '1', '7', '4', '9', '5', '3');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('6', '2', '2', '10', '9', '5', '9');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('7', '2', '14', '5', '3', '5', '2');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('8', '2', '16', '9', '1', '5', '0');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('9', '2', '8', '10', '8', '3', '10');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('10', '2', '7', '3', '9', '9', '0');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('11', '3', '23', '4', '2', '8', '6');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('12', '3', '25', '10', '4', '4', '7');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('13', '3', '11', '6', '3', '6', '1');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('14', '3', '2', '10', '8', '9', '0');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('15', '3', '3', '4', '4', '4', '7');
+INSERT INTO course_std (id, cor_id, std_id, mid_1_grd, semi_final_grd, mid_2_grd, final_grd) VALUES ('16', '3', '7', '6', '10', '7', '10');
+
+
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('1', 'Lecture 1', '2019-01-01', 'https://www.youtube.com/watch?v=grEKMHGYyns', ' Our goal in this chapter is to convince you that writing a computer program is easier than writing a piece of text such as a paragraph or an essay. In this chapter, we take you through these building blocks, get you started on programming in Java, and study a variety of interesting programs.', '1');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('2', 'Lecture 2', '2019-01-07', 'https://www.youtube.com/watch?v=g-FEpgMBQM8', 'To understand a programming language you must practice the programs, this way you can learn the language faster. This page includes java programs on various java topics such as control statements, loops, classes & objects, functions, arrays etc. All the programs are tested and provided with the output. If you new to java and want to learn java before trying out these program, then read my ', '1');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('3', 'Lecture 3', '2019-01-14', 'https://www.youtube.com/watch?v=rgjFEDxMIVI', 'dfsggdg', '1');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('4', 'Lecture 4', '2019-01-21', 'https://www.youtube.com/watch?v=FbviMTJ_vP8&list=PL1DUmTEdeA6K7rdxKiWJq6JIxTvHalY8f', 'Java is one of the most popular and widely used programming language and platform. A platform is an environment that helps to develop and run programs written in any programming language.', '1');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('5', 'Lecture 5', '2019-01-28', 'https://www.youtube.com/watch?v=4dgQXq__h80&list=PLnIa3_sMwepKaIVwBdaNAF-aMXJ2U90xW', 'Java is fast, reliable and secure. From desktop to web applications, scientific supercomputers to gaming consoles, cell phones to the Internet, Java is used in every nook and corner.', '1');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('6', 'Lecture 1', '2019-05-01', 'https://www.youtube.com/watch?v=z1FdInL8sjg&list=PLCInYL3l2AajFAiw4s1U4QbGszcQ-rAb3', 'C++ ranks 4th in popularity according to 2016 IEEE spectrum Top Programming Language ranking. Learning C++ is a wise investment for all programmers.
 This guide answers all your questions related to C++ on what is it, when is it used, why is it used and how to get yourself started with it.', '2');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('7', 'Lecture 2', '2019-05-05', 'https://www.youtube.com/watch?v=gh-OzzgGdxg&list=PLrD0HM23WhqFB7O20Vk92Nb9-3zvBpdbt', 'This is one of those questions you need to ask before starting any programming language. It helps you understand the scope of the language, the real world usability and how far you can get with it in terms of support. Here are 5 reasons why you should learn C++.', '2');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('8', 'Lecture 3', '2019-05-10', 'https://www.youtube.com/watch?v=Fr6wJ5_Hok0&list=PL1DUmTEdeA6IUD9Gt5rZlQfbZyAWXd-oD', 'With the use of C++ in development of modern games, operating systems, browsers, and much more, it is safe to say that C++ is irreplaceable.
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('7', 'Lecture 2', '2019-05-05', 'https://www.youtube.com/watch?v=gh-OzzgGdxg&list=PLrD0HM23WhqFB7O20Vk92Nb9-3zvBpdbt', 'This is one of those questions you need to ask before starting any programming language. It helps you understand the scope of the language, the real world usability and how far you can get with it in terms of support. Here are 5 reasons why you should learn C++.', '2');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('8', 'Lecture 3', '2019-05-10', 'https://www.youtube.com/watch?v=Fr6wJ5_Hok0&list=PL1DUmTEdeA6IUD9Gt5rZlQfbZyAWXd-oD', 'With the use of C++ in development of modern games, operating systems, browsers, and much more, it is safe to say that C++ is irreplaceable.
 Many major applications like
 Adobe Products like Photoshop, Illustrator, InDesign
 Amazon - one of the biggest e-commerce sites
 Autodesk products for Computer Aided Design
 Facebook - social networking site are heavy C++ centric products.', '2');
- INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('9', 'Lecture 1', '2019-07-01', 'https://www.youtube.com/watch?v=v6XYgITEtSI&list=PLEOFNTP51GtcjR1dwlwAWGpQuJxP4lrO7', 'C is a powerful general-purpose programming language. It is fast, portable and available in all platforms.If you are new to programming, C is a good choice to start your programming journey.', '3');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('10', 'Lecture 2', '2019-07-10', 'https://www.youtube.com/watch?v=KJgsSFOSQv0', 'As mentioned, it’s a good language to start learning programming. If you know C programming, you will not just understand how your program works, but will also be able to create a mental picture on how a computer works.', '3');
- INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('11', 'Lecture 1', '2019-09-01', 'https://www.youtube.com/watch?v=q7_qSBw8FEY&list=PLHIfW1KZRIfkDF2xTIB5kX8gdthmLTufx', 'C# is a general-purpose, modern and object-oriented programming language pronounced as “C sharp”. It was developed by Microsoft led by Anders Hejlsberg and his team within the .Net ', '4');
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('12', 'Lecture 2', '2019-09-10', 'https://www.youtube.com/watch?v=74VQ_JmJXzI&list=PLwj1YcMhLRN24KqNI0xQrNscBfLnYeJpL', 'As the placement season is back so are we to help you ace the interview. We have selected some most commonly asked and must do practice problems for you.
+ INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('9', 'Lecture 1', '2019-07-01', 'https://www.youtube.com/watch?v=v6XYgITEtSI&list=PLEOFNTP51GtcjR1dwlwAWGpQuJxP4lrO7', 'C is a powerful general-purpose programming language. It is fast, portable and available in all platforms.If you are new to programming, C is a good choice to start your programming journey.', '3');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('10', 'Lecture 2', '2019-07-10', 'https://www.youtube.com/watch?v=KJgsSFOSQv0', 'As mentioned, it’s a good language to start learning programming. If you know C programming, you will not just understand how your program works, but will also be able to create a mental picture on how a computer works.', '3');
+ INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('11', 'Lecture 1', '2019-09-01', 'https://www.youtube.com/watch?v=q7_qSBw8FEY&list=PLHIfW1KZRIfkDF2xTIB5kX8gdthmLTufx', 'C# is a general-purpose, modern and object-oriented programming language pronounced as “C sharp”. It was developed by Microsoft led by Anders Hejlsberg and his team within the .Net ', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('12', 'Lecture 2', '2019-09-10', 'https://www.youtube.com/watch?v=74VQ_JmJXzI&list=PLwj1YcMhLRN24KqNI0xQrNscBfLnYeJpL', 'As the placement season is back so are we to help you ace the interview. We have selected some most commonly asked and must do practice problems for you.
 You can also take part in our mock placement contests which will help you learn different topics and practice at the same time, simulating the feeling of a real placement test environment.', '4');
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('13', 'Lecture 3', '2019-09-20', 'https://www.youtube.com/watch?v=tzq-DJeNIrU', 'Interoperability enables you to preserve and take advantage of existing investments in unmanaged code. Code that runs under the control of the common language runtime (CLR) is called managed code, and code that runs outside the CLR is called unmanaged code. COM, COM+, C++ components, ActiveX components, and Microsoft Windows API are examples of unmanaged code.', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('13', 'Lecture 3', '2019-09-20', 'https://www.youtube.com/watch?v=tzq-DJeNIrU', 'Interoperability enables you to preserve and take advantage of existing investments in unmanaged code. Code that runs under the control of the common language runtime (CLR) is called managed code, and code that runs outside the CLR is called unmanaged code. COM, COM+, C++ components, ActiveX components, and Microsoft Windows API are examples of unmanaged code.', '4');
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('14', 'Lecture 4', '2019-09-30', 'https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6', 'The C#  exception handling features help you deal with any unexpected or exceptional situations that occur when a program is running. Exception handling uses the try, catch, and finally keywords to try actions that may not succeed, to handle failures when you decide that it is reasonable to do so, and to clean up resources afterward', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('14', 'Lecture 4', '2019-09-30', 'https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6', 'The C#  exception handling features help you deal with any unexpected or exceptional situations that occur when a program is running. Exception handling uses the try, catch, and finally keywords to try actions that may not succeed, to handle failures when you decide that it is reasonable to do so, and to clean up resources afterward', '4');
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('15', 'Lecture 5', '2019-10-01', 'https://www.youtube.com/watch?v=GhQdlIFylQ8', 'Collections provide a more flexible way to work with groups of objects. Unlike arrays, the group of objects you work with can grow and shrink dynamically as the needs of the application change. For some collections, you can assign a key to any object that you put into the collection so that you can quickly retrieve the object by using the key.', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('15', 'Lecture 5', '2019-10-01', 'https://www.youtube.com/watch?v=GhQdlIFylQ8', 'Collections provide a more flexible way to work with groups of objects. Unlike arrays, the group of objects you work with can grow and shrink dynamically as the needs of the application change. For some collections, you can assign a key to any object that you put into the collection so that you can quickly retrieve the object by using the key.', '4');
 
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('16', 'Lecture 6', '2019-10-15', 'https://www.youtube.com/watch?v=wfWxdh-_k_4', 'Attributes provide a powerful method of associating metadata, or declarative information, with code (assemblies, types, methods, properties, and so forth). After an attribute is associated with a program entity, the attribute can be queried at run time by using a technique called reflection. For more information', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('16', 'Lecture 6', '2019-10-15', 'https://www.youtube.com/watch?v=wfWxdh-_k_4', 'Attributes provide a powerful method of associating metadata, or declarative information, with code (assemblies, types, methods, properties, and so forth). After an attribute is associated with a program entity, the attribute can be queried at run time by using a technique called reflection. For more information', '4');
 
-INSERT INTO `sms`.`lecture` (`id`, `title`, `lecture_date`, `video_url`, `description`, `course_id`) VALUES ('17', 'Lecture 7', '2019-10-30', 'https://www.youtube.com/watch?v=nAFaXnG1XJI&list=PL1565idytjOS3lXcVN4iDFmZDWUJaNCfS', 'This section provides detailed information on key C# language features and features accessible to C# through the .NET Framework.Most of this section assumes that you already know something about C# and general programming concepts. If you are a complete beginner with programming or with C#', '4');
+INSERT INTO lecture (id, title, lecture_date, video_url, description, course_id) VALUES ('17', 'Lecture 7', '2019-10-30', 'https://www.youtube.com/watch?v=nAFaXnG1XJI&list=PL1565idytjOS3lXcVN4iDFmZDWUJaNCfS', 'This section provides detailed information on key C# language features and features accessible to C# through the .NET Framework.Most of this section assumes that you already know something about C# and general programming concepts. If you are a complete beginner with programming or with C#', '4');
 
 
 
@@ -566,25 +513,25 @@ INSERT INTO auth_user_view (user_id, view_id) VALUE (30,2);
 
 
 -- new image--
-UPDATE `sms`.`course` SET `image_path`='/assets/images/course/hala1.png' WHERE `id`='2';
+UPDATE course SET image_path='/assets/images/course/hala1.png' WHERE id='2';
 
-UPDATE `sms`.`course` SET `image_path`='/assets/images/course/Programming.jpg' WHERE `id`='5';
+UPDATE course SET image_path='/assets/images/course/Programming.jpg' WHERE id='5';
 
-UPDATE `sms`.`course` SET `image_path`='/assets/images/course/neural.jpg' WHERE `id`='6';
+UPDATE course SET image_path='/assets/images/course/neural.jpg' WHERE id='6';
 
-UPDATE `sms`.`course` SET `image_path`='/assets/images/course/data.jpg' WHERE `id`='7';
+UPDATE course SET image_path='/assets/images/course/data.jpg' WHERE id='7';
 
-UPDATE `sms`.`course` SET `image_path`='/assets/images/course/c++.jpg' WHERE `id`='8';
+UPDATE course SET image_path='/assets/images/course/c++.jpg' WHERE id='8';
 -- end-- --
 
 -- manar--
-UPDATE `sms`.`user_detail` SET `age`='50', `gender`='male', `phone`='0123654' WHERE `user_id`='1';
-UPDATE `sms`.`user_detail` SET `age`='20', `gender`='female', `phone`='45893210' WHERE `user_id`='2';
-UPDATE `sms`.`user_detail` SET `age`='23', `gender`='female', `phone`='014785' WHERE `user_id`='3';
-UPDATE `sms`.`user_detail` SET `age`='40', `gender`='male', `phone`='0258963' WHERE `user_id`='4';
-UPDATE `sms`.`user_detail` SET `age`='35', `gender`='male', `phone`='01254789' WHERE `user_id`='5';
-UPDATE `sms`.`user_detail` SET `age`='55', `gender`='female', `phone`='0321458' WHERE `user_id`='6';
-UPDATE `sms`.`user_detail` SET `age`='25', `gender`='male', `phone`='012587' WHERE `user_id`='7';
+UPDATE user_detail SET age='50', gender='male', phone='0123654' WHERE user_id='1';
+UPDATE user_detail SET age='20', gender='female', phone='45893210' WHERE user_id='2';
+UPDATE user_detail SET age='23', gender='female', phone='014785' WHERE user_id='3';
+UPDATE user_detail SET age='40', gender='male', phone='0258963' WHERE user_id='4';
+UPDATE user_detail SET age='35', gender='male', phone='01254789' WHERE user_id='5';
+UPDATE user_detail SET age='55', gender='female', phone='0321458' WHERE user_id='6';
+UPDATE user_detail SET age='25', gender='male', phone='012587' WHERE user_id='7';
 -- manar--
 
 
@@ -794,21 +741,21 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (30,14);
 
 
 -- -- -- New Script ADD COURSE (Youssef) ------
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course');
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '8');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '8');
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('8', 'Add_Cor', 'create new course actions');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '8');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '8');
+INSERT INTO auth_view (id, label_ar, description_ar) VALUES ('8', 'Add_Cor', 'create new course');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('1', '8');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('1', '8');
+INSERT INTO auth_action (id, label_ar, description_ar) VALUES ('8', 'Add_Cor', 'create new course actions');
+INSERT INTO auth_role_action (role_id, action_id) VALUES ('1', '8');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('1', '8');
 
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add-lec', 'create lec component');
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '9');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '9');
+INSERT INTO auth_view (id, label_ar, description_ar) VALUES ('9', 'Add-lec', 'create lec component');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('1', '9');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('1', '9');
 
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`, `description_ar`) VALUES ('9', 'Add-lec', 'Add Lec Button');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '9');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '9');
+INSERT INTO auth_action (id, label_ar, description_ar) VALUES ('9', 'Add-lec', 'Add Lec Button');
+INSERT INTO auth_role_action (role_id, action_id) VALUES ('1', '9');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('1', '9');
 
 -- -- -- -- -- -- END --------------------
 -- Ahmed View (Main_Details)-- --
@@ -863,8 +810,8 @@ INSERT INTO auth_user_action (user_id, action_id) VALUE (30,15);
 
 -- Abanoub start --
 
-INSERT INTO `sms`.`file_source` (`id`, `lable_en`) VALUES ('1', 'attachment');
-INSERT INTO `sms`.`file_source` (`id`, `lable_en`) VALUES ('2', 'assignment');
+INSERT INTO file_source (id, lable_en) VALUES ('1', 'attachment');
+INSERT INTO file_source (id, lable_en) VALUES ('2', 'assignment');
 
 -- Abanoub end --
 
@@ -873,141 +820,141 @@ INSERT INTO `sms`.`file_source` (`id`, `lable_en`) VALUES ('2', 'assignment');
 
 -- add-material --
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('7', 'Add-Matrial');
-UPDATE `sms`.`auth_view` SET `label_ar` = 'Add-Material' WHERE (`id` = '7');
+INSERT INTO auth_view (id, label_ar) VALUES ('7', 'Add-Matrial');
+UPDATE auth_view SET label_ar = 'Add-Material' WHERE (id = '7');
 
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '7');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('1', '7');
 
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '7');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('30', '7');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('4', '7');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('5', '7');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('6', '7');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('1', '7');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('30', '7');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('4', '7');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('5', '7');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('6', '7');
 
 -- AuthAction --
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`) VALUES ('7', 'Add-Matrial');
-UPDATE `sms`.`auth_action` SET `label_ar` = 'Add-Material' WHERE (`id` = '7');
+INSERT INTO auth_action (id, label_ar) VALUES ('7', 'Add-Matrial');
+UPDATE auth_action SET label_ar = 'Add-Material' WHERE (id = '7');
 
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '7');
+INSERT INTO auth_role_action (role_id, action_id) VALUES ('1', '7');
 
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('30', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('4', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('5', '7');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('6', '7');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('1', '7');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('30', '7');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('4', '7');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('5', '7');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('6', '7');
 
 -- add-material end --
 
 -- download-material --
     -- AuthAction --
-INSERT INTO `sms`.`auth_action` (`id`, `label_ar`) VALUES ('16', 'Download-Matrial');
+INSERT INTO auth_action (id, label_ar) VALUES ('16', 'Download-Matrial');
 
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('1', '16');
-INSERT INTO `sms`.`auth_role_action` (`role_id`, `action_id`) VALUES ('2', '16');
+INSERT INTO auth_role_action (role_id, action_id) VALUES ('1', '16');
+INSERT INTO auth_role_action (role_id, action_id) VALUES ('2', '16');
 
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('1', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('2', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('3', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('4', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('5', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('6', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('7', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('8', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('10', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('11', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('12', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('13', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('14', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('16', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('17', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('18', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('19', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('20', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('21', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('22', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('23', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('24', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('25', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('26', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('27', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('28', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('29', '16');
-INSERT INTO `sms`.`auth_user_action` (`user_id`, `action_id`) VALUES ('30', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('1', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('2', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('3', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('4', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('5', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('6', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('7', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('8', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('10', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('11', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('12', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('13', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('14', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('16', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('17', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('18', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('19', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('20', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('21', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('22', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('23', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('24', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('25', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('26', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('27', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('28', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('29', '16');
+INSERT INTO auth_user_action (user_id, action_id) VALUES ('30', '16');
 
 -- download-material end --
 -- lecture-details --
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('17', 'Lecture_Details');
+INSERT INTO auth_view (id, label_ar) VALUES ('17', 'Lecture_Details');
 
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '17');
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('2', '17');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('1', '17');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('2', '17');
 
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('2', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('3', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('4', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('5', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('6', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('7', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('8', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('10', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('11', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('12', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('13', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('14', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('16', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('17', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('18', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('19', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('20', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('21', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('22', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('23', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('24', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('25', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('26', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('27', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('28', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('29', '17');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('30', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('1', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('2', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('3', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('4', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('5', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('6', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('7', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('8', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('10', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('11', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('12', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('13', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('14', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('16', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('17', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('18', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('19', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('20', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('21', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('22', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('23', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('24', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('25', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('26', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('27', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('28', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('29', '17');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('30', '17');
 
 -- lecture-details end --
 
 -- course-lectures --
 
-INSERT INTO `sms`.`auth_view` (`id`, `label_ar`) VALUES ('18', 'Course_Lectures');
+INSERT INTO auth_view (id, label_ar) VALUES ('18', 'Course_Lectures');
 
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('1', '18');
-INSERT INTO `sms`.`auth_role_view` (`role_id`, `view_id`) VALUES ('2', '18');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('1', '18');
+INSERT INTO auth_role_view (role_id, view_id) VALUES ('2', '18');
 
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('1', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('2', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('3', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('4', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('5', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('6', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('7', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('8', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('10', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('11', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('12', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('13', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('14', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('16', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('17', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('18', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('19', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('20', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('21', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('22', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('23', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('24', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('25', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('26', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('27', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('28', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('29', '18');
-INSERT INTO `sms`.`auth_user_view` (`user_id`, `view_id`) VALUES ('30', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('1', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('2', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('3', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('4', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('5', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('6', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('7', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('8', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('10', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('11', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('12', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('13', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('14', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('16', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('17', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('18', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('19', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('20', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('21', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('22', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('23', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('24', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('25', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('26', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('27', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('28', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('29', '18');
+INSERT INTO auth_user_view (user_id, view_id) VALUES ('30', '18');
 -- course-lectures end --
 -- Abanoub End --
 

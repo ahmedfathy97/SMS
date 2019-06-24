@@ -18,10 +18,24 @@
 .page-content{
   padding-bottom: 100px;
   height: 100%;
-  overflow-y: scroll;
   position: relative;
   width: 100%;
 }
 .page-content-area{
+  padding-top: 20px;
+  overflow-y: scroll;
+}
+
+.full-page-content{
+  padding-bottom: 100px;
+  height: 100%;
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+
+}
+.full-page-content-area{
+  overflow-y: scroll;
   padding-top: 20px;
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthUserVTO} from "../../../../../modules/security/shared/data/auth-user-vto.data";
 import {LocalStorageService} from "../../../../../infrastructure/services/local-storage.service";
 import {Router} from "@angular/router";
-import {AngularFullRoutes} from "../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceUserID} from "../../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-sms-header',
@@ -10,6 +10,7 @@ import {AngularFullRoutes} from "../../../../../infrastructure/data/full-routes.
   styleUrls: ['./sms-header.component.css']
 })
 export class SmsHeaderComponent implements OnInit {
+  @Input() showLogo: boolean;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   currentUser: AuthUserVTO = new AuthUserVTO();
 

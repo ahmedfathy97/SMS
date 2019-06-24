@@ -26,7 +26,7 @@ export enum AngularFullRoutes {
   FACULTY_LIST = "/faculties",
   SETTINGS = "/settings",
   SETTING_USER_LIST ="/settings/users",
-  USER_PROFILE="/user/${userID}/profile",
+  USER_PROFILE="/profile",
   EDIT="/user/${userID}/edit",
   COURSE_INFORMATION="/course/${corID}/information"
 }
