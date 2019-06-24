@@ -142,11 +142,28 @@
           </div>
 
 
-          <div class="form-group  d-inline-block  col-10 offset-2 ">
-            <div class="card-action">
-              <button class="btn btn-success col-5" (click)="onSubmitNewCourse()">Create</button>
-              <button class="ml-2 btn btn-danger col-5">Clear</button>
-            </div>
+          <!--<div class="form-group  pull-right ">-->
+            <!--<div class="card-action">-->
+              <!--<ul>-->
+                <!--<a [routerLink] ="[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"></a>-->
+                <!--<li>-->
+                  <!--<button class="btn btn-success d-inline-block col-2" (click)="onSubmitNewCourse()">Create</button>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<button class="ml-2 btn btn-danger d-inline-block col-2">Clear</button>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+
+
+          <div class="pull-right">
+
+            <button type="clear" class="btn btn-danger ml-1 pull-right" (click)="clear()">Clear</button>
+
+            <a [routerLink]="[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]">
+              <button class="btn btn-success pull-right" (click)="onSubmitNewCourse()">Create</button>
+            </a>
           </div>
         </form>
 

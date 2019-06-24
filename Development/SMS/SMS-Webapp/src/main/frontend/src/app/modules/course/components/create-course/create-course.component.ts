@@ -6,7 +6,7 @@ import {CorLevel} from "../../shared/data/lookup/course/cor-level.data";
 import {CorType} from "../../shared/data/lookup/course/cor-type.data";
 import {CourseService} from "../../shared/services/course.service";
 import {LookupService} from "../../../../infrastructure/services/lookup.service";
-import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceCorID} from "../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'app-course-details',
@@ -16,6 +16,7 @@ import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enu
 
 export class CreateCourse implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  replaceCorID = replaceCorID;
 
   corCategoryList: CorCategory[] = [];
   corTypeList: CorType[] = [];
@@ -105,6 +106,12 @@ export class CreateCourse implements OnInit {
         console.log(err);
       });
     }
+  }
+
+
+  clear()
+  {
+    this.formData.reset();
   }
 
 }
