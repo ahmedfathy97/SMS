@@ -13,6 +13,7 @@ import {CourseDataService} from "../../../../../../shared/services/course-data.s
 import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
+import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 
 @Component({
   selector: 'app-answer-questions',
@@ -21,6 +22,7 @@ import {AlertInput} from "../../../../../../../../infrastructure/components/aler
   providers: [QuizService ,FormBuilder]
 })
 export class AnswerQuestionsComponent implements OnInit {
+  AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   //studentID: number =1 ;
