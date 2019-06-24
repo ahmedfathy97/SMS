@@ -27,6 +27,12 @@ public class AttendanceSer {
         this.rep = rep;
     }
 
+//    public List<StdDTO> numberOfAttStudent(int courseID){
+//
+//        List<StdDTO> attendNumber = repository.numberOfAttStudent(courseID);
+//                return attendNumber ;
+//    }
+
     public void createSheet(UserVTO currentUser, int courseID, AttendanceDTO data, boolean isUpdate) throws Exception {
         boolean isInstructor = this.rep.isInstructor(currentUser.getId(), courseID);
         if (!isInstructor)
@@ -55,36 +61,40 @@ public class AttendanceSer {
         return newStdList;
     }
 
+
     public List<AttendanceDTO> getCourseAttendance(int courseID) {
 
         List<StdDTO> stdList = this.rep.findAllCourseStudents(courseID);
         List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
-        List<AttendanceDTO> attendanceDTOList = new ArrayList<>();
+        List<AttendanceDTO> attendanceDTOList = this.repository.numberOfAttStudent(courseID);
 
-        for (StdDTO i : stdAttendance) {
-            boolean isFound = false;
-            for (AttendanceDTO sheet : attendanceDTOList) {
-                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0) {
-                    isFound = true;
-                    break;
-                }
-            }
-            if (!isFound) {
-                AttendanceDTO item = new AttendanceDTO();
-                item.setAttendanceData(i.getAttendanceDate());
-                item.setStudents(cloneList(stdList));
-                attendanceDTOList.add(item);
-            }
-
-
-        }
+//        for (StdDTO i : stdAttendance) {
+//            boolean isFound = false;
+//            for (AttendanceDTO sheet : attendanceDTOList) {
+//                if (i.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0) {
+//                    isFound = true;
+//                    break;
+//                }
+//            }
+//            if (!isFound) {
+//                AttendanceDTO item = new AttendanceDTO();
+//                item.setAttendanceData(i.getAttendanceDate());
+//                item.setStudents(cloneList(stdList));
+//                attendanceDTOList.add(item);
+//            }
+//
+//
+//        }
 
         for (AttendanceDTO sheet : attendanceDTOList) {
+            sheet.setTotalStd(stdList.size());
+            sheet.setStudents(cloneList(stdList));
             for (StdDTO std : sheet.getStudents()) {
                 for (StdDTO stdDto : stdAttendance)
                     if (stdDto.getAttendanceDate().compareTo(sheet.getAttendanceData()) == 0 &&
                             std.getFullName().equals(stdDto.getFullName())) {
                         std.setIsAttend(stdDto.getIsAttend());
+
                         break;
                     }
             }

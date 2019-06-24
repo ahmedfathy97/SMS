@@ -30,11 +30,18 @@
           <table class="table text-center" *ngIf="display">
             <thead class="text-uppercase bg-secondary">
             <tr class="text-white">
-              <th>#</th>
-              <th>Name</th>
+              <th rowspan="2">#</th>
+              <th >Name</th>
               <th *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">
                 <!--<ng-template [ngIf]="i!=0"></ng-template>-->
                 {{sheet}}
+              </th>
+            </tr>
+            <tr class="text-white">
+              <th >Attendance %</th>
+              <th *ngFor="let sheet of attendanceList ">
+                <!--<ng-template [ngIf]="i!=0"></ng-template>-->
+                {{(sheet.attendCount/sheet.totalStd)*100}} %
               </th>
             </tr>
             </thead>

@@ -31,6 +31,8 @@ export class ViewAttendanceComponent implements OnInit {
       }
       );
     this.corDataService.requestCorID.next(true);
+
+
   }
 
 
@@ -50,8 +52,8 @@ export class ViewAttendanceComponent implements OnInit {
         }
       }
     )
-
   }
+
 
   transformTable(){
     if (this.attendanceList.length != 0 ) {

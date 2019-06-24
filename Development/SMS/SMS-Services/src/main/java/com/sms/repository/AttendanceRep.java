@@ -1,15 +1,19 @@
 package com.sms.repository;
 
 
+import com.sms.model.AttendanceDTO;
 import com.sms.model.course.StdDTO;
 import com.sms.model.course.rm.AttendanceDTORM;
 import com.sms.model.course.rm.StdDTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,6 +69,27 @@ public class AttendanceRep {
                 " order by att.created_on  ";
         return this.jdbc.query(sql, new AttendanceDTORM(), corID);
     }
+
+    public List<AttendanceDTO>  numberOfAttStudent (int corID)
+    {
+        String sql = "SELECT created_on , \n" +
+                "count(IF(c_att.is_attended = 1,1,null)) as attended\n" +
+                "from attendance att\n" +
+                "left join cor_std_att c_att on c_att.att_id = att.id\n" +
+                "where att.cor_id = ? \n" +
+                "group by created_on ;\n";
+        return this.jdbc.query(sql,  new RowMapper<AttendanceDTO>() {
+                    @Override
+                    public AttendanceDTO mapRow(ResultSet rs, int i) throws SQLException {
+                        AttendanceDTO data=new AttendanceDTO();
+                        data.setAttendanceData(rs.getDate("created_on"));
+                        data.setAttendCount(rs.getInt("attended"));
+                        return data;
+                    }
+                }, corID);
+    }
+
+
 
     public List<StdDTO> findCourseStudent(int corID, int stdID) {
         String sql =
