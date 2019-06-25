@@ -52,8 +52,8 @@ public class UserRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Authenticated(views = {AuthViews.USER_LIST})
     public List<UserVTO> findAllUsers(){
-        List<UserVTO> result=this.userRep.findAll();
-        return result;
+        List<UserVTO> userVTOList=this.userRep.findAll();
+        return userVTOList;
 
     }
 }

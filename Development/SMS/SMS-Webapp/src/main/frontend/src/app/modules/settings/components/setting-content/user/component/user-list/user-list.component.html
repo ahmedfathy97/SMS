@@ -130,9 +130,9 @@
   </div>
   <div class="offset-2 col-md-8">
     <div class="card">
-      <div class="card-header">
-        <div class="card-title">All Users Data</div>
-      </div>
+      <!--<div class="card-header">-->
+        <!--<div class="card-title">All Users Data</div>-->
+      <!--</div>-->
       <div class="card-body">
         <div >
           <table class="table text-center">
@@ -140,26 +140,35 @@
             <tr class="text-white">
               <th scope="col">#</th>
               <th scope="col">Full Name</th>
-              <th scope="col">BirthDate</th>
-              <th scope="col">College</th>
-              <th scope="col">University</th>
-              <th scope="col">Country</th>
+              <th scope="col">User Name</th>
+              <!--<th scope="col">College</th>-->
+              <!--<th scope="col">University</th>-->
+              <!--<th scope="col">Country</th>-->
             </tr>
             </thead>
             <tbody>
             <tr  *ngFor="let userDetail of userList ; index as i ;">
               <td>{{i+1}}</td>
               <td> <a [routerLink] ="[replaceUserID(ROUTES.USER_PROFILE,userDetail.id)]">{{userDetail.fullName}}</a></td>
-              <td>{{userDetail.birthDate}}</td>
-              <td>{{userDetail.college}}</td>
-              <td>{{userDetail.university}}</td>
-              <td>{{userDetail.country}}</td>
+              <td>{{userDetail.userName}}</td>
+              <!--<td>{{userDetail.college}}</td>-->
+              <!--<td>{{userDetail.university}}</td>-->
+              <!--<td>{{userDetail.country}}</td>-->
 
             </tr>
 
             </tbody>
           </table>
+
         </div>
+        <!--<div class="row align-content-center">-->
+          <!--<pagination-controls class="pagination justify-content-center" id="myCourseList"-->
+                               <!--(pageChange)="onPageChange($event)"-->
+                               <!--directionLinks="true" [autoHide]="true"-->
+                               <!--previousLabel="" nextLabel="">-->
+          <!--</pagination-controls>-->
+
+        <!--</div>-->
       </div>
     </div>
   </div>

@@ -24,12 +24,22 @@ public class UserRep {
     }
 
     public UserVTO findUserByID(int userID) {
-        String sql = "SELECT user_id ,concat(first_name , ' ' ,last_name) AS full_name ," +
-                "first_name,last_name,age,gender,email,phone,s.username " +
-                "FROM user_detail d " +
-                "left join auth_user s " +
-                "on d.user_id = s.id " +
-                "where user_id =?";
+        String sql = "SELECT \n" +
+                "    user_id,\n" +
+                "    CONCAT(first_name, ' ', last_name) AS full_name,\n" +
+                "    first_name,\n" +
+                "    last_name,\n" +
+                "    birth_date,\n" +
+                "    gender,\n" +
+                "    email,\n" +
+                "    phone,\n" +
+                "    s.username\n" +
+                "FROM\n" +
+                "    user_detail d\n" +
+                "        LEFT JOIN\n" +
+                "    auth_user s ON d.user_id = s.id\n" +
+                "WHERE\n" +
+                "    user_id = ?";
         List<UserVTO> user = this.jdbcTemplate.query(sql, new RowMapper<UserVTO>() {
             @Override
             public UserVTO mapRow(ResultSet rs, int i) throws SQLException {
@@ -39,7 +49,7 @@ public class UserRep {
                 data.setFirstName(rs.getString("first_name"));
                 data.setLastName(rs.getString("last_name"));
                 //data.setAge(rs.getInt("age"));
-                data.setBirthDate(rs.getString("birthdate"));
+                data.setBirthDate(rs.getString("birth_date"));
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
                 data.setPhone(rs.getInt("phone"));
@@ -67,11 +77,24 @@ public class UserRep {
 
     public List<UserVTO> findAll(){
 
-        String sql="SELECT  user_id,concat(first_name , ' ' ,last_name) AS full_name ,birth_date,col.labelEN as college_name," +
-                "co.labelEN as country_name,uni.labelEN  as university_name FROM user_detail ud " +
-                "left join college col  on ud.college_id=col.id " +
-                "left join country co on ud.country_id=co.id " +
-                "left join university uni on ud.university_id=uni.id ";
+        String sql="SELECT \n" +
+                "    user_id,\n" +
+                "    CONCAT(first_name, ' ', last_name) AS full_name,\n" +
+                "    birth_date,\n" +
+                "    col.labelEN AS college_name,\n" +
+                "    co.labelEN AS country_name,\n" +
+                "    uni.labelEN AS university_name,\n" +
+                "    s.username\n" +
+                "FROM\n" +
+                "    user_detail ud\n" +
+                "        LEFT JOIN\n" +
+                "    auth_user s ON ud.user_id = s.id\n" +
+                "        LEFT JOIN\n" +
+                "    college col ON ud.college_id = col.id\n" +
+                "        LEFT JOIN\n" +
+                "    country co ON ud.country_id = co.id\n" +
+                "        LEFT JOIN\n" +
+                "    university uni ON ud.university_id = uni.id;";
 
         List<UserVTO> users= this.jdbcTemplate.query(sql, new RowMapper<UserVTO>() {
             @Override
@@ -83,6 +106,7 @@ public class UserRep {
                 data.setCountry(rs.getString("country_name"));
                 data.setUniversity(rs.getString("university_name"));
                 data.setBirthDate(rs.getString("birth_date"));
+                data.setUserName(rs.getString("username"));
                 return data;
             }
         });

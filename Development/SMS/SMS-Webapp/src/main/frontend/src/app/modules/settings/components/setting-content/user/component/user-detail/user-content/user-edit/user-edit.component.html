@@ -31,9 +31,11 @@
                     <label for="firstname" class="col-form-label">First Name</label>
                     <input class="form-control" type="text" id="firstname" formControlName="firstName"
                            [ngClass]="{ 'is-invalid': edit.firstName.dirty && edit.firstName.errors != null }">
-                    <div *ngIf="submitted && edit.firstName.errors" class="invalid-feedback">
-                      <small *ngIf="edit.firstName.errors?.required"> Fristname can't be null</small>
-                      <small *ngIf="edit.firstName.errors?.maxlength">length of Firstname less than 25 letter</small>
+
+                    <div  class="invalid-feedback" *ngIf="edit.firstName.dirty && edit.firstName.errors != null">
+                      <small *ngIf="edit.firstName.errors?.required">First Name is mandatory</small>
+                      <small *ngIf="edit.firstName.errors?.maxlength">First Name allow max 15 Char</small>
+                      <small *ngIf="edit.firstName.errors?.minlength">First Name allow min 3 Char</small>
                     </div>
                   </div>
 
@@ -76,13 +78,24 @@
                     </div>
                   </div>
 
+                  <!--<div class="form-group d-inline-block col-6">-->
+                    <!--<label for="phone" class="col-form-label">Phone</label>-->
+                    <!--<input class="form-control" type="number" id="phone" formControlName="t_phone"-->
+                           <!--[ngClass]="{'is-invalid': edit.t_phone.dirty && edit.t_phone.errors != null}">-->
+
+                    <!--<div class="invalid-feedback" *ngIf="edit.t_phone.dirty && edit.t_phone.errors != null">-->
+                      <!--<small *ngIf="edit.t_phone.errors?.maxlength">Phone allow max 11 Number</small>-->
+                    <!--</div>-->
+                  <!--</div>-->
                   <div class="form-group d-inline-block col-6">
                     <label for="phone" class="col-form-label">Phone</label>
-                    <input class="form-control" type="number" id="phone" formControlName="phone"
-                           [ngClass]="{'is-invalid': edit.phone.dirty && edit.phone.errors != null}">
+                    <input class="form-control" type="number" id="phone" formControlName="t_phone"
+                           [ngClass]="{'is-invalid': edit.t_phone.dirty && edit.t_phone.errors != null}">
 
-                    <div class="invalid-feedback" *ngIf="edit.phone.dirty && edit.phone.errors != null">
-                      <small *ngIf="edit.phone.errors?.maxlength">Phone allow max 11 Number</small>
+                    <div class="invalid-feedback" *ngIf="edit.t_phone.dirty && edit.t_phone.errors != null">
+                      <small *ngIf="edit.t_phone.errors?.required">Phone is mandatory</small>
+                      <small *ngIf="edit.t_phone.errors?.maxlength">Phone allow max 11 number</small>
+
                     </div>
                   </div>
 

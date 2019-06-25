@@ -26,12 +26,12 @@ export class UserEditComponent implements OnInit {
   private userEdit: UserVtoData = new UserVtoData();
   //userID: string;
   formData = this.formBuilder.group({
-    firstName: ['', [Validators.required,Validators.maxLength(25)]],
+    firstName: ['', [Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
     lastName: ['',[ Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
     birthDate: ['', Validators.required,Validators.pattern('^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$')],
     gender: ['', Validators.required],
     email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]],
-    phone: ['', [Validators.required,Validators.maxLength(11)]],
+    t_phone: ['', [Validators.required,Validators.maxLength(11)]],
     userName: ['',[Validators.required,Validators.maxLength(25)]],
 
   });
@@ -62,7 +62,7 @@ export class UserEditComponent implements OnInit {
               this.formData.get('birthDate').reset(this.userVto.birthDate);
               this.formData.get('gender').reset(this.userVto.gender);
               this.formData.get('email').reset(this.userVto.email);
-              this.formData.get('phone').reset(this.userVto.phone);
+              this.formData.get('t_phone').reset(this.userVto.phone);
               this.formData.get('userName').reset(this.userVto.userName);
 
 
@@ -87,7 +87,7 @@ export class UserEditComponent implements OnInit {
         userEdit.gender = this.formData.get('gender').value;
         userEdit.email = this.formData.get('email').value;
         userEdit.userName = this.formData.get('userName').value;
-        userEdit.phone = this.formData.get('phone').value;
+        userEdit.phone = this.formData.get('t_phone').value;
 
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
           console.log("Success");
