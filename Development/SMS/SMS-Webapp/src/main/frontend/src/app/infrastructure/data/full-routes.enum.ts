@@ -1,6 +1,7 @@
 
 export enum AngularFullRoutes {
   LOGIN = "/login",
+  HOME = "/home",
   COURSE_LIST = "/courses",
   // COURSE_HOME = "/course",
   // _COURSE_LIST="/courses",

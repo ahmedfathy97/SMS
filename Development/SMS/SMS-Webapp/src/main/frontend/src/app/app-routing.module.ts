@@ -26,11 +26,9 @@ import {CourseLecturesComponent} from "./modules/course/components/course-detail
 import {CourseDetailsComponent} from "./modules/course/components/course-details/course-details.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import {CreateAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/create-announcment/create-announcment.component";
-// import {MyCourseListComponent} from "./modules/course/components/my-course-list/my-course-list.component";
 import {ViewAnnouncmentComponent} from "./modules/course/components/course-details/course-content/announcment/view-announcment/view-announcment.component";
 import {LectureDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/lecture-details.component";
 import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
-import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
 import {SettingDetailsComponent} from "./modules/settings/components/setting-details/setting-details.component";
 import {UserDetailComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-detail.component";
 import {AuthViews} from "./infrastructure/directives/authorization/data/auth-views.enum";
@@ -38,32 +36,22 @@ import {AuthorizationGuard} from "./infrastructure/interceptor/authorization.gua
 import {AuthenticationGuard} from "./infrastructure/interceptor/authentication.guard";
 import {CourseListComponent} from "./modules/course/components/course-list/course-list.component";
 import {MyCourseComponent} from "./modules/course/components/my-course/my-course.component";
-import {QuizMainDetailComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-main-detail/quiz-main-detail.component";
-import {QuizResult} from "./modules/course/shared/data/quiz/quiz-result-dto";
-import {AuthActions} from "./infrastructure/directives/authorization/data/auth-actions.enum";
 import {QuizDetailsComponent} from "./modules/course/components/course-details/course-content/quiz/quiz-details/quiz-details.component";
 import {CourseExamsComponent} from "./modules/course/components/course-details/course-content/exam/course-exams/course-exams.component";
 import {AddExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/add-exam-questions/add-exam-questions.component";
 import {ExamDetailsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/exam-details.component";
-import {WelcomeComponent} from "./modules/welcome page/welcome/welcome.component";
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 import {QuizGradeComponent} from "./modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component";
+import {LoginGuard} from "./infrastructure/interceptor/login.guard";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {
     path: '', component: SimpleLayoutComponent, children: [
-      {path: 'welcome', component: WelcomeComponent},
-      {path: 'login', component: LoginComponent},
+      {path: 'login', canActivate:[LoginGuard], component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent},
 
-      // {
-      //   path: 'settings', component: SettingDetailsComponent, children:
-      //     [
-      //       {path: 'users', component: UserListComponent}
-      //     ]
-      // },
       {
         path: 'user', children: [
           {
@@ -74,8 +62,6 @@ const routes: Routes = [
                 canActivate:[AuthenticationGuard, AuthorizationGuard]}
             ]
           },
-          // {path: 'profile/:userID', component: UserProfileComponent},
-          // {path:'edit/:userID',component:UserEditComponent}
 
         ]
       } ,

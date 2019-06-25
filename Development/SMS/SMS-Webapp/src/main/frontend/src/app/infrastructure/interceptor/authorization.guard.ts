@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import { Observable } from 'rxjs';
 import {LocalStorageService} from "../services/local-storage.service";
 
 @Injectable()
@@ -10,8 +9,7 @@ export class AuthorizationGuard implements CanActivate {
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot,
-              state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if(this.localStorageService.getCurrentUser().viewIDs.includes(route.data.viewID))
       return true;
     else

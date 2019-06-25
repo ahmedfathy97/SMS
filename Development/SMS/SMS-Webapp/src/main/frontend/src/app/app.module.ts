@@ -64,8 +64,8 @@ import { ExamDetailsComponent } from './modules/course/components/course-details
 import { ExamMainDetailComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-main-detail/exam-main-detail.component';
 import { ExamResultComponent } from './modules/course/components/course-details/course-content/exam/exam-details/exam-result/exam-result.component';
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
-import { WelcomeComponent } from './modules/welcome page/welcome/welcome.component';
 import { QuizGradeComponent } from './modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component';
+import {LoginGuard} from "./infrastructure/interceptor/login.guard";
 
 @NgModule({
   declarations: [
@@ -77,21 +77,17 @@ import { QuizGradeComponent } from './modules/course/components/course-details/c
     AddQuizQuestionsComponent, ViewStudentAttendanceComponent, CreateLecture, AnswerQuestionsComponent,
     CourseQuizesComponent, CourseLecturesComponent, CourseDetailsComponent,
     UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
-    UnAuthorizedComponent, AlertComponent,
-    CourseListComponent, SmsSideBarComponent,
-    CreateAnnouncmentComponent,
-    ViewAnnouncmentComponent,
-    LectureDetailsComponent,
-    UserListComponent,
-    SettingSideBarComponent,
-    SettingDetailsComponent,
+    UnAuthorizedComponent, AlertComponent, CourseListComponent, SmsSideBarComponent, HomeComponent,
+    CreateAnnouncmentComponent, ViewAnnouncmentComponent, LectureDetailsComponent, UserListComponent,
+    SettingSideBarComponent, SettingDetailsComponent,
     UserDetailComponent,
     UserSideBarComponent,
     UserSettingsComponent,
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
-    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent, AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, WelcomeComponent, QuizGradeComponent
+    QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent,
+    AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, QuizGradeComponent
 
   ],
   imports: [
@@ -100,10 +96,9 @@ import { QuizGradeComponent } from './modules/course/components/course-details/c
     //NgbModule.forRoot()
   ],
   providers: [
-    LocalStorageService, AuthorizationGuard, AuthenticationGuard,
+    LocalStorageService, AuthorizationGuard, AuthenticationGuard, LoginGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [LayoutComponent]
 })
 export class AppModule {
-  private static UserContentComponent: any;
 }

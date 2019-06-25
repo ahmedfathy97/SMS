@@ -2,11 +2,8 @@
 
 <!-- profile info & task notification -->
 <div class="col-md-12 col-sm-12 clearfix">
-  <!--<div class="sidebar-header">-->
   <div class="logo-header pull-left" *ngIf="showLogo">
-    <!--<div class="logo">-->
     <img class="avatar" src="assets/images/icon/logo.png" alt="logo">
-    <!--</div>-->
   </div>
   <div class="user-profile pull-right">
     <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
@@ -14,7 +11,7 @@
     <div class="dropdown-menu">
       <a class="dropdown-item" [routerLink]="ROUTES.MY_COURSES">Profile</a>
       <a class="dropdown-item" [routerLink]="ROUTES.SETTING_USER_LIST">Administration</a>
-      <a class="dropdown-item" [routerLink]="[ROUTES.USER_PROFILE]">My Courses</a>
+      <!--<a class="dropdown-item" [routerLink]="[ROUTES.USER_PROFILE]">My Courses</a>-->
       <a class="dropdown-item" (click)="logOut()">Log Out</a>
     </div>
   </div>

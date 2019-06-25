@@ -1,0 +1,16 @@
+<div class="carousel-item active">
+  <div class="banner" style="background-image: url(../../../../assets/images/1.jpg);"></div>
+  <div class="carousel-caption">
+    <h1 class="animated bounceInRight" style="animation-delay: 1s">We Are <span>S M S</span></h1>
+    <h3 class="animated bounceInLeft" style="animation-delay: 2s">whole world you can learn or teach </h3>
+    <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="!isUserAuthenticated">
+      <a href="#">Login</a>
+    </p>
+    <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="!isUserAuthenticated">
+      <a href="#">Sign Up</a>
+    </p>
+    <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="isUserAuthenticated">
+      <a href="#">Courses</a>
+    </p>
+  </div>
+</div>
