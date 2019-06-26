@@ -40,7 +40,7 @@ public class CourseResultSet implements Serializable {
         return announclist;
     }
     public void setAnnounclist(List<Announcement> list) {
-        this.announclist = announclist;
+        this.announclist = list;
     }
 
     public int getTotalRecords() {

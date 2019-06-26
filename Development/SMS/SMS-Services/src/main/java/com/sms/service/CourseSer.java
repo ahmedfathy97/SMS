@@ -105,6 +105,7 @@ public class CourseSer {
 
         int count = courseRep.findALLCoursesCount();
         resultSet.setTotalRecords(count);
+
         return resultSet;
 
 
@@ -121,10 +122,16 @@ public class CourseSer {
 
 
 
-    public List<Announcement> getCourseAnnouncments(int courseID , int pageNum)
+    public CourseResultSet getCourseAnnouncments(int courseID , int pageNum)
     {
+        CourseResultSet resultSet = new CourseResultSet();
         List<Announcement> announcementList = courseRep.getCourseAnnouncments(courseID , pageNum) ;
-        return  announcementList ;
+        resultSet.setAnnounclist(announcementList);
+
+        int count = courseRep.findALLAnnouncementCount();
+        resultSet.setTotalRecords(count);
+
+        return resultSet  ;
     }
 
 //    public List<Announcement> getCourseAnnouncments(int courseID )

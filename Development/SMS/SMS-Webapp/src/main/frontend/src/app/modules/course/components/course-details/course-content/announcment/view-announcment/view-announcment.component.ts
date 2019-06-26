@@ -42,11 +42,14 @@ export class ViewAnnouncmentComponent implements OnInit {
 
   getCourseAnnouncments()
   {
-    this.courseService.getCourseAnnouncments(this.corID , this.pageNum ).subscribe(res => {
-      this.resultSet.announcList = res;
+    this.courseService.getCourseAnnouncments(this.corID , this.pageNum ).subscribe(
+      res => {
+      this.resultSet = res;
+      console.log(res);
     }, err => {
       console.log(err);
     });
+
   }
 
   onPageChange(pageNum)

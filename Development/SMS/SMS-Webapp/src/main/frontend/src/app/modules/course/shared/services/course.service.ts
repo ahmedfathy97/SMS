@@ -134,7 +134,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList" ,
+    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList" ,
       {params: queryParameter}) ;
   }
   // getCourseAnnouncments(courseID :number )

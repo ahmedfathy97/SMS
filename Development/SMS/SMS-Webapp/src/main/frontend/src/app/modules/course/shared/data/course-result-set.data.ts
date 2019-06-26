@@ -5,7 +5,7 @@ import {LectureVto} from "./lecture-vto";
 
 export class CourseResultSet {
   list: CourseVto[] = [];
-  announcList :Announcement [] = [] ;
+  announclist :Announcement [] = [] ;
   studentLis:StdDTO[]=[];
   totalRecords: number = 0;
   lectureList: LectureVto[];

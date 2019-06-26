@@ -252,11 +252,10 @@ return 5;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/announcmentList")
-    @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
-    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum )
+    @Authenticated(views = {AuthViews.ADD_ANNOUNCEMENT})
+    public CourseResultSet getCourseAnnouncments(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum )
     {
-        List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID , pageNum ) ;
-        return announcementList ;
+        return this.courseSer.getCourseAnnouncments(courseID , pageNum )  ;
     }
 //    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID )
 //    {
