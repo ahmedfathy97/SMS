@@ -1,15 +1,14 @@
 <div class="page-content">
   <div class="page-title-area">
-    <div class="row align-items-center content-header">
+    <div class="row align-items-center ">
       <div class="col-sm-6">
-        <div class="breadcrumbs-area clearfix">
+        <div class="breadcrumbs-area clearfix mt-2">
           <h4 class="page-title pull-left">User Profile</h4>
         </div>
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[replaceUserID(ROUTES.USER_PROFILE,userID)]">Profile</a></li>
             <li><span>User</span></li>
-
           </ul>
         </div>
       </div>
@@ -50,60 +49,38 @@
       <div class=" offset-2 col-md-8">
         <div class="col-12">
           <div class="card">
-
-
-            <!--<div class="card-action">-->
-              <!---->
-            <!--</div>-->
-
             <div class="card-body">
 
               <h5>{{userVto.userName}}</h5>
               <hr>
               <h2 class="header-title">About Me</h2>
 
-              <div class="d-inline-block col-md-12">
-                <label for="full-name" class="col-form-label">Full Name: &nbsp; &nbsp; &nbsp; </label>
-                <label id="full-name" class="col-form-label">{{userVto.fullName}}</label>
-              </div>
-              <hr>
-              <div class="d-inline-block col-md-12">
-                <label for="birthDate" class="col-form-label">BirthDate: &nbsp; &nbsp; &nbsp; </label>
-                <label id="birthDate" class="col-form-label">{{userVto.birthDate}}</label>
+              <div class="d-inline-block col-6">
+                <label for="full-name" class="col-form-label font-weight-bold text-dark ">Full Name : &nbsp; &nbsp; &nbsp; </label>
+                <label id="full-name" class="col-form-label label label-info ml-1">{{userVto.fullName}}</label>
               </div>
 
-              <hr>
+              <div class="d-inline-block col-6">
+                <label for="birthDate" class="col-form-label font-weight-bold text-dark ">BirthDate : &nbsp; &nbsp; &nbsp; </label>
+                <label id="birthDate" class="col-form-label label label-info ml-1">{{userVto.birthDate}}</label>
+              </div>
 
-              <div class="d-inline-block col-md-12" colspan="2">
-                <label for="gender" class="col-form-label">Gender: &nbsp; &nbsp; &nbsp; </label>
-                <label id="gender" class="col-form-label">{{userVto.gender}}</label>
+              <div class="d-inline-block col-6" >
+                <label for="gender" class="col-form-label font-weight-bold text-dark ">Gender : &nbsp; &nbsp; &nbsp; </label>
+                <label id="gender" class="col-form-label label label-info ml-1">{{userVto.gender}}</label>
               </div>
-              <hr>
-              <div class="d-inline-block col-md-12">
-                <label for="e_mail" class="col-form-label">E_mail: &nbsp; &nbsp; &nbsp;</label>
 
-                <label id="e_mail" class="col-form-label"><a href="#">{{userVto.email}}</a></label>
+              <div class="d-inline-block col-6">
+                <label for="e_mail" class="col-form-label font-weight-bold text-dark ">E_mail : &nbsp; &nbsp; &nbsp;</label>
+                <label id="e_mail" class="col-form-label label label-info ml-1"><a href="#">{{userVto.email}}</a></label>
               </div>
-              <hr>
-              <div class="d-inline-block col-12">
-                <label for="phone" class="col-form-label">Phone: &nbsp; &nbsp; &nbsp; </label>
-                <label id="phone" class="col-form-label">{{userVto.phone}}</label>
+
+              <div class="d-inline-block col-6">
+                <label for="phone" class="col-form-label font-weight-bold text-dark">Phone : &nbsp; &nbsp; &nbsp; </label>
+                <label id="phone" class="col-form-label label label-info ml-1">{{userVto.phone}}</label>
               </div>
-              <!--<hr>-->
-              <!--<div class="d-inline-block col-12">-->
-                <!--<label for="college" class="col-form-label">College: &nbsp; &nbsp; &nbsp; </label>-->
-                <!--<label id="college" class="col-form-label">{{userData.college}}</label>-->
-              <!--</div>-->
+
             </div>
-
-            <!--<hr>-->
-
-            <!--<div class="card-action">-->
-              <!--<a [routerLink]="[replaceUserID(ROUTES.EDIT,userVto.id)]">-->
-                <!--<button class="btn  btn-primary btn-sm pull-right mr-2 mb-2"> Edit</button>-->
-              <!--</a>-->
-            <!--</div>-->
-
           </div>
         </div>
       </div>

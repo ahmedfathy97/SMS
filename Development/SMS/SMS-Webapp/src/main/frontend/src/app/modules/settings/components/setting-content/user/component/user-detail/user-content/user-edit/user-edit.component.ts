@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit {
   formData = this.formBuilder.group({
     firstName: ['', [Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
     lastName: ['',[ Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
-    birthDate: ['', Validators.required,Validators.pattern('^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$')],
+    birthDate: ['', [Validators.required,Validators.pattern('^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$')]],
     gender: ['', Validators.required],
     email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]],
     t_phone: ['', [Validators.required,Validators.maxLength(11)]],
