@@ -6,6 +6,7 @@ import {AngularFullRoutes, replaceCorID, replaceLecID} from "../../../../../../.
 import {LectureDataService} from "../../../../../shared/services/lecture-data.service";
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
 
 @Component({
   selector: 'app-course-lectures',
@@ -20,11 +21,13 @@ export class CourseLecturesComponent implements OnInit {
   replaceLecID = replaceLecID;
 
   corID: number ;
-  lectureList: LectureVto[];
+
 
   lectureID: number;
 
   currentDate: Date = new Date();
+  resultSet: CourseResultSet = new CourseResultSet();
+  pageNum:number=1;
 
   constructor(private corDataService: CourseDataService,
               private courseService: CourseService,
@@ -40,18 +43,23 @@ export class CourseLecturesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCourseLectures();
   }
 
   getCourseLectures(){
-    this.courseService.getCourseLectures(this.corID).subscribe(res => {
-      this.lectureList = res;
-      for(let item of this.lectureList)
+    this.courseService.getCourseLectures(this.corID,this.pageNum).subscribe(res => {
+      this.resultSet = res;
+      for(let item of this.resultSet.lectureList)
         item.lectureDate = new Date(item.lectureDate);
-      console.log(this.lectureList);
+      console.log(this.resultSet);
 
     }, err => {
       console.log(err);
     });
+  }
+  onPageChange(pageNum){
+    this.pageNum = pageNum;
+    this.getCourseLectures();
   }
 
 }

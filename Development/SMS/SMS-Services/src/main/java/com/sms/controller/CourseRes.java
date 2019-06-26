@@ -135,9 +135,9 @@ return 5;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade")
-    public List<StdDTO> getCourseGrades(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
-        List<StdDTO> list = this.gradeRepository.findCourseGrades(courseID, pageNum);
-        return list;
+    public CourseResultSet getCourseGrades(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
+
+        return  courseSer.findCourseGrades(courseID,pageNum);
     }
 
 
@@ -172,9 +172,9 @@ return 5;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")
-    public List<LectureVTO> getCourseLectures(@PathParam("courseID") int courseID) {
-        List<LectureVTO> lectureVTOList = courseSer.getCourseLectures(courseID);
-        return lectureVTOList;
+    public  CourseResultSet getCourseLectures(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
+
+        return courseSer.getCourseLectures(courseID,pageNum);
     }
 
 

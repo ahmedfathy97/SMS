@@ -6,8 +6,11 @@ import com.sms.model.course.rm.QuizVTORM;
 import com.sms.model.course.rm.StdDTORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -70,6 +73,21 @@ public class GradeRep {
 
         return this.jdbc.query(sql, new CourseGradesRM(), courseID);
 
+
+    }
+    public int findALLGradeCount(int corID){
+        String sql ="SELECT COUNT(*) AS record_count \n" +
+                "                FROM user_detail std\n" +
+                "                left join course_std cor\n" +
+                "                on std.user_id=cor.std_id\n" +
+                "                where cor_id = ?";
+        List<Integer> totalCount = this.jdbc.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        },corID);
+        return totalCount.get(0);
 
     }
 

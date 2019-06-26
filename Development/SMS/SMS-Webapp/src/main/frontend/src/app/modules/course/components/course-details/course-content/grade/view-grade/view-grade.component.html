@@ -55,7 +55,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let student of resultSet.studentList  | paginate: { id: 'viewGrade',
+            <tr *ngFor="let student of resultSet.studentLis  | paginate: { id: 'viewGrade',
                 itemsPerPage: 2,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
@@ -81,7 +81,7 @@
       <div class="row align-content-center">
         <pagination-controls class="pagination justify-content-center" id="viewGrade"
                              (pageChange)="onPageChange($event)"
-                             directionLinks="true" [autoHide]="true"
+                             directionLinks="true" [autoHide]="false"
                              previousLabel="" nextLabel="">
         </pagination-controls>
 

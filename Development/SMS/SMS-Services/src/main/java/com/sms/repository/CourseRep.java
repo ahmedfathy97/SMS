@@ -95,6 +95,19 @@ public class CourseRep {
         });
         return totalCount.get(0);
     }
+    public int findAllLectureCount(int corID){
+        String sql="SELECT COUNT(*) AS record_count \n" +
+                "                FROM lecture WHERE course_id = ?";
+        List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        }, corID);
+        return totalCount.get(0);
+
+
+    }
     public List<CourseVTO> findAllStudentCourse(int stdID,int pageNum){
         int pageSize = 2;
         String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
@@ -267,9 +280,13 @@ public class CourseRep {
     }
 
 
-    public List<LectureVTO> getCourseLectures(int courseID)
+    public List<LectureVTO> getCourseLectures(int courseID,int pageNum)
     {
-        String sql ="SELECT id ,title ,lecture_date FROM lecture WHERE course_id = ? ;" ;
+        int pageSize = 2;
+        String sql ="SELECT id ,title ,lecture_date FROM lecture WHERE course_id = ? " +
+                "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1)) ;
+
+
         return this.jdbcTemplate.query(sql ,new CourseLecturesVTORM() ,courseID) ;
     }
 

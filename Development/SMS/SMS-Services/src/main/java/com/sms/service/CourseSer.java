@@ -5,6 +5,7 @@ import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.CourseRep;
+import com.sms.repository.GradeRep;
 import com.sms.repository.QuizRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +18,14 @@ import java.util.List;
 public class CourseSer {
     private CourseRep courseRep ;
     private QuizRep quizRep ;
+    private GradeRep repository;
 
 
     @Autowired
-    public CourseSer(CourseRep courseRep , QuizRep quizRep) {
+    public CourseSer(CourseRep courseRep , QuizRep quizRep,GradeRep  repository) {
         this.courseRep = courseRep;
         this.quizRep = quizRep ;
+        this.repository = repository;
     }
 
 
@@ -59,10 +62,14 @@ public class CourseSer {
         return courseQuizesVTOList ;
     }
 
-    public List<LectureVTO> getCourseLectures(int courseID)
+    public CourseResultSet getCourseLectures(int courseID,int pageNum)
     {
-        List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID) ;
-        return lectureVTOList;
+        CourseResultSet resultSet = new CourseResultSet();
+        List<LectureVTO> lectureVTOList =courseRep.getCourseLectures(courseID,pageNum) ;
+        resultSet.setLectureList(lectureVTOList);
+        int count = courseRep.findAllLectureCount(courseID);
+        resultSet.setTotalRecords(count);
+        return resultSet;
     }
     public CourseResultSet findALLCourses(int pageNum){
         CourseResultSet resultSet = new CourseResultSet();
@@ -76,6 +83,16 @@ public class CourseSer {
 
         return resultSet;
     }
+    public  CourseResultSet findCourseGrades(int courseID ,int pageNum){
+        CourseResultSet resultSet = new CourseResultSet();
+        List<StdDTO> studentLis=repository.findCourseGrades(courseID,pageNum);
+        resultSet.setStudentLis(studentLis);
+        int count =repository.findALLGradeCount( courseID);
+        resultSet.setTotalRecords(count);
+        return resultSet;
+
+
+    }
     public CourseResultSet myCourses(UserVTO currentUser,int pageNum){
         List<CourseVTO> courseVTOList = new ArrayList<>();
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
@@ -85,6 +102,9 @@ public class CourseSer {
 
         CourseResultSet resultSet = new CourseResultSet();
         resultSet.setList(courseVTOList);
+
+        int count = courseRep.findALLCoursesCount();
+        resultSet.setTotalRecords(count);
         return resultSet;
 
 

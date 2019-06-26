@@ -30,7 +30,10 @@ export class ViewGradeComponent implements OnInit {
   // studentList: StdDTO[] = [];
       getCourseGrade(){
       this.courseService.getCourseGrades(this.corID,this.pageNum).subscribe(
-        res=>this.resultSet.studentList = res
+        res=>{
+          this.resultSet = res;
+          console.log(res);
+        }
       );
 //       if(this.studentList.length != 0){
 //        this.display=true;

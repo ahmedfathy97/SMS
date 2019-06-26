@@ -47,7 +47,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/grade",
+    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/"+courseID+"/grade",
       {params: queryParameter}
 
       );
@@ -142,9 +142,12 @@ export class CourseService {
   //   return this.httpClient.get<Announcement[]>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList") ;
   // }
 
-  getCourseLectures(courseID :number)
+  getCourseLectures(courseID :number,pageNum : number)
   {
-    return this.httpClient.get<LectureVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures");
+    let queryParameter: HttpParams = new HttpParams();
+
+    queryParameter = queryParameter.append('pageNum', pageNum.toString());
+    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures",{params: queryParameter});
   }
 }
 

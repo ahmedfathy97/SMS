@@ -16,8 +16,8 @@
       <div class="col-sm-6 clearfix">
         <div class="pull-right">
           <a class="btn btn-success btn-header"
-             *authorizeView="[AUTH_ACTIONS.ADD_LEC]"
-             [routerLink] ="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">
+             *authorizeAction="[AUTH_ACTIONS.ADD_LEC]"
+             [routerLink]="[replaceCorID(ROUTES.COR_CREATE_LECTURE, corID)]">
             <i class="fa fa-plus pr--10"></i> Add Lecture</a>
         </div>
       </div>
@@ -37,9 +37,12 @@
                   <td class="lec-title">Title</td>
                   <td class="lec-lectureDate">Date</td>
                 </tr>
-                <tr *ngFor="let lecture of lectureList , index as i" >
+                <tr *ngFor="let lecture of resultSet.lectureList | paginate: { id: 'courseLecture',
+                itemsPerPage: 2,
+                currentPage: pageNum,
+                totalItems: resultSet.totalRecords }; index as i;" >
                   <td class="lec-num">{{i +1}}</td>
-<!--                  <td class="lec-title">{{lecture.lectureTitle}}></td>-->
+
                   <td class="lec-title" *ngIf="currentDate >= lecture.lectureDate">
                     <a [routerLink] ="[replaceLecID(ROUTES.COR_LECTURE, corID ,lecture.lectureID)]">
                       {{lecture.lectureTitle}}</a>
@@ -53,7 +56,14 @@
               </table>
             </div>
           </div>
+          <div class="row align-content-center">
+            <pagination-controls class="pagination justify-content-center" id="courseLecture"
+                                 (pageChange)="onPageChange($event)"
+                                 directionLinks="true" [autoHide]="false"
+                                 previousLabel="" nextLabel="">
+            </pagination-controls>
 
+          </div>
 
         </div>
       </div>
