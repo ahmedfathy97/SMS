@@ -59,10 +59,11 @@
 
                   <div class="form-group d-inline-block col-6">
                     <label for="birthDate" class="col-form-label">BirthDate</label>
-                    <input class="form-control" type="number" id="birthDate" formControlName="birthDate"
+                    <input class="form-control" type="date" id="birthDate" formControlName="birthDate"
                            [ngClass]="{'is-invalid': edit.birthDate.dirty && edit.birthDate.errors != null}">
 
                     <div class="invalid-feedback" *ngIf="edit.birthDate.dirty && edit.birthDate.errors != null">
+                      <small *ngIf="edit.birthDate.errors?.required">BirthDate is mandatory</small>
                       <small *ngIf="edit.birthDate.errors?.pattern">Should be valid BirthDate</small>
                     </div>
                   </div>
@@ -78,18 +79,9 @@
                     </div>
                   </div>
 
-                  <!--<div class="form-group d-inline-block col-6">-->
-                    <!--<label for="phone" class="col-form-label">Phone</label>-->
-                    <!--<input class="form-control" type="number" id="phone" formControlName="t_phone"-->
-                           <!--[ngClass]="{'is-invalid': edit.t_phone.dirty && edit.t_phone.errors != null}">-->
-
-                    <!--<div class="invalid-feedback" *ngIf="edit.t_phone.dirty && edit.t_phone.errors != null">-->
-                      <!--<small *ngIf="edit.t_phone.errors?.maxlength">Phone allow max 11 Number</small>-->
-                    <!--</div>-->
-                  <!--</div>-->
                   <div class="form-group d-inline-block col-6">
                     <label for="phone" class="col-form-label">Phone</label>
-                    <input class="form-control" type="number" id="phone" formControlName="t_phone"
+                    <input class="form-control" type="text" id="phone" formControlName="t_phone"
                            [ngClass]="{'is-invalid': edit.t_phone.dirty && edit.t_phone.errors != null}">
 
                     <div class="invalid-feedback" *ngIf="edit.t_phone.dirty && edit.t_phone.errors != null">
