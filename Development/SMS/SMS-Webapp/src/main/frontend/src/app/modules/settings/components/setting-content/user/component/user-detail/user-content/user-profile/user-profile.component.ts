@@ -5,6 +5,7 @@ import {UserService} from "../../../../../../../shared/services/user.service";
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infrastructure/data/full-routes.enum";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
+import {LocalStorageService} from "../../../../../../../../../infrastructure/services/local-storage.service";
 
 // class ImageSnippet {
 //
@@ -29,28 +30,23 @@ export class UserProfileComponent implements OnInit {
    private userVto: UserVtoData=new  UserVtoData();
 
   constructor(private userService:UserService,
+              private localStorageService: LocalStorageService,
               private userDataService:UserDataService,
               private route:ActivatedRoute,
              /* private editService:EditData */) {
-    // this.route.paramMap.subscribe(params => {
-    //   this.userID = +params.get("userID");
-    //
-    //
-    //   // var userID =+this.userID ;
-    //   this.userService.findByID(this.userID).subscribe(
-    //     res=> { this.userData=res ;});
-    //
-    // })
-    this.userDataService.userID.subscribe(
-      data =>{
-        this.userID = data;
-        console.log(data);
-        this.userService.findByID(this.userID).subscribe(
+    this.userService.findByID(this.localStorageService.getCurrentUser().userID).subscribe(
 
-          res=> { this.userVto= res ;});
-      }
-    );
-    this.userDataService.requestUserID.next(true);
+      res=> { this.userVto= res ;});
+    // this.userDataService.userID.subscribe(
+    //   data =>{
+    //     this.userID = data;
+    //     console.log(data);
+    //     this.userService.findByID(this.userID).subscribe(
+    //
+    //       res=> { this.userVto= res ;});
+    //   }
+    // );
+    // this.userDataService.requestUserID.next(true);
   }
 
   ngOnInit(){
