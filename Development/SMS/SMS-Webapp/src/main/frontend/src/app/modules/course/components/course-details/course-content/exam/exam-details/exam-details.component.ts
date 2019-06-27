@@ -20,22 +20,21 @@ export class ExamDetailsComponent implements OnInit {
   AUTH_VIEWS: typeof AuthViews = AuthViews;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
-  examId: number;
+  examID: number;
   examState:number;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
                private route: ActivatedRoute ,private examService :ExamServices) {
     this.route.paramMap.subscribe(params => {
-      this.examId = +params.get("examID");
+      this.examID = +params.get("examID");
     })
     this.getExamState() ;
   }
 
   getExamState()
   {
-    this.examService.getExamState(this.examId).subscribe(res => {
+    this.examService.getExamState(this.examID).subscribe(res => {
       this.examState = res ;
-      this.alert = new SuccessAlert();
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);

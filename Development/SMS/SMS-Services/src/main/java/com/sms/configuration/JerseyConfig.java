@@ -29,6 +29,7 @@ public class JerseyConfig extends ResourceConfig {
         register(QuizRes.class);
         register(SecurityRes.class);
         register(UserRes.class);
+        register(ExamRes.class);
 //        packages("com.sms.controller");
 
     }

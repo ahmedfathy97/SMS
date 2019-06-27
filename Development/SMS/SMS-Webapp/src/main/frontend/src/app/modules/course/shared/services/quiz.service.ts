@@ -32,7 +32,7 @@ export class QuizService {
 
   submitQuizAnswersForStudent( quizID :number , studentAnswerDTOList : StudentAnswerDto[]  )
   {
-    return this.httpClient.post(this.BASE_URL + "/quiz/"  +"/" +quizID +"/answer" ,studentAnswerDTOList) ;
+    return this.httpClient.post(this.BASE_URL + "/quiz/" +quizID +"/answer" ,studentAnswerDTOList) ;
   }
   getQuizQuestions(quizID : number)
   {

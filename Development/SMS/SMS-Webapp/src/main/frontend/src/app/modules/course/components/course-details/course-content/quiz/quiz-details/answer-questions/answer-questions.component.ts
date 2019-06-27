@@ -74,10 +74,10 @@ export class AnswerQuestionsComponent implements OnInit {
   onSubmitAnswers()
   {
     let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
-    for(let question of this.quizQuestions)
+    for(let i=0; i<this.quizQuestions.length; i++)
     {
-      studentAnswer.questionID =question.id ;
-      studentAnswer.studentAnswer= this.formData.get('studentAnswer').value ;
+      studentAnswer.questionID =this.quizQuestions[i].id ;
+      studentAnswer.studentAnswer= this.questions.at(i).get('studentAnswer').value;
       this.studentAnswers.push(studentAnswer);
     }
 

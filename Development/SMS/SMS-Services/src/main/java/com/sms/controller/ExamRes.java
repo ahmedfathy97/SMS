@@ -9,7 +9,6 @@ import com.sms.model.course.quiz.*;
 import com.sms.model.user.UserVTO;
 import com.sms.service.ExamSer;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
@@ -49,8 +48,6 @@ public class ExamRes {
 
 
 
-
-
     @POST
     @Path("/{examID}/answer")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -69,7 +66,6 @@ public class ExamRes {
     public void closeExam (@PathParam("examID")int examID )
     {
         examSer.closeExam(examID);
-
     }
 
 
@@ -97,7 +93,8 @@ public class ExamRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{examID}/state")
     @Authenticated(views = {AuthViews.EXAM_DETAILS})
-    public int examState(@Context ContainerRequestContext request , @PathParam("examID")int examID)
+    public int examState(@Context ContainerRequestContext request ,
+                         @PathParam("examID")int examID)
     {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         return examSer.examState( currentUser ,examID) ;

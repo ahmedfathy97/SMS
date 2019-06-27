@@ -61,11 +61,11 @@
 
               <div *ngIf="quizQuestions[i].questionTypeID ==2">
                 <div class="custom-control custom-radio custom-control-inline " >
-                  <input type="radio" id="{{'trueAnswer_'+i}}" name="studentAnswer" class="custom-control-input"  formControlName="studentAnswer">
+                  <input type="radio" value="1" id="{{'trueAnswer_'+i}}"  class="custom-control-input"  formControlName="studentAnswer">
                   <label class="custom-control-label" for="{{'trueAnswer_'+i}}">True</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline ml-5">
-                  <input type="radio" id="{{'falseAnswer_'+i}}"  name="studentAnswer" class="custom-control-input" formControlName="studentAnswer">
+                  <input type="radio" value="0" id="{{'falseAnswer_'+i}}"  class="custom-control-input" formControlName="studentAnswer">
                   <label class="custom-control-label" for="{{'falseAnswer_'+i}}">False</label>
                 </div>
                 <hr>

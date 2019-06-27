@@ -143,8 +143,7 @@ const routes: Routes = [
                       {path: '', component: ViewGradeComponent},
                       {path: 'new', component: CreateGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
                         canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {path: 'quizes', component: QuizGradeComponent,data: {viewID: AuthViews.ADD_GRADE},
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
+                      {path: 'quizes', component: QuizGradeComponent},
 
                       // {path:'edit/:stdID', component:CreateGradeComponent}
                     ]
