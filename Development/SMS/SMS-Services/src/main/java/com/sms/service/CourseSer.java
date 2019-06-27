@@ -71,6 +71,7 @@ public class CourseSer {
         resultSet.setTotalRecords(count);
         return resultSet;
     }
+
     public CourseResultSet findALLCourses(int pageNum){
         CourseResultSet resultSet = new CourseResultSet();
 
@@ -83,9 +84,16 @@ public class CourseSer {
 
         return resultSet;
     }
-    public  CourseResultSet findCourseGrades(int courseID ,int pageNum){
+
+    public  CourseResultSet findCourseGrades(UserVTO currentUser, int courseID, int pageNum){
         CourseResultSet resultSet = new CourseResultSet();
-        List<StdDTO> studentLis=repository.findCourseGrades(courseID,pageNum);
+        List<StdDTO> studentLis = new ArrayList<>();
+
+        if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
+            studentLis = repository.findCourseGrades(courseID,-1, pageNum);
+        else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
+            studentLis = repository.findCourseGrades(courseID, currentUser.getId(), pageNum);
+
         resultSet.setStudentLis(studentLis);
         int count =repository.findALLGradeCount( courseID);
         resultSet.setTotalRecords(count);
@@ -95,6 +103,7 @@ public class CourseSer {
     }
     public CourseResultSet myCourses(UserVTO currentUser,int pageNum){
         List<CourseVTO> courseVTOList = new ArrayList<>();
+
         if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
             courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId(),pageNum);
         else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))

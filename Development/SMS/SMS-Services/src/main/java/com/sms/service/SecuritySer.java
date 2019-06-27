@@ -30,7 +30,7 @@ public class SecuritySer {
 
 
         if(user == null)
-            throw new Exception("USR-0001");
+            throw new Exception("User isnot found in the system");
         else {
             String hashedPassword = this.securityManagerSer.dm5Hash(data.getPassword());
             if(!user.getPassword().equals(hashedPassword))

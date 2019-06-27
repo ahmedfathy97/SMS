@@ -15,6 +15,8 @@ import com.sms.service.AttendanceSer;
 import com.sms.repository.GradeRep;
 import com.sms.service.CourseSer;
 import com.sms.service.GradeSer;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -22,6 +24,10 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Path("/course")
@@ -135,9 +141,11 @@ return 5;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade")
-    public CourseResultSet getCourseGrades(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
-
-        return  courseSer.findCourseGrades(courseID,pageNum);
+    @Authenticated()
+    public CourseResultSet getCourseGrades(@Context ContainerRequestContext request,
+            @PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
+        return  courseSer.findCourseGrades(currentUser, courseID,pageNum);
     }
 
 
@@ -265,4 +273,39 @@ return 5;
 
 
 
+    @Path("/{corID}/img")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadCourseImg(@PathParam("corID") int corID,
+                                    @QueryParam("name") String name,
+                                    @QueryParam("type") String type,
+                                    @QueryParam("ext") String ext,
+                                    @FormDataParam("file") InputStream fileContent,
+                                    @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
+
+//        com.sms.model.attachment.File file = new com.sms.model.attachment.File();
+//        file.setName(name);
+//        file.setContentType(type);
+
+        java.nio.file.Path path = Paths.get("../courses/" + corID + "/courseImg/" + name);
+        Files.copy(fileContent, path);
+
+        this.courseRep.updateCorImgByID(corID, name);
+
+        return Response.ok().build();
+    }
+
+    @Path("/{corID}/img")
+    @GET
+    @Produces("image/png")
+    public Response getCourseImg(@PathParam("corID") int corID) throws FileNotFoundException {
+        String imgPath = this.courseRep.findCorImgByID(corID);
+
+        if(imgPath != null){
+            File file = new File("../courses/" + corID + "/courseImg/" + imgPath);
+            return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
+        } else
+            return Response.status(404).entity("Course not found").build();
+
+    }
 }

@@ -57,23 +57,20 @@ public class GradeRep {
 
     }
 
-    public List<StdDTO> findCourseGrades(int courseID, int pageNum) {
+    public List<StdDTO> findCourseGrades(int courseID, int stdID, int pageNum) {
         int pageSize = 2;
-        String sql = "SELECT std.first_name,std.last_name,std.user_id,\n" +
-                "                               cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
-                "                               from user_detail std\n" +
-                "                               left join course_std cor\n" +
-                "                               on std.user_id=cor.std_id\n" +
-                "                               where cor_id = ?\n" +
-                "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
 
-//                "                                where cor_id = ? \n" +
-//                "                                LIMIT "+pageSize+" offset "+ (pageSize* (pageNum-1));
+        String sql =
+            "SELECT std.first_name,std.last_name,std.user_id, " +
+                "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd " +
+            " from user_detail std " +
+                " left join course_std cor on std.user_id=cor.std_id\n" +
+            " where cor_id = ? "
+                    + ((stdID != -1 ) ? "AND cor.std_id = ?" : "") +
+            " LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
 
-
-        return this.jdbc.query(sql, new CourseGradesRM(), courseID);
-
-
+        return ((stdID != -1 ) ? this.jdbc.query(sql, new CourseGradesRM(), courseID, stdID) :
+                this.jdbc.query(sql, new CourseGradesRM(), courseID));
     }
     public int findALLGradeCount(int corID){
         String sql ="SELECT COUNT(*) AS record_count \n" +

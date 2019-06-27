@@ -351,4 +351,22 @@ public class CourseRep {
     }
 
 
+    public String findCorImgByID(int corID) {
+        String sql ="SELECT image_path from course where id = ? ";
+
+        List<String> result = this.jdbcTemplate.query(sql , new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getString("image_path");
+            }
+        },corID);
+
+        return result.size() != 0 ? result.get(0) : null;
+    }
+
+    public void updateCorImgByID(int corID, String name) {
+        String sql = "UPDATE course SET image_path = ? WHERE id = ?";
+
+        this.jdbcTemplate.update(sql, name, corID);
+    }
 }
