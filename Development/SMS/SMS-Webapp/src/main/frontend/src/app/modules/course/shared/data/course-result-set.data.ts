@@ -9,5 +9,6 @@ export class CourseResultSet {
   studentLis:StdDTO[]=[];
   totalRecords: number = 0;
   lectureList: LectureVto[];
+  listStudent: CourseVto[] = [];
 
 }

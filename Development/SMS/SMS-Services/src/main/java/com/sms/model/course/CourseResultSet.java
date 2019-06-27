@@ -9,6 +9,15 @@ public class CourseResultSet implements Serializable {
     private List<LectureVTO> lectureList;
     private List<StdDTO> studentLis;
     private int totalRecords;
+    private List<CourseVTO> listStudent;
+
+    public List<CourseVTO> getListStudent() {
+        return listStudent;
+    }
+
+    public void setListStudent(List<CourseVTO> listStudent) {
+        this.listStudent = listStudent;
+    }
 
     public List<StdDTO> getStudentLis() {
         return studentLis;

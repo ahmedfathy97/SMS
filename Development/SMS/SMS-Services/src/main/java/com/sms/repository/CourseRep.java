@@ -95,6 +95,21 @@ public class CourseRep {
         });
         return totalCount.get(0);
     }
+    public int findMyCoursesCount() {
+        String sql ="SELECT COUNT(*) AS record_count \n" +
+                "                FROM course_std  std \n" +
+                "                LEFT JOIN course cor on std.cor_id = cor.id\n" +
+                "                LEFT JOIN user_detail a on cor.instructor_id = a.user_id \n" +
+                "                where std_id = ?";
+
+        List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        });
+        return totalCount.get(0);
+    }
 
     public int findALLAnnouncementCount() {
         String sql = "SELECT COUNT(*) AS record_count \n" +

@@ -103,7 +103,7 @@ public class CourseSer {
         CourseResultSet resultSet = new CourseResultSet();
         resultSet.setList(courseVTOList);
 
-        int count = courseRep.findALLCoursesCount();
+        int count = courseRep.findMyCoursesCount();
         resultSet.setTotalRecords(count);
 
         return resultSet;
