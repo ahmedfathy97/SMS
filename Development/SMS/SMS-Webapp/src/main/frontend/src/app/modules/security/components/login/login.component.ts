@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
 import {SecurityService} from "../../shared/security.service";
 import {LoginDTO} from "../../shared/data/login-dto.data";
 import {AuthUserVTO} from "../../shared/data/auth-user-vto.data";
 import {LocalStorageService} from "../../../../infrastructure/services/local-storage.service";
+import {AlertInput} from "../../../../infrastructure/components/alerts/alert-input";
+import {FailureAlert} from "../../../../infrastructure/components/alerts/failure-alert.data";
+import {ConfigParam} from "../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'login',
@@ -15,10 +18,12 @@ import {LocalStorageService} from "../../../../infrastructure/services/local-sto
 export class LoginComponent implements OnInit {
 
   formData: FormGroup = this.formBuilder.group({
-    username: [null],
-    password: [null]
+    username: [null , [Validators.required,Validators.minLength(8)]],
+    password: [null , Validators.required ]
   });
 
+  get login() { return this.formData.controls; }
+  alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private securityService: SecurityService,
@@ -27,22 +32,25 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin(){
-    let data: LoginDTO = new LoginDTO();
-    data.username = this.formData.get('username').value;
-    data.password = this.formData.get('password').value;
+  onLogin() {
+    ConfigParam.markControlsDirty(this.formData);
+    if (this.formData.valid) {
+      let data: LoginDTO = new LoginDTO();
+      data.username = this.formData.get('username').value;
+      data.password = this.formData.get('password').value;
+      this.securityService.login(data).subscribe(
+        res => {
+          // let authUser: AuthUserVTO = new AuthUserVTO();
+          // authUser = res;
+          console.log('Login Successfully');
+          this.router.navigate(['/courses']);
 
-    this.securityService.login(data).subscribe(
-      res=> {
-        // let authUser: AuthUserVTO = new AuthUserVTO();
-        // authUser = res;
-        console.log('Login Successfully');
-        this.router.navigate(['/courses']);
 
+          this.localStorageService.setAuthUser(res);
+        },
 
-        this.localStorageService.setAuthUser(res);
-      },
-      err=>console.log(err)
-    );
+        err => {console.log(err);
+        });
+    }
   }
 }

@@ -26,7 +26,9 @@ export class MyCourseComponent implements OnInit {
   onSearch(){
     this.courseService.findAllMyCourses(this.pageNum).subscribe(
       res=>this.resultSet = res
+
     );
+
   }
   onPageChange(pageNum){
     this.pageNum = pageNum;

@@ -3,10 +3,11 @@
     <div class="row align-items-center content-header">
       <div class="col-sm-6">
         <div class="breadcrumbs-area clearfix">
-          <h4 class="page-title pull-left">New Announcement</h4>
+          <h4 class="page-title pull-left">Create Announcement</h4>
         </div>
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
+            <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
             <li><a [routerLink]="ROUTES.COURSE_LIST">Course</a></li>
             <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT, corID)]">Announcement</a></li>
             <li><span>New</span></li>

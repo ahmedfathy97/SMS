@@ -28,6 +28,7 @@ public class SecuritySer {
     public AuthUserVTO login(LoginDTO data) throws Exception{
         UserVTO user = this.securityRep.selectByUserName(data.getUsername());
 
+
         if(user == null)
             throw new Exception("USR-0001");
         else {

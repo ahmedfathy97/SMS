@@ -1,4 +1,3 @@
-
 <!-- login area start -->
 <div class="login-area login-s2">
   <div class="container">
@@ -10,12 +9,23 @@
         </div>
         <div class="login-form-body" [formGroup]="formData">
           <div class="form-gp">
-            <input type="text" formControlName="username">
+            <input type="text" formControlName="username" placeholder="Enter Your Name" [ngClass]="{'is-invalid': login.username.dirty &&
+                        login.username.errors != null}">
             <i class="ti-user"></i>
+            <div  class="invalid-feedback" *ngIf="login.username.dirty && login.username.errors != null">
+              <small *ngIf="login.username.errors?.required">You Must Enter Username</small>
+            </div>
           </div>
           <div class="form-gp">
-            <input type="password" formControlName="password">
+            <input type="password" formControlName="password" placeholder="Enter Your password" [ngClass]="{'is-invalid': login.password.dirty &&
+                        login.password.errors != null}">
             <i class="ti-lock"></i>
+
+            <div  class="invalid-feedback" *ngIf="login.password.dirty && login.password.errors != null">
+              <small *ngIf="login.password.errors?.required">this field is mandatory</small>
+              <small *ngIf="login.password.errors?.minlength">this field not allow lower than 8 Char</small>
+            </div>
+
           </div>
           <!--<div class="row mb-4 rmber-area">-->
             <!--<div class="col-6">-->

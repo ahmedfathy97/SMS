@@ -101,11 +101,11 @@ public class CourseSer {
             courseVTOList =courseRep.findAllStudentCourse(currentUser.getId(),pageNum);
 
         CourseResultSet resultSet = new CourseResultSet();
-        resultSet.setList(courseVTOList);
 
+
+        resultSet.setListStudent(courseVTOList);
         int count = courseRep.findMyCoursesCount();
         resultSet.setTotalRecords(count);
-
         return resultSet;
 
 
