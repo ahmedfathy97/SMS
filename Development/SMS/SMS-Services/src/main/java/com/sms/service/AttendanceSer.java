@@ -2,6 +2,7 @@ package com.sms.service;
 
 
 import com.sms.model.AttendanceDTO;
+import com.sms.model.authorization.AuthRoles;
 import com.sms.model.course.StdDTO;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.AttendanceRep;
@@ -62,10 +63,16 @@ public class AttendanceSer {
     }
 
 
-    public List<AttendanceDTO> getCourseAttendance(int courseID) {
-
+    public List<AttendanceDTO> getCourseAttendance(UserVTO currentUser, int courseID) {
         List<StdDTO> stdList = this.rep.findAllCourseStudents(courseID);
-        List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
+        List<StdDTO> stdAttendance = new ArrayList<>();
+        if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
+            stdAttendance = repository.viewAttendSheetInstructor(courseID,-1);
+        else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
+            stdAttendance = repository.viewAttendSheetInstructor(courseID, currentUser.getId());
+
+
+//        List<StdDTO> stdAttendance = this.repository.viewAttendSheetInstructor(courseID);
         List<AttendanceDTO> attendanceDTOList = this.repository.numberOfAttStudent(courseID);
 
 //        for (StdDTO i : stdAttendance) {

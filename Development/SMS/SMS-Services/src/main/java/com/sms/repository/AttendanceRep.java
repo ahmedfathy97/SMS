@@ -59,13 +59,14 @@ public class AttendanceRep {
         this.jdbc.update(sql, attendanceDate, data.getIsAttend() ? "1" : "0", courseID, data.getId());
     }
 
-    public List<StdDTO> viewAttendSheetInstructor(int corID) {
+    public List<StdDTO> viewAttendSheetInstructor(int corID ,  int stdID) {
         String sql = "select first_name, last_name , att.created_on , is_attended" +
                 " from course_std c_std left join user_detail u_std on c_std.std_id = u_std.user_id" +
                 " left join attendance att on c_std.cor_id = att.cor_id" +
                 " left join cor_std_att c_att on att.id = c_att.att_id" +
                 " and u_std.user_id = c_att.std_id" +
                 " where c_std.cor_id = ?" +
+                ((stdID != -1 ) ? "AND c_std.std_id = ?" : "") +
                 " order by att.created_on  ";
         return this.jdbc.query(sql, new AttendanceDTORM(), corID);
     }

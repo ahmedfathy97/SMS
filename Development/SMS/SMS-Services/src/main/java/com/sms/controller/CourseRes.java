@@ -220,9 +220,10 @@ return 5;
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/attendance")
     @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
-    public List<AttendanceDTO> getCourseAttendance(@PathParam("courseID") int courseID) {
+    public List<AttendanceDTO> getCourseAttendance(@Context ContainerRequestContext request,@PathParam("courseID") int courseID) {
+        UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         System.out.print("Sucessfully");
-        List<AttendanceDTO> list = this.attendance.getCourseAttendance(courseID);
+        List<AttendanceDTO> list = this.attendance.getCourseAttendance(currentUser,courseID);
         return list;
     }
 
