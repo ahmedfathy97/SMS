@@ -1,0 +1,10 @@
+
+.invalid-feedback{
+  display: inline !important;
+  font-size: large;
+}
+
+.is-invalid {
+  border-color: red;
+  border-width: thick;
+}

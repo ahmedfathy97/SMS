@@ -18,11 +18,11 @@ import {ConfigParam} from "../../../../infrastructure/common/config-param";
 export class LoginComponent implements OnInit {
 
   formData: FormGroup = this.formBuilder.group({
-    username: [null , [Validators.required,Validators.minLength(8)]],
+    username: [null , [Validators.required]],
     password: [null , Validators.required ]
   });
 
-  get login() { return this.formData.controls; }
+  get loginForm() { return this.formData.controls; }
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
               private router: Router,
