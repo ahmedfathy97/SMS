@@ -30,11 +30,11 @@ public class SecuritySer {
 
 
         if(user == null)
-            throw new Exception("User isnot found in the system");
+            throw new Exception("This User Not Found In The System");
         else {
             String hashedPassword = this.securityManagerSer.dm5Hash(data.getPassword());
             if(!user.getPassword().equals(hashedPassword))
-                throw new Exception("USR-0002");
+                throw new Exception("Wrong Password ");
             else{
 
                 String token = this.securityManagerSer.generateToken(user.getUsername(), user.getPassword(), new Date().getTime());

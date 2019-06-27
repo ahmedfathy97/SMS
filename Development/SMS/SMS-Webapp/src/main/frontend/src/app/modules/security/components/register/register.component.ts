@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SecurityService} from "../../shared/security.service";
 import {RegisterDTO} from "../../shared/data/register-dto.data";
 import {RolesVto} from "../../shared/data/roles-Vto";
+import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
+import {ConfigParam} from "../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'register',
@@ -11,16 +13,18 @@ import {RolesVto} from "../../shared/data/roles-Vto";
   providers: [FormBuilder, SecurityService]
 })
 export class RegisterComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
    roleList : RolesVto[] ;
   formData: FormGroup = this.formBuilder.group({
-    firstName: [null],
-    lastName: [null],
-    username: [null],
-    password: [null],
-    confirmPassword: [null],
-    email: [null] ,
-    roleType :[null]
+    firstName: [null , [Validators.required ,Validators.maxLength(15),Validators.minLength(3)] ],
+    lastName: [null , [Validators.required ,Validators.maxLength(15),Validators.minLength(3)] ],
+    username: [null , [Validators.required,Validators.maxLength(25)]],
+    password: [null , [Validators.required ,Validators.minLength(8)]],
+    confirmPassword: [null , [Validators.required ,Validators.minLength(8)]],
+    email: [null,[Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]] ,
+    roleType :[null,Validators.required]
   });
+  get regisretForm() { return this.formData.controls; }
 
   constructor(private formBuilder: FormBuilder,
               private securityService: SecurityService) { }
@@ -34,18 +38,25 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    let data: RegisterDTO = new RegisterDTO();
-    data.roleID = this.formData.get('roleType').value
-    data.firstName = this.formData.get('firstName').value;
-    data.lastName = this.formData.get('lastName').value;
-    data.username = this.formData.get('username').value;
-    data.password = this.formData.get('password').value;
-    data.email = this.formData.get('email').value;
+    ConfigParam.markControlsDirty(this.formData);
 
-    this.securityService.register(data).subscribe(
-      res => {},
-      err => {console.log(err);}
-    )
+    if(this.formData.valid) {
+      let data: RegisterDTO = new RegisterDTO();
+      data.roleID = this.formData.get('roleType').value
+      data.firstName = this.formData.get('firstName').value;
+      data.lastName = this.formData.get('lastName').value;
+      data.username = this.formData.get('username').value;
+      data.password = this.formData.get('password').value;
+      data.email = this.formData.get('email').value;
+
+      this.securityService.register(data).subscribe(
+        res => {
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
 
 

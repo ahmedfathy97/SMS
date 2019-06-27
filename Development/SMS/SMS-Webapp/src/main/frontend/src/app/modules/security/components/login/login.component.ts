@@ -8,6 +8,8 @@ import {LocalStorageService} from "../../../../infrastructure/services/local-sto
 import {AlertInput} from "../../../../infrastructure/components/alerts/alert-input";
 import {FailureAlert} from "../../../../infrastructure/components/alerts/failure-alert.data";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
+import {SuccessAlert} from "../../../../infrastructure/components/alerts/success-alert.data";
+import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
 
 @Component({
   selector: 'login',
@@ -16,9 +18,10 @@ import {ConfigParam} from "../../../../infrastructure/common/config-param";
   providers: [FormBuilder, SecurityService]
 })
 export class LoginComponent implements OnInit {
+  ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
 
   formData: FormGroup = this.formBuilder.group({
-    username: [null , [Validators.required]],
+    username: [null , Validators.required],
     password: [null , Validators.required ]
   });
 
@@ -43,13 +46,13 @@ export class LoginComponent implements OnInit {
           // let authUser: AuthUserVTO = new AuthUserVTO();
           // authUser = res;
           console.log('Login Successfully');
+          this.alert = new SuccessAlert();
           this.router.navigate(['/courses']);
-
-
           this.localStorageService.setAuthUser(res);
         },
 
         err => {console.log(err);
+          this.alert = new FailureAlert(err);
         });
     }
   }

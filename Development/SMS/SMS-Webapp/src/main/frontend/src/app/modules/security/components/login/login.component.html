@@ -23,7 +23,6 @@
 
             <div  class="invalid-feedback" *ngIf="loginForm.password.dirty && loginForm.password.errors != null">
               <small *ngIf="loginForm.password.errors?.required">this field is mandatory</small>
-              <small *ngIf="loginForm.password.errors?.minlength">this field not allow lower than 8 Char</small>
             </div>
 
           </div>
@@ -42,7 +41,7 @@
             <button id="form_submit" type="submit" (click)="onLogin()">Submit <i class="ti-arrow-right"></i></button>
           </div>
           <div class="form-footer text-center mt-5">
-            <p class="text-muted">Don't have an account? <a href="#">Sign up</a></p>
+            <p class="text-muted">Don't have an account? <a [routerLink]="ROUTES.REGISTER">Sign up</a></p>
           </div>
         </div>
       </form>
