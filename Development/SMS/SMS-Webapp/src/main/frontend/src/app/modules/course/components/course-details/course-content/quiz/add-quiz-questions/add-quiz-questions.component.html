@@ -29,27 +29,32 @@
             <form [formGroup]="formData">
               <div class="row">
                 <div class="col-4">
-                  <label for="quesiontype">Select Question Type</label>
+                  <label for="quesiontype">Select Question Type*</label>
+
                 </div>
                 <div class="col-4 ml-lg-5">
-                  <label for="questionGrade" class="col-form-label">Question Grade:</label>
+                  <label for="questionGrade" class="col-form-label" >Question Grade:*</label>
                 </div>
               </div>
                 <div class="row">
                 <div class="col-4 ">
                   <div class="form-group">
-                    <select class="form-control" id="quesiontype" formControlName="questiontype"  (ngModelChange)="onclickoption($event)">
+                    <select class="form-control" id="quesiontype" formControlName="questiontype" (ngModelChange)="onclickoption($event)"
+                            >
                       <option *ngFor="let item of questionTypeList" [ngValue]="item.id" >{{item.labelEN}}</option>
                     </select>
+                    <small *ngIf="form.questiontype.errors?.required">Question type is required</small>
                   </div>
                 </div>
                 <div class="col-4 ml-lg-5">
                   <div class="form-group">
                     <input class="form-control" type="number" id="questionGrade" formControlName="questionGrade">
+                    <small *ngIf="form.questionGrade.errors?.required">Question grade is required</small>
                   </div>
                 </div>
                   <div class="col-2">
-                    <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()"> Add question </button>
+                    <button class="btn btn-primary" style="margin-left: 40%" (click)="onclickAddQuestion()" [disabled]="form.questionGrade.errors?.required ==true || form.question.errors?.required
+                    ||form.questiontype.errors?.required ==true"> Add question </button>
                   </div>
               </div>
               <div class="row">
@@ -58,8 +63,10 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Question:</span>
                     </div>
-                    <textarea rows="4" class="form-control" aria-label="Question:" id="question" formControlName="question"></textarea>
+                    <textarea rows="4" class="form-control" aria-label="Question:" id="question" formControlName="question"
+                              [ngClass]="{'is-invalid': form.question.dirty && form.question.errors != null}"></textarea>
                   </div>
+                  <small *ngIf="form.question.errors?.required">Question is required</small>
                 </div>
               </div>
 
@@ -79,7 +86,6 @@
 
               <div class="form-group" *ngIf="mcqIsSelected">
                 <label class="mt-2">model answer:</label>
-                <small *ngIf="formData.get('modelAnswer').hasError('required')">model answer is required</small>
                 <br>
 
                 <label class="custom-control-label">choise1</label>

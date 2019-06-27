@@ -81,7 +81,6 @@ export class AnswerQuestionsComponent implements OnInit {
       this.studentAnswers.push(studentAnswer);
     }
 
-
     this.quizService.submitQuizAnswersForStudent(this.quizID,this.studentAnswers).subscribe(res => {
       console.log("Success");
       this.alert = new SuccessAlert();

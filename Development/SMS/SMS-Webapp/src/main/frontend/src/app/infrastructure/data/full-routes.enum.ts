@@ -19,7 +19,7 @@ export enum AngularFullRoutes {
   COR_NEW_Attendance = "/course/${corID}/attendance/new",
   COR_VIEW_Attendance = "/course/${corID}/attendance",
   COR_CREATE_LECTURE = "/course/${corID}/lecture/new",
-  COR_VIEW_LECTURES = "/course/${corID}/lectures",
+  COR_VIEW_LECTURES = "/course/${corID}/lecture",
   COR_LECTURE = "/course/${corID}/lecture/${lectureID}",
   COR_CREATE = "/course/new",
   COR_LECTURE_MATERIALS = "/course/${corID}/lecture/${lectureID}/upload",
@@ -27,7 +27,7 @@ export enum AngularFullRoutes {
   FACULTY_LIST = "/faculties",
   SETTINGS = "/settings",
   SETTING_USER_LIST ="/settings/users",
-  USER_PROFILE="/profile",
+  USER_PROFILE="/user/${userID}/profile",
   EDIT="/user/${userID}/edit",
   COURSE_INFORMATION="/course/${corID}/information"
 }

@@ -4,7 +4,7 @@
     <a [routerLink] = "[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Course Information</span></a>
   </li>
   <li>
-    <a [routerLink] = "['/course',corID,'lecture']"><i ></i><span>Lectures </span></a>
+    <a [routerLink] = "[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"><i ></i><span>Lectures </span></a>
   </li>
   <li>
     <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]"><i ></i><span>Quizes </span></a>

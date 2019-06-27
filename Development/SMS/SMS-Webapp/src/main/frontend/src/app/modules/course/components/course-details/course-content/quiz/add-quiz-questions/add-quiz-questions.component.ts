@@ -75,16 +75,16 @@ export class AddQuizQuestionsComponent implements OnInit {
 
 
   formData: FormGroup = this.formBuilder.group({
-    questiontype: null,
-    question: null,
-    modelAnswer: null,
-    questionGrade: null,
+    questiontype: [null, [Validators.required]],
+    question: [null, [Validators.required]],
+    modelAnswer: [null, [Validators.required]],
+    questionGrade: [null, [Validators.required]],
     answer1: null,
     answer2: null,
     answer3: null,
     answer4: null
   });
-
+  get form() { return this.formData.controls; }
 
   onclickAddQuestion() {
     let questionData: QuestionDto = new QuestionDto()

@@ -141,7 +141,7 @@ CREATE TABLE course (
   duration      INT         NOT NULL,
   start_date    DATE        NOT NULL,
   end_date      DATE,
-  instructorID INT         NOT NULL,
+  instructor_id INT         NOT NULL,
   category_id   INT         NOT NULL,
   type_id       INT         NOT NULL,
   level_id      INT         NOT NULL,

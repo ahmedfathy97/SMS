@@ -42,12 +42,12 @@ export class CreateQuizComponent implements OnInit {
   }
 
   formData: FormGroup = this.formBuilder.group({
-    quizName: [null, [Validators.required, Validators.maxLength(25)]],
-    quizGrade: [null, [Validators.required]],
+    quizName: [null, [Validators.required, Validators.maxLength(10)]],
+    quizGrade: [null, [Validators.required ,Validators.min(1)]],
     startDate: [null, [Validators.required]],
     finishDate: [null, [Validators.required]]
   });
-
+  get form() { return this.formData.controls; }
   onSubmitNewQuiz() {
     let quizData: QuizDto = new QuizDto();
     quizData.quizName = this.formData.get('quizName').value;
