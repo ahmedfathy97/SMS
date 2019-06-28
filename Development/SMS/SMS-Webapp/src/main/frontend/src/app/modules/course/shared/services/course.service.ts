@@ -25,11 +25,15 @@ export class CourseService {
   getAllInstructorCourses() {
     return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/instructor/2")
   }
-
-
+  
+  
   createNewCourse(details : CourseDTO){
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL , details);
+    return this.httpClient.post<number>(this.APP_BASE_URL+this.BASE_URL , details);
   }
+  
+  // updateCourseImage(corID: number, image: File){
+  //   return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL , details);
+  // }
 
 
   getAllCourseStudents( courseID:number, gradeType:string, attendanceDate:Date) {
@@ -149,5 +153,16 @@ export class CourseService {
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
     return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures",{params: queryParameter});
   }
+  
+  updateCourseImg(corID: number, courseImg: File) {
+    const params = new HttpParams()
+      .set("fileName", courseImg.name)
+      .set("fileType", courseImg.type);
+  
+    let formData: FormData = new FormData();
+    formData.append("file", courseImg);
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ corID + "/img", formData, {params: params});
+  }
+  
 }
 

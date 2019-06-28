@@ -4,10 +4,16 @@ import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthViews;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Path("/user")
@@ -56,4 +62,5 @@ public class UserRes {
         return userVTOList;
 
     }
+
 }

@@ -33,9 +33,9 @@
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  overflow-y: scroll;
 
 }
 .full-page-content-area{
-  overflow-y: scroll;
   padding-top: 20px;
 }

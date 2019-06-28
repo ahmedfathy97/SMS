@@ -45,7 +45,7 @@ import {QuizGradeComponent} from "./modules/course/components/course-details/cou
 import {LoginGuard} from "./infrastructure/interceptor/login.guard";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {
     path: '', component: SimpleLayoutComponent, children: [
       {path: 'login', canActivate:[LoginGuard], component: LoginComponent},

@@ -163,13 +163,13 @@ public class CourseRep {
         parameters.put("description", details.getDescription());
         parameters.put("instructor_id", instructorID);
 
-        int ID = this.courseSJI.executeAndReturnKey(parameters).intValue() ;
+        int id = this.courseSJI.executeAndReturnKey(parameters).intValue() ;
+
         String sql2 = "INSERT INTO exam(exam_name , grade , course_id ) Values (?,?,?) ";
-        this.jdbcTemplate.update(sql2,"mid_one_grd",details.getMidOneGrd(),ID);
-//        this.jdbcTemplate.update(sql2,"semi_final_grd",details.getSemiFinalGrd(),ID);
-//        this.jdbcTemplate.update(sql2,"mid_two_grd",details.getMidTwoGrd(),ID);
-        this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),ID);
-        return ID ;
+        this.jdbcTemplate.update(sql2,"mid_one_grd",details.getMidOneGrd(),id);
+        this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),id);
+
+        return id ;
     }
 
     public List<StdDTO> findAllCourseStudents(int corID) {

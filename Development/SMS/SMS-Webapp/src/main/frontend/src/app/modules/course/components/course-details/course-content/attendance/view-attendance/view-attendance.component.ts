@@ -11,6 +11,11 @@ import {AuthViews} from "../../../../../../../infrastructure/directives/authoriz
 @Component({
   selector: 'app-view-attendance',
   templateUrl: './view-attendance.component.html',
+  styles: [`
+    .attendance-col { width: 150px;}
+    .name-col { width: 300px;}
+    .id-col { width: 10px;}
+  `],
   providers : [CourseService]
 })
 export class ViewAttendanceComponent implements OnInit {

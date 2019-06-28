@@ -435,7 +435,8 @@
 /*-------------------- 2.2 Header Area -------------------*/
 
 .header-area {
-  width: 100%;
+  width: 97%;
+  margin: auto;
   padding: 0;
   background: #fff;
   border-bottom: 1px solid #d8e3e7;
@@ -753,8 +754,8 @@ ul.breadcrumbs {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-  background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
+  /*background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);*/
+  /*background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);*/
   padding: 17px 38px;
   position: relative;
 }
@@ -769,7 +770,7 @@ ul.breadcrumbs {
 .user-name {
   font-size: 17px;
   font-weight: 500;
-  color: #fff;
+  /*color: #fff;*/
   letter-spacing: 0;
   cursor: pointer;
   -webkit-user-select: none;

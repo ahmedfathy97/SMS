@@ -28,6 +28,7 @@ import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Path("/course")
@@ -67,8 +68,7 @@ public class CourseRes {
     @Authenticated(actions = {AuthActions.ADD_COR})
     public int createNewCourse(@Context ContainerRequestContext request, CourseDTO details) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-return 5;
-//         return  courseRep.insertNewCourse(currentUser.getId() , details);
+         return  courseRep.insertNewCourse(currentUser.getId() , details);
     }
 
     @POST
@@ -278,17 +278,14 @@ return 5;
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadCourseImg(@PathParam("corID") int corID,
-                                    @QueryParam("name") String name,
-                                    @QueryParam("type") String type,
+                                    @QueryParam("fileName") String name,
+                                    @QueryParam("fileType") String type,
                                     @QueryParam("ext") String ext,
                                     @FormDataParam("file") InputStream fileContent,
                                     @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
 
-//        com.sms.model.attachment.File file = new com.sms.model.attachment.File();
-//        file.setName(name);
-//        file.setContentType(type);
-
         java.nio.file.Path path = Paths.get("../courses/" + corID + "/courseImg/" + name);
+        Files.createDirectories(Paths.get("../courses/" + corID + "/courseImg/"));
         Files.copy(fileContent, path);
 
         this.courseRep.updateCorImgByID(corID, name);

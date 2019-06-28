@@ -31,29 +31,83 @@
           <table class="table text-center" *ngIf="display">
             <thead class="text-uppercase bg-secondary">
             <tr class="text-white">
-              <th rowspan="2">#</th>
-              <th >Name</th>
-              <th class = "col-2 " *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">
-                <!--<ng-template [ngIf]="i!=0"></ng-template>-->
+              <th rowspan="2" class="id-col">#</th>
+              <th class="name-col">Name</th>
+              <th style="width: 200px" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">
                 {{sheet}}
               </th>
+              <!--<th class="attendance-col" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">-->
+                <!--{{sheet}}-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">-->
+                <!--{{sheet}}-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">-->
+                <!--{{sheet}}-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">-->
+                <!--{{sheet}}-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of tableView[0] | slice:1:tableView[0].length; index as i ; ">-->
+                <!--{{sheet}}-->
+              <!--</th>-->
             </tr>
             <tr class="text-white">
-              <th >Attendance %</th>
-              <th  *ngFor="let sheet of attendanceList ">
+              <th class="name-col">Attendance %</th>
+              <th style="width: 200px" *ngFor="let sheet of attendanceList ">
                 <!--<ng-template [ngIf]="i!=0"></ng-template>-->
                 {{(sheet.attendCount/sheet.totalStd)*100}} %
               </th>
+              <!--<th class="attendance-col" *ngFor="let sheet of attendanceList ">-->
+                <!--&lt;!&ndash;<ng-template [ngIf]="i!=0"></ng-template>&ndash;&gt;-->
+                <!--{{(sheet.attendCount/sheet.totalStd)*100}} %-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of attendanceList ">-->
+                <!--&lt;!&ndash;<ng-template [ngIf]="i!=0"></ng-template>&ndash;&gt;-->
+                <!--{{(sheet.attendCount/sheet.totalStd)*100}} %-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of attendanceList ">-->
+                <!--&lt;!&ndash;<ng-template [ngIf]="i!=0"></ng-template>&ndash;&gt;-->
+                <!--{{(sheet.attendCount/sheet.totalStd)*100}} %-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of attendanceList ">-->
+                <!--&lt;!&ndash;<ng-template [ngIf]="i!=0"></ng-template>&ndash;&gt;-->
+                <!--{{(sheet.attendCount/sheet.totalStd)*100}} %-->
+              <!--</th>-->
+              <!--<th class="attendance-col" *ngFor="let sheet of attendanceList ">-->
+                <!--&lt;!&ndash;<ng-template [ngIf]="i!=0"></ng-template>&ndash;&gt;-->
+                <!--{{(sheet.attendCount/sheet.totalStd)*100}} %-->
+              <!--</th>-->
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let row of tableView | slice:1:tableView.length;index as i;">
-              <td >{{i+1}}</td>
-              <td  class = "col-2 ">{{row[0]}}</td>
-              <td *ngFor="let isAttend of row | slice:1:row.length ; index as j;">
+              <td class="id-col">{{i+1}}</td>
+              <td class="name-col">{{row[0]}}</td>
+              <td  style="width: 200px" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">
                 <span class="badge badge-secondary" *ngIf="isAttend">Attend</span>
                 <span class="badge badge-danger" *ngIf="!isAttend">Absent</span>
               </td>
+              <!--<td class="attendance-col" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">-->
+                <!--<span class="badge badge-secondary" *ngIf="isAttend">Attend</span>-->
+                <!--<span class="badge badge-danger" *ngIf="!isAttend">Absent</span>-->
+              <!--</td>-->
+              <!--<td class="attendance-col" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">-->
+                <!--<span class="badge badge-secondary" *ngIf="isAttend">Attend</span>-->
+                <!--<span class="badge badge-danger" *ngIf="!isAttend">Absent</span>-->
+              <!--</td>-->
+              <!--<td class="attendance-col" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">-->
+                <!--<span class="badge badge-secondary" *ngIf="isAttend">Attend</span>-->
+                <!--<span class="badge badge-danger" *ngIf="!isAttend">Absent</span>-->
+              <!--</td>-->
+              <!--<td class="attendance-col" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">-->
+                <!--<span class="badge badge-secondary" *ngIf="isAttend">Attend</span>-->
+                <!--<span class="badge badge-danger" *ngIf="!isAttend">Absent</span>-->
+              <!--</td>-->
+              <!--<td class="attendance-col" *ngFor="let isAttend of row | slice:1:row.length ; index as j;">-->
+                <!--<span class="badge badge-secondary" *ngIf="isAttend">Attend</span>-->
+                <!--<span class="badge badge-danger" *ngIf="!isAttend">Absent</span>-->
+              <!--</td>-->
             </tr>
             </tbody>
           </table>

@@ -7,6 +7,7 @@ import {CorType} from "../../shared/data/lookup/course/cor-type.data";
 import {CourseService} from "../../shared/services/course.service";
 import {LookupService} from "../../../../infrastructure/services/lookup.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../infrastructure/data/full-routes.enum";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-details',
@@ -25,6 +26,7 @@ export class CreateCourse implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private corService: CourseService,
+              private router: Router,
               private lookupService: LookupService) {
 
   }
@@ -102,15 +104,23 @@ export class CreateCourse implements OnInit {
 
       this.corService.createNewCourse(details).subscribe(res => {
         console.log("Success");
+        let corID: number = res;
+        this.corService.updateCourseImg(corID, this.courseImg).subscribe(res2 => {
+          this.router.navigate([replaceCorID(this.ROUTES.COURSE_INFORMATION, corID)]);
+        });
       }, err => {
         console.log(err);
       });
     }
   }
+  
+  courseImg: File;
+  
+  onFileSelected(event) {
+    this.courseImg = event.target.files[0];
+  }
 
-
-  clear()
-  {
+  clear() {
     this.formData.reset();
   }
 
