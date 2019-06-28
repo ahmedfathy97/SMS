@@ -172,8 +172,8 @@ public class GradeRep {
                 "    GROUP BY s.quiz_id , s.user_id) q3 ON q0.user_id = q3.user_id\n" +
                 "        AND q3.quiz_name = 'quiz3'; \n" +
                 "\n";
-        return this.jdbc.query(sql, new QuizVTORM(), courseID, courseID, courseID, courseID);
-
+        List result= this.jdbc.query(sql, new QuizVTORM(), courseID, courseID, courseID, courseID);
+return result;
     }
 
 }

@@ -4,10 +4,10 @@
     <h1 class="animated bounceInRight" style="animation-delay: 1s">We Are <span>E-PEAK</span></h1>
     <h3 class="animated bounceInLeft" style="animation-delay: 2s">leading you to peak </h3>
     <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="!isUserAuthenticated">
-      <a href="#">Login</a>
+      <a [routerLink]="[ROUTES.LOGIN]">Login</a>
     </p>
     <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="!isUserAuthenticated">
-      <a href="#">Sign Up</a>
+      <a [routerLink]="[ROUTES.REGISTER]">Sign Up</a>
     </p>
     <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="isUserAuthenticated">
       <a href="#">Courses</a>

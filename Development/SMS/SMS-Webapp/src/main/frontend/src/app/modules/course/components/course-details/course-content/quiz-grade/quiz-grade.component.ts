@@ -34,8 +34,14 @@ export class QuizGradeComponent implements OnInit {
 
   }
   getQuizGrades(){
-    this.courseService.getQuizGrades(this.corID).subscribe(res=>{this.studentQuiz=res
-    },err=>{console.log(err);});
+    this.courseService.getQuizGrades(this.corID).subscribe(res=>{
+
+      this.studentQuiz=res
+      console.log(res);
+
+
+    },err=>{console.log(err);
+    });
 
   }
 
