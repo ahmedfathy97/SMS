@@ -7,6 +7,9 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
+import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.data";
+import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
+import {AuthRoles} from "../../../../../../../infrastructure/directives/authorization/data/auth-roles.enum";
 
 @Component({
   selector: 'app-view-attendance',
@@ -20,14 +23,20 @@ import {AuthViews} from "../../../../../../../infrastructure/directives/authoriz
 })
 export class ViewAttendanceComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
+  AUTH_ROLES: typeof AuthRoles = AuthRoles;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   display : boolean = false ;
   corID :number ;
   attendanceList :AttendanceDTO [] = [];
   tableView : any [][] ;
-  constructor( private attendanceService : CourseService , private corDataService: CourseDataService, )
-  {
+  
+  currentUser: AuthUserVTO = new AuthUserVTO();
+  constructor( private attendanceService : CourseService ,
+               private localStorageService: LocalStorageService,
+               private corDataService: CourseDataService){
+    this.currentUser = this.localStorageService.getCurrentUser();
+    // this.currentUser.roleIDs.
       this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;

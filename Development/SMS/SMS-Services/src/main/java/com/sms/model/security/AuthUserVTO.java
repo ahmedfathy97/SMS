@@ -9,6 +9,7 @@ public class AuthUserVTO implements Serializable {
     private String token;
     private List<Integer> actionIDs;
     private List<Integer> viewIDs;
+    private List<Integer> roleIDs;
 
     public AuthUserVTO() {
     }
@@ -51,5 +52,13 @@ public class AuthUserVTO implements Serializable {
 
     public void setViewIDs(List<Integer> viewIDs) {
         this.viewIDs = viewIDs;
+    }
+
+    public void setRoleIDs(List<Integer> roleIDs) {
+        this.roleIDs = roleIDs;
+    }
+
+    public List<Integer> getRoleIDs() {
+        return roleIDs;
     }
 }
