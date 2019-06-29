@@ -24,7 +24,7 @@ export enum AngularFullRoutes {
   COR_LECTURE = "/course/${corID}/lecture/${lectureID}",
   COR_CREATE = "/course/new",
   COR_LECTURE_MATERIALS = "/course/${corID}/lecture/${lectureID}/upload",
-  WELCOME = "/welcome",
+  WELCOME = "/home",
   FACULTY_LIST = "/faculties",
   SETTINGS = "/settings",
   SETTING_USER_LIST ="/settings/users",

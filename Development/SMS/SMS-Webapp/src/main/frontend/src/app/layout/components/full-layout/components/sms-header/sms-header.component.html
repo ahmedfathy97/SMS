@@ -9,9 +9,9 @@
     <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
     <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{currentUser.fullName}} <i class="fa fa-angle-down"></i></h4>
     <div class="dropdown-menu">
-      <a class="dropdown-item" [routerLink]="ROUTES.MY_COURSES">Profile</a>
-      <a class="dropdown-item" [routerLink]="ROUTES.SETTING_USER_LIST">Administration</a>
-      <!--<a class="dropdown-item" [routerLink]="[ROUTES.USER_PROFILE]">My Courses</a>-->
+      <a class="dropdown-item" [routerLink]="ROUTES.MY_COURSES">My Courses</a>
+      <a class="dropdown-item" *authorizeView="AUTH_VIEWS.USER_LIST" [routerLink]="ROUTES.SETTING_USER_LIST">All Users</a>
+      <a class="dropdown-item" [routerLink]="[replaceUserID(ROUTES.USER_PROFILE, currentUser.userID)]">Profile</a>
       <a class="dropdown-item" (click)="logOut()">Log Out</a>
     </div>
   </div>

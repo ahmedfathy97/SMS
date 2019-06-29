@@ -1,25 +1,25 @@
 
 <div class="page-container">
   <!-- sidebar menu area start -->
-  <div class="sidebar-menu">
-    <div class="sidebar-header">
-      <div class="logo">
-        <a><img src="assets/images/icon/logo.png" alt="logo"></a>
-      </div>
-    </div>
-    <div class="main-menu">
-      <div class="menu-inner">
-        <nav>
-          <app-setting-side-bar></app-setting-side-bar>
-        </nav>
-      </div>
-    </div>
-  </div>
+  <!--<div class="sidebar-menu">-->
+    <!--<div class="sidebar-header">-->
+      <!--<div class="logo">-->
+        <!--<a><img src="assets/images/icon/logo.png" alt="logo"></a>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="main-menu">-->
+      <!--<div class="menu-inner">-->
+        <!--<nav>-->
+          <!--<app-setting-side-bar></app-setting-side-bar>-->
+        <!--</nav>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
   <!-- main content area start -->
-  <div class="main-content">
+  <div class="main-content" style="min-height: 600px;">
     <!-- header area start -->
     <div class="header-area">
-      <app-sms-header class="row align-items-center"></app-sms-header>
+      <app-sms-header [showLogo]="true" class="row align-items-center"></app-sms-header>
     </div>
 
     <router-outlet></router-outlet>

@@ -1,5 +1,29 @@
+
+
+<!-- profile info & task notification -->
+<div class="col-md-12 col-sm-12 clearfix">
+  <div class="logo-header pull-left" *ngIf="showLogo">
+    <img class="avatar" src="assets/images/icon/logo.png" alt="logo">
+  </div>
+</div>
+
+
 <div class="carousel-item active">
-  <div class="banner" style="background-image: url(../../../../assets/images/1.jpg);"></div>
+  <div class="banner" style="background-image: url(../../../../assets/images/1.jpg);">
+    <div class="user-profile pull-right" style="padding-right: 60px;" *ngIf="isUserAuthenticated">
+      <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+      <h4 class="user-name dropdown-toggle" style="color: white; font-size: 25px;" data-toggle="dropdown">
+        {{currentUser.fullName}}<i class="fa fa-angle-down"></i>
+      </h4>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" [routerLink]="ROUTES.MY_COURSES">My Courses</a>
+        <a class="dropdown-item" [routerLink]="[replaceUserID(ROUTES.USER_PROFILE, currentUser.userID)]">Profile</a>
+        <a class="dropdown-item" (click)="logOut()">Log Out</a>
+      </div>
+    </div>
+  </div>
+
+
   <div class="carousel-caption">
     <h1 class="animated bounceInRight" style="animation-delay: 1s">We Are <span>E-PEAK</span></h1>
     <h3 class="animated bounceInLeft" style="animation-delay: 2s">leading you to peak </h3>
@@ -10,7 +34,10 @@
       <a [routerLink]="[ROUTES.REGISTER]">Sign Up</a>
     </p>
     <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="isUserAuthenticated">
-      <a href="#">Courses</a>
+      <a *authorizeView="[AUTH_VIEWS.COURSE_LIST]" [routerLink]="ROUTES.COURSE_LIST">Courses</a>
+    </p>
+    <p class="animated bounceInRight" style="animation-delay: 3s" *ngIf="isUserAuthenticated">
+      <a *authorizeView="[AUTH_VIEWS.USER_LIST]" [routerLink]="ROUTES.SETTING_USER_LIST">User List</a>
     </p>
   </div>
 </div>

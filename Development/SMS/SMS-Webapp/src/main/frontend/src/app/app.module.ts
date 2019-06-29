@@ -45,7 +45,6 @@ import {LectureDetailsComponent} from './modules/course/components/course-detail
 import {SmsSideBarComponent} from "./layout/components/full-layout/components/sms-side-bar/sms-side-bar.component";
 import {SettingSideBarComponent} from "./modules/settings/components/setting-details/setting-side-bar/setting-side-bar.component";
 import {SettingDetailsComponent} from './modules/settings/components/setting-details/setting-details.component';
-import {UserSettingsComponent} from './modules/settings/components/setting-content/user/component/user-detail/user-content/user-settings/user-settings.component';
 import {UserProfileComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-profile/user-profile.component";
 import {UserEditComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-edit/user-edit.component";
 import {UserListComponent} from "./modules/settings/components/setting-content/user/component/user-list/user-list.component";
@@ -82,7 +81,6 @@ import {LoginGuard} from "./infrastructure/interceptor/login.guard";
     SettingSideBarComponent, SettingDetailsComponent,
     UserDetailComponent,
     UserSideBarComponent,
-    UserSettingsComponent,
     MyCourseComponent,
     QuizMainDetailComponent,
     QuizDetailsComponent,
