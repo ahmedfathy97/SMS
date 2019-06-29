@@ -6,6 +6,9 @@ import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infra
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
 import {ConfigParam} from "../../../../../../../../../infrastructure/common/config-param";
+import {SuccessAlert} from "../../../../../../../../../infrastructure/components/alerts/success-alert.data";
+import {AlertInput} from "../../../../../../../../../infrastructure/components/alerts/alert-input";
+import {FailureAlert} from "../../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 
 
 // class ImageSnippet {
@@ -22,13 +25,14 @@ export class UserEditComponent implements OnInit {
 
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceUserID =replaceUserID;
+  alert: AlertInput = new AlertInput();
 
-  private userEdit: UserVtoData = new UserVtoData();
+  // private userEdit: UserVtoData = new UserVtoData();
   //userID: string;
   formData = this.formBuilder.group({
     firstName: ['', [Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
     lastName: ['',[ Validators.required,Validators.maxLength(15),Validators.minLength(3)]],
-    birthDate: ['', [Validators.required,Validators.pattern('^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$')]],
+    birthDate: ['', [Validators.required]],
     gender: ['', Validators.required],
     email: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]],
     t_phone: ['', [Validators.required,Validators.maxLength(11)]],
@@ -56,7 +60,7 @@ export class UserEditComponent implements OnInit {
           this.userService.findByID(this.userID).subscribe(
 
             res=> { this.userVto= res ;
-
+              console.log(res);
               this.formData.get('firstName').reset(this.userVto.firstName);
               this.formData.get('lastName').reset(this.userVto.lastName);
               this.formData.get('birthDate').reset(this.userVto.birthDate);
@@ -90,8 +94,10 @@ export class UserEditComponent implements OnInit {
         userEdit.phone = this.formData.get('t_phone').value;
 
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
+          this.alert = new SuccessAlert();
           console.log("Success");
         }, err => {
+          this.alert = new FailureAlert(err);
           console.log(err);
         });
       }
