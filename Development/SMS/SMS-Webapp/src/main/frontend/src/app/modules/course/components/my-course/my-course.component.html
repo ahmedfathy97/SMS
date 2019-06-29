@@ -54,7 +54,7 @@
           <!--<div class="card-area">-->
             <div class="row">
               <div class="col-lg-3 col-md-6 mt-5" *ngFor="let course of resultSet.listStudent | paginate: { id: 'myCourseList',
-                itemsPerPage: 2,
+                itemsPerPage: PAGE_SIZE,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
                 <div class="card card-bordered align-img-center">

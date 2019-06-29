@@ -7,6 +7,7 @@ import {LectureDataService} from "../../../../../shared/services/lecture-data.se
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
+import {ConfigParam} from "../../../../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'app-course-lectures',
@@ -21,7 +22,8 @@ export class CourseLecturesComponent implements OnInit {
   replaceLecID = replaceLecID;
 
   corID: number ;
-
+  
+  PAGE_SIZE: number = ConfigParam.PAGE_SIZE;
 
   lectureID: number;
 

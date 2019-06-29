@@ -103,17 +103,19 @@ public class CourseSer {
     }
     public CourseResultSet myCourses(UserVTO currentUser,int pageNum){
         List<CourseVTO> courseVTOList = new ArrayList<>();
+        int count = 0;
 
-        if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID()))
-            courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId(),pageNum);
-        else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID()))
-            courseVTOList =courseRep.findAllStudentCourse(currentUser.getId(),pageNum);
+        if(currentUser.getRoleIDs().contains(AuthRoles.INSTRUCTOR.getID())) {
+            courseVTOList = courseRep.findAllInstructorCourses(currentUser.getId(), pageNum);
+            count = courseRep.findALLInstCoursesCount(currentUser.getId());
+        }else if (currentUser.getRoleIDs().contains(AuthRoles.STUDENT.getID())) {
+            courseVTOList = courseRep.findAllStudentCourse(currentUser.getId(), pageNum);
+            count = courseRep.findAllStdCoursesCount(currentUser.getId());
+        }
 
         CourseResultSet resultSet = new CourseResultSet();
 
-
         resultSet.setListStudent(courseVTOList);
-        int count = courseRep.findMyCoursesCount();
         resultSet.setTotalRecords(count);
         return resultSet;
 

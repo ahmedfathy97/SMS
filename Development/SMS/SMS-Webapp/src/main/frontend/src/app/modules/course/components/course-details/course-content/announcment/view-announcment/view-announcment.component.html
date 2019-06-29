@@ -48,7 +48,7 @@
   <div [ngClass]="{'page-content-area offset-3 col-6': !inCourseHome}">
     <!--<div ">-->
       <div class="card mb-3" *ngFor="let announcment of resultSet.announclist | paginate: { id: 'announcList',
-                itemsPerPage: 3 ,
+                itemsPerPage: PAGE_SIZE ,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
         <div class="card-body">
@@ -77,7 +77,7 @@
 
     </div>
 
-    <div *ngIf="resultSet.totalRecords > 3 && inCourseHome" >
+    <div *ngIf="resultSet.totalRecords > PAGE_SIZE && inCourseHome" >
 
 
             <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_ANNOUNCEMENT , corID)]" >

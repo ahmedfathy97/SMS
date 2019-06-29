@@ -38,7 +38,7 @@
                   <td class="lec-lectureDate">Date</td>
                 </tr>
                 <tr *ngFor="let lecture of resultSet.lectureList | paginate: { id: 'courseLecture',
-                itemsPerPage: 2,
+                itemsPerPage: PAGE_SIZE,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }; index as i;" >
                   <td class="lec-num">{{i +1}}</td>

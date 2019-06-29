@@ -1,5 +1,6 @@
 package com.sms.repository;
 
+import com.sms.configuration.ConfigManager;
 import com.sms.model.course.*;
 import com.sms.model.course.quiz.QuizDTO;
 import com.sms.model.course.rm.*;
@@ -62,7 +63,7 @@ public class CourseRep {
     }
 
     public List<CourseVTO> findAllInstructorCourses(int instrID,int pageNum) {
-        int pageSize = 2;
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
@@ -73,7 +74,7 @@ public class CourseRep {
         return this.jdbcTemplate.query(sql, new CourseVTORM(), instrID);
     }
     public List<CourseVTO> findALLCourses(int pageNum) {
-        int pageSize = 2;
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
@@ -86,21 +87,6 @@ public class CourseRep {
         String sql = "SELECT COUNT(*) AS record_count " +
                 "FROM course cor " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id ";
-
-        List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
-            @Override
-            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
-                return resultSet.getInt("record_count");
-            }
-        });
-        return totalCount.get(0);
-    }
-    public int findMyCoursesCount() {
-        String sql ="SELECT COUNT(*) AS record_count \n" +
-                "                FROM course_std  std \n" +
-                "                LEFT JOIN course cor on std.cor_id = cor.id\n" +
-                "                LEFT JOIN user_detail a on cor.instructor_id = a.user_id \n" +
-                "                where std_id = ?";
 
         List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
             @Override
@@ -139,13 +125,13 @@ public class CourseRep {
 
     }
     public List<CourseVTO> findAllStudentCourse(int stdID,int pageNum){
-        int pageSize = 2;
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
                 "description, a.first_name, a.last_name " +
                 "FROM course_std  std " +
                 "LEFT JOIN course cor on std.cor_id = cor.id " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
-                "where std_id = ?"+
+                "where std_id = ? "+
                 "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1)) ;
         return this.jdbcTemplate.query(sql, new CourseVTORM(), stdID);
     }
@@ -312,7 +298,7 @@ public class CourseRep {
 
     public List<LectureVTO> getCourseLectures(int courseID,int pageNum)
     {
-        int pageSize = 2;
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql ="SELECT id ,title ,lecture_date FROM lecture WHERE course_id = ? " +
                 "LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1)) ;
 
@@ -341,7 +327,7 @@ public class CourseRep {
 
     public List<Announcement> getCourseAnnouncments(int courseID , int pageNum)
     {
-        int pageSize = 3 ;
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql ="SELECT title ,content ,announ_date From announcment \n" +
                 "where course_id = ? " +
                 "order by announ_date  " +
@@ -368,5 +354,36 @@ public class CourseRep {
         String sql = "UPDATE course SET image_path = ? WHERE id = ?";
 
         this.jdbcTemplate.update(sql, name, corID);
+    }
+
+    public int findALLInstCoursesCount(int instructorID) {
+        int pageSize = ConfigManager.PAGE_SIZE;
+        String sql = "SELECT COUNT(*) AS record_count  " +
+                "FROM course cor " +
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
+                "where cor.instructor_id = ? ";
+
+        return this.jdbcTemplate.query(sql,  new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        }, instructorID).get(0);
+    }
+
+    public int findAllStdCoursesCount(int stdID) {
+        int pageSize = ConfigManager.PAGE_SIZE;
+        String sql = "SELECT COUNT(*) AS record_count " +
+                "FROM course_std  std " +
+                "LEFT JOIN course cor on std.cor_id = cor.id " +
+                "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
+                "where std_id = ? ";
+
+        return this.jdbcTemplate.query(sql,  new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        }, stdID).get(0);
     }
 }

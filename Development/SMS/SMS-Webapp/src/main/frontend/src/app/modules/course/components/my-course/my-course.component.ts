@@ -3,6 +3,7 @@ import {CourseService} from "../../shared/services/course.service";
 import {AngularFullRoutes, replaceCorID} from "../../../../infrastructure/data/full-routes.enum";
 import {CourseResultSet} from "../../shared/data/course-result-set.data";
 import {AuthActions} from "../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {ConfigParam} from "../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'app-my-course',
@@ -15,6 +16,7 @@ export class MyCourseComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   corID : number ;
+  PAGE_SIZE: number = ConfigParam.PAGE_SIZE;
 
   constructor(private courseService: CourseService) { }
   resultSet: CourseResultSet = new CourseResultSet();
