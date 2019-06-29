@@ -38,7 +38,7 @@ public class CourseSer {
 //            if(students.size()==0)
 //                students = this.courseRep.findAllCourseStudents(corID);
         } else
-            students = this.courseRep.findAllCourseStudents(corID);
+            students = this.courseRep.findAllCourseStudents(corID , -1);
         return students;
     }
 

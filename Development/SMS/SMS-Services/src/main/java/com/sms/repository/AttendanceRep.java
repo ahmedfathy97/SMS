@@ -66,9 +66,10 @@ public class AttendanceRep {
                 " left join cor_std_att c_att on att.id = c_att.att_id" +
                 " and u_std.user_id = c_att.std_id" +
                 " where c_std.cor_id = ?" +
-                ((stdID != -1 ) ? "AND c_std.std_id = ?" : "") +
+                ((stdID != -1 ) ? " AND c_std.std_id = ?" : "") +
                 " order by att.created_on  ";
-        return this.jdbc.query(sql, new AttendanceDTORM(), corID);
+        return ((stdID != -1 ) ? this.jdbc.query(sql, new AttendanceDTORM(), corID , stdID):
+                this.jdbc.query(sql, new AttendanceDTORM(), corID ));
     }
 
     public List<AttendanceDTO>  numberOfAttStudent (int corID)

@@ -158,13 +158,15 @@ public class CourseRep {
         return id ;
     }
 
-    public List<StdDTO> findAllCourseStudents(int corID) {
+    public List<StdDTO> findAllCourseStudents(int corID , int stdID) {
         String sql =
                 "SELECT first_name, last_name, user_detail.user_id \n" +
                         "                        FROM course_std \n" +
                         "                        LEFT JOIN user_detail user_detail on user_detail.user_id = course_std.std_id \n" +
-                        "                        WHERE cor_id = ?";
-        return this.jdbcTemplate.query(sql, new StdDTORM(), corID);
+                        "                        WHERE cor_id = ?"+
+                        ((stdID != -1 ) ? " AND course_std.std_id = ?" : "") ;
+        return ((stdID != -1 ) ? this.jdbcTemplate.query(sql, new StdDTORM(), corID , stdID ) :
+                this.jdbcTemplate.query(sql, new StdDTORM(), corID  )) ;
     }
     public List<StdDTO> findAllTypeGrade(int corID) {
         String sql =
