@@ -9,11 +9,14 @@
         </div>
         <div class="login-form-body" [formGroup]="formData">
           <div class="form-gp">
+            <app-alert [data]="alert"></app-alert>
+          </div>
+          <div class="form-gp">
             <input type="text" formControlName="username" placeholder="Enter Your Name"
                    [ngClass]="{'is-invalid': loginForm.username.dirty && loginForm.username.errors != null}">
             <i class="ti-user"></i>
             <div  class="invalid-feedback" *ngIf="loginForm.username.dirty && loginForm.username.errors != null">
-              <small *ngIf="loginForm.username.errors?.required">You Must Enter Username</small>
+              <small *ngIf="loginForm.username.errors?.required">Username is mandatory</small>
             </div>
           </div>
           <div class="form-gp">
@@ -22,7 +25,7 @@
             <i class="ti-lock"></i>
 
             <div  class="invalid-feedback" *ngIf="loginForm.password.dirty && loginForm.password.errors != null">
-              <small *ngIf="loginForm.password.errors?.required">this field is mandatory</small>
+              <small *ngIf="loginForm.password.errors?.required">Password is mandatory</small>
             </div>
 
           </div>

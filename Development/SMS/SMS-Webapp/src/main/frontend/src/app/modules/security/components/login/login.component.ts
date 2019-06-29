@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           // authUser = res;
           console.log('Login Successfully');
           this.alert = new SuccessAlert();
-          this.router.navigate(['/courses']);
+          this.router.navigate([this.ROUTES.WELCOME]);
           this.localStorageService.setAuthUser(res);
         },
 

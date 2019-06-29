@@ -13,7 +13,7 @@ export class AlertInput {
 
     if(this.status != null && this.message != null) {
       this.appear = true;
-      setTimeout(() => this.appear = false, 3000);
+      setTimeout(() => this.appear = false, 10000);
     }
   }
 }
