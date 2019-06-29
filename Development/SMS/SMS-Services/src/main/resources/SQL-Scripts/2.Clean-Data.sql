@@ -113,36 +113,36 @@ INSERT INTO cor_level (id, label_en) VALUES (1, 'Beginner');
 INSERT INTO cor_level (id, label_en) VALUES (2, 'Intermediate');
 INSERT INTO cor_level (id, label_en) VALUES (3, 'Advanced');
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description, image_path)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
  VALUES (1, 'Java', 30, '2018-1-12', '2018-2-12', 1, 1, 1, 1, 'Intensive and hands-on, the course emphasizes becoming productive quickly as a Java™ application developer. This course quickly covers the Java language syntax and then moves into the object-oriented features of the language. Students will then learn the I/O streams and collections API packages. This
 course is current to Java 7 and uses the Eclipse IDE.
 ', '/assets/images/course/java.png');
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description, image_path)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
 VALUES (2, 'C++', 15, '2018-2-05', '2018-2-28', 4, 2, 2, 2, 'Learn basic to advanced C++ programming with expert-taught courses. Start now! Live Mentoring. Skills Assessments. Over 5,000+ Courses. Offline Access. Courses: C++ Fundamentals, C++ Unit Testing, Modern C++ Concurrency, Computing in C++, Advanced C++ Programming.',
 '/assets/images/course/c++.png');
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description, image_path)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
 VALUES (3, 'C', 45, '2018-2-15', '2018-3-25', 1, 2, 2, 2, 'Learn C programming with Alison. These C programming courses are for anyone looking for a C Programming tutorial that''s free and online.',
 '/assets/images/course/c.jpg');
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description, image_path)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description, image_path)
 VALUES (4, 'C#', 3, '2018-5-22', '2018-8-03', 1, 2, 2, 2, 'The Complete C# Programming Course. Master C# and .NET Framework - learn with code challenges, exercises, and real-life examples! 4.4 (208).',
 '/assets/images/course/c-sharp.jpg');
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (5, 'Alogorithms', 30 , '2019-4-26', '2019-8-03', 1, 2, 2, 2, 'introduction to the design and analysis of algorithms, enabling you to discover how individuals are connected.');
 
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (6, 'Neural Network', 45 , '2019-5-1', '2019-8-06', 1, 2, 2, 2, 'Like the course I just released on Hidden Markov Models, Recurrent Neural Networks are all about learning sequences - but whereas Markov Models are limited by the Markov assumption, Recurrent Neural Networks are not - and as a result, they are more expressive, and more powerful than anything we’ve seen on tasks that we haven’t made progress on in decades.');
 
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (7, 'Data Structure', 50 , '2019-5-26', '2019-9-03', 1, 2, 2, 2, 'Learn about data structures that are used in computational thinking – both basic and advanced.');
 
 
-INSERT INTO course (id, cor_name, duration, start_date, end_date, instructorID, category_id, type_id, level_id, description)
+INSERT INTO course (id, cor_name, duration, start_date, end_date, instructor_id, category_id, type_id, level_id, description)
 VALUES (8, 'Object Oriented Programming', 70 , '2019-6-01', '2019-10-01', 1, 2, 2, 2, 'In this course, we''ll get you up and running with classes, objects');
 
 INSERT INTO college (id, labelEN) VALUES ('1', 'engineering');

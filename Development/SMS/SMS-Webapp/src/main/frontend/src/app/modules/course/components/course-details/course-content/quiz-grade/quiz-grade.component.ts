@@ -19,6 +19,8 @@ export class QuizGradeComponent implements OnInit {
   replaceCorID = replaceCorID;
 
   corID :number ;
+  quizCount: number;
+  Arr = Array; //Array type captured in a variable
   studentQuiz: StdDTO[] = [];
 
   constructor(
@@ -34,9 +36,12 @@ export class QuizGradeComponent implements OnInit {
 
   }
   getQuizGrades(){
+    this.courseService.getCourseQuizes(this.corID).subscribe(res=>{
+      this.quizCount = res.length;
+    });
     this.courseService.getQuizGrades(this.corID).subscribe(res=>{
 
-      this.studentQuiz=res
+      this.studentQuiz=res;
       console.log(res);
 
 

@@ -43,9 +43,7 @@
               <tr class="text-white">
 
                 <th>Student Name</th>
-                <th>Quiz 1</th>
-                <th>Quiz 2</th>
-                <th>Quiz 3</th>
+                <th *ngFor="let item of Arr(quizCount).fill(1); index as i">Quiz {{(i+1)}}</th>
 
 
 
@@ -55,20 +53,10 @@
               <tr *ngFor="let student of studentQuiz" >
                 <td> {{student.fullName}}</td>
 
-                <td *ngIf="student.quizes[0].totalScore != 0">
-                  {{student.quizes[0].stdScore}} / {{student.quizes[0].totalScore}}
+                <td *ngFor="let item of Arr(quizCount).fill(1); index as i">
+                  {{ (student.quizes[i]?.totalScore != 0) ?
+                  (student.quizes[i]?.stdScore + '/' + student.quizes[i]?.totalScore) : 'Not Answered'}}
                 </td>
-                <td *ngIf="student.quizes[0].totalScore == 0">Not Answered</td>
-
-                <td *ngIf="student.quizes[1].totalScore != 0">
-                  {{student.quizes[1].stdScore}} / {{student.quizes[1].totalScore}}
-                </td>
-                <td *ngIf="student.quizes[1].totalScore == 0">Not Answered</td>
-                <td *ngIf="student.quizes[2].totalScore != 0">
-                  {{student.quizes[2].stdScore}} / {{student.quizes[2].totalScore}}
-                </td>
-                <td *ngIf="student.quizes[2].totalScore == 0">Not Answered</td>
-
 
 
               </tr>
