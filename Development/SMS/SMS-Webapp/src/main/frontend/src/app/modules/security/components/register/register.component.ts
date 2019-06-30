@@ -5,6 +5,7 @@ import {RegisterDTO} from "../../shared/data/register-dto.data";
 import {RolesVto} from "../../shared/data/roles-Vto";
 import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'register',
@@ -27,7 +28,8 @@ export class RegisterComponent implements OnInit {
   get regisretForm() { return this.formData.controls; }
 
   constructor(private formBuilder: FormBuilder,
-              private securityService: SecurityService) { }
+              private securityService: SecurityService ,
+              private router: Router) { }
 
   ngOnInit() {
     this.securityService.getAllRoles().subscribe(res => {
@@ -51,6 +53,7 @@ export class RegisterComponent implements OnInit {
 
       this.securityService.register(data).subscribe(
         res => {
+          this.router.navigate([`/login`]) ;
         },
         err => {
           console.log(err);
