@@ -12,23 +12,26 @@ import {CourseResultSet} from "../data/course-result-set.data";
 import {LectureVto} from "../data/lecture-vto";
 import {isBoolean} from "util";
 import {CourseExamsVto} from "../data/quiz/course-exams-vto";
+import {ConfigParam} from "../../../../infrastructure/common/config-param";
 
 
 @Injectable()
 export class CourseService {
-  APP_BASE_URL : string ="http://localhost:8080/api";
-  BASE_URL : string = "/course/";
+  // APP_BASE_URL : string ="http://localhost:8080/api";
+  BASE_URL: string = ConfigParam.APP_BASE_URL+"/course/";
+
+  // BASE_URL : string = "/course/";
 
 
   constructor(private httpClient:HttpClient) { }
 
   getAllInstructorCourses() {
-    return this.httpClient.get<CourseVto[]>(this.APP_BASE_URL+this.BASE_URL+"instructor/2")
+    return this.httpClient.get<CourseVto[]>(this.BASE_URL+"instructor/2")
   }
 
 
   createNewCourse(details : CourseDTO){
-    return this.httpClient.post<number>(this.APP_BASE_URL+this.BASE_URL , details);
+    return this.httpClient.post<number>(this.BASE_URL , details);
   }
 
   // updateCourseImage(corID: number, image: File){
@@ -43,7 +46,7 @@ export class CourseService {
     if (attendanceDate != null)
       parameters = parameters.append('attendanceDate', attendanceDate.toString());
 
-    return this.httpClient.get<StdDTO[]>(this.APP_BASE_URL+this.BASE_URL+courseID+"/students",
+    return this.httpClient.get<StdDTO[]>(this.BASE_URL+courseID+"/students",
       {params: parameters});
   }
 
@@ -51,39 +54,39 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+courseID+"/grade",
+    return this.httpClient.get<CourseResultSet>(this.BASE_URL+courseID+"/grade",
       {params: queryParameter}
 
       );
 
   }
   getQuizGrades(courseID:number){
-    return this.httpClient.get<StdDTO[]>(this.APP_BASE_URL+this.BASE_URL+ courseID+"/grade/quizes");
+    return this.httpClient.get<StdDTO[]>(this.BASE_URL+ courseID+"/grade/quizes");
   }
 
 
   getStudentGrades(courseID:number,studentID:number){
-    return this.httpClient.get<StdDTO>(this.APP_BASE_URL+this.BASE_URL+ courseID+"/grade/student/"+studentID);
+    return this.httpClient.get<StdDTO>(this.BASE_URL+ courseID+"/grade/student/"+studentID);
 
   }
 
   createNewQuiz(courseID:number,quizData: QuizDto) {
-    return this.httpClient.post<number>(this.APP_BASE_URL+this.BASE_URL+ courseID +"/newQuiz",quizData);
+    return this.httpClient.post<number>(this.BASE_URL+ courseID +"/newQuiz",quizData);
   }
 
   createNewLecture(courseID :number ,lectureDto : LectureDto){
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+courseID+"/lecture", lectureDto);
+    return this.httpClient.post(this.BASE_URL+courseID+"/lecture", lectureDto);
   }
 
 
   getCourseQuizes(courseID :number)
   {
-    return this.httpClient.get<CourseQuizesVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/quizes");
+    return this.httpClient.get<CourseQuizesVto[]>(this.BASE_URL+courseID +"/quizes");
   }
 
   getCourseExams(courseID :number)
   {
-    return this.httpClient.get<CourseExamsVto[]>(this.APP_BASE_URL+this.BASE_URL+courseID +"/exams");
+    return this.httpClient.get<CourseExamsVto[]>(this.BASE_URL+courseID +"/exams");
   }
 
   // findAllCourses(courseID :number){
@@ -93,7 +96,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+"all",
+    return this.httpClient.get<CourseResultSet>(this.BASE_URL+"all",
       {params: queryParameter});
 
   }
@@ -101,36 +104,36 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+"/course",{params: queryParameter});
+    return this.httpClient.get<CourseResultSet>(this.BASE_URL,{params: queryParameter});
   }
 
 
 
   getCourseAttendance (courseID :number){
-    return this.httpClient.get<AttendanceDTO[]>(this.APP_BASE_URL+this.BASE_URL +courseID+"/attendance")
+    return this.httpClient.get<AttendanceDTO[]>(this.BASE_URL +courseID+"/attendance")
   }
 
   getStudentAttendance (courseID :number , stdID : number){
-    return this.httpClient.get<AttendanceDTO[]>(this.APP_BASE_URL+this.BASE_URL+courseID+"/student/"+stdID)
+    return this.httpClient.get<AttendanceDTO[]>(this.BASE_URL+courseID+"/student/"+stdID)
   }
 
   getCourseByID(corID: number){
-    return this.httpClient.get<CourseVto>(this.APP_BASE_URL+this.BASE_URL+corID);
+    return this.httpClient.get<CourseVto>(this.BASE_URL+corID);
 
   }
 
   enrollStudentByID(corID: number){
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+corID+"/enroll",null);
+    return this.httpClient.post(this.BASE_URL+corID+"/enroll",null);
     // return this.httpClient.post("http://localhost:8080/api/student/enroll");
 
   }
   getStudentIsEnroll(corID: number){
-    return this.httpClient.get<boolean>(this.APP_BASE_URL+this.BASE_URL+corID+"/isStudent");
+    return this.httpClient.get<boolean>(this.BASE_URL+corID+"/isStudent");
 
   }
 
   createNewAnnouncement(courseID: number, announcement : Announcement) {
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL + courseID +"/newAnnouncment", announcement);
+    return this.httpClient.post(this.BASE_URL+ courseID +"/newAnnouncment", announcement);
   }
 
   getCourseAnnouncments(courseID :number , pageNum : number )
@@ -138,7 +141,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL +courseID +"/announcmentList" ,
+    return this.httpClient.get<CourseResultSet>(this.BASE_URL+courseID +"/announcmentList" ,
       {params: queryParameter}) ;
   }
   // getCourseAnnouncments(courseID :number )
@@ -151,7 +154,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+courseID +"/lectures",{params: queryParameter});
+    return this.httpClient.get<CourseResultSet>(this.BASE_URL+courseID +"/lectures",{params: queryParameter});
   }
 
   updateCourseImg(corID: number, courseImg: File) {
@@ -161,7 +164,7 @@ export class CourseService {
 
     let formData: FormData = new FormData();
     formData.append("file", courseImg);
-    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+ corID + "/img", formData, {params: params});
+    return this.httpClient.post(this.BASE_URL+ corID + "/img", formData, {params: params});
   }
 
 }

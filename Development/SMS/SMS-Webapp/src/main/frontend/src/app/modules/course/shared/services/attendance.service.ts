@@ -3,11 +3,14 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {AttendanceDTO} from "../data/attendance-dto.data";
 //import {StdAttendanceDto} from "../data/std-attendance-dto.data";
 import {StdDTO} from "../data/std-dto.data";
+import {ConfigParam} from "../../../../infrastructure/common/config-param";
 
 @Injectable()
 export class AttendanceService {
   //TODO: Yara - Use APP_BASE_URL &  BASE_URL
-  BASE_URL: string = "http://localhost:8080/api/attendance/";
+  // BASE_URL: string = "http://localhost:8080/api/attendance/";
+  BASE_URL: string = ConfigParam.APP_BASE_URL+"/attendance/";
+
 
   constructor(private http: HttpClient) {
   }
