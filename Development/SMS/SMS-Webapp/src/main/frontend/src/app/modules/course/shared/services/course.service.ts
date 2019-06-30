@@ -23,7 +23,7 @@ export class CourseService {
   constructor(private httpClient:HttpClient) { }
 
   getAllInstructorCourses() {
-    return this.httpClient.get<CourseVto[]>("http://localhost:8080/api/course/instructor/2")
+    return this.httpClient.get<CourseVto[]>(this.APP_BASE_URL+this.BASE_URL+"instructor/2")
   }
 
 
@@ -43,7 +43,7 @@ export class CourseService {
     if (attendanceDate != null)
       parameters = parameters.append('attendanceDate', attendanceDate.toString());
 
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+courseID+"/students",
+    return this.httpClient.get<StdDTO[]>(this.APP_BASE_URL+this.BASE_URL+courseID+"/students",
       {params: parameters});
   }
 
@@ -51,19 +51,19 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/"+courseID+"/grade",
+    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+courseID+"/grade",
       {params: queryParameter}
 
       );
 
   }
   getQuizGrades(courseID:number){
-    return this.httpClient.get<StdDTO[]>("http://localhost:8080/api/course/"+ courseID+"/grade/quizes");
+    return this.httpClient.get<StdDTO[]>(this.APP_BASE_URL+this.BASE_URL+ courseID+"/grade/quizes");
   }
 
 
   getStudentGrades(courseID:number,studentID:number){
-    return this.httpClient.get<StdDTO>("http://localhost:8080/api/course/"+ courseID+"/grade/student/"+studentID);
+    return this.httpClient.get<StdDTO>(this.APP_BASE_URL+this.BASE_URL+ courseID+"/grade/student/"+studentID);
 
   }
 
@@ -93,7 +93,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course/all",
+    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+this.BASE_URL+"all",
       {params: queryParameter});
 
   }
@@ -101,7 +101,7 @@ export class CourseService {
     let queryParameter: HttpParams = new HttpParams();
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
-    return this.httpClient.get<CourseResultSet>("http://localhost:8080/api/course",{params: queryParameter});
+    return this.httpClient.get<CourseResultSet>(this.APP_BASE_URL+"/course",{params: queryParameter});
   }
 
 
@@ -111,7 +111,7 @@ export class CourseService {
   }
 
   getStudentAttendance (courseID :number , stdID : number){
-    return this.httpClient.get<AttendanceDTO[]>("http://localhost:8080/api/course/"+courseID+"/student/"+stdID)
+    return this.httpClient.get<AttendanceDTO[]>(this.APP_BASE_URL+this.BASE_URL+courseID+"/student/"+stdID)
   }
 
   getCourseByID(corID: number){
@@ -120,12 +120,12 @@ export class CourseService {
   }
 
   enrollStudentByID(corID: number){
-    return this.httpClient.post("http://localhost:8080/api/course/"+corID+"/enroll",null);
+    return this.httpClient.post(this.APP_BASE_URL+this.BASE_URL+corID+"/enroll",null);
     // return this.httpClient.post("http://localhost:8080/api/student/enroll");
 
   }
   getStudentIsEnroll(corID: number){
-    return this.httpClient.get<boolean>("http://localhost:8080/api/course/"+corID+"/isStudent");
+    return this.httpClient.get<boolean>(this.APP_BASE_URL+this.BASE_URL+corID+"/isStudent");
 
   }
 

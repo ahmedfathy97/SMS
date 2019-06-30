@@ -9,40 +9,40 @@ import {UserVtoData} from "../data/user-vto.data";
 
 @Injectable()
 export class UserService {
-  // APP_BASE_URL : string ="http://localhost:8080/api";
-  // BASE_URL : string ="/user/";
+  APP_BASE_URL : string ="http://localhost:8080/api";
+  BASE_URL : string ="/user/";
   constructor( private http:HttpClient){}
 
   findByID(userID:number){
  //return this.http.get<UserData>(this.APP_BASE_URL+this.BASE_URL+userID);
-    return this.http.get<UserVtoData>("http://localhost:8080/api/user/"+userID+"/profile");
+    return this.http.get<UserVtoData>(this.APP_BASE_URL+this.BASE_URL+userID+"/profile");
   }
 
   editProfile(userID:number ,edit:UserVtoData){
-    return this.http.post("http://localhost:8080/api/user/"+userID+"/edit",edit);
+    return this.http.post(this.APP_BASE_URL+this.BASE_URL+userID+"/edit",edit);
 
   }
 
   filter(data:UserVtoData){
-    return this.http.post("http://localhost:8080/api/user/filter",data);
+    return this.http.post(this.APP_BASE_URL+this.BASE_URL+"filter",data);
 
   }
 
   findallcollege(){
-    return this.http.get<College[]>("http://localhost:8080/api/user/colleges");
+    return this.http.get<College[]>(this.APP_BASE_URL+this.BASE_URL+"colleges");
 
   }
 
   findalluniversity(){
-    return this.http.get<University[]>("http://localhost:8080/api/user/university")
+    return this.http.get<University[]>(this.APP_BASE_URL+this.BASE_URL+"university")
   }
 
   findallcountry(){
-    return this.http.get<Country[]>("http://localhost:8080/api/user/country")
+    return this.http.get<Country[]>(this.APP_BASE_URL+this.BASE_URL+"country")
   }
 
   findAll(){
-    return this.http.get<UserVtoData[]>("http://localhost:8080/api/user/find")
+    return this.http.get<UserVtoData[]>(this.APP_BASE_URL+this.BASE_URL+"find")
   }
   // public uploadImage(image: File): Observable<Response> {
   //   const formData = new FormData();
