@@ -31,7 +31,10 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let userDetail of userList ; index as i ;">
+              <tr *ngFor="let userDetail of resultSet.userList  | paginate: { id: 'userList',
+                itemsPerPage: PAGE_SIZE,
+                currentPage: pageNum,
+                totalItems: resultSet.totalRecords }; index as i ;">
                 <td>{{i+1}}</td>
                 <td><a [routerLink]="[replaceUserID(ROUTES.USER_PROFILE,userDetail.id)]">{{userDetail.fullName}}</a>
                 </td>
@@ -46,14 +49,14 @@
             </table>
 
           </div>
-          <!--<div class="row align-content-center">-->
-          <!--<pagination-controls class="pagination justify-content-center" id="myCourseList"-->
-          <!--(pageChange)="onPageChange($event)"-->
-          <!--directionLinks="true" [autoHide]="true"-->
-          <!--previousLabel="" nextLabel="">-->
-          <!--</pagination-controls>-->
+          <div class="row align-content-center">
+            <pagination-controls class="pagination justify-content-center" id="userList"
+                                 (pageChange)="onPageChange($event)"
+                                 directionLinks="true" [autoHide]="true"
+                                 previousLabel="" nextLabel="">
+            </pagination-controls>
 
-          <!--</div>-->
+          </div>
         </div>
       </div>
     </div>

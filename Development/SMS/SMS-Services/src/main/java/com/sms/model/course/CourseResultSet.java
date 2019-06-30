@@ -11,6 +11,7 @@ public class CourseResultSet implements Serializable {
     private int totalRecords;
     private List<CourseVTO> listStudent;
 
+
     public List<CourseVTO> getListStudent() {
         return listStudent;
     }

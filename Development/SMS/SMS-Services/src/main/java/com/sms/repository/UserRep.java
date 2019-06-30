@@ -1,6 +1,7 @@
 package com.sms.repository;
 
 //import com.sms.model.lookUp.rm.UserDataRM;
+import com.sms.configuration.ConfigManager;
 import com.sms.model.user.UserVTO;
 import com.sms.model.user.rm.UserVTORM;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,8 +76,8 @@ public class UserRep {
 
 
 
-    public List<UserVTO> findAll(){
-
+    public List<UserVTO> findAll(int pageNum){
+        int pageSize = ConfigManager.PAGE_SIZE;
         String sql="SELECT \n" +
                 "    user_id,\n" +
                 "    CONCAT(first_name, ' ', last_name) AS full_name,\n" +
@@ -94,7 +95,8 @@ public class UserRep {
                 "        LEFT JOIN\n" +
                 "    country co ON ud.country_id = co.id\n" +
                 "        LEFT JOIN\n" +
-                "    university uni ON ud.university_id = uni.id;";
+                "    university uni ON ud.university_id = uni.id " +
+                "    LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
 
         List<UserVTO> users= this.jdbcTemplate.query(sql, new RowMapper<UserVTO>() {
             @Override
@@ -112,6 +114,19 @@ public class UserRep {
         });
         return users;
 
+    }
+    public int findALLUsersCount() {
+        String sql = "SELECT COUNT(*) AS record_count " +
+                "FROM user_detail ud " ;
+
+
+        List<Integer> totalCount = this.jdbcTemplate.query(sql, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getInt("record_count");
+            }
+        });
+        return totalCount.get(0);
     }
 
 }

@@ -6,6 +6,9 @@ import {University} from "../../../../../shared/data/university";
 import {Country} from "../../../../../shared/data/country";
 import {UserVtoData} from "../../../../../shared/data/user-vto.data";
 import {AngularFullRoutes, replaceUserID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {CourseResultSet} from "../../../../../../course/shared/data/course-result-set.data";
+import {ConfigParam} from "../../../../../../../infrastructure/common/config-param";
+import {UserResultSet} from "../../../../../shared/data/user-result-set.data";
 
 @Component({
   selector: 'app-user-list',
@@ -17,6 +20,7 @@ export class UserListComponent implements OnInit {
 
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceUserID =replaceUserID;
+  PAGE_SIZE: number = ConfigParam.PAGE_SIZE;
 
   userList:UserVtoData[]=[];
   formData :FormGroup=this.formBuilder.group({
@@ -27,17 +31,34 @@ export class UserListComponent implements OnInit {
     birthdatefrom:[null,[Validators.required]],
     birthdateto:[null,[Validators.required]],
   })
-  public collegeArrayList :College[];
-  public universityArrayList:University[];
-  public countryArrayList:Country[];
+  // public collegeArrayList :College[];
+  // public universityArrayList:University[];
+  // public countryArrayList:Country[];
 
 
   constructor( private formBuilder:FormBuilder ,private userService:UserService) { }
 
+  resultSet: UserResultSet = new UserResultSet();
+  pageNum: number = 1;
   ngOnInit() {
-    this.userService.findAll().subscribe(
-      res=> this.userList=res
+    //this.onSearch();
+    this.userService.findAll(this.pageNum).subscribe(
+      res=> this.resultSet=res
     )
+  }
+  // onSearch(){
+  //
+  //   this.userService.findAll(this.pageNum).subscribe(
+  //     res=>this.resultSet = res
+  //   );
+  // }
+
+  onPageChange(pageNum){
+    this.pageNum = pageNum;
+    this.userService.findAll(this.pageNum).subscribe(
+      res=> this.resultSet=res
+    )
+    //this.onSearch();
   }
   // filter(){
   //   let data : UserVtoData =new UserVtoData();

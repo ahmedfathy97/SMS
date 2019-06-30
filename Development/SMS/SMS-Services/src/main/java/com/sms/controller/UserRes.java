@@ -2,12 +2,15 @@ package com.sms.controller;
 
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthViews;
+import com.sms.model.user.UserResultSet;
 import com.sms.model.user.UserVTO;
 import com.sms.repository.UserRep;
+import com.sms.service.UserSer;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,9 +22,12 @@ import java.util.List;
 @Path("/user")
 public class UserRes {
     private UserRep userRep;
+    private UserSer userSer;
     @Autowired
-    public UserRes(UserRep repository) {
+    public UserRes(UserRep repository,
+                   UserSer userSer) {
         this.userRep =repository ;
+        this.userSer = userSer;
     }
 
     @GET
@@ -53,13 +59,15 @@ public class UserRes {
 //        System.out.println(data.toString());
 //
 //    }
+
     @GET
     @Path("/find")
     @Produces(MediaType.APPLICATION_JSON)
     @Authenticated(views = {AuthViews.USER_LIST})
-    public List<UserVTO> findAllUsers(){
-        List<UserVTO> userVTOList=this.userRep.findAll();
-        return userVTOList;
+    public UserResultSet findAllUsers(@QueryParam("pageNum") int pageNum){
+        //List<UserVTO> userVTOList=this.userRep.findAll(pageNum);
+
+        return this.userSer.findAllUsers(pageNum);
 
     }
 
