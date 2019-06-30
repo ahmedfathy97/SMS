@@ -1,12 +1,14 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 //import {UserData} from "../data/user-data";
 import {Observable} from "rxjs/internal/Observable";
 import {College} from "../data/college";
 import {University} from "../data/university";
 import {Country} from "../data/country";
 import {UserVtoData} from "../data/user-vto.data";
+import {UserResultSet} from "../data/user-result-set.data";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
+import {findAll} from "@angular/compiler-cli/src/ngcc/src/utils";
 
 @Injectable()
 export class UserService {
@@ -44,9 +46,13 @@ export class UserService {
     return this.http.get<Country[]>(this.BASE_URL+"country")
   }
 
-  findAll(){
-    return this.http.get<UserVtoData[]>(this.BASE_URL+"find")
-  }
+  findAll(pageNum: number){
+    let queryParameter: HttpParams = new HttpParams();
+
+    queryParameter = queryParameter.append('pageNum', pageNum.toString());
+
+    return this.http.get<UserResultSet>("http://localhost:8080/api/user/find",{params: queryParameter})
+
   // public uploadImage(image: File): Observable<Response> {
   //   const formData = new FormData();
   //
@@ -54,4 +60,4 @@ export class UserService {
   //
   //   return this.http.post('/api/v1/image-upload', formData);
   // }
-}
+} }
