@@ -23,6 +23,7 @@ export class FileVTO {
     this._id = value;
   }
 
+  // sadas
   private _name: string;
 
   get name(): string {
