@@ -4,6 +4,7 @@ import {LocalStorageService} from "../../../../../infrastructure/services/local-
 import {Router} from "@angular/router";
 import {AngularFullRoutes, replaceUserID} from "../../../../../infrastructure/data/full-routes.enum";
 import {AuthViews} from "../../../../../infrastructure/directives/authorization/data/auth-views.enum";
+import {ConfigParam} from "../../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'app-sms-header',
@@ -15,6 +16,7 @@ export class SmsHeaderComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   AUTH_VIEWS: typeof AuthViews = AuthViews;
   currentUser: AuthUserVTO = new AuthUserVTO();
+  BASE_URL: string = ConfigParam.APP_BASE_URL;
   
   replaceUserID = replaceUserID;
   constructor(private localStorageService: LocalStorageService,

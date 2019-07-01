@@ -34,7 +34,7 @@ public class UserRep {
                 "    gender,\n" +
                 "    email,\n" +
                 "    phone,\n" +
-                "    s.username\n" +
+                "    s.username, d.image_path " +
                 "FROM\n" +
                 "    user_detail d\n" +
                 "        LEFT JOIN\n" +
@@ -54,7 +54,7 @@ public class UserRep {
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
                 data.setPhone(rs.getString("phone"));
-                //data.setCollege(rs.getString("college"));
+                data.setImgPathURL(rs.getString("image_path"));
                 data.setUserName(rs.getString("username"));
                 return data;
             }

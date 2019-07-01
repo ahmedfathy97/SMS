@@ -13,6 +13,7 @@ export class UserVtoData {
   age:number;
   gender:string;
   phone:string;
+  imgPathURL: string;
 
 
 

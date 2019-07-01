@@ -4,6 +4,7 @@ import {LocalStorageService} from "../../infrastructure/services/local-storage.s
 import {AngularFullRoutes, replaceUserID} from "../../infrastructure/data/full-routes.enum";
 import {AuthUserVTO} from "../security/shared/data/auth-user-vto.data";
 import {AuthViews} from "../../infrastructure/directives/authorization/data/auth-views.enum";
+import {ConfigParam} from "../../infrastructure/common/config-param";
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   
   isUserAuthenticated: boolean = false;
   currentUser: AuthUserVTO = new AuthUserVTO();
+  BASE_URL: string = ConfigParam.APP_BASE_URL;
   
   replaceUserID = replaceUserID;
   constructor(private localStorageService: LocalStorageService,

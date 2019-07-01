@@ -6,7 +6,7 @@
     <img class="avatar" src="assets/images/icon/logo.png" alt="logo">
   </div>
   <div class="user-profile pull-right">
-    <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+    <img class="avatar user-thumb" src="{{BASE_URL}}/user/{{currentUser.userID}}/img" alt="avatar">
     <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{currentUser.fullName}} <i class="fa fa-angle-down"></i></h4>
     <div class="dropdown-menu">
       <a class="dropdown-item" [routerLink]="ROUTES.MY_COURSES">My Courses</a>

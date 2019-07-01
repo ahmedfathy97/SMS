@@ -22,26 +22,38 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row">
+        <div class="row pl-4 pr-4">
           <!-- Textual inputs start -->
-          <div class=" offset-2 col-md-8">
+          <div class="col-md-4">
             <div class="card">
               <div class="card-body">
-                <h1 class="header-title">Edit Profile</h1>
+                <h1 class="header-title">Profile Pic</h1>
                 <hr>
-                <form [formGroup]="formData">
-                  <div class="form-group d-inline-block col-12">
-                    <label for="browse" class="col-form-label">Select Profile Picture</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="tags" class="custom-file-input" id="browse"
-                               (change)="onFileSelected($event)"
-                               #fileInput>
-                        <label class="custom-file-label" for="browse" *ngIf="profileImg == null">Choose file</label>
-                        <label class="custom-file-label" for="browse" *ngIf="profileImg != null">{{profileImg.name}}</label>
-                      </div>
+                <div class="form-group d-inline-block col-12">
+                  <label for="browse" class="col-form-label">Select Profile Picture</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" name="tags" class="custom-file-input" id="browse"
+                             (change)="onFileSelected($event)"
+                             #fileInput>
+                      <label class="custom-file-label" for="browse" *ngIf="profileImg == null">Choose file</label>
+                      <label class="custom-file-label" for="browse" *ngIf="profileImg != null">{{profileImg.name}}</label>
                     </div>
                   </div>
+                </div>
+                <img class="user-profile" *ngIf="userVto.imgPathURL != null && profileImgURL == null"
+                     src="{{BASE_URL}}/user/{{userVto.id}}/img">
+                <img class="user-profile" *ngIf="profileImgURL != null" src="{{profileImgURL}}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="header-title">User Detail</h1>
+                <hr>
+                <form [formGroup]="formData">
+
                   <div class="form-group d-inline-block col-6">
                     <label for="firstname" class="col-form-label">First Name</label>
                     <input class="form-control" type="text" id="firstname" formControlName="firstName"

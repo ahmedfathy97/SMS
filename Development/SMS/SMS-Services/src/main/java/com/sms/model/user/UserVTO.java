@@ -22,6 +22,7 @@ public class UserVTO implements Serializable {
         String university;
         String birthDate;
     private int age;
+    private String imgPathURL;
 
 
     public UserVTO() {
@@ -182,5 +183,13 @@ public class UserVTO implements Serializable {
 
     public int getAge() {
         return age;
+    }
+
+    public void setImgPathURL(String imgPathURL) {
+        this.imgPathURL = imgPathURL;
+    }
+
+    public String getImgPathURL() {
+        return imgPathURL;
     }
 }
