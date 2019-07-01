@@ -76,7 +76,7 @@ export class CreateCourse implements OnInit {
     this.formData.get('midOneGrd').markAsDirty();
     // this.formData.get('semiFinalGrd').markAsDirty();
     // this.formData.get('midTwoGrd').markAsDirty();
-    this.formData.get('finalGrade').markAsDirty();
+    this.formData.get('finalGrd').markAsDirty();
     this.formData.get('description').markAsDirty();
 
 
@@ -94,15 +94,18 @@ export class CreateCourse implements OnInit {
       details.typeID = this.formData.get('typeID').value;
       details.levelID = this.formData.get('levelID').value;
       details.midOneGrd = this.formData.get('midOneGrd').value;
-      details.finalGrd = this.formData.get('finalGrade').value;
+      details.finalGrd = this.formData.get('finalGrd').value;
       details.description = this.formData.get('description').value;
 
       this.corService.createNewCourse(details).subscribe(res => {
         console.log("Success");
         let corID: number = res;
-        this.corService.updateCourseImg(corID, this.courseImg).subscribe(res2 => {
+        if(this.courseImg != null)
+          this.corService.updateCourseImg(corID, this.courseImg).subscribe(res2 => {
+            this.router.navigate([replaceCorID(this.ROUTES.COURSE_INFORMATION, corID)]);
+          });
+        else
           this.router.navigate([replaceCorID(this.ROUTES.COURSE_INFORMATION, corID)]);
-        });
       }, err => {
         console.log(err);
       });
@@ -110,9 +113,16 @@ export class CreateCourse implements OnInit {
   }
 
   courseImg: File;
+  courseImgURL;
 
   onFileSelected(event) {
     this.courseImg = event.target.files[0];
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(this.courseImg);
+    fileReader.onload = (_event) => {
+      this.courseImgURL = fileReader.result;
+    }
+  
   }
 
   clear() {

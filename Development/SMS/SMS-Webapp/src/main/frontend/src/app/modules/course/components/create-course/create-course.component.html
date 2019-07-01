@@ -16,13 +16,36 @@
   </div>
   <div class="full-page-content-area">
     <!-- create course area start -->
-    <div class="row mt-5 mb-5">
-      <div class="offset-2 col-8">
+    <div class="row pl-4 pr-4 mt-5 mb-5">
+      <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <div class="d-sm-flex justify-content-between align-items-center">
-              <h4 class="header-title mb-0">Course Main Details</h4>
+            <h1 class="header-title">Course Pic</h1>
+            <hr>
+
+            <div class="form-group d-inline-block col-12">
+              <label for="example-text-input" class="col-form-label">Select Course Image</label>
+
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="tags" class="custom-file-input" id="browse"
+                         (change)="onFileSelected($event)"
+                         #fileInput>
+                  <label class="custom-file-label" for="browse" *ngIf="courseImg == null">Choose file</label>
+                  <label class="custom-file-label" for="browse" *ngIf="courseImg != null">{{courseImg.name}}</label>
+                </div>
+              </div>
             </div>
+            <img class="user-profile" *ngIf="courseImg != null" src="{{courseImgURL}}">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="header-title mb-0">Course Main Details</h1>
+            <hr>
+
             <form [formGroup]="formData">
               <div class="form-group d-inline-block col-6">
                 <label for="example-text-input" class="col-form-label">Name*</label>
@@ -103,9 +126,9 @@
                 <label for="finalGrd" class="col-form-label">Final grade*</label>
                 <input class="form-control" formControlName="finalGrd" type="number" value="number"
                        id="finalGrd"
-                       [ngClass]="{ 'is-invalid': f.finalGrade.dirty && f.finalGrade.errors?.required }">
-                <div *ngIf="submitted && f.finalGrade.errors" class="invalid-feedback">
-                  <small *ngIf="f.finalGrade.errors?.required">Final grade can't be null .</small>
+                       [ngClass]="{ 'is-invalid': f.finalGrd.dirty && f.finalGrd.errors?.required }">
+                <div *ngIf="submitted && f.finalGrd.errors" class="invalid-feedback">
+                  <small *ngIf="f.finalGrd.errors?.required">Final grade can't be null .</small>
                 </div>
               </div>
 
@@ -121,29 +144,10 @@
               </div>
 
 
-              <div class="form-group d-inline-block col-6">
-                <label for="example-text-input" class="col-form-label">Select Course Image</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input type="file" name="tags" class="custom-file-input" id="browse"
-                           (change)="onFileSelected($event)"
-                           #fileInput>
-                    <label class="custom-file-label" for="browse" *ngIf="courseImg == null">Choose file</label>
-                    <label class="custom-file-label" for="browse" *ngIf="courseImg != null">{{courseImg.name}}</label>
-                  </div>
-                </div>
-              </div>
 
               <div class="row">
-
-                <!--<div class="">-->
-
                   <button type="clear" class="btn btn-danger ml-1 pull-right" (click)="clear()">Clear</button>
-
-                  <!--<a [routerLink]="[]">-->
                   <button class="btn btn-success pull-right" (click)="onSubmitNewCourse()">Create</button>
-                  <!--</a>-->
-                <!--</div>-->
               </div>
             </form>
 

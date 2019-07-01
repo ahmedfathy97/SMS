@@ -299,11 +299,16 @@ public class CourseRes {
     public Response getCourseImg(@PathParam("corID") int corID) throws FileNotFoundException {
         String imgPath = this.courseRep.findCorImgByID(corID);
 
-        if(imgPath != null){
-            File file = new File("../courses/" + corID + "/courseImg/" + imgPath);
-            return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
-        } else
-            return Response.status(404).entity("Course not found").build();
+        File file;
 
+        if(imgPath != null)
+            file = new File("../courses/" + corID + "/courseImg/" + imgPath);
+        else
+            file = new File("../courses/no-course.jpg");
+
+        if(!file.exists())
+            file = new File("../courses/no-course.jpg");
+
+        return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
     }
 }

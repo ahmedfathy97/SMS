@@ -101,16 +101,13 @@ export class UserEditComponent implements OnInit {
         userEdit.email = this.formData.get('email').value;
         userEdit.userName = this.formData.get('userName').value;
         userEdit.phone = this.formData.get('t_phone').value;
-
+  
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
-
-          console.log("Success");
-
-          this.userService.updateProfileImg(this.userID, this.profileImg).subscribe(res2 => {
-            this.alert = new SuccessAlert();
-            location.reload();
-
-          });
+          if(this.profileImgURL != null)
+            this.userService.updateProfileImg(this.userID, this.profileImg).subscribe(res2 => {
+              this.alert = new SuccessAlert();
+              location.reload();
+            });
         }, err => {
           this.alert = new FailureAlert(err);
           console.log(err);
@@ -127,7 +124,6 @@ export class UserEditComponent implements OnInit {
     fileReader.readAsDataURL(this.profileImg);
     fileReader.onload = (_event) => {
       this.profileImgURL = fileReader.result;
-      console.log(this.profileImgURL);
     }
 
   }

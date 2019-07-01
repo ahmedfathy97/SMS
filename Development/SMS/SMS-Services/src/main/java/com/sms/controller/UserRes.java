@@ -94,13 +94,17 @@ public class UserRes {
     @Produces("image/png")
     public Response getProfileImg(@PathParam("userID") int userID) throws FileNotFoundException {
         String imgPath = this.userRep.findProfileImgByID(userID);
+        File file;
 
-        if(imgPath != null){
-            File file = new File("../user/" + userID + "/profileImg/" + imgPath);
-            return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
-        } else
-            return Response.status(404).entity("Profile not found").build();
+        if(imgPath != null)
+            file = new File("../user/" + userID + "/profileImg/" + imgPath);
+        else
+            file = new File("../user/avatar.png");
 
+        if(!file.exists())
+            file = new File("../user/avatar.png");
+
+        return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
     }
 
 }

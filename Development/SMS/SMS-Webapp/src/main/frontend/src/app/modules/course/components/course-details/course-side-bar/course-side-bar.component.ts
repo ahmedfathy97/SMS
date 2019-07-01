@@ -33,7 +33,6 @@ export class CourseSideBarComponent implements OnInit {
   ngOnInit() {
     this.corService.getStudentIsEnroll(this.corID).subscribe(res =>{
       this.isStudentEnroll = res;
-      console.log(res);
     });
 
 
