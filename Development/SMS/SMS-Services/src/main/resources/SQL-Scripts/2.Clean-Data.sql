@@ -112,26 +112,28 @@ INSERT INTO auth_role_view (role_id, view_id) VALUE (1,26);
 INSERT INTO auth_role_view (role_id, view_id) VALUE (2,26);
 
 
-INSERT INTO question_type (id, label_en) VALUES ('1', 'mcq');
-INSERT INTO question_type (id, label_en) VALUES ('2', 'truefalse');
+INSERT INTO question_type (id, label_en) VALUES ('1', 'MCQ');
+INSERT INTO question_type (id, label_en) VALUES ('2', 'True & False');
 
-INSERT INTO file_source (id, lable_en) VALUES ('1', 'attachment');
-INSERT INTO file_source (id, lable_en) VALUES ('2', 'assignment');
-
-
+INSERT INTO file_source (id, lable_en) VALUES ('1', 'Attachment');
+INSERT INTO file_source (id, lable_en) VALUES ('2', 'Assignment');
 
 
 
 
-INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('IT');
-INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('Design');
+
+
+INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('Information System');
 INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('Computer Science');
+INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('Programming');
+INSERT INTO `sms`.`cor_category` (`label_en`) VALUES ('Multimedia');
 
 
 INSERT INTO `sms`.`cor_type` (`label_en`) VALUES ('Academic');
-INSERT INTO `sms`.`cor_type` (`label_en`) VALUES ('practical');
+INSERT INTO `sms`.`cor_type` (`label_en`) VALUES ('Practical');
 
 
-INSERT INTO `sms`.`cor_level` (`label_en`) VALUES ('beginner');
-INSERT INTO `sms`.`cor_level` (`label_en`) VALUES ('high level');
+INSERT INTO `sms`.`cor_level` (`label_en`) VALUES ('Beginner');
+INSERT INTO `sms`.`cor_level` (`label_en`) VALUES ('Intermediate');
+INSERT INTO `sms`.`cor_level` (`label_en`) VALUES ('Advanced');
 

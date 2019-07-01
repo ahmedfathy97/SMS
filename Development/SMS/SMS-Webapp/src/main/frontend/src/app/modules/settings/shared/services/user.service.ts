@@ -51,7 +51,7 @@ export class UserService {
 
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
 
-    return this.http.get<UserResultSet>("http://localhost:8080/api/user/find",{params: queryParameter})
+    return this.http.get<UserResultSet>(this.BASE_URL + "find",{params: queryParameter})
 
   // public uploadImage(image: File): Observable<Response> {
   //   const formData = new FormData();

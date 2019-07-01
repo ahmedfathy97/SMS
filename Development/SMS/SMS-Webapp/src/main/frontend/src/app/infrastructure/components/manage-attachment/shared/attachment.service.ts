@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHeaders, HttpParams} from "@angular/common/http";
 import {FileVTO} from "./data/FileVTO"
 import {Observable} from "rxjs";
+import {ConfigParam} from "../../../common/config-param";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {Observable} from "rxjs";
 export class AttachmentService {
 
   file: FileVTO;
+  BASE_URL: string = ConfigParam.APP_BASE_URL+"/attachment";
 
   constructor(private http: HttpClient) {
   }
@@ -27,7 +29,7 @@ export class AttachmentService {
       .set("sourceID", sourceID)
       .set("fileSrcID", fileSrcID);
 
-    this.http.post("http://localhost:8080/api/attachment/file", fd, {params: params})
+    this.http.post(this.BASE_URL + "/file", fd, {params: params})
       .subscribe(res => {
           console.log(res);
         }
@@ -44,7 +46,7 @@ export class AttachmentService {
       .set("sourceID", sourceID)
       .set("fileSrcID", fileSrcID)
 
-    return this.http.get<FileVTO[]>('http://localhost:8080/api/attachment/files', {params: params});
+    return this.http.get<FileVTO[]>(this.BASE_URL + '/files', {params: params});
   }
 
 
@@ -56,10 +58,10 @@ export class AttachmentService {
     //     'Transfer-Encoding':'chunked',
     //   })
     // };
-    return this.http.get('http://localhost:8080/api/attachment/downloadFile/' + fileID,{responseType: 'blob'})
+    return this.http.get(this.BASE_URL + '/downloadFile/' + fileID,{responseType: 'blob'})
   }
 
   removeFile(fileID: number) {
-    return this.http.get('http://localhost:8080/api/attachment/166' )
+    return this.http.get(this.BASE_URL + '/166' )
   }
 }

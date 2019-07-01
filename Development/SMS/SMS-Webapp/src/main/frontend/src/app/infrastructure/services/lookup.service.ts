@@ -3,12 +3,13 @@ import {Injectable} from "@angular/core";
 import {CorCategory} from "../../modules/course/shared/data/lookup/course/cor-category.data";
 import {CorType} from "../../modules/course/shared/data/lookup/course/cor-type.data";
 import {CorLevel} from "../../modules/course/shared/data/lookup/course/cor-level.data";
+import {ConfigParam} from "../common/config-param";
 
 
 @Injectable()
 export class LookupService {
 
-  BASE_URL : string =  "http://localhost:8080/api/lookup";
+  BASE_URL : string =  ConfigParam.APP_BASE_URL + "/lookup";
 
   constructor(private http: HttpClient) {
   }
