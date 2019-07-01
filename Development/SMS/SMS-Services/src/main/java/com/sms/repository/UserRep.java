@@ -53,7 +53,7 @@ public class UserRep {
 //                data.setBirthDate(rs.getString("birth_date"));
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
-                data.setPhone(rs.getInt("phone"));
+                data.setPhone(rs.getString("phone"));
                 //data.setCollege(rs.getString("college"));
                 data.setUserName(rs.getString("username"));
                 return data;

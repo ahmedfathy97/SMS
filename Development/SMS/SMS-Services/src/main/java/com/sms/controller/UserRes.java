@@ -73,7 +73,7 @@ public class UserRes {
     @Path("/{userID}/img")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadCourseImg(@PathParam("userID") int userID,
+    public Response uploadProfileImg(@PathParam("userID") int userID,
                                     @QueryParam("fileName") String name,
                                     @QueryParam("fileType") String type,
                                     @QueryParam("ext") String ext,

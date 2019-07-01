@@ -97,11 +97,11 @@ export class UserEditComponent implements OnInit {
         userEdit.phone = this.formData.get('t_phone').value;
 
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
-          this.alert = new SuccessAlert();
+
           console.log("Success");
-          // let userID: number =res ;
-          this.corService.updateProfileImg(userID, this.profileImg).subscribe(res2 => {
-            this.router.navigate([replaceCorID(this.ROUTES.EDIT, userID)]);
+
+          this.userService.updateProfileImg(this.userID, this.profileImg).subscribe(res2 => {
+            this.alert = new SuccessAlert();
           });
         }, err => {
           this.alert = new FailureAlert(err);
