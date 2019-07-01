@@ -10,6 +10,7 @@
 
 <div class="carousel-item active">
   <div class="banner" style="background-image: url(../../../../assets/images/1.jpg);">
+
     <div class="user-profile pull-right" style="padding-right: 60px;" *ngIf="isUserAuthenticated">
       <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
       <h4 class="user-name dropdown-toggle" style="color: white; font-size: 25px;" data-toggle="dropdown">
@@ -25,17 +26,18 @@
 
 
   <div class="carousel-caption">
-    <h1 class="animated ">We Are <span>E-PEAK</span></h1>
-    <h3 class="animated ">leading you to peak </h3>
+    <img src="../../../../assets/images/icon/logo.png" height="350" width="330">
+
     <p class="animated " *ngIf="!isUserAuthenticated">
       <a [routerLink]="[ROUTES.LOGIN]">Login</a>
+      <a class="ml-5 bg-primary" [routerLink]="[ROUTES.REGISTER]">Sign Up</a>
     </p>
-    <p class="animated "  *ngIf="!isUserAuthenticated">
-      <a [routerLink]="[ROUTES.REGISTER]">Sign Up</a>
-    </p>
+
     <p class="animated "  *ngIf="isUserAuthenticated">
-      <a *authorizeView="[AUTH_VIEWS.COURSE_LIST]" [routerLink]="ROUTES.COURSE_LIST">Courses</a>
+      <a *authorizeView="[AUTH_VIEWS.COURSE_LIST]" [routerLink]="ROUTES.COURSE_LIST">All Courses</a>
+      <a class="ml-5 bg-primary" *authorizeView="[AUTH_VIEWS.MY_COURSE]" [routerLink]="ROUTES.MY_COURSES">My Courses</a>
     </p>
+
     <p class="animated "  *ngIf="isUserAuthenticated">
       <a *authorizeView="[AUTH_VIEWS.USER_LIST]" [routerLink]="ROUTES.SETTING_USER_LIST">User List</a>
     </p>

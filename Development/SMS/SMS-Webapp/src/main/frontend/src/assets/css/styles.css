@@ -176,8 +176,8 @@
 }
 
 .logo-header img.avatar {
-  height: 100px;
-  width: 140px;
+  height: 80px;
+  width: 130px;
   /*border-radius: 50%;*/
   /*margin-right: 12px;*/
 }
@@ -435,7 +435,7 @@
 /*-------------------- 2.2 Header Area -------------------*/
 
 .header-area {
-  width: 97%;
+  width: 100%;
   margin: auto;
   padding: 0;
   background: #fff;
@@ -756,7 +756,7 @@ ul.breadcrumbs {
   flex-wrap: wrap;
   /*background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);*/
   /*background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);*/
-  padding: 17px 38px;
+  padding: 20px 38px;
   position: relative;
 }
 
