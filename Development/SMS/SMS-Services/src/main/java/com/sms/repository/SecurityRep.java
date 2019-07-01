@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -44,9 +45,9 @@ public class SecurityRep {
 
         int id = this.userInsert.executeAndReturnKey(parameters).intValue();
 
-        String sql = "INSERT INTO user_detail (user_id, first_name, last_name, email) " +
-                "VALUES (?, ?, ?, ?)";
-        this.jdbc.update(sql, id,data.getFirstName(), data.getLastName(), data.getEmail());
+        String sql = "INSERT INTO user_detail (user_id, first_name, last_name, email ,birth_date ,gender ,phone) " +
+                "VALUES (?, ?, ?, ? ,?,?,?)";
+        this.jdbc.update(sql, id,data.getFirstName(), data.getLastName(), data.getEmail(),data.getBirthDate() ,data.getGender() ,data.getPhone());
 
         String sql2 = "INSERT INTO auth_user_role (user_id, role_id) values (?,?);";
         this.jdbc.update(sql2, id , data.getRoleID());

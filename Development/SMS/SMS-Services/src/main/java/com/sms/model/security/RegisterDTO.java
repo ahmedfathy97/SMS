@@ -1,6 +1,7 @@
 package com.sms.model.security;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class RegisterDTO implements Serializable {
     private String firstName;
@@ -9,6 +10,9 @@ public class RegisterDTO implements Serializable {
     private String password;
     private String email;
     private int roleID ;
+    private String gender ;
+    private Date birthDate ;
+    private int phone ;
 
 
     public RegisterDTO() {
@@ -60,6 +64,30 @@ public class RegisterDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     @Override

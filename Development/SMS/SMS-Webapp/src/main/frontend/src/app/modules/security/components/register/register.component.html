@@ -98,6 +98,30 @@
                 </select>
               </div>
             </div>
+            <div class="col-6">
+              <div class="form-gp">
+                <label for="birthDate">Birth Date</label>
+                <input type="Date" id="birthDate" formControlName="birthDate" placeholder="Enter your Birth Date">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-gp">
+                <label for="gender">Gender</label>
+                <select id="gender" formControlName="gender">
+                  <option>Male</option>
+                  <option>FeMale</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-gp">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" formControlName="phone" placeholder="Enter your phone">
+              </div>
+            </div>
           </div>
           <div class="submit-btn-area">
             <button id="form_submit" type="submit" (click)="onSubmit()">Submit <i class="ti-arrow-right"></i></button>

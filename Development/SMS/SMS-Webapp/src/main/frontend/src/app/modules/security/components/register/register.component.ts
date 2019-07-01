@@ -23,7 +23,10 @@ export class RegisterComponent implements OnInit {
     password: [null , [Validators.required ,Validators.minLength(8)]],
     confirmPassword: [null , [Validators.required ,Validators.minLength(8)]],
     email: [null,[Validators.required,Validators.maxLength(30), Validators.pattern('^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$')]] ,
-    roleType :[null,Validators.required]
+    roleType :[null,Validators.required] ,
+    birthDate : [null,Validators.required]  ,
+    phone:[null,Validators.required]  ,
+    gender:[null,Validators.required]  ,
   });
   get regisretForm() { return this.formData.controls; }
 
@@ -50,7 +53,9 @@ export class RegisterComponent implements OnInit {
       data.username = this.formData.get('username').value;
       data.password = this.formData.get('password').value;
       data.email = this.formData.get('email').value;
-
+      data.birthDate =this.formData.get('birthDate').value;
+      data.gender = this.formData.get('gender').value;
+      data.phone =this.formData.get('phone').value;
       this.securityService.register(data).subscribe(
         res => {
           this.router.navigate([`/login`]) ;

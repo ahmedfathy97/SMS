@@ -7,5 +7,8 @@ export class RegisterDTO{
   password: string;
   email: string;
   roleID :number ;
+  phone: number ;
+  gender:string ;
+  birthDate:Date ;
 
 }
