@@ -281,6 +281,7 @@ CREATE TABLE exam (
   exam_name VARCHAR(45) NOT NULL,
   grade INT NOT NULL,
   course_id INT NOT NULL ,
+  is_closed TINYINT(4) NULL ,
   PRIMARY KEY (id),
   CONSTRAINT fk_exam_course  FOREIGN KEY (course_id)  REFERENCES course (id)
   );

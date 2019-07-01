@@ -28,7 +28,7 @@
           <form [formGroup]="formData">
             <div formArrayName="questions" >
             <div  *ngFor="let question of questions.controls; index as i "  [formGroupName]="i">
-              <label>{{quizQuestions[i].id}}.</label>
+              <label>{{i+1}})</label>
               <label>{{quizQuestions[i].question}}</label>
               <br><br>
 

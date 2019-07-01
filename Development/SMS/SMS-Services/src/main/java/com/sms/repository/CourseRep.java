@@ -152,8 +152,8 @@ public class CourseRep {
         int id = this.courseSJI.executeAndReturnKey(parameters).intValue() ;
 
         String sql2 = "INSERT INTO exam(exam_name , grade , course_id ) Values (?,?,?) ";
-        this.jdbcTemplate.update(sql2,"mid_one_grd",details.getMidOneGrd(),id);
-        this.jdbcTemplate.update(sql2,"final_grd",details.getFinalGrd(),id);
+        this.jdbcTemplate.update(sql2,"Mid Term",details.getMidOneGrd(),id);
+        this.jdbcTemplate.update(sql2,"Final Term",details.getFinalGrd(),id);
 
         return id ;
     }

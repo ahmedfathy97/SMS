@@ -77,7 +77,7 @@ export class CreateCourse implements OnInit {
     this.formData.get('midOneGrd').markAsDirty();
     // this.formData.get('semiFinalGrd').markAsDirty();
     // this.formData.get('midTwoGrd').markAsDirty();
-    this.formData.get('finalGrd').markAsDirty();
+    this.formData.get('finalGrade').markAsDirty();
     this.formData.get('description').markAsDirty();
 
 
@@ -99,7 +99,7 @@ export class CreateCourse implements OnInit {
       details.midOneGrd = this.formData.get('midOneGrd').value;
       // details.semiFinalGrd = this.formData.get('semiFinalGrd').value;
       // details.midTwoGrd = this.formData.get('midTwoGrd').value;
-      details.finalGrd = this.formData.get('finalGrd').value;
+      details.finalGrd = this.formData.get('finalGrade').value;
       details.description = this.formData.get('description').value;
 
       this.corService.createNewCourse(details).subscribe(res => {
@@ -113,9 +113,9 @@ export class CreateCourse implements OnInit {
       });
     }
   }
-  
+
   courseImg: File;
-  
+
   onFileSelected(event) {
     this.courseImg = event.target.files[0];
   }

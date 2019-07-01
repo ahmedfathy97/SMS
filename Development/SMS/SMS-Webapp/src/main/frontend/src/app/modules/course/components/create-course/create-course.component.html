@@ -103,9 +103,9 @@
                 <label for="finalGrd" class="col-form-label">Final grade*</label>
                 <input class="form-control" formControlName="finalGrd" type="number" value="number"
                        id="finalGrd"
-                       [ngClass]="{ 'is-invalid': f.finalGrd.dirty && f.finalGrd.errors?.required }">
-                <div *ngIf="submitted && f.finalGrd.errors" class="invalid-feedback">
-                  <small *ngIf="f.finalGrd.errors?.required">Final grade can't be null .</small>
+                       [ngClass]="{ 'is-invalid': f.finalGrade.dirty && f.finalGrade.errors?.required }">
+                <div *ngIf="submitted && f.finalGrade.errors" class="invalid-feedback">
+                  <small *ngIf="f.finalGrade.errors?.required">Final grade can't be null .</small>
                 </div>
               </div>
 
