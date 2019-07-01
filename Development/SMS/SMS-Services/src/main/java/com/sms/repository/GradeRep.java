@@ -62,7 +62,7 @@ public class GradeRep {
 
         String sql =
             "SELECT std.first_name,std.last_name,std.user_id, " +
-                "cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd " +
+                "cor.mid_grd,cor.final_grd " +
             " from user_detail std " +
                 " left join course_std cor on std.user_id=cor.std_id\n" +
             " where cor_id = ? "
