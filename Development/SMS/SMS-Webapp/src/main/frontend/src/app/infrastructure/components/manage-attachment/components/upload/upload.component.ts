@@ -85,15 +85,25 @@ export class UploadComponent implements OnInit {
         console.log("File name is too long: " + selectedFiles[i].name);
         continue;
       }
-      let file: FileVTO = new FileVTO();
 
-      file.name = selectedFiles[i].name.toString();
-      file.extension = selectedFiles[i].name.split('.').pop();
-      file.contentType = selectedFiles[i].type;
-      file.content = selectedFiles[i];
-      file.size = selectedFiles[i].size;
-      file.corID = this.corID;
-      file.sourceID = this.lectureID;
+      let name = selectedFiles[i].name.toString();
+      let extension = selectedFiles[i].name.split('.').pop();
+      let contentType = selectedFiles[i].type;
+      let content = selectedFiles[i];
+      let size = selectedFiles[i].size;
+      let corID = this.corID;
+      let sourceID = this.lectureID;
+      // file.id = 0;
+      // file.name = selectedFiles[i].name.toString();
+      // file.extension = selectedFiles[i].name.split('.').pop();
+      // file.contentType = selectedFiles[i].type;
+      // file.content = selectedFiles[i];
+      // file.size = selectedFiles[i].size;
+      // file.corID = this.corID;
+      // file.sourceID = this.lectureID;
+
+      let file: FileVTO = new FileVTO(0, name, contentType, extension, size, "", "", "",
+        corID, sourceID, 0);
 
       this.filesVTO.push(file);
       console.log(file)
