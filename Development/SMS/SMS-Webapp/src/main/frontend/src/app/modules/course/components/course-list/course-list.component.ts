@@ -18,6 +18,7 @@ export class CourseListComponent implements OnInit {
   corID : number ;
 
   PAGE_SIZE: number = ConfigParam.PAGE_SIZE;
+  BASE_URL: string = ConfigParam.APP_BASE_URL;
 
 
   constructor( private courseService: CourseService ) {

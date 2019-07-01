@@ -30,7 +30,7 @@ public class UserRep {
                 "    CONCAT(first_name, ' ', last_name) AS full_name,\n" +
                 "    first_name,\n" +
                 "    last_name,\n" +
-                "    birth_date,\n" +
+                "    floor(datediff(curdate(), birth_date) / 365) AS age, " +
                 "    gender,\n" +
                 "    email,\n" +
                 "    phone,\n" +
@@ -49,8 +49,8 @@ public class UserRep {
                 data.setFullName(rs.getString("full_name"));
                 data.setFirstName(rs.getString("first_name"));
                 data.setLastName(rs.getString("last_name"));
-                //data.setAge(rs.getInt("age"));
-                data.setBirthDate(rs.getString("birth_date"));
+                data.setAge(rs.getInt("age"));
+//                data.setBirthDate(rs.getString("birth_date"));
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
                 data.setPhone(rs.getInt("phone"));

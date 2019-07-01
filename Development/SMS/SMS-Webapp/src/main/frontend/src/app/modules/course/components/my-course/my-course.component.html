@@ -58,7 +58,7 @@
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
                 <div class="card card-bordered align-img-center">
-                  <img class="card-img-top img-fluid course-img pt--20" src="{{course.imagePath}}" alt="image">
+                  <img class="card-img-top img-fluid course-img pt--20" src="{{BASE_URL}}/course/{{course.id}}/img" alt="image">
                   <div class="card-body p-3">
                     <h5 class="title text-success clickable" [routerLink]="[replaceCorID(ROUTES.COURSE_INFORMATION, course.id)]">
                       {{course.courseName}}

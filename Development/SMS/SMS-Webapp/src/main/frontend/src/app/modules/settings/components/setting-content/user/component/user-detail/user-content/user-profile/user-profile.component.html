@@ -8,7 +8,7 @@
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
-            <li><span>{{userVto.userName}}</span></li>
+            <li><span>{{userVto.fullName}}</span></li>
           </ul>
         </div>
       </div>
@@ -25,44 +25,23 @@
   </div>
   <div class="full-page-content-area">
 
-    <!--<div class="image pull-left col-md-1 offset-3">-->
-
-    <!--<div *ngIf="selectedFile" class="img-preview-container">-->
-
-    <!--<div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"-->
-    <!--[ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash;<div *ngIf="selectedFile.pending" class="img-loading-overlay">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="img-spinning-circle"></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-    <!--</div>-->
-
-    <!--<label class="image-upload-container btn ">-->
-    <!--<input #imageInput-->
-    <!--type="file"-->
-    <!--accept="image/*"-->
-    <!--(change)="processFile(imageInput)">-->
-    <!--</label>-->
     <div class="row">
       <div class=" offset-2 col-md-8">
         <div class="col-12">
           <div class="card">
             <div class="card-body">
 
-              <h5>{{userVto.userName}}</h5>
+              <h5>{{userVto.fullName}}</h5>
               <hr>
-              <h2 class="header-title">About Me</h2>
 
               <div class="d-inline-block col-6">
-                <label for="full-name" class="col-form-label font-weight-bold text-dark ">Full Name : &nbsp; &nbsp; &nbsp; </label>
-                <label id="full-name" class="col-form-label label label-info ml-1">{{userVto.fullName}}</label>
+                <label for="full-name" class="col-form-label font-weight-bold text-dark ">User Name : &nbsp; &nbsp; &nbsp; </label>
+                <label id="full-name" class="col-form-label label label-info ml-1">{{userVto.userName}}</label>
               </div>
 
               <div class="d-inline-block col-6">
-                <label for="birthDate" class="col-form-label font-weight-bold text-dark ">BirthDate : &nbsp; &nbsp; &nbsp; </label>
-                <label id="birthDate" class="col-form-label label label-info ml-1">{{userVto.birthDate}}</label>
+                <label for="birthDate" class="col-form-label font-weight-bold text-dark ">Age : &nbsp; &nbsp; &nbsp; </label>
+                <label id="birthDate" class="col-form-label label label-info ml-1">{{userVto.age}}</label>
               </div>
 
               <div class="d-inline-block col-6" >
@@ -71,7 +50,7 @@
               </div>
 
               <div class="d-inline-block col-6">
-                <label for="e_mail" class="col-form-label font-weight-bold text-dark ">E_mail : &nbsp; &nbsp; &nbsp;</label>
+                <label for="e_mail" class="col-form-label font-weight-bold text-dark ">E-mail : &nbsp; &nbsp; &nbsp;</label>
                 <label id="e_mail" class="col-form-label label label-info ml-1"><a href="#">{{userVto.email}}</a></label>
               </div>
 

@@ -5,6 +5,7 @@ import {RegisterDTO} from "../../shared/data/register-dto.data";
 import {RolesVto} from "../../shared/data/roles-Vto";
 import {AngularFullRoutes} from "../../../../infrastructure/data/full-routes.enum";
 import {ConfigParam} from "../../../../infrastructure/common/config-param";
+import {LocalStorageService} from "../../../../infrastructure/services/local-storage.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
     if(this.formData.valid) {
       let data: RegisterDTO = new RegisterDTO();
-      data.roleID = this.formData.get('roleType').value
+      data.roleID = this.formData.get('roleType').value;
       data.firstName = this.formData.get('firstName').value;
       data.lastName = this.formData.get('lastName').value;
       data.username = this.formData.get('username').value;
@@ -58,7 +59,7 @@ export class RegisterComponent implements OnInit {
       data.phone =this.formData.get('phone').value;
       this.securityService.register(data).subscribe(
         res => {
-          this.router.navigate([`/login`]) ;
+          this.router.navigate([this.ROUTES.LOGIN]);
         },
         err => {
           console.log(err);

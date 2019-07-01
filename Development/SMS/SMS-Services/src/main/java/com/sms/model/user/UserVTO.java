@@ -21,7 +21,7 @@ public class UserVTO implements Serializable {
         String country;
         String university;
         String birthDate;
-
+    private int age;
 
 
     public UserVTO() {
@@ -176,5 +176,13 @@ public class UserVTO implements Serializable {
                 ", university='" + university + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 '}';
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
     }
 }

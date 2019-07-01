@@ -23,7 +23,6 @@ export class CreateCourse implements OnInit {
   corTypeList: CorType[] = [];
   corLevelList: CorLevel[] = [];
 
-
   constructor(private formBuilder: FormBuilder,
               private corService: CourseService,
               private router: Router,
@@ -89,16 +88,12 @@ export class CreateCourse implements OnInit {
       details.courseName = this.formData.get('courseName').value;
       details.duration = this.formData.get('duration').value;
 
-      console.log(this.formData.get('startDate').value);
-
       details.startDate = this.formData.get('startDate').value;
       details.endDate = this.formData.get('endDate').value;
       details.categoryID = this.formData.get('categoryID').value;
       details.typeID = this.formData.get('typeID').value;
       details.levelID = this.formData.get('levelID').value;
       details.midOneGrd = this.formData.get('midOneGrd').value;
-      // details.semiFinalGrd = this.formData.get('semiFinalGrd').value;
-      // details.midTwoGrd = this.formData.get('midTwoGrd').value;
       details.finalGrd = this.formData.get('finalGrade').value;
       details.description = this.formData.get('description').value;
 
