@@ -104,6 +104,7 @@ export class UploadComponent implements OnInit {
 
       let file: FileVTO = new FileVTO(0, name, contentType, extension, size, "", "", "",
         corID, sourceID, 0);
+      file.content = selectedFiles[i];
 
       this.filesVTO.push(file);
       console.log(file)

@@ -14,26 +14,30 @@ import java.util.List;
 @Repository
 public class AttachmentRep {
     private JdbcTemplate jdbcTemplate;
+//    private AssignmentRep assRep;
 
     @Autowired
     public AttachmentRep(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+//        this.assRep = assRep;
     }
 
     public void insertNewFile(File file) {
         String sql = "INSERT INTO attachment (file_name, content_type, file_size,extension," +
-                "  file_path, upload_date, source_id, file_src_id, start_date, end_date, corID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+                "  file_path, upload_date, source_id, file_src_id, start_date, end_date, cor_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
         this.jdbcTemplate.update(sql, file.getName(), file.getContentType(), file.getSize(), file.getExtension(),
                 file.getFile_path(), file.getUpload_date(), file.getSourceID(), file.getFileSourceID(),
                 file.getStart_date(), file.getEnd_date(), file.getCorID());
+
+//        this.assRep.insertNewAssignment();
     }
 
     // For Listing purposes
     public List<File> findFiles(int corID, int sourceID, int file_src_id) {
         String sql = "SELECT file_id, file_name, file_size, content_type, upload_date, start_date, end_date " +
                 "FROM attachment " +
-                "WHERE corID = ? AND source_id = ? AND file_src_id = ?  ";
+                "WHERE cor_id = ? AND source_id = ? AND file_src_id = ?  ";
 
         List<File> files = this.jdbcTemplate.query(sql, new FileRm(), corID, sourceID, file_src_id);
         return files;
