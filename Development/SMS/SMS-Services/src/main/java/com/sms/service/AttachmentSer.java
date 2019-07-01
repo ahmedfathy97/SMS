@@ -38,7 +38,7 @@ public class AttachmentSer {
 
             // Relative Path
             Path filePath = Paths.get("." + "//upload//course " + attachment.getCorID() + "//lecture " + attachment.getSourceID()
-                    + "//" + fileSrcID + "//" + attachment.getName() + "." + attachment.getExtension());
+                    + "//" + fileSrcID + "//" + attachment.getName().split(".") + "." + attachment.getExtension());
 
 //            System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 
