@@ -100,8 +100,8 @@ export class UserEditComponent implements OnInit {
         userEdit.gender = this.formData.get('gender').value;
         userEdit.email = this.formData.get('email').value;
         userEdit.userName = this.formData.get('userName').value;
-        userEdit.phone = this.formData.get('t_phone').value;
-  
+        userEdit.phone = this.formData.get('phone').value;
+
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
           if(this.profileImgURL != null)
             this.userService.updateProfileImg(this.userID, this.profileImg).subscribe(res2 => {
