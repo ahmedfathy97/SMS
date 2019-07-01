@@ -50,6 +50,7 @@ isStudentEnroll:boolean=false;
   onEnrollNewStudent(){
     this.corService.enrollStudentByID(this.corID).subscribe(res => {
       console.log("Success");
+      this.isStudentEnroll = true;
     }, err => {
       console.log(err)});
   }

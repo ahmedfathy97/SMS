@@ -12,7 +12,7 @@ export class UserVtoData {
   birthDate:string;
   age:number;
   gender:string;
-  phone:number;
+  phone:string;
 
 
 

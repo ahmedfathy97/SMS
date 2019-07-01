@@ -11,8 +11,8 @@
 <div class="carousel-item active">
   <div class="banner" style="background-image: url(../../../../assets/images/1.jpg);">
 
-    <div class="user-profile pull-right" style="padding-right: 60px;" *ngIf="isUserAuthenticated">
-      <img class="avatar user-thumb" style="margin-bottom: 100px" src="assets/images/author/avatar.png" alt="avatar">
+    <div class="user-profile pull-right" style="padding-right: 60px; margin-bottom: 100px;" *ngIf="isUserAuthenticated">
+      <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
       <h4 class="user-name dropdown-toggle" style="color: white; font-size: 25px;" data-toggle="dropdown">
         {{currentUser.fullName}}<i class="fa fa-angle-down"></i>
       </h4>

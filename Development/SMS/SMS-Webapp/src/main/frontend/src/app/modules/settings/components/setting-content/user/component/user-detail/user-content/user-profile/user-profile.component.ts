@@ -6,6 +6,7 @@ import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infra
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {LocalStorageService} from "../../../../../../../../../infrastructure/services/local-storage.service";
+import {AuthUserVTO} from "../../../../../../../../security/shared/data/auth-user-vto.data";
 
 // class ImageSnippet {
 //
@@ -23,58 +24,27 @@ export class UserProfileComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceUserID =replaceUserID;
 
-
-   userID:number;
-
-
+   userID: number;
    private userVto: UserVtoData=new  UserVtoData();
+   currentUser: AuthUserVTO = new AuthUserVTO();
 
   constructor(private userService:UserService,
               private localStorageService: LocalStorageService,
               private userDataService:UserDataService,
               private route:ActivatedRoute,
              /* private editService:EditData */) {
-    this.userService.findByID(this.localStorageService.getCurrentUser().userID).subscribe(
-
-      res=> { this.userVto= res ;});
-    // this.userDataService.userID.subscribe(
-    //   data =>{
-    //     this.userID = data;
-    //     console.log(data);
-    //     this.userService.findByID(this.userID).subscribe(
-    //
-    //       res=> { this.userVto= res ;});
-    //   }
-    // );
-    // this.userDataService.requestUserID.next(true);
+    this.currentUser = this.localStorageService.getCurrentUser();
+    
+    this.userDataService.userID.subscribe(
+      data =>{
+        this.userID = data != null ? data : this.currentUser.userID;
+        this.userService.findByID(this.userID).subscribe(res=> { this.userVto= res ;});
+      }
+    );
+    this.userDataService.requestUserID.next(true);
   }
 
   ngOnInit(){
 
   }
-
-
-  // selectedFile: ImageSnippet;
-  // processFile(imageInput: any) {
-  //   const file: File = imageInput.files[0];
-  //   const reader = new FileReader();
-  //   reader.addEventListener('load', (event: any) => {
-  //     this.selectedFile = new ImageSnippet(event.target.result, file);
-  //
-  //
-  //     this.userService.uploadImage(this.selectedFile.file).subscribe(
-  //       (res) => {
-  //
-  //       },
-  //       (err) => {
-  //
-  //       })
-  //
-  //   });
-  //   reader.readAsDataURL(file);
-  //
-  // }
-
-
-
 }

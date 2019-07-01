@@ -3,12 +3,12 @@
     <div class="row align-items-center content-header">
       <div class="col-sm-6">
         <div class="breadcrumbs-area clearfix">
-          <h4 class="page-title pull-left">User List</h4>
+          <h4 class="page-title pull-left">Users</h4>
         </div>
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="ROUTES.WELCOME">Home</a></li>
-            <li><span>User List</span></li>
+            <li><span>Users</span></li>
           </ul>
         </div>
       </div>
@@ -35,7 +35,7 @@
                 itemsPerPage: PAGE_SIZE,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }; index as i ;">
-                <td>{{i+1}}</td>
+                <td>{{((pageNum-1) * PAGE_SIZE) + (i+1)}}</td>
                 <td><a [routerLink]="[replaceUserID(ROUTES.USER_PROFILE,userDetail.id)]">{{userDetail.fullName}}</a>
                 </td>
                 <td>{{userDetail.userName}}</td>
