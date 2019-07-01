@@ -64,7 +64,7 @@ public class CourseRep {
 
     public List<CourseVTO> findAllInstructorCourses(int instrID,int pageNum) {
         int pageSize = ConfigManager.PAGE_SIZE;
-        String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
+        String sql = "SELECT cor.image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
@@ -75,7 +75,7 @@ public class CourseRep {
     }
     public List<CourseVTO> findALLCourses(int pageNum) {
         int pageSize = ConfigManager.PAGE_SIZE;
-        String sql = "SELECT image_path, id,cor_name,duration ,start_date,end_date, description, " +
+        String sql = "SELECT cor.image_path, id,cor_name,duration ,start_date,end_date, description, " +
                 "a.first_name, a.last_name  " +
                 "FROM course cor " +
                 "LEFT JOIN user_detail a on cor.instructor_id = a.user_id " +
@@ -126,7 +126,7 @@ public class CourseRep {
     }
     public List<CourseVTO> findAllStudentCourse(int stdID,int pageNum){
         int pageSize = ConfigManager.PAGE_SIZE;
-        String sql ="SELECT image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
+        String sql ="SELECT cor.image_path, cor.id ,std_id, cor_name, duration , start_date, end_date, " +
                 "description, a.first_name, a.last_name " +
                 "FROM course_std  std " +
                 "LEFT JOIN course cor on std.cor_id = cor.id " +

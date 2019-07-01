@@ -8,6 +8,9 @@ import {AuthViews} from "../../../../../../../infrastructure/directives/authoriz
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
 import {ConfigParam} from "../../../../../../../infrastructure/common/config-param";
+import {LocalStorageService} from "../../../../../../../infrastructure/services/local-storage.service";
+import {AuthUserVTO} from "../../../../../../security/shared/data/auth-user-vto.data";
+import {AuthRoles} from "../../../../../../../infrastructure/directives/authorization/data/auth-roles.enum";
 
 @Component({
   selector: 'app-course-lectures',
@@ -17,6 +20,7 @@ import {ConfigParam} from "../../../../../../../infrastructure/common/config-par
 })
 export class CourseLecturesComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
+  AUTH_ROLES: typeof AuthRoles = AuthRoles;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   replaceLecID = replaceLecID;
@@ -30,10 +34,14 @@ export class CourseLecturesComponent implements OnInit {
   currentDate: Date = new Date();
   resultSet: CourseResultSet = new CourseResultSet();
   pageNum:number=1;
+  
+  currentUser: AuthUserVTO = new AuthUserVTO();
 
   constructor(private corDataService: CourseDataService,
+              private localStorageService: LocalStorageService,
               private courseService: CourseService,
               private lecDataSer: LectureDataService) {
+    this.currentUser  =this.localStorageService.getCurrentUser();
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;

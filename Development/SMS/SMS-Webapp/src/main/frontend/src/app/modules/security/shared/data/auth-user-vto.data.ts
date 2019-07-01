@@ -5,5 +5,5 @@ export class AuthUserVTO {
   token: string;
   roleIDs: number[];
   actionIDs: number[];
-  viewIDs: number[];
+  viewIDs: number[] = [];
 }

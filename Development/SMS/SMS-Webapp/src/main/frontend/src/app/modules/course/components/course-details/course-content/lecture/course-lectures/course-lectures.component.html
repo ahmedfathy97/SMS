@@ -43,11 +43,11 @@
                 totalItems: resultSet.totalRecords }; index as i;" >
                   <td class="lec-num">{{i +1}}</td>
 
-                  <td class="lec-title" *ngIf="currentDate >= lecture.lectureDate">
+                  <td class="lec-title" *ngIf="currentUser.roleIDs.includes(AUTH_ROLES.INSTRUCTOR) || currentDate >= lecture.lectureDate">
                     <a [routerLink] ="[replaceLecID(ROUTES.COR_LECTURE, corID ,lecture.lectureID)]">
                       {{lecture.lectureTitle}}</a>
                   </td>
-                  <td class="lec-title" *ngIf="currentDate < lecture.lectureDate">
+                  <td class="lec-title" *ngIf="currentUser.roleIDs.includes(AUTH_ROLES.STUDENT) && currentDate < lecture.lectureDate">
                     {{lecture.lectureTitle}}
                   </td>
                   <td class="lec-lectureDate">{{lecture.lectureDate | date: 'yyyy/MM/dd'}}</td>

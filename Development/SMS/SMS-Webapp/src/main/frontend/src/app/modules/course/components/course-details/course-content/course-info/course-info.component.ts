@@ -31,6 +31,7 @@ export class CourseInfoComponent implements OnInit {
         this.getCourseInformation() ;
         this.corService.getStudentIsEnroll(this.corID).subscribe(res =>{
           this.isStudentEnroll = res;
+          location.reload();
         console.log(res);
         });
       }

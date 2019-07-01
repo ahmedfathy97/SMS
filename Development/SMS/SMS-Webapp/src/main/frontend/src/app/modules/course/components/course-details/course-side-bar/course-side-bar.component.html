@@ -1,8 +1,9 @@
 
 <ul class="metismenu" id="menu">
   <li>
-    <a [routerLink] = "[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Course Information</span></a>
+    <a [routerLink] = "[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Home</span></a>
   </li>
+  <ng-template [ngIf]="currentUser.roleIDs.includes(AUTH_ROLES.INSTRUCTOR) || isStudentEnroll">
   <li>
     <a [routerLink] = "[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"><i ></i><span>Lectures </span></a>
   </li>
@@ -26,11 +27,10 @@
 
 
   <li>
-    <a
-      [routerLink]="['/course',corID,'assignment']"><i></i><span>Assignments</span></a>
-    <!--      *authorizeView="AUTH_VIEWS.ADD_MATERIAL"-->
+    <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
+      [routerLink] = "['/course',corID,'lecture', lecID,'addMaterial']"><i ></i><span>Add Material </span></a>
   </li>
 
-
+  </ng-template>
 
 </ul>
