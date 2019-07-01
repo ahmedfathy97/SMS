@@ -27,8 +27,18 @@
   </div>
   <div class="full-page-content-area">
 
-    <div class="row">
-      <div class=" offset-2 col-md-8">
+    <div class="row pl-4 pr-4">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="header-title">Profile Pic</h1>
+            <hr>
+            <img class="user-profile" *ngIf="userVto.imgPathURL != null && profileImgURL == null"
+                 src="{{BASE_URL}}/user/{{userVto.id}}/img">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
         <div class="col-12">
           <div class="card">
             <div class="card-body">
@@ -36,27 +46,27 @@
               <h5>{{userVto.fullName}}</h5>
               <hr>
 
-              <div class="d-inline-block col-6">
+              <div class="d-inline-block col-12">
                 <label for="full-name" class="col-form-label font-weight-bold text-dark ">User Name : &nbsp; &nbsp; &nbsp; </label>
                 <label id="full-name" class="col-form-label label label-info ml-1">{{userVto.userName}}</label>
               </div>
 
-              <div class="d-inline-block col-6">
+              <div class="d-inline-block col-12">
                 <label for="birthDate" class="col-form-label font-weight-bold text-dark ">Age : &nbsp; &nbsp; &nbsp; </label>
                 <label id="birthDate" class="col-form-label label label-info ml-1">{{userVto.age}}</label>
               </div>
 
-              <div class="d-inline-block col-6" >
+              <div class="d-inline-block col-12" >
                 <label for="gender" class="col-form-label font-weight-bold text-dark ">Gender : &nbsp; &nbsp; &nbsp; </label>
                 <label id="gender" class="col-form-label label label-info ml-1">{{userVto.gender}}</label>
               </div>
 
-              <div class="d-inline-block col-6">
+              <div class="d-inline-block col-12">
                 <label for="e_mail" class="col-form-label font-weight-bold text-dark ">E-mail : &nbsp; &nbsp; &nbsp;</label>
                 <label id="e_mail" class="col-form-label label label-info ml-1"><a href="#">{{userVto.email}}</a></label>
               </div>
 
-              <div class="d-inline-block col-6">
+              <div class="d-inline-block col-12">
                 <label for="phone" class="col-form-label font-weight-bold text-dark">Phone : &nbsp; &nbsp; &nbsp; </label>
                 <label id="phone" class="col-form-label label label-info ml-1">{{userVto.phone}}</label>
               </div>

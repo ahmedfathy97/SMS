@@ -7,6 +7,7 @@ import {UserDataService} from "../../../../../../../shared/services/user-data.se
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {LocalStorageService} from "../../../../../../../../../infrastructure/services/local-storage.service";
 import {AuthUserVTO} from "../../../../../../../../security/shared/data/auth-user-vto.data";
+import {ConfigParam} from "../../../../../../../../../infrastructure/common/config-param";
 
 // class ImageSnippet {
 //
@@ -27,7 +28,8 @@ export class UserProfileComponent implements OnInit {
    userID: number;
    private userVto: UserVtoData=new  UserVtoData();
    currentUser: AuthUserVTO = new AuthUserVTO();
-
+  
+  BASE_URL: string = ConfigParam.APP_BASE_URL;
   constructor(private userService:UserService,
               private localStorageService: LocalStorageService,
               private userDataService:UserDataService,
