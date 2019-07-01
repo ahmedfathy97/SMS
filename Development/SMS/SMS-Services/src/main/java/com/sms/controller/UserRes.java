@@ -1,5 +1,6 @@
 package com.sms.controller;
 
+import com.sms.configuration.ConfigManager;
 import com.sms.model.annotation.Authenticated;
 import com.sms.model.authorization.AuthViews;
 import com.sms.model.user.UserResultSet;
@@ -97,12 +98,12 @@ public class UserRes {
         File file;
 
         if(imgPath != null)
-            file = new File("../user/" + userID + "/profileImg/" + imgPath);
+            file = new File(ConfigManager.IMAGES_PATH + "/user/" + userID + "/profileImg/" + imgPath);
         else
-            file = new File("../user/avatar.png");
+            file = new File(ConfigManager.IMAGES_PATH + "/user/avatar.png");
 
         if(!file.exists())
-            file = new File("../user/avatar.png");
+            file = new File(ConfigManager.IMAGES_PATH + "/user/avatar.png");
 
         return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
     }

@@ -2,6 +2,7 @@ package com.sms.service;
 
 //import com.sms.controller.AttachmentRes;
 
+import com.sms.configuration.ConfigManager;
 import com.sms.model.attachment.File;
 import com.sms.repository.AttachmentRep;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class AttachmentSer {
                 fileSrcID = "assignment";
 
             // Relative Path
-            Path filePath = Paths.get("." + "//upload//course " + attachment.getCorID() + "//lecture " + attachment.getSourceID()
+            Path filePath = Paths.get(ConfigManager.ATTACHMENT_PATH  + "/course " + attachment.getCorID() + "//lecture " + attachment.getSourceID()
                     + "//" + fileSrcID + "//" + attachment.getName().split(".") + "." + attachment.getExtension());
 
 //            System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));

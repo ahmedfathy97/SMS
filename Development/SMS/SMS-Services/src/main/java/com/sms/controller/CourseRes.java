@@ -1,5 +1,6 @@
 package com.sms.controller;
 
+import com.sms.configuration.ConfigManager;
 import com.sms.controller.filter.AuthenticationFilter;
 import com.sms.model.AttendanceDTO;
 import com.sms.model.annotation.Authenticated;
@@ -302,12 +303,12 @@ public class CourseRes {
         File file;
 
         if(imgPath != null)
-            file = new File("../courses/" + corID + "/courseImg/" + imgPath);
+            file = new File(ConfigManager.IMAGES_PATH + "/courses/" + corID + "/courseImg/" + imgPath);
         else
-            file = new File("../courses/no-course.jpg");
+            file = new File(ConfigManager.IMAGES_PATH + "/courses/no-course.jpg");
 
         if(!file.exists())
-            file = new File("../courses/no-course.jpg");
+            file = new File(ConfigManager.IMAGES_PATH + "/courses/no-course.jpg");
 
         return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
     }
