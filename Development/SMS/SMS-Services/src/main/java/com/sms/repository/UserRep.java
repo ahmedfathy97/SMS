@@ -73,6 +73,24 @@ public class UserRep {
 
     }
 
+    public String findProfileImgByID(int corID) {
+        String sql ="SELECT image_path from user_detail where user_id = ? ";
+
+        List<String> result = this.jdbcTemplate.query(sql , new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getString("image_path");
+            }
+        },corID);
+
+        return result.size() != 0 ? result.get(0) : null;
+    }
+
+    public void updateProfileImgByID(int userID, String name) {
+        String sql = "UPDATE user_detail SET image_path = ? WHERE user_id = ?";
+
+        this.jdbcTemplate.update(sql, name, userID);
+    }
 
 
 

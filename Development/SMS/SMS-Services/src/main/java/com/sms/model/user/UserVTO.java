@@ -15,7 +15,7 @@ public class UserVTO implements Serializable {
         String fullName;
        // int age;
         String gender;
-        int phone;
+        String phone;
         String college;
         String userName;
         String country;
@@ -99,13 +99,11 @@ public class UserVTO implements Serializable {
         this.gender = gender;
     }
 
-
-
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

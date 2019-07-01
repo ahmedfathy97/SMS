@@ -52,12 +52,14 @@ export class UserService {
     queryParameter = queryParameter.append('pageNum', pageNum.toString());
 
     return this.http.get<UserResultSet>(this.BASE_URL + "find",{params: queryParameter})
+  }
+  updateProfileImg(userID: number, profileImg: File) {
+    const params = new HttpParams()
+      .set("fileName", profileImg.name)
+      .set("fileType", profileImg.type);
 
-  // public uploadImage(image: File): Observable<Response> {
-  //   const formData = new FormData();
-  //
-  //   formData.append('image', image);
-  //
-  //   return this.http.post('/api/v1/image-upload', formData);
-  // }
-} }
+    let formData: FormData = new FormData();
+    formData.append("file", profileImg);
+    return this.http.post(this.BASE_URL+ userID + "/img", formData, {params: params});
+  }
+}

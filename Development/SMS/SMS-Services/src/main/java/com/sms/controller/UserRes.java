@@ -70,5 +70,37 @@ public class UserRes {
         return this.userSer.findAllUsers(pageNum);
 
     }
+    @Path("/{userID}/img")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadCourseImg(@PathParam("userID") int userID,
+                                    @QueryParam("fileName") String name,
+                                    @QueryParam("fileType") String type,
+                                    @QueryParam("ext") String ext,
+                                    @FormDataParam("file") InputStream fileContent,
+                                    @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
+
+        java.nio.file.Path path = Paths.get("../user/" + userID + "/profileImg/" + name);
+        Files.createDirectories(Paths.get("../user/" + userID + "/profileImg/"));
+        Files.copy(fileContent, path);
+
+        this.userRep.updateProfileImgByID(userID,name);
+
+        return Response.ok().build();
+    }
+
+    @Path("/{userID}/img")
+    @GET
+    @Produces("image/png")
+    public Response getProfileImg(@PathParam("userID") int userID) throws FileNotFoundException {
+        String imgPath = this.userRep.findProfileImgByID(userID);
+
+        if(imgPath != null){
+            File file = new File("../user/" + userID + "/profileImg/" + imgPath);
+            return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();
+        } else
+            return Response.status(404).entity("Profile not found").build();
+
+    }
 
 }

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../../../../../shared/services/user.service";
-import {AngularFullRoutes, replaceUserID} from "../../../../../../../../../infrastructure/data/full-routes.enum";
+import {
+  AngularFullRoutes,
+  replaceCorID,
+  replaceUserID
+} from "../../../../../../../../../infrastructure/data/full-routes.enum";
 import {UserVtoData} from "../../../../../../../shared/data/user-vto.data";
 import {UserDataService} from "../../../../../../../shared/services/user-data.service";
 import {ConfigParam} from "../../../../../../../../../infrastructure/common/config-param";
@@ -76,14 +80,13 @@ export class UserEditComponent implements OnInit {
       );
       this.userDataService.requestUserID.next(true);
     }
-    onSaveEdit()
-    {
+    onSaveEdit() {
       // this.edit.firstName.markAsDirty();
       // this.edit.lastName.markAsDirty();
       // this.edit.age.markAsDirty();
       ConfigParam.markControlsDirty(this.formData);
 
-      if(this.formData.valid) {
+      if (this.formData.valid) {
         let userEdit: UserVtoData = new UserVtoData();
         userEdit.firstName = this.formData.get('firstName').value;
         userEdit.lastName = this.formData.get('lastName').value;
@@ -96,13 +99,21 @@ export class UserEditComponent implements OnInit {
         this.userService.editProfile(this.userID, userEdit).subscribe(res => {
           this.alert = new SuccessAlert();
           console.log("Success");
+          // let userID: number =res ;
+          this.corService.updateProfileImg(userID, this.profileImg).subscribe(res2 => {
+            this.router.navigate([replaceCorID(this.ROUTES.EDIT, userID)]);
+          });
         }, err => {
           this.alert = new FailureAlert(err);
           console.log(err);
         });
       }
     }
+      profileImg : File;
 
-
+      onFileSelected(event)
+      {
+      this.profileImg = event.target.files[0];
+     }
 
 }
