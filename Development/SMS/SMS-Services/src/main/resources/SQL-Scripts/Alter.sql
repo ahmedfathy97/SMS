@@ -6,8 +6,6 @@ ALTER TABLE `sms`.`attachment`
 
 
 
-ALTER TABLE `sms`.`exam`
-ADD COLUMN `is_closed` TINYINT(4) NULL AFTER `course_id`;
 
 
 CREATE TABLE `sms`.`course_assignment`
