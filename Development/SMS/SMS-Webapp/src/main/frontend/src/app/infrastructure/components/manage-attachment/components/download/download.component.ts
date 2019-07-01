@@ -14,9 +14,9 @@ import {CourseDataService} from "../../../../../modules/course/shared/services/c
 export class DownloadComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
 
-  @Input("sourceID") sourceID
-  @Input("fileSrcID") fileSrcID
-  @Input("corID") corID
+  @Input("sourceID") sourceID;
+  @Input("fileSrcID") fileSrcID;
+  @Input("corID") corID;
 
   assignmentUploadStatus: boolean = false;
 

@@ -1,27 +1,26 @@
 <div class="list-group pl--30">
-              <ul class="list-group-item" style="border: none" *ngFor="let file of fileList; let i = index;">
-                <li style="list-style-type:disc;">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-9">
-                        <a (click)="download(file.id, file.name, file.contentType)"
-                           *authorizeAction="[AUTH_ACTIONS.DOWNLOAD_MATERIAL]" style="color: #2c71da; cursor: pointer"
-                           target="_blank">{{file.name}}</a>
-<!--                <span>{{formatBytes(file.size,2)}}</span>-->
-                      </div>
-                      <div *ngIf="fileSrcID==2" class="col-3">
-                        <label [ngClass]="assignmentUploadStatus ? 'border-danger' : 'border-success text-muted'"
-                               class="btn btn-sm border text-dark" for="{{'browse' + i}}">Answer</label>
-                        <!--                      <label for="{{'browse' + i}}" ><button class="btn btn-sm border" >Answer</button></label>-->
+  <ul class="list-group-item" style="border: none" *ngFor="let file of fileList; let i = index;">
+    <li style="list-style-type:disc;">
+      <div class="container">
+        <div class="row">
+          <div class="col-9">
+            <a (click)="download(file.id, file.name, file.contentType)"
+               *authorizeAction="[AUTH_ACTIONS.DOWNLOAD_MATERIAL]" style="color: #2c71da; cursor: pointer"
+               target="_blank">{{file.name}}</a>
+            <!--                <span>{{formatBytes(file.size,2)}}</span>-->
+          </div>
+          <div *ngIf="fileSrcID==2" class="col-3">
+            <label [ngClass]="assignmentUploadStatus ? 'border-danger' : 'border-success text-muted'"
+                   class="btn btn-sm border text-dark" for="{{'browse' + i}}">Answer</label>
 
-                        <input #fileInput
-                               [disabled]="!assignmentUploadStatus" class="custom-file-input" hidden
-                               id="{{'browse' + i}}" name="tags" type="file" value="Answer">
-                      </div>
-                    </div>
-                  </div>
-                </li>
-               </ul>
+            <input #fileInput
+                   [disabled]="assignmentUploadStatus" class="custom-file-input" hidden
+                   id="{{'browse' + i}}" name="tags" type="file" value="Answer">
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
 
 

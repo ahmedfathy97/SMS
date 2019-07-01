@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Repository
 public class AssignmentRep {
     private JdbcTemplate jdbcTemplate;
     private CourseRep courseRep;
@@ -22,28 +23,30 @@ public class AssignmentRep {
         this.courseRep = courseRep;
     }
 
-//    public List<Assignment> findFiles(int corID, int sourceID ,int file_src_id) {
-public void insertIntoCourse_assignment() {
-    String sql = "INSERT INTO course_assignment (cor_id, lec_id, file_attach_id, start_date, end_date)" +
-            "            SELECT cor_id, source_id, file_id, start_date, end_date" +
-            "            FROM attachment" +
-            "            WHERE file_src_id = 2;";
-
-    this.jdbcTemplate.update(sql);
-
-
-}
-
-    public void insertIntoCourse_assignment_answer(int cor_id) {
-        List<StdDTO> stdDTOS = this.courseRep.findAllCourseStudents(cor_id, -1);
-
-        String sql = "INSERT INTO course_assignment_answer (std_id, assignment_id)" +
+    public int insertIntoCourse_assignment(int attachmentID) {
+        String sql = "INSERT INTO course_assignment (cor_id, lec_id, file_attach_id, start_date, end_date)" +
                 "            SELECT cor_id, source_id, file_id, start_date, end_date" +
                 "            FROM attachment" +
-                "            WHERE file_src_id = 2;";
+                "            WHERE file_src_id = 2 AND file_id = ?;";
 
-        this.jdbcTemplate.update(sql);
+        this.jdbcTemplate.update(sql, attachmentID);
 
+        return 1;
     }
 
+    public void insertStdAssignments(int corID, int assignmentID) {
+        List<StdDTO> stdDTOS = this.courseRep.findAllCourseStudents(corID, -1);
+        String sql = "INSERT INTO course_assignment_answer (std_id, assignment_id) VALUE (?, ?)";
+
+        for(StdDTO std : stdDTOS){
+            this.jdbcTemplate.update(sql, std.getId(), assignmentID);
+        }
+    }
+
+    public void updateStdAssignments(int stdID, int assignmentID, int fileAttachmentID) {
+        String sql = "UPDATE course_assignment_answer SET file_attach_id = ? AND answer_date = NOW() " +
+                "WHERE std_id = ? AND assignment_id = ?";
+
+        this.jdbcTemplate.update(sql, fileAttachmentID, stdID, assignmentID);
+    }
 }

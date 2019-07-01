@@ -4,6 +4,8 @@ package com.sms.service;
 
 import com.sms.configuration.ConfigManager;
 import com.sms.model.attachment.File;
+import com.sms.model.course.StdDTO;
+import com.sms.repository.AssignmentRep;
 import com.sms.repository.AttachmentRep;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +19,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class AttachmentSer {
     private AttachmentRep attachmentRep;
+    private AssignmentRep assignmentRep;
 
     @Autowired
-    public AttachmentSer(AttachmentRep attachmentRep) {
+    public AttachmentSer(AttachmentRep attachmentRep,
+                         AssignmentRep assignmentRep) {
         this.attachmentRep = attachmentRep;
+        this.assignmentRep = assignmentRep;
     }
 
     /*********************************** Storage and Database OPs ********************************************/
@@ -71,7 +77,13 @@ public class AttachmentSer {
         }
 
         // Insert into database
-        this.attachmentRep.insertNewFile(attachment);
+        int attachmentID = this.attachmentRep.insertNewFile(attachment);
+//        if(this file is assignment)
+        this.assignmentRep.insertIntoCourse_assignment(attachmentID);
+        List<StdDTO> stdDTOList = new ArrayList<>();
+//        for(StdDTO std: stdDTOList)
+            this.assignmentRep.insertStdAssignments(1,2);
+
     }
 
     /***************************************** Delete Files ********************************************/
