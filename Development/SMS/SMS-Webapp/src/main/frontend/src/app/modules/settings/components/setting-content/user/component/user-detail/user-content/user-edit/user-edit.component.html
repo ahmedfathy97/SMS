@@ -107,10 +107,10 @@
 
                   <div class="form-group d-inline-block col-6">
                     <label for="phone" class="col-form-label">Phone</label>
-                    <input class="form-control" type="text" id="phone" formControlName="t_phone"
-                           [ngClass]="{'is-invalid': edit.t_phone.dirty && edit.t_phone.errors != null}">
+                    <input class="form-control" type="text" id="phone" formControlName="phone"
+                           [ngClass]="{'is-invalid': edit.phone.dirty && edit.phone.errors != null}">
 
-                    <div class="invalid-feedback" *ngIf="edit.t_phone.dirty && edit.t_phone.errors != null">
+                    <div class="invalid-feedback" *ngIf="edit.phone.dirty && edit.phone.errors != null">
                       <small *ngIf="edit.t_phone.errors?.required">Phone is mandatory</small>
                       <small *ngIf="edit.t_phone.errors?.maxlength">Phone allow max 11 number</small>
 

@@ -91,6 +91,32 @@ public class ExamRep {
         this.jdbcTemplate.update(sql, studentID, quizID, studentAnswerDTO.getQuestionID(), studentAnswerDTO.getStudentAnswer(), questionEvaluate.isCorrect(), questionEvaluate.getStudentGrade());
     }
 
+    public String getExamType(int examID)
+    {
+       String sql="SELECT exam_name From exam WHERE id = ? ;" ;
+       String examType = this.jdbcTemplate.queryForObject(sql, new RowMapper<String>()
+       {
+           @Override
+           public String mapRow(ResultSet rs, int rowindex) throws SQLException {
+               String examType =rs.getString("exam_name") ;
+               return examType ;
+           }
+       },examID);
+        return examType ;
+    }
+
+    public void UpdateMidGrade(int studentID , int midGrade)
+    {
+        String sql ="Update course_std SET mid_grade = ? Where std_id =?" ;
+        this.jdbcTemplate.update(sql,midGrade,studentID) ;
+    }
+
+
+    public void updateFinalGrade(int studentID , int finalGrade)
+    {
+        String sql ="Update course_std SET final_grade = ? Where std_id =?" ;
+        this.jdbcTemplate.update(sql,finalGrade,studentID ) ;
+    }
 
     public void closeExam(int examID) {
         String sql = "UPDATE exam  SET is_closed ='1' WHERE id =?;";
@@ -101,7 +127,7 @@ public class ExamRep {
     public ExamInformationVTO getExamInformation(int examID) {
 
         String sql = "SELECT exam_name , grade ,  " +
-                "count(distinct user_id) AS numberofstudentanswers\n" +
+                "count(distinct student_id) AS numberofstudentanswers\n" +
                 "FROM student_exam_answer sa Left join exam e\n" +
                 "ON sa.exam_id = e.id \n" +
                 "where e.id = ? ;";

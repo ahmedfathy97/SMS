@@ -55,6 +55,7 @@ export class ExamMainDetailComponent implements OnInit {
 
     this.examService.getExamDetails(this.examId).subscribe(res => {
       this.examDetails = res ;
+      console.log(this.examDetails);
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);

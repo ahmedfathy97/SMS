@@ -27,7 +27,7 @@ export class ExamServices {
 
   submitExamAnswersForStudent( examID :number , studentAnswerDTOList : StudentAnswerDto[]  )
   {
-    return this.httpClient.post(this.BASE_URL + "/exam/"  +"/" +examID +"/answer" ,studentAnswerDTOList) ;
+    return this.httpClient.post(this.BASE_URL + "/exam/" +examID +"/answer" ,studentAnswerDTOList) ;
   }
   getExamQuestions( examID : number)
   {

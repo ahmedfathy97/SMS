@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {QuizService} from "../../../../../../shared/services/quiz.service";
 import {QuestionVto} from "../../../../../../shared/data/quiz/question-vto";
@@ -23,10 +23,10 @@ export class AnswerExamQuestionsComponent implements OnInit {
   //studentID: number =1 ;
   corID :number ;
   examID:number ;
-  quizQuestions: QuestionVto[] =[];
+  exanQuestions: QuestionVto[] =[];
   studentAnswers:StudentAnswerDto[] =[] ;
   alert: AlertInput = new AlertInput();
-  constructor(private formBuilder: FormBuilder ,
+  constructor(private formBuilder: FormBuilder ,private router: Router,
               private examService: ExamServices ,private route: ActivatedRoute ,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.examID = +params.get("examID");
@@ -69,17 +69,16 @@ export class AnswerExamQuestionsComponent implements OnInit {
   onSubmitAnswers()
   {
     let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
-    for(let question of this.quizQuestions)
+    for(let i=0; i<this.exanQuestions.length; i++)
     {
-      studentAnswer.questionID =question.id ;
-      studentAnswer.studentAnswer= this.formData.get('studentAnswer').value ;
+      studentAnswer.questionID =this.exanQuestions[i].id ;
+      studentAnswer.studentAnswer= this.questions.at(i).get('studentAnswer').value;
       this.studentAnswers.push(studentAnswer);
     }
 
 
     this.examService.submitExamAnswersForStudent(this.examID,this.studentAnswers).subscribe(res => {
-      console.log("Success");
-      this.alert = new SuccessAlert();
+      this.router.navigate([replaceCorID(this.ROUTES.COR_VIEW_EXAM, this.corID)])
     }, err => {
       this.alert = new FailureAlert(err);
       console.log(err);
@@ -89,11 +88,11 @@ export class AnswerExamQuestionsComponent implements OnInit {
   getQuizQuestions() {
     this.examService.getExamQuestions(this.examID).subscribe(res => {
       console.log("Success");
-      this.quizQuestions = res;
+      this.exanQuestions = res;
       // this.alert = new SuccessAlert();
       this.clearFormArray(this.questions) ;
 
-      for(let question of this.quizQuestions)
+      for(let question of this.exanQuestions)
       {
         this.addItem(question.id) ;
       }

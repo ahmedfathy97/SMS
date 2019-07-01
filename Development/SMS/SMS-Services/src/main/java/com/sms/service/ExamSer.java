@@ -50,7 +50,14 @@ public class ExamSer {
             examRep.submitQuestionAnswer(studentID ,examID,evaluateStudentAnswer,studentAnswer);
         }
 
-        // Query to insert Student Grade in Course_Std Table
+        String examType = examRep.getExamType(examID) ;
+        if(examType.equals("Mid Term"))
+        {
+             examRep.UpdateMidGrade(studentID ,totalScore);
+        }else if(examType.equals("Final Exam"))
+        {
+            examRep.updateFinalGrade(studentID ,totalScore);
+        }
 
     }
 
