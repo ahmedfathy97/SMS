@@ -42,11 +42,15 @@ public class ExamSer {
     {
         QuestionEvaluate evaluateStudentAnswer ;
         List<ModelAnswerVTO> modelAnswerVTOList =examRep.getQuestionsModelAnswer(examID) ;
+        int totalScore = 0;
         for(StudentAnswerDTO studentAnswer :studentAnswerDTOList)
         {
             evaluateStudentAnswer =this.gradQuestionForStudent( studentAnswer ,modelAnswerVTOList) ;
+            totalScore += evaluateStudentAnswer.getStudentGrade();
             examRep.submitQuestionAnswer(studentID ,examID,evaluateStudentAnswer,studentAnswer);
         }
+
+        // Query to insert Student Grade in Course_Std Table
 
     }
 

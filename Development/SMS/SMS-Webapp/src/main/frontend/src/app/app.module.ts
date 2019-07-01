@@ -66,7 +66,7 @@ import {AnswerExamQuestionsComponent} from "./modules/course/components/course-d
 import { QuizGradeComponent } from './modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component';
 import {LoginGuard} from "./infrastructure/interceptor/login.guard";
 import {NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
-import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
+// import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {AssignmentDetailsComponent} from './modules/course/components/course-details/course-content/lecture/lecture-details/assignment-details/assignment-details.component';
 
 
@@ -94,7 +94,7 @@ import {AssignmentDetailsComponent} from './modules/course/components/course-det
   ],
   imports: [
     BrowserModule, NgxPaginationModule,
-    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule, NgxDaterangepickerMd.forRoot(), NgbDatepickerModule,//,
+    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule, NgxDaterangepickerMd.forRoot(), //,
     //NgbModule.forRoot()
   ],
   providers: [
