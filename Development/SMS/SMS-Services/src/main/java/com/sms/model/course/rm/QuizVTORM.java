@@ -38,6 +38,56 @@ public class QuizVTORM implements RowMapper<StdDTO> {
         quiz3.setTotalScore(rs.getInt("q3_quiz_grade"));
         data.getQuizes().add(quiz3);
 
+
+        QuizVTO quiz4 = new QuizVTO();
+        quiz4.setStdScore(rs.getInt("q4_std_grade"));
+        quiz4.setTotalScore(rs.getInt("q4_quiz_grade"));
+        data.getQuizes().add(quiz4);
+
+
+        QuizVTO quiz5 = new QuizVTO();
+        quiz5.setStdScore(rs.getInt("q5_std_grade"));
+        quiz5.setTotalScore(rs.getInt("q5_quiz_grade"));
+        data.getQuizes().add(quiz5);
+
+        QuizVTO quiz6 = new QuizVTO();
+        quiz6.setStdScore(rs.getInt("q6_std_grade"));
+        quiz6.setTotalScore(rs.getInt("q6_quiz_grade"));
+        data.getQuizes().add(quiz6);
+
+
+
+        QuizVTO quiz7 = new QuizVTO();
+        quiz7.setStdScore(rs.getInt("q7_std_grade"));
+        quiz7.setTotalScore(rs.getInt("q7_quiz_grade"));
+        data.getQuizes().add(quiz7);
+
+
+        QuizVTO quiz8 = new QuizVTO();
+        quiz8.setStdScore(rs.getInt("q8_std_grade"));
+        quiz8.setTotalScore(rs.getInt("q8_quiz_grade"));
+        data.getQuizes().add(quiz8);
+
+
+
+        QuizVTO quiz9 = new QuizVTO();
+        quiz9.setStdScore(rs.getInt("q9_std_grade"));
+        quiz9.setTotalScore(rs.getInt("q9_quiz_grade"));
+        data.getQuizes().add(quiz9);
+
+
+        QuizVTO quiz10 = new QuizVTO();
+        quiz10.setStdScore(rs.getInt("q10_std_grade"));
+        quiz10.setTotalScore(rs.getInt("q10_quiz_grade"));
+        data.getQuizes().add(quiz10);
+
+
+
+
+
+
+
+
         return data;
     }
 }

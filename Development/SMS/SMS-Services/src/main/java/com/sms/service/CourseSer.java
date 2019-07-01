@@ -95,7 +95,7 @@ public class CourseSer {
             studentLis = repository.findCourseGrades(courseID, currentUser.getId(), pageNum);
 
         resultSet.setStudentLis(studentLis);
-        int count =repository.findALLGradeCount( courseID);
+        int count =repository.findALLGradeCount( courseID,-1);
         resultSet.setTotalRecords(count);
         return resultSet;
 
