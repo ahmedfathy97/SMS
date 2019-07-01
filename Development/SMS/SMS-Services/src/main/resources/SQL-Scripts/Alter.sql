@@ -7,6 +7,9 @@ ALTER TABLE `sms`.`attachment`
 
 
 
+ALTER TABLE `sms`.`user_detail`
+ADD COLUMN `image_path` VARCHAR(45) NULL AFTER `university_id`;
+
 
 CREATE TABLE `sms`.`course_assignment`
 (
@@ -62,6 +65,3 @@ CREATE TABLE `sms`.`course_assign_answer`
 
 
 
-
-ALTER TABLE `sms`.`user_detail`
-ADD COLUMN `image_path` VARCHAR(45) NULL AFTER `university_id`;

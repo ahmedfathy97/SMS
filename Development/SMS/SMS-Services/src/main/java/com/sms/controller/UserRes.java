@@ -81,8 +81,8 @@ public class UserRes {
                                     @FormDataParam("file") InputStream fileContent,
                                     @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
 
-        java.nio.file.Path path = Paths.get("../user/" + userID + "/profileImg/" + name);
-        Files.createDirectories(Paths.get("../user/" + userID + "/profileImg/"));
+        java.nio.file.Path path = Paths.get(ConfigManager.IMAGES_PATH + "/user/" + userID + "/profileImg/" + name);
+        Files.createDirectories(Paths.get(ConfigManager.IMAGES_PATH + "/user/" + userID + "/profileImg/"));
         Files.copy(fileContent, path);
 
         this.userRep.updateProfileImgByID(userID,name);

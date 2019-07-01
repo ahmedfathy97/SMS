@@ -91,13 +91,13 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle">Assignment Start & End Dates</h5>
-                          <button #closeExecuteModal aria-label="Close" class="close" data-dismiss="modal"
+                          <button #closeBtn aria-label="Close" class="close" data-dismiss="modal"
                                   type="button">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
 
-                        <ngx-daterangepicker-material (choosedDate)="choosedDate($event, i)"
+                        <ngx-daterangepicker-material (choosedDate)="choosedDate($event, i, closeBtn)"
                                                       [locale]="{format: 'YYYY/MM/DD', applyLabel: 'save'}">
                         </ngx-daterangepicker-material>
                       </div>

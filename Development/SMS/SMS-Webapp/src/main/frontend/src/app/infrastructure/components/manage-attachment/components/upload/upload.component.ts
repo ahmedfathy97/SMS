@@ -26,23 +26,8 @@ export class UploadComponent implements OnInit {
   listOfFilesTable: boolean = false;
   popupCalender: boolean = false;
 
-  @ViewChild('closeExecuteModal') closeModal: ElementRef;
-
-  // files:FileList;
-  // files: Array<File> = [];
   filesVTO: FileVTO[] = [];
 
-  // localDate = {
-  //   format: 'MM/DD/YYYY',
-  //   // direction: 'ltr', // could be rtl
-  //   // weekLabel: 'W',
-  //   // separator: ' To ', // default is ' - '
-  //   // cancelLabel: 'Cancel', // detault is 'Cancel'
-  //   applyLabel: 'Apply', // detault is 'Apply'
-  //   clearLabel: 'Clear', // detault is 'Apply'
-  //   // customRangeLabel: 'Custom range',
-  //   //  firstDay: 1 // first day is monday
-  // }
   constructor(private http: HttpClient,
               private service: AttachmentService,
               private lecService: LectureService,
@@ -63,11 +48,6 @@ export class UploadComponent implements OnInit {
       }
     );
     this.corDataService.requestCorID.next(true);
-
-    // console.log("inside upload: ")
-    // console.log("LectureDetails: " + this.lectureID)
-    // console.log("corID: " + this.corID)
-
     this.getLectureData(this.lectureID);
 
   }
@@ -93,30 +73,17 @@ export class UploadComponent implements OnInit {
       let size = selectedFiles[i].size;
       let corID = this.corID;
       let sourceID = this.lectureID;
-      // file.id = 0;
-      // file.name = selectedFiles[i].name.toString();
-      // file.extension = selectedFiles[i].name.split('.').pop();
-      // file.contentType = selectedFiles[i].type;
-      // file.content = selectedFiles[i];
-      // file.size = selectedFiles[i].size;
-      // file.corID = this.corID;
-      // file.sourceID = this.lectureID;
 
       let file: FileVTO = new FileVTO(0, name, contentType, extension, size, "", "", "",
         corID, sourceID, 0);
       file.content = selectedFiles[i];
 
       this.filesVTO.push(file);
-      console.log(file)
-
-      // console.log(this.files[i].name+" / " + this.files[i].name.length);
-
     }
   }
 
   selectedOption(event, i) {
     this.filesVTO[i].fileSourceID = event.target.value;
-    // this.fileSrcID.push(event.target.value);
     if (this.filesVTO[i].fileSourceID == 2) {
       this.popupCalender = true;
     }
@@ -127,34 +94,19 @@ export class UploadComponent implements OnInit {
   onUpload() {
     for (let i = 0; i < this.filesVTO.length; i++) {
       const fd = new FormData();
-      // let file = this.files[i];
-      // let size: number = this.files[i].size;
-      // let type: string = file.type;
-      // let extension: string = file.name.split('.').pop();
-      // let name: string = file.name;
       fd.append("file", this.filesVTO[i].content);
-
-      // this.service.uploadFiles(fd, name, type, size, extension, this.lectureID, this.fileSrcID);
       this.service.uploadFiles(fd, this.filesVTO[i]);
     }
   }
 
-  choosedDate(event, i) {
-    this.closeModal.nativeElement.click();
-    console.log(event.chosenLabel)
-    // $('#exampleModalCenter').modal('toggle');
-
+  choosedDate(event, i, elementRef) {
     let date: string = event.chosenLabel.split('-');
     let startDate: string = date[0];
     let endDate: string = date[1];
 
     this.filesVTO[i].startDate = startDate;
     this.filesVTO[i].endDate = endDate;
-
-    console.log(this.filesVTO[i].startDate)
-    console.log(this.filesVTO[i].endDate)
-
-    console.log(this.filesVTO)
+    elementRef.click();
   }
 
   // remove file from list of upload files

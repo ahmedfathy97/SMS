@@ -285,8 +285,8 @@ public class CourseRes {
                                     @FormDataParam("file") InputStream fileContent,
                                     @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
 
-        java.nio.file.Path path = Paths.get("../courses/" + corID + "/courseImg/" + name);
-        Files.createDirectories(Paths.get("../courses/" + corID + "/courseImg/"));
+        java.nio.file.Path path = Paths.get(ConfigManager.IMAGES_PATH + "/courses/" + corID + "/courseImg/" + name);
+        Files.createDirectories(Paths.get(ConfigManager.IMAGES_PATH + "/courses/" + corID + "/courseImg/"));
         Files.copy(fileContent, path);
 
         this.courseRep.updateCorImgByID(corID, name);
