@@ -65,6 +65,10 @@ import { ExamResultComponent } from './modules/course/components/course-details/
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 import { QuizGradeComponent } from './modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component';
 import {LoginGuard} from "./infrastructure/interceptor/login.guard";
+import {NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
+import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
+import {AssignmentDetailsComponent} from './modules/course/components/course-details/course-content/lecture/lecture-details/assignment-details/assignment-details.component';
+
 
 @NgModule({
   declarations: [
@@ -85,12 +89,12 @@ import {LoginGuard} from "./infrastructure/interceptor/login.guard";
     QuizMainDetailComponent,
     QuizDetailsComponent,
     QuizResultComponent,textSubStrPipe, AddExamQuestionsComponent, CourseExamsComponent, ExamDetailsComponent,
-    AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, QuizGradeComponent
+    AnswerExamQuestionsComponent, ExamMainDetailComponent, ExamResultComponent, QuizGradeComponent, AssignmentDetailsComponent,
 
   ],
   imports: [
     BrowserModule, NgxPaginationModule,
-    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule//,
+    AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule, NgxDaterangepickerMd.forRoot(), NgbDatepickerModule,//,
     //NgbModule.forRoot()
   ],
   providers: [

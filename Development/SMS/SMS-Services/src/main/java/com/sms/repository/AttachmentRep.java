@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.List;
 
 @Repository
@@ -23,19 +22,20 @@ public class AttachmentRep {
 
     public void insertNewFile(File file) {
         String sql = "INSERT INTO attachment (file_name, content_type, file_size,extension," +
-                "  file_path, upload_date, source_id, file_src_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+                "  file_path, upload_date, source_id, file_src_id, start_date, end_date, corID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
         this.jdbcTemplate.update(sql, file.getName(), file.getContentType(), file.getSize(), file.getExtension(),
-                file.getFile_path(), file.getUpload_date(), file.getSourceID(), file.getFileSourceID());
+                file.getFile_path(), file.getUpload_date(), file.getSourceID(), file.getFileSourceID(),
+                file.getStart_date(), file.getEnd_date(), file.getCorID());
     }
 
     // For Listing purposes
-    public List<File> findFiles(int sourceID ,int file_src_id) {
-        String sql = "SELECT file_id, file_name, file_size,content_type, upload_date, source_id " +
+    public List<File> findFiles(int corID, int sourceID, int file_src_id) {
+        String sql = "SELECT file_id, file_name, file_size, content_type, upload_date, start_date, end_date " +
                 "FROM attachment " +
-                "WHERE source_id = ? AND file_src_id = ?  ";
+                "WHERE corID = ? AND source_id = ? AND file_src_id = ?  ";
 
-        List<File> files = this.jdbcTemplate.query(sql, new FileRm(), sourceID, file_src_id);
+        List<File> files = this.jdbcTemplate.query(sql, new FileRm(), corID, sourceID, file_src_id);
         return files;
     }
 
@@ -60,11 +60,11 @@ public class AttachmentRep {
     }
 
     public void deleteFile(int id){
-//        String sql = "DELETE FROM attachment where file_id = ?";
-//        this.jdbcTemplate.update(sql,new Object[]{id});
-//        //        this.jdbcTemplate.update(SQL, id);
-//        System.out.println("Deleted Record with ID = " + id );
-//        return;
+        String sql = "DELETE FROM attachment where file_id = ?";
+        this.jdbcTemplate.update(sql, id);
+        //        this.jdbcTemplate.update(SQL, id);
+        System.out.println("Deleted Record with ID = " + id);
+        return;
 
     }
 

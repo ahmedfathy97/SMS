@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {AttachmentService} from "../../../../../../../infrastructure/components/manage-attachment/shared/attachment.service";
 import {FileVTO} from "../../../../../../../infrastructure/components/manage-attachment/shared/data/FileVTO";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
@@ -18,7 +18,6 @@ import {AuthActions} from "../../../../../../../infrastructure/directives/author
 export class LectureDetailsComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
-  // replaceLecID = replaceLecID;
   replaceCorID = replaceCorID;
   replaceLecID = replaceLecID;
   corID :number ;
@@ -27,7 +26,6 @@ export class LectureDetailsComponent implements OnInit {
 
   fileSrcID:number;
   lectureID:number;
-
 
   files:FileVTO[] = [];
 
@@ -38,12 +36,13 @@ export class LectureDetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.lectureID = +params.get("lectureID");
+      // this.corID = +params.get("corID");
+
     });
-    // console.log("LectureDetails: "+ this.lectureID)
+
     this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
-        console.log(data);
       }
     );
     this.corDataService.requestCorID.next(true);
@@ -53,7 +52,6 @@ export class LectureDetailsComponent implements OnInit {
   getLectureData(lectureID: number){
     this.lecService.getLectureData(lectureID).subscribe(res => {
       this.lectureData = res;
-      console.log(this.lectureData.title)
     }, err => {
       console.log(err);
     });

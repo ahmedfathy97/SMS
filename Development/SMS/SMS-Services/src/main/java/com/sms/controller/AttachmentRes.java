@@ -9,16 +9,7 @@ import com.sms.service.AttachmentSer;
 import org.glassfish.jersey.media.multipart.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -45,7 +36,94 @@ public class AttachmentRes {
     }
     public AttachmentRes() {
     }
-//    /* Upload Multiple Files */
+
+    /*********************************** Upload a single File ********************************************/
+    /*Output stream version of uploading a single file*/
+    @Path("/file")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
+    public Response uploadFile(
+            @QueryParam("name") String name,
+            @QueryParam("type") String type,
+            @QueryParam("size") long size,
+            @QueryParam("ext") String ext,
+            @QueryParam("sourceID") int sourceID,
+            @QueryParam("fileSrcID") int fileSrcID,
+            @QueryParam("corID") int corID,
+            @QueryParam("startDate") String startDate,
+            @QueryParam("endDate") String endDate,
+            @FormDataParam("file") InputStream fileContent,
+            @FormDataParam("file") FormDataContentDisposition fileDisposition
+    ) {
+//        removeFile(152);
+        String fileName = fileDisposition.getFileName();
+
+        File file = new File();
+        file.setName(name);
+        file.setContentType(type);
+        file.setSize(size);
+        file.setExtension(ext);
+        file.setSourceID(sourceID);
+        file.setCorID(corID);
+        file.setFileSourceID(fileSrcID);
+        file.setUpload_date();
+        file.setStart_date(startDate);
+        file.setEnd_date(endDate);
+
+        System.out.println(file.toString());
+
+
+//        System.out.println(file.toString());
+        service.saveFile(fileContent, file);
+        return Response.ok(file.toString()).build();
+
+    }
+
+    /***********************************Delete Files********************************************/
+
+    @DELETE
+    @Path("/{fileID}")
+    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
+    public void removeFile(@PathParam("fileID") int fileID) {
+        this.service.deleteFile(fileID);
+    }
+
+    /*********************************** Retrieve List of Files ********************************************/
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/files")
+    @Authenticated(views = {AuthViews.LECTURE_DETAILS})
+
+    public List<File> listFiles(@QueryParam("corID") int corID,
+                                @QueryParam("sourceID") int sourceID,
+                                @QueryParam("fileSrcID") int fileSrcID) {
+        List<File> files = this.repository.findFiles(corID, sourceID, fileSrcID);
+//        System.out.println(files.get(0).toString());
+        return files;
+
+    }
+
+    //    /* Download Files */
+    @GET
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Path("/downloadFile/{fileID}")
+    @Authenticated(actions = {AuthActions.DOWNLOAD_MATERIAL})
+
+    public Response downloadFileById(@PathParam("fileID") int fileID) throws IOException {
+        File fileFromRep = this.repository.getFile(fileID);
+
+        java.io.File file = new java.io.File(fileFromRep.getFile_path());
+
+        java.nio.file.Path filePath = Paths.get(file.getPath());
+        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
+
+        return Response.ok().entity(resource.getByteArray()).type(fileFromRep.getContentType()).build();
+//
+    }
+
+    //    /* Upload Multiple Files */
 //    @Path("/files")
 //    @POST
 //    @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -78,7 +156,7 @@ public class AttachmentRes {
 //    }
 
     /*******************************************************************************/
-//    @GET
+    //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Path("/{fileID}")
 //    public List<File> getFilesByCategoryID(
@@ -111,86 +189,45 @@ public class AttachmentRes {
 //        return null;
 //    }
 
-    /***********************************Delete Files********************************************/
-
-    @DELETE
-    @Path("/{fileID}")
-    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
-    public void removeFile(@PathParam("fileID") int fileID) {
-        this.service.deleteFile(fileID);
-    }
-
-    /*********************************** Upload a single File ********************************************/
-    /*Output stream version of uploading a single file*/
-    @Path("/file")
-    @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
-    public Response uploadFile(
-            @QueryParam("name") String name,
-            @QueryParam("type") String type,
-            @QueryParam("size") long size,
-            @QueryParam("ext") String ext,
-            @QueryParam("sourceID") int sourceID,
-            @QueryParam("fileSrcID") int fileSrcID,
-            @FormDataParam("file") InputStream fileContent,
-            @FormDataParam("file") FormDataContentDisposition fileDisposition)
-    {
-//        removeFile(152);
-        String fileName = fileDisposition.getFileName();
-        String filePath = "/Users/bebo/Documents/Files/";
-
-        File file = new File();
-        file.setName(name);
-        file.setContentType(type);
-        file.setSize(size);
-        file.setExtension(ext);
-        file.setFile_path(filePath + name);
-        file.setSourceID(sourceID);
-        file.setFileSourceID(fileSrcID);
-        file.setUpload_date();
-
-        String fileDetails = "File saved at " + filePath;
-
-//        System.out.println(file.toString());
-        service.saveFile(fileContent, name, file);
-        return Response.ok(fileDetails).build();
-
-    }
-
-    /*********************************** Retrieve List of Files ********************************************/
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/files")
-//    @Authenticated(views = {AuthViews.LECTURE_DETAILS})
-
-    public List<File> listFiles(@QueryParam("sourceID") int sourceID,
-                                @QueryParam("fileSrcID") int fileSrcID)
-    {
-        List<File> files = this.repository.findFiles(sourceID ,fileSrcID);
-//        System.out.println(files.get(0).toString());
-        return files;
-
-    }
-
-//    /* Download Files */
-    @GET
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    @Path("/downloadFile/{fileID}")
-    @Authenticated(actions = {AuthActions.DOWNLOAD_MATERIAL})
-
-    public Response downloadFileById(@PathParam("fileID") int fileID) throws IOException{
-        File fileFromRep = this.repository.getFile(fileID);
-
-        java.io.File file = new java.io.File(fileFromRep.getFile_path());
-        java.nio.file.Path filePath = Paths.get(file.getAbsolutePath());
-
-        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
-
-        return Response.ok().entity(resource.getByteArray()).type(fileFromRep.getContentType()).build();
+//    /*Output stream version of uploading a single file*/
+//    @Path("/files")
+//    @POST
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
+//    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
+//    public Response uploadFiles(
+//            @QueryParam("name") String name,
+//            @QueryParam("type") String type,
+//            @QueryParam("size") long size,
+//            @QueryParam("ext") String ext,
+//            @QueryParam("sourceID") int sourceID,
+//            @QueryParam("fileSrcID") int fileSrcID,
+//            @QueryParam("corID") int corID,
+//            @FormDataParam("file") InputStream fileContent,
+//            @FormDataParam("file") FormDataContentDisposition fileDetails
+//    )
+//    {
+////        removeFile(152);
+//        String fileName = fileDetails.getFileName();
+//        String filePath = "../files";
 //
-    }
+//
+//        File file = new File();
+//        file.setName(name);
+//        file.setContentType(type);
+//        file.setSize(size);
+//        file.setExtension(ext);
+//        file.setFile_path(filePath + name);
+//        file.setSourceID(sourceID);
+//        file.setFileSourceID(fileSrcID);
+//        file.setUpload_date();
+//
+//        String fileDetails = "File saved at " + filePath;
+//
+////        System.out.println(file.toString());
+//        service.saveFile(fileContent, file);
+//        return Response.ok(fileDetails).build();
+//
+//    }
 
 
 }

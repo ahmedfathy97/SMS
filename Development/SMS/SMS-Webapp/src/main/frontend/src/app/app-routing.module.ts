@@ -43,6 +43,7 @@ import {ExamDetailsComponent} from "./modules/course/components/course-details/c
 import {AnswerExamQuestionsComponent} from "./modules/course/components/course-details/course-content/exam/exam-details/answer-exam-questions/answer-exam-questions.component";
 import {QuizGradeComponent} from "./modules/course/components/course-details/course-content/quiz-grade/quiz-grade.component";
 import {LoginGuard} from "./infrastructure/interceptor/login.guard";
+import {AssignmentDetailsComponent} from "./modules/course/components/course-details/course-content/lecture/lecture-details/assignment-details/assignment-details.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -51,7 +52,6 @@ const routes: Routes = [
       {path: 'login', canActivate:[LoginGuard], component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'home', component: HomeComponent},
-
       {
         path: 'user', children: [
           {
@@ -113,30 +113,38 @@ const routes: Routes = [
               },
               {path: 'information', component: CourseInfoComponent},
               {
+                path: 'assignment', component: AssignmentDetailsComponent, data: {viewID: AuthViews.COURSE_LECTURES},
+                canActivate: [AuthenticationGuard, AuthorizationGuard]
+              },
+              {
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent, data: {viewID: AuthViews.COURSE_LECTURES},
                     canActivate:[AuthenticationGuard, AuthorizationGuard]},
                   {path: 'new', component: CreateLecture ,
                     data: {viewID: AuthViews.ADD_COR}, canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                  {path: ':lectureID',component: LectureDetailsComponent,
-                    data: {viewID: AuthViews.LECTURE_DETAILS},
-                    canActivate:[AuthenticationGuard, AuthorizationGuard], children: [
-                      {path: 'upload', component: UploadComponent,
-                        data: {viewID: AuthViews.ADD_MATERIAL},
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                         ]
-                      },
-                    ]
-                  },
-
                   {
-                    path: 'attendance', children: [
-                      {path: '', component: ViewAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE} ,
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]},
-                      {path: 'new', component: CreateAttendanceComponent ,data: {viewID: AuthViews.ADD_ATTENDANCE},
-                        canActivate:[AuthenticationGuard, AuthorizationGuard]}
+                    path: ':lectureID',
+                    data: {viewID: AuthViews.LECTURE_DETAILS},
+                    canActivate: [AuthenticationGuard, AuthorizationGuard], children: [
+                      {path: '', component: LectureDetailsComponent},
+                      {path: 'upload', component: UploadComponent},
                     ]
+
                   },
+                ]
+              },
+              {
+                path: 'attendance', children: [
+                  {
+                    path: '', component: ViewAttendanceComponent, data: {viewID: AuthViews.ADD_ATTENDANCE},
+                    canActivate: [AuthenticationGuard, AuthorizationGuard]
+                  },
+                  {
+                    path: 'new', component: CreateAttendanceComponent, data: {viewID: AuthViews.ADD_ATTENDANCE},
+                    canActivate: [AuthenticationGuard, AuthorizationGuard]
+                  }
+                ]
+              },
 
                   {
                     path: 'grade', children: [

@@ -1,4 +1,3 @@
-
 <div class="page-content">
 
   <div class="page-title-area">
@@ -11,8 +10,8 @@
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
             <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]">Lectures</a></li>
-<!--            <li><a [routerLink]="[ROUTES.COR_VIEW_LECTURES]">Lectures</a></li>-->
-            <li><span>Lecture</span></li>
+            <!--            <li><a [routerLink]="[ROUTES.COR_VIEW_LECTURES]">Lectures</a></li>-->
+            <li><span>{{lectureData.title}}</span></li>
           </ul>
         </div>
       </div>
@@ -20,7 +19,7 @@
         <div class="pull-right">
           <a class="btn btn-success btn-header"
              *authorizeView="[AUTH_ACTIONS.ADD_MATERIAL]"
-             [routerLink] ="[replaceLecID(ROUTES.COR_LECTURE_MATERIALS, corID, lectureID)]">
+             [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_MATERIALS, corID, lectureID)]">
             <i class="fa fa-plus pr--10"></i> Add Material</a>
         </div>
       </div>
@@ -29,21 +28,21 @@
 
   <div class="page-content-area mb-3 mr-3 ml-3">
     <!-- accroding start -->
-    <div class="row " >
-<!--      &lt;!&ndash;   Lecture Title   &ndash;&gt;-->
-<!--      <div class="col-lg-12 mt-5 title ">-->
-<!--        <div class="card">-->
-<!--          <div class="card-body">-->
-<!--            <h3>{{lectureTitle}}</h3>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
+    <div class="row ">
+      <!--      &lt;!&ndash;   Lecture Title   &ndash;&gt;-->
+      <!--      <div class="col-lg-12 mt-5 title ">-->
+      <!--        <div class="card">-->
+      <!--          <div class="card-body">-->
+      <!--            <h3>{{lectureTitle}}</h3>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--<router-outlet></router-outlet>-->
       <!-- Attachments:-  accordion style 1 start -->
       <div class="col-lg-6 mt-2">
         <div class="card">
           <div class="card-body">
-<!--            <h4 class="header-title"> Attachments </h4>-->
+            <!--            <h4 class="header-title"> Attachments </h4>-->
             <div id="accordion1" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
@@ -51,8 +50,8 @@
                 </div>
                 <div id="accordion11" class="collapse show" data-parent="#accordion1">
                   <div class="card-body">
+                    <app-download [fileSrcID]="1" [sourceID]="lectureID"></app-download>
                   </div>
-                  <app-download [fileSrcID] = "1" [sourceID] = "lectureID"></app-download>
                 </div>
               </div>
             </div>
@@ -66,7 +65,7 @@
       <div class="col-lg-6 mt-2">
         <div class="card">
           <div class="card-body">
-<!--            <h4 class="header-title">Assignments </h4>-->
+            <!--            <h4 class="header-title">Assignments </h4>-->
             <div id="accordion2" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
@@ -74,7 +73,7 @@
                 </div>
                 <div id="accordion21" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
-                    <app-download [fileSrcID] = "2" [sourceID] = "lectureID"></app-download>
+                    <app-download [fileSrcID]="2" [sourceID]="lectureID"></app-download>
                   </div>
                 </div>
               </div>
@@ -88,13 +87,13 @@
       <div class="col-lg-12 mt-2">
         <div class="card">
           <div class="card-body">
-<!--            <h4 class="header-title">Videos</h4>-->
-<!--            <ul class="list-group" *ngFor="let video of videos;">-->
-<!--              <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                  {{video.tile}}-->
-<!--                <span class="badge badge-primary badge-pill"> {{video.length}}</span>-->
-<!--              </li>-->
-<!--            </ul>-->
+            <!--            <h4 class="header-title">Videos</h4>-->
+            <!--            <ul class="list-group" *ngFor="let video of videos;">-->
+            <!--              <li class="list-group-item d-flex justify-content-between align-items-center">-->
+            <!--                  {{video.tile}}-->
+            <!--                <span class="badge badge-primary badge-pill"> {{video.length}}</span>-->
+            <!--              </li>-->
+            <!--            </ul>-->
             <div id="accordion3" class="according accordion-s3">
               <div class="card">
                 <div class="card-header">
@@ -106,7 +105,7 @@
                     <!--                      <li>{{assignment.name}}</li>-->
                     <!--&lt;!&ndash;                      <li>{{assignment.dueDate}}</li>&ndash;&gt;-->
                     <!--                    </ul>-->
-<!--                    <app-download [fileSrcID] = "lectureID" [sourceID] = "sourceID"></app-download>-->
+                    <!--                    <app-download [fileSrcID] = "lectureID" [sourceID] = "sourceID"></app-download>-->
                     <p class="card-text bg-light" style="transform: rotate(0);">
                       <a href="" class=" stretched-link"><i>{{lectureData.videoUrl}}</i></a>
                     </p>
@@ -115,26 +114,26 @@
               </div>
             </div>
           </div>
-        </div>      </div>
+        </div>
+      </div>
       <!-- Videos End -->
 
       <!-- Video player:- accordion style 4 start -->
       <div class="col-lg-12 mt-2">
-        <div class="card" >
+        <div class="card">
           <div class="card-body">
             <h4 class="header-title">Video player </h4>
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item"
-                      [src]="'https://www.youtube.com/embed/' + lectureData.videoUrl + '?rel=0'" allowfullscreen></iframe>
+              <iframe allowfullscreen class="embed-responsive-item"
+                      src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
             </div>
           </div>
         </div>
       </div>
       <!-- Video Player End -->
 
-
+    </div>
   </div>
-</div>
 </div>
 
 

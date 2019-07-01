@@ -16,18 +16,29 @@ export class AttachmentService {
   }
 
   // Upload files to server
-  uploadFiles(fd: FormData, name, type, size, ext, sourceID, fileSrcID) {
-    // let headers = new HttpHeaders();
-    // headers.set('Content-Type', null);
-    // headers.set('Accept', "multipart/form-data");;
+  uploadFiles(fd: FormData, file: FileVTO) {
+    // uploadFiles(fd: FormData, name, type, size, ext, sourceID, fileSrcID) {
 
+    // let startDate;
+    // let endDate;
+    // if(file.fileSourceID == 1){
+    //   startDate = "";
+    //   endDate = "";
+    // }
+    // else {
+    //   startDate = file.startDate.toString();
+    //   endDate = file.endDate.toString();
+    // }
     const params = new HttpParams()
-      .set("name", name)
-      .set("type", type)
-      .set("size", size)
-      .set("ext", ext)
-      .set("sourceID", sourceID)
-      .set("fileSrcID", fileSrcID);
+      .set("name", file.name)
+      .set("type", file.contentType)
+      .set("size", file.size.toString())
+      .set("ext", file.extension)
+      .set("sourceID", file.sourceID.toString())
+      .set("fileSrcID", file.fileSourceID.toString())
+      .set("corID", file.corID.toString())
+      .set("startDate", file.startDate)
+      .set("endDate", file.endDate)
 
     this.http.post(this.BASE_URL + "/file", fd, {params: params})
       .subscribe(res => {
@@ -41,8 +52,9 @@ export class AttachmentService {
   }
 
   /* Retrieve List of files */
-  viewFiles(sourceID, fileSrcID) {
+  viewFiles(corID, sourceID, fileSrcID) {
     const params = new HttpParams()
+      .set("corID", corID)
       .set("sourceID", sourceID)
       .set("fileSrcID", fileSrcID)
 

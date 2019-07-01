@@ -3,6 +3,7 @@ import {AttachmentService} from "../../shared/attachment.service";
 import {FileVTO} from "../../shared/data/FileVTO";
 import {AuthActions} from "../../../../directives/authorization/data/auth-actions.enum";
 import {AngularFullRoutes} from "../../../../data/full-routes.enum";
+import {CourseDataService} from "../../../../../modules/course/shared/services/course-data.service";
 
 @Component({
   selector: 'app-download',
@@ -15,19 +16,31 @@ export class DownloadComponent implements OnInit {
 
   @Input("sourceID") sourceID
   @Input("fileSrcID") fileSrcID
+  @Input("corID") corID
+
+  assignmentUploadStatus: boolean = false;
+
   fileList: FileVTO[] = [];
   file:any;
 
 
-    constructor(private service: AttachmentService) {
+  constructor(private service: AttachmentService,
+              private corDataService: CourseDataService) {
+    this.corDataService.corID.subscribe(
+      data => {
+        this.corID = data;
+      }
+    );
+    this.corDataService.requestCorID.next(true);
   }
 
   ngOnInit() {
-    this.retrieveFilesList(this.sourceID, this.fileSrcID);
+    console.log("download corID: " + this.corID)
+    this.retrieveFilesList(this.corID, this.sourceID, this.fileSrcID);
   }
 
-  retrieveFilesList(sourceID:number, fileSrcID:number){
-      this.service.viewFiles(sourceID, fileSrcID).subscribe(res => {
+  retrieveFilesList(corID: number, sourceID: number, fileSrcID: number) {
+    this.service.viewFiles(corID, sourceID, fileSrcID).subscribe(res => {
         this.fileList = res;
         console.log(this.fileList);
       })
@@ -56,12 +69,10 @@ export class DownloadComponent implements OnInit {
     )
   }
 
-
-
   /* Delete Files */
   deleteFile(fileID:number){
-
   }
+
 
   /* Format of file size */
   formatBytes(bytes, decimals) {

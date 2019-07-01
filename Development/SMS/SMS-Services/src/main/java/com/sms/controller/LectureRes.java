@@ -25,7 +25,7 @@ public class LectureRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{lecID}")
     @Authenticated(views = {AuthViews.LECTURE_DETAILS})
-    public LectureDTO listFiles(@PathParam("lecID") int lecID)
+    public LectureDTO listLectures(@PathParam("lecID") int lecID)
      {
         LectureDTO lecture = this.repository.getLecture(lecID);
         return lecture;

@@ -27,15 +27,27 @@ public class AttachmentSer {
     }
 
     /*********************************** Storage and Database OPs ********************************************/
-    public void saveFile(InputStream file, String name, File attachment) {
+    public void saveFile(InputStream file, File attachment) {
         // Store on disk
+        String fileSrcID = null;
         try {
-            // Change path to work on windows
-            java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" + name);
-            Files.copy(file, path);
+            if (attachment.getFileSourceID() == 1)
+                fileSrcID = "attachment";
+            else
+                fileSrcID = "assignment";
 
+            // Relative Path
+            Path filePath = Paths.get("." + "//upload//course " + attachment.getCorID() + "//lecture " + attachment.getSourceID()
+                    + "//" + fileSrcID + "//" + attachment.getName() + "." + attachment.getExtension());
+
+//            System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+
+            Files.createDirectories(filePath.getParent());
+            Files.copy(file, filePath);
+            attachment.setFile_path(filePath.toString());
+            file.close();
         } catch (FileAlreadyExistsException e) {
-            System.out.println("File already exists with the same name: " + name);
+            System.out.println("File already exists with the same name: " + attachment.getName());
 //            java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" +"("+ 2 +")" + name);
 //
 //            try{
@@ -53,6 +65,7 @@ public class AttachmentSer {
             System.out.println("File was not saved");
             return;
         }
+
         // Insert into database
         this.attachmentRep.insertNewFile(attachment);
     }
