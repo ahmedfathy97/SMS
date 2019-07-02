@@ -23,7 +23,7 @@ export class AnswerExamQuestionsComponent implements OnInit {
   //studentID: number =1 ;
   corID :number ;
   examID:number ;
-  exanQuestions: QuestionVto[] =[];
+  examQuestions: QuestionVto[] =[];
   studentAnswers:StudentAnswerDto[] =[] ;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder ,private router: Router,
@@ -69,9 +69,9 @@ export class AnswerExamQuestionsComponent implements OnInit {
   onSubmitAnswers()
   {
     let studentAnswer :StudentAnswerDto =new StudentAnswerDto();
-    for(let i=0; i<this.exanQuestions.length; i++)
+    for(let i=0; i<this.examQuestions.length; i++)
     {
-      studentAnswer.questionID =this.exanQuestions[i].id ;
+      studentAnswer.questionID =this.examQuestions[i].id ;
       studentAnswer.studentAnswer= this.questions.at(i).get('studentAnswer').value;
       this.studentAnswers.push(studentAnswer);
     }
@@ -88,11 +88,11 @@ export class AnswerExamQuestionsComponent implements OnInit {
   getQuizQuestions() {
     this.examService.getExamQuestions(this.examID).subscribe(res => {
       console.log("Success");
-      this.exanQuestions = res;
+      this.examQuestions = res;
       // this.alert = new SuccessAlert();
       this.clearFormArray(this.questions) ;
 
-      for(let question of this.exanQuestions)
+      for(let question of this.examQuestions)
       {
         this.addItem(question.id) ;
       }

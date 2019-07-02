@@ -61,9 +61,6 @@ export class UserEditComponent implements OnInit {
   }
     ngOnInit()
     {
-
-
-
       this.userDataService.userID.subscribe(
         data =>{
           this.userID = data;
@@ -87,9 +84,7 @@ export class UserEditComponent implements OnInit {
       this.userDataService.requestUserID.next(true);
     }
     onSaveEdit() {
-      // this.edit.firstName.markAsDirty();
-      // this.edit.lastName.markAsDirty();
-      // this.edit.age.markAsDirty();
+
       ConfigParam.markControlsDirty(this.formData);
 
       if (this.formData.valid) {
@@ -108,6 +103,7 @@ export class UserEditComponent implements OnInit {
               this.alert = new SuccessAlert();
               location.reload();
             });
+          this.router.navigate([replaceUserID(this.ROUTES.USER_PROFILE ,this.userID)])
         }, err => {
           this.alert = new FailureAlert(err);
           console.log(err);

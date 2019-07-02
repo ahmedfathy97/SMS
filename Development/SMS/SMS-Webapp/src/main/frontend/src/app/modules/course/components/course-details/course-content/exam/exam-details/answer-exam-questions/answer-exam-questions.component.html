@@ -27,38 +27,38 @@
           <form [formGroup]="formData">
             <div formArrayName="questions" >
               <div  *ngFor="let question of questions.controls; index as i "  [formGroupName]="i">
-                <label>{{exanQuestions[i].id}}.</label>
-                <label>{{exanQuestions[i].question}}</label>
+                <label>{{i+1}})</label>
+                <label>{{examQuestions[i].question}}</label>
                 <br><br>
 
 
-                <div *ngIf="exanQuestions[i].questionTypeID ==1">
+                <div *ngIf="examQuestions[i].questionTypeID ==1">
                   <div class="custom-control custom-radio custom-control-inline "  >
                     <input type="radio" value="1" class="custom-control-input" id="{{'choise1_'+i}}" formControlName="studentAnswer">
-                    <label class="custom-control-label" for="{{'choise1_'+i}}">{{exanQuestions[i].answer1}}</label>
+                    <label class="custom-control-label" for="{{'choise1_'+i}}">{{examQuestions[i].answer1}}</label>
                   </div>
 
 
                   <div class="custom-control custom-radio custom-control-inline ml-3">
                     <input type="radio" value="2" class="custom-control-input" id="{{'choise2_'+i}}" formControlName="studentAnswer">
-                    <label class="custom-control-label" for="{{'choise2_'+i}}">{{exanQuestions[i].answer2}} </label>
+                    <label class="custom-control-label" for="{{'choise2_'+i}}">{{examQuestions[i].answer2}} </label>
                   </div>
 
                   <div class="custom-control custom-radio custom-control-inline ml-3">
                     <input type="radio" value="3" class="custom-control-input" id="{{'choise3_'+i}}"  formControlName="studentAnswer">
-                    <label class="custom-control-label" for="{{'choise3_'+i}}">{{exanQuestions[i].answer3}}</label>
+                    <label class="custom-control-label" for="{{'choise3_'+i}}">{{examQuestions[i].answer3}}</label>
                   </div>
 
                   <div class="custom-control custom-radio custom-control-inline ml-3" >
                     <input type="radio" value="4" class="custom-control-input" id="{{'choise4_'+i}}" formControlName="studentAnswer">
-                    <label class="custom-control-label" for="{{'choise4_'+i}}">{{exanQuestions[i].answer4}}</label>
+                    <label class="custom-control-label" for="{{'choise4_'+i}}">{{examQuestions[i].answer4}}</label>
                   </div>
                   <hr>
                 </div>
 
 
 
-                <div *ngIf="exanQuestions[i].questionTypeID ==2">
+                <div *ngIf="examQuestions[i].questionTypeID ==2">
                   <div class="custom-control custom-radio custom-control-inline " >
                     <input type="radio" value="1" id="{{'trueAnswer_'+i}}"  class="custom-control-input"  formControlName="studentAnswer">
                     <label class="custom-control-label" for="{{'trueAnswer_'+i}}">True</label>
