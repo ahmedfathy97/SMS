@@ -111,10 +111,6 @@ const routes: Routes = [
               },
               {path: 'information', component: CourseInfoComponent},
               {
-                path: 'assignment', component: AssignmentDetailsComponent, data: {viewID: AuthViews.COURSE_LECTURES},
-                canActivate: [AuthenticationGuard, AuthorizationGuard]
-              },
-              {
                 path: 'lecture', children: [
                   {path: '', component: CourseLecturesComponent, data: {viewID: AuthViews.COURSE_LECTURES},
                     canActivate:[AuthenticationGuard, AuthorizationGuard]},
@@ -125,6 +121,12 @@ const routes: Routes = [
                     data: {viewID: AuthViews.LECTURE_DETAILS},
                     canActivate: [AuthenticationGuard, AuthorizationGuard], children: [
                       {path: '', component: LectureDetailsComponent},
+                      {
+                        path: 'assignment',
+                        component: AssignmentDetailsComponent,
+                        data: {viewID: AuthViews.COURSE_LECTURES},
+                        canActivate: [AuthenticationGuard, AuthorizationGuard]
+                      },
                       {path: 'upload', component: UploadComponent},
                     ]
 

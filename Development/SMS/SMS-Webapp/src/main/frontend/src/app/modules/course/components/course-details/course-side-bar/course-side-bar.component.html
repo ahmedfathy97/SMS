@@ -27,8 +27,10 @@
 
 
   <li>
+
     <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
-       [routerLink]="['/course',corID,'lecture', lecID,'addMaterial']"><i></i><span>Assignments</span></a>
+       [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_ASSIGNMENTS, corID, lecID)]"><i></i><span>Assignments</span></a>
+
   </li>
 
   </ng-template>

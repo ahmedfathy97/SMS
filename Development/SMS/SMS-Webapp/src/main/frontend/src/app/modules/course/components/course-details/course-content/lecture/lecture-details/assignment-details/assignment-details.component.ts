@@ -16,6 +16,7 @@ export class AssignmentDetailsComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   corID: number;
+  lectureID: number;
 
   constructor(private corDataService: CourseDataService,
               private courseService: CourseService,

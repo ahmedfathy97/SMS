@@ -22,6 +22,7 @@ export class CourseSideBarComponent implements OnInit {
 
   @Input() corID: number;
   @Input() lecID: number;
+
   isStudentEnroll: boolean;
   currentUser: AuthUserVTO =new AuthUserVTO();
   constructor(private corService: CourseService,

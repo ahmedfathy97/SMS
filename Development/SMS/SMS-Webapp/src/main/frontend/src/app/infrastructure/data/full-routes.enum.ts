@@ -30,7 +30,9 @@ export enum AngularFullRoutes {
   SETTING_USER_LIST ="/settings/users",
   USER_PROFILE="/user/${userID}/profile",
   EDIT="/user/${userID}/edit",
-  COURSE_INFORMATION="/course/${corID}/information"
+  COURSE_INFORMATION = "/course/${corID}/information",
+  COR_LECTURE_ASSIGNMENTS = "/course/${corID}/lecture/${lectureID}/assignment",
+
 }
 
 export function replaceCorID(route:string, id) {
