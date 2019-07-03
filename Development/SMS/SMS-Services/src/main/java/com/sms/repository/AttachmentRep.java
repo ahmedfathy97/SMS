@@ -36,10 +36,19 @@ private SimpleJdbcInsert attachmentSJI;
         Map<String, Object> parameters = new HashMap<>(2);
         parameters.put("file_name", file.getName());
         parameters.put("content_type", file.getContentType());
-
+        parameters.put("file_size", file.getSize());
+        parameters.put("extension", file.getExtension());
+        parameters.put("file_path", file.getFile_path());
+        parameters.put("upload_date", file.getUpload_date());
+        parameters.put("source_id", file.getSourceID());
+        parameters.put("file_src_id", file.getFileSourceID());
+        parameters.put("start_date", file.getStart_date());
+        parameters.put("end_date", file.getEnd_date());
+        parameters.put("cor_id", file.getCorID());
 
         Number newId = attachmentSJI.executeAndReturnKey(parameters);
         return newId.intValue();
+
 //        String sql = "INSERT INTO attachment (file_name, content_type, file_size,extension," +
 //                "  file_path, upload_date, source_id, file_src_id, start_date, end_date, cor_id) " +
 //                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
