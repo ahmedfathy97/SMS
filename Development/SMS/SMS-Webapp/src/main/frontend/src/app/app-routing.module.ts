@@ -11,8 +11,6 @@ import {ViewAttendanceComponent} from "./modules/course/components/course-detail
 import {CreateQuizComponent} from "./modules/course/components/course-details/course-content/quiz/create-quiz/create-quiz.component";
 import {UserProfileComponent} from "./modules/settings/components/setting-content/user/component/user-detail/user-content/user-profile/user-profile.component";
 import {ViewGradeComponent} from "./modules/course/components/course-details/course-content/grade/view-grade/view-grade.component";
-import {ViewStudentGradeComponent} from "./modules/course/components/course-details/course-content/grade/view-student-grade/view-student-grade.component";
-import {ViewStudentAttendanceComponent} from "./modules/course/components/course-details/course-content/attendance/view-student-attendance/view-student-attendance.component";
 import {AddQuizQuestionsComponent} from "./modules/course/components/course-details/course-content/quiz/add-quiz-questions/add-quiz-questions.component";
 import {CreateLecture} from "./modules/course/components/course-details/course-content/lecture/create-lecture/create-lecture.component";
 
