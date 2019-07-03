@@ -8,7 +8,7 @@
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
-            <li><a [routerLink]="[ROUTES.SETTING_USER_LIST]">Users</a></li>
+            <li><a *ngIf="currentUser.roleIDs.includes(AUTH_ROLES.SYS_ADMIN)" [routerLink]="[ROUTES.SETTING_USER_LIST]">Users</a></li>
             <li><span>{{userVto.fullName}}</span></li>
           </ul>
         </div>

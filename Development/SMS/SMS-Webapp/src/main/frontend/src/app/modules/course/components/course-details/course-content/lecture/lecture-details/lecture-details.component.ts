@@ -63,7 +63,18 @@ export class LectureDetailsComponent implements OnInit {
   ngOnInit() {
     this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
-
+  
+  player;
+  private id: string = 'ZWJH7JQCjLM';
+  
+  
+  savePlayer (player) {
+    this.player = player;
+    console.log('player instance', player)
+  }
+  onStateChange(event){
+    console.log('player state', event.data);
+  }
 
 
 }

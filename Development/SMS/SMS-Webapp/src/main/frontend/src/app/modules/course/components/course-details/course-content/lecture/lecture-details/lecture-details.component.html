@@ -106,8 +106,12 @@
           <div class="card-body">
             <h4 class="header-title">Video player </h4>
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item"
-                      [src]="'https://www.youtube.com/embed/' + lectureData.videoUrl + '?rel=0'" allowfullscreen></iframe>
+              <youtube-player
+                [videoId]="lectureData.videoUrl"
+                (ready)="savePlayer($event)"
+                (change)="onStateChange($event)"
+              ></youtube-player>
+              <!--<iframe class="e.youtube.com/embed/' + lectureData.videoUrl + '?rel=0'" allowfullscreen></iframe>-->
             </div>
           </div>
         </div>

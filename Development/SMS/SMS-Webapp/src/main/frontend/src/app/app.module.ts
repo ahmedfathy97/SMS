@@ -67,6 +67,7 @@ import {NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
 // import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {AssignmentDetailsComponent} from './modules/course/components/course-details/course-content/lecture/lecture-details/assignment-details/assignment-details.component';
 
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import {AssignmentDetailsComponent} from './modules/course/components/course-det
 
   ],
   imports: [
-    BrowserModule, NgxPaginationModule,
+    BrowserModule, NgxPaginationModule, NgxYoutubePlayerModule.forRoot(),
     AppRoutingModule, ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule, NgxDaterangepickerMd.forRoot(), //,
     //NgbModule.forRoot()
   ],

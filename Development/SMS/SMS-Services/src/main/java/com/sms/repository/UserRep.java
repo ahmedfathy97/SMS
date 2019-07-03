@@ -32,6 +32,7 @@ public class UserRep {
                 "    last_name,\n" +
                 "    floor(datediff(curdate(), birth_date) / 365) AS age, " +
                 "    gender,\n" +
+                " birth_date, " +
                 "    email,\n" +
                 "    phone,\n" +
                 "    s.username, d.image_path " +
@@ -50,7 +51,7 @@ public class UserRep {
                 data.setFirstName(rs.getString("first_name"));
                 data.setLastName(rs.getString("last_name"));
                 data.setAge(rs.getInt("age"));
-//                data.setBirthDate(rs.getString("birth_date"));
+                data.setBirthDate(rs.getString("birth_date"));
                 data.setGender(rs.getString("gender"));
                 data.setEmail(rs.getString("email"));
                 data.setPhone(rs.getString("phone"));

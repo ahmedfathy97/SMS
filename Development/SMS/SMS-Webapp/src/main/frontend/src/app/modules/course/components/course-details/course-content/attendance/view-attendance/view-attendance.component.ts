@@ -29,14 +29,13 @@ export class ViewAttendanceComponent implements OnInit {
   display : boolean = false ;
   corID :number ;
   attendanceList :AttendanceDTO [] = [];
-  tableView : any [][] ;
+  tableView : any [][];
   
   currentUser: AuthUserVTO = new AuthUserVTO();
   constructor( private attendanceService : CourseService ,
                private localStorageService: LocalStorageService,
                private corDataService: CourseDataService){
     this.currentUser = this.localStorageService.getCurrentUser();
-    // this.currentUser.roleIDs.
       this.corDataService.corID.subscribe(
       data =>{
         this.corID = data;
@@ -62,10 +61,8 @@ export class ViewAttendanceComponent implements OnInit {
         console.log(this.attendanceList);
         this.transformTable();
 
-        if (this.attendanceList.length != 0 )
-        {
-          this.display=true;
-        }
+        if(this.attendanceList.length > 0)
+          this.display = true;
       }
     )
   }

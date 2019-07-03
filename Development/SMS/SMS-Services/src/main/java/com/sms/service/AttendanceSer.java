@@ -42,11 +42,11 @@ public class AttendanceSer {
         if(data.getAttendanceData().before(new Date()))
             throw new Exception("Can't insert Attendance in the past");
 
-        if (isUpdate == false) {
+        if (!isUpdate) {
             int sheetID = this.repository.insertNewSheet(courseID, data.getAttendanceData());
             for (StdDTO student : data.getStudents())
                 this.repository.insertStudentAttendance(sheetID, courseID, student);
-        } else if (isUpdate == true) {
+        } else {
             for (StdDTO student : data.getStudents()) {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
                 String strDate = dateFormat.format(data.getAttendanceData());
