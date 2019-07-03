@@ -16,13 +16,6 @@
       </div>
     </div>
 
-  <!--<div class="col-sm-6 clearfix">-->
-    <!--<div class="pull-right">-->
-
-         <!--[routerLink] ="[replaceCorID(ROUTES.COR_CREATE_GRADE, corID)]">-->
-        <!--<i class="fa fa-plus pr&#45;&#45;10"></i> Add Grade</a>-->
-    <!--</div>-->
-  <!--</div>-->
     <div class="col-sm-6 clearfix">
       <div class="pull-right">
         <a class="btn btn-success btn-header"
@@ -44,32 +37,24 @@
 
 
            <table class="table text-center"  >
-            <thead class="text-uppercase bg-secondary">
+            <thead class="bg-secondary">
             <tr class="text-white">
 
               <th>Student Name</th>
-              <th>MidTerm Grade</th>
-              <th>Final Exam Grade</th>
+              <th>Mid Term Exam</th>
+              <th>Final Exam</th>
 
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let student of resultSet.studentLis  | paginate: { id: 'viewGrade',
-                itemsPerPage: 5,
+                itemsPerPage: PAGE_SIZE,
                 currentPage: pageNum,
                 totalItems: resultSet.totalRecords }">
               <td> {{student.fullName}}</td>
               <td>{{student.midTermOne}}</td>
-              <!--<td>{{student.semiFinal}}</td>-->
-              <!--<td>{{student.midTermTwo}}</td>-->
               <td>{{student.finalGrd}}</td>
-              <!--<td>-->
-                <!--<a >-->
-                  <!--&lt;!&ndash;<button  class="btn btn-primary pull-right ml-2" >Edit</button>&ndash;&gt;-->
-                  <!--<div class="fw-icons col-lg-3 col-sm-6"><a href="#"><i-->
-                    <!--class="fa fa-edit"></i> </a></div>-->
-                <!--</a>-->
-              <!--</td>-->
+
             </tr>
             </tbody>
 

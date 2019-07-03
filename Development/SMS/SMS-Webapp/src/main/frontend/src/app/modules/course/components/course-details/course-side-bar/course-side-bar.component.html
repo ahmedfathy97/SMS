@@ -1,37 +1,33 @@
-
 <ul class="metismenu" id="menu">
   <li>
-    <a [routerLink] = "[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Home</span></a>
+    <a [routerLink]="[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]"><i></i><span>Home</span></a>
   </li>
   <ng-template [ngIf]="currentUser.roleIDs.includes(AUTH_ROLES.INSTRUCTOR) || isStudentEnroll">
-  <li>
-    <a [routerLink] = "[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"><i ></i><span>Lectures </span></a>
-  </li>
-  <li>
-    <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]"><i ></i><span>Quizes </span></a>
-  </li>
+    <li>
+      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_LECTURES, corID)]"><i></i><span>Lectures </span></a>
+    </li>
 
-  <li>
-    <a [routerLink] ="[replaceCorID(ROUTES.COR_VIEW_EXAM, corID)]"><i ></i><span>Exams </span></a>
-  </li>
+    <li>
+      <a [routerLink]="['/course',corID,'attendance']"><i></i><span>Attendance</span></a>
+    </li>
+    <li>
+      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]"><i></i><span>Quizzes </span></a>
+    </li>
 
-  <li>
-    <a [routerLink] = "['/course',corID,'attendance']"><i ></i><span>Attendance</span></a>
-  </li>
-
-
-
-  <li>
-    <a [routerLink] = "['/course',corID,'grade']"><i></i><span>Grades</span></a>
-  </li>
+    <li>
+      <a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_EXAM, corID)]"><i></i><span>Exams </span></a>
+    </li>
 
 
-  <li>
+    <li>
+      <a [routerLink]="['/course',corID,'grade']"><i></i><span>Grades</span></a>
+    </li>
 
-    <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
-       [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_ASSIGNMENTS, corID, lecID)]"><i></i><span>Assignments</span></a>
 
-  </li>
+    <li>
+      <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
+         [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_ASSIGNMENTS, corID, lecID)]"><i></i><span>Assignments</span></a>
+    </li>
 
   </ng-template>
 

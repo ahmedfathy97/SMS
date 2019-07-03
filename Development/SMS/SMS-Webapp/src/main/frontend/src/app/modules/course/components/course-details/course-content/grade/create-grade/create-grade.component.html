@@ -37,10 +37,8 @@
             <div class="form-group col-md-4">
               <label class="col-form-label">Grade</label>
               <select (change)="getCourseStudents()" class="form-control" id="grade" formControlName="gradeType">
-                <option value="M1">Mid Term</option>
-                <!--<option value="SF">Semi Final</option>-->
-                <!--<option VALUE="M2">Mid Two</option>-->
-                <option value="FF">Final Grade</option>
+                <option value="M">Mid Term</option>
+                <option value="F">Final Grade</option>
               </select>
             </div>
               <div class="row" formArrayName="items">
@@ -56,12 +54,10 @@
 
                 </div>
               </div>
-            <!--</div>-->
             <div class="card-action mt-2 pull-right">
               <button type="button" class="btn btn-success mb-3" (click)="onSubmitGradeSheet()">Submit
               </button>
             </div>
-            <!--</div>-->
           </div>
         </div>
       </div>

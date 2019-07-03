@@ -50,16 +50,15 @@ public class CourseRes {
             CourseSer courseSer,
             GradeRep gradeRepository,
             AttendanceSer attendance
-            , QuizRep rep,StudentRep repStd) {
+            , QuizRep rep, StudentRep repStd) {
         this.courseSer = courseSer;
         this.gradeRepository = gradeRepository;
         this.courseRep = repository;
         this.attendance = attendance;
         this.rep = rep;
-        this.repStd=repStd;
+        this.repStd = repStd;
         this.gradeService = gradeService;
     }
-
 
 
     @POST
@@ -69,30 +68,31 @@ public class CourseRes {
     @Authenticated(actions = {AuthActions.ADD_COR})
     public int createNewCourse(@Context ContainerRequestContext request, CourseDTO details) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-         return  courseRep.insertNewCourse(currentUser.getId() , details);
+        return courseRep.insertNewCourse(currentUser.getId(), details);
     }
 
     @POST
     @Path("/{corID}/enroll")
     @Authenticated(actions = {AuthActions.ENROLL_STUDENT})
-    public void enrollStudentByID(@PathParam("corID") int corID, @Context ContainerRequestContext request){
+    public void enrollStudentByID(@PathParam("corID") int corID, @Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        repStd.insertStudent(currentUser.getId(),corID);
+        repStd.insertStudent(currentUser.getId(), corID);
 
     }
 
     @GET
     @Path("/{corID}/isStudent")
     @Authenticated()
-    public boolean isStudent(@PathParam("corID") int corID,@Context ContainerRequestContext request){
+    public boolean isStudent(@PathParam("corID") int corID, @Context ContainerRequestContext request) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
 
-         return this.courseRep.isEnrolled(currentUser.getId(),corID);
+        return this.courseRep.isEnrolled(currentUser.getId(), corID);
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/grade/quizes")
-    public List<StdDTO> getQuizGrades(@PathParam("courseID") int courseID){
+    public List<StdDTO> getQuizGrades(@PathParam("courseID") int courseID) {
         List<StdDTO> list = this.gradeService.getQuizGrade(courseID);
         return list;
 
@@ -102,12 +102,9 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
     @Authenticated()
-//    public CourseResultSet findAllCourses(@Context ContainerRequestContext request) {
-//    @Authenticated()
-//    @Authenticated(views = {AuthViews.CREATE_LEC})
-    public CourseResultSet myCourses(@Context ContainerRequestContext request,@QueryParam("pageNum") int pageNum) {
+    public CourseResultSet myCourses(@Context ContainerRequestContext request, @QueryParam("pageNum") int pageNum) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        return this.courseSer.myCourses(currentUser,pageNum);
+        return this.courseSer.myCourses(currentUser, pageNum);
     }
 
     @GET
@@ -135,7 +132,7 @@ public class CourseRes {
             @PathParam("courseID") int courseID,
             @QueryParam("gradeType") String gradeType,
             @QueryParam("attendanceDate") String attendanceDate) {
-        return this.courseSer.findAllCourseStudents(courseID , gradeType , attendanceDate );
+        return this.courseSer.findAllCourseStudents(courseID, gradeType, attendanceDate);
     }
 
 
@@ -144,9 +141,9 @@ public class CourseRes {
     @Path("/{courseID}/grade")
     @Authenticated()
     public CourseResultSet getCourseGrades(@Context ContainerRequestContext request,
-            @PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
+                                           @PathParam("courseID") int courseID, @QueryParam("pageNum") int pageNum) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
-        return  courseSer.findCourseGrades(currentUser, courseID,pageNum);
+        return courseSer.findCourseGrades(currentUser, courseID, pageNum);
     }
 
 
@@ -168,7 +165,6 @@ public class CourseRes {
 //    }
 
 
-
     @POST
     @Path("/{courseID}/lecture")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -181,9 +177,9 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/lectures")
-    public  CourseResultSet getCourseLectures(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum) {
+    public CourseResultSet getCourseLectures(@PathParam("courseID") int courseID, @QueryParam("pageNum") int pageNum) {
 
-        return courseSer.getCourseLectures(courseID,pageNum);
+        return courseSer.getCourseLectures(courseID, pageNum);
     }
 
 
@@ -221,10 +217,10 @@ public class CourseRes {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/attendance")
     @Authenticated(views = {AuthViews.ADD_ATTENDANCE})
-    public List<AttendanceDTO> getCourseAttendance(@Context ContainerRequestContext request,@PathParam("courseID") int courseID) {
+    public List<AttendanceDTO> getCourseAttendance(@Context ContainerRequestContext request, @PathParam("courseID") int courseID) {
         UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
         System.out.print("Sucessfully");
-        List<AttendanceDTO> list = this.attendance.getCourseAttendance(currentUser,courseID);
+        List<AttendanceDTO> list = this.attendance.getCourseAttendance(currentUser, courseID);
         return list;
     }
 
@@ -239,18 +235,16 @@ public class CourseRes {
     }
 
 
-
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/newAnnouncment")
     @Authenticated(actions = {AuthActions.COR_ADD_ANNOUNCEMENT})
-    public Response createAnnouncement(@Context ContainerRequestContext request,@PathParam("courseID") int courseID, Announcement announcement) {
+    public Response createAnnouncement(@Context ContainerRequestContext request, @PathParam("courseID") int courseID, Announcement announcement) {
         try {
             UserVTO currentUser = (UserVTO) request.getProperty(AuthenticationFilter.AUTH_USER);
             System.out.print("Data Recieved Sucessfully");
             System.out.print(announcement.toString());
-            this.courseSer.createAnnouncement(currentUser,courseID, announcement);
+            this.courseSer.createAnnouncement(currentUser, courseID, announcement);
             return Response.noContent().build();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
@@ -262,18 +256,10 @@ public class CourseRes {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{courseID}/announcmentList")
-    @Authenticated(views = {AuthViews.ADD_ANNOUNCEMENT})
-    public CourseResultSet getCourseAnnouncments(@PathParam("courseID") int courseID,@QueryParam("pageNum") int pageNum )
-    {
-        return this.courseSer.getCourseAnnouncments(courseID , pageNum )  ;
+    @Authenticated()
+    public CourseResultSet getCourseAnnouncments(@PathParam("courseID") int courseID, @QueryParam("pageNum") int pageNum) {
+        return this.courseSer.getCourseAnnouncments(courseID, pageNum);
     }
-//    public List<Announcement> getCourseAnnouncments(@PathParam("courseID") int courseID )
-//    {
-//        List<Announcement> announcementList = courseSer.getCourseAnnouncments(courseID ) ;
-//        return announcementList ;
-//    }
-
-
 
     @Path("/{corID}/img")
     @POST
@@ -302,12 +288,12 @@ public class CourseRes {
 
         File file;
 
-        if(imgPath != null)
+        if (imgPath != null)
             file = new File(ConfigManager.IMAGES_PATH + "/courses/" + corID + "/courseImg/" + imgPath);
         else
             file = new File(ConfigManager.IMAGES_PATH + "/courses/no-course.jpg");
 
-        if(!file.exists())
+        if (!file.exists())
             file = new File(ConfigManager.IMAGES_PATH + "/courses/no-course.jpg");
 
         return Response.ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM).build();

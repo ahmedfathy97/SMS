@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AnnouncementService} from "../../../../../shared/services/announcement.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Announcement} from "../../../../../shared/data/announcment";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {CourseService} from "../../../../../shared/services/course.service";
@@ -32,6 +32,7 @@ export class CreateAnnouncmentComponent implements OnInit {
   alert: AlertInput = new AlertInput();
   announcement: Announcement = new Announcement();
   constructor(private formBuilder: FormBuilder, private courseService : CourseService ,
+              private router: Router,
               private corDataService: CourseDataService,
               private route: ActivatedRoute) {
 
@@ -58,6 +59,7 @@ export class CreateAnnouncmentComponent implements OnInit {
       res => {
         console.log("Success");
         this.alert = new SuccessAlert();
+        this.router.navigate([replaceCorID(this.ROUTES.COR_VIEW_ANNOUNCEMENT, this.corID)]);
     }, err => {
         this.alert = new FailureAlert(err);
         console.log(err);

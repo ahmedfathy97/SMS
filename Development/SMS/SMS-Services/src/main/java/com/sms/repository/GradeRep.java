@@ -1,5 +1,6 @@
 package com.sms.repository;
 
+import com.sms.configuration.ConfigManager;
 import com.sms.model.course.StdDTO;
 import com.sms.model.course.rm.CourseGradesRM;
 import com.sms.model.course.rm.QuizVTORM;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import sun.security.krb5.Config;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,25 +27,9 @@ public class GradeRep {
     }
 
 
-    public void insertMidTermOne(int cor_id, StdDTO data) {
+    public void insertMidTerm(int cor_id, StdDTO data) {
         String sql = "update course_std " +
-                " SET  mid_1_grd=?  " +
-                "WHERE   cor_id=? AND  std_id = ? ";
-        this.jdbc.update(sql, data.getNewGrade(), cor_id, data.getId());
-
-    }
-
-    public void insertSemiFinal(int cor_id, StdDTO data) {
-        String sql = "update course_std " +
-                " SET  semi_final_grd=?  " +
-                "WHERE   cor_id=? AND  std_id = ? ";
-        this.jdbc.update(sql, data.getNewGrade(), cor_id, data.getId());
-
-    }
-
-    public void insertMidTermTwo(int cor_id, StdDTO data) {
-        String sql = "update course_std " +
-                " SET  mid_2_grd=?  " +
+                " SET  mid_grade=?  " +
                 "WHERE   cor_id=? AND  std_id = ? ";
         this.jdbc.update(sql, data.getNewGrade(), cor_id, data.getId());
 
@@ -51,35 +37,36 @@ public class GradeRep {
 
     public void insertFinalGrd(int cor_id, StdDTO data) {
         String sql = "update course_std " +
-                " SET  final_grd=?  " +
+                " SET  final_grade=?  " +
                 "WHERE   cor_id=? AND  std_id = ? ";
         this.jdbc.update(sql, data.getNewGrade(), cor_id, data.getId());
 
     }
 
     public List<StdDTO> findCourseGrades(int courseID, int stdID, int pageNum) {
-        int pageSize = 2;
+        int pageSize = ConfigManager.PAGE_SIZE;
 
         String sql =
-            "SELECT std.first_name,std.last_name,std.user_id, " +
-                "cor.mid_grade,cor.final_grade " +
-            " from user_detail std " +
-                " left join course_std cor on std.user_id=cor.std_id\n" +
-            " where cor_id = ? "
-                    + ((stdID != -1 ) ? "AND cor.std_id = ?" : "") +
-            " LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum-1));
+                "SELECT std.first_name,std.last_name, std.user_id, " +
+                        "cor.mid_grade, cor.final_grade " +
+                        " from course_std cor  " +
+                        " left join user_detail std on std.user_id=cor.std_id\n" +
+                        " where cor_id = ? "
+                        + ((stdID != -1) ? "AND cor.std_id = ?" : "") +
+                        " LIMIT " + pageSize + " OFFSET " + (pageSize * (pageNum - 1));
 
-        return ((stdID != -1 ) ? this.jdbc.query(sql, new CourseGradesRM(), courseID, stdID) :
+        return ((stdID != -1) ? this.jdbc.query(sql, new CourseGradesRM(), courseID, stdID) :
                 this.jdbc.query(sql, new CourseGradesRM(), courseID));
     }
-    public int findALLGradeCount(int corID,int stdID){
-        int pageSize = 2;
-        String sql ="SELECT COUNT(*) AS record_count \n" +
+
+    public int findALLGradeCount(int corID, int stdID) {
+        int pageSize = ConfigManager.PAGE_SIZE;
+        String sql = "SELECT COUNT(*) AS record_count \n" +
                 "                FROM user_detail std\n" +
                 "                left join course_std cor\n" +
                 "                on std.user_id=cor.std_id\n" +
                 "                where cor_id = ?" +
-                ((stdID != -1 ) ? "AND cor.std_id = ?"  :"") ;
+                ((stdID != -1) ? "AND cor.std_id = ?" : "");
 
 
         List<Integer> totalCount = this.jdbc.query(sql, new RowMapper<Integer>() {
@@ -87,14 +74,14 @@ public class GradeRep {
             public Integer mapRow(ResultSet resultSet, int i) throws SQLException {
                 return resultSet.getInt("record_count");
             }
-        },corID);
+        }, corID);
         return totalCount.get(0);
 
     }
 
     public StdDTO findStudentGrades(int courseID, int stdID) {
         String sql = "SELECT std.first_name,std.last_name,std.user_id,\n" +
-                "                cor.mid_1_grd,cor.semi_final_grd,cor.mid_2_grd,cor.final_grd\n" +
+                "                cor.mid_grade, cor.final_grade\n" +
                 "                from user_detail std\n" +
                 "                   left join course_std cor\n" +
                 "                on std.user_id=cor.std_id\n" +
@@ -106,8 +93,9 @@ public class GradeRep {
 
         return std;
     }
-    public List<StdDTO> findQuizGrades(int courseID){
-        String sql="\n" +
+
+    public List<StdDTO> findQuizGrades(int courseID) {
+        String sql = "\n" +
                 "SELECT distinct\n" +
                 "    q0.first_name,\n" +
                 "    q0.last_name,\n" +
@@ -289,8 +277,8 @@ public class GradeRep {
                 "        AND q10.quiz_name = 'quiz10'\n" +
                 "        ";
 
-        List result= this.jdbc.query(sql, new QuizVTORM(), courseID, courseID, courseID, courseID,courseID,courseID,courseID,courseID,courseID,courseID,courseID);
-return result;
+        List result = this.jdbc.query(sql, new QuizVTORM(), courseID, courseID, courseID, courseID, courseID, courseID, courseID, courseID, courseID, courseID, courseID);
+        return result;
     }
 
 }

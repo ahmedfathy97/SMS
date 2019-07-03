@@ -6,6 +6,7 @@ import {CourseDataService} from "../../../../../shared/services/course-data.serv
 import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {CourseResultSet} from "../../../../../shared/data/course-result-set.data";
+import {ConfigParam} from "../../../../../../../infrastructure/common/config-param";
 
 @Component({
   selector: 'app-view-grade',
@@ -17,8 +18,9 @@ export class ViewGradeComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
-  // display:boolean=false;
+  
   corID: number;
+  PAGE_SIZE: number = ConfigParam.PAGE_SIZE;
   
   constructor(private courseService: CourseService, private corDataService: CourseDataService, private route: ActivatedRoute) {
     this.corDataService.corID.subscribe(
