@@ -16,7 +16,7 @@ export class AttachmentService {
   }
 
   // Upload files to server
-  uploadFiles(fd: FormData, file: FileVTO) {
+  uploadFiles(fd: FormData, file: FileVTO, userID: number, assID: number) {
 
     const params = new HttpParams()
       .set("name", file.name)
@@ -28,6 +28,8 @@ export class AttachmentService {
       .set("corID", file.corID.toString())
       .set("startDate", file.startDate)
       .set("endDate", file.endDate)
+      .set("userID", userID.toString())
+      .set("assID", assID.toString())
 
     this.http.post(this.BASE_URL + "/file", fd, {params: params})
       .subscribe(res => {

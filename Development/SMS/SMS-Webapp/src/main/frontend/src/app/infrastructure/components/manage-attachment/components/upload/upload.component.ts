@@ -95,7 +95,7 @@ export class UploadComponent implements OnInit {
     for (let i = 0; i < this.filesVTO.length; i++) {
       const fd = new FormData();
       fd.append("file", this.filesVTO[i].content);
-      this.service.uploadFiles(fd, this.filesVTO[i]);
+      this.service.uploadFiles(fd, this.filesVTO[i], 0, 0);
     }
   }
 

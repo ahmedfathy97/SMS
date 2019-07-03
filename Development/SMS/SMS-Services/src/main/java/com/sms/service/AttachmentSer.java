@@ -35,14 +35,14 @@ public class AttachmentSer {
     }
 
     /*********************************** Storage and Database OPs ********************************************/
-    public void saveFile(InputStream file, File attachment) {
+    public void saveFile(InputStream file, File attachment, int userID, int fileToAssID) {
         // Store on disk
         String fileSrcID = null;
         try {
             if (attachment.getFileSourceID() == 1)
                 fileSrcID = "attachment";
             else if (attachment.getFileSourceID() == 3)
-                fileSrcID = "assignment/student-answer";
+                fileSrcID = "assignment/student-answer " + userID;
             else
                 fileSrcID = "assignment";
 
@@ -72,14 +72,12 @@ public class AttachmentSer {
         if (attachment.getFileSourceID() == 2) {
             int assignmentID = this.assignmentRep.insertIntoCourse_assignment(attachmentID);
             System.err.println(assignmentID);
-
             this.assignmentRep.insertStdAssignments(attachment.getCorID(), assignmentID);
         }
 
         if (attachment.getFileSourceID() == 3) {
-            this.assignmentRep.updateStdAssignments(4, 19, attachmentID);
+            this.assignmentRep.updateStdAssignments(userID, fileToAssID, attachmentID);
         }
-
 
     }
 

@@ -46,15 +46,24 @@ public class AssignmentRep {
         }
     }
 
-    public void updateStdAssignments(int stdID, int assignmentID, int fileAttachmentID) {
-        String sql = "UPDATE course_assign_answer SET answer_date = NOW() " +
+    public void updateStdAssignments(int stdID, int fileToAssID, int fileAttachmentID) {
+        String sql = "SELECT id FROM sms.course_assignment \n" +
+                "where file_attach_id = ?;";
+
+        System.err.println("FileID" + fileToAssID);
+
+        int assignmentID = jdbcTemplate.queryForObject(sql, Integer.class, fileToAssID);
+        System.err.println("assID" + assignmentID);
+
+        sql = "UPDATE course_assign_answer SET file_attach_id = ? " +
+                "WHERE std_id = ? AND assignment_id = ?";
+
+        this.jdbcTemplate.update(sql, fileAttachmentID, stdID, assignmentID);
+
+        sql = "UPDATE course_assign_answer SET answer_date = DATE(now()) " +
                 "WHERE std_id = ? AND assignment_id = ?;";
 
         this.jdbcTemplate.update(sql, stdID, assignmentID);
 
-        sql = "UPDATE course_assign_answer SET file_attach_id = ? " +
-                "WHERE std_id = ? AND assignment_id = ?;";
-
-        this.jdbcTemplate.update(sql, fileAttachmentID, stdID, assignmentID);
     }
 }

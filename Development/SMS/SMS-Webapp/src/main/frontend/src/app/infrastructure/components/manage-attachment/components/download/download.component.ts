@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AttachmentService} from "../../shared/attachment.service";
 import {FileVTO} from "../../shared/data/FileVTO";
 import {AuthActions} from "../../../../directives/authorization/data/auth-actions.enum";
 import {AngularFullRoutes} from "../../../../data/full-routes.enum";
 import {CourseDataService} from "../../../../../modules/course/shared/services/course-data.service";
 import {inputs} from "@syncfusion/ej2-angular-richtexteditor/src/rich-text-editor/richtexteditor.component";
+import {LocalStorageService} from "../../../../services/local-storage.service";
 
 @Component({
   selector: 'app-download',
@@ -23,16 +24,20 @@ export class DownloadComponent implements OnInit {
 
   fileList: FileVTO[] = [];
   file:any;
+  userID: number;
 
 
   constructor(private service: AttachmentService,
-              private corDataService: CourseDataService) {
+              private corDataService: CourseDataService,
+              private localStorageService: LocalStorageService) {
     this.corDataService.corID.subscribe(
       data => {
         this.corID = data;
       }
     );
     this.corDataService.requestCorID.next(true);
+    this.userID = this.localStorageService.getCurrentUser().userID;
+
   }
 
   ngOnInit() {
@@ -85,7 +90,7 @@ export class DownloadComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
-  uploadAssignmentAnswer(event) {
+  uploadAssignmentAnswer(event, assignmentID) {
     let file: File = event.target.files[0];
     const fd = new FormData();
     fd.append("file", file);
@@ -100,7 +105,7 @@ export class DownloadComponent implements OnInit {
     let fileVTO: FileVTO = new FileVTO(0, name, contentType, extension, size, "", "", "",
       corID, sourceID, 3);
 
-    this.service.uploadFiles(fd, fileVTO);
+    this.service.uploadFiles(fd, fileVTO, this.userID, assignmentID);
   }
 }
 

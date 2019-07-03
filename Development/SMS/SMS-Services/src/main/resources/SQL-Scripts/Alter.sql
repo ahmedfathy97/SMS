@@ -65,3 +65,5 @@ CREATE TABLE `sms`.`course_assign_answer`
 
 
 
+INSERT INTO `sms`.`file_source` (`id`, `lable_en`)
+VALUES ('3', 'answer');

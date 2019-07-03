@@ -42,7 +42,7 @@ public class AttachmentRes {
     @Path("/file")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Authenticated(actions = {AuthActions.ADD_MATERIAL})
+    @Authenticated()
     public Response uploadFile(
             @QueryParam("name") String name,
             @QueryParam("type") String type,
@@ -53,6 +53,8 @@ public class AttachmentRes {
             @QueryParam("corID") int corID,
             @QueryParam("startDate") String startDate,
             @QueryParam("endDate") String endDate,
+            @QueryParam("userID") int userID,
+            @QueryParam("assID") int fileIDToGetAssID, // file ID of the intended assignment
             @FormDataParam("file") InputStream fileContent,
             @FormDataParam("file") FormDataContentDisposition fileDisposition
     ) {
@@ -74,7 +76,7 @@ public class AttachmentRes {
         System.out.println(file.toString());
 
 //      System.out.println(file.toString());
-        service.saveFile(fileContent, file);
+        service.saveFile(fileContent, file, userID, fileIDToGetAssID);
         return Response.ok(file.toString()).build();
 
     }
