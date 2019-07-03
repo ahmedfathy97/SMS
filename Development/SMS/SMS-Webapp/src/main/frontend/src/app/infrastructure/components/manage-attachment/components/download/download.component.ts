@@ -4,6 +4,7 @@ import {FileVTO} from "../../shared/data/FileVTO";
 import {AuthActions} from "../../../../directives/authorization/data/auth-actions.enum";
 import {AngularFullRoutes} from "../../../../data/full-routes.enum";
 import {CourseDataService} from "../../../../../modules/course/shared/services/course-data.service";
+import {inputs} from "@syncfusion/ej2-angular-richtexteditor/src/rich-text-editor/richtexteditor.component";
 
 @Component({
   selector: 'app-download',
@@ -84,4 +85,39 @@ export class DownloadComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
+  uploadAssignmentAnswer(event) {
+    let file: File = event.target.files[0];
+    const fd = new FormData();
+    fd.append("file", file);
+
+    let name = file.name;
+    let extension = file.name.split('.').pop();
+    let contentType = file.type;
+    let size = file.size;
+    let corID = this.corID;
+    let sourceID = this.sourceID;
+
+    let fileVTO: FileVTO = new FileVTO(0, name, contentType, extension, size, "", "", "",
+      corID, sourceID, 3);
+
+    this.service.uploadFiles(fd, fileVTO);
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

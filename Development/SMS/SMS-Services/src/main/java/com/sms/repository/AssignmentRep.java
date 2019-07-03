@@ -28,10 +28,13 @@ public class AssignmentRep {
                 "            SELECT cor_id, source_id, file_id, start_date, end_date" +
                 "            FROM attachment" +
                 "            WHERE file_src_id = 2 AND file_id = ?;";
-
         this.jdbcTemplate.update(sql, attachmentID);
 
-        return 1;
+        sql = "SELECT id FROM course_assignment ORDER BY id DESC LIMIT 1;";
+        int assignmentID = jdbcTemplate.queryForObject(sql, Integer.class);
+
+
+        return assignmentID;
     }
 
     public void insertStdAssignments(int corID, int assignmentID) {
@@ -44,8 +47,13 @@ public class AssignmentRep {
     }
 
     public void updateStdAssignments(int stdID, int assignmentID, int fileAttachmentID) {
-        String sql = "UPDATE course_assign_answer SET file_attach_id = ? AND answer_date = NOW() " +
-                "WHERE std_id = ? AND assignment_id = ?";
+        String sql = "UPDATE course_assign_answer SET answer_date = NOW() " +
+                "WHERE std_id = ? AND assignment_id = ?;";
+
+        this.jdbcTemplate.update(sql, stdID, assignmentID);
+
+        sql = "UPDATE course_assign_answer SET file_attach_id = ? " +
+                "WHERE std_id = ? AND assignment_id = ?;";
 
         this.jdbcTemplate.update(sql, fileAttachmentID, stdID, assignmentID);
     }

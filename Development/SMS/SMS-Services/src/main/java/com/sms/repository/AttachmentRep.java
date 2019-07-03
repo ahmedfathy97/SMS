@@ -27,8 +27,6 @@ private SimpleJdbcInsert attachmentSJI;
         this.jdbcTemplate = jdbcTemplate;
         this.attachmentSJI = new SimpleJdbcInsert(dataSource).withTableName("attachment")
                 .usingGeneratedKeyColumns("file_id");
-
-//        this.assRep = assRep;
     }
 
     public int insertNewFile(File file) {

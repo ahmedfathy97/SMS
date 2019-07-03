@@ -13,7 +13,7 @@
             <label [ngClass]="assignmentUploadStatus ? 'border-danger' : 'border-success text-muted'"
                    class="btn btn-sm border text-dark" for="{{'browse' + i}}">Answer</label>
 
-            <input #fileInput
+            <input #fileInput (change)="uploadAssignmentAnswer($event)"
                    [disabled]="assignmentUploadStatus" class="custom-file-input" hidden
                    id="{{'browse' + i}}" name="tags" type="file" value="Answer">
           </div>

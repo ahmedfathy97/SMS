@@ -41,6 +41,8 @@ public class AttachmentSer {
         try {
             if (attachment.getFileSourceID() == 1)
                 fileSrcID = "attachment";
+            else if (attachment.getFileSourceID() == 3)
+                fileSrcID = "assignment/student-answer";
             else
                 fileSrcID = "assignment";
 
@@ -58,17 +60,6 @@ public class AttachmentSer {
             file.close();
         } catch (FileAlreadyExistsException e) {
             System.out.println("File already exists with the same name: " + attachment.getName());
-//            java.nio.file.Path path = FileSystems.getDefault().getPath("/Users/bebo/Documents/Files/" +"("+ 2 +")" + name);
-//
-//            try{
-//                Files.copy(file, path);
-//            }
-//
-//            catch (IOException ie) {
-//                ie.printStackTrace();
-//                System.out.println("File was not saved");
-//                return;
-//            }
             return;
         } catch (IOException ie) {
             ie.printStackTrace();
@@ -78,11 +69,17 @@ public class AttachmentSer {
 
         // Insert into database
         int attachmentID = this.attachmentRep.insertNewFile(attachment);
-//        if(this file is assignment)
-        this.assignmentRep.insertIntoCourse_assignment(attachmentID);
-        List<StdDTO> stdDTOList = new ArrayList<>();
-//        for(StdDTO std: stdDTOList)
-            this.assignmentRep.insertStdAssignments(1,2);
+        if (attachment.getFileSourceID() == 2) {
+            int assignmentID = this.assignmentRep.insertIntoCourse_assignment(attachmentID);
+            System.err.println(assignmentID);
+
+            this.assignmentRep.insertStdAssignments(attachment.getCorID(), assignmentID);
+        }
+
+        if (attachment.getFileSourceID() == 3) {
+            this.assignmentRep.updateStdAssignments(4, 19, attachmentID);
+        }
+
 
     }
 

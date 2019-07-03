@@ -17,18 +17,7 @@ export class AttachmentService {
 
   // Upload files to server
   uploadFiles(fd: FormData, file: FileVTO) {
-    // uploadFiles(fd: FormData, name, type, size, ext, sourceID, fileSrcID) {
 
-    // let startDate;
-    // let endDate;
-    // if(file.fileSourceID == 1){
-    //   startDate = "";
-    //   endDate = "";
-    // }
-    // else {
-    //   startDate = file.startDate.toString();
-    //   endDate = file.endDate.toString();
-    // }
     const params = new HttpParams()
       .set("name", file.name)
       .set("type", file.contentType)

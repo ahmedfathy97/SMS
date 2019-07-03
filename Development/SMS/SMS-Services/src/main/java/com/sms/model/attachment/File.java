@@ -149,8 +149,10 @@ public class File implements Serializable {
     }
 
     public void setStart_date(String start_date) {
-        if (this.fileSourceID == 1)
+        if (fileSourceID == 1 || fileSourceID == 3) {
+            this.start_date = null;
             return;
+        }
         String pattern = "yyyy/MM/dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
@@ -171,8 +173,10 @@ public class File implements Serializable {
     }
 
     public void setEnd_date(String end_date) {
-        if (this.fileSourceID == 1)
+        if (fileSourceID == 1 || fileSourceID == 3) {
+            this.end_date = null;
             return;
+        }
 
         String pattern = "yyyy/MM/dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
