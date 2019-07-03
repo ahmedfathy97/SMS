@@ -36,7 +36,7 @@ public class AssignmentRep {
 
     public void insertStdAssignments(int corID, int assignmentID) {
         List<StdDTO> stdDTOS = this.courseRep.findAllCourseStudents(corID, -1);
-        String sql = "INSERT INTO course_assignment_answer (std_id, assignment_id) VALUE (?, ?)";
+        String sql = "INSERT INTO course_assign_answer (std_id, assignment_id) VALUE (?, ?)";
 
         for(StdDTO std : stdDTOS){
             this.jdbcTemplate.update(sql, std.getId(), assignmentID);
@@ -44,7 +44,7 @@ public class AssignmentRep {
     }
 
     public void updateStdAssignments(int stdID, int assignmentID, int fileAttachmentID) {
-        String sql = "UPDATE course_assignment_answer SET file_attach_id = ? AND answer_date = NOW() " +
+        String sql = "UPDATE course_assign_answer SET file_attach_id = ? AND answer_date = NOW() " +
                 "WHERE std_id = ? AND assignment_id = ?";
 
         this.jdbcTemplate.update(sql, fileAttachmentID, stdID, assignmentID);
