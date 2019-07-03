@@ -244,7 +244,7 @@ public class CourseRep {
                 "    c.start_date,\n" +
                 "    c.end_date,\n" +
                 "    c.instructor_id,\n" +
-                "    CONCAT(u.first_name, u.last_name) AS Instructor_Name,\n" +
+                "    CONCAT(u.first_name, CONCAT(' ', u.last_name)) AS Instructor_Name,\n" +
                 "    c.description,\n" +
                 "    COALESCE(t.cat_count, 0) AS course_std,\n" +
                 "    g.label_en cor_category,\n" +

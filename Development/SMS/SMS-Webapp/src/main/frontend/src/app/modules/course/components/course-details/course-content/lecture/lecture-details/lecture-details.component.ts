@@ -8,12 +8,13 @@ import {LectureService} from "../../../../../shared/services/lecture.service";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
 import {LectureVto} from "../../../../../shared/data/lecture-vto";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {CourseService} from "../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-lecture-details',
   templateUrl: './lecture-details.component.html',
   styleUrls: ['./lecture-details.component.css'],
-  providers: [AttachmentService, LectureService]
+  providers: [AttachmentService, LectureService, CourseService]
 })
 export class LectureDetailsComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
@@ -32,6 +33,7 @@ export class LectureDetailsComponent implements OnInit {
   constructor(private fileService: AttachmentService,
               private route: ActivatedRoute,
               private corDataService: CourseDataService,
+              private courseService: CourseService,
               private lecService: LectureService) {
 
     this.route.paramMap.subscribe(params => {
@@ -56,8 +58,11 @@ export class LectureDetailsComponent implements OnInit {
       console.log(err);
     });
   }
-
-  ngOnInit() {}
+  
+  corName: string;
+  ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
+  }
 
 
 

@@ -5,6 +5,7 @@ import {AngularFullRoutes, replaceUserID} from "../../infrastructure/data/full-r
 import {AuthUserVTO} from "../security/shared/data/auth-user-vto.data";
 import {AuthViews} from "../../infrastructure/directives/authorization/data/auth-views.enum";
 import {ConfigParam} from "../../infrastructure/common/config-param";
+import {AuthRoles} from "../../infrastructure/directives/authorization/data/auth-roles.enum";
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import {ConfigParam} from "../../infrastructure/common/config-param";
 })
 export class HomeComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  AUTH_ROLES: typeof AuthRoles = AuthRoles;
   AUTH_VIEWS: typeof AuthViews = AuthViews;
   
   isUserAuthenticated: boolean = false;

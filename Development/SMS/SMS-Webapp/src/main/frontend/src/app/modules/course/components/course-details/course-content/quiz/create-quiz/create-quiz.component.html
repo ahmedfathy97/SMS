@@ -8,7 +8,8 @@
         <div class="breadcrumbs-area clearfix">
           <ul class="breadcrumbs pull-left mt-3">
             <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
-            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Course</a></li>
+            <li><a [routerLink]="[ROUTES.COURSE_LIST]">Courses</a></li>
+            <li><a [routerLink]="[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]">{{corName}}</a></li>
             <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_QUIZ, corID)]">Quiz</a></li>
             <li><span>New</span></li>
           </ul>

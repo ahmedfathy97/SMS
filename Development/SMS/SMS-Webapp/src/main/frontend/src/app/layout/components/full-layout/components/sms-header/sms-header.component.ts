@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AngularFullRoutes, replaceUserID} from "../../../../../infrastructure/data/full-routes.enum";
 import {AuthViews} from "../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 import {ConfigParam} from "../../../../../infrastructure/common/config-param";
+import {AuthRoles} from "../../../../../infrastructure/directives/authorization/data/auth-roles.enum";
 
 @Component({
   selector: 'app-sms-header',
@@ -14,6 +15,7 @@ import {ConfigParam} from "../../../../../infrastructure/common/config-param";
 export class SmsHeaderComponent implements OnInit {
   @Input() showLogo: boolean;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
+  AUTH_ROLES: typeof AuthRoles = AuthRoles;
   AUTH_VIEWS: typeof AuthViews = AuthViews;
   currentUser: AuthUserVTO = new AuthUserVTO();
   BASE_URL: string = ConfigParam.APP_BASE_URL;

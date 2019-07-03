@@ -7,8 +7,10 @@
         <h4 class="page-title pull-left">Grade</h4>
         <br/>
         <ul class="breadcrumbs pull-left mt-3">
-          <li><a [routerLink]="ROUTES.COURSE_LIST">Course</a></li>
-          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_GRADE, corID)]">ViewGrade</a></li>
+          <li><a [routerLink]="[ROUTES.WELCOME]">Home</a></li>
+          <li><a [routerLink]="[ROUTES.COURSE_LIST]">Courses</a></li>
+          <li><a [routerLink]="[replaceCorID(ROUTES.COURSE_INFORMATION, corID)]">{{corName}}</a></li>
+          <li><a [routerLink]="[replaceCorID(ROUTES.COR_VIEW_GRADE, corID)]">Grades</a></li>
           <li><span>New</span></li>
         </ul>
       </div>
@@ -35,10 +37,10 @@
             <div class="form-group col-md-4">
               <label class="col-form-label">Grade</label>
               <select (change)="getCourseStudents()" class="form-control" id="grade" formControlName="gradeType">
-                <option value="M1">Mid Term One</option>
+                <option value="M1">Mid Term</option>
                 <!--<option value="SF">Semi Final</option>-->
                 <!--<option VALUE="M2">Mid Two</option>-->
-                <option value="FF">Final Grd</option>
+                <option value="FF">Final Grade</option>
               </select>
             </div>
               <div class="row" formArrayName="items">

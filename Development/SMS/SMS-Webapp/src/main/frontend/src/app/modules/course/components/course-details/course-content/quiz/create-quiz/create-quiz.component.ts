@@ -37,8 +37,10 @@ export class CreateQuizComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
 
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
   formData: FormGroup = this.formBuilder.group({

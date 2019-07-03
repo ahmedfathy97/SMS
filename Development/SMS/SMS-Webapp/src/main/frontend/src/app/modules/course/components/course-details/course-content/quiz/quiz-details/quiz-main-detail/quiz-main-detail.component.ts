@@ -12,12 +12,13 @@ import {AuthActions} from "../../../../../../../../infrastructure/directives/aut
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-quiz-main-detail',
   templateUrl: './quiz-main-detail.component.html',
   styleUrls: ['./quiz-main-detail.component.scss'] ,
-  providers: [QuizService],
+  providers: [QuizService, CourseService],
 })
 export class QuizMainDetailComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
@@ -29,6 +30,7 @@ export class QuizMainDetailComponent implements OnInit {
   quizDetails :QuizInformationVto ;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
+              private courseService: CourseService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.quizID = +params.get("quizID");
@@ -46,9 +48,11 @@ export class QuizMainDetailComponent implements OnInit {
 
 
   }
-
-
+  
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
 

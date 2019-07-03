@@ -10,12 +10,13 @@ import {FailureAlert} from "../../../../../../../infrastructure/components/alert
 import {AlertInput} from "../../../../../../../infrastructure/components/alerts/alert-input";
 import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {ActivatedRoute} from "@angular/router";
+import {CourseService} from "../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-add-exam-questions',
   templateUrl: './add-exam-questions.component.html',
   styleUrls: ['./add-exam-questions.component.css'] ,
-  providers: [FormBuilder,ExamServices ,QuizService]
+  providers: [FormBuilder, ExamServices, QuizService, CourseService]
 })
 export class AddExamQuestionsComponent implements OnInit {
 
@@ -31,6 +32,7 @@ export class AddExamQuestionsComponent implements OnInit {
   editMode: boolean = false;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
+              private courseService: CourseService,
               private quizService: QuizService, private route: ActivatedRoute,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.quizId = +params.get("examID");
@@ -130,9 +132,11 @@ export class AddExamQuestionsComponent implements OnInit {
       console.log(err)
     });
   }
-
-
+  
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getALLquestionsTypes();
   }
 

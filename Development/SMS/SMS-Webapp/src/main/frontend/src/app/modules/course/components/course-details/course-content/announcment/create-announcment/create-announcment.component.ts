@@ -43,8 +43,10 @@ export class CreateAnnouncmentComponent implements OnInit {
     );
     this.corDataService.requestCorID.next(true);
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
   onSubmitNewAnnouncement() {

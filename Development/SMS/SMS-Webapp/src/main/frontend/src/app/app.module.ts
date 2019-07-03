@@ -20,8 +20,6 @@ import {CreateQuizComponent} from './modules/course/components/course-details/co
 import {UploadComponent} from './infrastructure/components/manage-attachment/components/upload/upload.component';
 import {DownloadComponent} from './infrastructure/components/manage-attachment/components/download/download.component';
 import {AddQuizQuestionsComponent} from "./modules/course/components/course-details/course-content/quiz/add-quiz-questions/add-quiz-questions.component";
-import {ViewStudentGradeComponent} from './modules/course/components/course-details/course-content/grade/view-student-grade/view-student-grade.component';
-import {ViewStudentAttendanceComponent} from './modules/course/components/course-details/course-content/attendance/view-student-attendance/view-student-attendance.component';
 import {CreateCourse} from "./modules/course/components/create-course/create-course.component";
 import {CourseInfoComponent} from "./modules/course/components/course-details/course-content/course-info/course-info.component";
 import {CreateLecture} from './modules/course/components/course-details/course-content/lecture/create-lecture/create-lecture.component';
@@ -76,8 +74,8 @@ import {AssignmentDetailsComponent} from './modules/course/components/course-det
     SmsHeaderComponent, CourseSideBarComponent, SmsFooterComponent,
     HomeComponent, LayoutComponent, CreateGradeComponent, CreateAttendanceComponent, CreateCourse,
     CourseInfoComponent, ViewAttendanceComponent, CreateQuizComponent, ViewGradeComponent,
-    UserProfileComponent, UploadComponent, DownloadComponent, ViewStudentGradeComponent,
-    AddQuizQuestionsComponent, ViewStudentAttendanceComponent, CreateLecture, AnswerQuestionsComponent,
+    UserProfileComponent, UploadComponent, DownloadComponent,
+    AddQuizQuestionsComponent, CreateLecture, AnswerQuestionsComponent,
     CourseQuizesComponent, CourseLecturesComponent, CourseDetailsComponent,
     UserEditComponent, RegisterComponent, LoginComponent, AuthorizeActionDirective, AuthorizeViewDirective,
     UnAuthorizedComponent, AlertComponent, CourseListComponent, SmsSideBarComponent, HomeComponent,

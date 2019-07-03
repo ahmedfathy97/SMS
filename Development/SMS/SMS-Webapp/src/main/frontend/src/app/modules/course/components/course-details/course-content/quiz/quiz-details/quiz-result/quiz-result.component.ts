@@ -6,12 +6,13 @@ import {CourseDataService} from "../../../../../../shared/services/course-data.s
 import {AngularFullRoutes ,replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-quiz-result',
   templateUrl: './quiz-result.component.html',
   styleUrls: ['./quiz-result.component.css'],
-  providers: [QuizService],
+  providers: [QuizService, CourseService],
 })
 export class QuizResultComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
@@ -21,6 +22,7 @@ export class QuizResultComponent implements OnInit {
   quizResult : QuizResult[] ;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
+              private courseService: CourseService,
               private quizService: QuizService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.quizId = +params.get("examID");
@@ -35,8 +37,10 @@ export class QuizResultComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
 
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getQuizResult();
   }
 

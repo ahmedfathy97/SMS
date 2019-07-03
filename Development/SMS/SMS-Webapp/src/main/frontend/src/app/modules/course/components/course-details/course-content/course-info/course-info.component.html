@@ -44,58 +44,66 @@
         <div class="card">
           <div class="card-body">
 
-            <div class="d-inline-block col-6">
+            <div class="d-inline-block col-8">
               <label for="course-name" class="col-form-label font-weight-bold text-dark ">Course Name : </label>
               <label id="course-name" class="col-form-label label label-info ml-1">{{viewData.courseName}}</label>
 
             </div>
-            <div class="d-inline-block col-6">
-              <label for="duration" class="col-form-label font-weight-bold text-dark">Duration :</label>
-              <label id="duration" class="col-form-label ml-1">{{viewData.duration}}</label>
-            </div>
-
-            <div class="d-inline-block col-6">
-              <label for="start-lectureDate" class="col-form-label font-weight-bold text-dark">Start Date :</label>
-              <label id="start-lectureDate" class="col-form-label ml-1">{{viewData.startDate}}</label>
-            </div>
-
-            <div class="d-inline-block col-6">
-              <label for="end-lectureDate" class="col-form-label font-weight-bold text-dark">End Date :</label>
-              <label id="end-lectureDate" class="col-form-label ml-1">{{viewData.endDate}}</label>
-            </div>
-
-
-            <div class="d-inline-block col-6">
-              <label for="cor-category" class="col-form-label font-weight-bold text-dark">Course Category :</label>
-              <label id="cor-category" class="col-form-label ml-1">{{viewData.corCategory}}</label>
-            </div>
-
-            <div class="d-inline-block col-6">
-              <label for="cor-type" class="col-form-label font-weight-bold text-dark">Course Type :</label>
-              <label id="cor-type" class="col-form-label ml-1">{{viewData.corType}}</label>
-            </div>
-
-
-            <div class="d-inline-block col-6">
-              <label for="cor-level" class="col-form-label font-weight-bold text-dark">Course Level :</label>
-              <label id="cor-level" class="col-form-label ml-1">{{viewData.corLevel}}</label>
-            </div>
-
-
-            <div class="d-inline-block col-6">
-              <label for="inst-name" class="col-form-label font-weight-bold text-dark">Instructor Name :</label>
+            <div class="d-inline-block col-4">
+              <label for="inst-name" class="col-form-label font-weight-bold text-dark">Dr. </label>
               <label id="inst-name" class="col-form-label ml-1">
                 <a
                   [routerLink]="[replaceUserID(ROUTES.USER_PROFILE,viewData.instructorID)]">{{viewData.instructorName}}</a>
               </label>
             </div>
+            <!--<div class="d-inline-block col-6">-->
+              <!--<label for="duration" class="col-form-label font-weight-bold text-dark">Duration :</label>-->
+              <!--<label id="duration" class="col-form-label ml-1"></label>-->
+            <!--</div>-->
+
+            <!--<div class="d-inline-block col-6">-->
+              <!--<label for="end-lectureDate" class="col-form-label font-weight-bold text-dark">End Date :</label>-->
+            <!--</div>-->
 
 
-            <div class="d-inline-block col-6">
+            <div class="d-inline-block col-8">
+              <label for="cor-category" class="col-form-label font-weight-bold text-dark">Course Category :</label>
+              <label id="cor-category" class="col-form-label ml-1">{{viewData.corCategory}}</label>
+            </div>
+
+            <div class="d-inline-block col-4">
+              <label for="cor-type" class="col-form-label font-weight-bold text-dark">Course Type :</label>
+              <label id="cor-type" class="col-form-label ml-1">{{viewData.corType}}</label>
+            </div>
+
+
+            <div class="d-inline-block col-8">
+              <label for="cor-level" class="col-form-label font-weight-bold text-dark">Course Level :</label>
+              <label id="cor-level" class="col-form-label ml-1">{{viewData.corLevel}}</label>
+            </div>
+
+
+            <!--<div class="d-inline-block col-6">-->
+              <!--<label for="inst-name" class="col-form-label font-weight-bold text-dark">Dr. </label>-->
+              <!--<label id="inst-name" class="col-form-label ml-1">-->
+                <!--<a-->
+                  <!--[routerLink]="[replaceUserID(ROUTES.USER_PROFILE,viewData.instructorID)]">{{viewData.instructorName}}</a>-->
+              <!--</label>-->
+            <!--</div>-->
+
+
+            <div class="d-inline-block col-4">
               <label for="std-num" class="col-form-label font-weight-bold text-dark">Students Num :</label>
               <label id="std-num" class="col-form-label ml-1">{{viewData.studentNum}}</label>
             </div>
 
+
+
+            <div class="d-inline-block col-12">
+              <label for="start-lectureDate" class="col-form-label font-weight-bold text-dark">Course Duration :</label>
+              <label id="start-lectureDate" class="col-form-label ml-1">{{viewData.startDate | date: 'dd/MM/yyyy'}} - {{viewData.endDate | date: 'dd/MM/yyyy'}} ({{viewData.duration}} Hr)</label>
+              <!--<label id="end-lectureDate" class="col-form-label ml-1"></label>-->
+            </div>
 
             <div class="d-block col-12">
               <label for="description" class="col-form-label font-weight-bold text-dark">Description :</label>

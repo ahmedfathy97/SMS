@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CourseService} from "../../../../../shared/services/course.service";
 import {ActivatedRoute} from "@angular/router";
 import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
-import {AngularFullRoutes, replaceCorID} from "../../../../../../../infrastructure/data/full-routes.enum";
+import {AngularFullRoutes, replaceCorID, replaceLecID} from "../../../../../../../infrastructure/data/full-routes.enum";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
 import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
@@ -31,8 +31,10 @@ export class CreateLecture implements OnInit {
     this.corDataService.requestCorID.next(true);
 
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
   formData: FormGroup = this.formBuilder.group({

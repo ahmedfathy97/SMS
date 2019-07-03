@@ -14,12 +14,13 @@ import {FailureAlert} from "../../../../../../../../infrastructure/components/al
 import {SuccessAlert} from "../../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-answer-questions',
   templateUrl: './answer-questions.component.html',
   styleUrls: ['./answer-questions.component.scss'],
-  providers: [QuizService ,FormBuilder]
+  providers: [QuizService ,FormBuilder, CourseService]
 })
 export class AnswerQuestionsComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
@@ -32,6 +33,7 @@ export class AnswerQuestionsComponent implements OnInit {
   studentAnswers:StudentAnswerDto[] =[] ;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder ,
+              private courseService: CourseService,
               private quizService: QuizService ,private route: ActivatedRoute ,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.quizID = +params.get("quizID");
@@ -105,8 +107,10 @@ export class AnswerQuestionsComponent implements OnInit {
       console.log(err);
     });
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getQuizQuestions();
   }
 

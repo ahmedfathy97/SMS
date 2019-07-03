@@ -10,12 +10,13 @@ import {StudentAnswerDto} from "../../../../../../shared/data/quiz/student-answe
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 import {FailureAlert} from "../../../../../../../../infrastructure/components/alerts/failure-alert.data";
 import {ExamServices} from "../../../../../../shared/services/exam.services";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-answer-exam-questions',
   templateUrl: './answer-exam-questions.component.html',
   styleUrls: ['./answer-exam-questions.component.css'] ,
-  providers:[ExamServices]
+  providers:[ExamServices, CourseService]
 })
 export class AnswerExamQuestionsComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
@@ -27,6 +28,7 @@ export class AnswerExamQuestionsComponent implements OnInit {
   studentAnswers:StudentAnswerDto[] =[] ;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder ,private router: Router,
+              private courseService: CourseService,
               private examService: ExamServices ,private route: ActivatedRoute ,private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.examID = +params.get("examID");
@@ -101,8 +103,10 @@ export class AnswerExamQuestionsComponent implements OnInit {
       console.log(err);
     });
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getQuizQuestions();
   }
 

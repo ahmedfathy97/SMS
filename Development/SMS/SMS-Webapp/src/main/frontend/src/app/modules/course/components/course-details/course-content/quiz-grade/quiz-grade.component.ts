@@ -29,8 +29,10 @@ export class QuizGradeComponent implements OnInit {
     this.corDataService.corID.subscribe(data=>{this.corID=data; console.log(data);this.getQuizGrades();});
     this.corDataService.requestCorID.next(true);
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getQuizGrades();
 
 

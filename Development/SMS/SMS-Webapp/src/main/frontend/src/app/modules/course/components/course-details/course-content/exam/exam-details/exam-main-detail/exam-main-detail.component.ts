@@ -10,12 +10,13 @@ import {SuccessAlert} from "../../../../../../../../infrastructure/components/al
 import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {ExamServices} from "../../../../../../shared/services/exam.services";
 import {ExamInformationVto} from "../../../../../../shared/data/quiz/exam-information-vto";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-exam-main-detail',
   templateUrl: './exam-main-detail.component.html',
   styleUrls: ['./exam-main-detail.component.css'] ,
-  providers :[ExamServices] ,
+  providers :[ExamServices, CourseService]
 })
 export class ExamMainDetailComponent implements OnInit {
 
@@ -28,6 +29,7 @@ export class ExamMainDetailComponent implements OnInit {
   examDetails :ExamInformationVto ;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
+              private courseService: CourseService,
               private examService: ExamServices, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.examId = +params.get("examID");
@@ -45,9 +47,11 @@ export class ExamMainDetailComponent implements OnInit {
 
 
   }
-
-
+  
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
 

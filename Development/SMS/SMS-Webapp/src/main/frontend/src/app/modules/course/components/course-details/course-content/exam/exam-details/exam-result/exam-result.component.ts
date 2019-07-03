@@ -7,12 +7,13 @@ import {FailureAlert} from "../../../../../../../../infrastructure/components/al
 import {QuizResult} from "../../../../../../shared/data/quiz/quiz-result-dto";
 import {AlertInput} from "../../../../../../../../infrastructure/components/alerts/alert-input";
 import {ExamServices} from "../../../../../../shared/services/exam.services";
+import {CourseService} from "../../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-exam-result',
   templateUrl: './exam-result.component.html',
   styleUrls: ['./exam-result.component.css'] ,
-  providers:[ExamServices]
+  providers:[ExamServices, CourseService]
 })
 export class ExamResultComponent implements OnInit {
 
@@ -23,6 +24,7 @@ export class ExamResultComponent implements OnInit {
   examResult : QuizResult[] ;
   alert: AlertInput = new AlertInput();
   constructor(private corDataService: CourseDataService,
+              private courseService: CourseService,
               private examService: ExamServices, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
       this.examId = +params.get("examID");
@@ -38,8 +40,10 @@ export class ExamResultComponent implements OnInit {
     this.corDataService.requestCorID.next(true);
 
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
 
   }
 

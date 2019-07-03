@@ -22,6 +22,9 @@
   overflow-y: scroll;
   width: 100%;
 }
+.no-y-scroll{
+  overflow-y: visible !important;
+}
 .page-content-area{
   padding-top: 20px;
 }

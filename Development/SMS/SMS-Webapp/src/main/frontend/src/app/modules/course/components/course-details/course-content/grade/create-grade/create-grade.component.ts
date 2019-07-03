@@ -68,38 +68,17 @@ export class CreateGradeComponent implements OnInit {
             this.addItem(this.students[i].finalGrd)
 
         }
-        // this.courseSelected=true;
-
-
       }
     )
 
   }
-  // courses: CourseVto [] = [];
-  // courseSelected:boolean=false;
-
   students: StdDTO[] = [];
-
+  
+  corName: string;
   ngOnInit() {
-    // var courseID = +this.courseID;
-    // this.corID = courseID ;
-    // this.courseService.getAllInstructorCourses().subscribe(
-    //   res => {
-    //     this.courses = res;
-    //     console.log(this.courses);
-    //   }
-    // );
-    // debugger;
-
-
-
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
+    
   }
-
-  // onChangeType() {
-  //   console.log();
-  //
-  //
-  // }
 
   onSubmitGradeSheet() {
 

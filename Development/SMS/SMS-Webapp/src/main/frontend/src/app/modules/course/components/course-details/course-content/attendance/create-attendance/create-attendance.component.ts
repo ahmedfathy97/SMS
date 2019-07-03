@@ -65,8 +65,10 @@ export class CreateAttendanceComponent implements OnInit {
       }
     );
   }
-
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
   }
 
 

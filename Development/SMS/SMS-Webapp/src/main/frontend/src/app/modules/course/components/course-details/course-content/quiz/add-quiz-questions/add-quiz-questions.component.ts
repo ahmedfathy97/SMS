@@ -9,12 +9,13 @@ import {AlertInput} from "../../../../../../../infrastructure/components/alerts/
 import {SuccessAlert} from "../../../../../../../infrastructure/components/alerts/success-alert.data";
 import {FailureAlert} from "../../../../../../../infrastructure/components/alerts/failure-alert.data";
 import {CourseDataService} from "../../../../../shared/services/course-data.service";
+import {CourseService} from "../../../../../shared/services/course.service";
 
 @Component({
   selector: 'app-add-quiz-quiestions',
   templateUrl: './add-quiz-questions.component.html',
   styleUrls: ['./add-quiz-questions.component.scss'],
-  providers: [FormBuilder, QuizService]
+  providers: [FormBuilder, QuizService, CourseService]
 })
 export class AddQuizQuestionsComponent implements OnInit {
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
@@ -29,10 +30,13 @@ export class AddQuizQuestionsComponent implements OnInit {
   editMode: boolean = false;
   alert: AlertInput = new AlertInput();
   constructor(private formBuilder: FormBuilder,
-              private quizService: QuizService, private route: ActivatedRoute,private corDataService: CourseDataService) {
+              private courseService: CourseService,
+              private quizService: QuizService,
+              private route: ActivatedRoute,
+              private corDataService: CourseDataService) {
     this.route.paramMap.subscribe(params => {
       this.quizId = +params.get("quizID");
-    }) ,
+    });
 
     this.corDataService.corID.subscribe(
       data =>{
@@ -128,9 +132,11 @@ export class AddQuizQuestionsComponent implements OnInit {
       console.log(err)
     });
   }
-
-
+  
+  
+  corName: string;
   ngOnInit() {
+    this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
     this.getALLquestionsTypes();
   }
 
