@@ -62,8 +62,8 @@ export class AssignmentDetailsComponent implements OnInit {
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
-        if ("sdads")
-          downloadLink.setAttribute('download', "asddas");
+        if ("file")
+          downloadLink.setAttribute('download', "file");
         document.body.appendChild(downloadLink);
         downloadLink.click();
       }

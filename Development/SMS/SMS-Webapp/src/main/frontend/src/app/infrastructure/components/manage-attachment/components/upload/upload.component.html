@@ -125,7 +125,10 @@
           <hr>
           <div class="input-group-append pt-4 pull-right">
             <button *authorizeAction="[AUTH_ACTIONS.ADD_MATERIAL]"
-                    (click)="onUpload()" class="btn btn-secondary" type="button">Upload
+                    (click)="onUpload()" [routerLink]="[replaceLecID(ROUTES.COR_LECTURE, corID ,lectureID)]"
+                    class="btn btn-secondary"
+                    type="button">
+              Upload
             </button>
           </div>
         </div>
