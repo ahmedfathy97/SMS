@@ -21,12 +21,12 @@ export class CourseSideBarComponent implements OnInit {
   replaceLecID = replaceLecID;
 
   @Input() corID: number;
-  @Input() lecID: number;
 
   isStudentEnroll: boolean;
   currentUser: AuthUserVTO =new AuthUserVTO();
   constructor(private corService: CourseService,
-              private localStorageService: LocalStorageService)
+              private localStorageService: LocalStorageService,
+  )
   {
       this.currentUser =this.localStorageService.getCurrentUser();
   }

@@ -19,6 +19,11 @@
       </div>
       <div class="col-sm-6 clearfix">
         <div class="pull-right">
+          <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
+             [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_ASSIGNMENTS, corID, lectureID)]"
+             class="btn btn-info btn-header mr-2"><i class="fa fa-file-archive mr-2"></i>
+            <span> Assign Details</span></a>
+
           <a class="btn btn-success btn-header"
              *authorizeView="[AUTH_ACTIONS.ADD_MATERIAL]"
              [routerLink] ="[replaceLecID(ROUTES.COR_LECTURE_MATERIALS, corID, lectureID)]">

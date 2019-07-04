@@ -9,6 +9,7 @@ import {LectureDto} from "../../../../../shared/data/lecture-dto.data";
 import {LectureVto} from "../../../../../shared/data/lecture-vto";
 import {AuthActions} from "../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
 import {CourseService} from "../../../../../shared/services/course.service";
+import {AuthViews} from "../../../../../../../infrastructure/directives/authorization/data/auth-views.enum";
 
 @Component({
   selector: 'app-lecture-details',
@@ -18,6 +19,8 @@ import {CourseService} from "../../../../../shared/services/course.service";
 })
 export class LectureDetailsComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
+  AUTH_VIEWS: typeof AuthViews = AuthViews;
+
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
   replaceLecID = replaceLecID;

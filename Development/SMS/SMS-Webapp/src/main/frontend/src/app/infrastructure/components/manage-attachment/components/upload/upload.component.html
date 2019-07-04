@@ -21,121 +21,106 @@
   <div class="page-content-area mb-3 mr-3 ml-3">
 
     <div class="main-content-inner">
-  <!--<form action="/" method="post" enctype="multipart/form-data">-->
+      <!--<form action="/" method="post" enctype="multipart/form-data">-->
 
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="header-title">File input</h4>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="header-title">File input</h4>
 
-          <div class="input-group">
-            <div class="custom-file">
-              <input #fileInput (change)="onFileSelected($event)" class="custom-file-input" id="browse" multiple
-                     name="tags" type="file">
-              <label class="custom-file-label" for="browse">Choose file</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input #fileInput (change)="onFileSelected($event)" class="custom-file-input" id="browse" multiple
+                         name="tags" type="file">
+                  <label class="custom-file-label" for="browse">Choose file</label>
+                </div>
+              </div>
+
             </div>
           </div>
-
         </div>
       </div>
-    </div>
-  </div>
       <div *ngIf="listOfFilesTable" class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="header-title">List of files</h4>
-          <div class="single-table">
-            <div class="table-responsive">
-              <table class="table text-center">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="header-title">List of files</h4>
+              <div class="single-table">
+                <div class="table-responsive">
+                  <table class="table text-center">
 
-                <thead class="text-uppercase bg-light">
-                <tr>
-                  <th scope="col">no</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Size</th>
-                  <!--<th scope="col">price</th>-->
-                  <th scope="col">action</th>
-                </tr>
-                </thead>
+                    <thead class="text-uppercase bg-light">
+                    <tr>
+                      <th scope="col">no</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Size</th>
+                      <!--<th scope="col">price</th>-->
+                      <th scope="col">action</th>
+                    </tr>
+                    </thead>
 
 
-                <tbody>
-                <tr *ngFor="let file of filesVTO; let i = index;">
-                  <th scope="row">{{i+1}}</th>
-                  <td>{{file.name}}</td>
-                  <td>
-                    <select (change)="selectedOption($event, i)">
-                      <option disabled hidden selected value="">Choose here</option>
-                      <option value="1"><i aria-hidden="true" class="fa fa-paperclip"></i> Attachment</option>
-                      <option value="2"><i aria-hidden="true" class="fa fa-tasks"></i> Assignment</option>
-                    </select>
+                    <tbody>
+                    <tr *ngFor="let file of filesVTO; let i = index;">
+                      <th scope="row">{{i + 1}}</th>
+                      <td>{{file.name}}</td>
+                      <td>
+                        <select (change)="selectedOption($event, i)">
+                          <option disabled hidden selected value="">Choose here</option>
+                          <option value="1"><i aria-hidden="true" class="fa fa-paperclip"></i> Attachment</option>
+                          <option value="2"><i aria-hidden="true" class="fa fa-tasks"></i> Assignment</option>
+                        </select>
 
-                    <button *ngIf="file.fileSourceID == '2'" [attr.data-target]="'#exampleModalCenter' + i"
-                            class="fa fa-calendar ml-1"
-                            data-toggle="modal"></button>
-                  </td>
-                  <td>{{formatBytes(file.size, 2)}}</td>
-                  <td>
-                    <i (click)="remove(i)" class="fa fa-trash-o"></i>
-                    <!--                                        <i class="fa fa-upload pl&#45;&#45;10"></i>-->
-                    <!--                    <i class="pl&#45;&#45;10"><input type="checkbox" name="fileType" ></i>-->
-                  </td>
+                        <button *ngIf="file.fileSourceID == '2'" [attr.data-target]="'#exampleModalCenter' + i"
+                                class="fa fa-calendar ml-1"
+                                data-toggle="modal"></button>
+                      </td>
+                      <td>{{formatBytes(file.size, 2)}}</td>
+                      <td>
+                        <i (click)="remove(i)" class="fa fa-trash-o"></i>
+                      </td>
 
-                  <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade"
-                       data-backdrop="false" id="{{'exampleModalCenter'+ i }}"
-                       role="dialog" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Assignment Start & End Dates</h5>
-                          <button #closeBtn aria-label="Close" class="close" data-dismiss="modal"
-                                  type="button">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                      <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade"
+                           data-backdrop="false" id="{{'exampleModalCenter'+ i }}"
+                           role="dialog" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Assignment Start & End Dates</h5>
+                              <button #closeBtn aria-label="Close" class="close" data-dismiss="modal"
+                                      type="button">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+
+                            <ngx-daterangepicker-material (choosedDate)="choosedDate($event, i, closeBtn)"
+                                                          [locale]="{format: 'YYYY/MM/DD', applyLabel: 'save'}">
+                            </ngx-daterangepicker-material>
+                          </div>
                         </div>
-
-                        <ngx-daterangepicker-material (choosedDate)="choosedDate($event, i, closeBtn)"
-                                                      [locale]="{format: 'YYYY/MM/DD', applyLabel: 'save'}">
-                        </ngx-daterangepicker-material>
                       </div>
-                    </div>
-                  </div>
-
-                </tr>
-
-                </tbody>
-              </table>
-              <!--    Test          -->
-
-              <!-- Button trigger modal -->
-              <!--               using ngif, add data-toggle and data-target when option = 2 -->
-              <!--              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">-->
-              <!--                Launch demo modal-->
-              <!--              </button>-->
-
-              <!-- start modal -->
-
-
-              <!--   end Modal     -->
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <hr>
+              <div class="input-group-append pt-4 pull-right">
+                <button (click)="onUpload()"
+                        *authorizeAction="[AUTH_ACTIONS.ADD_MATERIAL]"
+                        [routerLink]="[replaceLecID(ROUTES.COR_LECTURE, corID ,lectureID)]"
+                        class="btn btn-secondary"
+                        type="button">
+                  Upload
+                </button>
+              </div>
             </div>
-          </div>
-          <hr>
-          <div class="input-group-append pt-4 pull-right">
-            <button *authorizeAction="[AUTH_ACTIONS.ADD_MATERIAL]"
-                    (click)="onUpload()" [routerLink]="[replaceLecID(ROUTES.COR_LECTURE, corID ,lectureID)]"
-                    class="btn btn-secondary"
-                    type="button">
-              Upload
-            </button>
           </div>
         </div>
       </div>
+      <!--</form>-->
     </div>
-  </div>
-  <!--</form>-->
-</div>
   </div>
 </div>

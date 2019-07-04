@@ -23,12 +23,6 @@
       <a [routerLink]="['/course',corID,'grade']"><i></i><span>Grades</span></a>
     </li>
 
-
-    <li>
-      <a *authorizeView="[AUTH_VIEWS.ADD_MATERIAL]"
-         [routerLink]="[replaceLecID(ROUTES.COR_LECTURE_ASSIGNMENTS, corID, lecID)]"><i></i><span>Assignments</span></a>
-    </li>
-
   </ng-template>
 
 </ul>

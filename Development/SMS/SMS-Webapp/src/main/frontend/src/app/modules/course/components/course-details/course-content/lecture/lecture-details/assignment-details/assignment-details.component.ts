@@ -1,6 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthActions} from "../../../../../../../../infrastructure/directives/authorization/data/auth-actions.enum";
-import {AngularFullRoutes, replaceCorID} from "../../../../../../../../infrastructure/data/full-routes.enum";
+import {
+  AngularFullRoutes,
+  replaceCorID,
+  replaceLecID
+} from "../../../../../../../../infrastructure/data/full-routes.enum";
 import {CourseDataService} from "../../../../../../shared/services/course-data.service";
 import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../../../../../shared/services/course.service";
@@ -19,6 +23,7 @@ export class AssignmentDetailsComponent implements OnInit {
   AUTH_ACTIONS: typeof AuthActions = AuthActions;
   ROUTES: typeof AngularFullRoutes = AngularFullRoutes;
   replaceCorID = replaceCorID;
+  replaceLecID = replaceLecID
   corID: number;
   lecID: number;
 
@@ -36,12 +41,20 @@ export class AssignmentDetailsComponent implements OnInit {
         this.corID = data;
       });
     this.corDataService.requestCorID.next(true);
+    this.route.paramMap.subscribe(params => {
+
+      this.lecID = +params.get("lectureID");
+      // this.corID = +params.get("corID");
+
+    });
+
   }
   
   corName: string;
   ngOnInit() {
     this.courseService.getCourseByID(this.corID).subscribe(res => this.corName = res.courseName);
-    this.assignmentService.getListAssignmentStudent(1, 1).subscribe(res => this.assignments = res,
+    console.log("corID: " + this.corID + ", lecID: " + this.lecID)
+    this.assignmentService.getListAssignmentStudent(this.corID, this.lecID).subscribe(res => this.assignments = res,
       error => {
       }
     );
