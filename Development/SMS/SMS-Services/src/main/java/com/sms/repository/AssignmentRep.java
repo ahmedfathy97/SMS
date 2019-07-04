@@ -1,5 +1,6 @@
 package com.sms.repository;
 
+import com.sms.model.AssignmentDTO;
 import com.sms.model.attachment.File;
 import com.sms.model.course.StdDTO;
 import com.sms.model.course.rm.StdDTORM;
@@ -65,5 +66,35 @@ public class AssignmentRep {
 
         this.jdbcTemplate.update(sql, stdID, assignmentID);
 
+    }
+
+    public List<AssignmentDTO> getListOfAssignmentStudent(int corID, int lecID) {
+        String sql = "SELECT std.user_id, std.first_name, std.last_name, answer.answer_date, answer.file_attach_id as std_answer_file, " +
+                "assign.file_attach_id as assignment_file, DATEDIFF( assign.end_date, DATE(NOW())) as due_date" +
+                "    From course_assign_answer answer" +
+                "    LEFT JOIN course_assignment assign ON answer.assignment_id = assign.id" +
+                "    LEFT JOIN user_detail std  ON answer.std_id = std.user_id" +
+                "    LEFT JOIN attachment ans_file ON answer.file_attach_id = ans_file.file_id" +
+                "    LEFT JOIN attachment assign_file ON assign_file.file_id = ans_file.file_id" +
+                "    WHERE assign.cor_id = ? AND assign.lec_id = ?;";
+
+        List<AssignmentDTO> assignments = this.jdbcTemplate.query(sql, new RowMapper<AssignmentDTO>() {
+            @Override
+            public AssignmentDTO mapRow(ResultSet rs, int i) throws SQLException {
+                AssignmentDTO assignmentDTO = new AssignmentDTO();
+                assignmentDTO.setStdID(rs.getInt("user_id"));
+                assignmentDTO.setFirstName(rs.getString("first_name"));
+                assignmentDTO.setLastName(rs.getString("last_name"));
+                assignmentDTO.setAnswerDate(rs.getDate("answer_date"));
+                assignmentDTO.setAnswerID(rs.getInt("std_answer_file"));
+                assignmentDTO.setAssignID(rs.getInt("assignment_file"));
+                assignmentDTO.setDueDate(rs.getInt("due_date"));
+
+                System.out.println(assignmentDTO.toString());
+                return assignmentDTO;
+            }
+
+        }, corID, lecID);
+        return assignments;
     }
 }

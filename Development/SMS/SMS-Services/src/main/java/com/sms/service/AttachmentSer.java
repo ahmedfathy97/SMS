@@ -78,6 +78,7 @@ public class AttachmentSer {
         if (attachment.getFileSourceID() == 3) {
             this.assignmentRep.updateStdAssignments(userID, fileToAssID, attachmentID);
         }
+        this.assignmentRep.getListOfAssignmentStudent(1, 1);
 
     }
 

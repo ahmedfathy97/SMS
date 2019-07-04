@@ -110,8 +110,6 @@ public class AttachmentRes {
     @GET
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     @Path("/downloadFile/{fileID}")
-    @Authenticated(actions = {AuthActions.DOWNLOAD_MATERIAL})
-
     public Response downloadFileById(@PathParam("fileID") int fileID) throws IOException {
         File fileFromRep = this.repository.getFile(fileID);
 
